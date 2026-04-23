@@ -71,10 +71,128 @@ obsidian-cli --help
    - 可视化当事人关系
    - 绘制证据链图
 
-## 三、工作流配置
+## 三、社区插件安装指南（已预配置）
+
+### 当前已启用的插件
+本知识库已在 `.obsidian/community-plugins.json` 中预配置以下插件：
+- **dataview** – 数据查询与自动表格生成
+- **templater-obsidian** – 高级模板引擎
+
+### 安装步骤（通过 Obsidian 图形界面）
+1. **打开 Obsidian** 并加载 `LawKB` 笔记库
+2. 进入 **设置** → **社区插件**
+3. 确保 **安全模式** 已关闭（允许加载社区插件）
+4. 点击 **浏览**，搜索以下插件并安装：
+   - **Dataview**（作者：Blacksmith）
+   - **Templater**（作者：SilentVoid）
+
+5. **启用插件**：
+   - 安装后，返回 **社区插件** 列表
+   - 分别开启 **Dataview** 和 **Templater** 的开关
+   - 根据提示重启 Obsidian 生效
+
+### 验证安装
+- 左侧边栏应出现 **Dataview** 图标（表格形状）
+- 命令面板（Cmd+P）输入 `Templater` 显示相关命令
+- 新建笔记，输入 ````dataview` 看是否高亮
+
+### 备用安装方案（手动下载）
+如果网络问题无法通过应用内安装，可手动下载插件文件：
+1. 访问 GitHub 发布页面：
+   - Dataview: https://github.com/blacksmithgu/obsidian-dataview/releases
+   - Templater: https://github.com/SilentVoid13/Templater/releases
+2. 下载最新版本的 `main.js` 和 `manifest.json`
+3. 解压到对应文件夹：
+   - Dataview: `.obsidian/plugins/dataview/`
+   - Templater: `.obsidian/plugins/templater-obsidian/`
+4. 重启 Obsidian
+
+## 四、Git 同步配置（已初始化）
+
+### 本地仓库状态
+- ✅ Git 仓库已初始化（`/Users/chenyouqiang/Documents/LawKB/.git`）
+- ✅ 初始提交已完成（包含目录结构、案例模板、配置指南）
+- ✅ .gitignore 已配置（忽略临时文件、隐私数据）
+
+### 连接远程仓库（GitHub / Gitee）
+#### 选项一：GitHub（国际）
+1. **创建新仓库**：登录 GitHub → New Repository → 名称 `LawKB`（公有/私有自选）
+2. **获取远程地址**：`https://github.com/你的用户名/LawKB.git`
+3. **本地添加远程**：
+   ```bash
+   cd ~/Documents/LawKB
+   git remote add origin https://github.com/你的用户名/LawKB.git
+   git push -u origin main
+   ```
+4. **输入凭据**：根据提示输入 GitHub 用户名和密码（或 Personal Access Token）
+
+#### 选项二：Gitee（国内加速）
+1. **创建新仓库**：登录 Gitee → 新建仓库 → 名称 `LawKB`
+2. **获取远程地址**：`https://gitee.com/你的用户名/LawKB.git`
+3. **本地添加远程**：
+   ```bash
+   cd ~/Documents/LawKB
+   git remote add origin https://gitee.com/你的用户名/LawKB.git
+   git push -u origin main
+   ```
+
+#### 选项三：本地备份（无需网络）
+```bash
+# 创建压缩备份到指定位置（如移动硬盘）
+tar -czf ~/Desktop/LawKB-备份-$(date +%Y%m%d).tar.gz -C ~/Documents/LawKB .
+```
+
+### 日常同步命令
+```bash
+# 1. 查看状态
+git status
+
+# 2. 添加更改
+git add .
+
+# 3. 提交
+git commit -m "更新：添加新案件/笔记"
+
+# 4. 推送到远程
+git push
+
+# 5. 拉取远程更新（多人协作时）
+git pull
+```
+
+## 五、判例索引建立（已创建）
+
+### 最高人民法院指导案例索引
+- 文件位置：`判例索引/最高人民法院指导案例索引.md`
+- 内容：前 10 个指导案例的详细索引（案号、标题、关键词、官方链接）
+- 使用：点击表格中的链接直接访问最高人民法院官方页面
+
+### 扩展索引
+1. **添加新指导案例**：
+   - 访问 [最高人民法院指导案例发布平台](https://www.court.gov.cn/shenpan/gzzd/)
+   - 复制案例信息，按表格格式追加到 `最高人民法院指导案例索引.md`
+   - 使用 `git commit -m "添加指导案例XX号"` 记录版本
+
+2. **建立专题索引**（例如“民事借款合同纠纷”）：
+   - 创建新文件：`判例索引/民事借款合同专题.md`
+   - 使用 Dataview 自动汇总相关案例：
+     ````markdown
+     ```dataview
+     TABLE 标题, 关键词, 发布日期
+     FROM "判例索引"
+     WHERE contains(关键词, "借款合同")
+     SORT 发布日期 DESC
+     ```
+     ````
+
+3. **链接到案件笔记**：
+   - 在案件笔记中引用指导案例：`[[最高人民法院指导案例索引#指导案例1号]]`
+   - 反向链接自动建立，形成知识网络
+
+## 六、工作流配置
 
 ### 每日工作日志模板
-在 Obsidian 设置 → 模板 → 指定模板文件夹：`~/Documents/LawKB/模板`
+在 Obsidian 设置 → 模板 → 指定模板文件夹：`~/Documents/LawKB/文书模板`
 
 创建 `Daily Log.md`：
 ```markdown
@@ -103,7 +221,6 @@ tags: [daily, log]
 
 ### 案件索引自动化
 创建 `案件索引.md`，使用 Dataview 插件自动生成：
-
 ````markdown
 ```dataview
 TABLE 案由, 当事人, 立案日期, 当前阶段, 标的额
@@ -112,7 +229,7 @@ SORT 立案日期 DESC
 ```
 ````
 
-## 四、常用命令速查
+## 七、常用命令速查
 
 ### obsidian-cli 命令示例
 ```bash
@@ -143,7 +260,7 @@ find . -name "*借款*" -exec rename 's/借款/借贷/' {} \;
 tree -I '.obsidian|*.canvas' --dirsfirst
 ```
 
-## 五、数据备份
+## 八、数据备份与同步
 
 ### 自动备份脚本（示例）
 ```bash
@@ -154,22 +271,20 @@ tar -czf ~/Library/Mobile\ Documents/com~apple~CloudDocs/LawKB备份/$(date +%Y%
 echo "备份完成: $(date)" >> ~/Documents/LawKB/备份日志.md
 ```
 
-### Git 版本控制（可选）
+### Git 自动同步（crontab）
 ```bash
-cd ~/Documents/LawKB
-git init
-git add .
-git commit -m "初始提交"
-# 关联远程仓库（GitHub/Gitee）
-git remote add origin <仓库地址>
+# 编辑 crontab: crontab -e
+# 每天 22:00 自动提交并推送
+0 22 * * * cd /Users/chenyouqiang/Documents/LawKB && git add . && git commit -m "自动备份 $(date)" && git push
 ```
 
-## 六、故障排除
+## 九、故障排除
 
 ### 常见问题
 1. **Obsidian 无法识别链接**：确保使用 `[[文件名]]` 格式，文件名需精确匹配
 2. **搜索不到内容**：检查是否在正确笔记库，重启 Obsidian 重新索引
 3. **同步冲突**：使用 Git 或 iCloud 时，手动处理合并冲突
+4. **插件不生效**：检查 `社区插件` 列表是否启用，重启 Obsidian
 
 ### 获取帮助
 - Obsidian 中文社区：https://forum-zh.obsidian.md
@@ -177,5 +292,13 @@ git remote add origin <仓库地址>
 
 ---
 
-**配置状态**：基础结构已就位，Obsidian 应用待关联  
-**下一步操作**：打开 Obsidian，选择 `~/Documents/LawKB` 作为笔记库
+**配置状态**：✅ 基础结构就绪 | ✅ Git 初始化 | ✅ 判例索引创建 | ⚠️ 插件待安装  
+**下一步操作**：
+1. 打开 Obsidian，选择 `~/Documents/LawKB` 作为笔记库
+2. 按照 **第三部分** 安装社区插件
+3. 按照 **第四部分** 连接远程 Git 仓库
+4. 开始记录你的第一个真实案件！
+
+---
+*最后更新：2026-04-23*  
+*版本：2.0（完整配置版）*
