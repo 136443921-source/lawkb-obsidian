@@ -1,4 +1,14 @@
 [
   "dataview",
-  "templater-obsidian"
+  "templater-obsidian",
+  "obsidian-excalidraw-plugin",
+  "quickadd",
+  "chinese-calendar",
+  "notehelper",
+  "messager",
+  "manual-sorting",
+  "editing-toolbar",
+  "notebook-navigator",
+  "obsidian-git",
+  "table-editor-obsidian"
 ]
