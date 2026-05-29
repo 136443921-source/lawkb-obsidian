@@ -9,6 +9,8 @@
   "manual-sorting",
   "editing-toolbar",
   "notebook-navigator",
+  "table-editor-obsidian",
   "obsidian-git",
-  "table-editor-obsidian"
+  "omnisearch",
+  "update-time-on-edit"
 ]
