@@ -10,7 +10,7 @@ tags:
   - Submission
   - 模板
 created: 2026-05-28T10:51
-updated: 2026-05-28T12:48
+updated: 2026-06-19T22:57
 ---
 
  # 怎么设计一个能交付的红队律师合同审查 Skill

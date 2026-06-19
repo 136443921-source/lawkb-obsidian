@@ -11,7 +11,7 @@ tags:
   - 文件夹
   - 模板
 created: 2026-05-28T10:51
-updated: 2026-05-28T12:48
+updated: 2026-06-19T22:57
 ---
 
 # Templater 快速配置指南
