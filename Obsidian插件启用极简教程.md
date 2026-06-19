@@ -13,7 +13,7 @@ tags:
   - 模板
   - Obsidian
 created: 2026-05-28T10:51
-updated: 2026-06-19T22:57
+updated: 2026-06-19T23:08
 ---
 
 # Obsidian 插件启用极简教程

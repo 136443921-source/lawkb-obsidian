@@ -11,7 +11,7 @@ tags:
   - 文件夹
   - Obsidian
 created: 2026-05-28T10:51
-updated: 2026-06-19T22:57
+updated: 2026-06-19T23:08
 ---
 
 # Obsidian 极简安装指南（老强专用）
