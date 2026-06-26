@@ -7,7 +7,7 @@ tags:
   - 技能
   - 必装
 created: 2026-05-28T10:51
-updated: 2026-06-19T22:57
+updated: 2026-06-24T10:56
 ---
 
 https://mp.weixin.qq.com/s/MF5fBEm3EBhxVHzl42C2qg
@@ -16,7 +16,7 @@ https://mp.weixin.qq.com/s/MF5fBEm3EBhxVHzl42C2qg
 
 现在的AI平台（比如 WorkBuddy、ClaudeCode、Cursor 等）都有一个核心逻辑：**裸机只是起点，技能（Skills）才是灵魂。** 就像你刚买的iPhone，不装App也只是一个漂亮的砖头。AI助手的真正威力，在于你能给它叠加各种技能包，让它从"聊天机器人"进化成"懂你、记得住、能干活"的真助手。今天这篇，我把老玩家压箱底的 **7个必装基础技能** 一次性给你讲清楚。不废话，每个都告诉你：**为什么装、用来干啥、效果有多明显。****
 
-****1.长期记忆系统：让AI"记得住"你****技能名**：Self-Improving Agent / 智能记忆系统**
+****1.长期记忆系统：让AI"记得住"你****技能名**：**<font color="#ff0000">Self-Improving Agent</font>** / 智能记忆系统**
 **
 
 **必装指数**：⭐⭐⭐⭐⭐（48万+下载）
