@@ -51,4 +51,4 @@ venv/
 
 # 其他
 /.trash/
-/.obsidian/trash/.obsidian/plugins/notehelper/*.backup
+.obsidian/plugins/notehelper/*.backup
