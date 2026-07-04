@@ -1,13 +1,22 @@
 ---
 tags:
-  - 
   - Obsidian
   - 技能
   - AI
   - 知识库
 created: 2026-05-28T10:51
-updated: 2026-06-19T22:57
+updated: 2026-06-27T19:22
+title: 如何让AI帮你打理Obsidian知识库
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 
 https://mp.weixin.qq.com/s/KknwudobwPxPoLVJ1jTPxQ
 
@@ -148,8 +157,8 @@ npminstall luna-jmy/thinkdokit-skills
 
 
 ## 相关笔记
-- [[用ObsidianCodex搭一个会主动思考的个人知识库]] (语义相似度: 0.234, 共同关键词: 内容, 知识库, 输入)
-- [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (语义相似度: 0.223, 共同关键词: 知识库, 问题, Obsidian)
-- [[装上这7个Skills你的WorkBuddy直接起飞]] (语义相似度: 0.150, 共同关键词: 技能, 问题, AI)
-- [[律师用AI梳理证据链的5个重点附提示词]] (语义相似度: 0.137, 共同关键词: 输入, 内容, AI)
-- [[README]] (语义相似度: 0.117, 共同关键词: 检索, 笔记, Obsidian)
+- 用ObsidianCodex搭一个会主动思考的个人知识库 
+- ClaudeCodeObsidian个人知识库从工具到思维的完整指南 
+- [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 
+- 律师用AI梳理证据链的5个重点附提示词 
+- README 

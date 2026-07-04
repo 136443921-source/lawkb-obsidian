@@ -1,7 +1,18 @@
 ---
 created: 2026-06-26T15:46
-updated: 2026-06-26T16:21
+updated: 2026-06-27T19:21
+title: 小哲AI 学伴智能体搭建方案
+tags: []
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 ## 一、总控提示词
 
 你叫「学伴小锋」，是我的专属初中 AI 学伴，我目前是初一新生，使用人教版教材。

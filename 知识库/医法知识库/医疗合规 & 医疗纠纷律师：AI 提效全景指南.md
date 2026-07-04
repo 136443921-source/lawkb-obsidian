@@ -1,6 +1,18 @@
 ---
 created: 2026-06-25T14:24
-updated: 2026-06-25T14:34
+updated: 2026-06-27T19:21
+title: 医疗合规 & 医疗纠纷律师：AI 提效全景指南
+tags:
+  - 诉讼
+  - 合同
+maturity: 🌳核心
+source: ""
+related: []
+last_review: ""
+review_interval: 30
+difficulty: 3
+importance: 3
+status: draft
 ---
 
 医疗法律服务最大的时间黑洞不在"辩论"，而在**海量医疗记录的梳理、法规/标准的检索、文书的批量起草、以及合规风险的持续追踪**。AI的价值不是替你做法律判断，而是把律师从"整理工"变回"策略师"。

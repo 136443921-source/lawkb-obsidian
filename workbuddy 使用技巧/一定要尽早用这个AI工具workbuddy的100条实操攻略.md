@@ -1,7 +1,18 @@
 ---
 created: 2026-06-25T23:51
-updated: 2026-06-26T09:01
+updated: 2026-06-27T19:21
+title: 一定要尽早用这个AI工具workbuddy的100条实操攻略
+tags: []
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ
 
 # 一定要尽早用这个AI工具：workbuddy的100条实操攻略

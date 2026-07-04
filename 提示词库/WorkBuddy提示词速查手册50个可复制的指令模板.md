@@ -1,7 +1,18 @@
 ---
 created: 2026-06-07T14:43
-updated: 2026-06-19T22:57
+updated: 2026-06-27T19:21
+title: WorkBuddy提示词速查手册50个可复制的指令模板
+tags: []
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 https://mp.weixin.qq.com/s/Jz1rp16C-UDJZkXqMOjWig
 
 # WorkBuddy提示词速查手册-50+个可复制的指令模板

@@ -1,7 +1,20 @@
 ---
 created: 2026-06-10T16:02
-updated: 2026-06-19T22:57
+updated: 2026-06-27T19:21
+title: 5个AI合同审查提示词律师法务必备
+tags:
+  - 诉讼
+  - 合同
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 https://mp.weixin.qq.com/s/CmuQMIoAopvF4oxFjnU2ew
 
 # 5 个 AI 合同审查提示词，律师、法务必备

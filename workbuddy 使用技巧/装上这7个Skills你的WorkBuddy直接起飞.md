@@ -7,7 +7,16 @@ tags:
   - 技能
   - 必装
 created: 2026-05-28T10:51
-updated: 2026-06-24T10:56
+updated: 2026-06-27T19:21
+title: 装上这7个Skills你的WorkBuddy直接起飞
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
 ---
 
 https://mp.weixin.qq.com/s/MF5fBEm3EBhxVHzl42C2qg
@@ -169,19 +178,19 @@ https://mp.weixin.qq.com/s/MF5fBEm3EBhxVHzl42C2qg
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/MF5fBEm3EBhxVHzl42C2qg)*
 
 ## 标签
-#[[Agent]]
-#[[合同]]
-#[[AI]]
-#[[自动]]
-#[[技能]]
-#[[必装]]
+#Agent
+#合同
+#AI
+#自动
+#技能
+#必装
 
 
 
 
 ## 相关笔记
-- [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (语义相似度: 0.153, 共同关键词: 什么, 问题, AI)
-- [[谈案律师技能设计方案_20260528]] (语义相似度: 0.152, 共同关键词: 技能, 信息, 自动)
-- [[如何让AI帮你打理Obsidian知识库]] (语义相似度: 0.150, 共同关键词: 技能, 问题, AI)
-- [[法律SOP蒸馏器]] (语义相似度: 0.150, 共同关键词: 什么, Agent, AI)
-- [[Obsidian配置指南]] (语义相似度: 0.132, 共同关键词: 安装, 自动, 搜索)
+- ClaudeCodeObsidian个人知识库从工具到思维的完整指南 
+- [[谈案律师技能设计方案|谈案律师技能设计方案]]|[[谈案律师技能设计方案_20260528|谈案律师技能设计方案]]|谈案律师技能设计方案_20260528|谈案律师技能设计方案|谈案律师技能设计方案_20260528|谈案律师技能设计方案|谈案律师技能设计方案|谈案律师技能设计方案_20260528|谈案律师技能设计方案|谈案律师技能设计方案_20260528|谈案律师技能设计方案|谈案律师技能设计方案_20260528 
+- 如何让AI帮你打理Obsidian知识库 
+- 法律SOP蒸馏器 
+- Obsidian配置指南 

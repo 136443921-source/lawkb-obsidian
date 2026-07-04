@@ -1,7 +1,18 @@
 ---
 created: 2026-06-25T15:22
-updated: 2026-06-25T15:22
+updated: 2026-06-27T19:21
+title: 安装selfimprovingagent让WorkBuddy学会自己改进
+tags: []
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 https://mp.weixin.qq.com/s/VaJ1j4pbwYo1J8g2SJQGcg
 
 # 安装self-improving-agent：让WorkBuddy学会自己改进

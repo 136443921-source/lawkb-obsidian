@@ -1,7 +1,18 @@
 ---
 created: 2026-06-25T10:23
-updated: 2026-06-25T10:23
+updated: 2026-06-27T19:21
+title: WorkBuddy这15个功能一个比一个香建议收藏
+tags: []
+maturity: 🌳核心
+source: ""
+related: []
+last_review: ""
+review_interval: 30
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 https://mp.weixin.qq.com/s/MOYLmt7ASG4dtjQ6XY5HcQ
 
 # WorkBuddy这15个功能，一个比一个香（建议收藏）

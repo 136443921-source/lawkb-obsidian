@@ -1,14 +1,23 @@
 ---
 tags:
-  - 
   - Obsidian
   - 文件夹
   - AI
   - 合同法
   - wiki
 created: 2026-05-28T10:51
-updated: 2026-06-19T22:57
+updated: 2026-06-27T19:22
+title: ClaudeCodeObsidian个人知识库从工具到思维的完整指南
+maturity: 🌿成长
+source: ""
+related: []
+last_review: ""
+review_interval: 14
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 
 https://mp.weixin.qq.com/s/MFtHLy8TS39O5-bZphXBJA
 
@@ -165,7 +174,7 @@ Karpathy自己就用这么简单的结构。没有嵌套五六层的目录，没
 比如这样：
 
 ```
-# 我的知识库## 主题[这里写你的主题，比如“AI应用开发”]## 目录说明raw文件夹：原始素材，AI只读不改wiki文件夹：整理后的内容，AI全权维护outputs文件夹：AI生成的报告和分析## 整理规则每个重要话题单独建一个md文件文件开头写一段100字左右的摘要用[[话题名]]的格式建立页面之间的链接维护一个INDEX.md文件作为总目录新素材来了要更新相关的wiki页面## 我关注的方向1. [方向一]2. [方向二]3. [方向三]
+# 我的知识库## 主题[这里写你的主题，比如“AI应用开发”]## 目录说明raw文件夹：原始素材，AI只读不改wiki文件夹：整理后的内容，AI全权维护outputs文件夹：AI生成的报告和分析## 整理规则每个重要话题单独建一个md文件文件开头写一段100字左右的摘要用话题名的格式建立页面之间的链接维护一个INDEX.md文件作为总目录新素材来了要更新相关的wiki页面## 我关注的方向1. [方向一]2. [方向二]3. [方向三]
 ```
 
 这个模板很简单，但够用。
@@ -173,7 +182,7 @@ Karpathy自己就用这么简单的结构。没有嵌套五六层的目录，没
 如果你想用更详细的版本，这里还有一个完整模板：
 
 ```
-# LLM 知识库 - Schema## 概述个人知识库，主题是 [你的主题]。原始材料在 raw/，编译过的 wiki 在 wiki/。你（AI）维护所有 wiki 内容。我定方向，你执行编译、维护、查询。## 目录结构- raw/ - 原始材料（你只读，我负责往这里加文件）- wiki/index.md - 总索引- wiki/log.md - 操作日志（追加式）- wiki/concepts/ - 一个概念一个文件- wiki/entities/ - 人物、组织、工具- wiki/sources/ - 每篇原始材料一个摘要- wiki/outputs/ - 我提问题的答案## 文件规范- 文件名：kebab-case 小写（active-inference.md）- 源摘要命名：{作者}-{年份}-{短标题}.md- 每个页面顶部必须有 YAML frontmatter：---  title: "页面标题"  date_created: YYYY-MM-DD  date_modified: YYYY-MM-DD  summary: "一两句话说明"  tags: [主题, 领域]  type: concept | entity | source | output---- 内部交叉引用全部用 [[双链]]## 操作### INGEST 摄入（我加了新原始材料）1. 读新材料2. 在 wiki/sources/ 写摘要3. 找出概念和实体，没有的页面就新建4. 已有页面用追加更新（不要重写）5. 用 [[双链]] 把新内容连到现有页面6. 更新 wiki/index.md7. 追加到 wiki/log.md### QUERY 查询（我提问）1. 读 wiki/index.md2. 读相关 wiki 页面3. 综合一个带引用的答案4. 存到 wiki/outputs/{问题slug}.md5. 更新 index.md 和 log.md### LINT 巡检（定期健康检查）1. 找页面之间的矛盾2. 找孤儿页面（没有任何入链）3. 找坏链4. 找缺失的 frontmatter5. 标出过期内容6. 给被频繁引用但还没有自己的页面的概念建议7. 输出报告，能自动修的就修## 建页面阈值- 一个概念在 2 篇及以上原始材料里出现 → 建完整页- 只在一处出现 → 建 stub（frontmatter + 一句定义 + 链回原始材料）- 永远不要让 [[双链]] 指向不存在的页面## 质量标准- 摘要：200-500 字，要合成不要照抄- 所有论断要追溯到具体源页面- 矛盾用 ⚠️ 标出，两边立场都写- 来源冲突时优先采用更新的
+# LLM 知识库 - Schema## 概述个人知识库，主题是 [你的主题]。原始材料在 raw/，编译过的 wiki 在 wiki/。你（AI）维护所有 wiki 内容。我定方向，你执行编译、维护、查询。## 目录结构- raw/ - 原始材料（你只读，我负责往这里加文件）- wiki/index.md - 总索引- wiki/log.md - 操作日志（追加式）- wiki/concepts/ - 一个概念一个文件- wiki/entities/ - 人物、组织、工具- wiki/sources/ - 每篇原始材料一个摘要- wiki/outputs/ - 我提问题的答案## 文件规范- 文件名：kebab-case 小写（active-inference.md）- 源摘要命名：{作者}-{年份}-{短标题}.md- 每个页面顶部必须有 YAML frontmatter：---  title: "页面标题"  date_created: YYYY-MM-DD  date_modified: YYYY-MM-DD  summary: "一两句话说明"  tags: [主题, 领域]  type: concept | entity | source | output---- 内部交叉引用全部用 双链## 操作### INGEST 摄入（我加了新原始材料）1. 读新材料2. 在 wiki/sources/ 写摘要3. 找出概念和实体，没有的页面就新建4. 已有页面用追加更新（不要重写）5. 用 双链 把新内容连到现有页面6. 更新 wiki/index.md7. 追加到 wiki/log.md### QUERY 查询（我提问）1. 读 wiki/index.md2. 读相关 wiki 页面3. 综合一个带引用的答案4. 存到 wiki/outputs/{问题slug}.md5. 更新 index.md 和 log.md### LINT 巡检（定期健康检查）1. 找页面之间的矛盾2. 找孤儿页面（没有任何入链）3. 找坏链4. 找缺失的 frontmatter5. 标出过期内容6. 给被频繁引用但还没有自己的页面的概念建议7. 输出报告，能自动修的就修## 建页面阈值- 一个概念在 2 篇及以上原始材料里出现 → 建完整页- 只在一处出现 → 建 stub（frontmatter + 一句定义 + 链回原始材料）- 永远不要让 双链 指向不存在的页面## 质量标准- 摘要：200-500 字，要合成不要照抄- 所有论断要追溯到具体源页面- 矛盾用 ⚠️ 标出，两边立场都写- 来源冲突时优先采用更新的
 ```
 
 这个文件保持简洁。每一行都在吃你的上下文窗口。忍住过度规范化的冲动，上面这版刻意控制在 80 行以下。
@@ -216,7 +225,7 @@ Karpathy自己就用这么简单的结构。没有嵌套五六层的目录，没
 
 这是我创建的关于计算化学的wiki
 
-点任何一个[[概念]]，如果页面存在就跳过去，如果不存在Obsidian会问你要不要新建。
+点任何一个概念，如果页面存在就跳过去，如果不存在Obsidian会问你要不要新建。
 
 wiki就这样有机生长。
 
@@ -429,8 +438,8 @@ AI可以是你强大的协作者，负责信息的整理、关联与维护。
 
 
 ## 相关笔记
-- [[用ObsidianCodex搭一个会主动思考的个人知识库]] (语义相似度: 0.226, 共同关键词: 知识库, 思考, Obsidian)
-- [[如何让AI帮你打理Obsidian知识库]] (语义相似度: 0.223, 共同关键词: 知识库, 问题, Obsidian)
-- [[法律SOP蒸馏器]] (语义相似度: 0.184, 共同关键词: 什么, 知识, 怎么)
-- [[案件模板使用指南]] (语义相似度: 0.155, 共同关键词: 规则, 知识库, 文件夹)
-- [[装上这7个Skills你的WorkBuddy直接起飞]] (语义相似度: 0.153, 共同关键词: 什么, 问题, AI)
+- 用ObsidianCodex搭一个会主动思考的个人知识库 
+- 如何让AI帮你打理Obsidian知识库 
+- 法律SOP蒸馏器 
+- 案件模板使用指南 
+- [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 

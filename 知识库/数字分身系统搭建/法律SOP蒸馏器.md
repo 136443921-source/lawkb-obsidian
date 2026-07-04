@@ -1,7 +1,20 @@
 ---
 created: 2026-05-28T10:51
-updated: 2026-06-19T22:57
+updated: 2026-06-27T19:21
+title: 法律SOP蒸馏器
+tags:
+  - 诉讼
+  - 合同
+maturity: 🌿成长
+source: ""
+related: []
+last_review: ""
+review_interval: 14
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 https://mp.weixin.qq.com/s/vNOYhgCFO8LgOcFlrM7nMg
 
 我想要一个老强法律人蒸馏器，
@@ -384,8 +397,8 @@ text
 
 
 ## 相关笔记
-- [[精准版合同审查意见应用器]] (语义相似度: 0.224, 共同关键词: 法律, 律师, 审查)
-- [[一人公司创建流程]] (语义相似度: 0.220, 共同关键词: 法律, 律师, 不是)
-- [[怎么设计一个能交付的合同审查 Skill]] (语义相似度: 0.189, 共同关键词: Skill, 法律, 审查)
-- [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (语义相似度: 0.184, 共同关键词: 什么, 知识, 怎么)
-- [[装上这7个Skills你的WorkBuddy直接起飞]] (语义相似度: 0.150, 共同关键词: 什么, Agent, AI)
+- [[精准版合同审查意见应用器|精准版合同审查意见应用器]]|精准版合同审查意见应用器|精准版合同审查意见应用器|精准版合同审查意见应用器|精准版合同审查意见应用器|精准版合同审查意见应用器|精准版合同审查意见应用器 
+- [[一人公司创建流程|一人公司创建流程]]|一人公司创建流程|一人公司创建流程|一人公司创建流程|一人公司创建流程|一人公司创建流程|一人公司创建流程 
+- [[怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill]]|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill 
+- ClaudeCodeObsidian个人知识库从工具到思维的完整指南 
+- [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 

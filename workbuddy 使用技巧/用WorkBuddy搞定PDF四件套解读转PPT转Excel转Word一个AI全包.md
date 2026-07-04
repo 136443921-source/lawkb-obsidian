@@ -1,7 +1,18 @@
 ---
 created: 2026-06-23T18:31
-updated: 2026-06-23T18:33
+updated: 2026-06-27T19:21
+title: 用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包
+tags: []
+maturity: 🌳核心
+source: ""
+related: []
+last_review: ""
+review_interval: 30
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 https://mp.weixin.qq.com/s/zmrIPFHKnOj-rVWR6va_7Q
 
 # 用WorkBuddy搞定PDF四件套：解读、转PPT、转Excel、转Word，一个AI全包

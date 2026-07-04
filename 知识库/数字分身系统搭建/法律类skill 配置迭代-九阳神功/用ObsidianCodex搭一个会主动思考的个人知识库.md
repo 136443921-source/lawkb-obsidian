@@ -1,7 +1,18 @@
 ---
 created: 2026-05-28T10:51
-updated: 2026-06-19T22:57
+updated: 2026-06-27T19:21
+title: 用ObsidianCodex搭一个会主动思考的个人知识库
+tags: []
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
 ---
+
 https://mp.weixin.qq.com/s/1qhGfCd5XnmiJgkRbO0_8A
 
 # 用 Obsidian + Codex，搭一个会主动思考的个人知识库
@@ -383,8 +394,8 @@ Codex 会基于整个知识库生成周复盘笔记，并存入 Inbox。
 
 
 ## 相关笔记
-- [[如何让AI帮你打理Obsidian知识库]] (语义相似度: 0.234, 共同关键词: 内容, 知识库, 输入)
-- [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (语义相似度: 0.226, 共同关键词: 知识库, 思考, Obsidian)
-- [[案件模板使用指南]] (语义相似度: 0.160, 共同关键词: 自动, 知识库, 文件夹)
-- [[Templater快速配置指南]] (语义相似度: 0.150, 共同关键词: 自动, 文件夹, 笔记)
-- [[Obsidian配置指南]] (语义相似度: 0.146, 共同关键词: 自动, Obsidian, 笔记)
+- 如何让AI帮你打理Obsidian知识库 
+- ClaudeCodeObsidian个人知识库从工具到思维的完整指南 
+- 案件模板使用指南 
+- Templater快速配置指南 
+- Obsidian配置指南 
