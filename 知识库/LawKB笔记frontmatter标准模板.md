@@ -1,0 +1,151 @@
+---
+title: LawKB笔记frontmatter标准模板
+created: 2026-06-27
+updated: 2026-06-27T19:21
+tags:
+  - 诉讼
+  - 慈善组织
+  - 人伤
+  - 合同
+maturity: 🌱种子
+source: ""
+related: []
+last_review: ""
+review_interval: 7
+difficulty: 3
+importance: 3
+status: draft
+---
+
+title: 民法典第584条 违约金调整规则
+created: 2026-06-15
+updated: 2026-06-27
+tags:
+  - 法条
+  - 合同
+  - 民法典
+maturity: 🌿成长
+source: 民法典
+related:
+  - [[违约金的性质与功能]]
+  - [[民法典第585条]]
+last_review: 2026-06-20
+review_interval: 7
+difficulty: 3
+importance: 4
+status: complete
+---
+```
+
+### 示例2：案例笔记
+```yaml
+---
+title: 厚德基金会诉道真百益合同纠纷案
+created: 2026-03-10
+updated: 2026-06-27
+tags:
+  - 案例
+  - 合同纠纷
+  - 慈善组织
+maturity: 🌳核心
+source: 实务经验
+related:
+  - [[民法典第584条]]
+  - [[合同解除的法律后果]]
+last_review: 2026-06-25
+review_interval: 30
+difficulty: 4
+importance: 5
+status: complete
+---
+```
+
+### 示例3：实务技巧笔记
+```yaml
+---
+title: 庭审发问技巧
+created: 2026-06-20
+updated: 2026-06-27
+tags:
+  - 实务技巧
+  - 诉讼
+maturity: 🌱种子
+source: AI生成
+related:
+  - [[庭审准备要点]]
+last_review: 
+review_interval: 
+difficulty: 3
+importance: 4
+status: draft
+---
+```
+
+## 使用说明
+
+### 1. 新建笔记时
+- 复制此模板到笔记开头
+- 填写必填字段
+- 根据笔记内容选择合适的标签
+
+### 2. 更新现有笔记时
+- 如果笔记没有frontmatter，添加此模板
+- 如果笔记有frontmatter但缺少字段，补充缺失字段
+- 特别注意：添加 `maturity` 和 `last_review` 字段
+
+### 3. 复习管理（Spaced Repetition）
+- `last_review`: 记录最后一次复习日期
+- `review_interval`: 复习间隔（天数）
+  - 🌱种子: 3-7天
+  - 🌿成长: 7-14天
+  - 🌳核心: 30-60天
+- 自动化任务会根据这两个字段生成复习提醒
+
+### 4. 成熟度提升路径
+```
+🌱种子 → 🌿成长 → 🌳核心
+  ↓         ↓         ↓
+初学了解   掌握基础   熟练运用
+需频繁复习 需定期复习 需长期复习
+```
+
+## 自动化任务集成
+
+以下自动化任务会自动使用这些字段：
+
+1. **每日obsidian-lawkb自学习**
+   - 更新 `updated` 字段
+   - 更新 `last_review` 字段（如果复习了）
+
+2. **Spaced Repetition 复习提醒**（待建）
+   - 根据 `last_review` 和 `review_interval` 生成复习提醒
+   - 推送待复习笔记到企微
+
+3. **知识盲区扫描**（待建）
+   - 识别 `maturity: 🌱种子` 且超过30天未复习的笔记
+   - 推送复习建议
+
+4. **知识健康度检查**（待建）
+   - 统计各成熟度笔记数量
+   - 识别孤立笔记（无related字段）
+   - 生成知识图谱健康度报告
+
+## 批量更新现有笔记
+
+执行以下Python脚本批量更新现有笔记：
+
+```bash
+python3 /Users/chenyouqiang/Documents/LawKB/update_frontmatter.py
+```
+
+脚本功能：
+1. 扫描所有.md文件
+2. 检查是否有frontmatter
+3. 如果没有，添加标准frontmatter模板
+4. 如果缺少字段，补充缺失字段
+5. 根据文件内容推测maturity值
+6. 生成更新报告
+
+---
+
+**注意**：此模板为标准模板，实际使用时可根据笔记类型适当调整。
