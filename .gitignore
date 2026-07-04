@@ -52,3 +52,6 @@ venv/
 # 其他
 /.trash/
 .obsidian/plugins/notehelper/*.backup
+
+# 微信文章节选图片（不应入库）
+scripts/微信文章节选/微信图片/
