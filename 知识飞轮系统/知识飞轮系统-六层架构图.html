@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识飞轮系统 - 六层架构现状图</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #94a3b8; font-size: 14px; margin-bottom: 40px; }
+        .flywheel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+        }
+        .layer {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .layer:hover {
+            transform: translateX(4px);
+            box-shadow: 0 8px 32px rgba(56, 189, 248, 0.15);
+        }
+        .layer-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .layer-content { flex: 1; padding: 16px 20px; }
+        .layer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .layer-title { font-size: 16px; font-weight: 600; }
+        .layer-percent {
+            font-size: 20px;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 6px;
+        }
+        .components {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .component {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        .component.done {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+        .component.missing {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+        .component-icon { font-size: 14px; }
+        .arrow {
+            text-align: center;
+            color: #475569;
+            font-size: 18px;
+            margin: -4px 0;
+        }
+        .summary {
+            margin-top: 32px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 12px;
+        }
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label { color: #94a3b8; font-size: 13px; margin-top: 4px; }
+        .legend {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .green { background: #22c55e; }
+        .red { background: #ef4444; }
+        .l1 .layer-num { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+        .l2 .layer-num { background: linear-gradient(135deg, #34d399, #10b981); }
+        .l3 .layer-num { background: linear-gradient(135deg, #38bdf8, #0ea5e9); }
+        .l4 .layer-num { background: linear-gradient(135deg, #818cf8, #6366f1); }
+        .l5 .layer-num { background: linear-gradient(135deg, #c084fc, #a855f7); }
+        .l6 .layer-num { background: linear-gradient(135deg, #f472b6, #ec4899); }
+        .p100 { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .p67 { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>知识飞轮系统 - 六层架构现状</h1>
+    <p class="subtitle">小强律师数字分身系统 | 复盘日期: 2026-07-13 | 完成度: 83%</p>
+
+    <div class="flywheel">
+        <div class="layer l1">
+            <div class="layer-num">1</div>
+            <div class="layer-content">
+                <div class="layer-header">
+                    <span class="layer-title">自动采集 (Input)</span>
+                    <span class="layer-percent p67">67%</span>
+                </div>
+                <div class="components">
+                    <div class="component done"><span class="component-icon">✅</span> 法律法规监控</div>
+                    <div class="component done"><span class="component-icon">✅</span> 裁判规则自动入库</div>
+                    <div class="component missing"><span class="component-icon">❌</span> 案件材料自动归档</div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="layer l2">
+            <div class="layer-num">2</div>
+            <div class="layer-content">
+                <div class="layer-header">
+                    <span class="layer-title">智能提炼 (Process)</span>
+                    <span class="layer-percent p100">100%</span>
+                </div>
+                <div class="components">
+                    <div class="component done"><span class="component-icon">✅</span> 每日自学习</div>
+                    <div class="component done"><span class="component-icon">✅</span> 人伤法专项自学</div>
+                    <div class="component done"><span class="component-icon">✅</span> 案件结案经验卡片</div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="layer l3">
+            <div class="layer-num">3</div>
+            <div class="layer-content">
+                <div class="layer-header">
+                    <span class="layer-title">知识连接 (Link)</span>
+                    <span class="layer-percent p100">100%</span>
+                </div>
+                <div class="components">
+                    <div class="component done"><span class="component-icon">✅</span> Obsidian双向链接</div>
+                    <div class="component done"><span class="component-icon">✅</span> 裁判规则↔案件关联</div>
+                    <div class="component done"><span class="component-icon">✅</span> 知识图谱(手动)</div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="layer l4">
+            <div class="layer-num">4</div>
+            <div class="layer-content">
+                <div class="layer-header">
+                    <span class="layer-title">间隔巩固 (Review)</span>
+                    <span class="layer-percent p67">67%</span>
+                </div>
+                <div class="components">
+                    <div class="component done"><span class="component-icon">✅</span> Spaced Repetition</div>
+                    <div class="component done"><span class="component-icon">✅</span> 每周复盘</div>
+                    <div class="component missing"><span class="component-icon">❌</span> 月度知识复利报告</div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="layer l5">
+            <div class="layer-num">5</div>
+            <div class="layer-content">
+                <div class="layer-header">
+                    <span class="layer-title">场景调用 (Output)</span>
+                    <span class="layer-percent p67">67%</span>
+                </div>
+                <div class="components">
+                    <div class="component done"><span class="component-icon">✅</span> 每日学习资料推荐</div>
+                    <div class="component done"><span class="component-icon">✅</span> 知识盲区扫描推荐</div>
+                    <div class="component missing"><span class="component-icon">❌</span> 场景化知识推送</div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="layer l6">
+            <div class="layer-num">6</div>
+            <div class="layer-content">
+                <div class="layer-header">
+                    <span class="layer-title">经验沉淀 (Compound)</span>
+                    <span class="layer-percent p100">100%</span>
+                </div>
+                <div class="components">
+                    <div class="component done"><span class="component-icon">✅</span> 案件结案自动经验</div>
+                    <div class="component done"><span class="component-icon">✅</span> 自动备份同步</div>
+                    <div class="component done"><span class="component-icon">✅</span> 每周自我改进</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="summary">
+        <div class="stat">
+            <div class="stat-value">15/18</div>
+            <div class="stat-label">组件完成度 83%</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">17</div>
+            <div class="stat-label">活跃自动化任务</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">360+</div>
+            <div class="stat-label">知识库笔记数</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">缺失组件</div>
+        </div>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item"><div class="legend-dot green"></div> 已实现</div>
+        <div class="legend-item"><div class="legend-dot red"></div> 缺失</div>
+    </div>
+</div>
+</body>
+</html>

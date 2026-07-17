@@ -1,7 +1,7 @@
 ---
 title: LawKB笔记frontmatter标准模板
 created: 2026-06-27
-updated: 2026-06-27T19:21
+updated: 2026-07-04T18:46
 tags:
   - 诉讼
   - 慈善组织
@@ -113,7 +113,7 @@ status: draft
 
 以下自动化任务会自动使用这些字段：
 
-1. **每日obsidian-lawkb自学习**
+1. **每日obsidian-lawkb-知识飞轮系统自学习**
    - 更新 `updated` 字段
    - 更新 `last_review` 字段（如果复习了）
 
@@ -149,3 +149,11 @@ python3 /Users/chenyouqiang/Documents/LawKB/update_frontmatter.py
 ---
 
 **注意**：此模板为标准模板，实际使用时可根据笔记类型适当调整。
+
+
+## 关联概念
+
+- [[中华人民共和国民法典（全文）|民法典]]
+- [[违约责任|违约责任]]
+- [[合同解除|合同解除]]
+

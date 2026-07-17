@@ -361,4 +361,8 @@ echo "备份完成: $(date)" >> ~/Documents/LawKB/备份日志.md
 - Obsidian极简安装指南 
 - README 
 - Templater快速配置指南 
-- 检查模板路径 
+- 检查模板路径
+
+## 关联笔记
+
+- [[标签索引]]

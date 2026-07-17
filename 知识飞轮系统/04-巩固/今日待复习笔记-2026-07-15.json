@@ -1,0 +1,50 @@
+{
+  "date": "2026-07-15",
+  "scanned_files": 72,
+  "pending_count": 5,
+  "overdue_count": 5,
+  "due_today_count": 0,
+  "notes": [
+    {
+      "title": "赵某诉钱某离婚纠纷案",
+      "file": "05-调用/案件管理/赵某诉钱某离婚纠纷案.md",
+      "abspath": "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/05-调用/案件管理/赵某诉钱某离婚纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 10,
+      "due_today": false
+    },
+    {
+      "title": "张三诉李四合同纠纷案",
+      "file": "05-调用/案件管理/张三诉李四合同纠纷案.md",
+      "abspath": "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/05-调用/案件管理/张三诉李四合同纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 10,
+      "due_today": false
+    },
+    {
+      "title": "王五诉某公司股东知情权纠纷案",
+      "file": "05-调用/案件管理/王五诉某公司股东知情权纠纷案.md",
+      "abspath": "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/05-调用/案件管理/王五诉某公司股东知情权纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 10,
+      "due_today": false
+    },
+    {
+      "title": "婚内财产协议（参考）-2026-07-03",
+      "file": "02-提炼/公众号文章笔记/婚内财产协议（参考）-2026-07-03.md",
+      "abspath": "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/公众号文章笔记/婚内财产协议（参考）-2026-07-03.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 10,
+      "due_today": false
+    },
+    {
+      "title": "裁判规则库",
+      "file": "06-沉淀/裁判规则库/裁判规则库.md",
+      "abspath": "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/裁判规则库.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 10,
+      "due_today": false
+    }
+  ],
+  "errors": []
+}

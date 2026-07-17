@@ -1,0 +1,36 @@
+2026-07-07 执行摘要：
+- 扫描 Markdown 笔记：422 篇
+- 有 review_date 字段：5 篇
+- 今日待复习笔记：5 篇（全部逾期 2 天，review_date 均为 2026-07-05）
+- 已生成待复习列表：/Users/chenyouqiang/Documents/LawKB/task-tracker/今日待复习笔记-2026-07-07.json
+- 企微通知推送失败：当前企业未授权机器人「通讯录」和「消息」使用权限，需管理员在企微后台开启相关权限。
+
+2026-07-08 执行摘要：
+- 扫描 Markdown 笔记：439 篇
+- 有 review_date 字段：5 篇
+- 今日待复习笔记：5 篇（全部逾期 3 天，review_date 均为 2026-07-05，尚未更新）
+- 已生成待复习列表：/Users/chenyouqiang/Documents/LawKB/task-tracker/今日待复习笔记-2026-07-08.json
+- 企微通知推送失败：同 07-07，通讯录和消息权限未授权。需联系企微管理员开启权限。
+
+2026-07-09 执行摘要：
+- 扫描 Markdown 笔记：455 篇
+- 有 review_date 字段：5 篇
+- 今日待复习笔记：5 篇（全部逾期 4 天，review_date 均为 2026-07-05，自 07-07 起连续三日未更新）
+- 已生成待复习列表：/Users/chenyouqiang/Documents/LawKB/task-tracker/今日待复习笔记-2026-07-09.json
+- 企微通知推送失败：企业未授权机器人「消息」使用权限（wecom-cli get_msg_chat_list 报错），连续三日无法推送。建议：①联系企微管理员开启权限；②或改用 Tencent Docs/IMA 等已连接渠道推送；③或在扫描脚本中把 pending 列表打印到日志以便在本地查看。
+
+2026-07-12 执行摘要：
+- 扫描 Markdown 笔记：451 篇
+- 有 review_date 字段：5 篇
+- 今日待复习笔记：5 篇（全部逾期 7 天，review_date 仍为 2026-07-05，已连续 8 日未更新）
+- 已生成待复习列表：/Users/chenyouqiang/Documents/LawKB/task-tracker/今日待复习笔记-2026-07-12.json
+- 脚本升级：将原 ad-hoc 扫描逻辑固化为 scripts/spaced_repetition_scan.py，包含 frontmatter 解析、review_date 识别、逾期天数计算、JSON 输出、stdout 摘要，可重复执行。
+- 企微通知推送失败：权限问题未解决，连续多日失败。改用"工作区 memory + automation memory + 本会话回复"三处落地复习提醒。
+
+2026-07-13 执行摘要：
+- 扫描 Markdown 笔记：453 篇
+- 有 review_date 字段：5 篇
+- 今日待复习笔记：5 篇（全部逾期 8 天，review_date 仍为 2026-07-05，自 07-07 起连续 7 日未更新）
+- 已生成待复习列表：/Users/chenyouqiang/Documents/LawKB/task-tracker/今日待复习笔记-2026-07-13.json
+- 企微通知推送失败：msg send_message 和 todo create_todo 均因"企业暂不支持授权机器人权限"失败，连续 7 日无法推送。
+- ⚠️ 严重提醒：5 篇笔记的 review_date 已逾期 8 天且从未被更新，间隔重复系统完全停滞。建议老强尽快：①手动复习这 5 篇笔记；②复习后在 frontmatter 中更新 review_date 为下次复习时间（SM-2 算法）；③或联系企微管理员解决消息/待办权限问题以恢复推送。
