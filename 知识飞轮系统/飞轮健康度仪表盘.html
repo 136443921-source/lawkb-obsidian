@@ -5,85 +5,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>知识飞轮健康度仪表盘</title>
 <style>
-  :root{
-    --bg:#0f1424; --panel:#1a2138; --panel2:#222c4a; --line:#2e3a5e;
-    --txt:#e6ecff; --sub:#9fb0d8; --accent:#4f9dff; --green:#39d98a; --amber:#ffb454; --red:#ff6b6b;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:24px;line-height:1.6}
-  h1{font-size:22px;margin-bottom:4px}
-  .sub{color:var(--sub);font-size:13px;margin-bottom:20px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px}
-  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
-  .kpi .num{font-size:30px;font-weight:700;color:var(--accent)}
-  .kpi .lbl{color:var(--sub);font-size:13px;margin-top:4px}
-  .kpi.green .num{color:var(--green)} .kpi.amber .num{color:var(--amber)} .kpi.red .num{color:var(--red)}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:24px}
-  .card h2{font-size:16px;margin-bottom:12px;border-left:3px solid var(--accent);padding-left:10px}
-  svg{width:100%;height:auto;display:block}
-  table{width:100%;border-collapse:collapse;font-size:14px}
-  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
-  th{color:var(--sub);font-weight:600;font-size:13px}
-  .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px}
-  .pill.todo{background:rgba(255,180,84,.15);color:var(--amber)}
-  .pill.ok{background:rgba(57,217,138,.15);color:var(--green)}
-  .note{font-size:12px;color:var(--sub);margin-top:10px}
-  code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:12px}
+:root{
+  --bg:#0f1424; --panel:#171d32; --line:#2a3354; --accent:#4f9dff;
+  --sub:#9fb0d8; --green:#3fd07f; --amber:#ffb547; --red:#ff6b6b;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:#e6ecff;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;padding:28px;line-height:1.5}
+h1{font-size:22px;margin:0 0 4px}
+.meta{color:var(--sub);font-size:13px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:22px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.kpi .num{font-size:30px;font-weight:700;color:var(--accent)}
+.kpi .lbl{color:var(--sub);font-size:13px;margin-top:4px}
+.kpi.green .num{color:var(--green)} .kpi.amber .num{color:var(--amber)} .kpi.red .num{color:var(--red)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:22px}
+.card h2{font-size:16px;margin:0 0 12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--sub);font-weight:600}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;background:#243056;color:#cfe0ff}
 </style>
 </head>
 <body>
-<h1>🌀 知识飞轮健康度仪表盘</h1>
-<div class="sub" id="updated"></div>
+<h1>知识飞轮健康度仪表盘</h1>
+<div class="meta" id="updated"></div>
 
 <div class="grid" id="kpis"></div>
 
 <div class="card">
-  <h2>📈 经验卡片增长曲线（累计）</h2>
-  <svg id="chart" viewBox="0 0 680 240" preserveAspectRatio="xMidYMid meet"></svg>
-  <div class="note">数据快照嵌入于 HTML；运行 <code>flywheel_dashboard_gen.py</code> 可重新扫描 LawKB 生成最新值。</div>
+  <h2>经验卡片增长曲线</h2>
+  <svg id="chart" viewBox="0 0 680 240" width="100%" height="240"></svg>
 </div>
 
 <div class="card">
-  <h2>🎯 协同质量指标（需埋点采集）</h2>
-  <table id="metrics">
-    <thead><tr><th>指标</th><th>当前值</th><th>说明</th></tr></thead>
-    <tbody></tbody>
-  </table>
-  <div class="note">以下三项为"飞轮→分身"协同效果的核心观测项，目前需在对话/推送链路加埋点后自动回填。建议采集方式：①命中率=分身回答引用经验卡次数/总法律问答数；②采纳率=推送被用户采用数/推送总数；③被修改率=分身输出被用户手改数/总输出数。</div>
+  <h2>关键指标</h2>
+  <table id="metrics"><tbody></tbody></table>
 </div>
 
 <script>
 const DATA = {
-  updated: "2026-07-14",
-  kpi: { experienceCards:5, ruleFiles:4, caseNotes:51, ongoingCases:0 },
+  updated: "2026-07-19",
+  kpi: { experienceCards:6, ruleFiles:13, caseNotes:15, ongoingCases:0 },
   cardGrowth: [
     {date:"2026-07-13", cum:2},
-    {date:"2026-07-14", cum:5}
+    {date:"2026-07-14", cum:5},
+    {date:"2026-07-18", cum:6},
+    {date:"2026-07-19", cum:6},
   ],
   metrics: [
-    {name:"经验卡片命中率", value:"待采集", desc:"数字分身回答时匹配并引用经验卡的比例"},
-    {name:"推送采纳率", value:"待采集", desc:"微信clawbot推送的经验/周报被用户实际采用的比例"},
-    {name:"数字分身被修改率", value:"待采集", desc:"数字分身输出被用户手动修改的比例（越低越好）"}
+    {name:"协同效果命中率", value:"待采集", desc:"分身问答埋点日志积累中，每月28日协同效果月报将出首值"},
+    {name:"经验卡片（真实/演练）", value:"5/6", desc:"凤仪村为预测型无裁判结果；罗江辉为演练卡"},
+    {name:"裁判规则库成熟度", value:"🌿幼苗", desc:"主库 R001-R015 + 人伤子库 R016-R023，共 23 条；元数据已对齐"},
+    {name:"案件-卡片-规则三维索引", value:"已建", desc:"2026-07-18 连接层加厚（P2），覆盖 18 案件/6 卡片/23 规则"}
   ]
 };
 
-document.getElementById("updated").textContent = "数据更新：" + DATA.updated + " ｜ 单一知识源：LawKB/知识飞轮系统";
+document.getElementById("updated").textContent = "数据更新：" + DATA.updated + " ｜ 单一知识源：LawKB/知识飞轮系统 ｜ 每日 06:30 自动刷新";
 
 const kpis = [
   {n:DATA.kpi.experienceCards, l:"经验卡片（真实/演练/预测）", c:""},
   {n:DATA.kpi.ruleFiles, l:"裁判规则库文件", c:"green"},
-  {n:DATA.kpi.caseNotes, l:"案件笔记总数", c:"amber"},
+  {n:DATA.kpi.caseNotes, l:"CaseDrop 已归档案件", c:"amber"},
   {n:DATA.kpi.ongoingCases, l:"在办案件（待预判推送）", c:"red"}
 ];
 document.getElementById("kpis").innerHTML = kpis.map(k=>
   `<div class="kpi ${k.c}"><div class="num">${k.n}</div><div class="lbl">${k.l}</div></div>`).join("");
 
-// 折线图
 const svg = document.getElementById("chart");
 const W=680,H=240,pad=40;
 const pts = DATA.cardGrowth;
 const maxV = Math.max(...pts.map(p=>p.cum), 1);
-const x = i => pad + i*( (W-2*pad)/(pts.length-1||1) );
+const x = i => pad + i*((W-2*pad)/(pts.length-1||1));
 const y = v => H-pad - (v/maxV)*(H-2*pad);
 let path = pts.map((p,i)=> (i?"L":"M")+x(i)+" "+y(p.cum)).join(" ");
 let dots = pts.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.cum)}" r="4" fill="#4f9dff"/>
@@ -93,9 +85,8 @@ svg.innerHTML = `<path d="${path}" fill="none" stroke="#4f9dff" stroke-width="2"
   <line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="#2e3a5e"/>
   <line x1="${pad}" y1="${pad}" x2="${pad}" y2="${H-pad}" stroke="#2e3a5e"/>${dots}`;
 
-// 指标表
 document.querySelector("#metrics tbody").innerHTML = DATA.metrics.map(m=>
-  `<tr><td>${m.name}</td><td><span class="pill todo">${m.value}</span></td><td>${m.desc}</td></tr>`).join("");
+  `<tr><td>${m.name}</td><td><span class="pill">${m.value}</span></td><td>${m.desc}</td></tr>`).join("");
 </script>
 </body>
 </html>

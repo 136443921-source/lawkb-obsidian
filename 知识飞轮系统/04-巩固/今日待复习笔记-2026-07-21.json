@@ -1,0 +1,93 @@
+{
+  "scan_date": "2026-07-21",
+  "total_md_files": 150,
+  "files_with_review_date": 33,
+  "pending_count": 11,
+  "overdue_count": 11,
+  "due_today_count": 0,
+  "notes": [
+    {
+      "title": "赵某诉钱某离婚纠纷案",
+      "file_path": "05-调用/案件管理/赵某诉钱某离婚纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 16,
+      "status": "逾期"
+    },
+    {
+      "title": "张三诉李四合同纠纷案",
+      "file_path": "05-调用/案件管理/张三诉李四合同纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 16,
+      "status": "逾期"
+    },
+    {
+      "title": "王五诉某公司股东知情权纠纷案",
+      "file_path": "05-调用/案件管理/王五诉某公司股东知情权纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 16,
+      "status": "逾期"
+    },
+    {
+      "title": "婚内财产协议（参考）",
+      "file_path": "02-提炼/公众号文章笔记/婚内财产协议（参考）-2026-07-03.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 16,
+      "status": "逾期"
+    },
+    {
+      "title": "经济犯罪合同案件上诉状",
+      "file_path": "案件库/承办案件/租赁纠纷/---_tags____-_经济犯罪___-_合同___-_案件___-_上诉状.md",
+      "review_date": "2026-07-14",
+      "days_overdue": 7,
+      "status": "逾期"
+    },
+    {
+      "title": "CaseDrop 历史新案件材料投递口",
+      "file_path": "案件库/承办案件/合同纠纷/__CaseDrop___历史___新案件材料投递口.md",
+      "review_date": "2026-07-14",
+      "days_overdue": 7,
+      "status": "逾期"
+    },
+    {
+      "title": "工伤认定意见三-人社部发2025-62号",
+      "file_path": "02-提炼/人伤法/工伤认定意见三-人社部发2025-62号.md",
+      "review_date": "2026-07-17",
+      "days_overdue": 4,
+      "status": "逾期"
+    },
+    {
+      "title": "人体损伤程度鉴定应注意的关键问题",
+      "file_path": "02-提炼/人伤法/人体损伤程度鉴定应注意的关键问题.md",
+      "review_date": "2026-07-17",
+      "days_overdue": 4,
+      "status": "逾期"
+    },
+    {
+      "title": "技术咨询合同-范本与写作要点",
+      "file_path": "02-提炼/合同文书笔记/技术咨询合同-范本与写作要点.md",
+      "review_date": "2026-07-17",
+      "days_overdue": 4,
+      "status": "逾期"
+    },
+    {
+      "title": "首席合规官签字-过程负责而非结果兜底",
+      "file_path": "02-提炼/公众号文章笔记/首席合规官签字-过程负责而非结果兜底.md",
+      "review_date": "2026-07-17",
+      "days_overdue": 4,
+      "status": "逾期"
+    },
+    {
+      "title": "经验卡片-王德明担保合同签名伪造案",
+      "file_path": "02-提炼/经验卡片/经验卡片-王德明担保合同签名伪造案.md",
+      "review_date": "2026-07-20",
+      "days_overdue": 1,
+      "status": "逾期"
+    }
+  ],
+  "warnings": [
+    "⚠️ RED ALERT: 4 篇笔记已逾期 16 天（自 7/5 起连续 17 天未复习），按艾宾浩斯遗忘曲线留存率已降至 20% 以下，知识复利严重衰减。",
+    "⚠️ WARNING: 2 篇笔记逾期 7 天，2 篇逾期 4 天，均为连续多日未复习，间隔节奏被打乱。",
+    "⚠️ ATTENTION: 王德明担保合同经验卡片逾期 1 天（7/20 首次到期），刚刚超出 SM-2 第 14 天窗口，尽快复习可止损。",
+    "📌 7/29 预警：5 篇人身损害赔偿相关笔记将在 7/29 集中到期（批量复习节点），距现在还有 8 天。"
+  ]
+}

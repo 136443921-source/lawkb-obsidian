@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "date": "2026-07-18",
+    "generated_at": "2026-07-18 09:46:00 (CST)",
+    "automation": "automation-1783209043138",
+    "task": "Spaced Repetition 复习提醒",
+    "version": "1.0"
+  },
+  "stats": {
+    "total_files_scanned": 115,
+    "files_with_review_date": 30,
+    "pending_count": 10,
+    "overdue_count": 10,
+    "today_count": 0
+  },
+  "reminder": {
+    "obsidian_search": "review_date:2026-07-18 OR review_date:2026-07-17 OR review_date:2026-07-14 OR review_date:2026-07-05",
+    "obsidian_dataview_query": "```dataview\nLIST title\nFROM \"知识飞轮系统\"\nWHERE review_date <= date(2026-07-18)\nSORT review_date ASC\n```",
+    "advice": [
+      "打开 Obsidian，使用 review_date:2026-07-18 搜索快速定位待复习笔记",
+      "建议优先复习逾期 13 天的 4 篇（赵某诉钱某、张三诉李四、王五诉股东、婚内财产协议）",
+      "逾期 1 天的 4 篇（工伤认定、人体损伤、技术咨询合同、首席合规官）知识新鲜，复习成本低",
+      "复习完成后，在 frontmatter 中按 SM-2 算法更新 review_date 为下次复习时间"
+    ]
+  },
+  "notes": [
+    {
+      "title": "赵某诉钱某离婚纠纷案",
+      "path": "05-调用/案件管理/赵某诉钱某离婚纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 13,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "张三诉李四合同纠纷案",
+      "path": "05-调用/案件管理/张三诉李四合同纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 13,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "王五诉某公司股东知情权纠纷案",
+      "path": "05-调用/案件管理/王五诉某公司股东知情权纠纷案.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 13,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "婚内财产协议（参考）",
+      "path": "02-提炼/公众号文章笔记/婚内财产协议（参考）-2026-07-03.md",
+      "review_date": "2026-07-05",
+      "days_overdue": 13,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "---_tags____-_经济犯罪___-_合同___-_案件___-_上诉状",
+      "path": "案件库/承办案件/租赁纠纷/---_tags____-_经济犯罪___-_合同___-_案件___-_上诉状.md",
+      "review_date": "2026-07-14",
+      "days_overdue": 4,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "__CaseDrop___历史___新案件材料投递口",
+      "path": "案件库/承办案件/合同纠纷/__CaseDrop___历史___新案件材料投递口.md",
+      "review_date": "2026-07-14",
+      "days_overdue": 4,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "工伤认定意见三-人社部发2025-62号",
+      "path": "02-提炼/人伤法/工伤认定意见三-人社部发2025-62号.md",
+      "review_date": "2026-07-17",
+      "days_overdue": 1,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "人体损伤程度鉴定应注意的关键问题",
+      "path": "02-提炼/人伤法/人体损伤程度鉴定应注意的关键问题.md",
+      "review_date": "2026-07-17",
+      "days_overdue": 1,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "技术咨询合同-范本与写作要点",
+      "path": "02-提炼/合同文书笔记/技术咨询合同-范本与写作要点.md",
+      "review_date": "2026-07-17",
+      "days_overdue": 1,
+      "is_today": false,
+      "is_overdue": true
+    },
+    {
+      "title": "首席合规官签字-过程负责而非结果兜底",
+      "path": "02-提炼/公众号文章笔记/首席合规官签字-过程负责而非结果兜底.md",
+      "review_date": "2026-07-17",
+      "days_overdue": 1,
+      "is_today": false,
+      "is_overdue": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "date": "2026-07-22",
+  "generated_by": "每日知识摄入自动化（合并版 v1.5）",
+  "review_total": 11,
+  "due_today": 5,
+  "rolling_overdue": 6,
+  "items": [
+    {
+      "note": "交通事故与工伤竞合双赔项目辨析-2026-07-21.md",
+      "interval_day": 1,
+      "due": "2026-07-22",
+      "status": "due_today",
+      "reason": "遗忘曲线 1 天节点（created 07-21）"
+    },
+    {
+      "note": "债权转让协议-范本与审查要点-2026-07-21.md",
+      "interval_day": 1,
+      "due": "2026-07-22",
+      "status": "due_today",
+      "reason": "遗忘曲线 1 天节点（created 07-21）"
+    },
+    {
+      "note": "2026年度一次性工亡补助金标准-1130040元.md",
+      "interval_day": 2,
+      "due": "2026-07-22",
+      "status": "due_today",
+      "reason": "遗忘曲线 2 天节点（created 07-20）"
+    },
+    {
+      "note": "保证协议-范本与审查要点-2026-07-18.md",
+      "interval_day": 4,
+      "due": "2026-07-22",
+      "status": "due_today",
+      "reason": "遗忘曲线 4 天节点（created 07-18）"
+    },
+    {
+      "note": "技术咨询合同-范本与写作要点.md",
+      "interval_day": 7,
+      "due": "2026-07-22",
+      "status": "due_today",
+      "reason": "遗忘曲线 7 天节点（created 07-15）"
+    },
+    {
+      "note": "王德明担保合同纠纷经验卡片",
+      "interval_day": null,
+      "due": "overdue",
+      "status": "rolling_overdue",
+      "reason": "历史逾期项（担保合同纠纷案经验沉淀）"
+    },
+    {
+      "note": "道路交通事故损害赔偿司法解释二-法释2026-9号-2026-07-19.md",
+      "interval_day": 4,
+      "due": "2026-07-23",
+      "status": "rolling_overdue",
+      "reason": "邻近窗口，预告明日到期（created 07-19）"
+    },
+    {
+      "note": "老年人意定监护协议-范本与审查要点-2026-07-16.md",
+      "interval_day": 7,
+      "due": "2026-07-23",
+      "status": "rolling_overdue",
+      "reason": "邻近窗口，预告明日到期（created 07-16）"
+    },
+    {
+      "note": "股权转让协议（参考及注意事项）-2026-07-13.md",
+      "interval_day": 15,
+      "due": "overdue",
+      "status": "rolling_overdue",
+      "reason": "15 天节点逾期复盘"
+    },
+    {
+      "note": "房屋租赁合同（参考及操作建议）",
+      "interval_day": 15,
+      "due": "overdue",
+      "status": "rolling_overdue",
+      "reason": "15 天节点逾期复盘（关联娄山华庭租房合同审查）"
+    },
+    {
+      "note": "突破合同相对性原则的情形",
+      "interval_day": 15,
+      "due": "overdue",
+      "status": "rolling_overdue",
+      "reason": "15 天节点逾期复盘"
+    }
+  ]
+}

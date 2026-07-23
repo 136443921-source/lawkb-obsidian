@@ -13,5 +13,6 @@
   "obsidian-git",
   "omnisearch",
   "update-time-on-edit",
-  "to-word"
+  "to-word",
+  "obsidian-local-rest-api"
 ]

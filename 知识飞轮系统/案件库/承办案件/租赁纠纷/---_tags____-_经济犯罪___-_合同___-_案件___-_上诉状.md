@@ -1,13 +1,17 @@
 ---
 created: 2026-07-14
-updated: 2026-07-14T22:58
+updated: 2026-07-23T12:03
 tags:
   - 案件
   - 租赁纠纷
 case_type: 租赁纠纷
 status: 待提炼
 source: CaseDrop投递即处理
-review_date: 2026-07-14
+review_date: 2026-08-06
+last_review: 2026-07-23
+repetition: 1
+ease_factor: 2.5
+interval: 14
 ---
 
 # 案件笔记：--- tags:   - 经济犯罪   - 合同   - 案件   - 上诉状

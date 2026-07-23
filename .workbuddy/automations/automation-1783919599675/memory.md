@@ -27,3 +27,39 @@ automation id: 1783919599675 | 调度: 每日 19:00
   `python3 ~/.workbuddy/skills/wechat-clawbot-push/send.py --file /Users/chenyouqiang/Documents/LawKB/.workbuddy/automations/automation-1783919599675/pending_push_2026-07-15.txt`
 - **pending 文件保留**：未删除，待推送成功后再清理。
 - **结论**：连续 3 日（07-15/16/17）无新案归档；6 件历史归档成果稳固，仅微信推送通道因会话超时未打通。
+
+## 2026-07-19（每日 19:00 例行运行）
+- **扫描**：`CaseDrop/` 根目录无新待处理文件（仅 `.workbuddy/` 与 `processed/`）。本批无需归档新案。
+- **落库状态核验**：6 张经验卡片齐全、6 案案件笔记目录齐全、映射索引 8 行覆盖全部 6 案，状态一致、无需补登。
+- **第 7 步历史 pending 重推**：重推 `pending_push_2026-07-15.txt`（2026-07-15 续跑摘要）→ 仍失败（errcode=-14 session timeout）。属外部依赖，需用户在微信中给 ClawBot 发一条消息激活会话后方可重推。
+- **重推命令**（待会话激活后执行）：
+  `python3 ~/.workbuddy/skills/wechat-clawbot-push/send.py --file /Users/chenyouqiang/Documents/LawKB/.workbuddy/automations/automation-1783919599675/pending_push_2026-07-15.txt`
+- **pending 文件保留**：未删除，待推送成功后再清理。
+- **结论**：连续 4 日（07-15/16/17/19）无新案归档；6 件历史归档成果稳固，仅微信推送通道因会话超时未打通。无新文件，按规则不新推送。
+
+## 2026-07-20（每日 19:00 例行运行）
+- **扫描**：`CaseDrop/` 根目录无新待处理文件（仅 `.workbuddy/` 与 `processed/`）。本批无需归档新案。
+- **落库状态轻量核验**：6 张经验卡片齐全、映射索引 8 行覆盖全部 6 案、承办案件 6 子目录齐全，状态一致、无需补登。
+- **第 7 步历史 pending 重推**：重推 `pending_push_2026-07-15.txt` → 仍失败（errcode=-14 session timeout）。属外部依赖，需用户在微信中给 ClawBot 发一条消息激活会话后方可重推。
+- **重推命令**（待会话激活后执行）：
+  `python3 ~/.workbuddy/skills/wechat-clawbot-push/send.py --file /Users/chenyouqiang/Documents/LawKB/.workbuddy/automations/automation-1783919599675/pending_push_2026-07-15.txt`
+- **pending 文件保留**：未删除，待推送成功后再清理。
+- **结论**：连续 5 日（07-15/16/17/19/20）无新案归档；6 件历史归档成果稳固，仅 07-15 续跑摘要的微信推送通道因会话超时未打通。无新文件，按规则不新推送。
+
+## 2026-07-21（每日 19:00 例行运行）
+- **扫描**：`CaseDrop/` 根目录无新待处理文件（仅 `.workbuddy/` 与 `processed/`）。本批无需归档新案。
+- **落库状态轻量核验**：6 张经验卡片齐全（冒井渔业/凤仪村/厚德百益/王德明担保/罗江辉/陈长卫）、承办案件 6 子目录齐全、映射索引 8 行覆盖全部 6 案，状态一致、无需补登。
+- **第 7 步历史 pending 重推**：重推 `pending_push_2026-07-15.txt` → 仍失败（errcode=-14 session timeout）。属外部依赖，需用户在微信中给 ClawBot 发一条消息激活会话后方可重推。
+- **重推命令**（待会话激活后执行）：
+  `python3 ~/.workbuddy/skills/wechat-clawbot-push/send.py --file /Users/chenyouqiang/Documents/LawKB/.workbuddy/automations/automation-1783919599675/pending_push_2026-07-15.txt`
+- **pending 文件保留**：未删除，待推送成功后再清理。
+- **结论**：连续 6 日（07-15/16/17/19/20/21）无新案归档；6 件历史归档成果稳固。无新文件，按规则不新推送。自 07-15 起的历史摘要推送因微信会话超时持续阻塞，需用户激活 ClawBot 会话后补推。
+
+## 2026-07-22（每日 19:00 例行运行）
+- **扫描**：`CaseDrop/` 根目录 0 个待处理文件（仅 `.workbuddy/` 与 `processed/`）。本批无需归档新案。
+- **落库状态轻量核验**：6 张经验卡片齐全、承办案件 6 子目录齐全、映射索引 8 行覆盖全部 6 案，状态一致、无需补登。
+- **第 7 步历史 pending 重推**：重推 `pending_push_2026-07-15.txt`（07-15 续跑摘要）→ 仍失败（errcode=-14 session timeout）。属外部依赖，需用户在微信中给 ClawBot 发一条消息激活会话后方可重推。
+- **重推命令**（待会话激活后执行）：
+  `python3 ~/.workbuddy/skills/wechat-clawbot-push/send.py --file /Users/chenyouqiang/Documents/LawKB/.workbuddy/automations/automation-1783919599675/pending_push_2026-07-15.txt`
+- **pending 文件保留**：未删除，待推送成功后再清理。
+- **结论**：连续 7 日（07-15/16/17/19/20/21/22）无新案归档；6 件历史归档成果稳固。无新文件，按规则不新推送。自 07-15 起的历史摘要推送因微信会话超时持续阻塞，需用户激活 ClawBot 会话后补推。

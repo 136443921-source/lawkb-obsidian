@@ -1,13 +1,17 @@
 ---
 created: 2026-07-14
-updated: 2026-07-14T22:57
+updated: 2026-07-23T12:03
 tags:
   - 案件
   - 合同纠纷
 case_type: 合同纠纷
 status: 待提炼
 source: CaseDrop投递即处理
-review_date: 2026-07-14
+review_date: 2026-08-06
+last_review: 2026-07-23
+repetition: 1
+ease_factor: 2.5
+interval: 14
 ---
 
 # 案件笔记：📥 CaseDrop — 历史 / 新案件材料投递口
