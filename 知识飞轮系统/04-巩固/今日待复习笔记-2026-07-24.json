@@ -1,0 +1,31 @@
+{
+  "date": "2026-07-24",
+  "total_md_files": 347,
+  "has_review_date": 58,
+  "pending_count": 3,
+  "overdue_count": 0,
+  "today_count": 3,
+  "pending_notes": [
+    {
+      "file": "02-提炼/人伤法/交通事故/交通事故与工伤竞合双赔项目辨析-2026-07-21.md",
+      "review_date": "2026-07-24",
+      "interval_days": 3,
+      "category": "人伤法/交通事故",
+      "priority": "high"
+    },
+    {
+      "file": "02-提炼/公众号文章笔记/律师签发律师函业务操作指引2021-2026-07-21.md",
+      "review_date": "2026-07-24",
+      "interval_days": 3,
+      "category": "公众号文章/非诉",
+      "priority": "high"
+    },
+    {
+      "file": "02-提炼/合同文书笔记/债权转让协议-范本与审查要点-2026-07-21.md",
+      "review_date": "2026-07-24",
+      "interval_days": 3,
+      "category": "合同文书",
+      "priority": "high"
+    }
+  ]
+}
