@@ -1,7 +1,7 @@
 ---
 title: 工具之外法律人研究AI和Skill研究的是自己的新位置
 created: 2026-07-19T23:16
-updated: 2026-07-24T11:37
+updated: 2026-07-28T22:55
 source: 笔记助手/学习笔记/工具之外法律人研究AI和Skill研究的是自己的新位置.md
 review_date: 2026-08-23
 importance: 3
@@ -346,3 +346,6 @@ AI 出现以后，这些环节可以被拆开，也可以被重新安排。
 
 ---
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/_hpGpXMPScTl8qV0Ze1jRQ)*
+
+## 关联（知识飞轮连接层自动补链 · 2026-07-28
+- [[连接枢纽-学习笔记]]
