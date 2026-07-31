@@ -1,0 +1,10 @@
+{
+  "created": 6,
+  "skipped": 0,
+  "source_fixed_files": 0,
+  "targets_total": 6,
+  "cluster": {
+    "通用": 1,
+    "医疗": 5
+  }
+}
