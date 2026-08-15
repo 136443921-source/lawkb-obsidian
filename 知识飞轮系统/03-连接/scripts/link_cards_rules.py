@@ -33,6 +33,19 @@ GROUPS = {
     "案例":     ("案例", "连接枢纽-案例", "案例连接枢纽"),
 }
 
+# 细分案由规则目录 -> 归并到的领域(cat)，避免碎片化枢纽（v3.1 新增）
+# 说明：裁判规则库按案由细分建目录，但连接层按"法律领域"聚合，故需显式归并。
+RULE_MERGE = {
+    "医疗损害责任纠纷":       "医疗纠纷",   # → 连接枢纽-人伤法
+    "提供劳务者受害责任纠纷": "医疗纠纷",
+    "机动车交通事故责任纠纷": "医疗纠纷",
+    "生命权健康权身体权纠纷": "医疗纠纷",
+    "建设工程":               "合同文书",   # → 连接枢纽-合同风险
+    "环境公益诉讼":           "慈法合规",   # 公益诉讼主体资格与社会组织同域
+    "公司法":                 "商事纠纷",   # → 连接枢纽-商事纠纷（兜底自动新建）
+    "慈善":                   "慈法合规",   # → 连接枢纽-慈法合规（2026-08-13 补：R-CF 系列自动挂载）
+}
+
 # 法律主题词词典（同域语义互链）
 TERMS = [
     "公开募捐","定向募捐","互联网募捐","募捐成本","管理费用","关联交易","捐赠","受赠","赠与",
@@ -117,6 +130,20 @@ if os.path.isdir(CARDS):
         if os.path.isdir(d) and cat not in EG:
             EG[cat] = (None, f"连接枢纽-{cat}", f"{cat}连接枢纽")
 
+# 兜底(v3.1)：裁判规则库出现既未被 GROUPS 映射、也未被 RULE_MERGE 归并的新子目录时，
+# 自动建独立枢纽——防止新增案由目录静默游离在连接层之外（2026-08-04 修复 R-SH/R-GS 等 39 条规则失联）。
+_covered = {v[0] for v in EG.values() if v[0]} | set(RULE_MERGE.keys())
+if os.path.isdir(RULES):
+    for rd in sorted(os.listdir(RULES)):
+        if not os.path.isdir(os.path.join(RULES, rd)) or rd.startswith(("__", ".")):
+            continue
+        if rd in _covered:
+            continue
+        if rd in EG:      # 卡片同名分类已存在 → 升级为带规则域
+            EG[rd] = (rd, EG[rd][1], EG[rd][2])
+        else:
+            EG[rd] = (rd, f"连接枢纽-{rd}", f"{rd}连接枢纽")
+
 # 枚举成员
 members = defaultdict(list)
 node_hub = {}
@@ -129,19 +156,26 @@ for cat, (rdomain, hubfile, hubtitle) in EG.items():
             members[cat].append((base, p, get_terms(fm+"\n"+body)))
             node_hub[base] = hubfile
 
-added_rdomains = set()
-for rdomain in [v[0] for v in GROUPS.values() if v[0]]:
-    if rdomain in added_rdomains: continue
-    added_rdomains.add(rdomain)
-    rdir = os.path.join(RULES, rdomain)
-    if os.path.isdir(rdir):
+# 规则枚举(v3.1)：以 cat 为驱动，聚合「主规则目录 + RULE_MERGE 归并目录」
+cat_rdirs = defaultdict(list)
+for cat, (rd, _, _) in EG.items():
+    if rd: cat_rdirs[cat].append(rd)
+for rdir_name, target_cat in RULE_MERGE.items():
+    if target_cat in EG:
+        cat_rdirs[target_cat].append(rdir_name)
+    else:
+        print(f"[WARN] RULE_MERGE 目标领域不存在，规则目录未挂载: {rdir_name} -> {target_cat}")
+
+for cat, rdirs in cat_rdirs.items():
+    hubfile = EG[cat][1]
+    for rdomain in dict.fromkeys(rdirs):          # 去重且保序
+        rdir = os.path.join(RULES, rdomain)
+        if not os.path.isdir(rdir): continue
         for p in sorted(glob.glob(os.path.join(rdir, "*.md"))):
             base = os.path.splitext(os.path.basename(p))[0]
             fm, body, _ = read_note(p)
-            for cat, (rd, _, _) in GROUPS.items():
-                if rd == rdomain:
-                    members[cat].append((base, p, get_terms(fm+"\n"+body)))
-                    node_hub[base] = GROUPS[cat][1]
+            members[cat].append((base, p, get_terms(fm+"\n"+body)))
+            node_hub[base] = hubfile
 
 # 计算边
 neighbors = defaultdict(set)
@@ -221,17 +255,33 @@ for cat, (rdomain, hubfile, hubtitle) in EG.items():
     with open(os.path.join(HUB_DIR, hubfile + ".md"), "w", encoding="utf-8") as f:
         f.write("\n".join(L))
 
+# 规则覆盖自检(v3.1)：确认裁判规则库无游离子目录
+rule_total = rule_linked = 0
+uncovered = []
+if os.path.isdir(RULES):
+    linked_rdirs = {rd for rds in cat_rdirs.values() for rd in rds}
+    for rd in sorted(os.listdir(RULES)):
+        d = os.path.join(RULES, rd)
+        if not os.path.isdir(d) or rd.startswith(("__", ".")): continue
+        n = len(glob.glob(os.path.join(d, "*.md")))
+        rule_total += n
+        if rd in linked_rdirs: rule_linked += n
+        else: uncovered.append(rd)
+
 total_edges = sum(len(v) for v in neighbors.values()) // 2
-stat = {"date": DATE, "script": "link_cards_rules.py", "version": 3,
+stat = {"date": DATE, "script": "link_cards_rules.py", "version": "3.1",
         "processed": written, "hubs": len(EG),
         "members_per_cat": {c: len(members[c]) for c in EG},
+        "rules_total": rule_total, "rules_linked": rule_linked,
+        "uncovered_rule_dirs": uncovered,
         "estimated_edges": total_edges}
 with open(os.path.join(SCRIPTS, "link_lastrun.json"), "w", encoding="utf-8") as f:
     json.dump(stat, f, ensure_ascii=False, indent=1)
 with open(os.path.join(SCRIPTS, "link_neighbors.json"), "w", encoding="utf-8") as f:
     json.dump({k: sorted(v) for k, v in neighbors.items()}, f, ensure_ascii=False, indent=1)
 
-print("=== 连接层补链 v3 完成 ===")
+print("=== 连接层补链 v3.1 完成 ===")
+print(f"裁判规则覆盖: {rule_linked}/{rule_total}" + (f"  ⚠️游离目录: {uncovered}" if uncovered else "  ✅ 无游离目录"))
 print(f"处理笔记文件数: {written}（含幂等覆盖）")
 print(f"生成枢纽页: {len(EG)}")
 for cat in EG:

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贵州省厚德公益基金会 10周年珍藏刊 拟写方案</title>
+<style>
+  :root {
+    --hd-red: #C8302B;
+    --hd-red-light: #F5E6E6;
+    --hd-gold: #B8860B;
+    --bg: #FAFAFA;
+    --card-bg: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #555;
+    --text-muted: #888;
+    --border: #E0E0E0;
+    --accent-blue: #1B4F8A;
+    --accent-green: #2D7D46;
+    --tag-bg: #F0F0F0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* Cover */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fff 0%, #FFF5F5 50%, #FFF8EE 100%);
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(200,48,43,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: var(--hd-red);
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+  }
+  .cover h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--hd-red);
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+  }
+  .cover h2 {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+  }
+  .cover-meta {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+  .cover-meta span { margin: 0 16px; }
+
+  /* Layout */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 24px 80px;
+  }
+  .section {
+    margin-top: 56px;
+  }
+  .section-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--hd-red);
+    border-left: 5px solid var(--hd-red);
+    padding-left: 16px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .section-title .en {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+  .card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+  }
+  .card p { color: var(--text-secondary); margin-bottom: 10px; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+  .tag.red { background: var(--hd-red-light); color: var(--hd-red); }
+  .tag.blue { background: #EBF2FB; color: var(--accent-blue); }
+  .tag.green { background: #EDF7EF; color: var(--accent-green); }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 16px 0;
+  }
+  th {
+    background: #F7F7F7;
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--border);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  tr:hover td { background: #FAFAFA; }
+
+  /* Grid */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+  /* Metric box */
+  .metric-box {
+    text-align: center;
+    padding: 20px 16px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .metric-box .num {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--hd-red);
+  }
+  .metric-box .label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* TOC sidebar style list */
+  .toc-list {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc-list > li {
+    counter-increment: toc;
+    position: relative;
+    padding-left: 44px;
+    margin-bottom: 24px;
+  }
+  .toc-list > li::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px; height: 30px;
+    background: var(--hd-red);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .toc-list h4 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .toc-list p { font-size: 14px; color: var(--text-secondary); }
+
+  /* Highlight box */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--hd-red-light) 0%, #FFF 100%);
+    border-left: 4px solid var(--hd-red);
+    padding: 20px 24px;
+    border-radius: 0 10px 10px 0;
+    margin: 20px 0;
+  }
+  .highlight-box h4 { color: var(--hd-red); margin-bottom: 8px; }
+
+  /* Comparison table special */
+  .compare-row { display: flex; gap: 20px; align-items: stretch; }
+  .compare-col { flex: 1; }
+  .compare-col h5 {
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .compare-col.old h5 { background: #EEE; color: #666; }
+  .compare-col.new h5 { background: var(--hd-red); color: #fff; }
+  .compare-col ul {
+    list-style: none;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .compare-col ul li { padding: 4px 0; position: relative; padding-left: 16px; }
+  .compare-col ul li::before { content: '•'; position: absolute; left: 0; color: var(--text-muted); }
+  .compare-col.new ul li::before { color: var(--hd-red); content: '★'; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .timeline-item { position: relative; margin-bottom: 24px; }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -24px; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--hd-red);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--hd-red);
+  }
+  .timeline-item .time { font-size: 13px; color: var(--hd-red); font-weight: 600; }
+  .timeline-item .desc { font-size: 14px; color: var(--text-secondary); }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  @media (max-width: 720px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .compare-row { flex-direction: column; }
+    .cover h1 { font-size: 30px; }
+    .section-title { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== COVER ========== -->
+<div class="cover">
+  <div class="cover-badge">拟写方案 v1.0</div>
+  <h1>厚德十年 · 公益如初</h1>
+  <h2>贵州省厚德公益基金会 10周年珍藏刊 拟写方案</h2>
+  <div class="cover-meta">
+    <span>2015 — 2025</span>·<span>中国·贵州·习水</span>·<span>尽我所能 人人公益</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ========== 一、方案定位与目标 ========== -->
+<div class="section">
+  <div class="section-title">一、方案定位与目标 <span class="en">Positioning & Goals</span></div>
+
+  <div class="highlight-box">
+    <h4>核心定位</h4>
+    <p><strong>「纪念册 + 成绩单 + 感谢信 + 招募令」四合一</strong></p>
+    <p>不是简单的年报堆砌，而是一本<strong>有温度、有数据、有故事、有未来</strong>的机构品牌旗舰出版物。既是对过去十年的庄重致敬，也是面向下一个十年的战略宣言。</p>
+  </div>
+
+  <div class="grid-3" style="margin-top:24px;">
+    <div class="metric-box">
+      <div class="num">10年</div>
+      <div class="label">完整发展周期回顾</div>
+    </div>
+    <div class="metric-box">
+      <div class="num">3类读者</div>
+      <div class="label">捐赠人 / 合作方 / 公众</div>
+    </div>
+    <div class="metric-box">
+      <div class="num">双载体</div>
+      <div class="label">印刷画册 + 电子H5/PDF</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;">
+    <h3>目标读者与对应诉求</h3>
+    <table>
+      <tr><th>读者群体</th><th>核心诉求</th><th>内容侧重</th></tr>
+      <tr><td>发起人 / 理事单位</td><td>信任确认、影响力展示</td><td>治理成果、财务透明、战略方向</td></tr>
+      <tr><td>企业合作伙伴</td><td>CSR价值验证、品牌联动</td><td>合作案例、社会影响数据、联合署名展示</td></tr>
+      <tr><td>政府主管部门</td><td>合规性、区域贡献度</td><td>党建参与、脱贫攻坚衔接乡村振兴、本地化成效</td></tr>
+      <tr><td>志愿者 / 义工</td><td>归属感、被认可</td><td>人物故事、参与记录、成长轨迹</td></tr>
+      <tr><td>受益人及公众</td><td>情感共鸣、公信力建立</td><td>真实故事、项目效果、透明数据</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ========== 二、5周年刊深度复盘 ========== -->
+<div class="section">
+  <div class="section-title">二、5周年珍藏刊深度复盘 <span class="en">5th Anniversary Review</span></div>
+
+  <div class="card">
+    <h3>基础信息</h3>
+    <p><strong>名称：</strong>《贵州省厚德公益基金会 2015-2019 年报（珍藏刊）》</p>
+    <p><strong>规格：</strong>A4，109页，约11万字（含图表）</p>
+    <p><strong>时间跨度：</strong>2015.03（注册）— 2019.12（共5个完整年度）</p>
+    <p><strong>设计语言：</strong>红白主色调（中国红+雪色白），心形/眼睛/耳朵三重寓意Logo贯穿全册</p>
+  </div>
+
+  <div class="card">
+    <h3>栏目结构（共14个一级栏目）</h3>
+    <ol class="toc-list">
+      <li>
+        <h4>走进厚德</h4>
+        <p>简介 / 文化体系（定位·初衷·愿景·宗旨·目标·使命）/ 团队名单 / 组织架构图</p>
+        <span class="tag red">4页</span>
+      </li>
+      <li>
+        <h4>理事长寄语</h4>
+        <p>李彬理事长亲笔致辞，回顾五年历程，致谢各方</p>
+        <span class="tag red">2页</span>
+      </li>
+      <li>
+        <h4>卷首语</h4>
+        <p>秘书长陈友强执笔，以"功崇惟志 以终为始"为题</p>
+        <span class="tag red">2页</span>
+      </li>
+      <li>
+        <h4>数字说厚德</h4>
+        <p>五年累计收支饼图 / 分年度收支柱状图 / 四大领域累计支出 / 受益人数 / 义工人次</p>
+        <span class="tag red">10页</span>
+      </li>
+      <li>
+        <h4>公益足迹</h4>
+        <p>习水/赤水/仁怀三县地图标注 / 41乡镇203村居115学校覆盖 / 善款乡镇分布柱状图</p>
+        <span class="tag red">10页</span>
+      </li>
+      <li>
+        <h4>大事记</h4>
+        <p>2015—2019逐年条目式记录（注册/项目启动/荣誉获得/合作签约等）</p>
+        <span class="tag red">2页</span>
+      </li>
+      <li>
+        <h4>项目报告（核心板块，47页，占43%）</h4>
+        <p>四大领域：弱势群体关怀 / 青少年成长与发展 / 青年公益支持 / 救灾减灾<br>
+        每个项目含：简介 → 受益群体 → 资助方式 → 开展时间 → 数字说项目(年度数据+累计) → 区域足迹图 → 现场照片 → 受助人感言</p>
+        <span class="tag red">47页</span>
+      </li>
+      <li>
+        <h4>社会公众参与</h4>
+        <p>义工分类统计表（党员/商会/社会/学生）2015-2019趋势 / 志愿者故事2篇</p>
+        <span class="tag red">4页</span>
+      </li>
+      <li>
+        <h4>公益组织合作与交流</h4>
+        <p>9家合作组织简介（支教协会/雁行中国/爱心公益会/义工联合会等）+ 参访交流照片</p>
+        <span class="tag red">10页</span>
+      </li>
+      <li>
+        <h4>公益实践及社会影响</h4>
+        <p>FTI透明指数满分截图 / 自媒体平台数据（公众号/订阅号/微博/官网粉丝&阅读量）</p>
+        <span class="tag red">6页</span>
+      </li>
+      <li>
+        <h4>公众募款</h4>
+        <p>99公益日 / 腾讯乐捐 / 企业配捐 / 公益打榜 / 爱心接龙 / 每月一捐 / 子项目列表</p>
+        <span class="tag red">6页</span>
+      </li>
+      <li>
+        <h4>审计报告 & 财务报表</h4>
+        <p>专项信息审核报告全文 + 资产负债表/业务活动表/现金流量表</p>
+        <span class="tag red">7页</span>
+      </li>
+      <li>
+        <h4>公益合作伙伴</h4>
+        <p>企业/机构 Logo 墙（两页展示）</p>
+        <span class="tag red">2页页</span>
+      </li>
+      <li>
+        <h4>封底</h4>
+        <p>编委会名单 / 联系方式 / 二维码</p>
+        <span class="tag red">1页</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>优势评估</h3>
+    <div class="grid-2">
+      <div>
+        <h4 style="color:var(--accent-green);">做得好的</h4>
+        <ul style="font-size:14px;color:var(--text-secondary);padding-left:20px;">
+          <li><strong>结构完整：</strong>从理念到项目到财务到审计，形成闭环</li>
+          <li><strong>数据扎实：</strong>每个项目都有分年度+累计数字，乡镇级资金分布细化到村</li>
+          <li><strong>视觉统一：</strong>红色主调+图标系统+页眉slogan一致性强</li>
+          <li><strong>合规过硬：</strong>FTI满分+AAAA级+审计报告全文披露</li>
+          <li><strong>有人情味：</strong>受助学生发言、志愿者手记、支教诗歌穿插其中</li>
+          <li><strong>地图叙事：</strong>公益足迹图直观展示地理覆盖面</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:var(--hd-red);">可升级空间</h4>
+        <ul style="font-size:14px;color:var(--text-secondary);padding-left:20px;">
+          <li><strong>缺少"十年视角"：</strong>无跨周期趋势分析（如项目迭代路径、筹款结构演变）</li>
+          <li><strong>故事偏浅：</strong>人物故事多为单次感言，缺乏 longitudinal 追踪（同一受益人5年变化）</li>
+          <li><strong>影响测量不足：</strong>以"投入指标"（发了多少书包/多少钱）为主，缺乏"产出/ outcome 指标"</li>
+          <li><strong>设计偏传统：</strong>纯印刷画册思维，无互动元素/二维码跳转/视频入口</li>
+          <li><strong>行业对标缺失：</strong>未将自己放在贵州乃至全国基金会坐标系中定位</li>
+          <li><strong>未来导向弱：</strong>几乎全是回顾，对下个五年的战略展望仅寄语中一笔带过</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 三、行业对标分析 ========== -->
+<div class="section">
+  <div class="section-title">三、行业对标分析 <span class="en">Benchmarking</span></div>
+
+  <div class="card">
+    <h3>参考样本选取逻辑</h3>
+    <p>选取了<strong>4类6家</strong>机构的周年出版物作为对标：</p>
+    <div style="margin-top:12px;">
+      <span class="tag blue">资助型</span>
+      <span class="tag blue">运作型</span>
+      <span class="tag green">区域性</span>
+      <span class="tag green">全国性</span>
+      <span class="tag red">教育公益</span>
+      <span class="tag red">综合救助</span>
+    </div>
+  </div>
+
+  <table style="margin-top:20px;">
+    <tr>
+      <th>机构</th><th>类型</th><th>周年出版物</th><th>可借鉴亮点</th>
+    </tr>
+    <tr>
+      <td><strong>南都公益基金会</strong></td>
+      <td>资助型/全国</td>
+      <td>10周年年报（2007-2017）</td>
+      <td>"支持民间公益"使命贯穿始终；银杏伙伴→景行计划→好公益平台的战略演进线清晰；五周年设专门"历程"时间轴</td>
+    </tr>
+    <tr>
+      <td><strong>上海真爱梦想</strong></td>
+      <td>运作型/教育/全国</td>
+      <td>十年公益报告（2008-2018）</td>
+      <td>以"干杯梦想"诗歌体卷首营造仪式感；PPPS跨界赋能方法论提炼；SGS国际认证+拉姆·查兰管理奖作为公信力背书；梦想中心数量增长曲线可视化</td>
+    </tr>
+    <tr>
+      <td><strong>壹基金</strong></td>
+      <td>运作型/救灾+儿童/全国</td>
+      <td>年度影响力报告</td>
+      <td>每年度一个主题句（如"每个人都是公益英雄"）；项目效果用"前后对比"呈现；大量使用信息图(infographic)</td>
+    </tr>
+    <tr>
+      <td><strong>敦和基金会</strong></td>
+      <td>资助型/文化+社区</td>
+      <td>五周年/十周年特刊</td>
+      <td>文化艺术品位高，设计获设计奖项；"善经济"概念先行；项目与国学/艺术跨界融合呈现</td>
+    </tr>
+    <tr>
+      <td><strong>中国乡村发展基金会</strong></td>
+      <td>运作型/扶贫/全国</td>
+      <td>年度报告+影响力报告双轨制</td>
+      <td>双轨制——年报走合规路线，影响力报告走传播路线；小额信贷等项目的"社会投资回报(SROI)"测算</td>
+    </tr>
+    <tr>
+      <td><strong>新加坡慈善局模板</strong></td>
+      <td>监管指引</td>
+      <td>Annual Report Template Guide</td>
+      <td>强制要求：活动回顾+受益人证言+志愿者证言+重大事件里程碑；推荐"管理层讨论与分析(MD&A)"章节</td>
+    </tr>
+  </table>
+
+  <div class="highlight-box" style="margin-top:24px;">
+    <h4>对标提炼：10周年刊应具备的6大要素</h4>
+    <div class="grid-3" style="margin-top:16px;">
+      <div style="font-size:14px;"><strong>1. 时间纵深</strong><br><span style="color:var(--text-muted);">十年不是五个两年的叠加，要有演进脉络</span></div>
+      <div style="font-size:14px;"><strong>2. 战略叙事</strong><br><span style="color:var(--text-muted);">从"做了什么"升维到"为什么做→怎么做→走向哪里"</span></div>
+      <div style="font-size:14px;"><strong>3. 影响证明</strong><br><span style="color:var(--text-muted);">从输出指标进阶到 outcome 指标</span></div>
+      <div style="font-size:14px;"><strong>4. 人物弧光</strong><br><span style="color:var(--text-muted);">追踪同一批人10年的变化（受益人/志愿者/员工）</span></div>
+      <div style="font-size:14px;"><strong>5. 行业坐标</strong><br><span style="color:var(--text-muted);">把自己放在贵州/西南/全国基金会的什么位置</span></div>
+      <div style="font-size:14px;"><strong>6. 未来契约</strong><br><span style="color:var(--text-muted);">不只是回顾，要发出下一个十年的邀请</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 四、10周年刊栏目方案 ========== -->
+<div class="section">
+  <div class="section-title">四、10周年刊栏目方案 <span class="en">Proposed Structure</span></div>
+
+  <div class="highlight-box">
+    <h4>整体框架：五大篇章 + 附录</h4>
+    <p>建议总篇幅：<strong>128—144页</strong>（比5周年的109页增加20%—30%，体现十年厚度）</p>
+    <p>建议开本：<strong>A4变体或方形210×210mm</strong>（区别于5周年的标准A4，增强收藏感）</p>
+  </div>
+
+  <!-- 篇章一 -->
+  <div class="card">
+    <h3>📖 第一篇 · 序章 —— "十年回望"（8—10页）</h3>
+    <table>
+      <tr><th>栏目</th><th>内容要点</th><th>页数</th><th>创新点</th></tr>
+      <tr><td>封面</td><td>"厚德十年 公益如初"主题视觉；2015-2025年份标识；可考虑烫金/凹凸工艺</td><td>1</td><td>不同于5周年的红白书法风，建议引入<strong>时间轴意象</strong>（如一条红线穿引十年）</td></tr>
+      <tr><td>扉页</td><td>十年版Logo演绎（原Logo+十年元素叠加）；"2015·种子 | 2025·森林"隐喻</td><td>1</td><td>Logo动态演化展示</td></tr>
+      <tr><td>理事长寄语</td><td>李彬理事长致辞：十年节点上的反思与展望——不只致谢，更要有<strong>行业观察和战略判断</strong></td><td>2</td><td>可配十年前后的对比照片（同地点/同人）</td></tr>
+      <tr><td>十年·一句话</td><td>每年选一句"年度关键词"+一张年度代表照片，组成十年时间走廊</td><td>2—3</td><td>类似《南方周末》新年贺词风格，每年一句定义当年的精神气质</td></tr>
+      <tr><td>目录</td><td>五大篇章导航 + 视觉化页码</td><td>1</td><td>每个篇章配一幅微型插图</td></tr>
+      <tr><td>卷首语</td><td>秘书长或邀请外部公益领袖（如徐永光/王振耀等）撰写序言</td><td>1—2</td><td>外部视角增加权威性和客观性</td></tr>
+    </table>
+  </div>
+
+  <!-- 篇章二 -->
+  <div class="card">
+    <h3>🏛️ 第二篇 · 认识厚德 —— "我们是谁"（12—14页）</h3>
+    <table>
+      <tr><th>栏目</th><th>内容要点</th><th>页数</th><th>vs 5周年升级点</th></tr>
+      <tr><td>十年履历</td><td>完整组织介绍 + 文化体系更新版（如有修订）</td><td>2</td><td>新增"十年文化演进"说明哪些理念在深化</td></tr>
+      <tr><td>团队图谱</td><td>理事会/监事会/秘书处 + 四大专业委员会 + 历届成员致敬墙</td><td>2</td><td>5周年只有当届名单；10周年应设<strong>历届成员墙</strong>（致敬已离任者）</td></tr>
+      <tr><td>治理之路</td><td>从"六化管理"(制度/流程/标准/数字化/精细化/规范)到当前治理体系的演进时间轴</td><td>2</td><td>新增：<strong>治理能力建设的关键节点图</strong>（何时引入FTI/何时获4A/何时通过审计）</td></tr>
+      <tr><td>荣誉殿堂</td><td>十年所获荣誉/认证/评级的时间线展示（AAAA/FTI满分/先进集体等）</td><td>2</td><td>5周年散落在各处；10周年集中展示更有冲击力</td></tr>
+      <tr><td>十年影像</td><td>精选20—30张十年经典瞬间（成立大会/第一次发放/99公益日现场/抗疫行动等）</td><td>4</td><td>5周年图片分散在各项目中；10周年集中做<strong>影像长廊</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- 篇章三 -->
+  <div class="card">
+    <h3>📊 第三篇 · 数字厚德 —— "十年成绩单"（20—24页）</h3>
+    <table>
+      <tr><th>栏目</th><th>内容要点</th><th>页数</th><th>vs 5周年升级点</th></tr>
+      <tr><td>十年关键数据仪表盘</td><td>累计收入/支出/受益人数/覆盖地域/义工人次/合作组织数——首页即见全貌</td><td>2</td><td>5周年数据在第9页才出现；10周年建议<strong>前置到第2篇之后立即呈现</strong></td></tr>
+      <tr><td>收入结构十年演变</td><td>2015—2024（2025预估）收入构成变迁图：发起人捐赠↓ vs 互联网筹款↑ vs 投资收益↑</td><td>2</td><td>5周年只有静态饼图；10周年做<strong>趋势面积图</strong>展现筹款多元化进程</td></tr>
+      <tr><td>支出领域十年分布</td><td>四大领域支出的十年堆积面积图 + 占比变迁</td><td>2</td><td>展现战略重心迁移（如青少年领域占比是否持续上升）</td></tr>
+      <tr><td>公益足迹升级版</td><td>地图从3县扩展到实际覆盖的所有区县；增加<strong>热力图</strong>密度表达</td><td>3</td><td>5周年是静态标注；10周年建议用GIS热力图</td></tr>
+      <tr><td>大事记十年版</td><td>2015—2025完整大事记，按"治理/项目/荣誉/合作"分类着色</td><td>3</td><td>5周年仅2页文字；10周年做成<strong>可视化时间轴</strong></td></tr>
+      <tr><td>财务精要</td><td>十年主要财务指标趋势图（资产负债/公益支出比例/管理费率）+ 最近两年审计报告摘要</td><td>4</td><td>5周年放全文审计报告（7页）；10周年建议<strong>摘要+扫码看全文</strong>，节省空间给故事</td></tr>
+      <tr><td>FTI & 透明度专题</td><td>FTI评分历年曲线 + 透明度建设里程碑</td><td>2</td><td>5周年只放了1张满分截图；10周年做成<strong>透明度建设故事线</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- 篇章四 -->
+  <div class="card">
+    <h3>❤️ 第四篇 · 公益践行 —— "十年项目志"（48—56页，核心板块）</h3>
+    <p style="margin-top:12px;color:var(--text-secondary);">这是最重的部分，但<strong>不能是5周年的简单加长版</strong>。建议按以下逻辑重构：</p>
+
+    <h4 style="margin:20px 0 12px;">4.1 项目矩阵总览（2—3页）</h4>
+    <ul style="font-size:14px;color:var(--text-secondary);padding-left:20px;">
+      <li>一张<strong>项目生命周期矩阵图</strong>：横轴=四大领域，纵轴=时间（2015—2025），每个项目用色块表示存续期</li>
+      <li>一目了然看到：哪些项目持续了10年？哪些是新生的？哪些已结束/转型？</li>
+    </ul>
+
+    <h4 style="margin:20px 0 12px;">4.2 核心项目深度报告（36—42页，每个重点项目4—6页）</h4>
+    <table>
+      <tr><th>项目</th><th>建议页数</th><th>十年叙事角度</th></tr>
+      <tr><td><strong>我的大学·厚德圆梦</strong></td><td>6页</td><td>488名受助学生中追踪10位代表（从入学到就业/深造的完整轨迹）；"圆梦校友网络"是否成型</td></tr>
+      <tr><td><strong>122安全书包计划</strong></td><td>5页</td><td>9035个书包背后的交通安全意识调研（是否有事故率下降数据？）；产品迭代史（从第一代到当前版本）</td></tr>
+      <tr><td><strong>365温暖包/暖冬行动</strong></td><td>5页</td><td>从"送物资"到"送陪伴"的模式升级；受益儿童的前后对比照（多年跟踪）</td></tr>
+      <tr><td><strong>6+1困境儿童助养 → 为梦想插上翅膀</strong></td><td>5页</td><td>项目更名背后的战略思考；月捐模式的发展曲线</td></tr>
+      <tr><td><strong>李彬励志奖学金</strong></td><td>3页</td><td>48名获奖者的去向追踪（多少人在回馈家乡？）</td></tr>
+      <tr><td><strong>青年公益支持（支教/宣讲/产业帮扶）</strong></td><td>5页</td><td>支教协会10年合作回顾——"反哺故土"的人才循环是否形成？</td></tr>
+      <tr><td><strong>救灾减灾（8.11洪灾/新冠疫情/其他）</strong></td><td>4页</td><td>从灾害响应到常态化备灾的能力建设路径</td></tr>
+      <tr><td><strong>益童乐园 / 社区发展</strong></td><td>3—4页</td><td>易地扶贫搬迁后续服务的新探索（2020年后新方向）</td></tr>
+      <tr><td><strong>已结束项目专题</strong></td><td>2页</td><td>危房改造/爱心桥等项目虽已结束，但其历史意义值得专页纪念</td></tr>
+    </table>
+
+    <h4 style="margin:20px 0 12px;">4.3 人物故事集（6—8页）</h4>
+    <p style="font-size:14px;color:var(--text-secondary);">这是10周年刊区别于年报的最大增量价值所在。建议设置三类人物故事：</p>
+    <div class="grid-3" style="margin-top:12px;">
+      <div style="background:var(--hd-red-light);padding:16px;border-radius:8px;">
+        <strong style="color:var(--hd-red);">受益人追踪</strong>
+        <p style="font-size:13px;margin-top:6px;">选取3—5名最早一批受助人，讲述他们10年的变化（如：2015年的贫困大学生→2025年的医生/教师/公务员）</p>
+      </div>
+      <div style="background:#EBF2FB;padding:16px;border-radius:8px;">
+        <strong style="color:var(--accent-blue);">义工/志愿者</strong>
+        <p style="font-size:13px;margin-top:6px;">从2015年的第一批义工到今天的"老义工"，他们的公益人生如何改变了他们自己</p>
+      </div>
+      <div style="background:#EDF7EF;padding:16px;border-radius:8px;">
+        <strong style="color:var(--accent-green);">员工/伙伴</strong>
+        <p style="font-size:13px;margin-top:6px;">秘书处员工、合作组织负责人的十年坚守故事</p>
+      </div>
+    </div>
+
+    <h4 style="margin:20px 0 12px;">4.4 公众参与与社会影响（4—6页）</h4>
+    <ul style="font-size:14px;color:var(--text-secondary);padding-left:20px;">
+      <li>十年义工增长趋势图（2015年400人次 → 202X年?）</li>
+      <li>互联网筹款进化史（从零到月捐800人的路径）</li>
+      <li>自媒体十年数据（粉丝/阅读量/互动量的增长曲线）</li>
+      <li>合作组织生态图（从9家扩展到?家的网络图谱）</li>
+    </ul>
+  </div>
+
+  <!-- 篇章五 -->
+  <div class="card">
+    <h3>🚀 第五篇 · 展望篇 —— "下一个十年"（8—12页）</h3>
+    <table>
+      <tr><th>栏目</th><th>内容要点</th><th>页数</th><th>说明</th></tr>
+      <tr><td>十年反思</td><td>坦诚面对十年中的挑战、失误、未达成的目标——<strong>真实的脆弱比完美的强大更有力量</strong></td><td>2</td><td>这是5周年完全没有的内容，却是10周年最有深度的部分</td></tr>
+      <tr><td>战略展望</td><td>下一个十年的方向：是否从"区域型"向更大范围辐射？是否探索新的公益领域？数字化/专业化的下一步？</td><td>2—3</td><td>可引用理事会最新战略规划</td></tr>
+      <tr><td>致谢榜</td><td>分级致谢：发起人单位 / 理事单位 / 企业合作伙伴 / 个人大额捐赠人 / 志愿者团队 / 政府部门 / 行业伙伴</td><td>2—3</td><td>5周年的致谢分散在各处；10周年做<strong>集中分级致谢</strong>更显郑重</td></tr>
+      <tr><td>邀请函</td><td>"下一个十年，邀你同行"——面向潜在捐赠人/志愿者/合作伙伴的行动号召</td><td>1</td><td>将刊物转化为<strong>招募工具</strong></td></tr>
+      <tr><td>封底</td><td>联系方式全集 + 二维码矩阵（公众号/官网/抖音/视频号/捐赠通道）</td><td>1</td><td>5周年封底较简单；10周年建议做<strong>数字化入口矩阵</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- 附录 -->
+  <div class="card">
+    <h3>📎 附录（可选，视排版需要可转为电子附录）</h3>
+    <div class="grid-2">
+      <div>
+        <ul style="font-size:14px;color:var(--text-secondary);padding-left:20px;">
+          <li>完整审计报告（最近3年）</li>
+          <li>详细财务报表（资产负债表/业务活动表/现金流量表）</li>
+          <li>重大项目收支明细表</li>
+          <li>捐赠人名录（按金额分级，尊重匿名意愿）</li>
+        </ul>
+      </div>
+      <div>
+        <ul style="font-size:14px;color:var(--text-secondary);padding-left:20px;">
+          <li>法律法规依据索引（《慈善法》《基金会管理条例》《信息公开办法》等）</li>
+          <li>内部制度清单（章程/项目管理办法/财务制度等）</li>
+          <li>十年项目完整数据附录（供研究者使用）</li>
+          <li>编后记 / 创作团队名单</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 五、设计语言建议 ========== -->
+<div class="section">
+  <div class="section-title">五、设计语言建议 <span class="en">Design Direction</span></div>
+
+  <div class="compare-row">
+    <div class="compare-col old">
+      <h5>5周年设计语言</h5>
+      <ul>
+        <li>红白双色高对比</li>
+        <li>标准A4竖版</li>
+        <li>图文1:1排布</li>
+        <li>数据以表格+饼图为主</li>
+        <li>纯印刷物思维</li>
+        <li>封面：书法+Logo组合</li>
+      </ul>
+    </div>
+    <div class="compare-col new">
+      <h5>10周年设计语言（建议）</h5>
+      <ul>
+        <li>红白金三色（金色象征十年沉淀）</li>
+        <li>方形或A4变体（增强收藏品属性）</li>
+        <li>大幅跨页摄影+信息图混排</li>
+        <li>数据可视化升级（趋势图/热力图/河流图）</li>
+        <li>印刷+数字融合（二维码/AR入口/电子版同步发布）</li>
+        <li>封面：时间轴+人物剪影+Logo升华</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;">
+    <h3>设计元素清单</h3>
+    <div class="grid-4">
+      <div style="text-align:center;padding:16px;background:#FAFAFA;border-radius:8px;">
+        <div style="font-size:24px;margin-bottom:8px;">🎨</div>
+        <strong>主色调</strong><br><span style="font-size:13px;color:var(--text-muted);">厚德红 #C8302B + 沉淀金 #B8860B + 云雪白</span>
+      </div>
+      <div style="text-align:center;padding:16px;background:#FAFAFA;border-radius:8px;">
+        <div style="font-size:24px;margin-bottom:8px;">📐</div>
+        <strong>字体系统</strong><br><span style="font-size:13px;color:var(--text-muted);">标题：思源宋体 / 正文：思源黑体 / 数据：DIN Alternate</span>
+      </div>
+      <div style="text-align:center;padding:16px;background:#FAFAFA;border-radius:8px;">
+        <div style="font-size:24px;margin-bottom:8px;">📊</div>
+        <strong>图表风格</strong><br><span style="font-size:13px;color:var(--text-muted);">扁平化信息图 + 微立体数据卡 + 地图热力渲染</span>
+      </div>
+      <div style="text-align:center;padding:16px;background:#FAFAFA;border-radius:8px;">
+        <div style="font-size:24px;margin-bottom:8px;">🖼️</div>
+        <strong>摄影调性</strong><br><span style="font-size:13px;color:var(--text-muted);">暖色调人文纪实风格；避免"摆拍感"；多用抓拍/背影/局部特写</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 六、生产排期 ========== -->
+<div class="section">
+  <div class="section-title">六、生产排期与分工 <span class="en">Timeline & Workflow</span></div>
+
+  <div class="card">
+    <h3>建议排期（以2025年3月25日注册日发布为目标倒推）</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="time">T-16周 | 启动阶段</div>
+        <div class="desc">确定编委会、选定设计供应商、确定栏目框架、制定内容采集清单</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">T-12周 | 内容采集</div>
+        <div class="desc">收集十年档案/照片/数据/财务报表；开展受益人/义工回访访谈；拍摄补拍关键场景</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">T-8周 | 初稿撰写</div>
+        <div class="desc">各栏目分工撰稿；数据可视化图表制作；人物故事采写</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">T-5周 | 设计排版</div>
+        <div class="desc">设计供应商进入；版式设计；图片编辑；一轮审校</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">T-3周 | 审校修改</div>
+        <div class="desc">理事会/监事会审阅；法律合规审查（隐私/肖像/数据准确性）；财务数据复核</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">T-2周 | 印刷制作</div>
+        <div class="desc">打样确认；正式印刷；电子版制作（PDF/H5/长图）</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">T-0 | 发布</div>
+        <div class="desc">十周年庆典首发；多渠道分发（线下/官网/公众号/合作媒体）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>建议分工架构</h3>
+    <table>
+      <tr><th>角色</th><th>职责</th><th>建议人选</th></tr>
+      <tr><td>总策划</td><td>总体把控方向、审定终稿</td><td>李彬理事长 / 理事会</td></tr>
+      <tr><td>执行主编</td><td>统筹进度、协调各方、内容质量把关</td><td>秘书处负责人</td></tr>
+      <tr><td>内容组</td><td>资料收集、文案撰写、数据整理、访谈执行</td><td>秘书处全员 + 外部特约撰稿1—2人</td></tr>
+      <tr><td>设计方</td><td>视觉设计、排版、信息图制作、印务对接</td><td>外部专业设计公司（建议有公益/出版品类经验）</td></tr>
+      <tr><td>法律顾问</td><td>隐私合规、肖像权审查、数据准确性核查</td><td>律所顾问（老强可承担此角色 ✅）</td></tr>
+      <tr><td>财务顾问</td><td>所有财务数据核对、审计报告解读</td><td>会计师事务所 + 秘书处财务</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ========== 七、合规检查清单 ========== -->
+<div class="section">
+  <div class="section-title">七、合规检查清单 <span class="en">Compliance Checklist</span></div>
+
+  <div class="card">
+    <h3>基于《慈善法》及内部合规手册的强制检查项</h3>
+    <table>
+      <tr><th>#</th><th>检查项</th><th>法规依据</th><th>责任方</th></tr>
+      <tr><td>1</td><td>受益人姓名/照片/故事使用是否取得书面授权？</td><td>《个人信息保护法》第13、14条；《慈善法》第62条信息公开中的隐私保护原则</td><td>内容组+法务</td></tr>
+      <tr><td>2</td><td>未成年人（受益儿童）照片是否经监护人同意？面部是否做必要保护处理？</td><td>《未成年人保护法》；内部合规手册受益人隐私保护条款</td><td>内容组+法务</td></tr>
+      <tr><td>3</td><td>财务数据是否与经审计报告完全一致？</td><td>《基金会管理条例》第36条；《慈善组织信息公开办法》第8条</td><td>财务顾问</td></tr>
+      <tr><td>4</td><td>捐赠人信息披露是否符合其意愿（尤其是个人捐赠人是否可匿名）？</td><td>《慈善法》第51条捐赠人隐私权</td><td>内容组</td></tr>
+      <tr><td>5</td><td>关联交易信息是否如实披露？（如有）</td><td>《慈善法》第38、39条；内部合规手册关联交易管理章节</td><td>财务+法务</td></tr>
+      <tr><td>6</td><td>项目效果陈述是否有据可查？避免夸大/不实表述</td><td>《慈善法》第22条禁止虚假宣传；《广告法》第4条</td><td>执行主编+法务</td></tr>
+      <tr><td>7</td><td>荣誉称号/评级引用是否准确且在有效期内？</td><td>《反不正当竞争法》第8条；内部合规手册对外宣传规范</td><td>内容组</td></tr>
+      <tr><td>8</td><td>地图使用是否规范？（尤其涉及行政区划边界）</td><td>《测绘法》；国士资源部地图管理规定</td><td>设计方</td></tr>
+      <tr><td>9</td><td>合作伙伴Logo使用是否取得授权？</td><td>《商标法》；《著作权法》</td><td>内容组</td></tr>
+      <tr><td>10</td><td>若涉及境外主体或跨境内容，是否遵守相关法规？</td><td>《境外非营利组织管理法》</td><td>法务</td></tr>
+    </table>
+  </div>
+
+  <div class="highlight-box" style="margin-top:20px;">
+    <h4>特别提示（来自内部合规手册）</h4>
+    <p>依据《贵州省厚德公益基金会合规管理手册（试行）（2025版）》相关条款：</p>
+    <ul style="margin-top:8px;font-size:14px;padding-left:20px;">
+      <li>所有对外宣传材料属于<strong>"信息公开"</strong>范畴，须纳入年度信息公开工作计划</li>
+      <li>涉及重大捐赠人（单笔超过当年总收入5%）的信息披露须经理事会审批</li>
+      <li>受益人信息采集须遵循<strong>"最小必要原则"</strong>，且用途限于本次公开</li>
+      <li>建议在刊物末尾附<strong>"合规声明"</strong>页，注明数据截止日期、审计机构、免责事项</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== 八、预算估算 ========== -->
+<div class="section">
+  <div class="section-title">八、预算估算 <span class="en">Budget Estimate</span></div>
+
+  <div class="card">
+    <table>
+      <tr><th>项目</th><th>说明</th><th>预估费用（元）</th></tr>
+      <tr><td>策划与撰稿</td><td>内部人力 + 外部特约撰稿（如有）</td><td>0 — 15,000</td></tr>
+      <tr><td>设计费</td><td>专业设计公司（含版式/信息图/封面/改稿）</td><td>25,000 — 50,000</td></tr>
+      <tr><td>摄影/补拍</td><td>受益人回访拍摄 + 场景补拍 + 产品静物</td><td>5,000 — 15,000</td></tr>
+      <tr><td>印刷（1000册）</td><td>A4变体/方形，128—144页，封面特种纸+内文哑粉</td><td>30,000 — 50,000</td></tr>
+      <tr><td>电子版制作</td><td>H5交互版 / PDF优化版 / 长图版</td><td>5,000 — 10,000</td></tr>
+      <tr><td>审校与合规</td><td>法务审核 + 财务复核 + 校对</td><td>5,000 — 10,000</td></tr>
+      <tr><td> contingency</td><td>不可预见费用（10%）</td><td>7,000 — 15,000</td></tr>
+      <tr style="font-weight:700;background:#FFF5F5;"><td colspan="2"><strong>合计估算</strong></td><td><strong>77,000 — 165,000</strong></td></tr>
+    </table>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">
+      * 以上为市场询价区间，实际费用取决于设计供应商报价、印数、用纸工艺等因素。<br>
+      * 建议通过<strong>比价采购</strong>方式确定最终供应商，符合内部合规手册采购管理相关规定。
+    </p>
+  </div>
+</div>
+
+<!-- ========== 九、风险提示 ========== -->
+<div class="section">
+  <div class="section-title">九、风险提示与应对 <span class="en">Risks & Mitigation</span></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="color:var(--hd-red);">⚠️ 主要风险</h3>
+      <ul style="font-size:14px;color:var(--text-secondary);padding-left:20px;">
+        <li><strong>内容风险：</strong>受益人故事可能因人员流动无法追溯；早期档案不完整</li>
+        <li><strong>时间风险：</strong>生产周期约4个月，需尽早启动</li>
+        <li><strong>预算风险：</strong>设计/印刷费用波动较大</li>
+        <li><strong>合规风险：</strong>肖像权/隐私权授权遗漏</li>
+        <li><strong>舆情风险：</strong>数据表述不当引发误解</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--accent-green);">✅ 应对策略</h3>
+      <ul style="font-size:14px;color:var(--text-secondary);padding-left:20px;">
+        <li>提前2个月开始受益人/义工摸底，建立"可联系名单"</li>
+        <li>设立<strong>双周milestone</strong>检查机制</li>
+        <li>设计费采用<strong>固定总价合同</strong>，印刷费多方比价</li>
+        <li>建立<strong>授权书台账</strong>，一人一档</li>
+        <li>所有关键数据须经财务+法务<strong>双重签核</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 十、下一步行动 ========== -->
+<div class="section">
+  <div class="section-title">十、下一步行动 <span class="en">Next Steps</span></div>
+
+  <div class="highlight-box">
+    <h4>建议立即推进的5件事</h4>
+    <ol style="margin-top:12px;font-size:14px;padding-left:20px;line-height:2;">
+      <li><strong>召开10周年刊筹备会</strong>—— 向理事会汇报本方案，获得立项批准和预算授权</li>
+      <li><strong>组建编委会</strong>—— 确定总策划、执行主编、各栏目负责人</li>
+      <li><strong>盘点现有素材</strong>—— 清点十年档案/照片/数据/媒体报道，建立素材库</li>
+      <li><strong>启动受益人/义工回访</strong>—— 先从最早一批（2015年）开始联系，测试可追溯性</li>
+      <li><strong>征集设计供应商</strong>—— 发布需求说明书(RFP)，收集3—5家报价方案</li>
+    </ol>
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<footer>
+  <p>贵州省厚德公益基金会 10周年珍藏刊 拟写方案 v1.0</p>
+  <p>编制日期：2025年8月5日 | 方案拟写：小强律师（实习律师）</p>
+  <p>本方案基于5周年珍藏刊(2015-2019)全文研读 + 6家标杆基金会周年出版物对标分析编制</p>
+</footer>
+
+</body>
+</html>

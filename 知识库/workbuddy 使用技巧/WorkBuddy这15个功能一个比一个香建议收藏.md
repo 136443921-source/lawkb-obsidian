@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T10:23
-updated: 2026-06-27T19:21
+updated: 2026-08-14T00:10
 title: WorkBuddy这15个功能一个比一个香建议收藏
 tags: []
 maturity: 🌳核心
@@ -165,3 +165,14 @@ WorkBuddy给你一个沙箱，在里面随便折腾。出了事也不影响本�
 
 ---
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/MOYLmt7ASG4dtjQ6XY5HcQ)*
+
+## 相关笔记
+- [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: 配图, 模板, AI)
+- [[知识飞轮系统复盘报告-20260713]] (共现关键词: ##, 自动)
+- [[装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: 技能, 自动, WorkBuddy)
+- [[安装selfimprovingagent让WorkBuddy学会自己改进]] (共现关键词: ##, 自动, WorkBuddy)
+- [[用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包]] (共现关键词: 一个, WorkBuddy, AI)
+- [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: 一个, WorkBuddy, AI)
+- [[用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: ##, 自动, 一个)
+- [[怎么设计一个能交付的合同审查 Skill]] (共现关键词: Skill, 一个, AI)
+- [[工伤赔偿项目全景表13项6维度建议收藏]] (共现关键词: 建议, 收藏)

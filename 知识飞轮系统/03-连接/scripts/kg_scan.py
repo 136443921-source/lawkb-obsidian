@@ -70,11 +70,17 @@ for rel, n in notes.items():
     if any(meta in rel for meta in META_SKIP):
         continue  # meta 报告目录内部示例链接不计入边/断链
     for m in link_re.finditer(n["body"]):
-        target = m.group(1).strip()
+        target = m.group(1).strip().rstrip("\\").strip()  # 去尾随反斜杠（模板footer误带，如 [[知识图谱-2026-07.html\]]）
         tbase = os.path.basename(target)
         if tbase.endswith(".md"): tbase = tbase[:-3]
         # 文件链接（含扩展名）不是笔记链接，跳过（不计入断链）
         if any(tbase.endswith(ext) for ext in (".html",".pdf",".docx",".png",".jpg",".jpeg",".gif",".csv",".xlsx")):
+            continue
+        # 生成笔记自引用占位（如 [[self.md-20260805]]），非真实目标，跳过
+        if tbase.startswith("self.md"):
+            continue
+        # 模板/规范文档中的示意链接占位符（如 [[x]] [[经验卡片-XXX]] [[规则名]] [[链接]]），非真实目标，跳过
+        if re.search(r"^(?:x|wikilink|案件笔记名|规则名|链接|\.\.\.)$|XXX|Rxxx", tbase):
             continue
         cands = name_index.get(tbase)
         if not cands:

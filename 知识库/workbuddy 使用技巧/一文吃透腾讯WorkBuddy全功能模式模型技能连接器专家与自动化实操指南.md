@@ -1,6 +1,6 @@
 ---
 created: 2026-06-17T17:09
-updated: 2026-06-27T19:21
+updated: 2026-08-14T00:10
 title: 一文吃透腾讯WorkBuddy全功能模式模型技能连接器专家与自动化实操指南
 tags:
   - 合同
@@ -179,3 +179,18 @@ https://mp.weixin.qq.com/s/GGyF1bkhdN6i3ncPDnwT7A?from=singlemessage&scene=1&sub
 
 ---
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/GGyF1bkhdN6i3ncPDnwT7A?from=singlemessage&scene=1&subscene=10000&sessionid=1781677060&clicktime=1781687310&enterid=1781687310&ascene=1&realreporttime=1781687310509&forceh5=1)*
+
+## 相关笔记
+- [[基金会资助行业协会办竞赛-实操风险提示]] (共现关键词: ##, 实操)
+- [[医院法律顾问服务模式]] (共现关键词: 合同, 模式)
+- [[医院常年法律顾问服务模式]] (共现关键词: 合同, 模式)
+- [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: WorkBuddy, workbuddy)
+- [[memory]] (共现关键词: 合同, workbuddy)
+- [[一定要尽早用这个AI工具workbuddy的100条实操攻略]] (共现关键词: 技能, 模式, 连接器)
+- [[2026-07-30]] (共现关键词: 连接器, 合同)
+- [[2026-08-03]] (共现关键词: 连接器, 合同)
+- [[换电脑后WorkBuddy如何迁移]] (共现关键词: 连接器, WorkBuddy, workbuddy)
+- [[2026-07-15]] (共现关键词: 合同, 自动化)
+- [[飞轮运转复盘-2026-07-18]] (共现关键词: 合同, 自动化)
+- [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: jpg, wechat, img)
+- [[WorkBuddy提示词速查手册50个可复制的指令模板]] (共现关键词: wechat, WorkBuddy)

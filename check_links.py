@@ -20,8 +20,9 @@ import time
 import argparse
 from datetime import datetime, timedelta
 
-# Obsidian 库路径
-VAULT = "/Users/chenyouqiang/Documents/xiaoqianglawkb"
+# 知识飞轮系统本体路径（2026-08-02 路径收敛：原 xiaoqianglawkb 镜像库已于 2026-07-14 废弃，
+# 此脚本原硬编码扫废弃库会产生失真断链报告；现指向飞轮本体，与 03-连接/ 其余脚本口径一致）
+VAULT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
 
 def get_all_files():
     """获取所有 Markdown 文件"""
@@ -72,6 +73,9 @@ def extract_links(file_path):
                     target = match.split('|')[0].strip()
                 else:
                     target = match.strip()
+                # 2026-08-13 修复③：剥离表格内转义反斜杠（`[[路径\|别名]]` 写法 → 目标为 `路径`），
+                # 避免 `03-连接/知识图谱-2026-07.html\` 带反斜杠误判断链。
+                target = target.replace('\\', '').strip()
                 
                 # 移除 # 开头的标题链接（如 [[页面#标题]]）
                 if '#' in target:
@@ -84,6 +88,24 @@ def extract_links(file_path):
         print(f"  错误: 无法读取文件 {file_path}: {e}")
     
     return links
+
+def is_placeholder_link(name):
+    """判断是否为机器生成噪声/模板占位符链接（2026-08-13 新增，与 kg_scan 脏名护栏对齐）。
+    返回 True 表示该链接不应计入知识断链：
+    - self.md-YYYYMMDD 快照示意链接（概念页自动生成遗留）
+    - 模板占位符：经验卡片-XXX / 裁判规则-Rxxx / ... / x / wikilink / 案件笔记名
+    """
+    if not name:
+        return True
+    if re.match(r'^self\.md-\d{8}$', name):
+        return True
+    PLACEHOLDERS = {'经验卡片-XXX', '裁判规则-Rxxx', '...', 'x', 'wikilink', '案件笔记名'}
+    if name in PLACEHOLDERS:
+        return True
+    if name.endswith('-XXX') or name.endswith('-Rxxx'):
+        return True
+    return False
+
 
 def check_links(files):
     """检查链接"""
@@ -98,7 +120,12 @@ def check_links(files):
     broken_links = []    # 断链
     low_links_notes = [] # 链接数量过少的笔记
     
+    # meta 报告目录（孤立笔记检测报告、知识库压缩去重报告）内含大量示例/历史断链链接，
+    # 不扫描其作为源，避免把报告自身的示例链接误计为本体断链（会造成假断链累积）。
+    META_SKIP = {"孤立笔记检测报告", "知识库压缩去重报告"}
     for fp in files:
+        if any(meta in fp for meta in META_SKIP):
+            continue
         filename = os.path.splitext(os.path.basename(fp))[0]
         links = extract_links(fp)
         
@@ -108,6 +135,11 @@ def check_links(files):
             is_isolated = True
             for other_fp in get_all_files():
                 if other_fp == fp:
+                    continue
+                # 2026-08-13 修复④：反向链接检查同样跳过 META_SKIP 报告目录——
+                # 否则「链接检查报告.md」自身列出的 [[孤立笔记]] 会让孤立笔记被误判为"有人链接"，
+                # 导致孤立计数在 0 与真实值之间逐轮交替（自污染）。
+                if any(meta in other_fp for meta in META_SKIP):
                     continue
                 
                 other_links = extract_links(other_fp)
@@ -124,7 +156,21 @@ def check_links(files):
         
         # 检查断链
         for link in links:
-            if link not in filename_to_path:
+            # Obsidian 允许 [[路径/名称]] 路径式 wikilink，按 basename 解析（与 kg_scan/resolve_broken_links 口径对齐，避免路径式链接误判为断链）
+            # 2026-08-13 修复①：改用"仅剥 .md 后缀"而非 splitext——splitext 按最后一个点分割，
+            # 会把含版本号/点号的文件名（如 `小强律师数字分身系统 3.0  使用指导手册`、`self.md-20260805`）
+            # 中间的点误当扩展名，导致真实存在的文件被误报为断链。
+            # 2026-08-13 修复②：对齐 kg_scan 口径——剥 .html/.png 等非 md 扩展名（文件型链接不视为笔记断链）；
+            # 跳过机器生成噪声/模板占位符链接（self.md-YYYYMMDD 快照示意链接、XXX/Rxxx/.../x/wikilink/案件笔记名 占位符），
+            # 与 kg_scan/resolve_broken_links 的脏名护栏一致，避免将模板示例误计为知识断链。
+            norm = os.path.basename(link)
+            if norm.endswith('.md'):
+                norm = norm[:-3]
+            elif norm.endswith(('.html', '.htm', '.png', '.jpg', '.pdf')):
+                norm = None  # 文件型链接不计入笔记断链
+            if norm is None:
+                continue
+            if norm not in filename_to_path and not is_placeholder_link(norm):
                 broken_links.append((filename, fp, link))
     
     return isolated_notes, broken_links, low_links_notes
@@ -245,9 +291,11 @@ def main():
     print(f"  ✓ 发现 {len(broken_links)} 个断链")
     print(f"  ✓ 发现 {len(low_links_notes)} 个链接数量过少的笔记")
     
-    # 3. 生成报告
+    # 3. 生成报告（输出至 03-连接/孤立笔记检测报告/ 与历史报告同目录，避免污染本体根）
     print("\n[3/3] 生成链接检查报告...")
-    report_path = os.path.join(VAULT, "链接检查报告.md")
+    report_dir = os.path.join(VAULT, "03-连接", "孤立笔记检测报告")
+    os.makedirs(report_dir, exist_ok=True)
+    report_path = os.path.join(report_dir, "链接检查报告.md")
     generate_report(isolated_notes, broken_links, low_links_notes, report_path)
     print(f"  ✓ 报告已生成: {report_path}")
     

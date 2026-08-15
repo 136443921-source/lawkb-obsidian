@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小强律师数字分身系统 · 四大智能体评估与战略定位整合报告（审阅版）</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#171e2e; --panel2:#1d2740; --line:#2a3550;
+    --txt:#dbe4f5; --sub:#8fa0bf; --dim:#5d6b8a;
+    --blue:#4da3ff; --green:#3ddc97; --red:#ff6b6b; --yellow:#ffd166; --purple:#b388ff; --cyan:#4dd6e8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65;font-size:15px}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .hero{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:24px}
+  .hero h1{font-size:26px;font-weight:700;letter-spacing:.5px}
+  .hero .meta{margin-top:10px;color:var(--sub);font-size:13px}
+  .badges{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .badge{background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--sub)}
+  .toc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:26px}
+  .toc h2{font-size:14px;color:var(--sub);margin-bottom:10px;letter-spacing:1px}
+  .toc ol{margin-left:20px;columns:2;column-gap:32px}
+  .toc li{margin:4px 0;font-size:13.5px;break-inside:avoid}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:22px}
+  section h2{font-size:19px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section h3{font-size:15.5px;margin:18px 0 8px;border-left:3px solid var(--blue);padding-left:10px}
+  .sec-no{background:var(--panel2);border:1px solid var(--line);border-radius:8px;font-size:13px;padding:2px 10px;color:var(--sub);font-weight:600}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card .sys{font-size:15px;font-weight:700;margin-bottom:8px}
+  .card .score-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+  .card .score{font-size:30px;font-weight:800}
+  .card .grade{font-size:13px;padding:2px 8px;border-radius:6px}
+  .card ul{margin-left:16px;font-size:13px;color:var(--sub)}
+  .card li{margin:3px 0}
+  .g-A{color:var(--green)} .g-B{color:var(--yellow)}
+  .bg-A{background:rgba(61,220,151,.15);color:var(--green)} .bg-B{background:rgba(255,209,102,.15);color:var(--yellow)}
+  table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:13.5px}
+  th{background:var(--panel2);color:var(--sub);text-align:left;padding:9px 12px;font-weight:600;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:9px 12px;border-bottom:1px solid rgba(42,53,80,.5);vertical-align:top}
+  tr:hover td{background:rgba(77,163,255,.05)}
+  .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tag{display:inline-block;padding:1px 8px;border-radius:5px;font-size:11.5px;font-weight:600;margin-right:4px}
+  .t-ok{background:rgba(61,220,151,.15);color:var(--green)}
+  .t-warn{background:rgba(255,209,102,.15);color:var(--yellow)}
+  .t-bad{background:rgba(255,107,107,.15);color:var(--red)}
+  .t-info{background:rgba(77,163,255,.15);color:var(--blue)}
+  .t-purple{background:rgba(179,136,255,.15);color:var(--purple)}
+  .t-cyan{background:rgba(77,214,232,.15);color:var(--cyan)}
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+  .kpi{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+  .kpi .v{font-size:24px;font-weight:800;color:var(--blue)}
+  .kpi .l{font-size:12px;color:var(--sub);margin-top:2px}
+  .kpi .s{font-size:11px;color:var(--dim);margin-top:2px}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:14px 0}
+  .fnode{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:12.5px;min-width:110px;flex:1;text-align:center}
+  .fnode b{display:block;font-size:13px;margin-bottom:3px}
+  .fnode .fsub{color:var(--sub);font-size:11px}
+  .farrow{display:flex;align-items:center;color:var(--dim);font-size:16px;padding:0 2px}
+  .timeline{position:relative;margin:14px 0 4px;padding-left:24px}
+  .timeline:before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:var(--line)}
+  .tl-item{position:relative;margin-bottom:14px}
+  .tl-item:before{content:"";position:absolute;left:-22px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid var(--bg)}
+  .tl-item.ok:before{background:var(--green)}
+  .tl-date{font-size:12.5px;color:var(--cyan);font-weight:600}
+  .tl-title{font-size:14.5px;font-weight:600;margin:2px 0 4px}
+  .tl-desc{font-size:13px;color:var(--sub)}
+  .issue{border:1px solid var(--line);border-left-width:4px;border-radius:10px;padding:12px 16px;margin-bottom:10px;background:var(--panel2)}
+  .issue.hi{border-left-color:var(--red)} .issue.mid{border-left-color:var(--yellow)} .issue.lo{border-left-color:var(--blue)}
+  .issue .ih{font-weight:600;font-size:14px;margin-bottom:4px}
+  .issue .id{font-size:12.5px;color:var(--sub)}
+  .role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:10px 0}
+  .role{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .role .rt{font-size:13px;color:var(--sub);margin-bottom:4px}
+  .role .rh{font-size:15px;font-weight:600;margin-bottom:6px}
+  .role p{font-size:13px;color:var(--sub);line-height:1.6}
+  .adv{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .adv .n{background:var(--blue);color:#fff;border-radius:6px;min-width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;margin-top:2px}
+  .adv .ab{font-size:13.5px}
+  .adv .ab b{display:block;margin-bottom:2px}
+  .hl{color:var(--yellow);font-weight:600}
+  .ok{color:var(--green);font-weight:600}.bad{color:var(--red);font-weight:600}
+  .foot{margin-top:30px;color:var(--dim);font-size:12px;text-align:center;border-top:1px solid var(--line);padding-top:16px}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:10px 0;font-size:12px;color:var(--sub)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .dot{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .radar-wrap{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0}
+  @media(max-width:720px){.toc ol{columns:1}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>⚖️ 小强律师数字分身系统 · 四大智能体评估与战略定位整合报告（审阅版）</h1>
+    <div class="meta">
+      报告日期：2026年8月13日（周四）13:40（北京时间）｜ 数据基准：截至 2026-08-13 11:30 磁盘实况<br>
+      本报告整合三份材料：① 四大智能体协同性能评估报告（08-13 上午）② 市面律师分身系统对比雷达图 ③ 系统作用与优劣势评价意见<br>
+      用途：供老强审阅，确认后作为后续优化与对外版分身建设的决策底稿
+    </div>
+    <div class="badges">
+      <span class="badge">🔴 数据来源：磁盘实测 + 市面调研</span>
+      <span class="badge">📊 含六维雷达对比</span>
+      <span class="badge">🔄 活跃自动化：31 个（PAUSED 已清零）</span>
+      <span class="badge">🏷 审阅版 v1.0</span>
+    </div>
+  </div>
+
+  <!-- 目录 -->
+  <div class="toc">
+    <h2>📑 目录（点击跳转审阅）</h2>
+    <ol>
+      <li><a href="#s1">综合总览与四系统评分</a></li>
+      <li><a href="#s2">核心 KPI 与六层运转</a></li>
+      <li><a href="#s3">协同联动机制与案件配合</a></li>
+      <li><a href="#s4">风险与问题清单</a></li>
+      <li><a href="#s5">七项改进建议落地情况</a></li>
+      <li><a href="#s6">系统对老强的实际作用</a></li>
+      <li><a href="#s7">市面三阵营雷达对比</a></li>
+      <li><a href="#s8">优劣势分析</a></li>
+      <li><a href="#s9">战略定位与建议</a></li>
+      <li><a href="#s10">附录 · 数据来源与待确认事项</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 总览 -->
+  <section id="s1">
+    <h2><span class="sec-no">01</span>综合总览与四系统评分</h2>
+    <p style="font-size:13.5px;color:var(--sub)">四系统整体处于 <span class="ok">健康运转</span> 状态：知识飞轮六层持续产出、LTI 升级 v4.5.6 三模块、数字分身完成向量语义检索升级、08-12 连续两场真实案件模拟庭审全链路闭环。主要失分点集中在「协同埋点纪律」与「连接层链接健康度」两处运维性短板，均已在 08-13 当日修复。</p>
+    <div class="cards" style="margin-top:16px">
+      <div class="card">
+        <div class="sys">① 小强律师数字分身</div>
+        <div class="score-row"><span class="score g-A">A-</span><span class="grade bg-A">优秀</span></div>
+        <div class="ver" style="font-size:12px;color:var(--sub);margin-bottom:8px">self.md 唯一编辑源 · 向量语义检索 · 双文件治理</div>
+        <ul><li>人格稳定，月度进化已蒸馏 5 张真实卡</li><li>第六/七节铁律已固化检索+埋点</li></ul>
+      </div>
+      <div class="card">
+        <div class="sys">② 知识飞轮系统</div>
+        <div class="score-row"><span class="score g-B">B+</span><span class="grade bg-B">良好</span></div>
+        <div class="ver" style="font-size:12px;color:var(--sub);margin-bottom:8px">六层架构 · 25 自动化 · 每日摄入 v1.13</div>
+        <ul><li>六层文件 1564+，日更连续</li><li>孤立/断链 08-13 已清零（44→0 / 157→0）</li></ul>
+      </div>
+      <div class="card">
+        <div class="sys">③ LTI 文本监控器</div>
+        <div class="score-row"><span class="score g-A">A</span><span class="grade bg-A">优秀</span></div>
+        <div class="ver" style="font-size:12px;color:var(--sub);margin-bottom:8px">v4.5.6 · 三模块 · R101/C301 可阻断</div>
+        <ul><li>法条/法理/一致性三模块齐备</li><li>已接入模拟庭门禁（无高风险项）</li></ul>
+      </div>
+      <div class="card">
+        <div class="sys">④ 知识积累与经验沉淀</div>
+        <div class="score-row"><span class="score g-B">B+</span><span class="grade bg-B">良好</span></div>
+        <div class="ver" style="font-size:12px;color:var(--sub);margin-bottom:8px">经验卡 26 · 裁判规则 319 · 案件库 9</div>
+        <ul><li>真实裁判结果卡 5 张，闭环成立</li><li>规则卡激活 15 条可被检索命中</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 KPI -->
+  <section id="s2">
+    <h2><span class="sec-no">02</span>核心 KPI 与六层运转</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="v">1564+</div><div class="l">飞轮六层文件总数</div><div class="s">01采集113 / 02提炼627 / 03连接350 / 04巩固67 / 05调用31 / 06沉淀364</div></div>
+      <div class="kpi"><div class="v">26</div><div class="l">经验卡片</div><div class="s">真实裁判结果卡 5 + 规则激活卡 15 + 方法论卡 6</div></div>
+      <div class="kpi"><div class="v">319</div><div class="l">裁判规则库文件</div><div class="s">含合同风险规则库 25KB / 裁判规则库 34KB</div></div>
+      <div class="kpi"><div class="v">9</div><div class="l">案件库案件笔记</div><div class="s">合同6 / 侵权1 / 非诉2，索引已建</div></div>
+      <div class="kpi"><div class="v">31</div><div class="l">活跃自动化</div><div class="s">08-13 已清零 PAUSED</div></div>
+      <div class="kpi"><div class="v">100%</div><div class="l">协同命中率/采纳率</div><div class="s">命中 5/5 · 采纳 3/3（已确认）</div></div>
+    </div>
+    <h3>每日知识摄入 v1.13 连续性（08-07 ~ 08-13）</h3>
+    <table>
+      <tr><th>日期</th><th>结果</th><th>关键事件</th></tr>
+      <tr><td>08-07</td><td><span class="tag t-ok">DONE</span></td><td>消费漏窗 15 篇；B 库补录达标 36/36</td></tr>
+      <tr><td>08-08</td><td><span class="tag t-warn">部分</span></td><td>ima-mcp 配置态故障 → 自愈脚本翻正；登记漏窗</td></tr>
+      <tr><td>08-09</td><td><span class="tag t-ok">回补完成</span></td><td>IMA 挂载恢复；回补 14 篇真源笔记</td></tr>
+      <tr><td>08-10</td><td><span class="tag t-ok">完成</span></td><td>知识飞轮执行日志正常</td></tr>
+      <tr><td>08-11</td><td><span class="tag t-warn">部分+补遗</span></td><td>IMA 会话不可用 → A1/B 顺延不阻断；补遗回补 12/14 篇</td></tr>
+      <tr><td>08-12</td><td><span class="tag t-warn">部分</span></td><td>配置态已自愈但待重启授权；A2+C+D 完成</td></tr>
+      <tr><td>08-13</td><td><span class="tag t-ok">DONE ✅</span></td><td><b>IMA 完全可用日</b>：22 篇蒸馏落盘；pending_windows 清零</td></tr>
+    </table>
+    <p style="font-size:12.5px;color:var(--dim)">▶ 结论：每日摄入链路 <span class="ok">无静默断更</span>——IMA 断连时有漏窗登记+回补+守卫三重兜底。</p>
+  </section>
+
+  <!-- 3 协同 -->
+  <section id="s3">
+    <h2><span class="sec-no">03</span>协同联动机制与案件配合</h2>
+    <h3>协同主链路（飞轮 → 分身 秒级实时）</h3>
+    <div class="flow">
+      <div class="fnode" style="border-color:var(--green)"><b>④ 经验沉淀</b><span class="fsub">卡片/规则/案件库</span></div>
+      <div class="farrow"><span>①第六节铁律 实时检索</span>→</div>
+      <div class="fnode" style="border-color:var(--blue)"><b>① 数字分身</b><span class="fsub">向量语义检索</span></div>
+      <div class="farrow"><span>②LTI 出口门禁</span>→</div>
+      <div class="fnode" style="border-color:var(--purple)"><b>③ LTI 监控器</b><span class="fsub">三模块校验</span></div>
+      <div class="farrow"><span>③第七节埋点回写</span>→</div>
+      <div class="fnode" style="border-color:var(--cyan)"><b>⑤ 协同效果日志</b><span class="fsub">命中率可算</span></div>
+    </div>
+    <h3>最近案件配合（08-06 ~ 08-13）</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">08-06 14:47</div>
+        <div class="tl-title">📄 厚德 230 号上诉状红蓝复核（民刑交叉）</div>
+        <div class="tl-desc">命中厚德卡；锚点从"未经质证"转向"民刑分别审理（128条）"</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">08-06 15:46</div>
+        <div class="tl-title">⚖️ 230号民刑交叉模拟庭</div>
+        <div class="tl-desc">128条(2)锁死二审翻盘关键；验证三阶链路</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">08-09 20:00</div>
+        <div class="tl-title">🔭 预判式跨案件推送（7 件在办全命中）</div>
+        <div class="tl-desc">王五股东知情权案连续2周命不中后首命中（R-GS-001/002/003 双保险）</div>
+      </div>
+      <div class="tl-item ok">
+        <div class="tl-date">08-12 17:01</div>
+        <div class="tl-title">⚖️ 6658号吊顶买卖模拟庭</div>
+        <div class="tl-desc">命中"突破合同相对性"+R-HT-003；LTI 门禁无🔴项；模拟判决驳回原告诉请</div>
+      </div>
+      <div class="tl-item ok">
+        <div class="tl-date">08-12 17:35</div>
+        <div class="tl-title">⚖️ 雅菲软装窗帘案 6660号模拟庭</div>
+        <div class="tl-desc">命中同源方法论；产出3个可复用攻防模板；模拟判决驳回原告诉请</div>
+      </div>
+      <div class="tl-item ok">
+        <div class="tl-date">08-13</div>
+        <div class="tl-title">🔁 联动回写 + 采纳确认</div>
+        <div class="tl-desc">调用记录补录 6 条（含含灵/至善云端交付）；采纳率 3/3 确认</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 风险 -->
+  <section id="s4">
+    <h2><span class="sec-no">04</span>风险与问题清单（08-13 修复后剩余项）</h2>
+    <div class="issue mid">
+      <div class="ih">🟡 P1 · 埋点纪律依赖会话自觉（已加双保险待观察）</div>
+      <div class="id">08-13 已增强守卫"近7日埋点行数统计+未埋点清单"，但非会话内法律问答（自动化产出）仍可能绕过埋点；需观察 1~2 周守卫是否真告警。</div>
+    </div>
+    <div class="issue mid">
+      <div class="ih">🟡 P1 · IMA 配置态翻转根因未 100% 定位（已加日检自愈）</div>
+      <div class="id">10 个备份解析确认 80% 为配置态翻转、凭证从未丢失；已加每日 23:30 守卫日检+自动翻正；预留 2 周观测期（至 08-27）。</div>
+    </div>
+    <div class="issue lo">
+      <div class="ih">🟢 P2 · 裁判规则库核心主文件格式老（已按月索引段合并）</div>
+      <div class="id">08-13 已新增 merge_rules_monthly.py，合并 2026-08 卡索引 202+33 条入主文件；后续每月 28 日自动执行。</div>
+    </div>
+    <div class="issue lo">
+      <div class="ih">🟢 P2 · 链接过少笔记 343 个（存量健康指标）</div>
+      <div class="id">非本次目标，周日批自动补链持续消化。</div>
+    </div>
+  </section>
+
+  <!-- 5 建议落地 -->
+  <section id="s5">
+    <h2><span class="sec-no">05</span>七项改进建议落地情况（7/7 完成）</h2>
+    <table>
+      <tr><th>#</th><th>建议</th><th>落地动作</th><th>状态</th></tr>
+      <tr><td>P0-1</td><td>埋点自动兜底</td><td>守卫新增近7日埋点统计+未埋点清单</td><td><span class="tag t-ok">完成</span></td></tr>
+      <tr><td>P0-2</td><td>孤立补链+断链清零</td><td>78 笔记补链；check_links.py 修复 4 个 bug；孤立 44→0、断链 157→0</td><td><span class="tag t-ok">完成</span></td></tr>
+      <tr><td>P1-1</td><td>IMA 根因收敛</td><td>根因报告（80%配置态翻转）；守卫日检+自动自愈</td><td><span class="tag t-ok">完成</span></td></tr>
+      <tr><td>P1-2</td><td>非诉补埋点</td><td>补录 6 条调用记录（含云端产物检索）；缺口台账清零</td><td><span class="tag t-ok">完成</span></td></tr>
+      <tr><td>P1-3</td><td>采纳率采集</td><td>3 条反馈入库，老强确认全"算"；月报升级统计</td><td><span class="tag t-ok">完成</span></td></tr>
+      <tr><td>P2-1</td><td>规则库月度合并</td><td>merge_rules_monthly.py；2026-08 已合并</td><td><span class="tag t-ok">完成</span></td></tr>
+      <tr><td>P2-2</td><td>PAUSED 处置</td><td>3 个全删（软删）；31 自动化全 ACTIVE</td><td><span class="tag t-ok">完成</span></td></tr>
+    </table>
+  </section>
+
+  <!-- 6 作用 -->
+  <section id="s6">
+    <h2><span class="sec-no">06</span>系统对老强的实际作用</h2>
+    <div class="role-grid">
+      <div class="role">
+        <div class="rt">① 知识资产化</div>
+        <div class="rh">把办案经验变成"可检索资产"</div>
+        <p>26 经验卡 / 319 裁判规则 / 9 案件笔记全部双向链接。王德明、雅菲、厚德案沉淀为下次可调用知识——别人靠年资攒经验，你靠系统加速度攒。</p>
+      </div>
+      <div class="role">
+        <div class="rt">② 办案提效</div>
+        <div class="rh">庭审/审查/文书全流程加速</div>
+        <p>08-12 两场模拟庭审全流程闭环（庭前检索→模拟对抗→LTI门禁→协同埋点），模拟判决均驳回原告诉请——上庭前已知对方攻防路径。</p>
+      </div>
+      <div class="role">
+        <div class="rt">③ 质量兜底</div>
+        <div class="rh">幻觉法条/金额矛盾被拦截</div>
+        <p>R101 条号越界、C301 金额硬矛盾可阻断输出；法理逻辑、已废止法、虚构名称全量提示——执业级护栏，市面通用助手没有。</p>
+      </div>
+      <div class="role">
+        <div class="rt">④ 人格延续</div>
+        <div class="rh">"小强"随你办案进化</div>
+        <p>self.md 唯一编辑源 + 5 张真实裁判卡蒸馏 + 每月28日人格进化——不是模板化律师人格，是长在你案件上的你。</p>
+      </div>
+      <div class="role">
+        <div class="rt">⑤ 自动化杠杆</div>
+        <div class="rh">知识每天自动"长"出来</div>
+        <p>25+ 自动化任务：每日 08:30 摄入 / 23:30 守卫 / 周日批处理 / 月度蒸馏。你不在电脑前，系统也在替你学习。</p>
+      </div>
+      <div class="role">
+        <div class="rt">⑥ 协同闭环</div>
+        <div class="rh">推送→采纳→沉淀 全链路可查</div>
+        <p>命中率 100%（5/5）→ 采纳率 100%（3/3 已确认）→ 被修改率 66.7%。知识有没有真帮上忙，有数据说话。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 雷达 -->
+  <section id="s7">
+    <h2><span class="sec-no">07</span>市面三阵营雷达对比</h2>
+    <p style="font-size:13.5px;color:var(--sub)">调研 2026 年市面 5 类主流律师分身系统（小 Ta、知料灵雀、得理律助、劳有钳 LawClaw、海瑞智法），按六维能力与你的系统对比。雷达图基于实测与产品定位评分（0-10）。</p>
+    <div class="legend">
+      <span><span class="dot" style="background:#4da3ff"></span>小强系统（WorkBuddy 自建）</span>
+      <span><span class="dot" style="background:#888780"></span>市面综合平台（得理/海瑞）</span>
+      <span><span class="dot" style="background:#3ddc97"></span>市面分身产品（小Ta/灵雀）</span>
+    </div>
+    <div class="radar-wrap">
+      <svg viewBox="0 0 680 400" width="100%" role="img" aria-label="六维雷达对比图：小强系统、市面综合平台、市面分身产品">
+        <title>六维能力雷达对比</title>
+        <desc>知识闭环、本地数据主权、自动化、执业质量门禁、对外获客、多模态六维评分对比</desc>
+        <polygon points="340,80 452.6,145 452.6,275 340,340 227.4,275 227.4,145" fill="none" stroke="rgba(42,53,80,.5)" stroke-width="0.5"/>
+        <polygon points="340,145 424.4,182.5 424.4,257.5 340,295 255.6,257.5 255.6,182.5" fill="none" stroke="rgba(42,53,80,.3)" stroke-width="0.5"/>
+        <polygon points="340,210 396.3,220 396.3,240 340,250 283.7,240 283.7,220" fill="none" stroke="rgba(42,53,80,.2)" stroke-width="0.5"/>
+        <line x1="340" y1="210" x2="340" y2="80" stroke="rgba(42,53,80,.5)" stroke-width="0.5"/>
+        <line x1="340" y1="210" x2="452.6" y2="145" stroke="rgba(42,53,80,.5)" stroke-width="0.5"/>
+        <line x1="340" y1="210" x2="452.6" y2="275" stroke="rgba(42,53,80,.5)" stroke-width="0.5"/>
+        <line x1="340" y1="210" x2="340" y2="340" stroke="rgba(42,53,80,.5)" stroke-width="0.5"/>
+        <line x1="340" y1="210" x2="227.4" y2="275" stroke="rgba(42,53,80,.5)" stroke-width="0.5"/>
+        <line x1="340" y1="210" x2="227.4" y2="145" stroke="rgba(42,53,80,.5)" stroke-width="0.5"/>
+        <polygon points="340,93 430.1,158 441.3,268.5 340,327 306.2,229.5 317.5,197" fill="rgba(77,163,255,.18)" stroke="#4da3ff" stroke-width="2"/>
+        <polygon points="340,158 373.8,190.5 396.3,242.5 340,275 249.9,262 295,184" fill="rgba(136,135,128,.12)" stroke="#888780" stroke-width="2"/>
+        <polygon points="340,171 385,184 373.8,229.5 340,249 238.7,268.5 249.9,158" fill="rgba(61,220,151,.12)" stroke="#3ddc97" stroke-width="2"/>
+        <text x="340" y="66" text-anchor="middle" fill="#dbe4f5" font-size="12" font-weight="500">知识闭环</text>
+        <text x="452.6" y="132" text-anchor="start" fill="#dbe4f5" font-size="12" font-weight="500">本地主权</text>
+        <text x="452.6" y="293" text-anchor="start" fill="#dbe4f5" font-size="12" font-weight="500">自动化</text>
+        <text x="340" y="362" text-anchor="middle" fill="#dbe4f5" font-size="12" font-weight="500">质量门禁</text>
+        <text x="227.4" y="293" text-anchor="end" fill="#dbe4f5" font-size="12" font-weight="500">对外获客</text>
+        <text x="227.4" y="132" text-anchor="end" fill="#dbe4f5" font-size="12" font-weight="500">多模态</text>
+      </svg>
+    </div>
+    <h3>三阵营轮廓解读</h3>
+    <table>
+      <tr><th>阵营</th><th>轮廓特征</th><th>典型产品</th><th>一句话定位</th></tr>
+      <tr><td><b>小强系统</b></td><td>内功型：知识闭环9/本地主权8/自动化9/质量门禁9，但获客3/多模态2</td><td>WorkBuddy 自建</td><td>个人修炼型极致——经验复利机器</td></tr>
+      <tr><td>市面综合平台</td><td>均衡型：获客8/多模态4，知识闭环仅4/主权3</td><td>得理律助、海瑞智法</td><td>商业获客工具——数据大、工具全、深度浅</td></tr>
+      <tr><td>市面分身产品</td><td>外功型：获客9/多模态8，深度全面偏低</td><td>小 Ta、知料灵雀</td><td>品牌与展示——7×24 接待、高仿真人设</td></tr>
+    </table>
+  </section>
+
+  <!-- 8 优劣势 -->
+  <section id="s8">
+    <h2><span class="sec-no">08</span>优劣势分析</h2>
+    <h3>🔵 你的优势（内功型，市面产品学不走的）</h3>
+    <table>
+      <tr><th>优势</th><th>具体表现</th><th>为什么是护城河</th></tr>
+      <tr><td>知识闭环独一份</td><td>采集→提炼→连接→巩固→调用→沉淀六层</td><td>得理/海瑞是工具，你是养成系统——知识越用越多</td></tr>
+      <tr><td>本地数据主权</td><td>全部在本地 Obsidian + 开源脚本，不上传云端</td><td>对标劳有钳本地化卖点，但你的闭环比它完整</td></tr>
+      <tr><td>深度定制</td><td>25+ 自动化按你的执业场景（慈善+民商事）定制</td><td>市面是通用模板，你是量体裁衣</td></tr>
+      <tr><td>执业质量门禁</td><td>LTI 三模块、R101/C301 可阻断</td><td>得理/海瑞只有 AI 生成，没有幻觉拦截层</td></tr>
+      <tr><td>协同可度量</td><td>命中率 100%、采纳率 100%、被修改率 66.7%</td><td>知识"有没有用"有数据，市面产品说不清</td></tr>
+    </table>
+    <h3>🔴 你的劣势（外功型，市面产品强在的地方）</h3>
+    <table>
+      <tr><th>劣势</th><th>市面对手</th><th>差距影响</th></tr>
+      <tr><td>对外获客为零</td><td>小 Ta（7×24 在线分身）、海瑞（24h 客户接待）、得理（数字名片）</td><td>分身是工作助理，不是获客机器——案源拓展空白</td></tr>
+      <tr><td>多模态交互弱</td><td>知料灵雀（高仿真语音/表情/肢体数智人）</td><td>普法、品牌展示场景缺席</td></tr>
+      <tr><td>数据规模小</td><td>得理 1.3亿+ 裁判文书、300万+ 法条</td><td>你 319 条裁判规则是"精"，但"全"比不过商用库</td></tr>
+      <tr><td>技术依赖个人</td><td>商用产品有厂商维护</td><td>绑在 WorkBuddy 上，换设备/断服务=停摆</td></tr>
+      <tr><td>无商业化通道</td><td>小 Ta 有分成模式，知料推"一亿数智劳动力"</td><td>只服务你一个人，没有变现路径</td></tr>
+    </table>
+  </section>
+
+  <!-- 9 战略 -->
+  <section id="s9">
+    <h2><span class="sec-no">09</span>战略定位与建议</h2>
+    <div class="hl" style="font-size:15px;margin-bottom:12px;display:block">一句话总结：你的系统是"个人修炼型"的极致，市面系统是"商业获客型"的起点。你赢在深度（知识闭环、质量门禁、本地主权），输在广度（获客、多模态、数据规模、商业化）。</div>
+    <div class="adv"><div class="n">1</div><div class="ab"><b>P0 · 守好内功底盘</b>：六层飞轮 + LTI + 案件库这套"经验复利机器"是你最稀缺的资产。继续喂案子进去，三年后你就是"自带知识库的资深律师"——这是任何商用工具都给不了的。</div></div>
+    <div class="adv"><div class="n">2</div><div class="ab"><b>P1 · 补一个获客分身</b>：把小强人格蒸馏一份"对外版"挂到小 Ta/海瑞上做 7×24 客户接待。内部精、外部广，两套并行不冲突。对外版蒸馏方案 v1.0 已产出，待你拍板平台后落地（注意实习律师合规红线：不宣称执业/不承诺结果/免责声明常驻）。</div></div>
+    <div class="adv"><div class="n">3</div><div class="ab"><b>P2 · 补数据广度</b>：接一个商用检索库（得理/北大法宝/法随都在连接器里）做"查全"，本地库做"查准"，两层结合。</div></div>
+    <div class="adv"><div class="n">4</div><div class="ab"><b>P3 · 降技术依赖</b>：当前系统绑 WorkBuddy，建议定期把 self.md/经验库/案件库做冷备（已有备份机制），并考虑将核心知识导出为标准格式，保证换平台不丢资产。</div></div>
+  </section>
+
+  <!-- 10 附录 -->
+  <section id="s10">
+    <h2><span class="sec-no">10</span>附录 · 数据来源与待确认事项</h2>
+    <h3>待老强确认事项</h3>
+    <table>
+      <tr><th>事项</th><th>状态</th><th>截止</th></tr>
+      <tr><td>采纳率 3 条确认</td><td><span class="tag t-ok">已确认（全"算"）</span></td><td>已完成</td></tr>
+      <tr><td>含灵/至善调用记录补录</td><td><span class="tag t-ok">已完成（云端产物检索）</span></td><td>已完成</td></tr>
+      <tr><td>对外分身平台选择（小 Ta / 海瑞 / 暂缓）</td><td><span class="tag t-warn">待拍板</span></td><td>随时</td></tr>
+      <tr><td>对外知识包首批 Q&A（合同/慈善各10条）</td><td><span class="tag t-warn">待启动</span></td><td>拍板后即做</td></tr>
+    </table>
+    <h3>关键数据来源</h3>
+    <details open><summary>🧠 数字分身与 LTI</summary>
+      <p class="src" style="font-size:12px;color:var(--dim)"><code>~/.workbuddy/skills/xiaoqianglvshi/self.md + persona.md</code> — 人格母本（20,155 字节）</p>
+      <p class="src" style="font-size:12px;color:var(--dim)"><code>~/.workbuddy/skills/LTI文本监控器/SKILL.md</code> — v4.5.6 三模块说明</p>
+    </details>
+    <details open><summary>🌀 知识飞轮</summary>
+      <p class="src" style="font-size:12px;color:var(--dim)"><code>/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/</code> — 六层根目录（04-LOG 连续 12 天）</p>
+      <p class="src" style="font-size:12px;color:var(--dim)"><code>…/稳定性监测.md</code> + <code>…/03-连接/孤立笔记检测报告/链接检查报告.md</code> — 健康快照</p>
+    </details>
+    <details open><summary>🤝 协同与案件</summary>
+      <p class="src" style="font-size:12px;color:var(--dim)"><code>…/05-调用/协同效果日志.md</code> + <code>知识推送日志-2026-08.md</code> + <code>模拟法庭调用记录/</code> — 案件配合证据</p>
+      <p class="src" style="font-size:12px;color:var(--dim)"><code>…/03-连接/IMA连接器故障根因收敛报告-2026-08-13.md</code> — P1-1 根因</p>
+    </details>
+    <details><summary>📊 市面对比调研</summary>
+      <p class="src" style="font-size:12px;color:var(--dim)">小 Ta（taai.pro，KOL 式 AI 分身/行级隔离/分成）、知料灵雀（高仿真数智人）、得理律助（律所综合 SaaS）、劳有钳 LawClaw（开源本地部署）、海瑞智法（数字分身 24h 接待）——2026-08-13 WebSearch 调研</p>
+    </details>
+  </section>
+
+  <div class="foot">
+    整合审阅版 v1.0 ｜ 2026-08-13 13:40 ｜ 由评估报告 + 雷达对比 + 评价意见三份材料整合 ｜ 待老强审阅拍板
+  </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T15:22
-updated: 2026-06-27T19:21
+updated: 2026-08-14T00:10
 title: 安装selfimprovingagent让WorkBuddy学会自己改进
 tags: []
 maturity: 🌱种子
@@ -97,3 +97,16 @@ WorkBuddy就可以学会自我改进啦！
 
 ---
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/VaJ1j4pbwYo1J8g2SJQGcg)*
+
+## 相关笔记
+- [[小强律师AI助手自我进化报告-20260624]] (共现关键词: 改进, AI)
+- [[如何用AI构建自己的案件管理系统-2026-07-24]] (共现关键词: ##, 自己, AI)
+- [[工具之外法律人研究AI和Skill研究的是自己的新位置]] (共现关键词: 自己, AI)
+- [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: 自己, WorkBuddy, AI)
+- [[知识飞轮系统复盘报告-20260713]] (共现关键词: ##, 自动)
+- [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: ##, 自动, WorkBuddy)
+- [[装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: ##, 自动, WorkBuddy)
+- [[用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: ##, 自动)
+- [[memory]] (共现关键词: ##, self)
+- [[设备采购安装合同模板-审查要点-2026-08-05]] (共现关键词: 安装, ##)
+- [[Obsidian极简安装指南]] (共现关键词: 安装, ##)

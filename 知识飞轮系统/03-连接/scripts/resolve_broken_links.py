@@ -27,6 +27,10 @@ CONCEPT_DIR = os.path.join(ROOT, "03-连接", "概念页")
 os.makedirs(CONCEPT_DIR, exist_ok=True)
 # meta 报告目录：其内部 `[[...]]` 多为断链示例，不扫描、不建概念页
 META_SKIP = {"孤立笔记检测报告", "知识库压缩去重报告"}
+# 模板文件（Obsidian `_template.md`）：其 `[[...]]` 为填充占位符，非真实链接，跳过
+TEMPLATE_SKIP = "_template.md"
+# 占位符 token：规范文档/模板中的示意链接（如 `[[x]]` `[[经验卡片-XXX]]` `[[规则名]]` `[[链接]]`），非真实目标，跳过不建概念页
+PLACEHOLDER = re.compile(r"^(?:x|wikilink|案件笔记名|规则名|链接|\.\.\.)$|XXX|Rxxx")
 
 # ---------- 收集文件 ----------
 all_md = []
@@ -43,8 +47,10 @@ for f in all_md:
     base = os.path.splitext(os.path.basename(f))[0]
     existing[base] = f
 
-# 仅从非 meta 目录扫描「断链目标」，避免为报告内示例链接建概念页
-scan_md = [f for f in all_md if not any(meta in f for meta in META_SKIP)]
+# 仅从非 meta 目录扫描「断链目标」，避免为报告内示例链接建概念页；模板文件占位符亦跳过
+scan_md = [f for f in all_md
+           if not any(meta in f for meta in META_SKIP)
+           and not os.path.basename(f).endswith(TEMPLATE_SKIP)]
 
 # 预建 文件名->正文 索引（用于关联发现）
 file_text = {}
@@ -60,14 +66,18 @@ unresolved = Counter()
 broken_by_file = defaultdict(list)
 for f in scan_md:
     for m in link_re.finditer(file_text[f]):
-        raw = m.group(1).strip()
+        raw = m.group(1).strip().rstrip("\\").strip()  # 去尾随反斜杠（模板footer误带，如 [[知识图谱-2026-07.html\]]）
         if not raw:
             continue
         name = os.path.basename(raw)            # 去路径
+        if re.match(r"^self\.md", name):        # 生成笔记自引用占位（如 [[self.md-20260805]]），非真实目标
+            continue
         if any(name.endswith(ext) for ext in FILE_EXTS):
             continue                            # 文件链接，非笔记链接，跳过
         if name in existing:
             continue
+        if PLACEHOLDER.search(name):
+            continue  # 占位符示意链接，非真实目标
         unresolved[name] += 1
         broken_by_file[f].append(name)
 

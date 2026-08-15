@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T23:51
-updated: 2026-06-27T19:21
+updated: 2026-08-14T00:10
 title: 一定要尽早用这个AI工具workbuddy的100条实操攻略
 tags: []
 maturity: 🌱种子
@@ -291,3 +291,15 @@ https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ
 
 ---
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ)*
+
+## 相关笔记
+- [[医疗损害纠纷100问-实务问答提炼]] (共现关键词: 劳动, 100)
+- [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: 工具, AI)
+- [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (共现关键词: 文件, 工具, AI)
+- [[医疗合规 & 医疗纠纷律师：AI 提效全景指南]] (共现关键词: 工具, AI, ###)
+- [[裁判规则三任务职责边界]] (共现关键词: 劳动, 任务)
+- [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: ###, 工具, WorkBuddy)
+- [[一文吃透腾讯WorkBuddy全功能模式模型技能连接器专家与自动化实操指南]] (共现关键词: 技能, 模式, 连接器)
+- [[2026-08-03]] (共现关键词: 劳动, 连接器)
+- [[换电脑后WorkBuddy如何迁移]] (共现关键词: 连接器, WorkBuddy, workbuddy)
+- [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: 劳动, 文档, AI)

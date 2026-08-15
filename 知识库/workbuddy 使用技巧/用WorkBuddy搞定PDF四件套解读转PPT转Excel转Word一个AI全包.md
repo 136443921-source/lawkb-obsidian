@@ -1,6 +1,6 @@
 ---
 created: 2026-06-23T18:31
-updated: 2026-06-27T19:21
+updated: 2026-08-14T00:10
 title: 用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包
 tags: []
 maturity: 🌳核心
@@ -340,3 +340,10 @@ markitdown / pptx-generator / minimax-xlsx / minimax-docx
 
 ---
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/zmrIPFHKnOj-rVWR6va_7Q)*
+
+## 相关笔记
+- [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: PPT, AI)
+- [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 一个, WorkBuddy, AI)
+- [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: 一个, WorkBuddy, AI)
+- [[怎么设计一个能交付的合同审查 Skill]] (共现关键词: 一个, AI)
+- [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: Excel, PDF, AI)

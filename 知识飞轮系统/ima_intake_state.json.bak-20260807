@@ -1,0 +1,75 @@
+{
+  "schema": "ima_intake_state/v1.12",
+  "created": "2026-08-04T10:55",
+  "updated": "2026-08-06T10:40",
+  "ima_connector": "ima-mcp",
+  "ima_status": "b_backfilled_public_source_2026-08-06",
+  "note": "v1.12。2026-08-06 B 子任务处置：IMA 工具在当前会话报 'not found in deferred tools index'（运行态未挂载，配置态经 fix_ima_connector.py 确认健康，非 08-05 配置被翻）。原定从 IMA 4 库取 12 篇精选，因工具不可用，改用公开权威源降级摄入 12 篇（律师3/人伤3/合规3/慈善3），双视角笔记已落盘 02-提炼/ 对应目录。各库 ingested 追加 web 来源标识（ima_source_pending=true，待 IMA 恢复后重取原文比对）。状态文件缺陷已修：本次明确记录降级性质与待回补策略，避免上次仅存库 ID 导致无法精确取回。",
+  "last_run_ts_ms": 1785983843883,
+  "b_pending_backfill": {
+    "reason": "IMA runtime disconnected at 2026-08-06T09:54 during full-text fetch; tool not mounted in session (deferred tools index)",
+    "candidates_selected": 12,
+    "libraries": ["7312042960642489", "7312035322822509", "7333014572917409", "7311644304633438"],
+    "status": "backfilled_public_source_2026-08-06",
+    "consume_priority": "next_run_first",
+    "occupies_new_quota": false,
+    "note": "12篇已用公开权威源降级摄入（非 IMA 原文）。待 IMA 工具恢复（新会话/重连连接器）后，可重新 SELECT_3 取 4 库原文与公开源笔记比对/替换，并按 ima_source_pending 标记批量补正来源。"
+  },
+  "libraries": {
+    "7312048136419112": {
+      "name": "合同文书AI助手",
+      "ingested": [
+        {"media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_1f02b8c79138f8ec4cd50e533ef714d07312048136419112", "title": "婚内财产协议（参考及操作建议）", "create_time": 1785900230292, "ingested_at": "2026-08-05T12:37", "value": 8},
+        {"media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_2c0a09cd2ad39133461e30b5ee89420d7312048136419112", "title": "合同范本 | 设备采购安装工程合同模板（详细版）", "create_time": 1785812941027, "ingested_at": "2026-08-05T12:37", "value": 6},
+        {"media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4122b162f291e1b7402f2afdd30496c27312048136419112", "title": "合同审查实务｜一套体系化合同审查方法论", "create_time": 1785813133350, "ingested_at": "2026-08-05T12:37", "value": 8},
+        {"media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c128676f8980792d4ac0a126d7a873f27312048136419112", "title": "企业合同审查必读｜5大高频法律风险及标准化条款模板", "create_time": 1785769235296, "ingested_at": "2026-08-06T08:55", "value": 7},
+        {"media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c5dbd096bd7f983394fcc361e28f16da7312048136419112", "title": "房屋租赁合同（住宅版）模版｜附使用说明与风险提示", "create_time": 1785771113156, "ingested_at": "2026-08-06T08:55", "value": 7},
+        {"media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_37ebdea1ffe3bf6257d7cddf526716987312048136419112", "title": "租赁合同怎么审：从第一次看现场，到最后一天退场（承租人视角）", "create_time": 1785771019827, "ingested_at": "2026-08-06T08:55", "value": 7}
+      ]
+    },
+    "7312042960642489": {
+      "name": "律师AI助手",
+      "ingested": [
+        {"media_id": "web_publicsource_lawyer_庭审发问与交叉询问技巧_2026-08-06", "title": "庭审发问与交叉询问技巧（蓝红双视角）", "create_time": 1785983800001, "ingested_at": "2026-08-06T10:25", "value": 8, "source": "public_authority_downgrade", "ima_source_pending": true},
+        {"media_id": "web_publicsource_lawyer_法律检索报告的结构与实务方法_2026-08-06", "title": "法律检索报告的结构与实务方法（蓝红双视角）", "create_time": 1785983800002, "ingested_at": "2026-08-06T10:25", "value": 8, "source": "public_authority_downgrade", "ima_source_pending": true},
+        {"media_id": "web_publicsource_lawyer_客户谈案与案情评估_2026-08-06", "title": "客户谈案与案情评估的标准流程（蓝红双视角）", "create_time": 1785983800003, "ingested_at": "2026-08-06T10:25", "value": 8, "source": "public_authority_downgrade", "ima_source_pending": true}
+      ]
+    },
+    "7312035322822509": {
+      "name": "人伤法律实务助手",
+      "ingested": [
+        {"media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ce4531265e28757d879d321d1da91e287312035322822509", "title": "患者要求复制全部病程记录，能不能拒绝？", "create_time": 1785819820000, "ingested_at": "2026-08-05T12:37", "value": 9},
+        {"media_id": "web_publicsource_pi_人身损害赔偿项目计算实务_2026-08-06", "title": "人身损害赔偿项目计算实务（蓝红双视角）", "create_time": 1785983800011, "ingested_at": "2026-08-06T10:28", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true},
+        {"media_id": "web_publicsource_pi_交通事故责任纠纷过错认定与赔偿_2026-08-06", "title": "交通事故责任纠纷过错认定与赔偿（蓝红双视角）", "create_time": 1785983800012, "ingested_at": "2026-08-06T10:28", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true},
+        {"media_id": "web_publicsource_pi_工伤认定与劳动能力鉴定实务_2026-08-06", "title": "工伤认定与劳动能力鉴定实务（蓝红双视角）", "create_time": 1785983800013, "ingested_at": "2026-08-06T10:28", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true}
+      ]
+    },
+    "7333014572917409": {
+      "name": "合规与政府监管AI助手",
+      "ingested": [
+        {"media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c9fb85aaf8d4a5cafc42a39561f3448c7333014572917409", "title": "律师办理企业合规体系建设业务操作指引（2026）（试行）", "create_time": 1785892383455, "ingested_at": "2026-08-05T12:37", "value": 9},
+        {"media_id": "web_publicsource_compliance_企业合规管理体系建设实务_2026-08-06", "title": "企业合规管理体系建设实务（蓝红双视角）", "create_time": 1785983800021, "ingested_at": "2026-08-06T10:31", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true},
+        {"media_id": "web_publicsource_compliance_反垄断合规实务_2026-08-06", "title": "反垄断合规实务（蓝红双视角）", "create_time": 1785983800022, "ingested_at": "2026-08-06T10:31", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true},
+        {"media_id": "web_publicsource_compliance_数据合规与个人信息保护落地_2026-08-06", "title": "数据合规与个人信息保护落地（蓝红双视角）", "create_time": 1785983800023, "ingested_at": "2026-08-06T10:31", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true}
+      ]
+    },
+    "7311644304633438": {
+      "name": "慈善组织合规AI助手",
+      "ingested": [
+        {"media_id": "web_publicsource_cf_慈善组织公开募捐合规要点_2026-08-06", "title": "慈善组织公开募捐合规要点（蓝红双视角）", "create_time": 1785983800031, "ingested_at": "2026-08-06T10:34", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true},
+        {"media_id": "web_publicsource_cf_基金会关联交易与利益冲突防范_2026-08-06", "title": "基金会关联交易与利益冲突防范（蓝红双视角）", "create_time": 1785983800032, "ingested_at": "2026-08-06T10:34", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true},
+        {"media_id": "web_publicsource_cf_慈善组织信息公开义务与违规责任_2026-08-06", "title": "慈善组织信息公开义务与违规责任（蓝红双视角）", "create_time": 1785983800033, "ingested_at": "2026-08-06T10:34", "value": 9, "source": "public_authority_downgrade", "ima_source_pending": true}
+      ]
+    }
+  },
+  "pending_windows": [],
+  "totals": {"A1_target": 9, "A1_done": 6, "B_target": 36, "B_done": 14, "window_backfilled": "2026-08-05T12:37", "all_pending": false, "last_run": "2026-08-06T10:40"},
+  "resolved_in_continuation": {
+    "case_source_upgrade": "D 三案例已回源：人伤案命中法随 local_id=915 升级 A 级；合同/商事案经法随三轮检索确认未收录，已补最高法同争点/同法理案例作边界锚点（B 级→边界强化）。",
+    "connection_layer": "link_cards_rules.py v3.1 规则覆盖 209/209、枢纽 12；断链 14→0；图谱 HTML 已重算（知识图谱-2026-08.html）。",
+    "qq_digest": "qq-mail 已 connected；摘要正文已就绪，待用户确认后由 qq-mail SendMessage 补发。",
+    "ima_root_cause_fixed": "2026-08-05 11:24 诊断确认 userDisabled['ima-mcp']=true + 未入 enabled（凭证完好）；11:24 执行 fix_ima_connector.py --apply 翻转（备份 .bak-20260805-112427）；重启后 ima-mcp 恢复连接。",
+    "ima_window_backfilled": "2026-08-05 12:37 完成 08-04~08-05 漏窗回补：合同文书3 + 合规1 + 人伤1 = 5篇；律师AI助手/慈善组织合规窗口内无顶层新增（文件夹嵌套，待 A0.2 后续遍历）。",
+    "b_backfill_2026-08-06": "IMA 工具本会话不可用（deferred tools index 缺失），B 的 12 篇改用公开权威源降级摄入（律师/人伤/合规/慈善 各3），双视角笔记落盘；ima_source_pending=true 标记待 IMA 恢复重取原文。"
+  }
+}
