@@ -1,7 +1,7 @@
 ---
 title: LawKB笔记frontmatter标准模板
 created: 2026-06-27
-updated: 2026-08-14T00:10
+updated: 2026-08-21T18:55
 tags:
   - 诉讼
   - 慈善组织
@@ -159,6 +159,15 @@ python3 /Users/chenyouqiang/Documents/LawKB/update_frontmatter.py
 
 
 ## 相关笔记
+- [[合同审查的五个层次]] (共现关键词: 民法, 合同, 违约)
+- [[合同审查思维体系]] (共现关键词: 民法, 合同, 违约)
+- [[法律文书防幻觉提示词_LTI校验版]] (共现关键词: 关键词, 共现, 民法)
+- [[LawKB笔记frontmatter标准模板]] (共现关键词: frontmatter, 标准, 模板)
+- [[每日学习笔记-2026-07-07]] (共现关键词: 关键词, 共现, 合同)
+- [[如何让AI帮你打理Obsidian知识库]] (共现关键词: 笔记, 关键词, 共现)
+- [[复习操作手册-Obsidian 版]] (共现关键词: 复习, review)
+- [[统一知识索引-2026-07]] (共现关键词: 慈善, 合同, LawKB)
+- [[Obsidian配置指南]] (共现关键词: 慈善, LawKB, 关键词)
 - [[知识复利自动化系统搭建方案（基于Obsidian-LawKB优化版）]] (共现关键词: 合同, 复习, LawKB)
 - [[memory]] (共现关键词: 合同, 笔记, LawKB)
 - [[last_run_report]] (共现关键词: 违约, 合同, 笔记)

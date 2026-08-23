@@ -1,6 +1,6 @@
 ---
 created: 2026-08-07T12:48
-updated: 2026-08-14T00:10
+updated: 2026-08-21T18:55
 tags:
   - 
   - 用户名
@@ -792,6 +792,7 @@ pip install
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/6uCpMe8C5bl8Bg97rT6VxA)*
 
 ## 相关笔记
+- [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: WorkBuddy, 迁移, 工具)
 - [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: 工具, AI)
 - [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (共现关键词: 文件, 工具, AI)
 - [[医疗合规 & 医疗纠纷律师：AI 提效全景指南]] (共现关键词: 工具, AI, ###)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-连接层 · 断链消解器 (v1.0)
+连接层 · 断链消解器 (v1.1)
 =======================
 为知识飞轮系统内所有「双向链接断链」（[[target]] 无对应 .md 文件）生成概念页，
 使断链转为有效解析，从而修复知识图谱连通性。
@@ -18,10 +18,11 @@
   --apply   实际写入（默认 dry-run 打印计划）
   --only-freq 仅处理出现次数>=N 的断链目标（默认 1，即全部）
 """
-import os, re, json, argparse
+import os, re, json, argparse, datetime
 from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # 知识飞轮系统/
+WORKSPACE = os.path.dirname(ROOT)  # LawKB 工作区根（含根目录/00_收件箱/知识库/案件管理/.workbuddy 等真实 .md）
 SCRIPTS = os.path.join(ROOT, "03-连接", "scripts")
 CONCEPT_DIR = os.path.join(ROOT, "03-连接", "概念页")
 os.makedirs(CONCEPT_DIR, exist_ok=True)
@@ -31,6 +32,13 @@ META_SKIP = {"孤立笔记检测报告", "知识库压缩去重报告"}
 TEMPLATE_SKIP = "_template.md"
 # 占位符 token：规范文档/模板中的示意链接（如 `[[x]]` `[[经验卡片-XXX]]` `[[规则名]]` `[[链接]]`），非真实目标，跳过不建概念页
 PLACEHOLDER = re.compile(r"^(?:x|wikilink|案件笔记名|规则名|链接|\.\.\.)$|XXX|Rxxx")
+# 护栏 v1.1（2026-08-17 收紧，与 kg_scan.py v1.4 一致）：
+# 日期型（2026-07-07 / 2026年7月7日）、纯数字、URL —— 非笔记概念，不建概念页
+DATE_ONLY_RE = re.compile(r"^(19|20)\d{2}[-/.年]\d{1,2}([-/.月]\d{1,2})?日?$")
+NUM_ONLY_RE = re.compile(r"^\d+$")
+URL_RE = re.compile(r"^(https?://|www\.|file://)")
+# 系统/自动化内部引用（工作记忆 memory、自动化队列文件 待推送_*）：非笔记概念，跳过
+SYSTEM_REF_RE = re.compile(r"^(?:memory|待推送_[0-9\-]+)$", re.IGNORECASE)
 
 # ---------- 收集文件 ----------
 all_md = []
@@ -41,11 +49,17 @@ for dp, dn, fn in os.walk(ROOT):
         if f.endswith(".md"):
             all_md.append(os.path.join(dp, f))
 
-# existing 包含全部 .md（含 meta 报告），使指向报告等真实文件的链接正确解析
+# existing 覆盖全工作区（含根目录/收件箱/知识库/案件管理/.workbuddy 等 ROOT 外真实文件），
+# 使指向这些真实文件的链接正确解析，避免误建概念页
+# 注意：与 kg_scan.py 一致——跳过隐藏目录（.trash/.obsidian 等备份与系统目录不入索引）
 existing = {}
-for f in all_md:
-    base = os.path.splitext(os.path.basename(f))[0]
-    existing[base] = f
+for dp, dn, fn in os.walk(WORKSPACE):
+    if ".git" in dp:
+        continue
+    dn[:] = [d for d in dn if not d.startswith(".")]
+    for f in fn:
+        if f.endswith(".md"):
+            existing[os.path.splitext(f)[0]] = os.path.join(dp, f)
 
 # 仅从非 meta 目录扫描「断链目标」，避免为报告内示例链接建概念页；模板文件占位符亦跳过
 scan_md = [f for f in all_md
@@ -78,6 +92,10 @@ for f in scan_md:
             continue
         if PLACEHOLDER.search(name):
             continue  # 占位符示意链接，非真实目标
+        if DATE_ONLY_RE.match(name) or NUM_ONLY_RE.match(name) or URL_RE.match(name):
+            continue  # 护栏 v1.1：日期/纯数字/URL 非笔记概念，不建概念页
+        if SYSTEM_REF_RE.match(name):
+            continue  # 系统/自动化内部引用（memory / 待推送_*）：跳过
         unresolved[name] += 1
         broken_by_file[f].append(name)
 
@@ -182,8 +200,9 @@ def build_page(target, cluster):
     lines.append("---")
     lines.append(f'title: "{title}"')
     lines.append("type: concept")
+    lines.append(f"created: {datetime.date.today().isoformat()}")
     lines.append(f'tags: [{" ".join(tags)}]')
-    lines.append("generated_by: 断链消解器resolve_broken_links v1.0")
+    lines.append("generated_by: 断链消解器resolve_broken_links v1.1")
     lines.append("---")
     lines.append("")
     lines.append(f"# {title}")

@@ -7,7 +7,7 @@ tags:
   - 技能
   - 必装
 created: 2026-05-28T10:51
-updated: 2026-08-14T00:10
+updated: 2026-08-21T18:55
 title: 装上这7个Skills你的WorkBuddy直接起飞
 maturity: 🌱种子
 source: ""
@@ -189,6 +189,9 @@ https://mp.weixin.qq.com/s/MF5fBEm3EBhxVHzl42C2qg
 
 
 ## 相关笔记
+- [[案源开拓的四度模型]] (共现关键词: 合同, 律师, 共现)
+- [[谈案报价的理念与技巧]] (共现关键词: 律师, 关键词, 共现)
+- [[装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: WorkBuddy, 直接, 起飞)
 - [[知识飞轮系统复盘报告-20260713]] (共现关键词: 自动, ##, 合同)
 - [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 技能, 自动, WorkBuddy)
 - [[安装selfimprovingagent让WorkBuddy学会自己改进]] (共现关键词: ##, 自动, WorkBuddy)

@@ -1,0 +1,1791 @@
+{
+  "schema": "ima_intake_state/v1.13",
+  "created": "2026-08-04T10:55",
+  "updated": "2026-08-17T12:05+0800",
+  "ima_connector": "ima-mcp",
+  "ima_status": "available_2026-08-17_B_backfill_consumed_10new_2dup_A1_done_C_D_done",
+  "note": "2026-08-17 B库回补完成：12 候选全部消费（10 篇新蒸馏 R-LN-009~011/R-PI-127~128/R-HG-026~028/R-CF-064~065；pi04 病历记录与 cf10 塔西佗为重复，已去重不建新制品；cf10 补登 dedup）。hg09 调岗降薪 IMA 220030 降级 WebSearch 重构（pending_source_upgrade）。ingested 156→167。",
+  "last_run_ts_ms": 1786939526456,
+  "b_pending_backfill": {
+    "reason": "RESOLVED 2026-08-17T12:05 —— 12 候选全部消费完毕：10 篇新笔记+10 张规则卡；pi04（病历记录，media 2039beba 已于 08-16 登记）与 cf10（塔西佗，既有 07-25 笔记）为重复，去重跳过新制品，cf10 补登 dedup。hg09 取文 220030 二次失败，降级 WebSearch 重构并标 pending_source_upgrade。",
+    "candidates_selected": 12,
+    "libraries": [
+      "7312042960642489",
+      "7312035322822509",
+      "7333014572917409",
+      "7311644304633438"
+    ],
+    "consumed": {
+      "7312042960642489": 3,
+      "7312035322822509": 2,
+      "7333014572917409": 3,
+      "7311644304633438": 2
+    },
+    "duplicates_skipped": [
+      "pi04 病历记录完整率（media 2039beba，08-16 已登记）",
+      "cf10 公益慈善行业塔西佗陷阱（media ba4a9d9e，07-25 既有笔记，补登 dedup）"
+    ],
+    "status": "consumed",
+    "consume_priority": "next_run_first",
+    "occupies_new_quota": "false",
+    "note": "B库回补闭环。hg09 pending_source_upgrade 待 IMA 恢复回源精校；cf10 仅补登 dedup 表不重复计数。"
+  },
+  "libraries": {
+    "7312048136419112": {
+      "name": "合同文书AI助手",
+      "ingested": [
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_1f02b8c79138f8ec4cd50e533ef714d07312048136419112",
+          "title": "婚内财产协议（参考及操作建议）",
+          "create_time": 1785900230292,
+          "ingested_at": "2026-08-05T12:37",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_2c0a09cd2ad39133461e30b5ee89420d7312048136419112",
+          "title": "合同范本 | 设备采购安装工程合同模板（详细版）",
+          "create_time": 1785812941027,
+          "ingested_at": "2026-08-05T12:37",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4122b162f291e1b7402f2afdd30496c27312048136419112",
+          "title": "合同审查实务｜一套体系化合同审查方法论",
+          "create_time": 1785813133350,
+          "ingested_at": "2026-08-05T12:37",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c128676f8980792d4ac0a126d7a873f27312048136419112",
+          "title": "企业合同审查必读｜5大高频法律风险及标准化条款模板",
+          "create_time": 1785769235296,
+          "ingested_at": "2026-08-06T08:55",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c5dbd096bd7f983394fcc361e28f16da7312048136419112",
+          "title": "房屋租赁合同（住宅版）模版｜附使用说明与风险提示",
+          "create_time": 1785771113156,
+          "ingested_at": "2026-08-06T08:55",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_37ebdea1ffe3bf6257d7cddf526716987312048136419112",
+          "title": "租赁合同怎么审：从第一次看现场，到最后一天退场（承租人视角）",
+          "create_time": 1785771019827,
+          "ingested_at": "2026-08-06T08:55",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e921fdb82b9eee4ed8770468e5a093757312048136419112",
+          "title": "教育培训合同（范本与审查要点）",
+          "create_time": 1785978000000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_436ab0a61d0542a9631926029ef006267312048136419112",
+          "title": "合同风险防控的60个关键点",
+          "create_time": 1785976200000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_79e4947cef4236217120d2d07bf630ec7312048136419112",
+          "title": "保证合同纠纷实务100问",
+          "create_time": 1785889800000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0858a0ced31dc6bbc0ca9d36e82c8cf47312048136419112",
+          "title": "民事纠纷私了和解协议书（标准文本）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_640206c116d4ca6232e27fe0698aaca77312048136419112",
+          "title": "交通事故赔偿协议书（范本与审查要点）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_361a7224f9b79ee17f190a54c758e5877312048136419112",
+          "title": "家庭财产分家协议（范本与审查要点）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7aa8216df4df85c1cf353903dff5b96e7312048136419112",
+          "title": "贵州高院〈商品房买卖合同纠纷案件审判要件指南〉（2025）",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0db3dd5e4920d6ca4543e27268934bf97312048136419112",
+          "title": "公司合同审查及法律风险防控",
+          "create_time": 1785772557509,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 9,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_2a377e5d6b4fbed475065f701859730b7312048136419112",
+          "title": "《公司员工保密协议》范本",
+          "create_time": 1785644052888,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 4,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e91968decabad64eaa12be514ef257567312048136419112",
+          "title": "当事人未提出解除合同诉请时，法院能否依职权解除合同？",
+          "create_time": 1784631471068,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 6,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_aaffbffaf6a2622fe7a706a1ed16ea717312048136419112",
+          "title": "股权转让协议（参考及注意事项）",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_6b7840031ecf2e4d7937e668bab106ec7312048136419112",
+          "title": "好的代理词6种写法（诉讼文书写作要点）",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7840a714f284e6531fdced509148d6f77312048136419112",
+          "title": "展会场地租赁合同",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_392c4b3ddb4bf00ca0f25d330e50ccc57312048136419112",
+          "title": "律师必备：诉讼代理方案通用模板与撰写全攻略",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-12",
+          "source": "ima_true",
+          "occupies_new_quota": false,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_55921b6aacb0d6e8e08190223895c39c7312048136419112",
+          "title": "《建设工程招标代理合同》范本及写作要点",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-12",
+          "source": "ima_true",
+          "occupies_new_quota": false,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_dbd794fd761cf11924be8660548036aa7312048136419112",
+          "title": "再审申请书写作参考模板",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_829777e09623e01dc684d75a82abfe007312048136419112",
+          "title": "再审申请书写作注意事项",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_b401b858538410536d9d7b547f319fdd7312048136419112",
+          "title": "民事起诉状的写作方法（二）——诉讼请求的设计",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_bc21ddb9834c7b715ef89e05fbed40fb7312048136419112",
+          "title": "合同范本 | 债权转让协议模板（详细版）",
+          "create_time": 1784478555277,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_14724dde1a60c3aebb519e6a1a2afa197312048136419112",
+          "title": "合同范本 | 合作保密协议模板（2026详细版）",
+          "create_time": 1785256941043,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a871ce7f7c58019ddc4954f29cfd11b57312048136419112",
+          "title": "房屋代持协议（参考及注意事项）",
+          "create_time": 1785554759108,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 5
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0ac4a1735e82d5b942852fd3d2596f987312048136419112",
+          "title": "挂靠经营管理协议书（参考）",
+          "create_time": 1784954636920,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 5
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_9286db150c1344cf0f61c743551860657312048136419112",
+          "title": "合同范本 | 和解协议模板（庭外和解）",
+          "create_time": 1784778704157,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 5
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_f368a719db5edc67499ff3cd216f8c997312048136419112",
+          "title": "《特许经营合作合同》范本及写作要点",
+          "create_time": 1784631429713,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 5
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c6c69c57ae46e73e35bf2824170267137312048136419112",
+          "title": "公司采购合同审查法律意见书（范本与写作要点）",
+          "create_time": 1781310312242,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_8df6891727ab3088504a12987a102c1e7312048136419112",
+          "title": "突破合同相对性的八类法定情形（2026建工解释二）",
+          "create_time": 1783907757545,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_1d2aae6161137073bd2f41032000d9d27312048136419112",
+          "title": "合同订立与履行十一问（裁判规则与抗辩权体系）",
+          "create_time": 1781669127584,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7aa8216df4df85c1cf353903dff5b96e7312048136419112",
+          "title": "贵州高院《商品房买卖合同纠纷案件审判要件指南》（2025）蓝红双视角蒸馏",
+          "create_time": 1786929480000,
+          "ingested_at": "2026-08-17T09:18",
+          "value": 8,
+          "ima_true": "true",
+          "ima_source_pending": "false",
+          "occupies_new_quota": "false"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_79e4947cef4236217120d2d07bf630ec7312048136419112",
+          "title": "保证合同纠纷实务100问——要点提炼（蓝红双视角蒸馏）",
+          "create_time": 1786929480000,
+          "ingested_at": "2026-08-17T09:18",
+          "value": 8,
+          "ima_true": "true",
+          "ima_source_pending": "false",
+          "occupies_new_quota": "false"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_55921b6aacb0d6e8e08190223895c39c7312048136419112",
+          "title": "建设工程招标代理合同——范本与写作要点（蓝红双视角蒸馏）",
+          "create_time": 1786929480000,
+          "ingested_at": "2026-08-17T09:18",
+          "value": 8,
+          "ima_true": "true",
+          "ima_source_pending": "false",
+          "occupies_new_quota": "false"
+        }
+      ]
+    },
+    "7312042960642489": {
+      "name": "律师AI助手",
+      "ingested": [
+        {
+          "media_id": "web_publicsource_lawyer_庭审发问与交叉询问技巧_2026-08-06",
+          "title": "庭审发问与交叉询问技巧（蓝红双视角）",
+          "create_time": 1785983800001,
+          "ingested_at": "2026-08-06T10:25",
+          "value": 8,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "web_publicsource_lawyer_法律检索报告的结构与实务方法_2026-08-06",
+          "title": "法律检索报告的结构与实务方法（蓝红双视角）",
+          "create_time": 1785983800002,
+          "ingested_at": "2026-08-06T10:25",
+          "value": 8,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "web_publicsource_lawyer_客户谈案与案情评估_2026-08-06",
+          "title": "客户谈案与案情评估的标准流程（蓝红双视角）",
+          "create_time": 1785983800003,
+          "ingested_at": "2026-08-06T10:25",
+          "value": 8,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_045790244569a64fbdb53aad2e8d60417312042960642489",
+          "title": "律师办理保证担保业务操作指引（2026）（试行）",
+          "create_time": 1786065840000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_51c5719ae3494af3b7832921c467b4dc7312042960642489",
+          "title": "律师办理债权人接受担保业务操作指引（2026）（试行）",
+          "create_time": 1785979140000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4371ac546302e0eafe209f38cfb017367312042960642489",
+          "title": "律师代理竞业限制纠纷案件操作指引（试行）（2025）",
+          "create_time": 1785719760000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_8712ce35e9dfa8a95aa564d10e488a5b7312042960642489",
+          "title": "收藏即用！民事执行全流程65项法律依据清单（2026实务完整版）",
+          "create_time": 1783917300000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_be1aef71156996072149b4c78788cfab7312042960642489",
+          "title": "律师办理公司决议业务操作指引（2026）（试行）",
+          "create_time": 1783987320000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_6d74014abd4a60848afa91dcc80eb5f57312042960642489",
+          "title": "干货｜律师制作证据目录的20个实务细节",
+          "create_time": 1785566760000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ec1dd3a3c761148a35f9774205e3364d7312042960642489",
+          "title": "虚假诉讼审查与移送公安机关（裁判规则）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_9ed8477d30bc7c7cf875255eb4ef52897312042960642489",
+          "title": "申请再审材料清单（实务指引）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4d15e3465c9f0c5f2d3ff70a4a0a29ae7312042960642489",
+          "title": "新生儿缺血缺氧性脑病医疗损害鉴定案（司法部入库案例）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_601931987cbe6b54dae892b8f36fb1fb7312042960642489",
+          "title": "民间借贷纠纷100问",
+          "create_time": 1785386828568,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 6,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_87a9487bdf981678d98d1078807c34e37312042960642489",
+          "title": "婚姻家事法律300问",
+          "create_time": 1785386540386,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 4,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ef6978cc75ca8450fd4a00f2bf5c59137312042960642489",
+          "title": "公司对外担保操作指引2024",
+          "create_time": 1785082188669,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 7,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_b7bb8545b2ca1bec9ab6343e6effe2327312042960642489",
+          "title": "法庭辩论10条金句（人身损害赔偿辩论三核心）",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_d5cff11a7263cd84415b39f39b487cff7312042960642489",
+          "title": "律师办理签发律师函业务操作指引（2026）",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_07051716e2f189f0c49f0c1c176e18ac7312042960642489",
+          "title": "代理买卖合同纠纷：律师全流程证据准备、举证与质证实操指南",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-12",
+          "source": "ima_true",
+          "occupies_new_quota": false,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_641940272336073c5aabfaf9bc55b7817312042960642489",
+          "title": "买卖合同纠纷律师辩护思路与辩护要点（全维度实务版）",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-12",
+          "source": "ima_true",
+          "occupies_new_quota": false,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_91be238c633df4afdda330ca672ee6177312042960642489",
+          "title": "律师法庭辩论的 5 个诀窍（附《庭审提纲一览表》）丨iCourt",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_191db4ed456536f378f089625c87ba577312042960642489",
+          "title": "如何拆解一项复杂的法律工作？｜实务经验",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_d8bd38e554446b805199fcc72bb806da7312042960642489",
+          "title": "打官司别踩坑，这几类证据交上去，反而可能让你输掉官司",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_94805e46bea8cf5c6790029efa3390b47312042960642489",
+          "title": "创始人笔记 | 青年律师对行业的十大认知误区",
+          "create_time": 1786614633538,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 4
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_2d30721fc6fc950cce38a0d0362532767312042960642489",
+          "title": "律师办理民事案件案由选择操作指引（2026）（试行）",
+          "create_time": 1786609844330,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7c9a807cab3dd3a35c86bfb840256c6d7312042960642489",
+          "title": "贵州高院《抚养费纠纷案件审判要件指南》（2025年）",
+          "create_time": 1785082394376,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 10
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_d2df3130d1718a3bdeef9c367c530bd37312042960642489",
+          "title": "律师办理企业税务合规业务操作指引（2026）（试行）",
+          "create_time": 1785049970686,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_5d50145f163494795b9dcea802cda13b7312042960642489",
+          "title": "侦查阶段首次刑事会见（律师版）",
+          "create_time": 1785050021717,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4218d68709efcf7b9451defb497662757312042960642489",
+          "title": "公司法务反垄断合规极简手册（通俗记忆+法条原文+实务要点）",
+          "create_time": 1784981753689,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_1e17ed6748c4de9336832f7cc46b237e7312042960642489",
+          "title": "实习律师全流程SOP体系（27项）",
+          "create_time": 1784744577947,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_fb33a4b692cb432648a5b9ea46c986ac7312042960642489",
+          "title": "法律检索的方法与重点",
+          "create_time": 1782110026199,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_73da003d5905951b989b7a56ff67e8d67312042960642489",
+          "title": "律师申请调查令实务要点",
+          "create_time": 1784744743135,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_49712a50f534dfb9c4243977453174fa7312042960642489",
+          "title": "青年律师如何从0到1建立一个万粉公众号（一）",
+          "create_time": 1786020038768,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_562dd580adfb64cd23ffcfbe9114c1b97312042960642489",
+          "title": "创始人笔记 | 案源介绍费：损害的不仅是客户利益，更是律师行业的基座",
+          "create_time": 1785836967595,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 8
+        },
+        {
+          "media_id": "markdown_62fe55a7567bc291dfbbee29900b27c3_cdb787d27179b92a6221990e4247db9b7312042960642489",
+          "title": "法律资讯周报（2026年第30期）.md",
+          "create_time": 1785036673369,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 5
+        }
+      ]
+    },
+    "7312035322822509": {
+      "name": "人伤法律实务助手",
+      "ingested": [
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ce4531265e28757d879d321d1da91e287312035322822509",
+          "title": "患者要求复制全部病程记录，能不能拒绝？",
+          "create_time": 1785819820000,
+          "ingested_at": "2026-08-05T12:37",
+          "value": 9
+        },
+        {
+          "media_id": "web_publicsource_pi_人身损害赔偿项目计算实务_2026-08-06",
+          "title": "人身损害赔偿项目计算实务（蓝红双视角）",
+          "create_time": 1785983800011,
+          "ingested_at": "2026-08-06T10:28",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "web_publicsource_pi_交通事故责任纠纷过错认定与赔偿_2026-08-06",
+          "title": "交通事故责任纠纷过错认定与赔偿（蓝红双视角）",
+          "create_time": 1785983800012,
+          "ingested_at": "2026-08-06T10:28",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "web_publicsource_pi_工伤认定与劳动能力鉴定实务_2026-08-06",
+          "title": "工伤认定与劳动能力鉴定实务（蓝红双视角）",
+          "create_time": 1785983800013,
+          "ingested_at": "2026-08-06T10:28",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_2484434f12695819531fc337e66538ed7312035322822509",
+          "title": "医疗过错、医疗事故与医疗事故罪：三层法律逻辑",
+          "create_time": 1786007580000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_b3a98225b891ad21ded2f98b68fb4c967312035322822509",
+          "title": "工伤保险、雇主责任险、团体意外险和安责险分别解决什么问题",
+          "create_time": 1785805200000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_07aefcc3f07cd5e9c62fc6c1ed257c217312035322822509",
+          "title": "从5094件案件、82%医方败诉率看医疗纠纷",
+          "create_time": 1785758580000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_b0f84b50dc51a21d149347b02615a41f7312035322822509",
+          "title": "工伤赔偿案件：工伤认定、鉴定、仲裁、执行全流程（完整版）",
+          "create_time": 1782256860000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_f9e6a67449efdd024dd3ca4cefb4e4617312035322822509",
+          "title": "医院误诊，病患家属怎么主张赔偿？教你索赔姿势和索偿金额",
+          "create_time": 1786068000000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_36dbe9718102f9f28932803da66861247312035322822509",
+          "title": "医疗事故罪44宗画像（72份文书统计）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_abfaa2b6e846514a6219b43831ebf86b7312035322822509",
+          "title": "医疗事故罪入罪红线（韩杰案）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ae8a8692c9078a3e2820421e9ba5821d7312035322822509",
+          "title": "医患纠纷高发真相（非医术因素）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 6,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_d98a4a256fb3be221d53cebf16201da07312035322822509",
+          "title": "医疗损害诉讼时效起算（(2022)粤民再152号）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0b2c58e204edd8fc44168f50cdcb0a137312035322822509",
+          "title": "道交和解后起诉医院（侵权竞合）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_9a3292c05170cc1e7d7c41f1a433dbad7312035322822509",
+          "title": "医疗纠纷维权全攻略",
+          "create_time": 1785729349241,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 8,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ad162165e54c0f606442bcae70bc7c3c7312035322822509",
+          "title": "医疗损害责任纠纷入门分析",
+          "create_time": 1785490871143,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 8,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_d16c14899cba3716bc1c29926d543ccd7312035322822509",
+          "title": "恪守医疗制度诊疗规范",
+          "create_time": 1786071263784,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 6,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_262aa8157cacb672597e868c18dfe73e7312035322822509",
+          "title": "医疗损害纠纷100问（实务问答提炼）",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_afc856dd21e7e6875b908ef1015520c47312035322822509",
+          "title": "发生医疗纠纷怎么办？——从证据固定到损害鉴定",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-12",
+          "source": "ima_true",
+          "occupies_new_quota": false,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ad05adc9d5ad52fdd73d1d8db1595aef7312035322822509",
+          "title": "医疗纠纷再审翻盘指南：一审二审最致命的 5 大错误排名",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_53b2d59f29b0967c31261a43df5868407312035322822509",
+          "title": "医疗纠纷新手律师入门（六）：家属拒尸检≠医院免责",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_02c1b9b2048e6cd0c4d0b9358793ff927312035322822509",
+          "title": "病历封存注意要点",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_325e99e99cfd97062eea6da557a659d87312035322822509",
+          "title": "医疗事故罪的一份判决书",
+          "create_time": 1786611018574,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 10
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a0cd2fbc8c6c6d404fda87d2f5f30f797312035322822509",
+          "title": "案例剖析 | 交通事故后医疗损害责任纠纷中的多因一果责任认定与比例划分",
+          "create_time": 1786609211670,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 10
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_cafbec060217d127ab8d65f7e75baa7d7312035322822509",
+          "title": "医疗纠纷诉讼实务全流程操作指引",
+          "create_time": 1784130393881,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ed0b137724741e4cd4fb7f1db5eb23df7312035322822509",
+          "title": "律协发布：律师办理人损赔偿与工伤赔偿竞合业务操作指引（2026）",
+          "create_time": 1782716383716,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_5bb05266ae17ac5ed8e384cad1d1a9227312035322822509",
+          "title": "人体损伤程度鉴定应注意的关键问题",
+          "create_time": 1784035228542,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_2591a1fbac69793ce7f282f135d7d54e7312035322822509",
+          "title": "聘请专家辅助人常见实务问题汇总",
+          "create_time": 1783764429978,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_cf7bbd5d185e65dbdc23933d4e9a62d97312035322822509",
+          "title": "韩杰案悖论：医疗事故罪与死亡赔偿金刑民交叉",
+          "create_time": 1786797162529,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_8ac43a6d17c7ec0c64c410393b1ce5137312035322822509",
+          "title": "医院赔146万首诊医生批捕：医疗事故罪边界",
+          "create_time": 1785242127982,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_2039beba320912196f87efcb9ac1c9de7312035322822509",
+          "title": "病历记录完整率：关键诊疗记录缺失风险",
+          "create_time": 1783578277942,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_5bf6439678c48d0a851a8782fb5f24157312035322822509",
+          "title": "医疗纠纷之推拿禁忌症",
+          "create_time": 1783068341214,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_2c16113d9fd46346ec60c0d63ddb3d387312035322822509",
+          "title": "医疗纠纷之急性冠状动脉综合征（心梗）",
+          "create_time": 1783067605592,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 8
+        }
+      ]
+    },
+    "7333014572917409": {
+      "name": "合规与政府监管AI助手",
+      "ingested": [
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c9fb85aaf8d4a5cafc42a39561f3448c7333014572917409",
+          "title": "律师办理企业合规体系建设业务操作指引（2026）（试行）",
+          "create_time": 1785892383455,
+          "ingested_at": "2026-08-05T12:37",
+          "value": 9
+        },
+        {
+          "media_id": "web_publicsource_compliance_企业合规管理体系建设实务_2026-08-06",
+          "title": "企业合规管理体系建设实务（蓝红双视角）",
+          "create_time": 1785983800021,
+          "ingested_at": "2026-08-06T10:31",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "web_publicsource_compliance_反垄断合规实务_2026-08-06",
+          "title": "反垄断合规实务（蓝红双视角）",
+          "create_time": 1785983800022,
+          "ingested_at": "2026-08-06T10:31",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "web_publicsource_compliance_数据合规与个人信息保护落地_2026-08-06",
+          "title": "数据合规与个人信息保护落地（蓝红双视角）",
+          "create_time": 1785983800023,
+          "ingested_at": "2026-08-06T10:31",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e6539073ce5e159d89de27fa2adb87b37333014572917409",
+          "title": "医院建了一柜子制度，为什么还是被罚？",
+          "create_time": 1786064280000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7dd404723976f825f2856be19583d63a7333014572917409",
+          "title": "合规检查并不复杂，每季度一次就够了",
+          "create_time": 1785799980000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4ae189f269a5655ae33dba740a1857be7333014572917409",
+          "title": "操作指引-公司被吊销未注销执行操作指引",
+          "create_time": 1785888000000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c3f0106b87326cc1fe45ba7c06bbedec7333014572917409",
+          "title": "员工入职尽调全流程指南",
+          "create_time": 1782209160000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_55962778913fbcff4c3e078db71451ae7333014572917409",
+          "title": "重磅逐条解读｜2026版《民营企业劳动用工管理制度（参考文本）》（全12章·合规指南）",
+          "create_time": 1785884700000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_77cbe7b680b1ee890602aeeb44b6b1937333014572917409",
+          "title": "律师办理企业合规体系建设业务操作指引（2026）（试行）",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 9,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_bc630bcd1bfae0f4e1b82125a87912e17333014572917409",
+          "title": "律师与企业合规建设",
+          "create_time": 1786100000000,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 6,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_772c2757ef17960868eaeb62e6dabb9f7333014572917409",
+          "title": "公司规章制度制定指引与生效流程全解析",
+          "create_time": 1785758000000,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 5,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a3be2479b5668ac3bec8df7f199d4fc67333014572917409",
+          "title": "常法服务法律体检清单（2026最新版）",
+          "create_time": 1785758058000,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 5,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_92ecc65020b67d83563643d2d1c21e7f7333014572917409",
+          "title": "企业合规与合法的边界",
+          "create_time": 1782372900000,
+          "ingested_at": "2026-08-10T17:15",
+          "value": 7,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-10",
+          "occupies_new_quota": false,
+          "create_time_approx": true,
+          "note": "首采因 media_id 被截断报 code 220030 顺延；续跑以完整 media_id（含 kb_id 后缀 7333014572917409）重试成功，落盘学习笔记。真因为调用侧截断，非 IMA 端解析故障（parse_progress=100）。"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7f449d5c1c09fc914b53f1dabf4bb6b37333014572917409",
+          "title": "企业注销指引（2025年修订）",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_135013c75eb8e928f3fd6a3b726d2cc57333014572917409",
+          "title": "企业常见法律问题100问（上）",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0f0ca25befcd0b3674de2edbf7bd4cec7333014572917409",
+          "title": "首席合规官签字签的到底是什么对过程负责不是替结果兜底",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_6ac02ead03eacf661f43c71d8c974d407333014572917409",
+          "title": "合规最难解决的，是明知有风险仍要做",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-12",
+          "source": "ima_true",
+          "occupies_new_quota": false,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ce1be9b14bcf941c1511ec3c3f4b9b637333014572917409",
+          "title": "公司法避坑指南18：公司违法减资，股东要承担什么责任？附正确减资程序",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_39f1afe48ea23be8a7838036d5f6c4bd7333014572917409",
+          "title": "企业常见涉税问题分类及风险管理",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_1fcb5dc19c2251ab28b01f8500c283cd7333014572917409",
+          "title": "股东退出公司的路径及实操指引",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_39bc19a48f0ff0f5f90d8b222139133e7333014572917409",
+          "title": "《公司尽职调查材料清单汇总》",
+          "create_time": 1786609185215,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_60af7609ad51dc01dfff441765f200a57333014572917409",
+          "title": "企业全员降薪合规操作指引与法律风险防范",
+          "create_time": 1782316942339,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c273e9e0c67471ca065c64916b3f809e7333014572917409",
+          "title": "公司法务必备数据合规完整知识手册（实务导向）",
+          "create_time": 1780882906902,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_17a9519327e4f6453e9e894c920107c37333014572917409",
+          "title": "公司法务合同评审全流程实操指南（详细版）",
+          "create_time": 1777338973477,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_bbac1f14e18338ca6c6f2634918a9e207333014572917409",
+          "title": "公司治理 | 股东表决权行使法律风险及防范（附案例）",
+          "create_time": 1780915292437,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_069a91edd3cbb2bc398dbe2bea19def47333014572917409",
+          "title": "工资结构拆分：合法框架下的拆分——到底能帮企业规避多少风险？",
+          "create_time": 1780898995077,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 5
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a52f350bcfc56b3f4741bf2c681e798e7333014572917409",
+          "title": "AI法律与合规指南第二章：双向著作权版图",
+          "create_time": 1781066092033,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_5400cc815d5418bbd7b40670c5abc5fd7333014572917409",
+          "title": "四位一体协同运作体系（法务合规内控风险）",
+          "create_time": 1780814908731,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_35c1250b5e4a68d516f797be758933407333014572917409",
+          "title": "公司合规与风控法律意见书（范本与写作要点）",
+          "create_time": 1776843189654,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_8f1532ad254a47285bbbb2e3c590a8277333014572917409",
+          "title": "AI 法律与合规指南-总则",
+          "create_time": 1780384653678,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_1d1703bd5fc5eaf066cacf279570dba47333014572917409",
+          "title": "企业合规，不是制约发展，而是关乎生存",
+          "create_time": 1778211366260,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_588a651987a04407d29528bb338edb177733014572917409",
+          "title": "公司调岗、降薪、架构调整，合法边界到底在哪里？",
+          "create_time": 1777011478501,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 8,
+          "pending_source_upgrade": true,
+          "degrade_note": "IMA fetch 220030 两次失败，WebSearch 降级重构，待回源精校"
+        }
+      ]
+    },
+    "7311644304633438": {
+      "name": "慈善组织合规AI助手",
+      "ingested": [
+        {
+          "media_id": "web_publicsource_cf_慈善组织公开募捐合规要点_2026-08-06",
+          "title": "慈善组织公开募捐合规要点（蓝红双视角）",
+          "create_time": 1785983800031,
+          "ingested_at": "2026-08-06T10:34",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "web_publicsource_cf_基金会关联交易与利益冲突防范_2026-08-06",
+          "title": "基金会关联交易与利益冲突防范（蓝红双视角）",
+          "create_time": 1785983800032,
+          "ingested_at": "2026-08-06T10:34",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "web_publicsource_cf_慈善组织信息公开义务与违规责任_2026-08-06",
+          "title": "慈善组织信息公开义务与违规责任（蓝红双视角）",
+          "create_time": 1785983800033,
+          "ingested_at": "2026-08-06T10:34",
+          "value": 9,
+          "source": "public_authority_downgrade",
+          "ima_source_pending": false,
+          "resolved_at": "2026-08-07T11:22",
+          "resolved_note": "2026-08-07 已用 IMA 真源完成该库 3 篇补录；本条降级笔记主题独立、内容有效，予以保留，不再等待 IMA 原文替换。"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0926cf0384e442252e131fb4fc9bf1da7311644304633438",
+          "title": "社会组织换届要点分析",
+          "create_time": 1784714100000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_b1f8ed18452f5f12cd5597df5362e3e57311644304633438",
+          "title": "微小机构月捐，为了生存，也为了发展",
+          "create_time": 1785757920000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0aa3142242a130df4ad05207386e336b7311644304633438",
+          "title": "韩红爱心慈善基金会的高管该不该拿高薪",
+          "create_time": 1785551220000,
+          "ingested_at": "2026-08-07T11:22",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_6b618affd8791899c5d57c97857567757311644304633438",
+          "title": "66%基金会的公募资格闲置：申请前，请三思",
+          "create_time": 1786012620000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_8e696ce79a7d1a03ca26dd156b89a9e67311644304633438",
+          "title": "公益项目结项剩钱，能直接转为机构自有收入？千万别乱调账！",
+          "create_time": 1785195000000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_11b7f8b4905682ed78eb91715e247fd97311644304633438",
+          "title": "社会组织常用政策法规汇编（一）",
+          "create_time": 1784715120000,
+          "ingested_at": "2026-08-07T12:53",
+          "value": 7,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-07",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_57e9fffcd4d501624a20a5af094fea087311644304633438",
+          "title": "谁捐的要讲清楚（捐赠署名权与公益纯粹性）— 蒸馏笔记",
+          "create_time": 1786262400000,
+          "ingested_at": "2026-08-09T18:30",
+          "value": 8,
+          "source": "ima_true",
+          "ima_source_pending": false,
+          "window": "2026-08-08",
+          "occupies_new_quota": false,
+          "create_time_approx": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_922f0b3bb56174b6eaf98ea4defca07b7311644304633438",
+          "title": "到底什么是公益？行善/慈善/公益辨析",
+          "create_time": 1784640000000,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 4,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_5d168672ad52eb82edd253e4ad672aa97311644304633438",
+          "title": "慈善机构\"合法吞善款\"底层套路",
+          "create_time": 1785640000000,
+          "ingested_at": "2026-08-10T14:40",
+          "value": 6,
+          "pool": "backlog"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_6ce04f6b9f220750e692702f1777802c7311644304633438",
+          "title": "基金会投资收益归属——限定性与非限定性的行业之问",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_35783dc096d5544a37c378a6825279477311644304633438",
+          "title": "志愿者补贴合规发放指南",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a7159812b8de019d4dd5769009de4bea7311644304633438",
+          "title": "民发〔2012〕124号《关于规范基金会行为的若干规定(试行)》",
+          "create_time": 1786422600000,
+          "ingested_at": "2026-08-11T18:30",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c6c98aa71d667f861f541d776acd71217311644304633438",
+          "title": "社会组织乱象整顿典型案例",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-12",
+          "source": "ima_true",
+          "occupies_new_quota": false,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_661bfefdac2a847aebf5281d9bf0ca367311644304633438",
+          "title": "断层差距：前5%的基金会占据78%捐赠收入",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_98a979b9ac3dab9c087bc4e9c518054d7311644304633438",
+          "title": "基金会开展异地活动需要备案吗？该怎么报备？",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_8bb2441b0b29c730ac787cfc5d02ecab7311644304633438",
+          "title": "公益行业薪酬是否合理，到底谁说了算？",
+          "ingested_at": "2026-08-13T10:57:45+08:00",
+          "window": "2026-08-13",
+          "source": "ima_true",
+          "occupies_new_quota": true,
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_70e4505ac529abdcc27f68faba0447c37311644304633438",
+          "title": "善款岂能挪作他用？从某地红十字志愿者协会整改案例看定向捐赠的法律红线",
+          "create_time": 1786602732336,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 10
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_481e87b635d5d601629d1d74a70b49c77311644304633438",
+          "title": "民政部、中央社会工作部联合印发《社会组织评比表彰活动管理办法》",
+          "create_time": 1784883783507,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 10
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_b5c096fa6f905f32b18f0a8a50e4d0937311644304633438",
+          "title": "辟谣！财政部新规≠资助不算捐赠！公益组织入账、免税、开票全实操指南",
+          "create_time": 1784191936581,
+          "ingested_at": "2026-08-14T10:18",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_628a3ee430e990e48a4eb5e936f33cd27311644304633438",
+          "title": "回应质疑‖基金会的慈善捐款到底能不能购买理财产品？",
+          "create_time": 1784209391980,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_86275cff9336ef912cfd9847b2ac3ce97311644304633438",
+          "title": "医院捐赠合规管理：药企赞助学术会议、捐赠设备，这些红线千万别踩！",
+          "create_time": 1784130450007,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c6842d0306ce7440e06ada03964150637311644304633438",
+          "title": "基金会资助行业协会 举办竞赛实操风险提示",
+          "create_time": 1784883758500,
+          "ingested_at": "2026-08-15T07:49",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4958a18198fa68df13fed2910e6556d77311644304633438",
+          "title": "公信力危机与机构化信任（韩红月捐暴跌27%）",
+          "create_time": 1784997304790,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_cf909ff64faabb70554bd7a094d42c497311644304633438",
+          "title": "基金会审计报告对比分析（审计机构选聘合规）",
+          "create_time": 1784997110516,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_267074efe62bda0bcf07424ea34a7d8f7311644304633438",
+          "title": "基金会关联交易核查方法论（采购供应商交叉比对）",
+          "create_time": 1784883239673,
+          "ingested_at": "2026-08-16T16:55:15+0800",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ba4a9d9e1d92204c0ef45d8e34dc00c07311644304633438",
+          "title": "中国公益慈善行业再陷\"塔西佗陷阱\"",
+          "create_time": 1784883701260,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 0,
+          "dedup_register_only": true,
+          "dedup_note": "内容已含于 02-提炼/慈法/公益慈善行业塔西佗陷阱-信任修复.md（2026-07-25），仅补登 dedup 防重选，不重复计数"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_3b030c45d729e99f06e7376a9970448a7311644304633438",
+          "title": "韩红基金会理事长、秘书长年薪 62 万明显不合理，对比嫣然天使基金讲透根源",
+          "create_time": 1784130289072,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 8
+        },
+        {
+          "media_id": "markdown_62fe55a7567bc291dfbbee29900b27c3_a5b157387a70e620702c4a486521bd077311644304633438",
+          "title": "监管篇_4_取缔非法社会组织办法（2025）",
+          "create_time": 1783931147032,
+          "ingested_at": "2026-08-17T12:05+0800",
+          "value": 8
+        }
+      ]
+    }
+  },
+  "pending_windows": [],
+  "totals": {
+    "ingested_total": 167,
+    "libraries": {
+      "7312048136419112": 36,
+      "7312042960642489": 34,
+      "7312035322822509": 33,
+      "7333014572917409": 33,
+      "7311644304633438": 31
+    }
+  },
+  "resolved_in_continuation": {
+    "dns_fault_diagnosed_2026-08-16": "04-LOG 静默 8 天（08-08~08-15）根因确诊：本机路由器 DNS 192.168.1.1 间歇无法解析 copilot.tencent.com（WorkBuddy AI 模型端点）→ runtime_state 最后错误 502 ENOTFOUND，automation_runs 08-06~08-15 逐日 result_success=0（502/499/429 交替）。非 IMA/cron/调度器问题。每日报告照常产出、仅末步写 04-LOG 掉线。修复：固定公共 DNS（阿里 223.5.5.5 + 腾讯 119.29.29.29），命令需用户终端 sudo 手动执行。",
+    "case_source_upgrade": "D 三案例已回源：人伤案命中法随 local_id=915 升级 A 级；合同/商事案经法随三轮检索确认未收录，已补最高法同争点/同法理案例作边界锚点（B 级→边界强化）。",
+    "connection_layer": "link_cards_rules.py v3.1 规则覆盖 209/209、枢纽 12；断链 14→0；图谱 HTML 已重算（知识图谱-2026-08.html）。",
+    "qq_digest": "qq-mail 已 connected；摘要正文已就绪，待用户确认后由 qq-mail SendMessage 补发。",
+    "ima_root_cause_fixed": "2026-08-05 11:24 诊断确认 userDisabled['ima-mcp']=true + 未入 enabled（凭证完好）；11:24 执行 fix_ima_connector.py --apply 翻转（备份 .bak-20260805-112427）；重启后 ima-mcp 恢复连接。",
+    "ima_window_backfilled": "2026-08-05 12:37 完成 08-04~08-05 漏窗回补：合同文书3 + 合规1 + 人伤1 = 5篇；律师AI助手/慈善组织合规窗口内无顶层新增（文件夹嵌套，待 A0.2 后续遍历）。",
+    "b_backfill_2026-08-06": "IMA 工具本会话不可用（deferred tools index 缺失），B 的 12 篇改用公开权威源降级摄入（律师/人伤/合规/慈善 各3），双视角笔记落盘；ima_source_pending=true 标记待 IMA 恢复重取原文。",
+    "window_consumed_2026-08-07": "A1 3 篇（教育培训合同/合同风险防控60点/保证合同100问）+ B 12 篇（律师·人伤·合规·慈善 各3）全部以 IMA 真源摄入并落双视角笔记；新增规则卡 R-HT-037~039、R-HG-003；不占新配额。",
+    "b_backfill_2026-08-07_cont": "B 库距 36 差 10 篇，按每库硬配额 3 补录：律师(7312042960642489) 6→9 +3、人伤(7312035322822509) 7→9 +2、合规(7333014572917409) 7→9 +2、慈善(7311644304633438) 6→9 +3；合计 +10，B_done=36/36 达标。10 篇均为 IMA 真源（32位rawid+kb_id 构造），verify before cite。",
+    "window_consumed_2026-08-08": "A1 合同库4篇（私了/交通事故/分家/贵州高院指南）+ B 律师3（虚假诉讼/再审/新生儿鉴定）+ 人伤5（医疗事故罪44宗/韩杰案/医患真相/时效起算/道交和解诉医）+ 合规1（合规体系建设指引2026）+ 慈善1（谁捐的要讲清楚）= 14篇；全部 IMA 真源（source=ima_true），occupies_new_quota=false。不占新配额，为 08-08 配置态故障漏窗回补。",
+    "window_consumed_2026-08-11_partial": "w_2026-08-11 回补：12/14 新篇已注册（11 磁盘笔记 + ⑦缓存恢复），状态文件补登；⑤⑧ 内容丢失且 IMA 不可用，留待恢复后补登。不占新配额。",
+    "b_backfill_2026-08-17": "2026-08-17 09:18 IMA 工具索引缺失（deferred tools index 无 ima-mcp），B 库 12 篇取文受阻→登记 b_pending_backfill(pending_ima_reconnect, occupies_new_quota=false)。A1 合同文书库 3篇(08:26 已 fetch+落盘 R-HT-070~072)本次补登 ingested(33→36)，防重选。A2/C/D 不依赖 IMA 照常执行（WebSearch 降级）。严守摄入中断铁律：B 未取回全文绝不回写 ingested。"
+  },
+  "consumed_windows": [
+    {
+      "date": "2026-08-07",
+      "run_ts_ms": 1786068079675,
+      "trigger": "automation-1783920420205 v1.13 (08:30 触发，前3次502失败，09:33 用户手动续跑)",
+      "reason": "IMA 配置态故障复发：connector-states.v3.json 中 ima-mcp 被置 userDisabled=true 且被挤出 enabled 列表；已执行 fix_ima_connector.py --apply 自愈（备份 connector-states.v3.json.bak-20260807-093437），但配置需重启 WorkBuddy 方生效，本会话 ToolSearch 确认 mcp__ima-mcp__* 未挂载。",
+      "self_heal": {
+        "script": "03-连接/scripts/fix_ima_connector.py",
+        "action": "--apply",
+        "result": "enabled 加入 ima-mcp（7项）；userDisabled[ima-mcp] True->False",
+        "effective": "requires_workbuddy_restart"
+      },
+      "fault_type": "配置态故障（已自愈，待重启生效）",
+      "a1_target": 3,
+      "a1_done": 3,
+      "b_target": 12,
+      "b_done": 12,
+      "total_target": 15,
+      "total_done": 15,
+      "libraries": [
+        "7312048136419112",
+        "7312042960642489",
+        "7312035322822509",
+        "7333014572917409",
+        "7311644304633438"
+      ],
+      "consume_priority": "next_run_first",
+      "occupies_new_quota": false,
+      "consecutive_day": 1,
+      "alert_level": "L1-提示",
+      "note": "严守摄入中断铁律：未回写任何 ingested。A1/B 共 15 篇全部顺延，下次运行优先消费。",
+      "consumed_at": "2026-08-07T11:22",
+      "consumed_by": "automation-1783920420205 v1.13 续跑会话（用户指令：补上漏掉的 A1/B 共 15 篇，不占新配额）",
+      "fault_resolution": "配置态故障自愈后，续跑新会话中 mcp__ima-mcp__* 已挂载；并修正 media_id 构造（32 位 rawid + kb_id，前会话 8 位截断导致 220030 假失败），15 篇全部 fetch 成功。",
+      "status": "consumed_full"
+    },
+    {
+      "date": "2026-08-07",
+      "trigger": "automation-1783920420205 续跑：B 库补 10 篇至 36",
+      "reason": "B 库 at 26/36，按每库硬配额 3 补录 10 篇（律师6→9 / 人伤7→9 / 合规7→9 / 慈善6→9）。",
+      "b_target": 10,
+      "b_done": 10,
+      "total_target": 10,
+      "total_done": 10,
+      "libraries": [
+        "7312042960642489",
+        "7312035322822509",
+        "7333014572917409",
+        "7311644304633438"
+      ],
+      "occupies_new_quota": false,
+      "consume_priority": "continuation_backfill",
+      "consecutive_day": 1,
+      "alert_level": "L0-无",
+      "status": "consumed_full",
+      "consumed_at": "2026-08-07T12:53",
+      "consumed_by": "automation-1783920420205 v1.13 续跑（B 库达标补录）"
+    },
+    {
+      "window_id": "w_2026-08-08",
+      "start": "2026-08-07T11:22",
+      "end": "2026-08-08T09:35",
+      "reason": "IMA 配置态故障复发（userDisabled['ima-mcp']=true 且不在 enabled）；已 fix_ima_connector.py --apply 自愈，备份 connector-states.v3.json.bak-20260808-093502，需重启 WorkBuddy 生效；本会话 ToolSearch+DeferExecuteTool 双实测均未挂载",
+      "a1_target": 3,
+      "a1_done": 4,
+      "b_target": 12,
+      "b_done": 10,
+      "libraries": {
+        "7312048136419112": {
+          "name": "合同文书AI助手",
+          "target": 3,
+          "done": 4
+        },
+        "7312042960642489": {
+          "name": "律师AI助手",
+          "target": 3,
+          "done": 3
+        },
+        "7312035322822509": {
+          "name": "人伤法律实务助手",
+          "target": 3,
+          "done": 5
+        },
+        "7333014572917409": {
+          "name": "合规与政府监管AI助手",
+          "target": 3,
+          "done": 1
+        },
+        "7311644304633438": {
+          "name": "慈善组织合规AI助手",
+          "target": 3,
+          "done": 1
+        }
+      },
+      "consume_priority": "next_run_first",
+      "occupies_new_quota": false,
+      "consecutive_day": 1,
+      "alert_level": "L1-提示",
+      "registered_at": "2026-08-08T09:35",
+      "consumed_at": "2026-08-09T18:30",
+      "consumed_by": "automation-1783920420205 v1.13 续跑（2026-08-09 回补 w_2026-08-08）",
+      "fault_resolution": "2026-08-09 续跑会话中 ima-mcp 已挂载，14 篇全部此前已 fetch 落盘（media_id 32位rawid+kb_id 构造），本次仅补登状态文件。",
+      "note": "实际分布：合同4/律师3/人伤5/合规1/慈善1=14（含1篇前序 carryover：贵州高院商品房指南）；合规、慈善各仅1篇因当日该库仅此新增。",
+      "status": "consumed_full"
+    },
+    {
+      "date": "2026-08-11",
+      "trigger": "automation-1783920420205 v1.13 续跑（2026-08-11 回补 w_2026-08-11）",
+      "reason": "w_2026-08-11 漏窗回补。本会话 IMA 工具索引未挂载（deferred tools index 缺失，面板 disconnected 滞后快照非判据），但前序会话已于 2026-08-11 13:xx 成功 fetch 14 篇全文并落盘/存在笔记；本次从磁盘笔记+工具缓存恢复内容并补登状态。",
+      "a1_target": 3,
+      "a1_done": 3,
+      "b_target": 12,
+      "b_done": 9,
+      "total_target": 15,
+      "total_done": 12,
+      "libraries": [
+        "7312048136419112",
+        "7312042960642489",
+        "7312035322822509",
+        "7333014572917409",
+        "7311644304633438"
+      ],
+      "registered": [
+        "股权转让协议（参考及注意事项）",
+        "好的代理词6种写法（诉讼文书写作要点）",
+        "展会场地租赁合同",
+        "法庭辩论10条金句（人身损害赔偿辩论三核心）",
+        "律师办理签发律师函业务操作指引（2026）",
+        "医疗损害纠纷100问（实务问答提炼）",
+        "企业注销指引（2025年修订）",
+        "企业常见法律问题100问（上）",
+        "首席合规官签字签的到底是什么对过程负责不是替结果兜底",
+        "基金会投资收益归属——限定性与非限定性的行业之问",
+        "志愿者补贴合规发放指南",
+        "民发〔2012〕124号《关于规范基金会行为的若干规定(试行)》"
+      ],
+      "blocked_pending_ima": [
+        "法庭辩论5个诀窍",
+        "发生医疗纠纷怎么办"
+      ],
+      "occupies_new_quota": false,
+      "consume_priority": "next_run_first",
+      "consecutive_day": 1,
+      "alert_level": "L1-提示",
+      "status": "consumed_partial_2_blocked",
+      "consumed_at": "2026-08-11T18:30",
+      "consumed_by": "automation-1783920420205 v1.13 续跑会话（用户指令：继续未完成任务）",
+      "fault_resolution": "韩杰案(⑨)已于 2026-08-xx 摄入，不重复计；⑤法庭辩论5个诀窍、⑧发生医疗纠纷怎么办 内容缓存已轮转丢失且本会话 IMA 不可用，留待 IMA 恢复后补登（不写 ingested，严守摄入中断铁律）。其余 12 篇（11 篇磁盘已有笔记 + ⑦医疗损害100问从工具缓存恢复）全部补登。",
+      "note": "12/14 新篇已注册（content on disk or cache）；⑤⑧ 内容不可得，保持 pending，待 IMA 重连后 SELECT_3 取原文补登。"
+    },
+    {
+      "window_id": "w_2026-08-12",
+      "date": "2026-08-12",
+      "consumed_at": "2026-08-13T10:57:45+08:00",
+      "status": "consumed_full_2026-08-13",
+      "a1_target": 3,
+      "a1_done": 3,
+      "b_target": 12,
+      "b_done": 5,
+      "note": "2026-08-13 回补完成：回补7篇（合同2+律师2+人伤1+合规1+慈善1），当日15篇另行计数"
+    },
+    {
+      "window_id": "w_2026-08-17_B_backfill",
+      "date": "2026-08-17",
+      "consumed_at": "2026-08-17T12:05+0800",
+      "status": "consumed_full",
+      "trigger": "自动化续跑 + 用户指令（B库回补）",
+      "reason": "2026-08-17 09:18 IMA 运行态中断导致 B 库 12 篇取文受阻登记 b_pending_backfill；10:56 修复配置态故障（fix_ima_connector.py --apply）重启后本会话 IMA 挂载，执行回补。",
+      "b_target": 12,
+      "b_done": 10,
+      "b_dup_skipped": 2,
+      "libraries": {
+        "7312042960642489": {
+          "name": "律师AI助手",
+          "target": 3,
+          "done": 3
+        },
+        "7312035322822509": {
+          "name": "人伤法律实务助手",
+          "target": 3,
+          "done": 2,
+          "dup_skipped": 1
+        },
+        "7333014572917409": {
+          "name": "合规与政府监管AI助手",
+          "target": 3,
+          "done": 3
+        },
+        "7311644304633438": {
+          "name": "慈善组织合规AI助手",
+          "target": 3,
+          "done": 2,
+          "dup_skipped": 1
+        }
+      },
+      "new_notes": [
+        "青年律师从0到1建立万粉公众号-操作指南-2026-08-17",
+        "案源介绍费-律师执业红线与商业贿赂风险-2026-08-17",
+        "法律资讯周报2026年第30期-要点-2026-08-17",
+        "推拿禁忌症医疗纠纷-2026-08-17",
+        "急性冠状动脉综合征心梗医疗纠纷-2026-08-17",
+        "AI法律与合规指南-总则-价值底座与规范金字塔-2026-08-17",
+        "企业合规关乎生存-罚单警示与合规五步法-2026-08-17",
+        "调岗降薪架构调整合法边界-2026-08-17",
+        "慈善组织高管薪酬合理性-韩红62万对比嫣然-2026-08-17",
+        "取缔非法社会组织办法2025-要点与合规启示-2026-08-17"
+      ],
+      "new_rule_cards": [
+        "R-LN-009/R-LN-010/R-LN-011",
+        "R-PI-127/R-PI-128",
+        "R-HG-026/R-HG-027/R-HG-028",
+        "R-CF-064/R-CF-065"
+      ],
+      "duplicates_skipped": [
+        "pi04 病历记录完整率（media 2039beba，2026-08-16 已登记，既有笔记 病历记录完整率-关键诊疗记录缺失风险-2026-08-16）",
+        "cf10 公益慈善行业塔西佗陷阱（media ba4a9d9e，既有笔记 公益慈善行业塔西佗陷阱-信任修复-2026-07-25，本次补登 dedup 不重复计数）"
+      ],
+      "degraded": [
+        "hg09 调岗降薪架构调整（IMA 220030 两次失败，WebSearch 降级重构，pending_source_upgrade 待回源）"
+      ],
+      "occupies_new_quota": false,
+      "consume_priority": "next_run_first",
+      "consecutive_day": 1,
+      "alert_level": "L1-提示",
+      "consumed_by": "automation-1783920420205 v1.13 续跑会话（用户指令：继续未完成任务）",
+      "fault_resolution": "10:56 修复 ima-mcp 配置态故障（userDisabled True→False + enabled 恢复）并重启 WorkBuddy；本会话 ToolSearch+DeferExecuteTool 实测 5 库工具全部挂载，get_knowledge_list/search_knowledge 恢复 media_id 后逐篇 fetch。",
+      "note": "12 候选全部消费：10 新笔记+10 规则卡；2 重复去重（cf10 补登 dedup 表防重选）。ingested 156→167。"
+    }
+  ]
+}

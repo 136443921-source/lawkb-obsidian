@@ -12,7 +12,7 @@ key_finding: <一句话核心检索结论>
 value: <本次检索的增量价值（无增量则注明"已知规则复用以巩固"）
 source_skill: 法律检索助手
 created: 2026-08-03T11:46
-updated: 2026-08-14T00:10
+updated: 2026-08-21T18:55
 tags:
   - 检索
   - 慈善法

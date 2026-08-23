@@ -129,6 +129,8 @@ updated: {today}
 tags: [案件, {ctype}]
 case_type: {ctype}
 status: 待提炼
+result: 进行中
+case_no: 待补充
 source: CaseDrop投递即处理
 review_date: {today}
 ---
@@ -154,6 +156,8 @@ created: {today}
 is_simulation: false
 status: 待提炼
 case_type: {ctype}
+result: 进行中
+case_no: 待补充
 source: CaseDrop投递即处理（自动占位，待补提炼）
 trigger: "（待从案件笔记提炼）"
 do: "（待提炼）"

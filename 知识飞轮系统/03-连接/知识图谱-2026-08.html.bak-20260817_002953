@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang='zh-CN'><head><meta charset='utf-8'>
+<title>统一知识图谱 - 2026-08</title>
+<style>body{font-family:-apple-system,'PingFang SC',sans-serif;background:#0f1424;color:#e6e9f0;margin:0;padding:24px;}h1{font-size:22px;} .wrap{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;} .card{background:#1a2036;border-radius:14px;padding:16px 18px;min-width:200px;box-shadow:0 4px 14px rgba(0,0,0,.3);} .bar{height:10px;border-radius:6px;background:linear-gradient(90deg,#5b8cff,#9b6bff);margin-top:8px;} .tag{display:inline-block;background:#26304f;color:#9fb4ff;border-radius:8px;padding:2px 8px;margin:3px;font-size:12px;} .sec{margin-top:26px;} h2{font-size:17px;border-left:4px solid #5b8cff;padding-left:10px;}</style>
+</head><body>
+<h1>🌐 统一知识图谱 — 2026-08</h1>
+<p>本地库 + iMA 云库 统一视图 | 生成于 2026-08-17</p>
+<div class='wrap'>
+<div class='card'><div style='font-weight:600'>LawKB-知识飞轮系统</div><div style='color:#9fb4ff;font-size:13px'>本地 · 主知识库</div><div style='margin-top:6px;font-size:24px;font-weight:700'>1754</div><div style='color:#8a93ad;font-size:12px'>篇笔记</div><div class='bar' style='width:8%'></div></div>
+<div class='card'><div style='font-weight:600'>LawKB（不含飞轮子库）</div><div style='color:#9fb4ff;font-size:13px'>本地 · 法律文书/庭审知识库</div><div style='margin-top:6px;font-size:24px;font-weight:700'>444</div><div style='color:#8a93ad;font-size:12px'>篇笔记</div><div class='bar' style='width:8%'></div></div>
+<div class='card'><div style='font-weight:600'>obsidian-lawkb</div><div style='color:#9fb4ff;font-size:13px'>独立库(云备) · 独立知识库（GitHub每日自动备份）</div><div style='margin-top:6px;font-size:24px;font-weight:700'>85</div><div style='color:#8a93ad;font-size:12px'>篇笔记</div><div class='bar' style='width:8%'></div></div>
+<div class='card'><div style='font-weight:600'>iMA 云</div><div style='color:#9fb4ff;font-size:13px'>云 · 52 个知识库</div><div style='margin-top:6px;font-size:24px;font-weight:700'>358230</div><div style='color:#8a93ad;font-size:12px'>云条目</div><div class='bar' style='width:100%'></div></div>
+</div>
+<div class='sec'><h2>Top 标签</h2>
+<span class='tag'>#裁判规则 · 301</span>
+<span class='tag'>#概念页 · 293</span>
+<span class='tag'>#转写产物 · 288</span>
+<span class='tag'>#合同 · 275</span>
+<span class='tag'>#医疗纠纷 · 222</span>
+<span class='tag'>#经验卡片 · 193</span>
+<span class='tag'>#合同法 · 186</span>
+<span class='tag'>#民事诉讼 · 173</span>
+<span class='tag'>#慈法 · 162</span>
+<span class='tag'>#人伤法 · 153</span>
+<span class='tag'>#连接枢纽-人伤法 · 149</span>
+<span class='tag'>#基金会实务 · 136</span>
+<span class='tag'>#公司法 · 130</span>
+<span class='tag'>#诉讼 · 123</span>
+<span class='tag'>#侵权责任 · 122</span>
+<span class='tag'>#慈善法 · 109</span>
+<span class='tag'>#连接枢纽-慈法合规 · 109</span>
+<span class='tag'>#慈法合规 · 107</span>
+<span class='tag'>#2026 · 106</span>
+<span class='tag'>#法律 · 104</span>
+<span class='tag'>#案件 · 101</span>
+<span class='tag'>#主题卡-人伤费用承担边界 · 93</span>
+<span class='tag'>#案例 · 91</span>
+<span class='tag'>#8 · 87</span>
+<span class='tag'>#证据 · 85</span>
+</div>
+<div class='sec'><h2>跨库关系</h2>
+<p>内容重复组：<b>0</b> ｜ 同名笔记组：<b>272</b> ｜ obsidian-lawkb 镜像重叠：<b>0</b> 篇</p>
+</div>
+</body></html>

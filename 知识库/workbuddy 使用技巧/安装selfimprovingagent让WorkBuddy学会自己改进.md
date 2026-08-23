@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T15:22
-updated: 2026-08-14T00:10
+updated: 2026-08-21T18:55
 title: 安装selfimprovingagent让WorkBuddy学会自己改进
 tags: []
 maturity: 🌱种子
@@ -99,6 +99,10 @@ WorkBuddy就可以学会自我改进啦！
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/VaJ1j4pbwYo1J8g2SJQGcg)*
 
 ## 相关笔记
+- [[打官司别踩坑会让自己输掉官司的几类证据-2026-08-13]] (共现关键词: ##, 自己, 关键词)
+- [[2026年国家医疗质量安全改进目标]] (共现关键词: 合同, 改进)
+- [[实施任务跟踪]] (共现关键词: 自动, AI)
+- [[安装selfimprovingagent让WorkBuddy学会自己改进]] (共现关键词: 学会, WorkBuddy, 改进)
 - [[小强律师AI助手自我进化报告-20260624]] (共现关键词: 改进, AI)
 - [[如何用AI构建自己的案件管理系统-2026-07-24]] (共现关键词: ##, 自己, AI)
 - [[工具之外法律人研究AI和Skill研究的是自己的新位置]] (共现关键词: 自己, AI)

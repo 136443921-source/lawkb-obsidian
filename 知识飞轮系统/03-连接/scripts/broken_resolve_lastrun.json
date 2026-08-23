@@ -1,9 +1,11 @@
 {
-  "created": 2,
+  "created": 5,
   "skipped": 0,
   "source_fixed_files": 0,
-  "targets_total": 2,
+  "targets_total": 5,
   "cluster": {
-    "通用": 2
+    "诉讼": 1,
+    "合同": 1,
+    "通用": 3
   }
 }

@@ -1,6 +1,6 @@
 ---
 created: 2026-06-07T14:43
-updated: 2026-08-14T00:10
+updated: 2026-08-21T18:55
 title: WorkBuddy提示词速查手册50个可复制的指令模板
 tags: []
 maturity: 🌱种子
@@ -420,6 +420,9 @@ AI平权实验室 | 让AI工具属于每个人
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/Jz1rp16C-UDJZkXqMOjWig)*
 
 ## 相关笔记
+- [[法律SOP蒸馏器]] (共现关键词: WorkBuddy, 公司)
+- [[换电脑后WorkBuddy如何迁移]] (共现关键词: WorkBuddy, 公司)
+- [[2026-08-06]] (共现关键词: qq, 公司)
 - [[如何让AI帮你打理Obsidian知识库]] (共现关键词: WorkBuddy, AI)
 - [[我用WorkBuddy三个月踩了15个坑才明白]] (共现关键词: 指令, WorkBuddy, AI)
 - [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: 指令, AI)

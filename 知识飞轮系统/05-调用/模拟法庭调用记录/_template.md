@@ -15,7 +15,7 @@ knowledge_called:
 value: <本次对抗对分身的增量价值（攻防策略/庭审预判方法论）>
 source_skill: 模拟法庭红蓝对抗工作流
 created: 2026-08-06T15:20
-updated: 2026-08-14T00:10
+updated: 2026-08-21T18:55
 tags:
   - 对抗
   - 民事诉讼

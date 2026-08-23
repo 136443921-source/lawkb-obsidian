@@ -1,6 +1,6 @@
 ---
 created: 2026-07-30T12:40
-updated: 2026-08-14T00:10
+updated: 2026-08-21T18:55
 tags:
   - 连接器
   - WorkBuddy
@@ -309,6 +309,9 @@ WorkBuddy 的迁移本质上就是搬一个目录：```
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/UfcoG5_TZHM45yIJQzZJjw)*
 
 ## 相关笔记
+- [[法律SOP蒸馏器]] (共现关键词: WorkBuddy, 公司)
+- [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: WorkBuddy, 公司)
+- [[WorkBuddy提示词速查手册50个可复制的指令模板]] (共现关键词: WorkBuddy, 公司)
 - [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: WorkBuddy, 电脑, workbuddy)
 - [[一文吃透腾讯WorkBuddy全功能模式模型技能连接器专家与自动化实操指南]] (共现关键词: 连接器, WorkBuddy, workbuddy)
 - [[一定要尽早用这个AI工具workbuddy的100条实操攻略]] (共现关键词: 连接器, WorkBuddy, workbuddy)

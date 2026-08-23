@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""知识飞轮系统 知识图谱扫描器（自动化版，动态当前月）
+"""知识飞轮系统 知识图谱扫描器 v1.4（自动化版，动态当前月；断链判定含工作区全量索引+日期/数字/URL护栏）
 - 遍历 ROOT 下所有 .md，解析 frontmatter、双向链接 `[[文件名]]`、标签。
 - 输出机器可读 JSON 到本脚本同目录 kg_data.json，并打印关键统计（首行 JSON 供捕获）。
 - 供 kg_html.py 与「周日知识维护批处理」调用。
@@ -9,14 +9,24 @@ import os, re, json, datetime
 from collections import defaultdict
 
 ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
+WORKSPACE = "/Users/chenyouqiang/Documents/LawKB"
 SCRIPTS = os.path.dirname(os.path.abspath(__file__))
 SKIP_DIRS = {".obsidian", ".trash", "node_modules", "logs"}
 # meta 报告目录：其正文中的 `[[...]]` 多为「断链示例」文档说明，非真实链接，不计入断链
 META_SKIP = {"孤立笔记检测报告", "知识库压缩去重报告"}
 MONTH = datetime.date.today().strftime("%Y-%m")
 
+# 护栏（v1.4 收紧，与 resolve_broken_links.py 保持一致）：
+# 日期型（2026-07-07 / 2026年7月7日）、纯数字、URL —— 非笔记概念，不计断链、不建概念页
+DATE_ONLY_RE = re.compile(r"^(19|20)\d{2}[-/.年]\d{1,2}([-/.月]\d{1,2})?日?$")
+NUM_ONLY_RE = re.compile(r"^\d+$")
+URL_RE = re.compile(r"^(https?://|www\.|file://)")
+# 系统/自动化内部引用（工作记忆 memory、自动化队列文件 待推送_*）：非笔记概念，跳过
+SYSTEM_REF_RE = re.compile(r"^(?:memory|待推送_[0-9\-]+)$", re.IGNORECASE)
+
 notes = {}  # rel_path -> {title, tags, created, updated, dir1, base, body}
-name_index = defaultdict(list)  # basename(no ext) -> [rel_path]
+name_index = defaultdict(list)  # basename(no ext) -> [rel_path]（ROOT 内，用于建边/图谱）
+ws_index = defaultdict(list)    # basename(no ext) -> [abs_path]（工作区全量，用于断链判定；ROOT 外真实文件算已解析）
 
 fm_re = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.S)
 link_re = re.compile(r"\[\[([^\]\|#]+)(?:#[^\]\|]*)?(?:\|[^\]]*)?\]\]")
@@ -64,6 +74,14 @@ for dirpath, dirnames, filenames in os.walk(ROOT):
                       "dir1": dir1, "base": base, "body": body}
         name_index[base].append(rel)
 
+# 工作区全量索引（ROOT 外真实文件亦算已解析，避免误判断链、误建概念页）
+for dirpath, dirnames, filenames in os.walk(WORKSPACE):
+    dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS and not d.startswith(".")]
+    for fn in filenames:
+        if not fn.endswith(".md"): continue
+        full = os.path.join(dirpath, fn)
+        ws_index[fn[:-3]].append(full)
+
 edges = set()
 unresolved = 0
 for rel, n in notes.items():
@@ -71,6 +89,8 @@ for rel, n in notes.items():
         continue  # meta 报告目录内部示例链接不计入边/断链
     for m in link_re.finditer(n["body"]):
         target = m.group(1).strip().rstrip("\\").strip()  # 去尾随反斜杠（模板footer误带，如 [[知识图谱-2026-07.html\]]）
+        if not target:
+            continue  # 空链接 [[ ]] 非真实目标
         tbase = os.path.basename(target)
         if tbase.endswith(".md"): tbase = tbase[:-3]
         # 文件链接（含扩展名）不是笔记链接，跳过（不计入断链）
@@ -82,10 +102,19 @@ for rel, n in notes.items():
         # 模板/规范文档中的示意链接占位符（如 [[x]] [[经验卡片-XXX]] [[规则名]] [[链接]]），非真实目标，跳过
         if re.search(r"^(?:x|wikilink|案件笔记名|规则名|链接|\.\.\.)$|XXX|Rxxx", tbase):
             continue
-        cands = name_index.get(tbase)
-        if not cands:
+        # 护栏 v1.4：日期/纯数字/URL 非笔记概念，跳过（不计断链、不建概念页）
+        if DATE_ONLY_RE.match(tbase) or NUM_ONLY_RE.match(tbase) or URL_RE.match(tbase):
+            continue
+        # 系统/自动化内部引用（memory / 待推送_*）：跳过
+        if SYSTEM_REF_RE.match(tbase):
+            continue
+        # 断链判定用工作区全量索引：ROOT 外真实文件（Obsidian配置指南.md 等在 LawKB 根/其他目录）算已解析
+        if not ws_index.get(tbase):
             unresolved += 1
             continue
+        cands = name_index.get(tbase)  # ROOT 内同名：建边/图谱
+        if not cands:
+            continue  # 仅存在于 ROOT 外：已解析但不入图谱（避免图节点引用 ROOT 外文件）
         trel = cands[0]
         if trel != rel:
             edges.add((rel, trel))
