@@ -1,6 +1,6 @@
 ---
 created: 2026-06-27T22:12
-updated: 2026-08-21T18:55
+updated: 2026-08-26T14:36
 tags:
   - 合同法
   - WorkBuddy
@@ -228,7 +228,7 @@ WorkBuddy 开始读那些原始资料。
 - [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (共现关键词: 知识库, Obsidian, md)
 - [[用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包]] (共现关键词: 一个, WorkBuddy, AI)
 - [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 一个, WorkBuddy, AI)
-- [[用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: Obsidian, 知识库, 一个)
+- [[知识飞轮系统/03-连接/概念页/用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: Obsidian, 知识库, 一个)
 - [[怎么设计一个能交付的合同审查 Skill]] (共现关键词: md, 一个, AI)
 - [[一文吃透腾讯WorkBuddy全功能模式模型技能连接器专家与自动化实操指南]] (共现关键词: jpg, wechat, img)
 - [[WorkBuddy提示词速查手册50个可复制的指令模板]] (共现关键词: wechat, WorkBuddy, AI)

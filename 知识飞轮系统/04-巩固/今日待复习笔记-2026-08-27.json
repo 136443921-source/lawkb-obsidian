@@ -1,0 +1,88 @@
+{
+  "date": "2026-08-27",
+  "total_notes_with_review_date": 1416,
+  "overdue_count": 771,
+  "today_due_count": 22,
+  "upcoming_7d_count": 180,
+  "completion_rate": 45.6,
+  "overdue_top5": [
+    {
+      "name": "交通事故与工伤竞合双赔项目辨析-2026-07-21",
+      "category": "人伤法",
+      "review_date": "2026-07-24",
+      "overdue_days": 34,
+      "importance": "★★★★★",
+      "review_count": 0
+    },
+    {
+      "name": "律师签发律师函业务操作指引2021-2026-07-21",
+      "category": "其他",
+      "review_date": "2026-07-24",
+      "overdue_days": 34,
+      "importance": "★★★★★",
+      "review_count": 0
+    },
+    {
+      "name": "交通事故责任认定与保险理赔顺位",
+      "category": "人伤法",
+      "review_date": "2026-07-29",
+      "overdue_days": 29,
+      "importance": "★★★★★",
+      "review_count": 0
+    },
+    {
+      "name": "工伤保险待遇与劳动能力鉴定",
+      "category": "人伤法",
+      "review_date": "2026-07-29",
+      "overdue_days": 29,
+      "importance": "★★★★★",
+      "review_count": 0
+    },
+    {
+      "name": "残疾赔偿金与死亡赔偿金计算实务",
+      "category": "人伤法",
+      "review_date": "2026-07-29",
+      "overdue_days": 29,
+      "importance": "★★★★★",
+      "review_count": 0
+    }
+  ],
+  "today_due": [
+    {
+      "name": "法律资讯周报（2026年第32期）",
+      "category": "其他",
+      "importance": 3,
+      "review_count": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "员工自身过错受伤工伤认定无过错责任-2026-08-20",
+      "category": "人伤法",
+      "importance": 3,
+      "review_count": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医院误诊索赔医疗事故赔偿计算与诉讼受理-2026-08-20",
+      "category": "人伤法",
+      "importance": 3,
+      "review_count": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害责任纠纷诉讼攻防要点巩固-2026-08-20",
+      "category": "人伤法",
+      "importance": 3,
+      "review_count": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "道交和解后诉医院医疗损害竞合按份责任-2026-08-20",
+      "category": "人伤法",
+      "importance": 3,
+      "review_count": 0,
+      "ease_factor": 2.5
+    }
+  ],
+  "queue_file": "知识飞轮系统/04-巩固/Spaced-Repetition/复习队列.md"
+}
