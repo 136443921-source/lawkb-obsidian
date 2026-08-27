@@ -1,7 +1,7 @@
 {
-  "schema": "ima_intake_state/v1.13",
+  "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-08-26T14:45",
+  "updated": "2026-08-27T13:42",
   "ima_connector": "ima-mcp",
   "ima_status": "ok_5ingested_2deferred_220030_persistent",
   "note": "2026-08-17 B库回补完成：12 候选全部消费（10 篇新蒸馏 R-LN-009~011/R-PI-127~128/R-HG-026~028/R-CF-064~065；pi04 病历记录与 cf10 塔西佗为重复，已去重不建新制品；cf10 补登 dedup）。hg09 调岗降薪 IMA 220030 降级 WebSearch 重构（pending_source_upgrade）。ingested 156→167。",
@@ -2191,7 +2191,27 @@
       "last_run_ts_ms": 1787460802219
     }
   },
-  "pending_windows": [],
+  "pending_windows": [
+    {
+      "date": "2026-08-27",
+      "start": "2026-08-27T13:39:09+08:00",
+      "end": "2026-08-27T13:39:09+08:00",
+      "reason": "ima-mcp 运行态掉线：本会话 ToolSearch 无 mcp__ima-mcp__* 索引。A0.0 已自愈配置态(enabled+=ima-mcp / userDisabled[ima-mcp]=False)，须重启 WorkBuddy 后下轮回补。",
+      "self_healed": true,
+      "subtasks": {
+        "A1": {
+          "target": 3,
+          "done": 0,
+          "note": "合同文书库 本会话跳过"
+        },
+        "B": {
+          "target": 12,
+          "done": 0,
+          "note": "其余4库 本会话跳过"
+        }
+      }
+    }
+  ],
   "totals": {
     "ingested_total": 269,
     "libraries": {
@@ -2449,12 +2469,27 @@
     {
       "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0cf7ff3585878f05833aba562b886f7277333014572917409",
       "date": "2026-08-26",
-      "reason": "retry 2026-08-26 confirmed PERSISTENT 220030 (media_id full 32-bit, ima-mcp channel ok) → content unavailable in IMA (likely deleted/parse-error); NOT truncation, NOT channel fault. 按摄入中断铁律不写 ingested，需人工至 IMA 客户端核查原文"
+      "reason": "retry 2026-08-26 confirmed PERSISTENT 220030 (media_id full 32-bit, ima-mcp channel ok) → content unavailable in IMA (likely deleted/parse-error); NOT truncation, NOT channel fault. 按摄入中断铁律不写 ingested，需人工至 IMA 客户端核查原文",
+      "code": "220030",
+      "status": "retry"
     },
     {
       "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0e13752e586944aa51cb5faf40bbaa787312035322822509",
       "date": "2026-08-26",
-      "reason": "retry 2026-08-26 confirmed PERSISTENT 220030 (media_id full 32-bit, ima-mcp channel ok) → content unavailable in IMA (likely deleted/parse-error); NOT truncation, NOT channel fault. 按摄入中断铁律不写 ingested，需人工至 IMA 客户端核查原文"
+      "reason": "retry 2026-08-26 confirmed PERSISTENT 220030 (media_id full 32-bit, ima-mcp channel ok) → content unavailable in IMA (likely deleted/parse-error); NOT truncation, NOT channel fault. 按摄入中断铁律不写 ingested，需人工至 IMA 客户端核查原文",
+      "code": "220030",
+      "status": "retry"
     }
-  ]
+  ],
+  "checkpoint": {
+    "session_id": "run-1787809374448",
+    "stage": "A2_5",
+    "status": "in_progress",
+    "started_at": "2026-08-27T13:42",
+    "done": [
+      "A0",
+      "A2",
+      "A2_5"
+    ]
+  }
 }
