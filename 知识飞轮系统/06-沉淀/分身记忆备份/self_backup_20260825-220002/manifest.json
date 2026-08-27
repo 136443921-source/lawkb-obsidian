@@ -1,0 +1,10 @@
+{
+  "snapshot": "self_backup_20260825-220002",
+  "created_at": "2026-08-25T14:00:02Z",
+  "source_path": "/Users/chenyouqiang/.workbuddy/skills/xiaoqianglvshi/self.md",
+  "source_sha256": "df75f2bd9278d59084f4040d44788102ea992782556a91aa8cf29da22dcac262",
+  "self_md_bytes": 22832,
+  "self_md_sections": 10,
+  "has_self_memory_flag": true,
+  "files": ["self.md.bak", "persona.md.bak", "SKILL.md.bak", "manifest.json"]
+}

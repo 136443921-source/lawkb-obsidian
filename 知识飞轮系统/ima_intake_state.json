@@ -1,11 +1,11 @@
 {
   "schema": "ima_intake_state/v1.13",
   "created": "2026-08-04T10:55",
-  "updated": "2026-08-23T12:53:22",
+  "updated": "2026-08-26T14:45",
   "ima_connector": "ima-mcp",
-  "ima_status": "runtime_healthy_2026-08-22_daily_6",
+  "ima_status": "ok_5ingested_2deferred_220030_persistent",
   "note": "2026-08-17 B库回补完成：12 候选全部消费（10 篇新蒸馏 R-LN-009~011/R-PI-127~128/R-HG-026~028/R-CF-064~065；pi04 病历记录与 cf10 塔西佗为重复，已去重不建新制品；cf10 补登 dedup）。hg09 调岗降薪 IMA 220030 降级 WebSearch 重构（pending_source_upgrade）。ingested 156→167。",
-  "last_run_ts_ms": 1787460802219,
+  "last_run_ts_ms": 1787725761781,
   "b_pending_backfill": {
     "reason": "RESOLVED 2026-08-19 —— 原候选 3 篇（善款挪作他用/谁捐的/到底什么是公益）经标题级去重核对均已在 ingested（含蒸馏笔记别名），未重复摄入；改选 3 篇确证 NEW 候选（八项罪名/60家取消资格/互捐合规）并完成摄入。",
     "candidates_selected": 3,
@@ -73,15 +73,16 @@
         },
         {
           "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e921fdb82b9eee4ed8770468e5a093757312048136419112",
-          "title": "教育培训合同（范本与审查要点）",
+          "title": "教育培训合同（学科培训版）模版｜附使用说明 + 风险提示",
           "create_time": 1785978000000,
-          "ingested_at": "2026-08-07T11:22",
+          "ingested_at": "2026-08-25T09:35",
           "value": 8,
           "source": "ima_true",
           "ima_source_pending": false,
-          "window": "2026-08-07",
+          "window": "w_2026-08-25",
           "occupies_new_quota": false,
-          "create_time_approx": true
+          "create_time_approx": true,
+          "new": false
         },
         {
           "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_436ab0a61d0542a9631926029ef006267312048136419112",
@@ -414,6 +415,53 @@
           "source": "ima-mcp",
           "ima_true": true,
           "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_54be46f047ad6d2761109f7b4ef068f97312048136419112",
+          "title": "著作权转让合同模版｜附使用说明 + 风险提示",
+          "create_time": 1787484548749,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_654511848fff5c525324f7d076392dbd7312048136419112",
+          "title": "销售代理合作协议（参考）",
+          "create_time": 1784883205661,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 6
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c207537f1630a5632e72225babe3e8287312048136419112",
+          "title": "保证协议（参考及注意事项）",
+          "create_time": 1784290321828,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_654849c26e892b7fa7b0a123aa80ab087312048136419112",
+          "title": "房屋租赁合同（合租版）参考模版｜附使用说明 + 风险提示",
+          "create_time": 1787622094665,
+          "ingested_at": "2026-08-25T09:35",
+          "window": "w_2026-08-25",
+          "new": true
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_261b10ebf8b165ca77906e88fc037a737312048136419112",
+          "title": "合同范本 | 防水保温工程施工合同模板（标准版）",
+          "create_time": 1781667275813,
+          "ingested_at": "2026-08-25T09:35",
+          "window": "w_2026-08-25",
+          "new": false
+        },
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_261b10ebf8b165ca77906e88fc037a737312048136419112",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e921fdb82b9eee4ed8770468e5a093757312048136419112",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_654849c26e892b7fa7b0a123aa80ab087312048136419112",
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c25f80245e36fd1a36e2a37710746b2b7312048136419112",
+          "title": "李建伟：如何写成打动法官的代理意见（笔记）",
+          "create_time": 1787672779949,
+          "ingested_at": "2026-08-26T14:29",
+          "value": 8
         }
       ],
       "last_run_ts_ms": 1787460802219
@@ -832,6 +880,44 @@
           "source": "ima-mcp",
           "ima_true": true,
           "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_1d59b88d2dfac4a2060f5f0e1d4069d17312042960642489",
+          "title": "腾讯 WorkBuddy 写起诉状：60 分钟→8 分钟",
+          "create_time": 1783577752591,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_ddb796b32521a11ea0202bfb4808b2897312042960642489",
+          "title": "你知道劳动争议的一裁终局吗？",
+          "create_time": 1784438308363,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_871aa97498c52a68cc4808ca327ca3657312042960642489",
+          "title": "法官不采纳我方证据，只采纳对方的，应该怎么办？",
+          "create_time": 1782369622653,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_d2da5b46f0d8a049d7649035cb52a90e7312042960642489",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_9066868b53a07486d543cd13f5236c647312042960642489",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_9c773652a07c7fe0a7b9df96dd77dd7e7312042960642489",
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_533094d39eb9267b8b9ac4ba0ddfd0e27312042960642489",
+          "title": "微信聊天记录证据提交指引",
+          "create_time": 1787673005366,
+          "ingested_at": "2026-08-26T14:29",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_297c18d755a29e3341704e90c306a6347312042960642489",
+          "title": "法庭辩论，记住这8句金句（第二辑）",
+          "create_time": 1787672978113,
+          "ingested_at": "2026-08-26T14:29",
+          "value": 7
         }
       ],
       "last_run_ts_ms": 1787460802219
@@ -1239,7 +1325,31 @@
           "source": "ima-mcp",
           "ima_true": true,
           "occupies_new_quota": false
-        }
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e3a0f2e596d09a81cb99df89a16e42137312035322822509",
+          "title": "医院法治专员：政策催生的新职业",
+          "create_time": 1787485484872,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a0d48e6789d99ce263ccb6ccd223caa37312035322822509",
+          "title": "2026医疗纠纷处置八大实操雷区",
+          "create_time": 1787485359730,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_62cf27a22c6b74bdff5d1427cf84c0767312035322822509",
+          "title": "诊疗过错越多责任比例就越大吗",
+          "create_time": 1782370312908,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_27144ef1aeaac2e4e137d80bd574d0cb7312035322822509",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0b2c58e204edd8fc44168f50cdcb0a137312035322822509",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7313c4eecae4c41ca35c41d3a244dc317312035322822509"
       ],
       "last_run_ts_ms": 1787460802219
     },
@@ -1627,7 +1737,31 @@
           "source": "ima-mcp",
           "ima_true": true,
           "occupies_new_quota": false
-        }
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_77cbe7b680b1ee890602aeeb44b6b197333014572917409",
+          "title": "律师办理企业合规体系建设业务操作指引（2026）（试行）",
+          "create_time": 1786083305224,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4ee88591926ad2e82fc189be31e3b7b57333014572917409",
+          "title": "国有企业租金入股的方式限制与合规应对",
+          "create_time": 1774083449134,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_8ce3d2da774485b34b09f590841a33747333014572917409",
+          "title": "企业生态环境合规管理指引",
+          "create_time": 1773891418910,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a52f47bfa5609c9863365c42f1772cf97333014572917409",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_39bc19a48f0ff0f5f90d8b222139133e7333014572917409",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c9299ceccbfd72cce05d85e9793be6ae7333014572917409"
       ],
       "last_run_ts_ms": 1787460802219
     },
@@ -2013,6 +2147,45 @@
           "source": "ima-mcp",
           "ima_true": true,
           "occupies_new_quota": false
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_79e17cdfe812df9a7f7b9347fc9b55227311644304633438",
+          "title": "韩红基金会救护车采购陷争议",
+          "create_time": 1787484245854,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_772c2757ef17960868eaeb62e6dabb9f7311644304633438",
+          "title": "公司规章制度制定指引及生效实施流程全解析",
+          "create_time": 1785491293511,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_222e575d75119262c86b1b86f57ecf9b7311644304633438",
+          "title": "律师办理损害公司债权人利益责任纠纷业务操作指引（2024）",
+          "create_time": 1784363944411,
+          "ingested_at": "2026-08-24T09:27:50",
+          "value": 8
+        },
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_b5c096fa6f905f32b18f0a8a50e4d0937311644304633438",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_86275cff9336ef912cfd9847b2ac3ce97311644304633438",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_925b432a3cb550f0149799871e6b4e107311644304633438",
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c6c98aa71d667f861f541d776acd71217311644304633438",
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_796ea017c9816de9209f51a6955813807311644304633438",
+          "title": "《贵州省慈善条例》全文（2024.9.5施行）",
+          "create_time": 1725484800000,
+          "ingested_at": "2026-08-26T14:29",
+          "value": 9
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_4e5db284d844848079beb6ffb4eec8457311644304633438",
+          "title": "社会组织合规8关键词（公益目的/业务范围/理事会/关联方/关联交易/保值增值/专项基金/捐赠协议）",
+          "create_time": 1748500000000,
+          "ingested_at": "2026-08-26T14:29",
+          "value": 8
         }
       ],
       "last_run_ts_ms": 1787460802219
@@ -2020,13 +2193,13 @@
   },
   "pending_windows": [],
   "totals": {
-    "ingested_total": 231,
+    "ingested_total": 269,
     "libraries": {
-      "7312048136419112": 47,
-      "7312042960642489": 48,
-      "7312035322822509": 46,
-      "7333014572917409": 45,
-      "7311644304633438": 45
+      "7312048136419112": 56,
+      "7312042960642489": 56,
+      "7312035322822509": 52,
+      "7333014572917409": 51,
+      "7311644304633438": 54
     }
   },
   "resolved_in_continuation": {
@@ -2270,6 +2443,18 @@
       "consumed_by": "automation-1783920420205 v1.13 续跑会话（用户指令：继续未完成任务）",
       "fault_resolution": "10:56 修复 ima-mcp 配置态故障（userDisabled True→False + enabled 恢复）并重启 WorkBuddy；本会话 ToolSearch+DeferExecuteTool 实测 5 库工具全部挂载，get_knowledge_list/search_knowledge 恢复 media_id 后逐篇 fetch。",
       "note": "12 候选全部消费：10 新笔记+10 规则卡；2 重复去重（cf10 补登 dedup 表防重选）。ingested 156→167。"
+    }
+  ],
+  "failed_220030": [
+    {
+      "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0cf7ff3585878f05833aba562b886f7277333014572917409",
+      "date": "2026-08-26",
+      "reason": "retry 2026-08-26 confirmed PERSISTENT 220030 (media_id full 32-bit, ima-mcp channel ok) → content unavailable in IMA (likely deleted/parse-error); NOT truncation, NOT channel fault. 按摄入中断铁律不写 ingested，需人工至 IMA 客户端核查原文"
+    },
+    {
+      "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0e13752e586944aa51cb5faf40bbaa787312035322822509",
+      "date": "2026-08-26",
+      "reason": "retry 2026-08-26 confirmed PERSISTENT 220030 (media_id full 32-bit, ima-mcp channel ok) → content unavailable in IMA (likely deleted/parse-error); NOT truncation, NOT channel fault. 按摄入中断铁律不写 ingested，需人工至 IMA 客户端核查原文"
     }
   ]
 }

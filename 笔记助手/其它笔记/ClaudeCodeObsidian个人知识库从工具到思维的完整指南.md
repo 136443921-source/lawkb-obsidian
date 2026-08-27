@@ -6,7 +6,7 @@ tags:
   - 合同法
   - wiki
 created: 2026-05-28T10:51
-updated: 2026-08-21T18:55
+updated: 2026-08-26T14:37
 title: ClaudeCodeObsidian个人知识库从工具到思维的完整指南
 maturity: 🌿成长
 source: ""
@@ -449,7 +449,7 @@ AI可以是你强大的协作者，负责信息的整理、关联与维护。
 - [[一定要尽早用这个AI工具workbuddy的100条实操攻略]] (共现关键词: 文件, 工具, AI)
 - [[个人品牌与合规同行-青年律师的数字化成长之路]] (共现关键词: ##, 个人)
 - [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: 知识库, Obsidian, md)
-- [[用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: 知识库, 文件夹, Obsidian)
+- [[知识飞轮系统/03-连接/概念页/用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: 知识库, 文件夹, Obsidian)
 - [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: 合同, 文件夹, AI)
 - [[Templater快速配置指南]] (共现关键词: 指南, 合同, 文件夹)
 - [[Obsidian极简安装指南]] (共现关键词: Obsidian, ##, 文件夹)
