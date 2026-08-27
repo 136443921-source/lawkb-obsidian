@@ -35,7 +35,7 @@ def categorize(rel_path):
 def scan_notes():
     notes = []
     for root, dirs, files in os.walk(BASE):
-        dirs[:] = [d for d in dirs if d != '.workbuddy']
+        dirs[:] = [d for d in dirs if not d.startswith('.')]  # 排除 .workbuddy/.backup/.trash/.cache 等隐藏目录
         for f in files:
             if not f.endswith('.md'): continue
             fp = os.path.join(root, f)

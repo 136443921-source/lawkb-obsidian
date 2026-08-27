@@ -6,11 +6,11 @@ trigger: 审查、起草或修订「股权转让协议（参考及注意事项�
 domain: 合同文书
 source: 02-提炼/合同文书笔记/股权转让协议（参考及注意事项）-2026-07-13.md
 original_source: IMA 知识库「合同文书AI助手」（KB 7312048136419112，厚德基金会共享）
-review_date: 2026-08-23
+review_date: 2026-09-27
 importance: 4
 generated_by: 转写批1+2(2026-07-24)
 created: 2026-07-24T16:50
-updated: 2026-08-21T18:55
+updated: 2026-08-27T13:40
 tags:
   - 经验卡片
   - 合同文书
