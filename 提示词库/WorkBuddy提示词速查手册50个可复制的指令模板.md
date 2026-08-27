@@ -1,6 +1,6 @@
 ---
 created: 2026-06-07T14:43
-updated: 2026-08-21T18:55
+updated: 2026-08-26T19:59
 title: WorkBuddy提示词速查手册50个可复制的指令模板
 tags: []
 maturity: 🌱种子
@@ -420,7 +420,7 @@ AI平权实验室 | 让AI工具属于每个人
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/Jz1rp16C-UDJZkXqMOjWig)*
 
 ## 相关笔记
-- [[法律SOP蒸馏器]] (共现关键词: WorkBuddy, 公司)
+- [[小强律师数字分身系统/数字分身系统搭建/法律SOP蒸馏器]] (共现关键词: WorkBuddy, 公司)
 - [[换电脑后WorkBuddy如何迁移]] (共现关键词: WorkBuddy, 公司)
 - [[2026-08-06]] (共现关键词: qq, 公司)
 - [[如何让AI帮你打理Obsidian知识库]] (共现关键词: WorkBuddy, AI)
@@ -432,4 +432,4 @@ AI平权实验室 | 让AI工具属于每个人
 - [[律师AI提示词使用指南从入门到精通]] (共现关键词: 提示, AI)
 - [[一文吃透腾讯WorkBuddy全功能模式模型技能连接器专家与自动化实操指南]] (共现关键词: wechat, WorkBuddy)
 - [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: wechat, WorkBuddy, AI)
-- [[更新基金会值得收藏的133部常用法律法规政策速查汇编目录]] (共现关键词: wechat, mp, 速查)
+- [[知识库/慈法知识库/更新基金会值得收藏的133部常用法律法规政策速查汇编目录]] (共现关键词: wechat, mp, 速查)

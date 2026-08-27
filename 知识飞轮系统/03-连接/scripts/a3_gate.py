@@ -7,8 +7,8 @@ a3_gate.py — 每日摄入 A3「标签 + 枢纽挂接」最小门禁（v1.15）
 执行最小门禁，确保「领域标签 + 枢纽挂接」在落盘即完成，避免成为阶段3补链前的孤儿。
 - 依子目录映射 GROUPS / RULE_MERGE 领域（与 link_cards_rules.py 对齐）
 - 补写缺失领域标签（frontmatter tags，不覆盖既有）
-- 在「## 关联（知识飞轮连接层自动补链」段引用对应 连接枢纽-{域}.md
-  （枢纽不存在则标 pending_hub，待阶段3补链生成）
+- 在独立段「## 关联（A3门禁·领域枢纽挂接」引用对应 连接枢纽-{域}.md
+  （枢纽不存在则标 pending_hub，待阶段3补链生成；不与 stage3 的关联段冲突）
 - 幂等：已含标签/已引枢纽则跳过；孤儿预检输出统计
 
 用法：
@@ -20,10 +20,8 @@ a3_gate.py — 每日摄入 A3「标签 + 枢纽挂接」最小门禁（v1.15）
 """
 import os
 import re
-import sys
 import json
-import argparse
-from datetime import datetime, date
+from datetime import date
 
 ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
 CARD_DIR = os.path.join(ROOT, "02-提炼", "经验卡片")
@@ -32,7 +30,6 @@ HUB_DIR = os.path.join(ROOT, "03-连接")
 OUT = os.path.join(HUB_DIR, "scripts", "a3_gate_lastrun.json")
 
 # ---- 领域映射（与 link_cards_rules.py GROUPS 对齐）----
-# 卡片子目录 -> (domain, hub_name)
 GROUPS = {
     "慈法合规": ("慈法合规", "连接枢纽-慈法合规"),
     "医疗纠纷": ("人伤法", "连接枢纽-人伤法"),
@@ -44,7 +41,6 @@ GROUPS = {
     "案例": ("案例", "连接枢纽-案例"),
     "慈善组织合同纠纷": ("慈善组织合同", "连接枢纽-慈善组织合同纠纷"),
 }
-# 规则子目录 -> GROUPS 键（再链到 domain/hub）
 RULE_MERGE = {
     "医疗损害责任纠纷": "医疗纠纷",
     "提供劳务者受害责任纠纷": "医疗纠纷",
@@ -56,7 +52,10 @@ RULE_MERGE = {
     "慈善": "慈法合规",
 }
 
-LINK_HEADING = "## 关联（知识飞轮连接层自动补链"
+LINK_HEADING = "## 关联（A3门禁·领域枢纽挂接"
+
+TARGET_DATE = None
+ALL_MODE = False
 
 
 def domain_of_card(cat):
@@ -77,7 +76,6 @@ def domain_of_rule(rd):
 
 
 def parse_frontmatter(text):
-    """返回 (frontmatter_raw, body, tags_list, created, updated)。无 frontmatter 则 frontmatter_raw=None。"""
     if not text.startswith("---"):
         return None, text, [], None, None
     m = re.match(r"^---\s*\n(.*?)\n---\s*\n?(.*)$", text, re.S)
@@ -114,16 +112,13 @@ def hub_exists(hub_name):
 
 
 def ensure_link_section(body, hub_name):
-    """在 body 中确保 LINK_HEADING 段已引用 [[hub_name]]。返回 (new_body, added)。"""
     lines = body.splitlines()
-    # 找段
     idx = None
     for i, ln in enumerate(lines):
         if ln.startswith(LINK_HEADING):
             idx = i
             break
     if idx is not None:
-        # 段内是否已含 hub 链接
         seg = []
         j = idx + 1
         while j < len(lines) and not (lines[j].startswith("## ") and not lines[j].startswith("## 关联")):
@@ -131,13 +126,17 @@ def ensure_link_section(body, hub_name):
             j += 1
         if any(hub_name in s for s in seg):
             return body, False
-        # 追加到段尾
         new_lines = lines[:j] + [f"- 领域枢纽：[[{hub_name}]]"] + lines[j:]
         return "\n".join(new_lines), True
     else:
-        # 新增段
         new_body = body.rstrip() + f"\n\n{LINK_HEADING} · {date.today().isoformat()})\n- 领域枢纽：[[{hub_name}]]\n"
         return new_body, True
+
+
+def assemble(fm, body):
+    if fm is None:
+        return body
+    return f"---\n{fm}\n---\n{body}"
 
 
 def process_file(path, dry, stats):
@@ -147,13 +146,10 @@ def process_file(path, dry, stats):
     except Exception:
         return
     fm, body, tags, created, updated = parse_frontmatter(text)
-    # 日期门禁：默认仅处理今天的新笔记（除非 --all）
-    if not getattr(process_file, "all", False):
-        target = process_file.target_date
-        hit = (created and created.startswith(target)) or (updated and updated.startswith(target))
+    if not ALL_MODE:
+        hit = (created and created.startswith(TARGET_DATE)) or (updated and updated.startswith(TARGET_DATE))
         if not hit:
             return
-    # 判断领域
     rel = os.path.relpath(path, CARD_DIR if path.startswith(CARD_DIR) else RULE_DIR)
     parts = rel.split(os.sep)
     subdir = parts[0] if len(parts) > 1 else ""
@@ -168,17 +164,14 @@ def process_file(path, dry, stats):
         stats["tag_added"] += 1
         changed = True
         if fm is None:
-            new_text = f"---\ntags:\n  - {domain}\n  - {subdir}\n---\n\n{text}"
+            text = f"---\ntags:\n  - {domain}\n  - {subdir}\n---\n\n" + text
         else:
-            # 在 frontmatter 内 tags 下追加，或新建 tags
             if "tags:" in fm:
                 fm2 = fm + f"\n  - {domain}"
             else:
                 fm2 = fm + f"\ntags:\n  - {domain}"
-            new_text = f"---\n{fm2}\n---\n{body}"
-        text = new_text
-        # 重新解析以拿到 body 用于后续链接
-        _, body, _, _, _ = parse_frontmatter(text)
+            text = f"---\n{fm2}\n---\n{body}"
+        fm, body, tags, created, updated = parse_frontmatter(text)
     else:
         stats["tag_ok"] += 1
 
@@ -193,34 +186,34 @@ def process_file(path, dry, stats):
             stats["hub_ok"] += 1
     else:
         stats["pending_hub"] += 1
-        # 不创建枢纽；标记待阶段3
         note = f"\n<!-- a3_pending_hub: {hub_name} -->\n"
         if note.strip() not in body:
             body = body.rstrip() + note
             changed = True
 
     # 3) 孤儿预检
-    has_tag = domain in (tags + ([domain] if changed and fm is not None else []))
+    has_tag = domain in tags
     has_hub = hub_exists(hub_name) and (hub_name in body)
     if not (has_tag and has_hub):
         stats["gate_failed"].append(os.path.relpath(path, ROOT))
 
-    if changed and not dry:
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(body if fm is not None else body)
     if changed:
         stats["changed"] += 1
+        if not dry:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(assemble(fm, body))
 
 
 def main():
+    import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=date.today().isoformat())
-    ap.add_argument("--all", action="store_true", help="扫全部笔记（评估/兜底）")
+    ap.add_argument("--all", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
-
-    process_file.target_date = args.date
-    process_file.all = args.all
+    global TARGET_DATE, ALL_MODE
+    TARGET_DATE = args.date
+    ALL_MODE = args.all
 
     stats = {
         "run_date": args.date, "all_mode": args.all, "dry_run": args.dry_run,
@@ -228,7 +221,6 @@ def main():
         "hub_ok": 0, "hub_linked": 0, "pending_hub": 0,
         "changed": 0, "gate_failed": [],
     }
-
     for base in (CARD_DIR, RULE_DIR):
         for root, dirs, files in os.walk(base):
             for fn in files:
@@ -245,9 +237,7 @@ def main():
           f" | 改写 {stats['changed']} | 门禁未通过 {len(stats['gate_failed'])}"
           f" | {'DRY-RUN' if args.dry_run else '已落盘'}")
     if stats["gate_failed"]:
-        print("  门禁未通过:")
-        for p in stats["gate_failed"]:
-            print(f"    - {p}")
+        print(f"  门禁未通过（待阶段3建枢纽后二次门禁）: {len(stats['gate_failed'])} 篇")
 
 
 if __name__ == "__main__":

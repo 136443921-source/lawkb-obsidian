@@ -44,6 +44,7 @@ tags:
 - **周日知识维护批处理**（automation-1783920443461，v1.6）：阶段2.5 断链自愈(21:30) → 阶段3 连接层补链(21:40) → 重刷图谱 HTML。
 - **稳定性监测守卫**（automation-1784788482072，每日23:30）：仅追加缺口告警。
 - **持久脚本** `知识飞轮系统/03-连接/scripts/`：`kg_scan.py`(图谱扫描/边计算)、`kg_html.py`(HTML)、`link_cards_rules.py`(补链 **v3.1：动态遍历规则库全部子目录，不再硬编码映射**，2026-08-04 修复 17 子目录仅映射 7 的遗漏)、`resolve_broken_links.py`(断链→概念页 **v1.3（2026-08-09）**：raw 去尾随反斜杠 + 跳过 `self.md-*` 自引用 + 占位符 token 扩至 `x/wikilink/案件笔记名/规则名/链接/.../XXX/Rxxx`，避免误建垃圾页；**护栏须与 kg_scan.py 保持一致**)、`fix_source_links.py`(畸形链接修复 v1.1)。
+- **intake_runner 标准库（2026-08-26 v1.1，三自动化已接入）** `知识飞轮系统/03-连接/scripts/`：`intake_runner.py`（IntakeState 单一真源+原子写+totals每次重算 / IntakeMachine checkpoint 续跑 / DegradationLayer 220030 判定与告警升级 / StatuteHealthCheck 法条体检 / SELECT_3 去双重计数 / IntakeConfig 场景声明）+ 三 driver：`intake_daily_driver.DailyRun`（每日 v1.16）、`intake_sunday_driver.SundayRun`（周日批 v1.10，状态 `03-连接/check_links_state.json`）、`intake_monthly_driver.MonthlyRun`（月度回灌 v2.0，状态 `03-连接/monthly_backfill_state.json`）。周日/月度传 `libs={}` 空库不污染 ima_intake_state；三自动化中断后自动续跑，不再需人工"请继续"。
 - **概念页** `03-连接/概念页/`；**连接枢纽 MOC** `03-连接/连接枢纽-{慈法合规,人伤法,合同风险,通用程序,学习笔记,公众号,案例,商事纠纷,公司法,劳动人事,婚姻家庭,法律资讯,运维过程}.md`（**2026-08-04 经 v3.1 动态遍历增至 13 个**）。
 - **概念页护栏（2026-08-17 收紧，长期原则）**：`resolve_broken_links.py` v1.1 / `kg_scan.py` v1.4 的链接解析索引须覆盖 **LawKB 工作区全量**（跨目录真实文件如根目录 Obsidian 教程、00_收件箱、知识库/、案件管理/ 等算已解析，勿误判断链建概念页）；护栏（日期/纯数字/URL/系统引用 memory·待推送_*/空链接）两脚本**同源一致**。误建/噪音概念页移 `概念页/.trash-<日期>/`（可回滚，manifest.txt 记录映射）。
 - **META_SKIP**= `孤立笔记检测报告` + `知识库压缩去重报告`（其内反引号示例 `[[…]]` 不计入断链）。
