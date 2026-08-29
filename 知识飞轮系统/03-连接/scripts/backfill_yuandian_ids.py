@@ -216,11 +216,74 @@ def load_ledger():
         return json.load(f), path
 
 
+def prune_snapshots(cards_dir, keep=2, dry=False):
+    """快照保留上限：同名基线的 `.bak-*` 目录只保留「最近 keep 份」，删除更早的。
+
+    背景（2026-08-29 事故）：单次回填任务反复 `--apply`，每次 copytree 一份全量副本，
+    一次任务即产生 5 份 × 619 文件 = 3086 个冗余副本（约 15 MB），且全部漏进 git
+    ——根因是 .gitignore 的 `*.bak` 只匹配**文件**，匹配不到 `xxx.bak-时间戳` **目录**。
+
+    策略：保留最近 N 份（默认 2）。回滚通常用最近快照，故不保留"最早基线"，
+    避免保留策略与 .gitignore 白名单打架（白名单保留的是最近两份）。
+    """
+    parent = os.path.dirname(cards_dir.rstrip("/")) or "."
+    base = os.path.basename(cards_dir.rstrip("/"))
+    prefix = base + ".bak-"
+
+    def _snap_key(name, full):
+        """排序键：优先取目录名内嵌的时间戳 `YYYYMMDD-HHMMSS`。
+
+        注意：**不能用 mtime 排序**。2026-08-29 实测 5 个快照目录的 mtime 全被
+        Obsidian 索引/扫描进程刷成同一时刻，按 mtime 排序会把最新的基线误判为最旧、
+        进而误删。目录名内嵌时间戳才是稳定可靠的序。
+        """
+        m = re.search(r"(\d{8}-\d{6})", name)
+        if m:
+            return m.group(1)
+        return "00000000-000000_%013.3f" % os.path.getmtime(full)  # 无时间戳者当最旧
+
+    snaps = []
+    for name in os.listdir(parent):
+        full = os.path.join(parent, name)
+        if name.startswith(prefix) and os.path.isdir(full):
+            snaps.append((_snap_key(name, full), name, full))
+
+    if len(snaps) <= keep:
+        return [], [n for _k, n, _f in snaps]
+
+    snaps.sort(key=lambda x: x[0])               # 时间戳升序：最旧的在前
+    doomed = snaps[:len(snaps) - keep]           # 超出上限的从最旧开始删
+    removed = []
+    for _k, name, full in doomed:
+        if dry:
+            print("  [预演] 将删除旧快照 %s" % name)
+        else:
+            shutil.rmtree(full)
+            print("  [清理] 已删除旧快照 %s" % name)
+        removed.append(name)
+
+    kept = [n for _k, n, _f in snaps[len(snaps) - keep:]]
+    return removed, kept
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true", help="落盘（默认 dry-run）")
     ap.add_argument("--report", default="", help="写明细报告到指定 md 路径")
+    ap.add_argument("--keep-snapshots", type=int, default=2,
+                    help="快照保留上限：只保留最近 N 份 .bak-* 副本（默认 2）")
+    ap.add_argument("--prune-only", action="store_true",
+                    help="只清理过期快照，不执行回填")
+    ap.add_argument("--prune-dry", action="store_true",
+                    help="配合 --prune-only：只预演，不真删")
     args = ap.parse_args()
+
+    if args.prune_only:
+        print("===== 仅清理过期快照（保留最近 %d 份）=====" % args.keep_snapshots)
+        removed, kept = prune_snapshots(CARDS_DIR, args.keep_snapshots, dry=args.prune_dry)
+        print("删除 %d 份：%s" % (len(removed), ", ".join(removed) or "无"))
+        print("保留 %d 份：%s" % (len(kept), ", ".join(kept)))
+        return
 
     ledger, ledger_path = load_ledger()
     hit = {norm_ah(k): v for k, v in ledger.get("hit", {}).items()}
@@ -350,6 +413,10 @@ def main():
         n_src = sum(len(fn) for _dp, _dn, fn in os.walk(CARDS_DIR))
         assert n_bak == n_src, "备份文件数不一致 %d != %d，中止" % (n_bak, n_src)
         print("\n[备份] %s （%d 文件）" % (bak, n_bak))
+        # 快照保留上限：清理超出 keep 份的旧副本，杜绝反复 --apply 产生指数级冗余
+        _removed, _kept = prune_snapshots(CARDS_DIR, args.keep_snapshots)
+        if _removed:
+            print("[快照治理] 已清理 %d 份旧副本，保留最近 %d 份" % (len(_removed), len(_kept)))
 
         for path, new_text in plan:
             with open(path, "w", encoding="utf-8") as f:
