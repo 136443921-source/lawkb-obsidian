@@ -1,6 +1,6 @@
 ---
 created: 2026-05-28T10:51
-updated: 2026-08-26T14:36
+updated: 2026-08-28T19:31
 title: 用ObsidianCodex搭一个会主动思考的个人知识库
 tags: []
 maturity: 🌱种子
@@ -406,7 +406,7 @@ Codex 会基于整个知识库生成周复盘笔记，并存入 Inbox。
 - [[小强律师数字分身系统/数字分身系统搭建/法律类skill 配置迭代-九阳神功/用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: 知识库, 思考, ObsidianCodex)
 - [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: ##, 自动, 一个)
 - [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: Obsidian, 知识库, 一个)
-- [[复盘建议_20260812]] (共现关键词: ##, 复盘)
+- [[知识飞轮系统/03-连接/概念页/复盘建议_20260812]] (共现关键词: ##, 复盘)
 - [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (共现关键词: 知识库, 文件夹, Obsidian)
 - [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: 文件夹, ###)
 - [[Templater快速配置指南]] (共现关键词: 文件夹, 笔记, ###)
@@ -414,5 +414,5 @@ Codex 会基于整个知识库生成周复盘笔记，并存入 Inbox。
 - 如何让AI帮你打理Obsidian知识库 
 - ClaudeCodeObsidian个人知识库从工具到思维的完整指南 
 - 案件模板使用指南 
-- Templater快速配置指南 
-- Obsidian配置指南 
+- [[Templater快速配置指南|Templater快速配置指南]] 
+- [[Obsidian配置指南|Obsidian配置指南]] 

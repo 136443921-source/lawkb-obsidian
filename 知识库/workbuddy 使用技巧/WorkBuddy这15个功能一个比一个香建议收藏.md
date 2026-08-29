@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T10:23
-updated: 2026-08-21T18:55
+updated: 2026-08-28T19:31
 title: WorkBuddy这15个功能一个比一个香建议收藏
 tags: []
 maturity: 🌳核心
@@ -167,6 +167,9 @@ WorkBuddy给你一个沙箱，在里面随便折腾。出了事也不影响本�
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/MOYLmt7ASG4dtjQ6XY5HcQ)*
 
 ## 相关笔记
+- [[我用WorkBuddy三个月踩了15个坑才明白]] (共现关键词: 15, Skill, WorkBuddy)
+- [[每日学习笔记-2026-07-07]] (共现关键词: 共现, Skill, 关键词)
+- [[小哲AI 学伴智能体搭建方案]] (共现关键词: 共现, 关键词, ##)
 - [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 建议, WorkBuddy, 收藏)
 - [[实施任务跟踪]] (共现关键词: 自动, AI)
 - [[更新基金会值得收藏的133部常用法律法规政策速查汇编目录]] (共现关键词: 合同, 收藏)

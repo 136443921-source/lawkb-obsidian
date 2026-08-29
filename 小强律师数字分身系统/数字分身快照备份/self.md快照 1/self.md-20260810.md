@@ -1,6 +1,6 @@
 ---
 created: 2026-08-10T13:09
-updated: 2026-08-21T18:55
+updated: 2026-08-28T19:31
 tags:
   - 慈善法
   - 合同法
@@ -15,7 +15,7 @@ tags:
 ---
 > 📌 **双文件治理（唯一编辑源）**：本 `self.md` 是小强律师数字分身人格与经验的**唯一编辑源（single source of truth）**。`SKILL.md` 由 `tools/skill_writer.py --action combine` 自动合并 `self.md` + `persona.md` 派生生成，**勿直接编辑 SKILL.md**；每次修改 self.md 后须重新运行 combine 重新生成 SKILL.md，否则二者会漂移。
 
-# Self Memory — 小强律师
+# [[self.md-20260805|Self Memory — 小强律师]]
 
 ## 职业价值观
 

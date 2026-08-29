@@ -1,6 +1,6 @@
 ---
 created: 2026-05-28T10:51
-updated: 2026-08-26T14:36
+updated: 2026-08-28T19:36
 title: 法律SOP蒸馏器
 tags:
   - 诉讼
@@ -425,6 +425,6 @@ text
 - [[LawKB笔记frontmatter标准模板]] (共现关键词: 诉讼, 合同)
 - [[小强律师数字分身系统/数字分身系统搭建/skill技能设计文档/精准版合同审查意见应用器|精准版合同审查意见应用器]]|精准版合同审查意见应用器|精准版合同审查意见应用器|精准版合同审查意见应用器|精准版合同审查意见应用器|精准版合同审查意见应用器|精准版合同审查意见应用器 
 - [[小强律师数字分身系统/数字分身系统搭建/法律类skill 配置迭代-九阳神功/一人公司创建流程|一人公司创建流程]]|一人公司创建流程|一人公司创建流程|一人公司创建流程|一人公司创建流程|一人公司创建流程|一人公司创建流程 
-- [[怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill]]|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill 
+- [[怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill]]|[[怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill]]|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill|怎么设计一个能交付的合同审查 Skill 
 - ClaudeCodeObsidian个人知识库从工具到思维的完整指南 
-- [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 
+- [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|[[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 

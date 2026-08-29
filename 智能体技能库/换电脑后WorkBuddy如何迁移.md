@@ -1,6 +1,6 @@
 ---
 created: 2026-07-30T12:40
-updated: 2026-08-21T18:55
+updated: 2026-08-28T19:31
 tags:
   - 连接器
   - WorkBuddy
@@ -58,7 +58,7 @@ https://mp.weixin.qq.com/s/UfcoG5_TZHM45yIJQzZJjw
 
 • 身份文件（SOUL/IDENTITY/USER）
 
-• 记忆文件（MEMORY.md + 日志）
+• 记忆文件（[[MEMORY|MEMORY]].md + 日志）
 
 • 团队配置
 

@@ -1,6 +1,6 @@
 ---
 created: 2026-06-23T18:31
-updated: 2026-08-21T18:55
+updated: 2026-08-28T19:36
 title: 用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包
 tags: []
 maturity: 🌳核心
@@ -342,6 +342,7 @@ markitdown / pptx-generator / minimax-xlsx / minimax-docx
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/zmrIPFHKnOj-rVWR6va_7Q)*
 
 ## 相关笔记
+- [[重磅逐条解读｜2026版《民营企业劳动用工管理制度》]] (共现关键词: 公司, 解读)
 - [[裁判规则提取报告_陈长卫劳务致害案_20250607 1]] (共现关键词: 提取, 合同, 公司)
 - [[2026版民营企业劳动用工管理制度12章解读-2026-08-07]] (共现关键词: 合同, 公司, 解读)
 - [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: PPT, AI)
