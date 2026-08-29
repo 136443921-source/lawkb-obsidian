@@ -12,7 +12,7 @@ key_strategy: <一句话核心攻防策略>
 value: <增量价值>
 source_skill: 庭审准备助手
 created: 2026-08-03T11:36
-updated: 2026-08-21T18:55
+updated: 2026-08-28T19:31
 tags:
   - 庭审
   - 调用

@@ -13,7 +13,7 @@ key_finding: <一句话核心发现>
 value: <本次调用对分身的增量价值>
 source_skill: 蓝队律师合同审查
 created: 2026-08-03T11:36
-updated: 2026-08-21T18:55
+updated: 2026-08-28T19:31
 tags:
   - 合同法
   - 2026
