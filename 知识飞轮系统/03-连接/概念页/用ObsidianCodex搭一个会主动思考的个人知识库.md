@@ -5,7 +5,7 @@ tags:
   - 概念页 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.0
 created: 2026-07-28T23:06
-updated: 2026-08-26T14:37
+updated: 2026-08-28T19:31
 ---
 
 # 用ObsidianCodex搭一个会主动思考的个人知识库
@@ -34,4 +34,5 @@ updated: 2026-08-26T14:37
 
 
 ## 相关笔记
+- [[用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: 思考, 链接, 飞轮)
 - [[知识飞轮系统/03-连接/概念页/用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: 知识库, 思考, ObsidianCodex)

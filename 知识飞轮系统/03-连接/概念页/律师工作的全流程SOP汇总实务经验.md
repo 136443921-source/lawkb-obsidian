@@ -1,5 +1,5 @@
 ---
-title: 律师工作的全流程SOP汇总实务经验
+title: [[律师工作的全流程SOP汇总|律师工作的全流程SOP汇总]]实务经验
 type: concept
 tags:
   - 概念页 概念-通用
