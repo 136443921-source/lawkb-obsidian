@@ -6,7 +6,7 @@ tags:
   - 合同法
   - wiki
 created: 2026-05-28T10:51
-updated: 2026-08-26T14:37
+updated: 2026-08-28T19:31
 title: ClaudeCodeObsidian个人知识库从工具到思维的完整指南
 maturity: 🌿成长
 source: ""
@@ -157,7 +157,7 @@ Karpathy自己就用这么简单的结构。没有嵌套五六层的目录，没
 
 接下来，在项目根目录新建一个文本文件。
 
-文件名可以叫CLAUDE.md，也可以叫AGENTS.md，或者README.md。这个文件是给AI的工作手册。
+文件名可以叫CLAUDE.md，也可以叫AGENTS.md，或者[[README|README]].md。这个文件是给AI的工作手册。
 
 它要告诉AI几件事。
 
@@ -438,6 +438,10 @@ AI可以是你强大的协作者，负责信息的整理、关联与维护。
 
 
 ## 相关笔记
+- [[病历记录完整率-关键诊疗记录缺失风险]] (共现关键词: 共现, 慈善, 医疗)
+- [[公司法务必备数据合规完整知识手册]] (共现关键词: AI, 完整)
+- [[用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: 知识库, 个人)
+- [[经验卡片-制度-AI工具PHI保密红线]] (共现关键词: 工具, ##, 慈善)
 - [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (共现关键词: 指南, 思维, 完整)
 - [[数据合规完整知识手册-2026-08-14]] (共现关键词: ##, 合同, 完整)
 - [[R-LN-020-电子证据采信以真实性合法性关联性三性完整为前提缺失原始载体或非法取证即排除]] (共现关键词: ##, 完整)
@@ -453,8 +457,8 @@ AI可以是你强大的协作者，负责信息的整理、关联与维护。
 - [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: 合同, 文件夹, AI)
 - [[Templater快速配置指南]] (共现关键词: 指南, 合同, 文件夹)
 - [[Obsidian极简安装指南]] (共现关键词: Obsidian, ##, 文件夹)
-- 用ObsidianCodex搭一个会主动思考的个人知识库 
+- [[用ObsidianCodex搭一个会主动思考的个人知识库|用ObsidianCodex搭一个会主动思考的个人知识库]] 
 - 如何让AI帮你打理Obsidian知识库 
-- 法律SOP蒸馏器 
+- [[法律SOP蒸馏器|法律SOP蒸馏器]] 
 - 案件模板使用指南 
-- [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 
+- [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|[[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 

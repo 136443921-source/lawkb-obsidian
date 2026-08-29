@@ -1,11 +1,11 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-08-27T13:42",
+  "updated": "2026-08-29T16:31",
   "ima_connector": "ima-mcp",
-  "ima_status": "ok_5ingested_2deferred_220030_persistent",
-  "note": "2026-08-17 B库回补完成：12 候选全部消费（10 篇新蒸馏 R-LN-009~011/R-PI-127~128/R-HG-026~028/R-CF-064~065；pi04 病历记录与 cf10 塔西佗为重复，已去重不建新制品；cf10 补登 dedup）。hg09 调岗降薪 IMA 220030 降级 WebSearch 重构（pending_source_upgrade）。ingested 156→167。",
-  "last_run_ts_ms": 1787725761781,
+  "ima_status": "ok_15backfilled_2026-08-27",
+  "note": "2026-08-27 A1/B 漏窗回补完成：15/15 全量摄入（A1 合同3 + B 四库12）。HT 含 老年人意定监护协议（backlog 唯一未摄入）；CF 从第2页50条未摄入中选 3（备案指引解读/贵州三指引/关联关系雷区）。经验卡片15+规则卡15（R-HT-106~108/R-LN-030~032/R-PI-171~173/R-HG-052~054/R-CF-086~088）。ingested 269→284，pending_windows 清零。",
+  "last_run_ts_ms": 1787887050765,
   "b_pending_backfill": {
     "reason": "RESOLVED 2026-08-19 —— 原候选 3 篇（善款挪作他用/谁捐的/到底什么是公益）经标题级去重核对均已在 ingested（含蒸馏笔记别名），未重复摄入；改选 3 篇确证 NEW 候选（八项罪名/60家取消资格/互捐合规）并完成摄入。",
     "candidates_selected": 3,
@@ -462,9 +462,37 @@
           "create_time": 1787672779949,
           "ingested_at": "2026-08-26T14:29",
           "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_b3dfa7b0a247f125076362cf18019e637312048136419112",
+          "title": "劳动合同（无固定期限版）参考模版｜附使用说明+风险提示",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 5
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7af21e85641245f4eb384e200547099d7312048136419112",
+          "title": "民间借贷合同（有息版）参考模版｜附使用说明+风险提示",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_5c1d1197ef11845f81406a766b8902197312048136419112",
+          "title": "《老年人意定监护协议》",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 0
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e9c40ca363c1b4b0c78c245423d075df7312048136419112",
+          "title": "买卖合同（详细版）参考模版｜附使用说明 + 风险提示",
+          "create_time": 1787873940000,
+          "ingested_at": "2026-08-29T16:31",
+          "value": 0
         }
       ],
-      "last_run_ts_ms": 1787460802219
+      "last_run_ts_ms": 1787887050765
     },
     "7312042960642489": {
       "name": "律师AI助手",
@@ -918,9 +946,37 @@
           "create_time": 1787672978113,
           "ingested_at": "2026-08-26T14:29",
           "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e3ddaf351b7aad630ca4b9a423d888b97312042960642489",
+          "title": "人民法院关于机动车交通事故责任纠纷规范指引（2026年8月整理）",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 2
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_826fd21d605a9bd861a1c2e69f5cb3cf7312042960642489",
+          "title": "被执行人用别人的微信、支付宝日常收支应该如何破局？",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 2
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_3ec1ebbdb6163265ea20652d2461d9eb7312042960642489",
+          "title": "黄赌类案件里，\"人是谁\"比\"干了啥\"更先要命",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 0
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c9fb85aaf8d4a5cafc42a39561f3448c7312042960642489",
+          "title": "律师办理企业合规体系建设业务操作指引（2026）（试行）",
+          "create_time": 1785832680000,
+          "ingested_at": "2026-08-29T16:31",
+          "value": 0
         }
       ],
-      "last_run_ts_ms": 1787460802219
+      "last_run_ts_ms": 1787887050765
     },
     "7312035322822509": {
       "name": "人伤法律实务助手",
@@ -1349,9 +1405,52 @@
         },
         "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_27144ef1aeaac2e4e137d80bd574d0cb7312035322822509",
         "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0b2c58e204edd8fc44168f50cdcb0a137312035322822509",
-        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7313c4eecae4c41ca35c41d3a244dc317312035322822509"
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_7313c4eecae4c41ca35c41d3a244dc317312035322822509",
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_f9ff8280969dfb6e5fccad5fa2d8c8487312035322822509",
+          "title": "2026医疗纠纷风险升级，送你一套应急处置全流程模板",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 7
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_99c4670a34ad3db669b8b4bd26f544877312035322822509",
+          "title": "医疗纠纷中病历败诉的10个核心漏洞！很多医院都栽在这些细节上",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 4
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_80c414e4b9a05e1eb194a63e3ffd3fb87312035322822509",
+          "title": "低年资医生实施高等级手术，出了问题到底算谁的责任？",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 0
+        },
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0e13752e586944aa51cb5faf40bbaa787312035322822509",
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_f580b70de70063e59cf966a461dd72877312035322822509",
+          "title": "医疗纠纷诉讼，鉴定机构怎么选？——决定案件走向的关键一步",
+          "create_time": 1786667400000,
+          "ingested_at": "2026-08-29T16:31",
+          "value": 0
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_79e2aa78b9279245f5673b7cf7d917977312035322822509",
+          "title": "医疗纠纷打官司，成败往往压在鉴定上：这6个节点，家属必须懂",
+          "create_time": 1787833680000,
+          "ingested_at": "2026-08-29T16:31",
+          "value": 0
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e40f503d5f72670ec77d78f43a98689f7312035322822509",
+          "title": "法谋干货舱｜医疗纠纷，卫健委投诉不是万能的！哪些情形投诉才真正有用？",
+          "create_time": 1787737500000,
+          "ingested_at": "2026-08-29T16:31",
+          "value": 0
+        }
       ],
-      "last_run_ts_ms": 1787460802219
+      "last_run_ts_ms": 1787887655217
     },
     "7333014572917409": {
       "name": "合规与政府监管AI助手",
@@ -1761,9 +1860,23 @@
         },
         "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a52f47bfa5609c9863365c42f1772cf97333014572917409",
         "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_39bc19a48f0ff0f5f90d8b222139133e7333014572917409",
-        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c9299ceccbfd72cce05d85e9793be6ae7333014572917409"
+        "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c9299ceccbfd72cce05d85e9793be6ae7333014572917409",
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_849dec818817958db69b05247f3b7b8f7333014572917409",
+          "title": "中央企业控股上市公司实施股权激励工作指引",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 3
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_6fda01773f8a79e3a2c1b45736fcdeac7333014572917409",
+          "title": "公司自行解散及清算法律指引",
+          "create_time": 1787569200000,
+          "ingested_at": "2026-08-29T16:31",
+          "value": 0
+        }
       ],
-      "last_run_ts_ms": 1787460802219
+      "last_run_ts_ms": 1787887050765
     },
     "7311644304633438": {
       "name": "慈善组织合规AI助手",
@@ -2186,40 +2299,41 @@
           "create_time": 1748500000000,
           "ingested_at": "2026-08-26T14:29",
           "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a76b2e01b2f53fce826be9f8c3fee04a7311644304633438",
+          "title": "《慈善组织公开募捐方案备案指引（试行）》解读",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 5
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_84e3693a842eefc6ca2202e8b85bb20a7311644304633438",
+          "title": "省慈善联合会关于印发《贵州省慈善组织保值增值投资活动管理指引》等3个通知",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 3
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_13bc1f1e197c043644eb378db2c8b6c47311644304633438",
+          "title": "慈善合规雷区：关联关系的界定、底线及处理",
+          "create_time": 0,
+          "ingested_at": "2026-08-27T15:14",
+          "value": 4
         }
       ],
-      "last_run_ts_ms": 1787460802219
+      "last_run_ts_ms": 1787887050765
     }
   },
-  "pending_windows": [
-    {
-      "date": "2026-08-27",
-      "start": "2026-08-27T13:39:09+08:00",
-      "end": "2026-08-27T13:39:09+08:00",
-      "reason": "ima-mcp 运行态掉线：本会话 ToolSearch 无 mcp__ima-mcp__* 索引。A0.0 已自愈配置态(enabled+=ima-mcp / userDisabled[ima-mcp]=False)，须重启 WorkBuddy 后下轮回补。",
-      "self_healed": true,
-      "subtasks": {
-        "A1": {
-          "target": 3,
-          "done": 0,
-          "note": "合同文书库 本会话跳过"
-        },
-        "B": {
-          "target": 12,
-          "done": 0,
-          "note": "其余4库 本会话跳过"
-        }
-      }
-    }
-  ],
+  "pending_windows": [],
   "totals": {
-    "ingested_total": 269,
+    "ingested_total": 289,
     "libraries": {
-      "7312048136419112": 56,
-      "7312042960642489": 56,
-      "7312035322822509": 52,
-      "7333014572917409": 51,
-      "7311644304633438": 54
+      "7312048136419112": 60,
+      "7312042960642489": 60,
+      "7312035322822509": 59,
+      "7333014572917409": 53,
+      "7311644304633438": 57
     }
   },
   "resolved_in_continuation": {
@@ -2463,6 +2577,87 @@
       "consumed_by": "automation-1783920420205 v1.13 续跑会话（用户指令：继续未完成任务）",
       "fault_resolution": "10:56 修复 ima-mcp 配置态故障（userDisabled True→False + enabled 恢复）并重启 WorkBuddy；本会话 ToolSearch+DeferExecuteTool 实测 5 库工具全部挂载，get_knowledge_list/search_knowledge 恢复 media_id 后逐篇 fetch。",
       "note": "12 候选全部消费：10 新笔记+10 规则卡；2 重复去重（cf10 补登 dedup 表防重选）。ingested 156→167。"
+    },
+    {
+      "window_id": "w_2026-08-27_A1B_backfill",
+      "date": "2026-08-27",
+      "consumed_at": "2026-08-27T15:14:37",
+      "status": "consumed_full",
+      "trigger": "自动化续跑 + 用户指令「请继续」（A1/B 漏窗回补）",
+      "reason": "2026-08-27 13:42 ima-mcp 运行态掉线跳过 A1(合同3)+B(四库12)；15:00+ IMA 工具索引恢复后本会话执行回补：SELECT_3 锁定 15 篇（含 HT 第3篇老年人意定监护、CF 第2页50条未摄入中取3篇），fetch 零 220030，15 篇全文落盘。",
+      "subtasks": {
+        "A1": {
+          "target": 3,
+          "done": 3,
+          "note": "合同文书库 3/3"
+        },
+        "B": {
+          "target": 12,
+          "done": 12,
+          "note": "LN/PI/HG/CF 各3"
+        }
+      },
+      "libraries": {
+        "7312048136419112": {
+          "name": "合同文书AI助手",
+          "target": 3,
+          "done": 3
+        },
+        "7312042960642489": {
+          "name": "律师AI助手",
+          "target": 3,
+          "done": 3
+        },
+        "7312035322822509": {
+          "name": "人伤法律实务助手",
+          "target": 3,
+          "done": 3
+        },
+        "7333014572917409": {
+          "name": "合规与政府监管AI助手",
+          "target": 3,
+          "done": 3
+        },
+        "7311644304633438": {
+          "name": "慈善组织合规AI助手",
+          "target": 3,
+          "done": 3
+        }
+      },
+      "new_notes": 15,
+      "new_rule_cards": 15,
+      "duplicates_skipped": 0,
+      "degraded": 0,
+      "occupies_new_quota": true,
+      "consume_priority": "backlog+new 混合",
+      "alert_level": "none",
+      "consumed_by": "小强(WorkBuddy) 会话回补",
+      "fault_resolution": "ima-mcp 运行态掉线 → 工具索引恢复后自动回补（无需 fix_ima_connector --apply）",
+      "note": "经验卡片 15 篇（合同文书3/学习笔记3/医疗纠纷3/慈法合规6）+ 规则卡 R-HT-106~108/R-LN-030~032/R-PI-171~173/R-HG-052~054/R-CF-086~088 共15张。ingested 269→284。"
+    },
+    {
+      "window_id": "w_2026-08-28_daily_noop",
+      "date": "2026-08-28",
+      "consumed_at": "2026-08-28T11:17:30",
+      "status": "noop_no_new_candidates",
+      "trigger": "automation-1783920420205 v1.17 每日触发",
+      "reason": "8/27 已回补 15/15 消费完 top 候选；今日 5 库 new_pool=0、backlog=0，无新增可摄入。正常空跑，不伪造、不写 ingested。",
+      "a1_target": 3,
+      "a1_done": 0,
+      "b_target": 12,
+      "b_done": 0,
+      "occupies_new_quota": false,
+      "alert_level": "none"
+    },
+    {
+      "window_id": "w_2026-08-28_220030_backfill_0e13752e",
+      "date": "2026-08-28",
+      "consumed_at": "2026-08-28T11:27:35",
+      "status": "consumed_backfill",
+      "trigger": "用户指令立即处理220030失败文",
+      "reason": "0e13752e（《医法仁心》案例分析之二·术中变更术式未告知）此前持久220030，2026-08-28 fetch 恢复成功，全文取回并回补为笔记+R-PI-176；合规 0cf7ff35 仍 220030 保留待人工核验。",
+      "occupies_new_quota": false,
+      "alert_level": "none"
     }
   ],
   "failed_220030": [
@@ -2472,24 +2667,21 @@
       "reason": "retry 2026-08-26 confirmed PERSISTENT 220030 (media_id full 32-bit, ima-mcp channel ok) → content unavailable in IMA (likely deleted/parse-error); NOT truncation, NOT channel fault. 按摄入中断铁律不写 ingested，需人工至 IMA 客户端核查原文",
       "code": "220030",
       "status": "retry"
-    },
-    {
-      "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_0e13752e586944aa51cb5faf40bbaa787312035322822509",
-      "date": "2026-08-26",
-      "reason": "retry 2026-08-26 confirmed PERSISTENT 220030 (media_id full 32-bit, ima-mcp channel ok) → content unavailable in IMA (likely deleted/parse-error); NOT truncation, NOT channel fault. 按摄入中断铁律不写 ingested，需人工至 IMA 客户端核查原文",
-      "code": "220030",
-      "status": "retry"
     }
   ],
   "checkpoint": {
-    "session_id": "run-1787809374448",
-    "stage": "A2_5",
-    "status": "in_progress",
-    "started_at": "2026-08-27T13:42",
+    "session_id": "run-1787992303124",
+    "stage": "D",
+    "status": "done",
+    "started_at": "2026-08-29T16:31",
     "done": [
-      "A0",
+      "A1",
+      "B",
       "A2",
-      "A2_5"
-    ]
+      "A2_5",
+      "C",
+      "D"
+    ],
+    "finished_at": "2026-08-29T16:31"
   }
 }

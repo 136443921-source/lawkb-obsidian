@@ -27,7 +27,7 @@ layers = {
 }
 
 cards_dir = ROOT / "02-提炼/经验卡片"
-card_files = list(cards_dir.glob("*.md")) if cards_dir.exists() else []
+card_files = list(cards_dir.rglob("*.md")) if cards_dir.exists() else []  # 递归：含子目录卡片
 experience_cards = len(card_files)
 sim_cards = sum(
     1 for p in card_files
@@ -40,7 +40,8 @@ rule_files = sum(1 for p in rules_dir.rglob("*") if p.is_file()) if rules_dir.ex
 
 processed = CASEDROP / "processed"
 case_notes = (
-    sum(1 for p in processed.iterdir() if p.name != "README.md" and not p.name.startswith("."))
+    sum(1 for p in processed.iterdir()
+        if p.is_dir() and p.name != "README.md" and not p.name.startswith("."))
     if processed.exists() else 0
 )
 
@@ -79,14 +80,14 @@ lines.append(
     '    {name:"协同效果命中率", value:"待采集", desc:"分身问答埋点日志积累中，每月28日协同效果月报将出首值"},'
 )
 lines.append(
-    '    {name:"经验卡片（真实/演练）", value:"%d/%d", desc:"凤仪村为预测型无裁判结果；罗江辉为演练卡"},'
-    % (real_cards, experience_cards)
+    '    {name:"经验卡片（真实/演练）", value:"%d/%d", desc:"2026-08-28 实测：真实 %d 张 / 演练 1 张 / 预测 0 张"},'
+    % (real_cards, experience_cards, real_cards)
 )
 lines.append(
-    '    {name:"裁判规则库成熟度", value:"🌿幼苗", desc:"主库 R001-R015 + 人伤子库 R016-R023，共 23 条；元数据已对齐"},'
+    '    {name:"裁判规则库规模", value:"🌳成长中", desc:"2026-08-28 实测：603 文件 / 21 子库，编号体系 R-领域-序号"},'
 )
 lines.append(
-    '    {name:"案件-卡片-规则三维索引", value:"已建", desc:"2026-07-18 连接层加厚（P2），覆盖 18 案件/6 卡片/23 规则"}'
+    '    {name:"案件-卡片-规则三维索引", value:"已建", desc:"2026-08-28 实测：15 归档案件 / 202 经验卡 / 603 规则文件 三维互联"}'
 )
 lines.append("  ]")
 lines.append("};")

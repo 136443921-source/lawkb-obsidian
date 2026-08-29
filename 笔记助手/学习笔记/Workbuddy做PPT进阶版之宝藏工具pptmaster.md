@@ -1,6 +1,6 @@
 ---
 created: 2026-07-07T19:59
-updated: 2026-08-21T18:55
+updated: 2026-08-28T19:31
 tags:
   - 配图
   - 合同法
@@ -301,6 +301,8 @@ ppt-master会为PPT自动添加两种动画。在策略规划阶段可以选择�
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/TXWd4Pi4sJJYuZR_h-KS4Q)*
 
 ## 相关笔记
+- [[R-LN-024-AI生成法律文书须律师四道防线核验法条时效与数据真实性不可跳过]] (共现关键词: AI, 生成)
+- [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: 共现, PPT, AI)
 - [[用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包]] (共现关键词: PPT, AI)
 - [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 配图, 模板, AI)
 - [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: 工具, AI)

@@ -1,0 +1,36 @@
+{
+  "schema": "ima_intake_state/v2.0",
+  "created": "2026-08-28T08:38",
+  "updated": "2026-08-28T11:54",
+  "checkpoint": {
+    "stage": "FINAL",
+    "status": "done",
+    "started_at": "2026-08-28T11:54",
+    "done": [
+      "M0_backup",
+      "M1_scan",
+      "M2_append",
+      "M3_log",
+      "FINAL"
+    ],
+    "finished_at": "2026-08-28T11:54"
+  },
+  "ima_connector": "ima-mcp",
+  "ima_status": "init",
+  "last_run_ts_ms": 0,
+  "libraries": {},
+  "pending_windows": [],
+  "failed_220030": [],
+  "b_pending_backfill": {
+    "status": "none"
+  },
+  "totals": {
+    "ingested_total": 0,
+    "libraries": {}
+  },
+  "last_backup": {
+    "path": "/Users/chenyouqiang/WorkBuddy/automation-2026-08-10-22-03-01/.workbuddy/backups/xiaoqiang_self/self_backup_20260828-115402/self.md.bak",
+    "date": "2026-08-28T11:54"
+  },
+  "failed_stages": []
+}

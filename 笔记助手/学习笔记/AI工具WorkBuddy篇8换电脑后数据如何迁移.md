@@ -1,6 +1,6 @@
 ---
 created: 2026-08-07T12:48
-updated: 2026-08-21T18:55
+updated: 2026-08-28T19:31
 tags:
   - 
   - 用户名
@@ -70,7 +70,7 @@ WorkBuddy 的数据分两层：第一层是“账号配置”（你登录的账�
 .workbuddy\
 ```
 
- 目录内✅ 必迁第三层记忆/人格文件（MEMORY.md、IDENTITY.md、SOUL.md）```
+ 目录内✅ 必迁第三层记忆/人格文件（[[MEMORY|MEMORY]].md、IDENTITY.md、SOUL.md）```
 .workbuddy\
 ```
 
@@ -792,6 +792,13 @@ pip install
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/6uCpMe8C5bl8Bg97rT6VxA)*
 
 ## 相关笔记
+- [[新增文件列表-2026-07-28]] (共现关键词: 医疗, AI, 文件)
+- [[新增文件列表-2026-08-01]] (共现关键词: AI, 文件)
+- [[公司法务必备数据合规完整知识手册]] (共现关键词: 数据, AI)
+- [[经验卡片-制度-AI工具PHI保密红线]] (共现关键词: 工具, 医疗, 数据)
+- [[股东退出公司的路径及实操指引]] (共现关键词: 路径, 医疗)
+- [[青年律师提质路径]] (共现关键词: 路径, 医疗)
+- [[律师如何避免执业违规]] (共现关键词: 如何, 医疗)
 - [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: WorkBuddy, 迁移, 工具)
 - [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: 工具, AI)
 - [[ClaudeCodeObsidian个人知识库从工具到思维的完整指南]] (共现关键词: 文件, 工具, AI)
