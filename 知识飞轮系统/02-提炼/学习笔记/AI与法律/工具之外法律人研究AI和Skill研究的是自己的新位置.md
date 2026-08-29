@@ -1,9 +1,9 @@
 ---
 title: 工具之外法律人研究AI和Skill研究的是自己的新位置
 created: 2026-07-19T23:16
-updated: 2026-08-27T13:40
+updated: 2026-08-28T19:31
 source: 笔记助手/学习笔记/工具之外法律人研究AI和Skill研究的是自己的新位置.md
-review_date: 2026-09-27
+review_date: 2026-10-05
 importance: 3
 note_type: 方法论
 tags:
