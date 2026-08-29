@@ -1,11 +1,13 @@
 {
-  "created": 5,
+  "created": 35,
   "skipped": 0,
   "source_fixed_files": 0,
-  "targets_total": 5,
+  "targets_total": 35,
   "cluster": {
-    "诉讼": 1,
-    "合同": 1,
-    "通用": 3
+    "公司": 7,
+    "医疗": 6,
+    "合同": 5,
+    "通用": 13,
+    "诉讼": 4
   }
 }

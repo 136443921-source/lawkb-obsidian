@@ -50,10 +50,22 @@ def scan_cards(month):
                 continue
             m_rid = re.search(r'rule_id:\s*(\S+)', content)
             m_title = re.search(r'title:\s*(.+)', content)
+            m_cmonth = re.search(r'created_month:\s*(\S+)', content)
             m_date = re.search(r'date:\s*(\S+)', content)
-            if not m_rid or not m_date:
+            m_created = re.search(r'created:\s*(\S+)', content)
+            # 归属月份：优先 created_month（卡片创建月，规范化后全量覆盖），
+            # 其次 date 前缀，再次 created 前缀（兜底）。
+            # 说明：案例卡的 date: 常是「裁判日期」而非创建月，故不能单凭 date: 判定当月新卡。
+            month_field = None
+            if m_cmonth:
+                month_field = m_cmonth.group(1)[:7]
+            elif m_date:
+                month_field = m_date.group(1)[:7]
+            elif m_created:
+                month_field = m_created.group(1)[:7]
+            if not m_rid or not month_field:
                 continue
-            if not m_date.group(1).startswith(month):
+            if not month_field.startswith(month):
                 continue
             rid = m_rid.group(1)
             title = m_title.group(1).strip().strip('"\'') if m_title else f

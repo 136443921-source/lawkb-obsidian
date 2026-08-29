@@ -1,6 +1,15 @@
 ---
 created: 2026-08-26T15:34
-updated: 2026-08-26T15:59
+updated: 2026-08-28T19:31
+tags:
+  - 侵权责任
+  - ...
+  - 医疗纠纷
+  - 公司法
+  - run
+  - ---
+  - stage
+  - intake
 ---
 # intake_runner.py 标准运行库 · 使用文档（v1.1）
 
@@ -144,3 +153,9 @@ run.finalize()
 ```
 
 > ⚠️ 该补丁会改写运行中的每日自动化 prompt。建议用户确认后由 `automation_update(mode=update)` 写入（需附完整新 prompt，已在本文件留存要点）。
+
+## 相关笔记
+- [[每日知识摄入报告-2026年08月28日]] (共现关键词: 赔偿, 医疗, 220030)
+- [[last_run_report]] (共现关键词: 医疗, run)
+- [[2026-08-26]] (共现关键词: README, intake, runner)
+- [[历史media_id补注册专项报告-2026-08-20]] (共现关键词: 公司, 医疗, id)
