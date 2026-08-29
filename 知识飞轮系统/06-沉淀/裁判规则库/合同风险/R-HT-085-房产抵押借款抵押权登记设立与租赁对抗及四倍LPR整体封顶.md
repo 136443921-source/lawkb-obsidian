@@ -60,6 +60,7 @@ related_links:
   - R-CF-002
 yuandian_source_pending: true
 yuandian_checked: 2026-08-29
+aliases: [R-HT-085]
 ---
 ## 规则表述
 

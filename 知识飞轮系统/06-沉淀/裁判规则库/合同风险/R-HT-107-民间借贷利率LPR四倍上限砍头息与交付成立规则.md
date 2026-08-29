@@ -25,6 +25,7 @@ related_links:
   - [[R-HT-087-贵州商品房买卖预约转本约与逾期违约金不重合计算及消费者优先顺位|R-HT-087-贵州商品房买卖预约转本约与逾期违约金不重合计算及消费者优先顺位]]
 yuandian_source_pending: true
 yuandian_checked: 2026-08-29
+aliases: [R-HT-107]
 ---
 # R-HT-107 民间借贷利率LPR四倍上限、砍头息与交付成立规则
 

@@ -27,6 +27,7 @@ related_links:
 yuandian_ah: "(2025)湘1021民初5218号"
 yuandian_checked: 2026-08-29
 yuandian_verify_pending: true
+aliases: [R-HT-109]
 ---
 # R-HT-109 买卖合同约定违约金过高按违约时LPR加计30%-50%调整
 
