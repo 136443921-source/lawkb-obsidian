@@ -216,6 +216,29 @@ def load_ledger():
         return json.load(f), path
 
 
+def _force_rmtree(path):
+    """删除目录树，并兜底清理「目录壳残留」。
+
+    2026-08-29 实测：Obsidian 索引进程会占用快照目录，`shutil.rmtree` 能删掉全部文件，
+    但目录本身（及其内部空子目录）删不掉且不报错——结果 prune 后目录数不对，留下
+    一个 0 文件的空壳（内含空的 `合规/` 子目录）。故在此回退清理空目录链，
+    并返回最终是否真的消失，供调用方如实汇报。
+    """
+    shutil.rmtree(path, ignore_errors=True)
+    if os.path.exists(path):
+        for root, dirs, _files in os.walk(path, topdown=False):
+            for d in dirs:
+                try:
+                    os.rmdir(os.path.join(root, d))
+                except OSError:
+                    pass
+        try:
+            os.rmdir(path)
+        except OSError:
+            pass
+    return not os.path.exists(path)
+
+
 def prune_snapshots(cards_dir, keep=2, dry=False):
     """快照保留上限：同名基线的 `.bak-*` 目录只保留「最近 keep 份」，删除更早的。
 
@@ -258,8 +281,8 @@ def prune_snapshots(cards_dir, keep=2, dry=False):
         if dry:
             print("  [预演] 将删除旧快照 %s" % name)
         else:
-            shutil.rmtree(full)
-            print("  [清理] 已删除旧快照 %s" % name)
+            ok = _force_rmtree(full)
+            print("  [%s] 旧快照 %s" % ("清理" if ok else "残留空壳", name))
         removed.append(name)
 
     kept = [n for _k, n, _f in snaps[len(snaps) - keep:]]
