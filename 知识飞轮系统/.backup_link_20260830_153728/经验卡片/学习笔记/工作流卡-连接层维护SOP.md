@@ -1,0 +1,72 @@
+---
+title: 工作流卡-连接层维护SOP
+card_type: 正向工作流卡
+created: 2026-08-30
+updated: 2026-08-30T15:37
+review_date: 2026-10-30
+适用场景: 新增/归位经验卡、补建专属卡、批量整理孤儿卡后，需重跑 link_cards_rules.py 重建连接层时
+trigger: 向 02-提炼/经验卡片/ 新增或归位卡片后需重建连接层时；周日预判扫描出现"专属卡漏检/推送缺口"需归位补卡时；批量整理顶层孤儿卡时
+步骤: "① 前置备份：cp -n 全量快照 经验卡片/ + 03-连接/连接枢纽-*.md（六-B 铁律，回滚基线）；② 归位：新卡必须落 经验卡片/<分类子目录>/，禁止留顶层（脚本只枚举子目录，顶层=孤儿）；按 GROUPS 的案由把卡路由到正确子目录；③ 重跑：python3 03-连接/scripts/link_cards_rules.py；④ 双重验证（见下）；⑤ 异常回滚：异常时从快照 cp -r 还原并查 link_lastrun.json"
+do: 归位后必须做双重验证——(1) 每卡 `related_links` 含对应枢纽；(2) `grep 枢纽页` 确认该成员确实列在 MOC 中；共享 hubfile 的分类（程序知识/法条解读→连接枢纽-通用程序）重点核查 MOC 可见性；改单源脚本前先 cp -n 备份
+dont: 不要只看每卡 related_links 通过即收工（会漏掉共享 hubfile 覆盖 bug）；不要把卡留在 经验卡片/ 顶层；不要按分类逐类 open("w") 写共享 hubfile；不要跳过备份直接重跑
+风险点: "共享 hubfile 覆盖（last-write-wins）：GROUPS 中多分类共用同一枢纽文件时，旧逻辑逐类 open('w') 覆盖写，后写分类覆盖先写分类在 MOC 页的成员（每卡 related_links 仍连通但看不见）。v3.1.1 已改为按 hubfile 聚合成员一次写出；顶层孤儿：卡片落顶层不被枚举"
+confidence: 1.0
+feedback_patches: 0
+tags:
+  - 工作流卡
+  - 连接层
+  - 双向链接
+  - link_cards_rules
+  - SOP
+  - 六-B安全
+  - 真实卡
+related_links:
+  - 连接枢纽-学习笔记
+  - 经验卡片-连接层共享枢纽聚合覆盖bug修复
+---
+
+# 工作流卡 · 连接层维护 SOP（正向）
+
+> 用途：知识飞轮连接层（经验卡片 ↔ 裁判规则 ↔ 枢纽 MOC）的**标准维护流程**。每次新增/归位/批量整理卡片后重跑 `link_cards_rules.py` 均按此执行，避免"连上了却看不见"类故障重演。
+
+## 标准步骤（5 步）
+
+1. **前置备份（六-B 铁律，必做）**
+   ```bash
+   cd "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
+   BK=".backup_link_$(date +%Y%m%d_%H%M%S)"
+   mkdir -p "$BK/经验卡片" "$BK/连接枢纽"
+   cp -r "02-提炼/经验卡片/." "$BK/经验卡片/"
+   cp 03-连接/连接枢纽-*.md "$BK/连接枢纽/"
+   ```
+
+2. **归位卡片（禁止留顶层）**
+   - 新卡/补建卡**必须落 `02-提炼/经验卡片/<分类子目录>/`**；`link_cards_rules.py` 只枚举子目录 `*.md`，顶层文件不被处理 → 成孤儿。
+   - 按 `GROUPS` 的案由把卡路由到正确子目录（合同文书/人伤/医疗纠纷/程序知识/学习笔记/慈法合规/案例…）；不确定时查既有同类卡所在桶。
+   - 批量移动用 `mv -n`（防覆盖）。
+
+3. **重跑连接层脚本**
+   ```bash
+   /Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/bin/python3 "03-连接/scripts/link_cards_rules.py"
+   ```
+   - 关注末行 `LINK_STAT`：processed 数应 = 上次数 + 本次新增卡数；`rules_linked == rules_total`（无游离）；`uncovered_rule_dirs: []`。
+
+4. **双重验证（核心，不可省）**
+   - **(a) 细粒度**：每张新卡 frontmatter 的 `related_links` 是否含对应枢纽（如 `连接枢纽-学习笔记`）。
+   - **(b) 聚合视图**：`grep` 对应枢纽页，确认该成员**确实列在 MOC 中**。
+   - ⚠️ 仅 (a) 通过不等于连通——共享 hubfile 场景下 (b) 才可能暴露覆盖 bug。
+
+5. **异常回滚**
+   - 若 `rules_linked < rules_total`、MOC 缺成员、或脚本报错：从步骤 1 的快照 `cp -r` 还原，查 `03-连接/scripts/link_lastrun.json` 定位断点，修脚本而非手动改卡。
+
+## 风险点清单
+
+| 风险 | 表现 | 处置 |
+|------|------|------|
+| 共享 hubfile 覆盖（last-write-wins） | 某分类卡 `related_links` 连通，但枢纽 MOC 页 grep 不到 | 已靠 v3.1.1 聚合写出修复；验证时**重点 grep 共享 hub**（程序知识/法条解读→连接枢纽-通用程序） |
+| 顶层孤儿 | 卡片在 `经验卡片/` 顶层，周日扫描/连接层均不枚举 | 归入对应子目录后重跑 |
+| 改脚本未备份 | 单源脚本误改导致全库链接错乱 | 改前 `cp -n` 备份，改后 `python3 -c "import py_compile"` 语法校验 |
+
+## 反向关联
+- 本 SOP 的"双重验证"直接针对已发生的故障，详见纠错卡 `[[经验卡片-连接层共享枢纽聚合覆盖bug修复]]`。
+- 单源文件写入（脚本改动、月报重建）一律遵循六-B：先 `cp` 时间戳备份 + `ls -l` 核对字节，异常即回滚。

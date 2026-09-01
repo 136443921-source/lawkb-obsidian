@@ -1,0 +1,15 @@
+{
+  "generated": "2026-08-30 15:23:56",
+  "dry_run": true,
+  "summary": {
+    "7311644304633438": {
+      "name": "慈善组织合规AI助手",
+      "articles": 0,
+      "ingested": 0,
+      "mineable": 0,
+      "folders": 0,
+      "api_calls": 1
+    }
+  },
+  "articles": []
+}

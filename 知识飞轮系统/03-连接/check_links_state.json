@@ -1,0 +1,32 @@
+{
+  "schema": "ima_intake_state/v2.0",
+  "created": "2026-08-30T21:13",
+  "updated": "2026-08-30T21:16",
+  "checkpoint": {
+    "session_id": "run-1788095795084",
+    "stage": "FINAL",
+    "status": "done",
+    "started_at": "2026-08-30T21:16",
+    "done": [
+      "S1_scan",
+      "S2_check_links",
+      "S2_5_fix_broken",
+      "S3_relink_graph",
+      "FINAL"
+    ],
+    "finished_at": "2026-08-30T21:16"
+  },
+  "ima_connector": "ima-mcp",
+  "ima_status": "init",
+  "last_run_ts_ms": 0,
+  "libraries": {},
+  "pending_windows": [],
+  "failed_220030": [],
+  "b_pending_backfill": {
+    "status": "none"
+  },
+  "totals": {
+    "ingested_total": 0,
+    "libraries": {}
+  }
+}

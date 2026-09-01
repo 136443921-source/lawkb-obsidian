@@ -1,0 +1,726 @@
+# -*- coding: utf-8 -*-
+"""
+知识摄入流水线 · 标准运行库 (intake_runner.py  v1.0)
+============================================================================
+用途：
+    把「每日知识摄入 / 周日批 check_links / 月度回灌」三类写入型自动化共用的一套
+    **工程闭环**沉淀为可复用标准库，根治历史复盘暴露的 7 大病灶：
+      ① 无 checkpoint / 自动续跑  → RunState + IntakeMachine
+      ② 状态文件双写不同步、schema 脆弱 → IntakeState 单一真源 + 原子写 + schema 版本迁移
+      ③ 失败项无升级闭环 → DegradationLayer（220030 判定 / WebSearch 降级 / 告警升级阶梯）
+      ④ 法条时效靠人工 → StatuteHealthCheck（现行/旧法体检 + exact wording 待核清单）
+    另附 SELECT_3 选文算法与 media_id 构造工具，供各场景复用。
+
+设计原则：
+    - 纯标准库（无第三方依赖），可被任意自动化以 `python intake_runner.py --selftest` 自检。
+    - 所有写回均走 atomic write（tmp + os.replace），杜绝半截文件损坏去重。
+    - 兼容历史 `ingested` 列表「dict 与裸字符串混排」结构，读取永不抛 AttributeError。
+    - 「摄入中断铁律」硬编码进 DegradationLayer：220030 内容侧失败**绝不**写 ingested。
+
+路径约定：
+    ROOT = 知识飞轮系统/
+    默认状态文件 = ROOT/ima_intake_state.json（每日摄入）；其余场景可传入独立 path。
+============================================================================
+"""
+import os, re, json, datetime, glob
+from collections import OrderedDict
+
+ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
+DEFAULT_STATE_PATH = os.path.join(ROOT, "ima_intake_state.json")
+SCHEMA_VERSION = "ima_intake_state/v2.0"   # v1.13 → v2.0：新增 checkpoint + 规范化 failed_220030
+
+# IMA 5 库固定清单（以 get_knowledge_base_list 返回为准，此处作默认值）
+IMA_LIBS = OrderedDict([
+    ("7312048136419112", "合同文书AI助手"),
+    ("7312042960642489", "律师AI助手"),
+    ("7312035322822509", "人伤法律实务助手"),
+    ("7333014572917409", "合规与政府监管AI助手"),
+    ("7311644304633438", "慈善组织合规AI助手"),
+])
+IMA_MEDIA_PREFIX = "wechatarticle_62fe55a7567bc291dfbbee29900b27c3"
+
+# 每日摄入标准阶段（状态机据此判断续跑断点）
+DAILY_STAGES = ["A0", "A1", "B", "A2", "A2_5", "C", "D", "FINAL"]
+# 周日批标准阶段（S1 盲区扫描 / S2 链接检查 / S2_5 断链自愈 / S3 补链+图谱 / FINAL 汇总）
+SUNDAY_STAGES = ["S1_scan", "S2_check_links", "S2_5_fix_broken", "S3_relink_graph", "FINAL"]
+# 月度回灌标准阶段（M0 备份 / M1 扫描 / M2 追加 / M3 日志 / FINAL 汇总）
+MONTHLY_STAGES = ["M0_backup", "M1_scan", "M2_append", "M3_log", "FINAL"]
+
+
+# ============================================================================
+# 工具：media_id 构造 / ingested 兼容读取
+# ============================================================================
+def make_media_id(rawid32, kb_id):
+    """构造 IMA media_id：prefix_rawid(32位)_kb_id。rawid 必须取足 32 位，否则会 220030。"""
+    if len(rawid32) != 32:
+        raise ValueError("rawid 必须 32 位十六进制，当前 %d 位 → 会触发 220030" % len(rawid32))
+    return "%s_%s_%s" % (IMA_MEDIA_PREFIX, rawid32, kb_id)
+
+
+def _mid_of(x):
+    """从 ingested 列表元素（dict 或裸字符串）安全取 media_id。"""
+    if isinstance(x, str):
+        return x
+    if isinstance(x, dict):
+        return x.get("media_id")
+    return None
+
+
+def mid_in(ing_list, media_id):
+    """兼容 dict/str 混排的已摄入判定。"""
+    return any(_mid_of(x) == media_id for x in ing_list)
+
+
+# ============================================================================
+# 1) RunState —— 通用运行态（单一真源 + 原子写 + checkpoint + schema 迁移）
+# ============================================================================
+class RunState:
+    """任意写入型自动化可继承。负责：加载/原子写/checkpoint 续跑/版本迁移。"""
+    SCHEMA_VERSION = SCHEMA_VERSION
+
+    def __init__(self, path=DEFAULT_STATE_PATH):
+        self.path = path
+        self.data = None
+
+    # ---- 加载 + 迁移 ----
+    def load(self):
+        if os.path.exists(self.path):
+            with open(self.path, "r", encoding="utf-8") as f:
+                self.data = json.load(f)
+        else:
+            self.data = self._init_blank()
+        self._migrate()
+        return self
+
+    def _init_blank(self):
+        return {
+            "schema": self.SCHEMA_VERSION,
+            "created": _now(),
+            "updated": _now(),
+            "checkpoint": {"session_id": None, "stage": None, "status": "idle",
+                           "started_at": None, "done": []},
+        }
+
+    def _migrate(self):
+        """子类覆盖以实现版本迁移；基类仅保证 schema 字段与 checkpoint 存在。
+        注意：用 isinstance 守卫，避免历史文件中字段为 null/非预期类型导致 setdefault 崩溃。"""
+        d = self.data
+        d.setdefault("schema", self.SCHEMA_VERSION)
+        d.setdefault("updated", _now())
+        cp = d.get("checkpoint")
+        if not isinstance(cp, dict):
+            cp = {}
+            d["checkpoint"] = cp
+        cp.setdefault("session_id", None)
+        cp.setdefault("stage", None)
+        cp.setdefault("status", "idle")
+        cp.setdefault("started_at", None)
+        cp.setdefault("done", [])
+
+    # ---- 原子写 ----
+    def save(self):
+        d = self.data
+        d["updated"] = _now()
+        d["schema"] = self.SCHEMA_VERSION
+        tmp = self.path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(d, f, ensure_ascii=False, indent=2)
+        os.replace(tmp, self.path)   # 原子替换，杜绝半截文件
+        return self.path
+
+    # ---- checkpoint / 续跑 ----
+    def new_session(self, session_id=None):
+        """开启新运行；若上一会话 status=='in_progress' 则标记 resume=True 供调用方判断。"""
+        prev = self.data.get("checkpoint", {})
+        resume = prev.get("status") == "in_progress"
+        sid = session_id or ("run-%s" % _now_ts())
+        self.data["checkpoint"] = {
+            "session_id": sid,
+            "stage": None,
+            "status": "in_progress",
+            "started_at": _now(),
+            "done": [] if not resume else prev.get("done", []),
+        }
+        self._resume_flag = resume
+        return resume
+
+    @property
+    def resume_flag(self):
+        return getattr(self, "_resume_flag", False)
+
+    def complete_stage(self, stage):
+        cp = self.data["checkpoint"]
+        if stage not in cp["done"]:
+            cp["done"].append(stage)
+        cp["stage"] = stage
+        cp["status"] = "in_progress"
+
+    def finish_session(self):
+        cp = self.data["checkpoint"]
+        cp["status"] = "done"
+        cp["finished_at"] = _now()
+
+    def pending_stages(self, all_stages):
+        done = self.data.get("checkpoint", {}).get("done", [])
+        return [s for s in all_stages if s not in done]
+
+
+# ============================================================================
+# 2) IntakeState —— IMA 摄入专属状态（单一真源：totals 永远由 ingested 重算）
+# ============================================================================
+class IntakeState(RunState):
+    """每日 IMA 摄入 / 漏窗回补的状态真源。关键不变量：totals 每次 save 前由 ingested 重算。
+    libs 参数支持空库场景（周日批/月度回灌传 libs={} → 状态文件不塞 IMA 5 库骨架，互不污染）。"""
+    DEFAULT_LIBS = IMA_LIBS
+
+    def __init__(self, path=DEFAULT_STATE_PATH, libs=None):
+        super().__init__(path)
+        self.libs = IMA_LIBS if libs is None else libs
+
+    def _init_blank(self):
+        d = super()._init_blank()
+        d["ima_connector"] = "ima-mcp"
+        d["ima_status"] = "init"
+        d["last_run_ts_ms"] = 0
+        d["libraries"] = OrderedDict()
+        for lid, name in getattr(self, "libs", self.DEFAULT_LIBS).items():
+            d["libraries"][lid] = {"name": name, "ingested": []}
+        d["pending_windows"] = []
+        d["failed_220030"] = []
+        d["b_pending_backfill"] = {"status": "none"}
+        d["totals"] = {"ingested_total": 0, "libraries": {}}
+        return d
+
+    def _migrate(self):
+        super()._migrate()
+        d = self.data
+        # 1.13 → 2.0：libraries 缺骨架则补齐；failed_220030 裸字符串规范化为 dict
+        # 守卫：历史文件字段可能为 null，setdefault 不替换 None，须显式重建
+        libs = d.get("libraries")
+        if not isinstance(libs, dict):
+            libs = {}
+            d["libraries"] = libs
+        for lid, name in getattr(self, "libs", self.DEFAULT_LIBS).items():
+            lv = libs.get(lid)
+            if not isinstance(lv, dict):
+                lv = {"name": name, "ingested": []}
+                libs[lid] = lv
+            if not isinstance(lv.get("ingested"), list):
+                lv["ingested"] = []
+            lv.setdefault("name", name)
+        if not isinstance(d.get("pending_windows"), list):
+            d["pending_windows"] = []
+        if not isinstance(d.get("failed_220030"), list):
+            d["failed_220030"] = []
+        if not isinstance(d.get("b_pending_backfill"), dict):
+            d["b_pending_backfill"] = {"status": "none"}
+        if not isinstance(d.get("last_run_ts_ms"), (int, float)):
+            d["last_run_ts_ms"] = 0
+        # 规范化 failed_220030 为 dict（兼容旧裸字符串）
+        norm = []
+        for f in d["failed_220030"]:
+            if isinstance(f, str):
+                norm.append({"media_id": f, "code": "220030", "reason": "legacy",
+                             "date": "", "status": "retry"})
+            elif isinstance(f, dict):
+                f.setdefault("code", "220030")
+                f.setdefault("status", "retry")
+                norm.append(f)
+        d["failed_220030"] = norm
+        # 单一真源：重算 totals
+        self._recompute_totals()
+
+    # ---- 摄入写回（幂等 + 兼容）----
+    def mark_ingested(self, lib_id, media_id, title, create_time, value=0):
+        """标记某库摄入成功。已摄入则跳过（幂等），绝不重复计数。"""
+        lib = self.data["libraries"][lib_id]
+        ing = lib["ingested"]
+        if mid_in(ing, media_id):
+            return False
+        ing.append({
+            "media_id": media_id,
+            "title": title,
+            "create_time": create_time,
+            "ingested_at": _now(),
+            "value": value,
+        })
+        # 同步从 failed_220030 移除（仅当真已摄入才安全移除）
+        self._remove_failed_if_ingested(media_id)
+        self._recompute_totals()
+        return True
+
+    def is_ingested(self, media_id):
+        for lid, lv in self.data["libraries"].items():
+            if mid_in(lv.get("ingested", []), media_id):
+                return True
+        return False
+
+    def ingested_count(self, lib_id=None):
+        if lib_id:
+            return len(self.data["libraries"][lib_id]["ingested"])
+        return sum(len(lv["ingested"]) for lv in self.data["libraries"].values())
+
+    # ---- 失败项管理 ----
+    def add_failed(self, media_id, code="220030", reason="", status="retry"):
+        if any(f.get("media_id") == media_id for f in self.data["failed_220030"]):
+            return False
+        self.data["failed_220030"].append({
+            "media_id": media_id, "code": code, "reason": reason,
+            "date": _now(), "status": status,
+        })
+        return True
+
+    def _remove_failed_if_ingested(self, media_id):
+        """仅在 media_id 确已摄入时才从 failed_220030 移除，防误删（摄入中断铁律护栏）。"""
+        if not self.is_ingested(media_id):
+            return False
+        before = len(self.data["failed_220030"])
+        self.data["failed_220030"] = [f for f in self.data["failed_220030"]
+                                      if f.get("media_id") != media_id]
+        return len(self.data["failed_220030"]) != before
+
+    # ---- 单一真源：totals 永远由 ingested 重算 ----
+    def _recompute_totals(self):
+        per = {lid: len(lv["ingested"]) for lid, lv in self.data["libraries"].items()}
+        total = sum(per.values())
+        self.data["totals"] = {"ingested_total": total, "libraries": per}
+        return total
+
+    def save(self):
+        self._recompute_totals()   # 每次写回前强制重算，根治 264 vs 269 双写不同步
+        return super().save()
+
+
+# ============================================================================
+# 3) IntakeMachine —— 状态机续跑规划（让"请继续"成为历史）
+# ============================================================================
+class IntakeMachine:
+    """
+    调用方在每次运行开头：
+        resume = state.new_session()
+        plan = machine.resume_plan()        # 返回待跑阶段列表
+        for stage in plan:
+            ... 执行该阶段（通过工具调用取文/蒸馏）...
+            machine.complete(stage)         # 持久化断点
+            state.save()
+        state.finish_session(); state.save()
+    中断后下次触发：new_session() 检测上轮 status=='in_progress' → resume_flag=True，
+    pending_stages() 自动跳过已完成阶段，从断点续跑，无需人工"请继续"。
+    """
+    def __init__(self, state, all_stages=DAILY_STAGES):
+        self.state = state
+        self.all_stages = all_stages
+
+    def resume_plan(self):
+        return self.state.pending_stages(self.all_stages)
+
+    def complete(self, stage):
+        self.state.complete_stage(stage)
+
+    def summarize(self):
+        cp = self.state.data.get("checkpoint", {})
+        return {
+            "session_id": cp.get("session_id"),
+            "status": cp.get("status"),
+            "done": cp.get("done", []),
+            "pending": self.resume_plan(),
+            "resume": self.state.resume_flag,
+        }
+
+
+# ============================================================================
+# 4) DegradationLayer —— 失败判定 / 降级 / 告警升级（摄入中断铁律在此落地）
+# ============================================================================
+class DegradationLayer:
+    """
+    职责：
+      - 判定 fetch_media_content 失败类型：220030 内容不可用 / 截断 / 通道掉线
+      - 220030 持久失败 → 不写 ingested（铁律），登记 failed_220030 + 可选 WebSearch 公开镜像补全
+      - 漏窗登记 + 告警升级阶梯（N 天未清 → 主题前缀 / 人工介入建议）
+    """
+    PERSISTENT_CODES = {"220030"}
+
+    @staticmethod
+    def classify(media_id, code, channel_ok=True):
+        """
+        返回: ('persistent_220030' | 'truncation' | 'channel_down' | 'other', note)
+        - media_id 的 rawid 段(前缀之后)恰 32 位 + 通道可用 + code 220030 → 内容侧持久失败
+        - media_id 的 rawid 段非 32 位(被截断) → truncation（构造错误，非 IMA 故障）
+        - 通道不可用且 code 非 220030 → channel_down
+        """
+        rawid_ok = _rawid_segment_ok(media_id)
+        if code == "220030":
+            if not rawid_ok:
+                return ("truncation", "media_id rawid 段非 32 位（截断构造错误）→ 补全长 rawid 后重试")
+            if not channel_ok:
+                return ("channel_down", "220030 但通道掉线 → 先恢复通道再取")
+            return ("persistent_220030", "IMA 侧内容不可用（疑似原文被删/解析失败），非截断非通道")
+        if not channel_ok:
+            return ("channel_down", "通道掉线，登记漏窗待回补")
+        return ("other", "其他错误码 %s" % code)
+
+    @classmethod
+    def on_fetch_fail(cls, state, media_id, code, channel_ok=True, websearch_mirror=None):
+        """
+        统一处理单篇取文失败。返回 dict 决策，并就地修改 state（调用方负责 save）。
+        严守：persistent_220030 绝不写 ingested。
+        """
+        kind, note = cls.classify(media_id, code, channel_ok)
+        decision = {"kind": kind, "note": note, "write_ingested": False,
+                    "action": None, "alert": None}
+        if kind == "persistent_220030":
+            state.add_failed(media_id, code, reason=note, status="retry")
+            decision["action"] = "register_failed_220030"
+            # 可选：若提供公开镜像(WebSearch 结果)则降级补全，但 source 标 pending_source_upgrade
+            if websearch_mirror:
+                decision["action"] = "degrade_websearch_pending_upgrade"
+                decision["mirror"] = websearch_mirror
+        elif kind == "truncation":
+            decision["action"] = "fix_media_id_and_retry"   # 属构造错误，下轮用全长 rawid
+        elif kind == "channel_down":
+            decision["action"] = "register_pending_window"
+        else:
+            state.add_failed(media_id, code, reason=note, status="retry")
+            decision["action"] = "register_failed_other"
+        return decision
+
+    @staticmethod
+    def escalation(state):
+        """漏窗告警升级阶梯。返回 (level, subject_prefix, body_note)。"""
+        wins = state.data.get("pending_windows", [])
+        n = len(wins)
+        if n == 0:
+            return (0, "", "")
+        if n == 1:
+            return (1, "", "IMA 漏窗 1 天，已登记待回补。")
+        if n < 5:
+            return (2, "【⚠IMA漏窗%d天】" % n,
+                    "连续 %d 天漏窗未清。先查 A0.0 连接器启用态（userDisabled/enabled），勿默认网络问题。" % n)
+        return (3, "【⚠IMA漏窗%d天】" % n,
+                "连续 %d 天漏窗。建议人工介入：UI 重新授权 ima-mcp 并重启 WorkBuddy。" % n)
+
+
+def _rawid_segment_ok(media_id):
+    """prefix 感知校验：media_id 须为 prefix_<rawid32>_<kb_id16>，且 rawid 段恰 32 位十六进制。
+    误用 `_[0-9a-f]{32}_` 正则会错配 prefix 自身尾部 32 位，故须显式切分。"""
+    if not media_id or not media_id.startswith(IMA_MEDIA_PREFIX + "_"):
+        return False
+    rest = media_id[len(IMA_MEDIA_PREFIX) + 1:]   # "_<rawid>_<kb_id>"
+    segs = rest.strip("_").split("_")
+    if len(segs) != 2:
+        return False
+    rawid, kb = segs
+    return len(rawid) == 32 and bool(re.fullmatch(r"[0-9a-f]{32}", rawid))
+
+
+# ============================================================================
+# 5) StatuteHealthCheck —— 法条时效 + exact wording 体检（复用给 B/D）
+# ============================================================================
+class StatuteHealthCheck:
+    """
+    法条知识库：登记「现行/旧法」「exact wording 待核」状态，供 B 合规/慈善引用、
+    D 案例关联法条、A2.5 法规校验 复用。命中旧法 → 强提醒；命中待核清单 → 建议 WebSearch 终核。
+    """
+    # (法律, 条) -> 元数据。持续补充即可。
+    KB = {
+        ("公司法", 84): {
+            "status": "current", "since": "2024-07-01",
+            "supersedes": ("公司法", 71),
+            "note": "新法第84条废除旧法第71条『经其他股东过半数同意』，改为『书面通知+30日同等条件优先购买权』单轨制。",
+        },
+        ("公司法", 71): {
+            "status": "repealed", "repealed_by": ("公司法", 84), "since": "2024-07-01",
+            "note": "旧法第71条已被新《公司法》第84条废止，引用即时效错误。",
+        },
+        ("最高法医疗损害解释", 16): {
+            "status": "current", "exact_wording_pending": True,
+            "nature": "过错认定标准（非赔偿比例条款）",
+            "exact": "对医疗机构或者其医务人员的过错，应当依据法律、行政法规、规章以及其他有关诊疗规范进行认定，可以综合考虑患者病情的紧急程度、患者个体差异、当地的医疗水平、医疗机构与医务人员资质等因素。",
+            "note": "第16条系过错认定标准，非酌定赔偿比例依据；引用为责任比例时需据『综合考量』精神论证。",
+        },
+        ("民法典", 1219): {"status": "current", "note": "医疗说明义务与知情同意，现行有效。"},
+        ("民法典", 1222): {"status": "current", "note": "病历瑕疵推定过错，现行有效。"},
+        # --- 2026-08-30 补充（医疗三类日课 + LTI 旧法纠偏用）---
+        ("民法典", 1218): {"status": "current", "since": "2021-01-01",
+            "note": "医疗损害责任一般条款（过错责任，医疗机构为责任主体），现行有效。"},
+        ("民法典", 1223): {"status": "current", "since": "2021-01-01",
+            "note": "药品/消毒产品/医疗器械缺陷及不合格血液致害，患者可向医疗机构或生产者择一索赔，现行有效。"},
+        ("民法典", 1225): {"status": "current", "since": "2021-01-01",
+            "note": "医疗机构病历填写保管义务与患者查阅复制权，现行有效。"},
+        ("侵权责任法", 58): {"status": "repealed", "repealed_by": ("民法典", 1222),
+            "since": "2021-01-01",
+            "note": "《侵权责任法》已随《民法典》施行同时废止；其第58条（病历瑕疵推定过错）由《民法典》第1222条承继。"
+                   "2026 年仍见网络文章标注『《侵权责任法》第58条（2026）』，属典型旧法错误，引用一律改引《民法典》第1222条。"},
+        ("刑法", 335): {"status": "current",
+            "note": "医疗事故罪：医务人员严重不负责任，造成就诊人死亡或严重损害身体健康，处三年以下有期徒刑或拘役。现行有效。"},
+        ("医师法", 56): {"status": "current", "exact_wording_pending": True, "since": "2022-03-01",
+            "nature": "医师罚则（违反诊疗规范不必要检查/未依注册事项执业等）",
+            "note": "《医师法》2022-03-01 施行；上海《医师行政处罚裁量权基准》(2026-08-01 施行) 于该条下新增"
+                   "『违反诊疗规范对患者实施不必要的检查、治疗造成不良后果』『未按注册执业地点/类别/范围执业』等违法行为。"
+                   "引用前须核对条内款项序号。"},
+        ("医疗纠纷预防和处理条例", 15): {"status": "current", "exact_wording_pending": True,
+            "since": "2018-10-01", "nature": "病历书写与保管义务",
+            "note": "国务院令第701号，现行有效。引用前须核对原文措辞。"},
+        ("医疗纠纷预防和处理条例", 16): {"status": "current", "exact_wording_pending": True,
+            "since": "2018-10-01", "nature": "病历封存与启封程序",
+            "note": "国务院令第701号，现行有效。引用前须核对原文措辞。"},
+        ("基本医疗卫生与健康促进法", 101): {"status": "current", "since": "2020-06-01",
+            "note": "医疗卫生机构医疗质量安全管理制度不健全等情形的行政罚则，现行有效。"
+                   "（马鞍山『院外会诊程序管理缺失』案马卫医罚〔2026〕6号即依本条处罚）"},
+        # --- 2026-08-30 D 阶段补录（华宇元典三案关联法条）---
+        ("民法典", 620): {"status": "current", "since": "2021-01-01",
+            "note": "买受人收到标的物时应及时检验（有约定检验期的在期内检验，无约定的及时检验），现行有效。"},
+        ("民法典", 621): {"status": "current", "since": "2021-01-01",
+            "note": "约定检验期限的，买受人应在该期限内将数量/质量不符情形通知出卖人；怠于通知的，"
+                   "视为标的物的数量或者质量符合约定。现行有效。（粤06民终15284号即适用本条）"},
+        ("公司法", 88): {"status": "current", "since": "2024-07-01",
+            "note": "新《公司法》第88条第1款：股东转让已认缴但未届出资期限的股权，由受让人承担缴纳出资义务；"
+                   "受让人未按期足额缴纳的，转让人对受让人未按期缴纳的出资承担补充责任。",
+            "non_retroactive": True,
+            "non_retroactive_by": "法释〔2024〕15号",
+            "non_retroactive_note": "《最高人民法院关于〈中华人民共和国公司法〉第八十八条第一款不溯及适用的批复》"
+                                    "（法释〔2024〕15号）：2024-07-01 前发生的未届出资期限股权转让行为，"
+                                    "不适用新公司法第88条第1款，应适用原公司法及相关法律精神处理。"
+                                    "（粤19民再79号据此再审改判，撤销原二审适用新法的错误）"},
+    }
+
+    @classmethod
+    def check(cls, law, article):
+        key = (law, article)
+        if key in cls.KB:
+            return dict(cls.KB[key], hit=True)
+        return {"hit": False, "status": "unknown", "note": "未登记，建议法律检索助手核验现行有效性。"}
+
+    @classmethod
+    def is_repealed(cls, law, article):
+        m = cls.check(law, article)
+        return m.get("status") == "repealed"
+
+    @classmethod
+    def needs_exact_verify(cls, law, article):
+        m = cls.check(law, article)
+        return m.get("hit") and m.get("exact_wording_pending", False)
+
+    @classmethod
+    def pending_exact_list(cls):
+        return [(k[0], k[1], v.get("exact")) for k, v in cls.KB.items()
+                if v.get("exact_wording_pending")]
+
+
+# ============================================================================
+# 6) SELECT_3 选文算法（复用给每日 / 回补）
+# ============================================================================
+HIGH_VALUE_KW = ["合同", "协议", "范本", "审查", "风险", "诉讼", "抗辩", "攻防", "侵权",
+                 "工伤", "交通事故", "医疗纠纷", "医疗事故", "医疗合规", "医疗损害", "人身损害",
+                 "赔偿", "合规", "慈善", "股权", "代持", "担保", "借贷", "租赁", "建设工程",
+                 "仲裁", "执行", "裁判规则", "司法解释", "最高法", "指导案例", "公报案例",
+                 "新规", "解读", "实务", "要点", "陷阱", "漏洞", "规避", "举证", "证据",
+                 "违约金", "解除", "无效", "撤销", "关联交易", "免税", "票据"]
+DEPTH_KW = ["指引", "操作", "全流程", "体系", "专题", "要点", "风险", "案例"]
+
+
+def score_article(title):
+    """返回 (score, 命中关键词列表)。同一关键词若同时落在高价值/深度两表，只计一次（高价值权重优先）。"""
+    s = 0
+    hits = []
+    for kw in set(HIGH_VALUE_KW) | set(DEPTH_KW):
+        if kw in (title or ""):
+            s += 2 if kw in HIGH_VALUE_KW else 1
+            hits.append(kw)
+    return min(s, 12), hits
+
+
+def select_3(cands, ingested_set, last_run_ts_ms, quota=3):
+    """
+    输入：cands=[{media_id,title,create_time}], ingested_set=set(media_id), last_run_ts_ms
+    输出：(chosen, skipped_ingested, stat)
+    实现 S2 分池 + S3 评分 + S4 选文（S1 拉取由调用方经工具完成）。
+    """
+    new_pool, backlog_pool = [], []
+    skipped = 0
+    for c in cands:
+        if c["media_id"] in ingested_set:
+            skipped += 1
+            continue
+        sc, _ = score_article(c.get("title", ""))
+        c = dict(c)
+        c["_score"] = sc
+        if c.get("create_time", 0) >= last_run_ts_ms:
+            new_pool.append(c)
+        else:
+            backlog_pool.append(c)
+    new_pool.sort(key=lambda x: (x["_score"], x["create_time"]), reverse=True)
+    backlog_pool.sort(key=lambda x: (x["_score"], -x["create_time"]), reverse=True)
+    chosen = new_pool[:quota]
+    if len(chosen) < quota:
+        chosen += backlog_pool[: quota - len(chosen)]
+    stat = {"new": len(new_pool), "backlog": len(backlog_pool),
+            "skipped_ingested": skipped, "chosen": len(chosen)}
+    return chosen, skipped, stat
+
+
+# ============================================================================
+# 7) 场景配置（每日 / 周日批 / 月度回灌 复用同一套库）
+# ============================================================================
+class IntakeConfig:
+    """声明式配置：各自动化只需填自己的 stages / libs / quota / state_path。"""
+    def __init__(self, name, stages, state_path=DEFAULT_STATE_PATH, quota=3,
+                 libs=None, note=""):
+        self.name = name
+        self.stages = stages
+        self.state_path = state_path
+        self.quota = quota
+        # None → 默认 IMA 5 库；显式传 {} → 空库（周日批/月度回灌独立状态，不塞 IMA 骨架）
+        self.libs = IMA_LIBS if libs is None else libs
+        self.note = note
+
+
+# 每日摄入（本自动化）
+DAILY_CONFIG = IntakeConfig(
+    name="每日知识摄入",
+    stages=DAILY_STAGES,
+    quota=3,
+    libs=IMA_LIBS,
+    note="5 库 × 每日 3 篇；SELECT_3 新增优先；220030 不摄入；法条联动 StatuteHealthCheck。",
+)
+
+# 周日批 check_links（复用 RunState 单一真源 + checkpoint + StatuteHealthCheck）
+SUNDAY_CONFIG = IntakeConfig(
+    name="周日知识维护批处理",
+    stages=SUNDAY_STAGES,
+    state_path=os.path.join(ROOT, "03-连接/check_links_state.json"),
+    quota=0,
+    libs={},
+    note="复用 RunState.checkpoint 续跑 + StatuteHealthCheck；空库独立状态文件，不污染 ima_intake_state。",
+)
+
+# 月度回灌（复用 IntakeState 同一 schema 的不同实例或同文件）
+MONTHLY_CONFIG = IntakeConfig(
+    name="月度回灌",
+    stages=MONTHLY_STAGES,
+    state_path=os.path.join(ROOT, "03-连接/monthly_backfill_state.json"),
+    quota=0,
+    libs={},
+    note="复用 IntakeState + DegradationLayer + StatuteHealthCheck；空库独立状态文件，批量回填历史欠债。",
+)
+
+
+# ============================================================================
+# 自检
+# ============================================================================
+def _now():
+    return datetime.datetime.now().strftime("%Y-%m-%dT%H:%M")
+
+
+def _now_ts():
+    return str(int(datetime.datetime.now().timestamp() * 1000))
+
+
+def selftest():
+    print("=== intake_runner.py selftest ===")
+    # 1) media_id 构造 + 截断判定
+    ok_mid = make_media_id("0" * 32, "7312048136419112")
+    # 真实截断：rawid 仅 8 位（旧 bug 曾把 32 位截成 8 位 → 220030 假失败）
+    bad_mid = IMA_MEDIA_PREFIX + "_deadbeef_7312048136419112"
+    assert DegradationLayer.classify(ok_mid, "220030", channel_ok=True)[0] == "persistent_220030"
+    assert DegradationLayer.classify(bad_mid, "220030", channel_ok=True)[0] == "truncation"
+    print("[OK] media_id 构造 + 220030/截断 判定")
+
+    # 2) IntakeState 内存闭环（不落盘）
+    st = IntakeState.__new__(IntakeState)
+    st.path = ":memory:"
+    st.data = st._init_blank()
+    st._migrate()
+    assert st.ingested_count() == 0
+    assert st.mark_ingested("7312048136419112", ok_mid, "测试合同", 1788000000000, 8) is True
+    assert st.mark_ingested("7312048136419112", ok_mid, "重复", 1788000000000, 8) is False  # 幂等
+    assert st.ingested_count() == 1
+    assert st.data["totals"]["ingested_total"] == 1
+    assert st.is_ingested(ok_mid) is True
+    # 失败登记 + 摄入后安全移除
+    st.add_failed(ok_mid, "220030", "x")
+    assert len(st.data["failed_220030"]) == 1
+    assert st._remove_failed_if_ingested(ok_mid) is True
+    assert len(st.data["failed_220030"]) == 0
+    # 未摄入者绝不误删
+    st.add_failed(bad_mid, "220030", "x")
+    assert st._remove_failed_if_ingested(bad_mid) is False
+    print("[OK] IntakeState 幂等/去重/totals重算/failed护栏")
+
+    # 2b) 历史 null 字段迁移护栏（真实文件曾出现 checkpoint:null → 必须不崩）
+    stn = IntakeState.__new__(IntakeState)
+    stn.path = ":memory:"
+    stn.data = {"schema": "ima_intake_state/v1.13", "libraries": None,
+                "checkpoint": None, "pending_windows": None,
+                "failed_220030": None, "b_pending_backfill": None,
+                "last_run_ts_ms": None}
+    stn._migrate()   # 曾在此 AttributeError 崩溃
+    assert isinstance(stn.data["checkpoint"], dict)
+    assert isinstance(stn.data["libraries"], dict) and len(stn.data["libraries"]) == 5
+    assert stn.data["pending_windows"] == []
+    assert stn.data["failed_220030"] == []
+    assert stn.data["totals"]["ingested_total"] == 0
+    print("[OK] IntakeState null 字段迁移护栏（checkpoint/libraries 为 null 不崩）")
+
+    # 2c) libs 覆盖：空库场景（周日批/月度回灌）不塞 IMA 5 库骨架
+    ste = IntakeState.__new__(IntakeState); ste.path = ":memory:"; ste.libs = {}
+    ste.data = ste._init_blank(); ste._migrate()
+    assert ste.data["libraries"] == {}
+    assert ste.data["totals"]["ingested_total"] == 0
+    assert ste.ingested_count() == 0
+    print("[OK] IntakeState libs={} 空库不塞 IMA 骨架（周日/月度独立状态）")
+
+    # 3) 状态机续跑
+    st.new_session()
+    m = IntakeMachine(st, DAILY_STAGES)
+    plan0 = m.resume_plan()
+    assert plan0 == DAILY_STAGES
+    m.complete("A0"); m.complete("A1")
+    st.data["checkpoint"]["status"] = "in_progress"
+    st2 = IntakeState.__new__(IntakeState); st2.path = ":memory:"
+    st2.data = st.data  # 模拟"中断后重新加载同状态"
+    m2 = IntakeMachine(st2, DAILY_STAGES)
+    assert m2.resume_plan() == ["B", "A2", "A2_5", "C", "D", "FINAL"]
+    print("[OK] IntakeMachine 断点续跑（A0/A1 已完成自动跳过）")
+
+    # 4) 法条体检
+    assert StatuteHealthCheck.is_repealed("公司法", 71) is True
+    assert StatuteHealthCheck.is_repealed("公司法", 84) is False
+    assert StatuteHealthCheck.needs_exact_verify("最高法医疗损害解释", 16) is True
+    assert StatuteHealthCheck.check("民法典", 1219)["status"] == "current"
+    print("[OK] StatuteHealthCheck 旧法/现行/exact待核")
+
+    # 5) SELECT_3
+    cands = [
+        {"media_id": "a", "title": "医疗纠纷赔偿指引", "create_time": 1789000000000},  # 已摄入
+        {"media_id": "b", "title": "租赁合同范本", "create_time": 1789000000001},
+        {"media_id": "c", "title": "股权转让协议审查", "create_time": 1789000000004},  # 同分中 create_time 最大
+        {"media_id": "d", "title": "闲聊文章", "create_time": 1789000000003},
+        {"media_id": "e", "title": "医疗纠纷赔偿要点", "create_time": 1789000000002},
+    ]
+    chosen, skipped, stat = select_3(cands, {"a"}, 1788000000000, quota=3)
+    assert skipped == 1                       # a 已摄入
+    assert len(chosen) == 3
+    assert chosen[0]["title"] == "股权转让协议审查"   # b/c/e 同分(6)，c create_time 最大 → 优先
+    assert chosen[1]["title"] == "医疗纠纷赔偿要点"
+    print("[OK] SELECT_3 分池/评分/去重/配额  (stat=%s)" % stat)
+
+    # 6) 升级阶梯
+    st3 = IntakeState.__new__(IntakeState); st3.path = ":memory:"
+    st3.data = st3._init_blank(); st3._migrate()
+    st3.data["pending_windows"] = [{"d": 1}, {"d": 2}]
+    assert DegradationLayer.escalation(st3)[0] == 2
+    print("[OK] DegradationLayer 告警升级阶梯")
+
+    print("=== ALL SELFTEST PASSED ===")
+    return True
+
+
+if __name__ == "__main__":
+    import sys
+    if "--selftest" in sys.argv:
+        selftest()
+    else:
+        print("intake_runner.py v1.0 — 用法：")
+        print("  python intake_runner.py --selftest        # 自检")
+        print("  from intake_runner import IntakeState, IntakeMachine, DegradationLayer, StatuteHealthCheck, select_3, DAILY_CONFIG")

@@ -44,8 +44,8 @@ th{color:var(--sub);font-weight:600}
 
 <script>
 const DATA = {
-  updated: "2026-08-28",
-  kpi: { experienceCards:202, ruleFiles:603, caseNotes:15, ongoingCases:0 },
+  updated: "2026-08-31",
+  kpi: { experienceCards:211, ruleFiles:662, caseNotes:15, ongoingCases:0 },
   cardGrowth: [
     {date:"2026-07-13", cum:2},
     {date:"2026-07-14", cum:5},
@@ -60,12 +60,15 @@ const DATA = {
     {date:"2026-08-17", cum:26},
     {date:"2026-08-24", cum:23},
     {date:"2026-08-28", cum:202},
+    {date:"2026-08-31", cum:211},
   ],
   metrics: [
     {name:"协同效果命中率", value:"待采集", desc:"分身问答埋点日志积累中，每月28日协同效果月报将出首值"},
-    {name:"经验卡片（真实/演练）", value:"201/202", desc:"2026-08-28 实测：真实 201 张 / 演练 1 张 / 预测 0 张"},
+    {name:"经验卡片（真实/演练）", value:"210/211", desc:"2026-08-28 实测：真实 210 张 / 演练 1 张 / 预测 0 张"},
     {name:"裁判规则库规模", value:"🌳成长中", desc:"2026-08-28 实测：603 文件 / 21 子库，编号体系 R-领域-序号"},
-    {name:"案件-卡片-规则三维索引", value:"已建", desc:"2026-08-28 实测：15 归档案件 / 202 经验卡 / 603 规则文件 三维互联"}
+    {name:"案件-卡片-规则三维索引", value:"已建", desc:"2026-08-28 实测：15 归档案件 / 202 经验卡 / 603 规则文件 三维互联"},
+    {name:"思维轨迹卡", value:"3 张", desc:"2026-08-31 起：反复咨询→四维+三问沉淀，跨案检索/结案反补/月检闭环"},
+    {name:"摄入5槽位·近7日采集", value:"10 例 / 8 天", desc:"D 阶段合同/慈善/医疗/工伤/交通靶向采集，v1.23 生效"},
   ]
 };
 
