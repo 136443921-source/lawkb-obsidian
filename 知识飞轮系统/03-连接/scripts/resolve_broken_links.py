@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-连接层 · 断链消解器 (v1.1)
+连接层 · 断链消解器 (v1.2)
 =======================
 为知识飞轮系统内所有「双向链接断链」（[[target]] 无对应 .md 文件）生成概念页，
 使断链转为有效解析，从而修复知识图谱连通性。
+
+v1.2（2026-08-30）新增「括号校验」：扫描期 clean_target 归一（[[[X]]]->X，命中现有笔记即视为非真断链）；
+生成期 bare_target 净化所有输出链接 + 同簇互链脏名护栏，从根上杜绝自产 [[[X]] 等多重括号断链。
 
 策略：
   1. 近似错写（strip "（红队）/（蓝队）" 等后缀后命中现有文件）→ 修正源文件引用（严格限定已知后缀，避免误改）。
@@ -20,6 +23,45 @@
 """
 import os, re, json, argparse, datetime
 from collections import Counter, defaultdict
+
+# ---------- 括号归一（v1.2, 2026-08-30，置于扫描循环前以保证模块加载即可用）----------
+# 背景：本脚本建概念桩页时，会把畸形嵌套 wikilink 目标名原样收进 concept_targets，
+#       并在「同簇概念页」互链段拼成 - [[{s}]] → 吐出 [[[X]]] 等多重括号，被 kg_scan 误判为断链
+#       （W35 实测 100 条全为自产假阳）。下列函数从「扫描期归一 + 生成期净化」双保险堵住该口子。
+BRACKET_OPEN = re.compile(r"\[{2,}")    # [[[ -> [
+BRACKET_CLOSE = re.compile(r"\]{2,}")   # ]]] -> ]
+
+def clean_target(name):
+    """畸形 wikilink 目标名归一为预期内层目标（扫描期存在性复检）。
+    [[[X]]] -> X ；[[A [[B]] 引用嵌套 -> 优先抽取内层完整 [[B]] 的 B。
+    归一后命中现有笔记即视为非真断链（源链接仅语法畸形），不建垃圾桩页。"""
+    s = name.strip()
+    if not s:
+        return s
+    m = re.search(r"\[\[([^\[\]]+?)\]\]", s)   # 优先抽取最内层完整 [[X]]
+    if m:
+        return m.group(1).strip()
+    s = BRACKET_OPEN.sub("[[", s)
+    s = BRACKET_CLOSE.sub("]]", s)
+    s = s.strip("[]")
+    s = re.sub(r"\[+", "", s)
+    s = re.sub(r"\]+", "", s)
+    return s.strip()
+
+def bare_target(name):
+    """把任意目标名归一为不含括号的裸名（生成期拼接 [[X]]，绝不产出 [[[X]]）。"""
+    s = name.strip()
+    if not s:
+        return s
+    m = re.search(r"\[\[([^\[\]]+?)\]\]", s)
+    if m:
+        return m.group(1).strip()
+    s = BRACKET_OPEN.sub("[[", s)
+    s = BRACKET_CLOSE.sub("]]", s)
+    s = s.strip("[]")
+    s = re.sub(r"\[+", "", s)
+    s = re.sub(r"\]+", "", s)
+    return s.strip()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # 知识飞轮系统/
 WORKSPACE = os.path.dirname(ROOT)  # LawKB 工作区根（含根目录/00_收件箱/知识库/案件管理/.workbuddy 等真实 .md）
@@ -39,6 +81,17 @@ NUM_ONLY_RE = re.compile(r"^\d+$")
 URL_RE = re.compile(r"^(https?://|www\.|file://)")
 # 系统/自动化内部引用（工作记忆 memory、自动化队列文件 待推送_*）：非笔记概念，跳过
 SYSTEM_REF_RE = re.compile(r"^(?:memory|待推送_[0-9\-]+)$", re.IGNORECASE)
+# v1.2（2026-08-30）：备份/快照副本排除，与 kg_scan.py v1.5 同源一致。
+# 写入型批处理生成的 `裁判规则库.bak-<时间戳>/` 整目录副本若被扫描，会：
+#   ① 为副本内的 [[...]] 误建概念页（垃圾页）
+#   ② 把副本当作「已解析文件」，掩盖真实断链
+# 凡路径含 .bak 的目录或文件一律跳过。
+BAK_MARK = ".bak"
+
+
+def is_backup(name):
+    """路径/目录/文件名是否属于备份副本（与 kg_scan.py 共用判定逻辑）。"""
+    return BAK_MARK in name
 
 # ---------- 收集文件 ----------
 all_md = []
@@ -56,15 +109,17 @@ existing = {}
 for dp, dn, fn in os.walk(WORKSPACE):
     if ".git" in dp:
         continue
-    dn[:] = [d for d in dn if not d.startswith(".")]
+    dn[:] = [d for d in dn if not d.startswith(".") and not is_backup(d)]
     for f in fn:
-        if f.endswith(".md"):
+        if f.endswith(".md") and not is_backup(f) and not is_backup(dp):
             existing[os.path.splitext(f)[0]] = os.path.join(dp, f)
 
 # 仅从非 meta 目录扫描「断链目标」，避免为报告内示例链接建概念页；模板文件占位符亦跳过
+# v1.2：备份副本目录内的文件亦不扫描（防为副本链接误建概念页）
 scan_md = [f for f in all_md
            if not any(meta in f for meta in META_SKIP)
-           and not os.path.basename(f).endswith(TEMPLATE_SKIP)]
+           and not os.path.basename(f).endswith(TEMPLATE_SKIP)
+           and not is_backup(f)]
 
 # 预建 文件名->正文 索引（用于关联发现）
 file_text = {}
@@ -90,6 +145,11 @@ for f in scan_md:
             continue                            # 文件链接，非笔记链接，跳过
         if name in existing:
             continue
+        # ---- 括号归一（v1.2, 2026-08-30）：畸形嵌套 [[[X]]] / [[A [[B]] 归一为预期内层目标 ----
+        cname = clean_target(name)
+        if cname != name and cname in existing:
+            continue  # 归一后命中现有笔记 → 源链接仅语法畸形，非真断链，不建桩页（防自产断链）
+        name = cname
         if PLACEHOLDER.search(name):
             continue  # 占位符示意链接，非真实目标
         if DATE_ONLY_RE.match(name) or NUM_ONLY_RE.match(name) or URL_RE.match(name):
@@ -194,7 +254,7 @@ def find_statute_parent(law_name):
 
 def build_page(target, cluster):
     lines = []
-    title = target
+    title = bare_target(target)   # 净化：标题不含畸形括号
     tags = ["概念页", f"概念-{cluster}"]
     # frontmatter
     lines.append("---")
@@ -202,7 +262,7 @@ def build_page(target, cluster):
     lines.append("type: concept")
     lines.append(f"created: {datetime.date.today().isoformat()}")
     lines.append(f'tags: [{" ".join(tags)}]')
-    lines.append("generated_by: 断链消解器resolve_broken_links v1.1")
+    lines.append("generated_by: 断链消解器resolve_broken_links v1.2")
     lines.append("---")
     lines.append("")
     lines.append(f"# {title}")
@@ -213,7 +273,7 @@ def build_page(target, cluster):
         parent = find_statute_parent(law)
         lines.append(f"> 本法条引用型概念页。所属法律：**{law}** {article}。")
         if parent:
-            lines.append(f"> 母法文件：[[{parent}]]")
+            lines.append(f"> 母法文件：[[{bare_target(parent)}]]")
         lines.append("")
         lines.append("（条文要旨待补充；本页用于消解知识图谱断链并聚合相关笔记。）")
     else:
@@ -228,19 +288,21 @@ def build_page(target, cluster):
     lines.append("")
     related = find_related(target)
     sibs = []
-    # 同簇概念页互链
+    # 同簇概念页互链（v1.2 护栏：畸形/脏名目标一律跳过，且所有链接经 bare_target 净化，绝不产出 [[[X]]）
     for t2, _ in concept_targets:
         if t2 != target and cluster_of(t2) == cluster:
+            if "[" in t2 or "]" in t2:   # 脏名（含括号）不互链，防自产断链
+                continue
             sibs.append(t2)
     if related:
         lines.append("**相关笔记：**")
         for r in related:
-            lines.append(f"- [[{r}]]")
+            lines.append(f"- [[{bare_target(r)}]]")
         lines.append("")
     if sibs:
         lines.append(f"**同簇（{cluster}）概念页：**")
         for s in sibs[:12]:
-            lines.append(f"- [[{s}]]")
+            lines.append(f"- [[{bare_target(s)}]]")
         lines.append("")
     return "\n".join(lines) + "\n"
 

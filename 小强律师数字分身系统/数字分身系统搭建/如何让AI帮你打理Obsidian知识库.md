@@ -5,7 +5,7 @@ tags:
   - AI
   - 知识库
 created: 2026-05-28T10:51
-updated: 2026-08-28T19:31
+updated: 2026-09-01T11:08
 title: 如何让AI帮你打理Obsidian知识库
 maturity: 🌱种子
 source: ""
@@ -180,7 +180,7 @@ npminstall luna-jmy/thinkdokit-skills
 - [[Obsidian极简安装指南]] (共现关键词: Obsidian, ##)
 - [[Obsidian插件启用极简教程]] (共现关键词: Obsidian, ##)
 - [[AI人伤法自学状态]] (共现关键词: 知识库, AI)
-- [[小哲AI 学伴智能体搭建方案]] (共现关键词: 知识库, ##, AI)
+- [[小哲AI 学伴系统/小哲AI 学伴智能体搭建方案]] (共现关键词: 知识库, ##, AI)
 - [[用ObsidianCodex搭一个会主动思考的个人知识库|用ObsidianCodex搭一个会主动思考的个人知识库]] 
 - ClaudeCodeObsidian个人知识库从工具到思维的完整指南 
 - [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|[[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 

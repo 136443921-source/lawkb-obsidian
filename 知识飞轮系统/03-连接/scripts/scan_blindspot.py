@@ -8,7 +8,7 @@ import os, re, json, datetime
 ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
 VAULT = ROOT
 EXCLUDE = {"IMA-Inbox", "03-连接/运维过程", "scripts", ".workbuddy"}
-NOW = datetime.datetime(2026, 8, 16)
+NOW = datetime.datetime(2026, 8, 30)
 RECENT = NOW - datetime.timedelta(days=90)
 
 DOMAINS = {

@@ -440,6 +440,85 @@ class StatuteHealthCheck:
         },
         ("民法典", 1219): {"status": "current", "note": "医疗说明义务与知情同意，现行有效。"},
         ("民法典", 1222): {"status": "current", "note": "病历瑕疵推定过错，现行有效。"},
+        # --- 2026-08-30 补充（医疗三类日课 + LTI 旧法纠偏用）---
+        ("民法典", 1218): {"status": "current", "since": "2021-01-01",
+            "note": "医疗损害责任一般条款（过错责任，医疗机构为责任主体），现行有效。"},
+        ("民法典", 1221): {"status": "current", "since": "2021-01-01",
+            "note": "医疗水平与诊疗义务：医务人员未尽到与当时的医疗水平相应的诊疗义务造成患者损害的，"
+                   "医疗机构承担赔偿责任。现行有效。（R-PI-188 操作指南=注意义务基准的依据条款）"},
+        ("民法典", 1223): {"status": "current", "since": "2021-01-01",
+            "note": "药品/消毒产品/医疗器械缺陷及不合格血液致害，患者可向医疗机构或生产者择一索赔，现行有效。"},
+        ("民法典", 1225): {"status": "current", "since": "2021-01-01",
+            "note": "医疗机构病历填写保管义务与患者查阅复制权，现行有效。"},
+        ("侵权责任法", 58): {"status": "repealed", "repealed_by": ("民法典", 1222),
+            "since": "2021-01-01",
+            "note": "《侵权责任法》已随《民法典》施行同时废止；其第58条（病历瑕疵推定过错）由《民法典》第1222条承继。"
+                   "2026 年仍见网络文章标注『《侵权责任法》第58条（2026）』，属典型旧法错误，引用一律改引《民法典》第1222条。"},
+        ("刑法", 335): {"status": "current",
+            "note": "医疗事故罪：医务人员严重不负责任，造成就诊人死亡或严重损害身体健康，处三年以下有期徒刑或拘役。现行有效。"},
+        ("医师法", 56): {"status": "current", "exact_wording_pending": True, "since": "2022-03-01",
+            "nature": "医师罚则（违反诊疗规范不必要检查/未依注册事项执业等）",
+            "note": "《医师法》2022-03-01 施行；上海《医师行政处罚裁量权基准》(2026-08-01 施行) 于该条下新增"
+                   "『违反诊疗规范对患者实施不必要的检查、治疗造成不良后果』『未按注册执业地点/类别/范围执业』等违法行为。"
+                   "引用前须核对条内款项序号。"},
+        ("医疗纠纷预防和处理条例", 15): {"status": "current", "exact_wording_pending": True,
+            "since": "2018-10-01", "nature": "病历书写与保管义务",
+            "note": "国务院令第701号，现行有效。引用前须核对原文措辞。"},
+        ("医疗纠纷预防和处理条例", 16): {"status": "current", "exact_wording_pending": True,
+            "since": "2018-10-01", "nature": "病历封存与启封程序",
+            "note": "国务院令第701号，现行有效。引用前须核对原文措辞。"},
+        ("基本医疗卫生与健康促进法", 101): {"status": "current", "since": "2020-06-01",
+            "note": "医疗卫生机构医疗质量安全管理制度不健全等情形的行政罚则，现行有效。"
+                   "（马鞍山『院外会诊程序管理缺失』案马卫医罚〔2026〕6号即依本条处罚）"},
+        # --- 2026-08-30 D 阶段补录（华宇元典三案关联法条）---
+        ("民法典", 620): {"status": "current", "since": "2021-01-01",
+            "note": "买受人收到标的物时应及时检验（有约定检验期的在期内检验，无约定的及时检验），现行有效。"},
+        ("民法典", 621): {"status": "current", "since": "2021-01-01",
+            "note": "约定检验期限的，买受人应在该期限内将数量/质量不符情形通知出卖人；怠于通知的，"
+                   "视为标的物的数量或者质量符合约定。现行有效。（粤06民终15284号即适用本条）"},
+        ("公司法", 88): {"status": "current", "since": "2024-07-01",
+            "note": "新《公司法》第88条第1款：股东转让已认缴但未届出资期限的股权，由受让人承担缴纳出资义务；"
+                   "受让人未按期足额缴纳的，转让人对受让人未按期缴纳的出资承担补充责任。",
+            "non_retroactive": True,
+            "non_retroactive_by": "法释〔2024〕15号",
+            "non_retroactive_note": "《最高人民法院关于〈中华人民共和国公司法〉第八十八条第一款不溯及适用的批复》"
+                                    "（法释〔2024〕15号）：2024-07-01 前发生的未届出资期限股权转让行为，"
+                                    "不适用新公司法第88条第1款，应适用原公司法及相关法律精神处理。"
+                                    "（粤19民再79号据此再审改判，撤销原二审适用新法的错误）"},
+        # --- 2026-08-31 P2 待核法条补录（华宇元典 rh_ft_search 在线核验，全部现行有效）---
+        ("民法典", 578): {"status": "current", "since": "2021-01-01",
+            "note": "预期违约：当事人一方明确表示或者以自己的行为表明不履行合同义务的，对方可以在履行期限届满前"
+                   "请求其承担违约责任。现行有效。（鄂9005民初445号股权转让款加速到期即适用本条）"},
+        ("民法典", 686): {"status": "current", "since": "2021-01-01",
+            "note": "保证方式：一般保证和连带责任保证；当事人对保证方式没有约定或约定不明确的，"
+                   "按照一般保证承担保证责任。现行有效。（鄂9005民初445号：约定不明→一般保证）"},
+        ("民法典", 687): {"status": "current", "since": "2021-01-01",
+            "note": "一般保证定义与先诉抗辩权：保证人享有先诉抗辩权，例外（第2款但书四项："
+                   "债务人下落不明无财产可执行/已受理破产/财产不足以履行或丧失履行能力/保证人书面放弃）。"
+                   "现行有效。",
+            "exact": "当事人在保证合同中约定，债务人不能履行债务时，由保证人承担保证责任的，为一般保证。"
+                     "一般保证的保证人在主合同纠纷未经审判或者仲裁，并就债务人财产依法强制执行仍不能履行债务前，"
+                     "有权拒绝向债权人承担保证责任。"},
+        ("医师法", 55): {"status": "current", "since": "2022-03-01",
+            "note": "医师罚则（警告起步）：第(五)项为『违反法律、法规、规章或者执业规范，造成医疗事故或者其他"
+                   "严重后果』——注意准确表述是『执业规范』而非『诊疗规范』；丰宁直肠癌根治术未遵循操作指南案"
+                   "（丰卫医罚决字〔2026〕J1-006号）即适用第(五)项。",
+            "exact": "违反本法规定，医师在执业活动中有下列行为之一的，由县级以上人民政府卫生健康主管部门"
+                     "责令改正，给予警告；情节严重的，责令暂停六个月以上一年以下执业活动直至吊销医师执业证书："
+                     "……（五）违反法律、法规、规章或者执业规范，造成医疗事故或者其他严重后果。"},
+        ("医疗纠纷预防和处理条例", 9): {"status": "current", "since": "2018-10-01",
+            "nature": "医疗机构及医务人员诊疗活动基本义务",
+            "note": "国务院令第701号。第1款：医疗机构及其医务人员在诊疗活动中应当以患者为中心，严格遵守医疗"
+                   "卫生法律、法规、规章和诊疗相关规范、常规，恪守职业道德。娄底电子病历身份标识案"
+                   "（娄卫医罚〔2026〕10号）认定违反本条第1款。",
+            "exact": "医疗机构及其医务人员在诊疗活动中应当以患者为中心，加强人文关怀，严格遵守医疗卫生"
+                     "法律、法规、规章和诊疗相关规范、常规，恪守职业道德。"},
+        ("医疗纠纷预防和处理条例", 47): {"status": "current", "since": "2018-10-01",
+            "nature": "医疗机构及医务人员行政罚则（警告+1-5万罚款）",
+            "note": "国务院令第701号。第(九)项兜底『其他未履行本条例规定义务的情形』——娄底电子病历身份标识案"
+                   "（娄卫医罚〔2026〕10号）即依第47条第(九)项处罚（警告+罚款1.2万）。",
+            "exact": "医疗机构及其医务人员有下列情形之一的，由县级以上人民政府卫生主管部门责令改正，给予警告，"
+                     "并处1万元以上5万元以下罚款……（九）其他未履行本条例规定义务的情形。"},
     }
 
     @classmethod
@@ -488,12 +567,132 @@ def score_article(title):
     return min(s, 12), hits
 
 
+# ============================================================================
+# 6.5) 候选池开采工具（v1.1 新增 · 治「首页 50 条后不翻页」与「文件夹白占配额」）
+# ============================================================================
+# 病因（2026-08-30 实测定性）：
+#   ① 调用方只取 get_knowledge_list 首页 limit=50，未摄入不足 3 篇时**未按 S1 翻页**，
+#      导致合同库根目录 1644 篇中第 51 条之后的 1603 篇从未进入候选池；
+#   ② select_3 不过滤 media_type=99 文件夹，文件夹名命中「合同/范本/案例」等高价值词，
+#      评分反而最高被优先选中，随后 can_fetch_content=false 取文失败 → 白吃 3 篇配额；
+#   ③ 无 folder_id 递归，文件夹内 1170+ 篇（医疗事故331/工伤349/交通事故220）从未开采。
+# 本组工具为「决策器」：runner 不直连 API，由调用方（AI 经 MCP 工具）按本组输出执行。
+# ============================================================================
+FOLDER_MEDIA_TYPE = 99          # IMA 文件夹条目类型
+FOLDER_ID_PREFIX = "folder_"    # 文件夹 media_id 前缀
+
+
+def is_folder(item):
+    """文件夹判定（三取一即成立）：media_type=99 / 带 folder_info / media_id 前缀 folder_。"""
+    if not isinstance(item, dict):
+        return True             # 非 dict 一律当不可摄入项剔除，避免脏数据入选
+    if item.get("media_type") == FOLDER_MEDIA_TYPE:
+        return True
+    if item.get("folder_info"):
+        return True
+    return str(item.get("media_id", "")).startswith(FOLDER_ID_PREFIX)
+
+
+def is_real_article(item):
+    """真实文章判定：非文件夹，且未被显式标记不可抓取。"""
+    if is_folder(item):
+        return False
+    # can_fetch_content 缺失时不排除（老数据可能无此字段），仅显式 False 才剔除
+    return item.get("can_fetch_content") is not False
+
+
+def filter_articles(cands):
+    """滤出真实文章，剔除文件夹与不可抓取项。"""
+    return [c for c in (cands or []) if is_real_article(c)]
+
+
+def unseen_articles(cands, ingested_set):
+    """滤出「真实文章 且 未摄入」者——这是唯一有资格进入选文池的对象。"""
+    ing = ingested_set or set()
+    return [c for c in filter_articles(cands) if c.get("media_id") not in ing]
+
+
+def should_keep_paging(cands, ingested_set, quota=3, is_end=False,
+                       pages_done=0, max_pages=20):
+    """
+    翻页决策器（治主因）。
+    返回 dict：
+      keep      bool  是否必须继续翻页
+      reason    str   决策依据（供报告留痕）
+      unseen    int   当前已累积的「未摄入真实文章」数
+      folders   int   当前页中被剔除的文件夹数
+      next_cursor_hint str 提示调用方用返回的 next_cursor 继续
+    规则：未摄入真实文章 < quota 且 未到末页 且 未超页数上限 → 必须继续翻页。
+    """
+    un = unseen_articles(cands, ingested_set)
+    n_folder = sum(1 for c in (cands or []) if is_folder(c))
+    keep = (len(un) < quota) and (not is_end) and (pages_done < max_pages)
+    if len(un) >= quota:
+        reason = f"未摄入真实文章 {len(un)} ≥ 配额 {quota}，可停止翻页"
+    elif is_end:
+        reason = f"已到末页（is_end=True），未摄入 {len(un)} 篇，翻页终止"
+    elif pages_done >= max_pages:
+        reason = f"已达翻页上限 {max_pages} 页（防死循环），未摄入 {len(un)} 篇"
+    else:
+        reason = (f"未摄入真实文章仅 {len(un)} < 配额 {quota}"
+                  f"（本页剔除文件夹 {n_folder} 个）→ 必须用 next_cursor 继续翻页")
+    return {"keep": keep, "reason": reason, "unseen": len(un),
+            "folders": n_folder, "next_cursor_hint": "用上一页返回的 next_cursor 继续调用"}
+
+
+def pending_folders(cands, visited=None):
+    """
+    递归计划器：从当前页抽取「尚未展开的子文件夹」，供调用方逐个传 folder_id 展开。
+    返回 [{folder_id, name, file_number, folder_number}, ...]
+    """
+    visited = visited or set()
+    out = []
+    for c in (cands or []):
+        if not is_folder(c):
+            continue
+        fi = c.get("folder_info") or {}
+        fid = fi.get("folder_id") or c.get("media_id")
+        if not fid or fid in visited:
+            continue
+        out.append({
+            "folder_id": fid,
+            "name": fi.get("name") or c.get("title") or "?",
+            "file_number": int(fi.get("file_number") or 0),
+            "folder_number": int(fi.get("folder_number") or 0),
+        })
+    # 大目录优先（可开采量最大者先展开）
+    out.sort(key=lambda x: -x["file_number"])
+    return out
+
+
+def crawl_report(stats_by_lib):
+    """把各库翻页/递归统计渲染成报告行（供末步写入每日报告）。"""
+    lines = ["| 库 | 翻页数 | 展开目录数 | 剔除文件夹 | 未摄入候选 | 实选 |",
+             "|---|---:|---:|---:|---:|---:|"]
+    tot = {"pages": 0, "folders": 0, "skipped": 0, "unseen": 0, "chosen": 0}
+    for lib, s in (stats_by_lib or {}).items():
+        lines.append(f"| {lib} | {s.get('pages',0)} | {s.get('expanded',0)} | "
+                     f"{s.get('folders',0)} | {s.get('unseen',0)} | {s.get('chosen',0)} |")
+        for k in tot:
+            tot[k] += s.get(k, 0)
+    lines.append(f"| **合计** | **{tot['pages']}** | **{tot['expanded']}** | "
+                 f"**{tot['folders']}** | **{tot['unseen']}** | **{tot['chosen']}** |")
+    return "\n".join(lines)
+
+
 def select_3(cands, ingested_set, last_run_ts_ms, quota=3):
     """
     输入：cands=[{media_id,title,create_time}], ingested_set=set(media_id), last_run_ts_ms
     输出：(chosen, skipped_ingested, stat)
     实现 S2 分池 + S3 评分 + S4 选文（S1 拉取由调用方经工具完成）。
+
+    v1.1 修正：入口先剔除文件夹（media_type=99 / folder_info / folder_ 前缀）与
+    不可抓取项——原实现会让文件夹混入评分，且因其名称命中「合同/范本/案例」等
+    高价值词而排序居前，选中后取文失败，白白吃掉当日 3 篇配额。
     """
+    raw_n = len(cands or [])
+    cands = filter_articles(cands)
+    folders_dropped = raw_n - len(cands)
     new_pool, backlog_pool = [], []
     skipped = 0
     for c in cands:
@@ -503,7 +702,9 @@ def select_3(cands, ingested_set, last_run_ts_ms, quota=3):
         sc, _ = score_article(c.get("title", ""))
         c = dict(c)
         c["_score"] = sc
-        if c.get("create_time", 0) >= last_run_ts_ms:
+        # 补默认时间戳：旧实现排序处直接取 x["create_time"]，条目缺该字段会 KeyError 崩溃
+        c["create_time"] = int(c.get("create_time") or 0)
+        if c["create_time"] >= last_run_ts_ms:
             new_pool.append(c)
         else:
             backlog_pool.append(c)
@@ -513,7 +714,8 @@ def select_3(cands, ingested_set, last_run_ts_ms, quota=3):
     if len(chosen) < quota:
         chosen += backlog_pool[: quota - len(chosen)]
     stat = {"new": len(new_pool), "backlog": len(backlog_pool),
-            "skipped_ingested": skipped, "chosen": len(chosen)}
+            "skipped_ingested": skipped, "chosen": len(chosen),
+            "folders_dropped": folders_dropped, "candidates_in": raw_n}
     return chosen, skipped, stat
 
 
@@ -662,6 +864,52 @@ def selftest():
     assert chosen[0]["title"] == "股权转让协议审查"   # b/c/e 同分(6)，c create_time 最大 → 优先
     assert chosen[1]["title"] == "医疗纠纷赔偿要点"
     print("[OK] SELECT_3 分池/评分/去重/配额  (stat=%s)" % stat)
+
+    # 5.5) 候选池开采工具（v1.1 · 治「首页 50 条后不翻页」+「文件夹白占配额」）
+    # 数据形态取自 2026-08-30 合同库/人伤库实测返回
+    def _folder(mid, name, n, sub=0):
+        return {"media_id": mid, "media_type": 99, "title": name, "can_fetch_content": False,
+                "folder_info": {"folder_id": mid, "name": name,
+                                "file_number": str(n), "folder_number": str(sub)}}
+    def _art(mid, title, ts):
+        return {"media_id": mid, "media_type": 6, "title": title,
+                "create_time": ts, "can_fetch_content": True}
+
+    page1 = [
+        _folder("folder_A", "合同审查实务", 86),
+        _folder("folder_B", "合同协议范本", 658, sub=4),
+        _folder("folder_C", "医疗事故", 331),
+        _art("m_buy", "买卖合同（详细版）参考模版", 1787888136089),
+        _art("m_loan", "民间借贷合同（有息版）参考模版", 1787727315614),
+    ]
+    # ① 文件夹剔除
+    assert len(filter_articles(page1)) == 2
+    assert all(not is_folder(x) for x in filter_articles(page1))
+    assert is_folder({"media_id": "folder_X", "media_type": 99})          # 仅靠 media_type
+    assert is_folder({"media_id": "folder_Y", "folder_info": {"name": "z"}})  # 仅靠 folder_info
+    assert is_folder({"media_id": "folder_Z"})                            # 仅靠前缀
+    assert not is_folder(_art("m1", "普通文章", 1))
+    # ② 文件夹不得进入选文结果（原实现会让「合同协议范本」因命中合同/范本而排第一）
+    chosen5, _, stat5 = select_3(page1, set(), 1787000000000, quota=3)
+    assert stat5["folders_dropped"] == 3
+    assert all(not str(c["media_id"]).startswith("folder_") for c in chosen5)
+    assert len(chosen5) == 2                    # 真实文章只有 2 篇，配额 3 也只能选 2
+    # ③ 翻页决策：未摄入 < 配额且未到末页 → 必须继续翻页
+    d1 = should_keep_paging(page1, {"m_buy"}, quota=3, is_end=False)
+    assert d1["keep"] is True and d1["unseen"] == 1
+    d2 = should_keep_paging(page1, {"m_buy"}, quota=3, is_end=True)
+    assert d2["keep"] is False                  # 已到末页不再翻
+    d3 = should_keep_paging(page1, set(), quota=2, is_end=False)
+    assert d3["keep"] is False                  # 未摄入 2 ≥ 配额 2，可停
+    # ④ 递归计划：抽出未展开子文件夹，大目录优先
+    pend = pending_folders(page1, visited=set())
+    assert len(pend) == 3
+    assert pend[0]["name"] == "合同协议范本"      # 658 最大 → 优先展开
+    assert pend[0]["folder_id"] == "folder_B"
+    pend2 = pending_folders(page1, visited={"folder_B"})
+    assert len(pend2) == 2 and all(p["folder_id"] != "folder_B" for p in pend2)
+    print("[OK] 候选池开采工具：文件夹剔除/翻页决策/递归计划  "
+          "(dropped=%d, keep=%s, pend0=%s)" % (stat5["folders_dropped"], d1["keep"], pend[0]["name"]))
 
     # 6) 升级阶梯
     st3 = IntakeState.__new__(IntakeState); st3.path = ":memory:"

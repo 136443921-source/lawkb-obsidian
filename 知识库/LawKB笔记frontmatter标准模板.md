@@ -1,7 +1,7 @@
 ---
 title: LawKB笔记frontmatter标准模板
 created: 2026-06-27
-updated: 2026-08-28T19:31
+updated: 2026-09-01T11:18
 tags:
   - 诉讼
   - 慈善组织
@@ -153,7 +153,7 @@ python3 /Users/chenyouqiang/Documents/LawKB/update_frontmatter.py
 
 ## 关联概念
 
-- [[中华人民共和国民法典（全文）|民法典]]
+- [[法律法规库/通用实体法/中华人民共和国民法典（全文）|民法典]]
 - [[违约责任|违约责任]]
 - [[合同解除|合同解除]]
 

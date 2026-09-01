@@ -14,6 +14,16 @@ SCRIPTS = os.path.dirname(os.path.abspath(__file__))
 SKIP_DIRS = {".obsidian", ".trash", "node_modules", "logs"}
 # meta 报告目录：其正文中的 `[[...]]` 多为「断链示例」文档说明，非真实链接，不计入断链
 META_SKIP = {"孤立笔记检测报告", "知识库压缩去重报告"}
+# v1.5（2026-08-30）：备份/快照副本排除。写入型批处理（如华宇元典回填）会生成
+# `裁判规则库.bak-<时间戳>/` 整目录副本，其内卡片会被当成正式笔记扫描，导致
+# top10「最被引用知识」排行被备份副本占据（实测 40% 失真）。凡路径含 .bak 的
+# 目录或文件一律跳过。**本标记须与 resolve_broken_links.py 的 BAK_MARK 同源一致。**
+BAK_MARK = ".bak"
+
+
+def is_backup(name):
+    """路径/目录/文件名是否属于备份副本（两脚本共用判定逻辑）。"""
+    return BAK_MARK in name
 MONTH = datetime.date.today().strftime("%Y-%m")
 
 # 护栏（v1.4 收紧，与 resolve_broken_links.py 保持一致）：
@@ -55,11 +65,15 @@ def parse_fm(text):
     return meta, body
 
 for dirpath, dirnames, filenames in os.walk(ROOT):
-    dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS and not d.startswith(".")]
+    # v1.5：跳过备份/快照副本目录（如 裁判规则库.bak-<时间戳>/），防其卡片污染图谱统计
+    dirnames[:] = [d for d in dirnames
+                   if d not in SKIP_DIRS and not d.startswith(".") and not is_backup(d)]
     for fn in filenames:
         if not fn.endswith(".md"): continue
+        if is_backup(fn) or is_backup(dirpath): continue
         full = os.path.join(dirpath, fn)
         rel = os.path.relpath(full, ROOT)
+        if is_backup(rel): continue
         try:
             with open(full, encoding="utf-8", errors="ignore") as f:
                 text = f.read()
@@ -76,9 +90,12 @@ for dirpath, dirnames, filenames in os.walk(ROOT):
 
 # 工作区全量索引（ROOT 外真实文件亦算已解析，避免误判断链、误建概念页）
 for dirpath, dirnames, filenames in os.walk(WORKSPACE):
-    dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS and not d.startswith(".")]
+    # v1.5：备份副本不作为「已解析文件」参与断链判定（否则会掩盖真实断链）
+    dirnames[:] = [d for d in dirnames
+                   if d not in SKIP_DIRS and not d.startswith(".") and not is_backup(d)]
     for fn in filenames:
         if not fn.endswith(".md"): continue
+        if is_backup(fn) or is_backup(dirpath): continue
         full = os.path.join(dirpath, fn)
         ws_index[fn[:-3]].append(full)
 

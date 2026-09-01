@@ -9,6 +9,14 @@
 - 幂等：自动补链段以稳定前缀 `## 关联（知识飞轮连接层自动补链` 写入，重跑整体替换（按前缀切分，不受日期变化影响），不破坏既有手工链接。
 - 兜底：经验卡片下出现 GROUPS 未登记的新分类时，自动建独立枢纽并做同域互链（无规则桥接）。
 - 统计：运行后写 link_lastrun.json（机器可读），并打印 `LINK_STAT {...}` 单行供自动化捕获。
+
+变更记录：
+- v3.1.1 (2026-08-30)：修复「共享 hubfile 覆盖 bug」。
+  GROUPS 中「程序知识」与「法条解读」共用同一枢纽文件 `连接枢纽-通用程序.md`；
+  原枢纽页生成逻辑按分类逐类 `open(hubfile,"w")` 覆盖写，后写分类会整体覆盖先写分类成员（last-write-wins），
+  导致先写分类（程序知识，约 64 张卡）在枢纽页不可见（每卡 `related_links` 仍连通，但 MOC 页看不到）。
+  修复：改为先按 hubfile 反向聚合 `hub_to_cats`，再对每个 hubfile 一次性聚合全部共享分类成员写出
+  （见下方「生成枢纽页」段）。经验卡归位后，务必 `grep 枢纽页` 双重验证（每卡 related_links + MOC 可见性）。
 """
 import os, re, json, glob, datetime
 from collections import defaultdict
@@ -241,15 +249,30 @@ for cat, (rdomain, hubfile, hubtitle) in EG.items():
         written += 1
 
 # 生成枢纽页（每次整体重建，自动纳入新成员）
+# 修复(v3.1.1)：同一 hubfile 可能被多个分类共享（如 程序知识 + 法条解读 → 连接枢纽-通用程序），
+# 须按 hubfile 聚合成员后一次写出，避免逐分类 open("w") 互相覆盖（last-write-wins）。
+# 2026-08-30 修复 · 老强发现：程序知识卡片连入连接层后未出现在通用程序枢纽页。
 os.makedirs(HUB_DIR, exist_ok=True)
+hub_to_cats = defaultdict(list)
 for cat, (rdomain, hubfile, hubtitle) in EG.items():
-    fns = hub_members[cat]
-    cards = [fn for fn, p, ts in members[cat] if "/经验卡片/" in p]
-    rules = [fn for fn, p, ts in members[cat] if "/裁判规则库/" in p]
-    L = ["---", f"title: {hubtitle}", "type: 连接枢纽", f"domain: {cat}",
+    hub_to_cats[hubfile].append(cat)
+for hubfile, cats in hub_to_cats.items():
+    cards, rules = [], []
+    seen_c, seen_r = set(), set()
+    for cat in cats:
+        for fn, p, ts in members[cat]:
+            if "/经验卡片/" in p:
+                if fn not in seen_c:
+                    seen_c.add(fn); cards.append(fn)
+            elif "/裁判规则库/" in p:
+                if fn not in seen_r:
+                    seen_r.add(fn); rules.append(fn)
+    first_cat = cats[0]
+    hubtitle = EG[first_cat][2]
+    L = ["---", f"title: {hubtitle}", "type: 连接枢纽", f"domain: {first_cat}",
          f"generated_by: 连接层自动补链({DATE})", f"created: {DATE}T22:00",
-         "tags:", "  - 连接枢纽", f"  - {cat}", "---", "", f"# {hubtitle}", "",
-         f"> 本页为「{cat}」领域连接枢纽（MOC），由知识飞轮连接层于 {DATE} 自动生成。",
+         "tags:", "  - 连接枢纽"] + [f"  - {c}" for c in cats] + ["---", "", f"# {hubtitle}", "",
+         f"> 本页为「{'/'.join(cats)}」领域连接枢纽（MOC），由知识飞轮连接层于 {DATE} 自动生成。",
          f"> 共挂载 {len(cards)} 张经验卡片 + {len(rules)} 条裁判规则，双向链接已自动建立。",
          "", "## 经验卡片"]
     for fn in cards: L.append(f"- [[{fn}]]")
