@@ -386,8 +386,14 @@ class DegradationLayer:
 
     @staticmethod
     def escalation(state):
-        """漏窗告警升级阶梯。返回 (level, subject_prefix, body_note)。"""
-        wins = state.data.get("pending_windows", [])
+        """漏窗告警升级阶梯。返回 (level, subject_prefix, body_note)。
+
+        v1.24.1（2026-09-03 修正）：只统计**未清空**（status != backfilled/closed）的窗口。
+        原实现用 len(pending_windows) 全量计数，已 backfilled 的历史窗口也被计入，
+        会把 N 虚高（实测 4 窗中 3 已回补，仍报 N=4）→ 误触发升级前缀。
+        """
+        wins = [w for w in state.data.get("pending_windows", [])
+                if str(w.get("status", "open")).lower() not in ("backfilled", "closed", "done")]
         n = len(wins)
         if n == 0:
             return (0, "", "")
