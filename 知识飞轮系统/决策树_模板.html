@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="dn9j7eG6JETFlhnVelLe71">
+<head data-page-node-id="hDmzWBIxxwPi0zzZBARD6z">
+<meta charset="UTF-8" data-page-node-id="FfJgfcHd3FTdq8tMEuHAk6">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="ipbMyJo08ht8dDraj2YluE">
+<title>小强律师数字分身系统 · 决策思维层总览树</title>
+<style>
+  :root{
+    --bg:#12141a; --panel:#181b23; --panel2:#1e222c; --line:#2a2f3a;
+    --txt:#e6e8ee; --txt2:#9aa3b2; --txt3:#6b7484;
+    --gold:#e0a458; --purple:#a78bfa; --blue:#60a5fa; --teal:#2dd4bf;
+    --green:#4ade80; --orange:#fb923c; --red:#f87171; --pink:#f472b6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:14px; line-height:1.6; padding:20px;
+  }
+  .wrap{max-width:1560px;margin:0 auto}
+
+  /* 顶部通栏：标明本页是「驾驶舱」的子视图。
+     2026-09-04 加：桌面曾同时存在驾驶舱与决策树两个页面，老强点开后分不清哪个是哪个。
+     故用蓝色徽章「子视图」与驾驶舱的金色「EV v2.0.0」徽章形成颜色区分，滚到哪都看得见。 */
+  .topbar{
+    position:sticky;top:0;z-index:99;margin:-20px -20px 16px;padding:9px 24px;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    background:rgba(18,20,26,.9);backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(96,165,250,.28);
+  }
+  .tb-badge{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;font-weight:800;
+    letter-spacing:.6px;padding:3px 9px;border-radius:6px;color:#0a0c11;flex:0 0 auto;
+    background:linear-gradient(100deg,#60a5fa,#93c5fd);
+  }
+  .tb-t{font-size:13px;font-weight:650;color:var(--txt)}
+  .tb-s{font-size:11px;color:var(--txt3);margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .tb-s b{color:var(--teal);font-weight:600}
+
+  header{margin-bottom:18px}
+  h1{font-size:21px;font-weight:650;letter-spacing:.3px;display:flex;align-items:center;gap:10px}
+  h1 .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+  .sub{color:var(--txt2);font-size:12.5px;margin-top:6px;margin-left:19px}
+
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 14px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:9px 15px;min-width:104px}
+  .stat .n{font-size:20px;font-weight:680;line-height:1.25}
+  .stat .l{font-size:11px;color:var(--txt3);margin-top:1px}
+
+  .toolbar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  button{
+    background:var(--panel);border:1px solid var(--line);color:var(--txt2);
+    padding:5px 13px;border-radius:7px;cursor:pointer;font-size:12.5px;
+    font-family:inherit;transition:.15s;
+  }
+  button:hover{background:var(--panel2);color:var(--txt);border-color:#3a4150}
+  button.on{background:#2a3140;color:var(--gold);border-color:var(--gold)}
+
+  .main{display:grid;grid-template-columns:1fr 384px;gap:14px;align-items:start}
+  @media(max-width:1080px){.main{grid-template-columns:1fr}}
+
+  .tree{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:14px 12px;overflow-x:auto}
+
+  .node{position:relative}
+  .row{
+    display:flex;align-items:center;gap:7px;padding:4px 8px;border-radius:6px;
+    cursor:pointer;transition:.12s;user-select:none;white-space:nowrap;
+  }
+  .row:hover{background:#232833}
+  .row.sel{background:#2c3444;box-shadow:inset 2px 0 0 var(--gold)}
+  .tw{
+    width:15px;height:15px;flex:0 0 15px;display:flex;align-items:center;justify-content:center;
+    color:var(--txt3);font-size:9px;transition:transform .18s;
+  }
+  .tw.open{transform:rotate(90deg)}
+  .tw.leaf{opacity:0}
+  .bar{width:3px;height:15px;border-radius:2px;flex:0 0 3px}
+  .lab{font-size:13.2px}
+  .lab.b{font-weight:600}
+  .tag{
+    font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid;
+    line-height:1.5;letter-spacing:.2px;
+  }
+  .kids{margin-left:14px;padding-left:11px;border-left:1px solid var(--line)}
+  .kids.hide{display:none}
+
+  .detail{
+    background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:16px;position:sticky;top:20px;min-height:230px;
+  }
+  .detail .dt{font-size:15.5px;font-weight:650;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+  .detail .path{font-size:11px;color:var(--txt3);margin-bottom:12px;word-break:break-all;line-height:1.5}
+  .detail .desc{font-size:13.2px;color:var(--txt);margin-bottom:12px;line-height:1.75}
+  .detail .desc ul{margin:6px 0 0 16px}
+  .detail .desc li{margin:3px 0;color:var(--txt2)}
+  .detail .desc code{background:#232833;padding:1px 5px;border-radius:3px;font-size:11.5px;color:var(--teal)}
+  .meta{background:var(--panel2);border-radius:7px;padding:9px 11px;margin-bottom:11px}
+  .meta div{font-size:11.5px;color:var(--txt2);margin:2.5px 0}
+  .meta b{color:var(--gold);font-weight:600}
+  .kids-list{font-size:12px;color:var(--txt3);border-top:1px solid var(--line);padding-top:9px;margin-top:4px}
+  .kids-list span{display:inline-block;margin:2px 6px 2px 0;color:var(--txt2)}
+
+  .lg{display:flex;gap:13px;flex-wrap:wrap;margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:var(--txt3)}
+  .lg i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:4px;vertical-align:-1px}
+  footer{margin-top:16px;color:var(--txt3);font-size:11.5px;text-align:center}
+
+  /* ===== 视图切换（决策树 / 思维导图） ===== */
+  .seg{display:flex;gap:8px;margin:14px 0 4px;flex-wrap:wrap}
+  .seg button{font-size:13px;padding:7px 16px}
+
+  /* ===== 思维导图（决策链 + 沉淀图谱） ===== */
+  .note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;
+    padding:12px 15px;margin-bottom:14px;font-size:12.8px;line-height:1.7;color:var(--txt2)}
+  .note b{color:var(--txt)}
+  .mvbar{display:flex;gap:8px;margin:14px 0 16px;flex-wrap:wrap}
+  .mvtab{cursor:pointer;padding:8px 15px;border-radius:11px;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--txt2);transition:.15s}
+  .mvtab.on{color:#0a0c11;background:var(--gold);border-color:var(--gold);font-weight:700}
+  .mvpane{display:none}
+  .mvpane.on{display:block}
+  .chain{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 18px;margin-bottom:14px}
+  .ch-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .ch-name{font-size:15px;font-weight:700}
+  .ch-meta{font-size:11px;color:var(--txt3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .ch-concl{background:rgba(224,164,88,.08);border-left:3px solid var(--gold);border-radius:9px;padding:9px 12px;font-size:13px;margin-bottom:12px;line-height:1.65}
+  .ch-sec{margin:10px 0}
+  .ch-sec .h{font-size:11.5px;letter-spacing:.6px;color:var(--txt3);margin-bottom:6px;font-weight:700}
+  .opt{display:flex;gap:8px;padding:7px 10px;border-radius:9px;background:rgba(255,255,255,.02);border:1px solid var(--line);margin-bottom:6px;font-size:12.5px;align-items:center}
+  .opt.ad{background:rgba(74,222,128,.09);border-color:rgba(74,222,128,.35)}
+  .opt .tag{font-size:10px;padding:1px 7px;border-radius:6px;flex:0 0 auto;font-weight:700}
+  .opt .tag.y{background:var(--green);color:#06210f}
+  .opt .tag.n{background:rgba(255,255,255,.08);color:var(--txt2)}
+  .sig{display:flex;gap:8px;align-items:flex-start;padding:6px 9px;border-radius:8px;background:rgba(255,255,255,.02);margin-bottom:5px;font-size:12.5px;line-height:1.5}
+  .sig .st{font-size:10px;padding:1px 7px;border-radius:6px;flex:0 0 auto;margin-top:1px;font-weight:700}
+  .ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:8px}
+  .ch-cell{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:12px;line-height:1.55}
+  .ch-cell .k{color:var(--txt3);font-size:10.5px;display:block;margin-bottom:3px;letter-spacing:.5px}
+  .empty{color:var(--txt3);font-size:12px;font-style:italic}
+  .gp-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .gp-stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 17px;min-width:108px}
+  .gp-stat .n{font-size:21px;font-weight:800;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .gp-stat .l{font-size:10.5px;color:var(--txt3);margin-top:2px}
+  .gp-warn{background:rgba(251,146,60,.08);border-left:3px solid var(--orange);border-radius:10px;padding:10px 13px;font-size:12.5px;line-height:1.6;margin-bottom:16px;color:var(--txt2)}
+  .gp-cols{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+  @media(max-width:760px){.gp-cols{grid-template-columns:1fr}}
+  .gp-block{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .gp-block .bh{font-size:12px;letter-spacing:1px;color:var(--txt3);margin-bottom:11px;font-weight:700}
+  .dom{margin-bottom:11px}
+  .dom-h{font-size:13px;font-weight:700;color:var(--teal);margin-bottom:5px}
+  .dom-cards{display:flex;flex-wrap:wrap;gap:5px}
+  .dom-card{font-size:11px;padding:2px 9px;border-radius:7px;background:rgba(45,212,191,.08);border:1px solid rgba(45,212,191,.25);color:var(--txt2);cursor:default}
+  .rule{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:12.5px}
+  .rule .rb{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;color:var(--gold)}
+  .rule .bar{height:7px;border-radius:4px;background:var(--gold);opacity:.8}
+</style>
+</head>
+<body data-page-node-id="uSwr4IlxTNHUSG2JV5FhjD">
+<div class="topbar">
+  <span class="tb-badge">子视图</span>
+  <span class="tb-t">🌳 决策思维树</span>
+  <span class="tb-s">
+    <span>本页是「分身系统驾驶舱」的决策树视图</span>
+    <span>整车状态见桌面 <b>分身系统驾驶舱.html</b></span>
+  </span>
+</div>
+<div class="wrap" data-page-node-id="B1UBGj4Gu53D4ahnEGxPiK">
+  <header data-page-node-id="hoIwcqpAASF9X02JeqVv8l">
+    <h1 data-page-node-id="LbwjusEMC14pZvGhveoky7"><span class="dot" data-page-node-id="JhE9v2H8FRIC154QKr8baL"></span>小强律师数字分身系统 · 决策思维层总览树</h1>
+    <div class="sub" data-page-node-id="PqOeQp8km6697TCt6armtH">三层架构：思维层（怎么想）→ 人格层（怎么表达）→ 知识层（知道什么）　·　核心理念：存推理，不存结论</div>
+  </header>
+
+  <div class="seg">
+    <button class="on" id="segTree" onclick="showView('tree')">🌳 决策树</button>
+    <button id="segMind" onclick="showView('mind')">🧠 思维导图</button>
+  </div>
+
+  <div id="treeView">
+  <div class="stats" id="stats" data-page-node-id="fMsTICJwfj99R78N1XJRFD"></div>
+
+  <div class="toolbar" data-page-node-id="qY9p4364u6nwMBmt0OQQ6L">
+    <button onclick="setAll(true)" data-page-node-id="HN6Ett1sz7o58hHsIyWEEO">全部展开</button>
+    <button onclick="setAll(false)" data-page-node-id="tQYLtEH8sgnTMkVQOqzY0M">全部折叠</button>
+    <button id="btnL2" onclick="lvl2()" data-page-node-id="30C1PxZF068t26rWU39yRq">展开到二级</button>
+    <button onclick="onlyPending()" data-page-node-id="CTMBz7Uol2PF0b9VWUEPc6">只看待办</button>
+  </div>
+
+  <div class="main" data-page-node-id="dqHYW3qPFufHu5dBDABUBa">
+    <div class="tree" id="tree" data-page-node-id="91AuRp4GESEyD2woV4M1in"></div>
+    <div class="detail" id="detail" data-page-node-id="0sKb1MwItfP3sOaU36HvwN"></div>
+  </div>
+
+  <div class="lg" data-page-node-id="ldBX5CDeamn7hDwvDKBqOi">
+    <span data-page-node-id="fz1GSnW5wnHVfKTFsPOBBd"><i style="background:var(--gold)" data-page-node-id="ERE1etL81gWU42nY1IRz60"></i>根 / 核心</span>
+    <span data-page-node-id="CE0ycepAmICbb3dpTZbGvH"><i style="background:var(--purple)" data-page-node-id="h6TWcrAv86LAmh53dwEzgB"></i>思维层</span>
+    <span data-page-node-id="Wk3UEaFeGK36Lt8cKY7qrE"><i style="background:var(--blue)" data-page-node-id="VsinsXFIpkprbFCgqiitsE"></i>在册决策卡</span>
+    <span data-page-node-id="A4nRqsfKGtVP3TH8eA251l"><i style="background:var(--teal)" data-page-node-id="X5Zu6fHUsfSGKIDKfen5C5"></i>人格层</span>
+    <span data-page-node-id="YAmbx2zVAayKWDo9KwkQgV"><i style="background:var(--green)" data-page-node-id="rLMhBjSGd7WymmAfpvEN1F"></i>知识层</span>
+    <span data-page-node-id="w8unXyE4Lu2YRFYBQQgf5N"><i style="background:var(--orange)" data-page-node-id="jW9OoRIw4gnL5rRzmxYlfp"></i>运转节奏</span>
+    <span data-page-node-id="dP6PunbAkumFhPS5LpmKQw"><i style="background:var(--red)" data-page-node-id="qIpIueQ02RX6DiiEIKBd9j"></i>风险 / 待办</span>
+  </div>
+
+  </div><!-- /treeView -->
+
+  <div id="mindView" style="display:none">
+    <div class="note">
+      <b>复盘每一个案件与经验沉淀的「思考路径」。</b>　两个视图：
+      <b>决策链</b>＝真·决策过程（选项 → 排除理由 → 推翻信号 → 关键假设 → 复盘）；
+      <b>沉淀图谱</b>＝经验卡知识结构的诚实呈现。
+      <b style="color:var(--orange)">⚠️ 诚实边界：经验卡只记沉淀「结论」（遇 X 该 do/dont），没有「考虑了 A/B/C、为何排除 B」的推理链——图谱呈现知识，不是决策过程，切勿误读。</b>
+    </div>
+    <div class="mvbar">
+      <div class="mvtab on" data-v="chain">🔗 决策链（复盘推理）</div>
+      <div class="mvtab" data-v="graph">🗺 沉淀图谱（知识结构）</div>
+    </div>
+    <div class="mvpane on" id="mv-chain"></div>
+    <div class="mvpane" id="mv-graph"></div>
+  </div><!-- /mindView -->
+
+  <footer data-page-node-id="ro42AifHFj6mcmlYLjjOga">点击节点查看详情 · 点击箭头展开折叠　|　生成于 2026-09-03</footer>
+</div>
+
+<script>
+const C={gold:'#e0a458',purple:'#a78bfa',blue:'#60a5fa',teal:'#2dd4bf',green:'#4ade80',orange:'#fb923c',red:'#f87171',pink:'#f472b6',gray:'#6b7484'};
+
+const tree=__TREE_DATA__;
+const mindmap=__MINDMAP_DATA__;
+
+let sel=null;
+function count(n){let c=1;(n.children||[]).forEach(k=>c+=count(k));return c;}
+function leaves(n){if(!n.children||!n.children.length)return 1;let c=0;n.children.forEach(k=>c+=leaves(k));return c;}
+
+function stats(){
+  const today=new Date().toISOString().slice(0,10);
+  const cb=tree.children.find(c=>c.id==='cards')||{children:[]};
+  const cards=cb.children||[];
+  const judged=cards.filter(c=>c.verdict&&c.verdict!=='待验证');
+  const correct=cards.filter(c=>c.verdict==='对了').length;
+  const rate=judged.length?Math.round(correct/judged.length*100)+'%':'暂无样本';
+  const overdue=cards.filter(c=>c.verdict==='待验证'&&c.review_date&&c.review_date<today).length;
+  const nextReview=(cards.map(c=>c.review_date).filter(d=>d&&d>=today).sort()[0])||'—';
+  const nextDl=(cards.map(c=>c.deadline).filter(d=>d&&d>=today).sort()[0])||'—';
+  const short=d=>d&&d.length>7?d.slice(5).replace('-','/'):(d||'—');
+
+  const think=tree.children.find(c=>c.id==='think');
+  const cnt=(id)=>{const n=findNode(tree,id);return n&&n.children?n.children.length:0;};
+
+  const html=[
+    [String(cards.length),'在册决策卡','var(--blue)'],
+    [overdue?String(overdue):'0',overdue?'逾期未复盘 ⚠️':'逾期未复盘',overdue?'var(--red)':'var(--txt3)'],
+    [rate,'命中率',judged.length?'var(--green)':'var(--txt3)'],
+    [String(cnt('card')),'决策卡分区','var(--purple)'],
+    [String(cnt('flow')),'建卡流程步骤','var(--purple)'],
+    [String(cnt('verdict')),'判定档位','var(--gold)'],
+    [String(cnt('conflict')),'冲突类型','var(--red)'],
+    [String(cnt('domain')),'domain 维度','var(--teal)'],
+    [nextReview,'下次复盘日','var(--orange)'],
+    [short(nextDl),'最近 deadline',nextDl!=='—'?'var(--red)':'var(--txt3)']
+  ];
+  document.getElementById('stats').innerHTML=html.map(h=>
+    `<div class="stat"><div class="n" style="color:${h[2]};font-size:${h[0].length>6?'13px':'20px'}">${h[0]}</div><div class="l">${h[1]}</div></div>`).join('');
+}
+
+function build(n,depth){
+  const has=n.children&&n.children.length;
+  const el=document.createElement('div');el.className='node';
+  const row=document.createElement('div');row.className='row';row.dataset.id=n.id;
+  row.innerHTML=
+    `<span class="tw ${has?'':'leaf'}">▶</span>`+
+    `<span class="bar" style="background:${n.c||C.gray}"></span>`+
+    `<span class="lab${n.bold?' b':''}">${n.label}</span>`;
+  if(has)row.querySelector('.lab').insertAdjacentHTML('afterend',
+    `<span class="tag" style="color:${n.c||C.gray};border-color:${n.c||C.gray}44">${n.children.length}</span>`);
+  el.appendChild(row);
+  let kids=null;
+  if(has){
+    kids=document.createElement('div');kids.className='kids';
+    n.children.forEach(k=>kids.appendChild(build(k,depth+1)));
+    el.appendChild(kids);
+    if(depth>=1)kids.classList.add('hide');
+  }
+  row.onclick=e=>{
+    e.stopPropagation();
+    if(has){kids.classList.toggle('hide');row.querySelector('.tw').classList.toggle('open');}
+    select(n);
+  };
+  if(has)row.querySelector('.tw').classList.toggle('open',depth<1);
+  return el;
+}
+
+function select(n){
+  sel=n.id;
+  document.querySelectorAll('.row.sel').forEach(r=>r.classList.remove('sel'));
+  const r=document.querySelector(`.row[data-id="${n.id}"]`);if(r)r.classList.add('sel');
+  const d=document.getElementById('detail');
+  const kids=n.children?n.children.map(k=>`<span>▸ ${k.label}</span>`).join(''):'';
+  d.innerHTML=
+    `<div class="dt"><span class="bar" style="background:${n.c||C.gray};height:16px;display:inline-block"></span>${n.label}</div>`+
+    (n.meta?`<div class="path">${n.meta.join('<br>')}</div>`:'')+
+    `<div class="desc">${n.desc||'<span style="color:var(--txt3)">未记录</span>'}</div>`+
+    (kids?`<div class="kids-list"><div style="color:var(--txt3);margin-bottom:4px">子节点 ${n.children.length} 项</div>${kids}</div>`:'');
+}
+
+function walk(n,f){f(n);(n.children||[]).forEach(k=>walk(k,f));}
+function setAll(open){
+  document.querySelectorAll('.kids').forEach(k=>k.classList.toggle('hide',!open));
+  document.querySelectorAll('.tw').forEach(t=>{if(!t.classList.contains('leaf'))t.classList.toggle('open',open)});
+}
+function lvl2(){
+  setAll(false);
+  const rootKids=document.querySelector('#tree > .node > .kids');
+  if(!rootKids)return;
+  rootKids.classList.remove('hide');
+  rootKids.querySelectorAll(':scope > .node > .kids').forEach(k=>{
+    k.classList.remove('hide');
+    const tw=k.parentElement.querySelector(':scope > .row > .tw');
+    if(tw)tw.classList.add('open');
+  });
+}
+function findNode(n,id){
+  if(n.id===id)return n;
+  for(const k of (n.children||[])){const r=findNode(k,id);if(r)return r;}
+  return null;
+}
+function onlyPending(){
+  setAll(true);
+  const target=findNode(tree,'c2');
+  if(target){
+    const r=document.querySelector(`.row[data-id="c2"]`);
+    if(r)r.scrollIntoView({block:'center',behavior:'smooth'});
+    select(target);
+  }
+}
+
+document.getElementById('tree').appendChild(build(tree,0));
+stats();
+select(tree);
+
+/* ============ 视图切换：决策树 / 思维导图 ============ */
+function showView(v){
+  document.getElementById('treeView').style.display = v==='tree' ? '' : 'none';
+  document.getElementById('mindView').style.display = v==='mind' ? '' : 'none';
+  document.getElementById('segTree').classList.toggle('on', v==='tree');
+  document.getElementById('segMind').classList.toggle('on', v==='mind');
+  if (v==='mind' && !window.__mindBuilt) { window.__buildMind(); window.__mindBuilt = true; }
+}
+
+/* ============ 思维导图（决策链 + 沉淀图谱） ============ */
+(function(){
+  const mind = mindmap || { chains:[], graph:[], graphStat:{cards:0,domains:[],ruleLinks:0,uniqueRules:0,topRules:[]} };
+  const SIG_BG = {'重估信号':'var(--blue)','转向信号':'var(--purple)','时间盒':'var(--red)','信号':'var(--txt3)'};
+  const SIG_TX = {'重估信号':'#06121f','转向信号':'#1c0f3a','时间盒':'#2a0606','信号':'var(--txt)'};
+  const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  function renderChains(){
+    const el=document.getElementById('mv-chain');
+    if(!mind.chains.length){el.innerHTML='<div class="empty">暂无决策卡可复盘。</div>';return;}
+    el.innerHTML = mind.chains.map((c)=>{
+      const vCol={'对了':'var(--green)','错了':'var(--red)','结论对但理由错':'var(--orange)','待验证':'var(--txt3)'}[c.verdict]||'var(--txt3)';
+      const opts=(c.options||[]).map((o)=>'<div class="opt'+(o.adopted?' ad':'')+'"><span class="tag '+(o.adopted?'y':'n')+'">'+(o.adopted?'采用':'未采')+'</span><span>'+esc(o.label)+'</span></div>').join('')||'<div class="empty">①区未记录选项</div>';
+      const sigs=(c.signals||[]).map((s)=>{const bg=SIG_BG[s.type]||'var(--txt3)',tx=SIG_TX[s.type]||'var(--txt)';return '<div class="sig"><span class="st" style="background:'+bg+';color:'+tx+'">'+esc(s.type)+'</span><span>'+esc(s.label)+(s.text?'：'+esc(s.text):'')+'</span></div>';}).join('')||'<div class="empty">③区未记录推翻信号</div>';
+      const cell=(k,v)=>'<div class="ch-cell"><span class="k">'+k+'</span>'+((v&&v.trim()!=='-')?esc(v):'<span class="empty">未记录</span>')+'</div>';
+      const grid=[cell('最关键的假设',c.assumption),cell('调用框架/经验',c.framework),cell('当时状态',c.state),cell('未闭合项',c.open),cell('复盘',c.reviewTxt),cell('可迁移规律',c.transferable)].join('');
+      return '<div class="chain"><div class="ch-head"><span class="ch-name">'+esc(c.name)+'</span><span class="ch-meta">'+esc(c.domain)+' · '+esc(c.stakes)+(c.date?' · '+esc(c.date):'')+'</span><span style="margin-left:auto;font-size:11px;color:'+vCol+';border:1px solid '+vCol+';padding:1px 9px;border-radius:8px">'+esc(c.verdict)+'</span></div>'+(c.conclusion?'<div class="ch-concl">'+esc(c.conclusion)+'</div>':'')+'<div class="ch-sec"><div class="h">① 考虑过的选项</div>'+opts+'</div>'+'<div class="ch-sec"><div class="h">② 排除其他的理由</div>'+(c.reject?'<div style="font-size:12.5px;line-height:1.6">'+esc(c.reject)+'</div>':'<div class="empty">未记录</div>')+'</div>'+'<div class="ch-sec"><div class="h">③ 什么信号会推翻</div>'+sigs+'</div>'+(grid?'<div class="ch-grid">'+grid+'</div>':'')+'</div>';
+    }).join('');
+  }
+  function renderGraph(){
+    const el=document.getElementById('mv-graph');
+    const st=mind.graphStat||{cards:0,domains:[],ruleLinks:0,uniqueRules:0,topRules:[]};
+    const byDom={};
+    (mind.graph||[]).forEach((g)=>{(byDom[g.domain]=byDom[g.domain]||[]).push(g);});
+    const domHtml=Object.keys(byDom).sort().map((d)=>{
+      const chips=byDom[d].map((c)=>'<span class="dom-card" title="'+esc((c.focus||'')+(c.result?'｜'+c.result:''))+'">'+esc(c.name)+'</span>').join('');
+      return '<div class="dom"><div class="dom-h">'+esc(d)+' <span style="color:var(--txt3);font-weight:400;font-size:11px">('+byDom[d].length+')</span></div><div class="dom-cards">'+chips+'</div></div>';
+    }).join('')||'<div class="empty">暂无经验卡</div>';
+    const maxC=(st.topRules||[]).reduce((m,r)=>Math.max(m,r.count),0)||1;
+    const rulesHtml=(st.topRules||[]).map((r)=>{const w=Math.max(8,Math.round(r.count/maxC*100));return '<div class="rule"><span class="rb">'+esc(r.rule)+'</span><span class="bar" style="width:'+w+'%"></span><span style="color:var(--txt3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace">'+r.count+'</span></div>';}).join('')||'<div class="empty">暂无关联规则</div>';
+    el.innerHTML='<div class="gp-stats">'
+      +'<div class="gp-stat"><div class="n" style="color:var(--teal)">'+st.cards+'</div><div class="l">经验卡总量</div></div>'
+      +'<div class="gp-stat"><div class="n" style="color:var(--blue)">'+st.domains.length+'</div><div class="l">知识领域</div></div>'
+      +'<div class="gp-stat"><div class="n" style="color:var(--gold)">'+st.ruleLinks+'</div><div class="l">规则关联数</div></div>'
+      +'<div class="gp-stat"><div class="n" style="color:var(--purple)">'+st.uniqueRules+'</div><div class="l">去重规则卡</div></div>'
+      +'</div>'
+      +'<div class="gp-warn">⚠️ <b>诚实边界</b>：下方是经验卡沉淀的「结论」与「知识结构」（遇某场景该 do / dont），<b>不是决策过程</b>。经验卡没有「考虑了 A/B/C、为何排除 B」的推理链——复盘真实决策请切到「决策链」视图。</div>'
+      +'<div class="gp-cols"><div class="gp-block"><div class="bh">按领域聚合 · '+st.domains.length+' 类</div>'+domHtml+'</div>'
+      +'<div class="gp-block"><div class="bh">热点规则 · 被经验卡引用最多</div>'+rulesHtml+'</div></div>';
+  }
+  window.__buildMind=function(){renderChains();renderGraph();};
+  document.querySelectorAll('.mvtab').forEach((t)=>{t.onclick=()=>{document.querySelectorAll('.mvtab').forEach((x)=>x.classList.toggle('on',x===t));document.querySelectorAll('.mvpane').forEach((p)=>p.classList.toggle('on',p.id==='mv-'+t.dataset.v));};});
+})();
+</script>
+</body>
+</html>

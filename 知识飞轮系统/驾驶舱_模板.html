@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小强律师数字分身系统 EV · 车机驾驶舱</title>
+<style>
+  :root{
+    --bg:#08090d;
+    --panel:rgba(255,255,255,.038);
+    --panel-hi:rgba(255,255,255,.062);
+    --line:rgba(255,255,255,.085);
+    --line-hi:rgba(255,255,255,.16);
+    --txt:#e9ebf1; --txt2:#9aa2b3; --txt3:#616a7c;
+    --gold:#f0b45f; --purple:#a78bfa; --blue:#5fa8fd; --teal:#2dd4bf;
+    --green:#4ade80; --orange:#fb923c; --red:#f87171; --pink:#f472b6;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased}
+  body{
+    background:var(--bg); color:var(--txt); min-height:100vh;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:14px; line-height:1.6; padding:26px 20px 40px; position:relative;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(900px 520px at 8% -8%, rgba(240,180,95,.13), transparent 62%),
+      radial-gradient(760px 460px at 96% 2%, rgba(95,168,253,.10), transparent 60%),
+      radial-gradient(1000px 700px at 62% 108%, rgba(167,139,250,.085), transparent 65%);
+  }
+  .wrap{max-width:1680px;margin:0 auto}
+
+  /* ============ 顶部通栏（sticky：滚到哪都能认出这是哪一版） ============ */
+  .topbar{
+    position:sticky;top:0;z-index:99;margin:-26px -20px 16px;padding:9px 28px;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    background:rgba(8,9,13,.82);backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(240,180,95,.22);
+  }
+  .tb-badge{
+    font-family:var(--mono);font-size:10.5px;font-weight:800;letter-spacing:.6px;
+    padding:3px 9px;border-radius:6px;color:#0a0c11;
+    background:linear-gradient(100deg,#f0b45f,#f7d08a);flex:0 0 auto;
+  }
+  .tb-t{font-size:13px;font-weight:650;letter-spacing:.3px;color:var(--txt)}
+  .tb-s{font-size:11px;color:var(--txt3);margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .tb-s b{color:var(--teal);font-weight:500;font-family:var(--mono)}
+
+  /* ============ HERO 车辆铭牌 ============ */
+  .hero{
+    display:flex;gap:28px;flex-wrap:wrap;padding:24px 28px;margin-bottom:14px;border-radius:18px;
+    background:linear-gradient(135deg, rgba(255,255,255,.058), rgba(255,255,255,.016));
+    border:1px solid var(--line);backdrop-filter:blur(24px);position:relative;overflow:hidden;
+  }
+  .hero::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(240,180,95,.55),transparent)}
+  .ring{flex:0 0 auto;position:relative;width:100px;height:100px}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .rfg{stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.22,1,.36,1)}
+  .ring .rtxt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring .rtxt .v{font-family:var(--mono);font-size:27px;font-weight:700;line-height:1;letter-spacing:-.5px}
+  .ring .rtxt .l{font-size:9.5px;color:var(--txt3);margin-top:4px;letter-spacing:1.4px}
+  .hero-main{flex:1 1 300px;min-width:270px}
+  .hero h1{font-size:25px;font-weight:680;letter-spacing:.4px;line-height:1.3;display:flex;align-items:center;
+    gap:11px;flex-wrap:wrap;background:linear-gradient(96deg,#fff 12%,#f0b45f 96%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero h1 .pw{color:var(--gold);-webkit-text-fill-color:var(--gold);font-size:15px;font-weight:600}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:3px 11px;border-radius:20px;
+    border:1px solid rgba(240,180,95,.42);color:var(--gold);background:rgba(240,180,95,.09);font-weight:600}
+  .pulse{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(240,180,95,.6);animation:pl 2.4s infinite}
+  @keyframes pl{0%{box-shadow:0 0 0 0 rgba(240,180,95,.55)}70%{box-shadow:0 0 0 9px rgba(240,180,95,0)}100%{box-shadow:0 0 0 0 rgba(240,180,95,0)}}
+  .meta{display:flex;gap:13px;flex-wrap:wrap;margin-top:9px;font-size:11.5px;color:var(--txt3)}
+  .meta b{color:var(--teal);font-weight:500;font-family:var(--mono)}
+
+  /* 铭牌参数网格 */
+  .plate{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:8px;flex:1 1 380px;min-width:300px}
+  .pc{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:10px;padding:8px 11px}
+  .pc.warn{background:rgba(248,113,113,.07);border-color:rgba(248,113,113,.32)}
+  .pc .pk{font-size:9.5px;color:var(--txt3);letter-spacing:.5px}
+  .pc.warn .pk{color:rgba(248,113,113,.85)}
+  .pc .pv{font-size:11.8px;font-weight:600;margin-top:2px;line-height:1.45}
+  .pc.warn .pv{color:var(--red)}
+
+  /* EV 第一守则 */
+  .rule{display:flex;gap:10px;align-items:flex-start;margin-top:13px;padding:9px 13px;border-radius:10px;
+    background:rgba(240,180,95,.08);border:1px solid rgba(240,180,95,.28);border-left:3px solid var(--gold);font-size:12.2px;color:var(--txt2)}
+  .rule b{color:var(--gold)}
+
+  /* ============ 通用面板 ============ */
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;backdrop-filter:blur(18px)}
+  .ph{display:flex;align-items:center;gap:9px;margin-bottom:14px;font-size:12px;letter-spacing:1.6px;
+    color:var(--txt3);font-weight:600;text-transform:uppercase}
+  .ph::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  .ph em{font-style:normal;color:var(--txt2);letter-spacing:0;font-size:11.5px;font-weight:500}
+  .grid-2{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;align-items:start;margin-bottom:14px}
+  @media(max-width:1080px){.grid-2{grid-template-columns:1fr}}
+  .sec{margin-bottom:22px}
+  .sec>.ph{padding:0 3px}
+
+  /* ============ 出车前检查 ============ */
+  .fi{display:flex;gap:15px;align-items:flex-start;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+  .fi:last-child{border-bottom:none;padding-bottom:0}
+  .fi:first-child{padding-top:0}
+  .fid{flex:0 0 60px;text-align:center;padding-top:1px}
+  .fid .n{font-family:var(--mono);font-size:27px;font-weight:700;line-height:1;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+  .fid .u{font-size:10px;color:var(--txt3);margin-top:2px}
+  .fid .n.na{font-size:13px;color:var(--txt3);letter-spacing:0;padding-top:9px}
+  .fib{flex:1;min-width:0}
+  .fit{font-size:13.5px;font-weight:600;line-height:1.45;margin-bottom:3px}
+  .fides{font-size:11.5px;color:var(--txt3);line-height:1.65}
+  .src{display:inline-block;font-size:9.5px;padding:1px 6px;border-radius:4px;margin-left:7px;
+    border:1px solid var(--line-hi);color:var(--txt3);vertical-align:1px}
+
+  /* ============ 故障码 ============ */
+  .dtc{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+  .dtc:last-child{border-bottom:none;padding-bottom:0}
+  .dtc:first-child{padding-top:0}
+  .dcode{font-family:var(--mono);font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:5px;
+    border:1px solid;flex:0 0 auto;white-space:nowrap}
+  .dcode.on{color:var(--red);border-color:rgba(248,113,113,.45);background:rgba(248,113,113,.1)}
+  .dcode.off{color:var(--txt3);border-color:var(--line);background:rgba(255,255,255,.03)}
+  .dcode.unk{color:var(--orange);border-color:rgba(251,146,60,.4);background:rgba(251,146,60,.08)}
+  .dtxt{font-size:11.8px;color:var(--txt2);line-height:1.6}
+  .dtxt b{color:var(--txt);font-weight:600}
+  .dtxt .act{display:block;color:var(--txt3);font-size:11px;margin-top:2px}
+
+  /* ============ 部件卡 ============ */
+  .parts{display:grid;gap:12px}
+  .parts.c3{grid-template-columns:repeat(auto-fit,minmax(316px,1fr))}
+  .parts.c2{grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
+  .parts.c4{grid-template-columns:repeat(auto-fit,minmax(268px,1fr))}
+  .pt{position:relative;overflow:hidden;padding:15px 16px 14px;border-radius:16px;
+    background:linear-gradient(158deg, rgba(255,255,255,.055), rgba(255,255,255,.014));
+    border:1px solid var(--line);backdrop-filter:blur(18px);transition:.22s}
+  .pt:hover{border-color:var(--line-hi);transform:translateY(-2px)}
+  .pt::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--lc)}
+  .pt .wm{position:absolute;right:-8px;bottom:-22px;font-family:var(--mono);font-size:82px;font-weight:800;
+    line-height:1;color:var(--lc);opacity:.075;letter-spacing:-4px;pointer-events:none}
+  .pth{display:flex;align-items:center;gap:8px;position:relative;z-index:1}
+  .pico{width:27px;height:27px;flex:0 0 27px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    font-size:14px;background:rgba(255,255,255,.07);border:1px solid var(--lc2)}
+  .pnm{font-size:14.5px;font-weight:660;letter-spacing:.2px;line-height:1.3}
+  .pch{font-family:var(--mono);font-size:9px;color:var(--txt3);border:1px solid var(--line);
+    border-radius:4px;padding:1px 5px;flex:0 0 auto}
+  .mg{margin-left:auto;font-size:10px;padding:1.5px 7px;border-radius:5px;border:1px solid;font-weight:700;flex:0 0 auto}
+  .mg.A{color:var(--green);border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.1)}
+  .mg.B{color:var(--gold);border-color:rgba(240,180,95,.45);background:rgba(240,180,95,.1)}
+  .mg.C{color:var(--txt3);border-color:var(--line);background:rgba(255,255,255,.04)}
+  .pfl{font-size:10.5px;color:var(--txt3);margin:5px 0 0 35px;line-height:1.5;position:relative;z-index:1}
+  .hbar{height:5px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden;margin:9px 0 0 35px;position:relative;z-index:1}
+  .hbar i{display:block;height:100%;border-radius:3px;background:var(--lc);width:0;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+  .hrow{display:flex;align-items:center;gap:8px;margin:7px 0 0 35px;position:relative;z-index:1;flex-wrap:wrap}
+  .hrow .hv{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--lc)}
+  .hrow .hl{font-size:10px;color:var(--txt3)}
+  .led{width:7px;height:7px;border-radius:50%;flex:0 0 7px}
+  .trs{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0 0 35px;position:relative;z-index:1}
+  .tr{font-size:10px;padding:2px 7px;border-radius:5px;border:1px solid var(--line-hi);color:var(--txt3);font-family:var(--mono);font-weight:600}
+  .tr.up{color:var(--green);border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.08)}
+  .tr.dn{color:var(--red);border-color:rgba(248,113,113,.4);background:rgba(248,113,113,.08)}
+  .tr.na{border-style:dashed;opacity:.62;font-family:inherit;font-weight:500}
+
+  .mts{margin:11px 0 0 35px;position:relative;z-index:1}
+  .mt{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:4.5px 0;border-top:1px solid rgba(255,255,255,.055)}
+  .mt:first-child{border-top:none}
+  .mt .mk{font-size:11.2px;color:var(--txt3);flex:0 0 auto}
+  .mt .mv{font-family:var(--mono);font-size:13px;font-weight:650;text-align:right;word-break:break-all;font-variant-numeric:tabular-nums}
+  .mt .mv.small{font-size:10.2px;font-weight:500;color:var(--txt2);font-family:inherit;line-height:1.5}
+  .mt .mv.warn{color:var(--orange)}
+  .mt .mv.manual{color:var(--purple)}
+  .mtag{font-size:9px;padding:0 4px;border:1px solid rgba(167,139,250,.5);color:var(--purple);border-radius:3px;margin-left:5px}
+  .mts .rest{display:none}
+  .mts.open .rest{display:block}
+  .more{margin-top:8px;font-size:10.5px;color:var(--txt3);cursor:pointer;user-select:none;display:inline-flex;align-items:center;gap:4px}
+  .more:hover{color:var(--gold)}
+  .pnote{margin:11px 0 0 35px;font-size:11px;color:var(--txt3);line-height:1.6;font-style:italic;
+    padding-left:9px;border-left:2px solid var(--line-hi);position:relative;z-index:1}
+
+  /* ============ 充电桩 ============ */
+  .chargers{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:11px}
+  .chg{padding:12px 14px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid var(--line);
+    display:flex;gap:11px;align-items:flex-start}
+  .chg.on{border-color:rgba(74,222,128,.28);background:rgba(74,222,128,.05)}
+  .chg.off{border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.06)}
+  .cplug{width:26px;height:26px;flex:0 0 26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px}
+  .chg.on .cplug{background:rgba(74,222,128,.16);color:var(--green);animation:chg 2.6s infinite}
+  .chg.off .cplug{background:rgba(248,113,113,.16);color:var(--red)}
+  @keyframes chg{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.4)}55%{box-shadow:0 0 0 7px rgba(74,222,128,0)}}
+  .chn{font-size:12.5px;font-weight:620;line-height:1.35}
+  .chs{font-size:9.5px;margin-top:2px;font-weight:700;letter-spacing:.3px}
+  .chs.on{color:var(--green)} .chs.off{color:var(--red)}
+  .chc{font-size:10.8px;color:var(--txt3);margin-top:4px;line-height:1.55}
+
+  /* ============ 续航自检 ============ */
+  .health{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:10px}
+  .hc{padding:11px 13px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid var(--line)}
+  .hc.ok{border-color:rgba(74,222,128,.24);background:rgba(74,222,128,.045)}
+  .hc.bad{border-color:rgba(251,146,60,.3);background:rgba(251,146,60,.055)}
+  .hch{display:flex;align-items:center;gap:7px}
+  .hcn{font-size:12.2px;font-weight:640}
+  .hcb{font-size:9px;padding:1px 5px;border-radius:4px;border:1px solid;font-weight:700;margin-left:auto;flex:0 0 auto}
+  .hcb.ok{color:var(--green);border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.1)}
+  .hcb.bad{color:var(--orange);border-color:rgba(251,146,60,.45);background:rgba(251,146,60,.1)}
+  .hcb.unk{color:var(--txt3);border-color:var(--line)}
+  .hcv{font-family:var(--mono);font-size:15px;font-weight:700;margin-top:5px;font-variant-numeric:tabular-nums}
+  .hct{font-size:10.5px;color:var(--txt3);margin-top:2px}
+  .hcs{font-size:9px;padding:0 4px;border-radius:3px;border:1px solid var(--line-hi);color:var(--txt3);margin-left:6px}
+  .hcs.manual{color:var(--purple);border-color:rgba(167,139,250,.45)}
+
+  /* ============ 时间轴 ============ */
+  .tl{position:relative;display:flex;padding:6px 0 2px}
+  .tl::before{content:'';position:absolute;left:8%;right:8%;top:32px;height:2px;border-radius:2px;
+    background:linear-gradient(90deg,rgba(240,180,95,.42),rgba(255,255,255,.07) 55%,rgba(255,255,255,.05))}
+  .tli{flex:1;text-align:center;position:relative;min-width:0}
+  .tld{width:15px;height:15px;border-radius:50%;margin:22px auto 11px;position:relative;z-index:2;border:2.5px solid;background:var(--bg)}
+  .tld.hot{animation:tpl 2s infinite}
+  @keyframes tpl{0%,100%{box-shadow:0 0 0 0 currentColor}55%{box-shadow:0 0 0 8px transparent}}
+  .tld .dot-in{position:absolute;inset:3px;border-radius:50%;background:currentColor;opacity:.85}
+  .tlq{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:-.3px;line-height:1.1}
+  .tlk{font-size:10px;letter-spacing:.6px;margin-top:3px;color:var(--txt3)}
+  .tlt{font-size:11.8px;color:var(--txt2);margin-top:5px;line-height:1.4;padding:0 8px;overflow:hidden;
+    text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .tldd{font-family:var(--mono);font-size:10px;color:var(--txt3);margin-top:3px}
+
+  /* ============ Tabs ============ */
+  .tabs{display:flex;gap:4px;margin-bottom:15px;flex-wrap:wrap;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;backdrop-filter:blur(18px)}
+  .tab{padding:8px 16px;font-size:12.6px;color:var(--txt3);cursor:pointer;border-radius:9px;transition:.16s;user-select:none;font-weight:500}
+  .tab:hover{color:var(--txt2);background:rgba(255,255,255,.04)}
+  .tab.on{color:var(--gold);background:rgba(240,180,95,.11);font-weight:650}
+  .pane{display:none}
+  .pane.on{display:block;animation:fade .28s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+  /* ============ 表格 ============ */
+  table{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--panel);border-radius:14px;overflow:hidden;backdrop-filter:blur(18px)}
+  th,td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:rgba(255,255,255,.045);color:var(--txt2);font-weight:600;font-size:11.3px;letter-spacing:.3px}
+  tr:last-child td{border-bottom:none}
+  tbody tr:hover td{background:rgba(255,255,255,.022)}
+  .badge{font-size:10px;padding:1.5px 8px;border-radius:5px;border:1px solid;font-weight:600}
+  .badge.auto{color:var(--green);border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.1)}
+  .badge.manual{color:var(--purple);border-color:rgba(167,139,250,.45);background:rgba(167,139,250,.1)}
+  .badge.mixed{color:var(--gold);border-color:rgba(240,180,95,.45);background:rgba(240,180,95,.1)}
+  .conn{display:flex;align-items:center;gap:8px}
+  .conn .led{width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+  .conn .led.on{background:var(--green);box-shadow:0 0 8px rgba(74,222,128,.75)}
+  .conn .led.off{background:var(--red);box-shadow:0 0 8px rgba(248,113,113,.75)}
+
+  .note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;
+    padding:13px 16px;margin-bottom:14px;font-size:12.5px;color:var(--txt2);line-height:1.75;backdrop-filter:blur(18px)}
+  .note b{color:var(--gold)}
+  .note code{font-family:var(--mono);font-size:11.5px;color:var(--teal);background:rgba(255,255,255,.06);padding:1.5px 5px;border-radius:4px}
+
+  /* 决策树 */
+  .dtstats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .dtstat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 17px;min-width:108px;backdrop-filter:blur(14px)}
+  .dtstat .n{font-family:var(--mono);font-size:21px;font-weight:700;line-height:1.2;letter-spacing:-.4px;font-variant-numeric:tabular-nums}
+  .dtstat .l{font-size:10.5px;color:var(--txt3);margin-top:2px}
+  .dttb{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap}
+  button{background:var(--panel);border:1px solid var(--line);color:var(--txt2);padding:6px 14px;border-radius:8px;
+    cursor:pointer;font-size:12.2px;font-family:inherit;transition:.15s}
+  button:hover{background:var(--panel-hi);color:var(--txt);border-color:var(--line-hi)}
+  .dtmain{display:grid;grid-template-columns:1fr 400px;gap:14px;align-items:start}
+  @media(max-width:1080px){.dtmain{grid-template-columns:1fr}}
+  .dttree{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px 13px;overflow-x:auto;backdrop-filter:blur(18px)}
+  .node{position:relative}
+  .row{display:flex;align-items:center;gap:7px;padding:4px 9px;border-radius:7px;cursor:pointer;transition:.12s;user-select:none;white-space:nowrap}
+  .row:hover{background:rgba(255,255,255,.055)}
+  .row.sel{background:rgba(240,180,95,.13);box-shadow:inset 2px 0 0 var(--gold)}
+  .tw{width:15px;height:15px;flex:0 0 15px;display:flex;align-items:center;justify-content:center;color:var(--txt3);font-size:9px;transition:transform .18s}
+  .tw.open{transform:rotate(90deg)}
+  .tw.leaf{opacity:0}
+  .bar{width:3px;height:15px;border-radius:2px;flex:0 0 3px}
+  .lab{font-size:13.2px}
+  .lab.b{font-weight:600}
+  .tag{font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid;font-family:var(--mono);line-height:1.5}
+  .kids{margin-left:14px;padding-left:11px;border-left:1px solid var(--line)}
+  .kids.hide{display:none}
+  .dtdetail{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;position:sticky;top:20px;min-height:240px;backdrop-filter:blur(18px)}
+  .dtdetail .dt{font-size:16px;font-weight:660;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+  .dtdetail .path{font-size:11px;color:var(--txt3);margin-bottom:12px;word-break:break-all;line-height:1.55}
+  .dtdetail .desc{font-size:13.2px;margin-bottom:12px;line-height:1.78}
+  .dtdetail .desc ul{margin:6px 0 0 16px}
+  .dtdetail .desc li{margin:3px 0;color:var(--txt2)}
+  .dtdetail .desc code{background:rgba(255,255,255,.07);padding:1.5px 5px;border-radius:4px;font-size:11.5px;color:var(--teal);font-family:var(--mono)}
+  .meta{background:rgba(255,255,255,.045);border-radius:9px;padding:10px 12px;margin-bottom:11px}
+  .meta div{font-size:11.5px;color:var(--txt2);margin:3px 0}
+  .meta b{color:var(--gold);font-weight:600}
+  .kids-list{font-size:12px;color:var(--txt3);border-top:1px solid var(--line);padding-top:9px;margin-top:4px}
+  .kids-list span{display:inline-block;margin:2px 7px 2px 0;color:var(--txt2)}
+  .lg{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:13px;border-top:1px solid var(--line);font-size:11.5px;color:var(--txt3)}
+  .lg i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:-1px}
+
+  /* 决策卡 */
+  .dcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:13px}
+  .dc{padding:16px 18px;border-radius:15px;background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(18px)}
+  .dc .dn{font-size:14.5px;font-weight:650;margin-bottom:4px;line-height:1.4}
+  .dc .df{font-size:10.5px;color:var(--txt3);font-family:var(--mono);margin-bottom:12px;word-break:break-all}
+  .dc .drow{display:flex;gap:9px;flex-wrap:wrap}
+  .dcell{flex:1 1 88px;padding:9px 11px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+  .dcell .k{font-size:9.5px;color:var(--txt3);letter-spacing:.4px}
+  .dcell .v{font-family:var(--mono);font-size:13.5px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+
+  /* 红线与口诀 */
+  .redlines{margin-top:20px;padding:15px 18px;border-radius:14px;border:1px solid rgba(248,113,113,.28);
+    background:rgba(248,113,113,.05);backdrop-filter:blur(18px)}
+  .redlines .rh{font-size:12px;letter-spacing:1.2px;color:var(--red);font-weight:700;margin-bottom:9px}
+  .redlines ol{margin-left:17px}
+  .redlines li{font-size:12.2px;color:var(--txt2);margin:5px 0;line-height:1.65}
+  .redlines li b{color:var(--txt)}
+  .slogan{margin-top:13px;padding:14px 18px;border-radius:13px;border:1px solid rgba(240,180,95,.3);
+    background:linear-gradient(100deg, rgba(240,180,95,.1), rgba(240,180,95,.03));
+    font-size:13px;color:var(--gold);line-height:1.8;font-weight:600;letter-spacing:.2px}
+
+  footer{margin-top:20px;color:var(--txt3);font-size:11.3px;text-align:center;line-height:1.9}
+
+  /* ===== 思维导图（决策链 + 沉淀图谱） ===== */
+  .mvbar{display:flex;gap:8px;margin:14px 0 16px;flex-wrap:wrap}
+  .mvtab{cursor:pointer;padding:8px 15px;border-radius:11px;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--txt2);transition:.15s}
+  .mvtab.on{color:#08090d;background:var(--gold);border-color:var(--gold);font-weight:700}
+  .mvpane{display:none}
+  .mvpane.on{display:block}
+  .chain{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 18px;margin-bottom:14px;backdrop-filter:blur(18px)}
+  .ch-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .ch-name{font-size:15px;font-weight:700}
+  .ch-meta{font-size:11px;color:var(--txt3);font-family:var(--mono)}
+  .ch-concl{background:rgba(240,180,95,.08);border-left:3px solid var(--gold);border-radius:9px;padding:9px 12px;font-size:13px;margin-bottom:12px;line-height:1.65}
+  .ch-sec{margin:10px 0}
+  .ch-sec .h{font-size:11.5px;letter-spacing:.6px;color:var(--txt3);margin-bottom:6px;font-weight:700}
+  .opt{display:flex;gap:8px;padding:7px 10px;border-radius:9px;background:rgba(255,255,255,.02);border:1px solid var(--line);margin-bottom:6px;font-size:12.5px;align-items:center}
+  .opt.ad{background:rgba(74,222,128,.09);border-color:rgba(74,222,128,.35)}
+  .opt .tag{font-size:10px;padding:1px 7px;border-radius:6px;flex:0 0 auto;font-weight:700}
+  .opt .tag.y{background:var(--green);color:#06210f}
+  .opt .tag.n{background:rgba(255,255,255,.08);color:var(--txt2)}
+  .sig{display:flex;gap:8px;align-items:flex-start;padding:6px 9px;border-radius:8px;background:rgba(255,255,255,.02);margin-bottom:5px;font-size:12.5px;line-height:1.5}
+  .sig .st{font-size:10px;padding:1px 7px;border-radius:6px;flex:0 0 auto;margin-top:1px;font-weight:700}
+  .ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:8px}
+  .ch-cell{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:12px;line-height:1.55}
+  .ch-cell .k{color:var(--txt3);font-size:10.5px;display:block;margin-bottom:3px;letter-spacing:.5px}
+  .empty{color:var(--txt3);font-size:12px;font-style:italic}
+  .gp-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .gp-stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 17px;min-width:108px}
+  .gp-stat .n{font-size:21px;font-weight:800;font-family:var(--mono)}
+  .gp-stat .l{font-size:10.5px;color:var(--txt3);margin-top:2px}
+  .gp-warn{background:rgba(251,146,60,.08);border-left:3px solid var(--orange);border-radius:10px;padding:10px 13px;font-size:12.5px;line-height:1.6;margin-bottom:16px;color:var(--txt2)}
+  .gp-cols{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+  @media(max-width:760px){.gp-cols{grid-template-columns:1fr}}
+  .gp-block{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .gp-block .bh{font-size:12px;letter-spacing:1px;color:var(--txt3);margin-bottom:11px;font-weight:700}
+  .dom{margin-bottom:11px}
+  .dom-h{font-size:13px;font-weight:700;color:var(--teal);margin-bottom:5px}
+  .dom-cards{display:flex;flex-wrap:wrap;gap:5px}
+  .dom-card{font-size:11px;padding:2px 9px;border-radius:7px;background:rgba(45,212,191,.08);border:1px solid rgba(45,212,191,.25);color:var(--txt2);cursor:default}
+  .rule{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:12.5px}
+  .rule .rb{font-family:var(--mono);font-weight:700;color:var(--gold)}
+  .rule .bar{height:7px;border-radius:4px;background:var(--gold);opacity:.8}
+
+  /* ===== 飞轮健康度 ===== */
+  .fwchart{background:rgba(255,255,255,.02);border-radius:12px;border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="tb-badge">EV v2.0.0</span>
+  <span class="tb-t">小强律师数字分身系统 · 车机驾驶舱</span>
+  <span class="tb-s">
+    <span>按《数字分身系统运维手册（EV 版）》组织</span>
+    <span>数据 <b id="tb-time"></b><span id="tb-age"></span></span>
+  </span>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ HERO 车辆铭牌 ============ -->
+  <div class="hero">
+    <div class="ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="7"></circle>
+        <circle id="ring" cx="50" cy="50" r="42" fill="none" stroke-width="7"
+                stroke-dasharray="263.89" stroke-dashoffset="263.89"></circle>
+      </svg>
+      <div class="rtxt"><div class="v" id="ov">—</div><div class="l">整车健康度</div></div>
+    </div>
+    <div class="hero-main">
+      <h1>小强律师数字分身系统<span class="pw">EV · 车机驾驶舱</span></h1>
+      <div class="meta">
+        <span class="chip"><span class="pulse"></span><span id="lv"></span></span>
+        <span>数据 <b id="upd"></b><span id="age"></span></span>
+        <span>人工核验 <b id="mchk"></b></span>
+        <span>手册 <b id="evdoc"></b></span>
+        <span>自动刷新 <b>每天 08:00 / 14:00 / 21:00</b></span>
+      </div>
+      <div class="meta" style="margin-top:6px"><span id="lvnote" style="color:var(--txt3)"></span></div>
+      <div class="rule" id="rule"></div>
+    </div>
+    <div class="plate" id="plate"></div>
+  </div>
+
+  <!-- ============ 出车前检查 + 故障码 ============ -->
+  <div class="grid-2">
+    <div class="panel">
+      <div class="ph">出车前检查 <em id="fcnt"></em></div>
+      <div id="focus"></div>
+    </div>
+    <div class="panel">
+      <div class="ph">当前故障码 <em id="dcnt"></em></div>
+      <div id="dtc"></div>
+    </div>
+  </div>
+
+  <!-- ============ 三电系统 ============ -->
+  <div class="sec">
+    <div class="ph">🔋 三电系统 <em>动力与安全的根 · 手册第一章 1.1–1.4</em></div>
+    <div class="parts c4" id="g-三电系统"></div>
+  </div>
+
+  <!-- ============ 智驾系统 ============ -->
+  <div class="sec">
+    <div class="ph">🧠 智驾系统 <em>域控 + 感知 · 手册第三章 3.1–3.2</em></div>
+    <div class="parts c2" id="g-智驾系统"></div>
+  </div>
+
+  <!-- ============ 座舱 / 演练 / 黑匣子 / 车规 ============ -->
+  <div class="sec">
+    <div class="ph">🖥️ 座舱 · 演练 · 黑匣子 <em>交互、预演与留痕 · 手册第四、五章</em></div>
+    <div class="parts c4" id="g-座舱"></div>
+  </div>
+
+  <!-- ============ 充电桩 ============ -->
+  <div class="sec">
+    <div class="ph">🔌 补能管理 · 充电桩 <em id="cstat"></em></div>
+    <div class="chargers" id="chargers"></div>
+  </div>
+
+  <!-- ============ 续航自检 ============ -->
+  <div class="sec">
+    <div class="ph">📊 续航自检与健康度 <em>阈值读手册第九章，当前值优先实测</em></div>
+    <div class="health" id="health"></div>
+  </div>
+
+  <!-- ============ 时间轴 ============ -->
+  <div class="sec">
+    <div class="ph">🗓️ 未来节点 <em>时间盒到期 · 复盘日</em></div>
+    <div class="panel"><div class="tl" id="tl"></div></div>
+  </div>
+
+  <!-- ============ Tabs ============ -->
+  <div class="tabs">
+    <!-- 默认落在「故障码速查」而非决策树：决策树是 v1 的主视图，
+         默认停在那儿会让人以为页面没换（2026-09-03 22:55 老强实测反馈）。 -->
+    <div class="tab on" data-p="dtcall">⚠️ 故障码速查 DTC</div>
+    <div class="tab" data-p="tree">🌳 决策思维层总览树</div>
+    <div class="tab" data-p="mind">🧠 思维导图 · 复盘决策</div>
+    <div class="tab" data-p="cards">🗂 在册决策卡</div>
+    <div class="tab" data-p="maint">🛠 保养周期表</div>
+    <div class="tab" data-p="ota">🔄 OTA 远程升级</div>
+    <div class="tab" data-p="doc">📐 指标口径与可扫描性</div>
+    <div class="tab" data-p="fw">📊 飞轮健康度</div>
+  </div>
+
+  <!-- Tab：决策树 -->
+  <div class="pane" id="pane-tree">
+    <div class="dttb">
+      <button onclick="tSetAll(true)">全部展开</button>
+      <button onclick="tSetAll(false)">全部折叠</button>
+      <button onclick="tLvl2()">展开到二级</button>
+      <button onclick="tOnlyPending()">定位待办</button>
+    </div>
+    <div class="dtstats" id="dtstats"></div>
+    <div class="dtmain">
+      <div class="dttree" id="dttree"></div>
+      <div class="dtdetail" id="dtdetail"></div>
+    </div>
+    <div class="lg">
+      <span><i style="background:var(--gold)"></i>根 / 核心</span>
+      <span><i style="background:var(--purple)"></i>思维层</span>
+      <span><i style="background:var(--blue)"></i>在册决策卡</span>
+      <span><i style="background:var(--teal)"></i>人格层</span>
+      <span><i style="background:var(--green)"></i>知识层</span>
+      <span><i style="background:var(--orange)"></i>运转节奏</span>
+      <span><i style="background:var(--red)"></i>风险 / 待办</span>
+    </div>
+  </div>
+
+  <!-- Tab：思维导图（决策链 + 沉淀图谱 双视图） -->
+  <div class="pane" id="pane-mind">
+    <div class="note">
+      <b>复盘每一个案件与经验沉淀的「思考路径」。</b>　两个视图：
+      <b>决策链</b>＝真·决策过程（选项 → 排除理由 → 推翻信号 → 关键假设 → 复盘），来源决策卡 10 分区；
+      <b>沉淀图谱</b>＝经验卡知识结构的诚实呈现。
+      <b style="color:var(--orange)">⚠️ 诚实边界：经验卡只记沉淀「结论」（遇 X 该 do/dont），没有「考虑了 A/B/C、为何排除 B」的推理链——图谱呈现知识，不是决策过程，切勿误读。</b>
+    </div>
+    <div class="mvbar">
+      <div class="mvtab on" data-v="chain">🔗 决策链（复盘推理）</div>
+      <div class="mvtab" data-v="graph">🗺 沉淀图谱（知识结构）</div>
+    </div>
+    <div class="mvpane on" id="mv-chain"></div>
+    <div class="mvpane" id="mv-graph"></div>
+  </div>
+
+  <!-- Tab：决策卡 -->
+  <div class="pane" id="pane-cards">
+    <div class="note">
+      <b>存推理，不存结论。</b>　决策卡的价值不在「记下了选了 A」，而在<b>记下了当时是怎么想的</b>——考虑了哪几个选项、为什么排除、什么信号会推翻。
+      到期按四档回填：<b>对了 / 错了 / 结论对但理由错（最危险）/ 待验证</b>。
+    </div>
+    <div class="dcgrid" id="dcards"></div>
+  </div>
+
+  <!-- Tab：DTC 速查（默认视图） -->
+  <div class="pane on" id="pane-dtcall">
+    <div class="note">
+      <b>故障码是「定义」，不是「现状」。</b>　手册第八章定义码义，是否触发由脚本用实时状态判定：
+      IMA / 法随看连接器、HALL-403 看人工核验、CASE-001 看驱动电机状态、DISTILL-003 看决策卡数是否 &lt;10。
+      <b>DTC-LTI-REJECT 永不点亮</b>——出文被拦截是安全机制生效，不是故障，严禁绕过。
+      手册新增而脚本尚未映射的码会标「未判定」，不假装正常。
+    </div>
+    <table id="dtctbl"></table>
+  </div>
+
+  <!-- Tab：保养周期 -->
+  <div class="pane" id="pane-maint">
+    <table id="mtbl"></table>
+  </div>
+
+  <!-- Tab：OTA -->
+  <div class="pane" id="pane-ota">
+    <div class="note">
+      <b>OTA 注意</b>　运行时若提示 IMA disconnected / 案例采集降级，是连接器未绑，需 UI 重新授权，<b>非 OTA 故障</b>。
+    </div>
+    <table id="otatbl"></table>
+  </div>
+
+  <!-- Tab：指标口径 -->
+  <div class="pane" id="pane-doc">
+    <div class="note">
+      <b>为什么单独列这一页？</b>　驾驶舱上的数字分三类：<b>能扫的</b>（脚本实时统计）、<b>手册权威的</b>（实时解析 EV 运维手册，标版本）、
+      <b>扫不出的</b>（连接器连通性、LTI 回归、成熟度定级）。最后一类读 <code>驾驶舱_人工核验.json</code>，页面打「人工」标记——<b>不伪装成实时数据</b>。
+      这是防幻觉铁律在可视化上的延伸：宁可标「人工核验」，不可编一个数字。
+    </div>
+    <div style="height:14px"></div>
+    <div class="ph" style="padding:0 3px">铭牌值 vs 实测值 <em>不一致时不覆盖不取舍，把口径差异摊开</em></div>
+    <table id="pvtbl"></table>
+    <div style="height:18px"></div>
+    <div class="ph" style="padding:0 3px">全部指标口径</div>
+    <table id="doctbl"></table>
+  </div>
+
+  <!-- Tab：飞轮健康度（接入《飞轮健康度仪表盘》，实时扫描，不搬运死数据） -->
+  <div class="pane" id="pane-fw">
+    <div class="note">
+      <b>飞轮健康度 = 分身系统「知识资产」的体量体检。</b>　本页接自独立《飞轮健康度仪表盘》，但<b>不搬运死数据</b>——
+      经验卡 / 规则库 / 案件 / 轨迹卡 / 六层文件全部由刷新脚本<b>实时扫描</b>；增长曲线以仪表盘历史点为种子 + 今日实测点续接，保证历史连续。
+      <b style="color:var(--teal)">⚠️ 诚实边界：本页是「体量」指标（有多少资产），不是「质量」指标（资产多 ≠ 分身强）；质量要看决策卡命中率、LTI 回归、HOW-I-THINK 填充度。</b>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="ph">核心指标 <em>实时扫描 · 刷新时刻</em></div>
+        <div class="dtstats" id="fw-kpis" style="margin-bottom:0"></div>
+      </div>
+      <div class="panel">
+        <div class="ph">经验卡片增长曲线 <em id="fw-grw"></em></div>
+        <div id="fw-chart"></div>
+      </div>
+    </div>
+    <div style="height:16px"></div>
+    <div class="panel">
+      <div class="ph">关键指标 <em>口径透明</em></div>
+      <table><thead><tr><th style="width:24%">指标</th><th style="width:160px">当前值</th><th>说明 / 口径</th></tr></thead><tbody id="fw-metrics"></tbody></table>
+    </div>
+  </div>
+
+  <!-- ============ 安全红线 + 口诀 ============ -->
+  <div class="redlines">
+    <div class="rh">🚧 安全红线（不可越界）</div>
+    <ol id="redlines"></ol>
+  </div>
+  <div class="slogan" id="slogan"></div>
+
+  <footer>
+    部件卡「＋ 全部指标」展开细节 · 点击树节点查看详情　|　<b style="color:var(--red)">⚠️ 本页含当事人姓名与案号，属内部工作视图，切勿发布公网</b><br>
+    刷新命令：<code style="color:var(--teal);font-family:var(--mono)">node "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/刷新驾驶舱.js"</code>
+  </footer>
+</div>
+
+<script>
+const DATA = __WORKSPACE_DATA__;
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const CLR = { gold:'#f0b45f', purple:'#a78bfa', blue:'#5fa8fd', teal:'#2dd4bf',
+              green:'#4ade80', orange:'#fb923c', red:'#f87171', pink:'#f472b6', gray:'#616a7c' };
+const LVC = { red:'#f87171', orange:'#fb923c', gold:'#f0b45f', teal:'#2dd4bf', green:'#4ade80', blue:'#5fa8fd', purple:'#a78bfa' };
+const clrOf = (lv) => LVC[lv] || CLR.gray;
+const hexA = (hex, a) => {
+  const h = String(hex).replace('#', '');
+  const n = parseInt(h.length === 3 ? h.split('').map((c) => c + c).join('') : h, 16);
+  return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')';
+};
+const hcOf = (v) => v >= 85 ? CLR.green : (v >= 70 ? CLR.gold : (v >= 55 ? CLR.orange : CLR.red));
+
+const pillars = DATA.pillars || [];
+const subs = DATA.subsystems || [];
+const overall = pillars.length ? Math.round(pillars.reduce((s, p) => s + (p.health || 0), 0) / pillars.length) : 0;
+const evMeta = DATA.evMeta || {};
+
+/* ---------------- HERO ---------------- */
+$('lv').textContent = (DATA.systemLevel.grade || '—') + ' ' + (DATA.systemLevel.text || '');
+$('lvnote').textContent = DATA.systemLevel.note || '';
+$('upd').textContent = DATA.updatedTime || DATA.updated;
+$('mchk').textContent = DATA.manualChecked;
+$('evdoc').textContent = evMeta.available ? (evMeta.updated || '已载入') : '手册缺失';
+
+$('tb-time').textContent = DATA.updatedTime || DATA.updated;
+
+// 数据年龄：打开就知道这份页面新不新，超过 6 小时转金、超过 24 小时转橙，
+// 提示该跑一次刷新了——静态页无法自己更新，必须让人看得见「它已经旧了」。
+// 顶部通栏与 HERO 各显示一处：滚到页面任何位置都能看到。
+function ageHtml() {
+  if (!DATA.updatedTs) return '';
+  const h = (Date.now() - DATA.updatedTs) / 3600000;
+  let txt, col;
+  if (h < 1) { txt = '刚刚刷新'; col = 'var(--green)'; }
+  else if (h < 6) { txt = Math.round(h) + ' 小时前'; col = 'var(--green)'; }
+  else if (h < 24) { txt = Math.round(h) + ' 小时前'; col = 'var(--gold)'; }
+  else { txt = Math.floor(h / 24) + ' 天前'; col = 'var(--orange)'; }
+  return ' <span style="color:' + col + '">· ' + txt + '</span>';
+}
+['age', 'tb-age'].forEach((id) => { const el = $(id); if (el) el.innerHTML = ageHtml(); });
+
+(function () {
+  const C = 2 * Math.PI * 42;
+  const r = $('ring'), col = hcOf(overall);
+  r.setAttribute('stroke-dasharray', C);
+  r.setAttribute('stroke', col);
+  $('ov').textContent = overall;
+  $('ov').style.color = col;
+  setTimeout(() => { r.style.strokeDashoffset = C * (1 - overall / 100); }, 120);
+})();
+
+$('rule').innerHTML = evMeta.firstRule
+  ? '⚠️ <b>EV 第一守则：</b>' + esc(evMeta.firstRule)
+  : '<b>手册未载入</b>：未找到《数字分身系统运维手册（EV 版）》，铭牌 / DTC / 保养周期 / 红线等区块为空。';
+
+$('plate').innerHTML = (DATA.plate || []).map((p) => {
+  const isCeil = /天花板|不可升级/.test(p.k);
+  return '<div class="pc' + (isCeil ? ' warn' : '') + '"><div class="pk">' + esc(p.k)
+    + '</div><div class="pv">' + esc(p.v) + '</div></div>';
+}).join('') || '<div class="pc"><div class="pk">铭牌</div><div class="pv">手册未载入</div></div>';
+
+/* ---------------- 出车前检查 ---------------- */
+(function () {
+  const focus = DATA.focus || [];
+  $('fcnt').textContent = focus.length + ' 项 · 按剩余天数排序';
+  $('focus').innerHTML = focus.map((f) => {
+    const c = clrOf(f.lv);
+    const dnum = f.days == null
+      ? '<div class="n na">—</div>'
+      : '<div class="n" style="color:' + c + '">' + f.days + '</div><div class="u">天后</div>';
+    return '<div class="fi"><div class="fid">' + dnum + '</div>'
+      + '<div class="fib"><div class="fit">' + esc(f.title)
+      + (f.src ? '<span class="src">' + esc(f.src) + '</span>' : '') + '</div>'
+      + '<div class="fides">' + esc(f.desc) + '</div></div></div>';
+  }).join('') || '<div class="fides">无待办事项。</div>';
+})();
+
+/* ---------------- 当前故障码 ---------------- */
+(function () {
+  const all = DATA.dtc || [];
+  const on = all.filter((d) => d.active === true);
+  $('dcnt').textContent = on.length + ' / ' + all.length + ' 条激活';
+  if (!all.length) {
+    $('dtc').innerHTML = '<div class="dtxt">手册未载入或无 DTC 定义。</div>';
+    return;
+  }
+  if (!on.length) {
+    $('dtc').innerHTML = '<div class="dtxt"><b style="color:var(--green)">无激活故障码</b>'
+      + '<span class="act">全部 ' + all.length + ' 条 DTC 均未触发。</span></div>';
+    return;
+  }
+  $('dtc').innerHTML = on.map((d) =>
+    '<div class="dtc"><span class="dcode on">' + esc(d.code) + '</span>'
+    + '<div class="dtxt"><b>' + esc(d.symptom) + '</b>'
+    + '<span class="act">根因：' + esc(d.cause) + '　→　' + esc(d.action) + '</span></div></div>').join('');
+})();
+
+/* ---------------- 部件卡（支柱 + 子系统统一渲染） ---------------- */
+(function () {
+  const hasTrend = DATA.history && DATA.history.hasTrend;
+  const STATUS_LED = { active: CLR.green, warn: CLR.orange, off: CLR.red, unknown: CLR.gray };
+
+  function renderPillar(p, idx) {
+    const h = p.health || 0, hc = hcOf(h);
+    const chip = (key, val) => {
+      if (!key) return '';
+      if (!hasTrend || val == null || val === '') return '<span class="tr na">' + esc(key) + ' · 基线建立中</span>';
+      const nn = Number(val);
+      if (!isFinite(nn) || nn === 0) return '<span class="tr">' + esc(key) + ' ' + esc(val) + '</span>';
+      return '<span class="tr ' + (nn > 0 ? 'up' : 'dn') + '">' + esc(key) + ' ' + (nn > 0 ? '↑' : '↓') + Math.abs(nn) + '</span>';
+    };
+    const ms = p.metrics || [];
+    const head = ms.slice(0, 3), rest = ms.slice(3);
+    const row = (m) => {
+      const cls = m.small ? ' small' : (m.warn ? ' warn' : (m.manual ? ' manual' : ''));
+      const tag = m.manual ? '<span class="mtag">人工</span>' : '';
+      const sub = m.sub ? ' <span style="color:var(--txt3);font-size:10px">(' + esc(m.sub) + ')</span>' : '';
+      return '<div class="mt"><span class="mk">' + esc(m.k) + tag + '</span>'
+        + '<span class="mv' + cls + '" title="' + esc(m.d) + '">' + esc(m.v) + sub + '</span></div>';
+    };
+    const mts = '<div class="mts" id="mts' + idx + '">' + head.map(row).join('')
+      + (rest.length ? '<div class="rest">' + rest.map(row).join('') + '</div>' : '') + '</div>'
+      // 折叠态判定用「全部」二字，不用全角/半角 + 号（两者不相等，曾导致开关只能开不能关）
+      + (rest.length ? '<div class="more" onclick="document.getElementById(\'mts' + idx + '\').classList.toggle(\'open\');'
+        + 'this.textContent = this.textContent.indexOf(\'全部\') > -1 ? \'− 收起指标\' : \'＋ 全部 ' + ms.length + ' 项指标\'">'
+        + '＋ 全部 ' + ms.length + ' 项指标</div>' : '');
+    const led = STATUS_LED[p.status] || CLR.gray;
+    return '<div class="pt" style="--lc:' + hc + ';--lc2:' + hexA(hc, .4) + '">'
+      + '<div class="wm">' + h + '</div>'
+      + '<div class="pth"><span class="pico">' + (p.icon || '⚙️') + '</span>'
+      + '<span class="pnm">' + esc(p.part || p.name) + '</span>'
+      + (p.chapter ? '<span class="pch">' + esc(p.chapter) + '</span>' : '')
+      + '<span class="mg ' + esc(p.maturity) + '">' + esc(p.maturity) + '</span></div>'
+      + '<div class="pfl">' + esc(p.name) + '　·　' + esc(p.full) + '</div>'
+      + '<div class="hbar"><i data-w="' + h + '"></i></div>'
+      + '<div class="hrow"><span class="hv">' + h + '</span><span class="hl">健康度</span>'
+      + '<span class="led" style="background:' + led + ';box-shadow:0 0 7px ' + led + '"></span>'
+      + '<span class="hl">' + esc(p.statusText) + '</span></div>'
+      + '<div class="trs">' + chip(p.trendKey, p.trend) + chip(p.trend2Key, p.trend2) + '</div>'
+      + mts
+      + (p.note ? '<div class="pnote">' + esc(p.note) + '</div>' : '')
+      + '</div>';
+  }
+
+  function renderSub(s) {
+    const led = STATUS_LED[s.status] || CLR.gray;
+    const stTxt = { active: '运行中', warn: '待处置', off: '未启用', unknown: '未核验' }[s.status] || '未核验';
+    const val = s.value == null
+      ? '<span style="color:var(--txt3);font-size:11px">未定位到文件</span>'
+      : '<span style="font-family:var(--mono);font-size:15px;font-weight:700">' + esc(s.value) + '</span>'
+        + '<span style="font-size:10px;color:var(--txt3);margin-left:3px">' + esc(s.unit) + '</span>';
+    return '<div class="pt" style="--lc:' + led + ';--lc2:' + hexA(led, .4) + '">'
+      + '<div class="pth"><span class="pico">' + (s.icon || '⚙️') + '</span>'
+      + '<span class="pnm">' + esc(s.part) + '</span>'
+      + (s.chapter ? '<span class="pch">' + esc(s.chapter) + '</span>' : '')
+      + '<span class="led" style="margin-left:auto;background:' + led + ';box-shadow:0 0 7px ' + led + '"></span></div>'
+      + '<div class="pfl">' + esc(s.alias) + '</div>'
+      + '<div class="hrow"><span style="font-size:11px;color:' + led + ';font-weight:600">' + stTxt + '</span>'
+      + '<span style="margin-left:auto">' + val + '</span></div>'
+      + (s.note ? '<div class="pnote">' + esc(s.note) + '</div>' : '')
+      + '</div>';
+  }
+
+  // 按手册章节号排序：1.1 → 1.2 → 1.3 → 1.4 / 3.1 → 3.2 / 4.1 → 4.2 → 5.1 → 5.2
+  const byCh = (a, b) => String(a.chapter || '').localeCompare(String(b.chapter || ''));
+  const all = [...pillars, ...subs].sort(byCh);
+  const GROUPS = [
+    ['三电系统', 'g-三电系统'],
+    ['智驾系统', 'g-智驾系统'],
+    ['座舱', 'g-座舱'],
+  ];
+  GROUPS.forEach(([gname, gid]) => {
+    const items = all.filter((x) => String(x.group || '').startsWith(gname.slice(0, 2)));
+    const box = $(gid);
+    if (!box) return;
+    box.innerHTML = items.map((it, i) =>
+      (it.id && it.id.startsWith('P')) ? renderPillar(it, it.id + '-' + i) : renderSub(it)
+    ).join('') || '<div class="pnote">该分组暂无部件数据。</div>';
+  });
+
+  setTimeout(() => {
+    document.querySelectorAll('.hbar i').forEach((b) => { b.style.width = b.dataset.w + '%'; });
+  }, 160);
+})();
+
+/* ---------------- 充电桩 ---------------- */
+(function () {
+  const cs = DATA.chargerStat || { on: 0, total: 0 };
+  $('cstat').textContent = cs.on + '/' + cs.total + ' 在位' + (cs.on < cs.total ? '（补能不完整）' : '（补能完整）');
+  $('chargers').innerHTML = (DATA.connectors || []).map((c) => {
+    const on = c.status === 'on';
+    return '<div class="chg ' + (on ? 'on' : 'off') + '">'
+      + '<div class="cplug">' + (on ? '⚡' : '🔌') + '</div>'
+      + '<div style="min-width:0"><div class="chn">' + esc(c.name) + '</div>'
+      + '<div class="chs ' + (on ? 'on' : 'off') + '">' + (on ? '● 已连接' : '○ 未连接') + '</div>'
+      + '<div class="chc">' + esc(c.note) + '</div></div></div>';
+  }).join('') || '<div class="chc">连接器数据缺失。</div>';
+})();
+
+/* ---------------- 续航自检 ---------------- */
+(function () {
+  $('health').innerHTML = (DATA.health || []).map((h) => {
+    const ok = h.ok;
+    const cls = ok === true ? 'ok' : (ok === false ? 'bad' : '');
+    const badge = ok === true ? '<span class="hcb ok">达标</span>'
+      : (ok === false ? '<span class="hcb bad">未达标</span>' : '<span class="hcb unk">未判定</span>');
+    const col = ok === true ? 'var(--green)' : (ok === false ? 'var(--orange)' : 'var(--txt3)');
+    const src = h.src === 'manual'
+      ? '<span class="hcs manual">手册</span>' : '<span class="hcs">实测</span>';
+    return '<div class="hc ' + cls + '" title="' + esc(h.note || '') + '">'
+      + '<div class="hch"><span class="hcn">' + esc(h.name) + '</span>' + badge + '</div>'
+      + '<div class="hcv" style="color:' + col + '">' + esc(h.cur || '—') + src + '</div>'
+      + '<div class="hct">阈值：' + esc(h.threshold || '—') + '</div></div>';
+  }).join('') || '<div class="hct">手册未载入或无健康指标定义。</div>';
+})();
+
+/* ---------------- 时间轴 ---------------- */
+(function () {
+  const tl = DATA.timeline || [];
+  $('tl').innerHTML = tl.map((t) => {
+    const c = clrOf(t.lv);
+    const hot = t.days != null && t.days <= 7;
+    return '<div class="tli">'
+      + '<div class="tld' + (hot ? ' hot' : '') + '" style="color:' + c + ';border-color:' + c + '">'
+      + '<span class="dot-in"></span></div>'
+      + '<div class="tlq" style="color:' + c + '">' + (t.days == null ? '—' : t.days + ' 天') + '</div>'
+      + '<div class="tlk">' + esc(t.kind) + '</div>'
+      + '<div class="tlt" title="' + esc(t.title) + '">' + esc(t.title) + '</div>'
+      + '<div class="tldd">' + esc(t.date) + '</div></div>';
+  }).join('') || '<div class="fides" style="color:var(--txt3)">暂无未来节点。</div>';
+})();
+
+/* ---------------- 红线 / 口诀 ---------------- */
+$('redlines').innerHTML = (DATA.redlines || []).map((r) => '<li>' + esc(r) + '</li>').join('');
+$('slogan').innerHTML = evMeta.slogan ? '📣 ' + esc(evMeta.slogan) : '';
+
+/* ---------------- 各表 ---------------- */
+$('dtctbl').innerHTML = '<thead><tr><th style="width:130px">故障码</th><th style="width:76px">当前</th>'
+  + '<th style="width:22%">现象</th><th style="width:20%">根因</th><th>处置</th></tr></thead><tbody>'
+  + (DATA.dtc || []).map((d) => {
+    const st = d.active === true ? '<span class="dcode on">激活</span>'
+      : (d.active === false ? '<span class="dcode off">正常</span>' : '<span class="dcode unk">未判定</span>');
+    return '<tr><td style="font-family:var(--mono);font-size:11.5px">' + esc(d.code) + '</td>'
+      + '<td>' + st + '</td><td>' + esc(d.symptom) + '</td>'
+      + '<td style="color:var(--txt2)">' + esc(d.cause) + '</td>'
+      + '<td style="color:var(--txt2)">' + esc(d.action) + '</td></tr>';
+  }).join('') + '</tbody>';
+
+$('mtbl').innerHTML = '<thead><tr><th style="width:110px">周期</th><th>保养项</th><th style="width:150px">负责</th></tr></thead><tbody>'
+  + (DATA.maintenance || []).map((m) =>
+    '<tr><td><b style="color:var(--gold)">' + esc(m.cycle) + '</b></td>'
+    + '<td>' + esc(m.items) + '</td>'
+    + '<td style="color:var(--txt3)">' + esc(m.owner) + '</td></tr>').join('') + '</tbody>';
+
+$('otatbl').innerHTML = '<thead><tr><th style="width:24%">升级任务</th><th style="width:130px">节拍</th><th>automation ID / 说明</th></tr></thead><tbody>'
+  + (DATA.ota || []).map((o) =>
+    '<tr><td>' + esc(o.task) + '</td>'
+    + '<td style="font-family:var(--mono);color:var(--teal)">' + esc(o.cadence) + '</td>'
+    + '<td style="color:var(--txt2)">' + esc(o.id) + '</td></tr>').join('') + '</tbody>';
+
+$('pvtbl').innerHTML = '<thead><tr><th style="width:110px">指标</th><th style="width:130px">铭牌（手册）</th>'
+  + '<th style="width:150px">实测（刷新时刻）</th><th>口径差异说明</th></tr></thead><tbody>'
+  + (DATA.plateVsLive || []).map((r) =>
+    '<tr><td>' + esc(r.k) + '</td>'
+    + '<td style="font-family:var(--mono);color:var(--gold)">' + esc(r.plate) + '</td>'
+    + '<td style="font-family:var(--mono);color:var(--teal)">' + esc(r.live) + '</td>'
+    + '<td style="color:var(--txt2)">' + esc(r.why) + '</td></tr>').join('')
+  + '</tbody>' || '<tbody><tr><td colspan="4" style="color:var(--txt3)">手册未载入，无法对照。</td></tr></tbody>';
+
+$('doctbl').innerHTML = '<thead><tr><th style="width:30%">指标</th><th style="width:84px">可扫描性</th><th>统计口径 / 说明</th></tr></thead><tbody>'
+  + (DATA.metricsDoc || []).map((m) =>
+    '<tr><td>' + esc(m.k) + '</td>'
+    + '<td><span class="badge ' + m.s + '">' + (m.s === 'auto' ? '自动' : (m.s === 'manual' ? '人工' : '混合')) + '</span></td>'
+    + '<td style="color:var(--txt2)">' + esc(m.d) + '</td></tr>').join('')
+  + '</tbody>';
+
+/* ---------------- 决策卡摘要 ---------------- */
+(function () {
+  const cards = DATA.cards || [];
+  const daysOf = (d) => {
+    if (!d) return null;
+    const t = new Date(); t.setHours(0, 0, 0, 0);
+    return Math.round((new Date(d + 'T00:00:00') - t) / 86400000);
+  };
+  $('dcards').innerHTML = cards.map((c) => {
+    const dd = daysOf(c.deadline), rd = daysOf(c.review);
+    const cell = (k, v, col) => '<div class="dcell"><div class="k">' + k + '</div>'
+      + '<div class="v" style="color:' + col + '">' + v + '</div></div>';
+    const dc = dd == null ? '—' : (dd < 0 ? '已逾期' : dd + ' 天');
+    const dcol = dd == null ? 'var(--txt3)' : (dd <= 7 ? 'var(--red)' : (dd <= 30 ? 'var(--orange)' : 'var(--teal)'));
+    const vcol = c.verdict === '待验证' ? 'var(--gold)' : (c.verdict === '对了' ? 'var(--green)' : 'var(--red)');
+    return '<div class="dc"><div class="dn">' + esc(c.name) + '</div>'
+      + '<div class="df">' + esc(c.file) + '</div>'
+      + '<div class="drow">'
+      + cell('时间盒', dc, dcol)
+      + cell('复盘倒计时', rd == null ? '—' : rd + ' 天', 'var(--blue)')
+      + cell('四档判定', esc(c.verdict || '—'), vcol)
+      + cell('AI 异议', c.objections + ' 条', c.objections ? 'var(--orange)' : 'var(--txt3)')
+      + cell('筹码', esc(c.stakes || '—'), 'var(--purple)')
+      + cell('领域', esc(c.domain || '—'), 'var(--teal)')
+      + '</div></div>';
+  }).join('') || '<div class="fides">暂无决策卡。</div>';
+})();
+
+/* ---------------- 思维导图（决策链 + 沉淀图谱） ---------------- */
+(function () {
+  const mind = DATA.mindmap || { chains: [], graph: [], graphStat: { cards: 0, domains: [], ruleLinks: 0, uniqueRules: 0, topRules: [] } };
+  const SIG_BG = { '重估信号': 'var(--blue)', '转向信号': 'var(--purple)', '时间盒': 'var(--red)', '信号': 'var(--txt3)' };
+  const SIG_TX = { '重估信号': '#06121f', '转向信号': '#1c0f3a', '时间盒': '#2a0606', '信号': 'var(--txt)' };
+
+  function renderChains() {
+    const el = $('mv-chain');
+    if (!mind.chains.length) { el.innerHTML = '<div class="empty">暂无决策卡可复盘。</div>'; return; }
+    el.innerHTML = mind.chains.map((c) => {
+      const vCol = { '对了': 'var(--green)', '错了': 'var(--red)', '结论对但理由错': 'var(--orange)', '待验证': 'var(--txt3)' }[c.verdict] || 'var(--txt3)';
+      const opts = (c.options || []).map((o) =>
+        '<div class="opt' + (o.adopted ? ' ad' : '') + '"><span class="tag ' + (o.adopted ? 'y' : 'n') + '">' + (o.adopted ? '采用' : '未采') + '</span><span>' + esc(o.label) + '</span></div>'
+      ).join('') || '<div class="empty">①区未记录选项</div>';
+      const sigs = (c.signals || []).map((s) => {
+        const bg = SIG_BG[s.type] || 'var(--txt3)', tx = SIG_TX[s.type] || 'var(--txt)';
+        return '<div class="sig"><span class="st" style="background:' + bg + ';color:' + tx + '">' + esc(s.type) + '</span><span>' + esc(s.label) + (s.text ? '：' + esc(s.text) : '') + '</span></div>';
+      }).join('') || '<div class="empty">③区未记录推翻信号</div>';
+      const cell = (k, v) => '<div class="ch-cell"><span class="k">' + k + '</span>' + ((v && v.trim() !== '-') ? esc(v) : '<span class="empty">未记录</span>') + '</div>';
+      const grid = [cell('最关键的假设', c.assumption), cell('调用框架/经验', c.framework), cell('当时状态', c.state), cell('未闭合项', c.open), cell('复盘', c.reviewTxt), cell('可迁移规律', c.transferable)].join('');
+      return '<div class="chain">'
+        + '<div class="ch-head"><span class="ch-name">' + esc(c.name) + '</span>'
+        + '<span class="ch-meta">' + esc(c.domain) + ' · ' + esc(c.stakes) + (c.date ? ' · ' + esc(c.date) : '') + '</span>'
+        + '<span style="margin-left:auto;font-size:11px;color:' + vCol + ';border:1px solid ' + vCol + ';padding:1px 9px;border-radius:8px">' + esc(c.verdict) + '</span></div>'
+        + (c.conclusion ? '<div class="ch-concl">' + esc(c.conclusion) + '</div>' : '')
+        + '<div class="ch-sec"><div class="h">① 考虑过的选项</div>' + opts + '</div>'
+        + '<div class="ch-sec"><div class="h">② 排除其他的理由</div>' + (c.reject ? '<div style="font-size:12.5px;line-height:1.6">' + esc(c.reject) + '</div>' : '<div class="empty">未记录</div>') + '</div>'
+        + '<div class="ch-sec"><div class="h">③ 什么信号会推翻</div>' + sigs + '</div>'
+        + (grid ? '<div class="ch-grid">' + grid + '</div>' : '')
+        + '</div>';
+    }).join('');
+  }
+
+  function renderGraph() {
+    const el = $('mv-graph');
+    const st = mind.graphStat || { cards: 0, domains: [], ruleLinks: 0, uniqueRules: 0, topRules: [] };
+    const byDom = {};
+    (mind.graph || []).forEach((g) => { (byDom[g.domain] = byDom[g.domain] || []).push(g); });
+    const domHtml = Object.keys(byDom).sort().map((d) => {
+      const chips = byDom[d].map((c) =>
+        '<span class="dom-card" title="' + esc((c.focus || '') + (c.result ? '｜' + c.result : '')) + '">' + esc(c.name) + '</span>'
+      ).join('');
+      return '<div class="dom"><div class="dom-h">' + esc(d) + ' <span style="color:var(--txt3);font-weight:400;font-size:11px">(' + byDom[d].length + ')</span></div><div class="dom-cards">' + chips + '</div></div>';
+    }).join('') || '<div class="empty">暂无经验卡</div>';
+    const maxC = (st.topRules || []).reduce((m, r) => Math.max(m, r.count), 0) || 1;
+    const rulesHtml = (st.topRules || []).map((r) => {
+      const w = Math.max(8, Math.round(r.count / maxC * 100));
+      return '<div class="rule"><span class="rb">' + esc(r.rule) + '</span><span class="bar" style="width:' + w + '%"></span><span style="color:var(--txt3);font-family:var(--mono)">' + r.count + '</span></div>';
+    }).join('') || '<div class="empty">暂无关联规则</div>';
+    el.innerHTML =
+      '<div class="gp-stats">'
+      + '<div class="gp-stat"><div class="n" style="color:var(--teal)">' + st.cards + '</div><div class="l">经验卡总量</div></div>'
+      + '<div class="gp-stat"><div class="n" style="color:var(--blue)">' + (st.domains || []).length + '</div><div class="l">知识领域</div></div>'
+      + '<div class="gp-stat"><div class="n" style="color:var(--gold)">' + st.ruleLinks + '</div><div class="l">规则关联数</div></div>'
+      + '<div class="gp-stat"><div class="n" style="color:var(--purple)">' + st.uniqueRules + '</div><div class="l">去重规则卡</div></div>'
+      + '</div>'
+      + '<div class="gp-warn">⚠️ <b>诚实边界</b>：下方是经验卡沉淀的「结论」与「知识结构」（遇某场景该 do / dont），<b>不是决策过程</b>。经验卡没有「考虑了 A/B/C、为何排除 B」的推理链——复盘真实决策请切到「决策链」视图。</div>'
+      + '<div class="gp-cols">'
+      + '<div class="gp-block"><div class="bh">按领域聚合 · ' + (st.domains || []).length + ' 类</div>' + domHtml + '</div>'
+      + '<div class="gp-block"><div class="bh">热点规则 · 被经验卡引用最多</div>' + rulesHtml + '</div>'
+      + '</div>';
+  }
+
+  window.__buildMind = function () { renderChains(); renderGraph(); };
+
+  // 子视图切换
+  document.querySelectorAll('.mvtab').forEach((t) => {
+    t.onclick = () => {
+      document.querySelectorAll('.mvtab').forEach((x) => x.classList.toggle('on', x === t));
+      document.querySelectorAll('.mvpane').forEach((p) => p.classList.toggle('on', p.id === 'mv-' + t.dataset.v));
+    };
+  });
+})();
+
+/* ---------------- 飞轮健康度（接入《飞轮健康度仪表盘》，实时扫描） ---------------- */
+(function () {
+  const fw = DATA.flywheel || { experienceCards:0, realCards:0, simCards:0, ruleFiles:0, ruleNamed:0,
+    caseNotes:0, ongoingCases:0, traceCards:0, layers:0, growth:[], metrics:[] };
+  const stat = (n, l, c) => '<div class="gp-stat"><div class="n" style="color:' + c + '">' + n + '</div><div class="l">' + l + '</div></div>';
+  const kpis = [
+    stat(fw.experienceCards, '经验卡片总量', 'var(--teal)'),
+    stat(fw.realCards + ' / ' + fw.simCards, '真实 / 演练', 'var(--gold)'),
+    stat(fw.ruleFiles, '规则库文件', 'var(--blue)'),
+    stat(fw.ruleNamed, '规范命名规则卡', 'var(--purple)'),
+    stat(fw.caseNotes, '已归档案件', 'var(--orange)'),
+    stat(fw.traceCards, '思维轨迹卡', 'var(--green)'),
+    stat(fw.layers, '六层 .md 合计', 'var(--txt2)'),
+  ];
+  function buildChart() {
+    const pts = fw.growth || [];
+    if (!pts.length) return '<div class="empty">暂无增长数据。</div>';
+    const W = 680, H = 240, pad = 40;
+    const maxV = Math.max.apply(null, pts.map((p) => p.cum).concat([1]));
+    const X = (i) => pad + i * ((W - 2 * pad) / ((pts.length - 1) || 1));
+    const Y = (v) => H - pad - (v / maxV) * (H - 2 * pad);
+    const path = pts.map((p, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(p.cum).toFixed(1)).join(' ');
+    const dots = pts.map((p, i) =>
+      '<circle cx="' + X(i).toFixed(1) + '" cy="' + Y(p.cum).toFixed(1) + '" r="3.5" fill="#f0b45f"/>'
+      + '<text x="' + X(i).toFixed(1) + '" y="' + (Y(p.cum) - 9).toFixed(1) + '" fill="#e9ebf1" font-size="11" text-anchor="middle">' + p.cum + '</text>'
+      + '<text x="' + X(i).toFixed(1) + '" y="' + (H - pad + 16) + '" fill="#616a7c" font-size="10" text-anchor="middle">' + p.date.slice(5) + '</text>'
+    ).join('');
+    return '<svg class="fwchart" viewBox="0 0 680 240" width="100%" height="240">'
+      + '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="rgba(255,255,255,.12)"/>'
+      + '<line x1="' + pad + '" y1="' + pad + '" x2="' + pad + '" y2="' + (H - pad) + '" stroke="rgba(255,255,255,.12)"/>'
+      + '<path d="' + path + '" fill="none" stroke="#f0b45f" stroke-width="2.2"/>' + dots + '</svg>';
+  }
+  window.__buildFw = function () {
+    const elK = $('fw-kpis'); if (elK) elK.innerHTML = kpis.join('');
+    const elC = $('fw-chart'); if (elC) elC.innerHTML = buildChart();
+    const g = fw.growth || [];
+    const grw = $('fw-grw');
+    if (grw && g.length) grw.textContent = g[0].date + ' → ' + g[g.length - 1].date + '（' + g.length + ' 个采样点）';
+    const elM = $('fw-metrics');
+    if (elM) elM.innerHTML = (fw.metrics || []).map((m) =>
+      '<tr><td style="font-weight:600;color:var(--txt)">' + esc(m.name) + '</td>'
+      + '<td><span class="badge mixed" style="white-space:nowrap">' + esc(m.value) + '</span></td>'
+      + '<td style="color:var(--txt3);font-size:11.5px">' + esc(m.desc) + '</td></tr>').join('')
+      || '<tr><td colspan="3" class="empty">暂无关键指标。</td></tr>';
+  };
+})();
+
+/* ---------------- Tab 切换 ---------------- */
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('on', t.dataset.p === id));
+  document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.id === 'pane-' + id));
+  if (id === 'tree' && !window.__treeBuilt) { buildTree(); window.__treeBuilt = true; }
+  if (id === 'mind' && !window.__mindBuilt) { window.__buildMind(); window.__mindBuilt = true; }
+  if (id === 'fw' && !window.__fwBuilt) { window.__buildFw(); window.__fwBuilt = true; }
+}
+document.querySelectorAll('.tab').forEach((t) => { t.onclick = () => switchTab(t.dataset.p); });
+
+/* ---------------- 决策树 ---------------- */
+const tree = DATA.tree || { id: 'root', label: '（无数据）', children: [] };
+let sel = null;
+
+function tCount(n) { let c = 1; (n.children || []).forEach((k) => { c += tCount(k); }); return c; }
+function tLeaves(n) { if (!n.children || !n.children.length) return 1; let c = 0; n.children.forEach((k) => { c += tLeaves(k); }); return c; }
+
+function tStats() {
+  const today = new Date().toISOString().slice(0, 10);
+  const cb = tree.children.find((c) => c.id === 'cards') || { children: [] };
+  const cards = cb.children || [];
+  const judged = cards.filter((c) => c.verdict && c.verdict !== '待验证');
+  const correct = cards.filter((c) => c.verdict === '对了').length;
+  const rate = judged.length ? Math.round(correct / judged.length * 100) + '%' : '暂无样本';
+  const overdue = cards.filter((c) => c.verdict === '待验证' && c.review_date && c.review_date < today).length;
+  const nextReview = (cards.map((c) => c.review_date).filter((d) => d && d >= today).sort()[0]) || '—';
+  const nextDl = (cards.map((c) => c.deadline).filter((d) => d && d >= today).sort()[0]) || '—';
+  const short = (d) => d && d.length > 7 ? d.slice(5).replace('-', '/') : (d || '—');
+  const cnt = (id) => { const n = tFindNode(tree, id); return n && n.children ? n.children.length : 0; };
+
+  const html = [
+    [String(tCount(tree)), '节点总数', 'var(--gold)'],
+    [String(cards.length), '在册决策卡', 'var(--blue)'],
+    [overdue ? String(overdue) : '0', overdue ? '逾期未复盘 ⚠️' : '逾期未复盘', overdue ? 'var(--red)' : 'var(--txt3)'],
+    [rate, '命中率', judged.length ? 'var(--green)' : 'var(--txt3)'],
+    [String(tLeaves(tree)), '叶子节点', 'var(--txt3)'],
+    [String(cnt('card')), '决策卡分区', 'var(--purple)'],
+    [String(cnt('flow')), '建卡流程步骤', 'var(--purple)'],
+    [String(cnt('verdict')), '判定档位', 'var(--gold)'],
+    [String(cnt('conflict')), '冲突类型', 'var(--red)'],
+    [String(cnt('domain')), 'domain 维度', 'var(--teal)'],
+    [nextReview, '下次复盘日', 'var(--orange)'],
+    [short(nextDl), '最近 deadline', nextDl !== '—' ? 'var(--red)' : 'var(--txt3)'],
+  ];
+  $('dtstats').innerHTML = html.map((h) =>
+    '<div class="dtstat"><div class="n" style="color:' + h[2] + ';font-size:'
+    + (String(h[0]).length > 6 ? '13px' : '21px') + '">' + h[0] + '</div><div class="l">' + h[1] + '</div></div>').join('');
+}
+
+function tBuild(n, depth) {
+  const has = n.children && n.children.length;
+  const el = document.createElement('div'); el.className = 'node';
+  const row = document.createElement('div'); row.className = 'row'; row.dataset.id = n.id;
+  row.innerHTML =
+    '<span class="tw ' + (has ? '' : 'leaf') + '">▶</span>' +
+    '<span class="bar" style="background:' + (n.c || CLR.gray) + '"></span>' +
+    '<span class="lab' + (n.bold ? ' b' : '') + '">' + esc(n.label) + '</span>';
+  if (has) row.querySelector('.lab').insertAdjacentHTML('afterend',
+    '<span class="tag" style="color:' + (n.c || CLR.gray) + ';border-color:' + (n.c || CLR.gray) + '44">' + n.children.length + '</span>');
+  el.appendChild(row);
+  let kids = null;
+  if (has) {
+    kids = document.createElement('div'); kids.className = 'kids';
+    n.children.forEach((k) => kids.appendChild(tBuild(k, depth + 1)));
+    el.appendChild(kids);
+    if (depth >= 1) kids.classList.add('hide');
+  }
+  row.onclick = (e) => {
+    e.stopPropagation();
+    if (has) { kids.classList.toggle('hide'); row.querySelector('.tw').classList.toggle('open'); }
+    tSelect(n);
+  };
+  if (has) row.querySelector('.tw').classList.toggle('open', depth < 1);
+  return el;
+}
+
+function tSelect(n) {
+  sel = n.id;
+  document.querySelectorAll('.row.sel').forEach((r) => r.classList.remove('sel'));
+  const r = document.querySelector('.row[data-id="' + n.id + '"]'); if (r) r.classList.add('sel');
+  const d = $('dtdetail');
+  const kids = n.children ? n.children.map((k) => '<span>▸ ' + esc(k.label) + '</span>').join('') : '';
+  d.innerHTML =
+    '<div class="dt"><span class="bar" style="background:' + (n.c || CLR.gray) + ';height:16px;display:inline-block"></span>' + esc(n.label) + '</div>' +
+    (n.meta ? '<div class="path">' + n.meta.join('<br>') + '</div>' : '') +
+    '<div class="desc">' + (n.desc || '<span style="color:var(--txt3)">未记录</span>') + '</div>' +
+    (kids ? '<div class="kids-list"><div style="color:var(--txt3);margin-bottom:4px">子节点 ' + n.children.length + ' 项</div>' + kids + '</div>' : '');
+}
+
+function tSetAll(open) {
+  document.querySelectorAll('#dttree .kids').forEach((k) => k.classList.toggle('hide', !open));
+  document.querySelectorAll('#dttree .tw').forEach((t) => { if (!t.classList.contains('leaf')) t.classList.toggle('open', open); });
+}
+function tLvl2() {
+  tSetAll(false);
+  const rootKids = document.querySelector('#dttree > .node > .kids');
+  if (!rootKids) return;
+  rootKids.classList.remove('hide');
+  rootKids.querySelectorAll(':scope > .node > .kids').forEach((k) => {
+    k.classList.remove('hide');
+    const tw = k.parentElement.querySelector(':scope > .row > .tw');
+    if (tw) tw.classList.add('open');
+  });
+}
+function tFindNode(n, id) {
+  if (n.id === id) return n;
+  for (const k of (n.children || [])) { const r = tFindNode(k, id); if (r) return r; }
+  return null;
+}
+function tOnlyPending() {
+  tSetAll(true);
+  const target = tFindNode(tree, 'c2');
+  if (target) {
+    const r = document.querySelector('.row[data-id="c2"]');
+    if (r) r.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    tSelect(target);
+  }
+}
+
+function buildTree() {
+  $('dttree').appendChild(tBuild(tree, 0));
+  tStats();
+  tSelect(tree);
+}
+buildTree();
+window.__treeBuilt = true;
+</script>
+</body>
+</html>

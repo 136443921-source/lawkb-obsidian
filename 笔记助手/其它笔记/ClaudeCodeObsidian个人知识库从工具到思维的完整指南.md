@@ -6,7 +6,7 @@ tags:
   - 合同法
   - wiki
 created: 2026-05-28T10:51
-updated: 2026-08-28T19:31
+updated: 2026-09-03T23:32
 title: ClaudeCodeObsidian个人知识库从工具到思维的完整指南
 maturity: 🌿成长
 source: ""
@@ -459,6 +459,6 @@ AI可以是你强大的协作者，负责信息的整理、关联与维护。
 - [[Obsidian极简安装指南]] (共现关键词: Obsidian, ##, 文件夹)
 - [[用ObsidianCodex搭一个会主动思考的个人知识库|用ObsidianCodex搭一个会主动思考的个人知识库]] 
 - 如何让AI帮你打理Obsidian知识库 
-- [[法律SOP蒸馏器|法律SOP蒸馏器]] 
+- [[知识飞轮系统/03-连接/概念页/法律SOP蒸馏器|法律SOP蒸馏器]] 
 - 案件模板使用指南 
 - [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|[[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 

@@ -1,0 +1,29 @@
+{
+  "baseline": "2026-09-03",
+  "snapshots": [
+    {
+      "date": "2026-09-03",
+      "layers": 2951,
+      "rules": 740,
+      "cards": 223,
+      "traces": 3,
+      "calls": 35,
+      "cross": 2,
+      "decisions": 2,
+      "hitFilled": 5,
+      "hitTotal": 7
+    },
+    {
+      "date": "2026-09-04",
+      "layers": 3058,
+      "rules": 799,
+      "cards": 205,
+      "traces": 3,
+      "calls": 36,
+      "cross": 2,
+      "decisions": 10,
+      "hitFilled": 7,
+      "hitTotal": 7
+    }
+  ]
+}

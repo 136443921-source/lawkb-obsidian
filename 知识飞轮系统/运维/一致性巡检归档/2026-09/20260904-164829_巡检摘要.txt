@@ -1,0 +1,4 @@
+LawKB 一致性巡检 20260904-164829
+待人工核验疑点：0 项
+产物：citations.json、conflicts_ABC.json、verified_findings.json、issue_opposites.json
+⚠️ 候选疑点须逐条查权威源复核后写入，首轮误报率约58%%
