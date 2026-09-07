@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="QM8hpdSeD6n4jlNWeV1Gf5"><head data-page-node-id="kw5qYUCnrWCPfY3fv4Z3CS"><meta charset="utf-8" data-page-node-id="qzqJlhjA2zjHnO2RoPcOAa">
+<meta name="viewport" content="width=device-width,initial-scale=1" data-page-node-id="xyZleAZAR671VzBAtPqlNY">
+<title>知识飞轮·Frontmatter 治理终检看板（2026-09-07）</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background:#0f1115; color:#e6e8eb; margin:0; padding:28px; }
+h1 { font-size:22px; margin:0 0 4px; }
+.sub { color:#8b93a1; font-size:13px; margin-bottom:22px; }
+.grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
+.card { background:#1a1e26; border:1px solid #262b36; border-radius:12px; padding:16px; }
+.card .k { font-size:12px; color:#8b93a1; }
+.card .v { font-size:28px; font-weight:700; margin-top:6px; }
+.card .v.green { color:#3fd07a; } .card .v.amber { color:#f0a93f; }
+.section { background:#1a1e26; border:1px solid #262b36; border-radius:12px; padding:18px; margin-bottom:20px; }
+.section h2 { font-size:15px; margin:0 0 12px; color:#c9d1da; }
+.row { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px dashed #232834; font-size:13px; }
+.row:last-child { border-bottom:none; }
+.bar { height:8px; border-radius:4px; background:#2a3140; margin-top:4px; overflow:hidden; }
+.bar > span { display:block; height:100%; }
+.tag { display:inline-block; padding:2px 8px; border-radius:6px; font-size:11px; margin-right:6px; }
+.ok { background:#10361f; color:#3fd07a; } .todo { background:#3a2a10; color:#f0a93f; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th,td { text-align:left; padding:8px 10px; border-bottom:1px solid #232834; }
+th { color:#8b93a1; font-weight:500; }
+.note { font-size:12px; color:#8b93a1; line-height:1.7; }
+code { background:#0c0e12; padding:1px 6px; border-radius:4px; color:#7fd1ff; }
+</style></head><body data-page-node-id="OYgaxDmJDoO2DzFwpzkyqt">
+<h1 data-page-node-id="cyLtryGoywkTV3SbZvuSAt">知识飞轮 · Frontmatter 治理终检看板</h1>
+<div class="sub" data-page-node-id="bOg29FJDD7J0XDJQW8B9g1">执行日 2026-09-07 · 自动化 a5995ba3 · 后续批次（序 5/序 6）待排期</div>
+
+<div class="grid" data-page-node-id="mjcUlmJhnIT0mgDGEm46pz">
+  <div class="card" data-page-node-id="a0dGBCTFmoCW31o7s5Ox6A"><div class="k" data-page-node-id="I1ZECBBDTHnNCUzmgTE7YQ">YAML 解析失败</div><div class="v green" data-page-node-id="jJ40G4I5sl3i0G1NshSgSi">330 → 0</div></div>
+  <div class="card" data-page-node-id="ba9mKHsdkGDxOzhofXz1Dz"><div class="k" data-page-node-id="qw843wtWB6dRNFfYMeA8S4">嵌套列表损坏</div><div class="v green" data-page-node-id="4EFIwFhyoHhLylFi6TyNC6">141 → 0</div></div>
+  <div class="card" data-page-node-id="nP9tC0FNjQKSbde4rLxhRt"><div class="k" data-page-node-id="MaYiAePYJw3KJmddDNOCxG">系统引用死链</div><div class="v green" data-page-node-id="qWPoEauSPWdNJ08uM5K7zG">188 → 0</div></div>
+  <div class="card" data-page-node-id="ZxDCOUWfOHdXSCSezrkPSe"><div class="k" data-page-node-id="Cv8qDttb4v7PGGRJ5WgoYe">全库死链（最终）</div><div class="v amber" data-page-node-id="WzkPTbgkVM4Tl79XfaeJ7p">1301</div></div>
+</div>
+
+<div class="section" data-page-node-id="YDKzzujRKSi4BEeITV09Sj">
+  <h2 data-page-node-id="hVevocGXce1pKY9XpUqjAl">治理链路（全链路零数据损坏）</h2>
+  <div class="row" data-page-node-id="bYS1zemON7CqVNk6SEfAOT"><span data-page-node-id="ifzod8E7CGkJqJkbWXALi1">① 清理系统引用死链 <code data-page-node-id="89T6K2kMDc54bu85KZy8iz">[[memory]]</code> / <code data-page-node-id="N76KmuDN4UHUtjATM4GeK1">[[待推送_*]]</code></span><span class="tag ok" data-page-node-id="5tYEoFXeeygAmVGuAj6OTH">188 → 0</span></div>
+  <div class="row" data-page-node-id="SioEAw0BIDgkAibeMjPI49"><span data-page-node-id="Ktl9Ho4HarOOaOO0J77zAU">② 治本修复 YAML（330 个，含 2 次回滚事故）</span><span class="tag ok" data-page-node-id="6wOHPNGmCnEMgdjZczdJqR">330 → 26 → 0</span></div>
+  <div class="row" data-page-node-id="zZzEQyG0xdxZBNqjoUc4Ft"><span data-page-node-id="sKi5SjWunMfNBwVwcVTUIc">③ A 方案 frontmatter wiki 转纯文本（670 文件/940 处）</span><span class="tag ok" data-page-node-id="nayTZTfJ5mVamNjZCgB58v">YAML 330 → 0</span></div>
+  <div class="row" data-page-node-id="J0tFBMkAQ4GM4BeqnDigG5"><span data-page-node-id="ifx0ky20q3DLCPrEWGPuod">④ 嵌套列表还原为纯标量（141 文件，本回合收官）</span><span class="tag ok" data-page-node-id="10NS9hkoN69Nfsnj3iCzjz">141 → 0</span></div>
+  <div class="row" data-page-node-id="NXWz6Rd0PkYZugVzLBUZRN"><span data-page-node-id="5pnPYPahRBaEbPMC1aySC0">强校验：141 文件逐文件 diff，非损坏字段/正文零变动</span><span class="tag ok" data-page-node-id="ZbezVVWZfPtHCWEfc8YJTh">PASS</span></div>
+</div>
+
+<div class="section" data-page-node-id="BzIjXGFEi0QwGt7deEjjhZ">
+  <h2 data-page-node-id="pAdRO4U2c1zdq8cDR6Xqsf">全库死链终检（真实最终值）</h2>
+  <div class="row" data-page-node-id="jkc0RLzP93fN5alR8RAalo"><span data-page-node-id="DXM2hw95QZHsKRAbOTFCrL">笔记基名总数</span><span data-page-node-id="flHVcip2wRmd9QxhUiUyyu">3592</span></div>
+  <div class="row" data-page-node-id="QXzRUDsCCil1zyOnAbPXJC"><span data-page-node-id="vdorAuPzXIyOoTns2GV4vO">待检卡片</span><span data-page-node-id="7TSfuzIEUPqPudwtV9ENFC">3704 张</span></div>
+  <div class="row" data-page-node-id="3DjOc20GMeYjaCECuZu6mG"><span data-page-node-id="Js7UNmnyrWQOAGXJL5BnTQ">命中死链文件</span><span data-page-node-id="2jkeZyw1oXDaA6tgdRADmB">447 / 3704</span></div>
+  <div class="row" data-page-node-id="Yf88KZzaVppiOUqF0oHtkK"><span data-page-node-id="FXz8yUK37xXNLD7OBMWVcG">死链总数 / 去重唯一目标</span><span data-page-node-id="9SZtniZXKHs3rGYzUZHJIm">1301 / 521</span></div>
+  <div class="row" data-page-node-id="cLM5CZDykePHiEgb0hH8Fz"><span data-page-node-id="OGGeEBvIq5lpW1ch6UxRzw">自检器「解析失败」</span><span data-page-node-id="NRJ3bEdLTZ8ueyruHyXWJP">6（均为无 frontmatter 的提取原文/日志，误报）</span></div>
+  <div class="note" style="margin-top:10px" data-page-node-id="2u2D6Zyb7ToyANFMc7B5yu">死链 1301 较修复前 1242 上升 ~59：修好解析器后，原被「解析失败 / 嵌套结构」掩盖的<b data-page-node-id="AmJcnyEY1q5ngk5dd0QOLO">真实死链</b>现在可见——即「校验通过≠交付合格／没查≠查过没问题」的实证。</div>
+</div>
+
+<div class="section" data-page-node-id="hhef2zujeMMJQ5THh0hbpT">
+  <h2 data-page-node-id="48p8NcaciEPLM8gWSJGGUB">死链画像（去重 521 唯一目标）</h2>
+  <table data-page-node-id="NDgHHTGQ9DJn2D8tFCADk7">
+    <tr data-page-node-id="VEakF0A1N3JKesBZBLs7RH"><th data-page-node-id="XhjZCftzlH4fu64y3OCEdn">类别</th><th data-page-node-id="rx6lysc1rIhcgECwLsK8iD">数量</th><th data-page-node-id="cB4G3ejFFPGAuTuURoFZJW">说明</th></tr>
+    <tr data-page-node-id="U0wTkTsHsSxSFixrQXeZli"><td data-page-node-id="QzEdZJzUyWCpMs0QI0rjoS">真实缺笔记</td><td data-page-node-id="DvkIaw0BU6f0AJ8DtniALM">447</td><td data-page-node-id="vV5b1cByEJTULDa7dml1MC">链接指向的笔记已改名/删除/从未建（历史 backlog）</td></tr>
+    <tr data-page-node-id="pGmOgjoO9ZIuOEIZsV2Rrm"><td data-page-node-id="E5HLaLzfV5fcoxMV9mFG0j">规则卡 ID 疑似缺卡</td><td data-page-node-id="Q5KUiTh3Oc0OLV8qvKCgL3">42</td><td data-page-node-id="ukxk05zsHF7HShxOpkgOeS">R-PI-245 / R-HG-064 / R-LN-053·054 / R-CF-102 等</td></tr>
+    <tr data-page-node-id="JwYYdyQHaknHFAcuAYQMtn"><td data-page-node-id="GWDTzxmegeTFZNuurt36zk">含「的」疑似 title 推导错</td><td data-page-node-id="38oTKI1be7P8T4UX9sX2L5">18</td><td data-page-node-id="hCcul7wQj8LvM1LgFD1PVf">坑 9 复发（含一条字面即「的」）</td></tr>
+    <tr data-page-node-id="5Z1jHL07ctSh6BF2tYfMqP"><td data-page-node-id="1bBF70COSHbGEFQTNfV94o">带扩展名(.md/.html)</td><td data-page-node-id="tQCn2gGRQFb3Kb9DZmoGcN">13</td><td data-page-node-id="AR3B7OaTGijBDbg3gZaiPm">链接写了后缀</td></tr>
+    <tr data-page-node-id="yEVXKWksIDGFIUELRihjpO"><td data-page-node-id="p0LuOgU84dItcnSoIOTrkj">系统引用残留</td><td data-page-node-id="IzsL53adXmBmeDawI6i5c1">1</td><td data-page-node-id="L5fmWVAZGrBeAH66qvX7SF">04-LOG 正文 <code data-page-node-id="CxOb8LdBDpHHkXRbGP8n49">[[memory]]</code>（日志留痕不改动）</td></tr>
+  </table>
+</div>
+
+<div class="section" data-page-node-id="dGgLNpXsKTJzfoIJ16E8jf">
+  <h2 data-page-node-id="J5Ke7PGq9S9Gd3vw133TVa">结论与下一步</h2>
+  <div class="note" data-page-node-id="FzITqesKOAe1pAoEbzpVVu">
+  ✅ <b data-page-node-id="vmt9SEGAAiWkKb0NJtZdeb">本会话目标全部完成</b>：A 方案遗留的嵌套损坏（实际 141 个，非估算的约 40）已彻底清零，frontmatter 数据完整性归零损坏。<br data-page-node-id="PCra4NCfKKYoHeskJPP6CD">
+  📋 剩余 <b data-page-node-id="p7WGir8QPyCyFdXYli2Z5d">1301 条死链为历史遗留大 backlog</b>，已在 04-LOG 登记「待老强排期」，<b data-page-node-id="5uZTLYj0WEd3l7RlCcHTnj">不在本会话范围</b>。<br data-page-node-id="AgkMvUf7uO0DYoI5y2eRrC">
+  ⏭️ 待老强拍板：序 5 抚养纠纷（HY 域实测下一可用 056）、序 6 破产案件（R-GS-005~031）、1301 历史死链专项清理排期。
+  </div>
+</div>
+</body></html>
