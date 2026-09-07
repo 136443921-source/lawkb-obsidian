@@ -3,9 +3,9 @@ title: 一定要尽早用这个AI工具workbuddy的100条实操攻略
 type: concept
 created: 2026-08-17
 tags:
-  - 概念页 概念-通用
+  - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.0
-updated: 2026-08-30T15:29
+updated: 2026-09-06T23:23
 ---
 
 # 一定要尽早用这个AI工具workbuddy的100条实操攻略
