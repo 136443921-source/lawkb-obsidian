@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T15:22
-updated: 2026-08-28T19:31
+updated: 2026-09-06T09:56
 title: 安装selfimprovingagent让WorkBuddy学会自己改进
 tags: []
 maturity: 🌱种子
@@ -99,6 +99,14 @@ WorkBuddy就可以学会自我改进啦！
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/VaJ1j4pbwYo1J8g2SJQGcg)*
 
 ## 相关笔记
+- [[如何用AI构建自己的案件管理系统-2026-07-24]] (共现关键词: 2026, 自己, AI)
+- [[工具之外法律人研究AI和Skill研究的是自己的新位置]] (共现关键词: 共现, 自己, AI)
+- [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: 共现, 自己, WorkBuddy)
+- [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: 共现, WorkBuddy, AI)
+- [[memory]] (共现关键词: 共现, 2026, 关键词)
+- [[数字分身系统-架构复盘-2026-08-29]] (共现关键词: 2026, self)
+- [[.md]] (共现关键词: 共现, 2026, 关键词)
+- [[安装selfimprovingagent让WorkBuddy学会自己改进]] (共现关键词: 2026, selfimprovingagent, 安装)
 - [[R-HT-097-技术秘密界定以合同约定为准后续改进成果归属约定优先于法定]] (共现关键词: ##, 改进)
 - [[复盘与迭代建议-2026-08-26]] (共现关键词: 医疗, ##, 自动)
 - [[我用WorkBuddy三个月踩了15个坑才明白]] (共现关键词: WorkBuddy, AI)
@@ -108,15 +116,15 @@ WorkBuddy就可以学会自我改进啦！
 - [[打官司别踩坑会让自己输掉官司的几类证据-2026-08-13]] (共现关键词: ##, 自己, 关键词)
 - [[2026年国家医疗质量安全改进目标]] (共现关键词: 合同, 改进)
 - [[实施任务跟踪]] (共现关键词: 自动, AI)
-- [[安装selfimprovingagent让WorkBuddy学会自己改进]] (共现关键词: 学会, WorkBuddy, 改进)
+- [[知识库/workbuddy 使用技巧/安装selfimprovingagent让WorkBuddy学会自己改进]] (共现关键词: 学会, WorkBuddy, 改进)
 - [[小强律师AI助手自我进化报告-20260624]] (共现关键词: 改进, AI)
-- [[如何用AI构建自己的案件管理系统-2026-07-24]] (共现关键词: ##, 自己, AI)
-- [[工具之外法律人研究AI和Skill研究的是自己的新位置]] (共现关键词: 自己, AI)
-- [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: 自己, WorkBuddy, AI)
+- [[知识飞轮系统/02-提炼/公众号文章笔记/如何用AI构建自己的案件管理系统-2026-07-24]] (共现关键词: ##, 自己, AI)
+- [[笔记助手/学习笔记/工具之外法律人研究AI和Skill研究的是自己的新位置]] (共现关键词: 自己, AI)
+- [[知识库/workbuddy 使用技巧/我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: 自己, WorkBuddy, AI)
 - [[知识飞轮系统复盘报告-20260713]] (共现关键词: ##, 自动)
-- [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: ##, 自动, WorkBuddy)
-- [[装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: ##, 自动, WorkBuddy)
+- [[知识库/workbuddy 使用技巧/WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: ##, 自动, WorkBuddy)
+- [[知识库/workbuddy 使用技巧/装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: ##, 自动, WorkBuddy)
 - [[知识飞轮系统/03-连接/概念页/用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: ##, 自动)
-- [[memory]] (共现关键词: ##, self)
+- [[MEMORY]] (共现关键词: ##, self)
 - [[设备采购安装合同模板-审查要点-2026-08-05]] (共现关键词: 安装, ##)
 - [[Obsidian极简安装指南]] (共现关键词: 安装, ##)
