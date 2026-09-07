@@ -5,7 +5,7 @@ tags:
   - AI
   - 知识库
 created: 2026-05-28T10:51
-updated: 2026-09-03T23:31
+updated: 2026-09-06T09:56
 title: 如何让AI帮你打理Obsidian知识库
 maturity: 🌱种子
 source: ""
@@ -157,23 +157,24 @@ npminstall luna-jmy/thinkdokit-skills
 
 
 ## 相关笔记
+- [[装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: 共现, WorkBuddy, 关键词)
 - [[小强律师数字分身系统/数字分身系统搭建/skill技能设计文档/小强律师数字分身系统-使用指导手册-v3.0.0]] (共现关键词: Obsidian, 技能)
 - [[ln01_青年律师如何从0到1建立万粉公众号]] (共现关键词: ##, 如何)
 - [[v1法律合同审查智能体迭代技能]] (共现关键词: 技能, 关键词, 共现)
-- [[律师用AI梳理证据链的5个重点附提示词]] (共现关键词: AI, 证据, 共现)
-- [[每日学习笔记-2026-07-07]] (共现关键词: 笔记, 关键词, 共现)
-- [[伤残等级评定标准笔记-2026]] (共现关键词: 笔记, 关键词, 共现)
-- [[LawKB笔记frontmatter标准模板]] (共现关键词: 笔记, 关键词, 共现)
+- [[提示词库/律师用AI梳理证据链的5个重点附提示词]] (共现关键词: AI, 证据, 共现)
+- [[智能体技能库/蓝队律师合同审查/每日学习笔记-2026-07-07]] (共现关键词: 笔记, 关键词, 共现)
+- [[学习笔记/伤残等级评定标准笔记-2026]] (共现关键词: 笔记, 关键词, 共现)
+- [[知识库/LawKB笔记frontmatter标准模板]] (共现关键词: 笔记, 关键词, 共现)
 - [[月度回灌日志]] (共现关键词: 笔记, 共现, 关键词)
 - [[小强律师数字分身系统/数字分身系统搭建/法律类skill 配置迭代-九阳神功/用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: 笔记, ##, Obsidian)
-- [[人伤专业领域法律知识库-总览]] (共现关键词: 知识库, 关键词, 共现)
-- [[法律职业知识库设计方案]] (共现关键词: ##, 知识库, 关键词)
-- [[装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: 技能, Skills, WorkBuddy)
+- [[人伤专业领域/人伤专业领域法律知识库-总览]] (共现关键词: 知识库, 关键词, 共现)
+- [[Clippings/法律职业知识库设计方案]] (共现关键词: ##, 知识库, 关键词)
+- [[知识库/workbuddy 使用技巧/装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: 技能, Skills, WorkBuddy)
 - [[小强律师数字分身系统/数字分身系统搭建/skill技能设计文档/律师数字分身系统技能配置迭代方案 1.0]] (共现关键词: 证据, 技能)
 - [[数字分身系统_技能配置清单_20260527]] (共现关键词: 技能, ##)
 - [[谈案律师技能设计方案]] (共现关键词: 证据, 技能)
-- [[律师如何避免执业违规]] (共现关键词: 证据, 如何)
-- [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: 如何, WorkBuddy, AI)
+- [[笔记助手/学习笔记/贵阳贵安律师综合素质能力提升培训/律师如何避免执业违规]] (共现关键词: 证据, 如何)
+- [[笔记助手/学习笔记/AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: 如何, WorkBuddy, AI)
 - [[换电脑后WorkBuddy如何迁移]] (共现关键词: WorkBuddy, 如何)
 - [[WorkBuddy提示词速查手册50个可复制的指令模板]] (共现关键词: WorkBuddy, AI)
 - [[WorkBuddy-Obsidian-测试]] (共现关键词: Obsidian, WorkBuddy)
@@ -183,6 +184,6 @@ npminstall luna-jmy/thinkdokit-skills
 - [[小哲AI 学伴系统/小哲AI 学伴智能体搭建方案]] (共现关键词: 知识库, ##, AI)
 - [[小强律师数字分身系统/07-系统搭建与Skill配置/法律类skill 配置迭代-九阳神功/用ObsidianCodex搭一个会主动思考的个人知识库|用ObsidianCodex搭一个会主动思考的个人知识库]] 
 - ClaudeCodeObsidian个人知识库从工具到思维的完整指南 
-- [[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|[[装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 
-- [[律师用AI梳理证据链的5个重点附提示词|律师用AI梳理证据链的5个重点附提示词]] 
-- [[README|README]] 
+- [[知识库/workbuddy 使用技巧/装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|[[知识库/workbuddy 使用技巧/装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞]]|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞|装上这7个Skills你的WorkBuddy直接起飞 
+- [[提示词库/律师用AI梳理证据链的5个重点附提示词|律师用AI梳理证据链的5个重点附提示词]] 
+- [[知识飞轮系统/05-调用/协同命中/README|README]] 

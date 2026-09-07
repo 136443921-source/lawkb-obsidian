@@ -1,6 +1,6 @@
 ---
 created: 2026-07-30T12:40
-updated: 2026-08-28T19:31
+updated: 2026-09-06T09:56
 tags:
   - 连接器
   - WorkBuddy
@@ -309,6 +309,8 @@ WorkBuddy 的迁移本质上就是搬一个目录：```
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/UfcoG5_TZHM45yIJQzZJjw)*
 
 ## 相关笔记
+- [[2026-08-29]] (共现关键词: 公司, git)
+- [[2026-08-23]] (共现关键词: 公司, git)
 - [[法律SOP蒸馏器]] (共现关键词: WorkBuddy, 公司)
 - [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: WorkBuddy, 公司)
 - [[WorkBuddy提示词速查手册50个可复制的指令模板]] (共现关键词: WorkBuddy, 公司)
