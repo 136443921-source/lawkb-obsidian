@@ -10,7 +10,7 @@ tags:
   - 继承覆盖
   - P0
 created: 2026-08-30T19:20
-updated: 2026-08-30T19:20
+updated: 2026-09-06T09:56
 aliases:
   - 继承效果评估
   - legal-base继承评估

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案件时间轴图谱_厚德基金会诉百益服务中心</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; font-size: 12px; color: #1a1a1a; background: #fff; }
+  .page { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 16mm 15mm; background: #fff; }
+  h1 { font-size: 16px; font-weight: 700; text-align: center; margin-bottom: 6px; color: #1a1a1a; }
+  .subtitle { text-align: center; font-size: 11px; color: #888; margin-bottom: 18px; }
+  .columns { display: flex; gap: 16px; }
+  .col { flex: 1; min-width: 0; }
+  /* Timeline track */
+  .track { position: relative; padding-left: 28px; }
+  .track::before { content: ''; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 3px; border-radius: 2px; }
+  /* Phase headers */
+  .phase-title { font-size: 13px; font-weight: 600; margin: 14px 0 8px 0; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+  /* Event card */
+  .event { position: relative; margin-bottom: 10px; padding: 8px 10px; border-radius: 6px; border: 0.5px solid #e0e0e0; background: #fff; }
+  .event::before { content: ''; position: absolute; left: -22px; top: 10px; width: 11px; height: 11px; border-radius: 50%; border: 2.5px solid #fff; box-shadow: 0 0 0 1.5px #aaa; background: #aaa; z-index: 1; }
+  .event.good::before { background: #1d9e75; box-shadow: 0 0 0 1.5px #1d9e75; }
+  .event.bad::before { background: #e24b4a; box-shadow: 0 0 0 1.5px #e24b4a; }
+  .event.neutral::before { background: #f0a818; box-shadow: 0 0 0 1.5px #f0a818; }
+  .event .date { font-size: 11px; font-weight: 600; color: #444; margin-bottom: 3px; }
+  .event .desc { font-size: 11.5px; line-height: 1.5; color: #333; }
+  .event .tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-top: 4px; }
+  /* Phase colors */
+  .phase-fund .phase-title { background: #e6f1fb; color: #185fa5; }
+  .phase-fund .track::before { background: #378add; }
+  .phase-sign .phase-title { background: #e1f5ee; color: #0f6e56; }
+  .phase-sign .track::before { background: #1d9e75; }
+  .phase-pay .phase-title { background: #faf0e1; color: #854f0b; }
+  .phase-pay .track::before { background: #ba7517; }
+  .phase-breach .phase-title { background: #fcebeb; color: #a32d2d; }
+  .phase-breach .track::before { background: #e24b4a; }
+  .phase-litig .phase-title { background: #eeeafe; color: #534ab7; }
+  .phase-litig .track::before { background: #7f77dd; }
+  .tag.good { background: #eaf3de; color: #27500a; }
+  .tag.bad { background: #fcebeb; color: #a32d2d; }
+  .tag.neutral { background: #f1efe8; color: #444441; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; padding-top: 10px; border-top: 0.5px solid #e0e0e0; font-size: 11px; color: #666; }
+  .legend span { display: flex; align-items: center; gap: 4px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+  .note { font-size: 10.5px; color: #888; margin-top: 12px; padding: 6px 10px; background: #f9f9f7; border-radius: 4px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>贵州省厚德公益基金会诉百益服务中心合同纠纷案</h1>
+  <div class="subtitle">案件时间轴图谱　|　案号：（2025）黔0325民初230号之一</div>
+
+  <div class="columns">
+    <!-- LEFT COLUMN -->
+    <div class="col">
+
+      <div class="phase-fund">
+        <div class="phase-title">　筹款期　</div>
+        <div class="track">
+          <div class="event good">
+            <div class="date">2024年7月24–26日</div>
+            <div class="desc">百益服务中心在厚德基金会腾讯公益平台"社工黔行·爱助益餐"项目下建立"一起捐"，筹集善款<strong>325,000元</strong>，累计110人次捐赠</div>
+            <div class="tag good">利好 ✅ 资金来源合法</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-sign">
+        <div class="phase-title">　签约期　</div>
+        <div class="track">
+          <div class="event good">
+            <div class="date">2024年8月1日</div>
+            <div class="desc">厚德基金会（甲方）与百益服务中心（乙方）签订《<strong>社工黔行·爱助益餐项目合作协议书</strong>》，约定甲方授权乙方发起一起捐，筹集"长者食堂"助餐项目资金</div>
+            <div class="tag good">利好 ✅ 合同关系成立</div>
+          </div>
+          <div class="event good">
+            <div class="date">2024年8月22日</div>
+            <div class="desc">双方通过腾讯电子签平台签订《<strong>贵州省厚德公益基金会公益筹款项目捐赠协议书</strong>》，明确拨款条件、资金用途及违约责任条款</div>
+            <div class="tag good">利好 ✅ 拨款条件明确</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-pay">
+        <div class="phase-title">　付款期　</div>
+        <div class="track">
+          <div class="event good">
+            <div class="date">2024年9月4日</div>
+            <div class="desc">厚德基金会依约向百益服务中心对公账户拨付项目资金 <strong>290,000元</strong>（银行转账）</div>
+            <div class="tag good">利好 ✅ 已按约履行付款义务</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- RIGHT COLUMN -->
+    <div class="col">
+
+      <div class="phase-breach">
+        <div class="phase-title">　违约期　</div>
+        <div class="track">
+          <div class="event neutral">
+            <div class="date">2024年9月20日</div>
+            <div class="desc">李丽（法定代表人）按马婵娟要求从百益服务中心对公账户取出 <strong>100,000元</strong>，经易兴兰账户转给陈应林（备注"还款"）</div>
+            <div class="tag bad">利空 ⚠️ 资金被违规转移</div>
+          </div>
+          <div class="event neutral">
+            <div class="date">2024年9月23–24日</div>
+            <div class="desc">李丽取出 <strong>100,000元</strong>交给李佳豪（监事），李佳豪于9月24日转入马婵娟账户（备注"货款"）</div>
+            <div class="tag bad">利空 ⚠️ 资金被违规转移</div>
+          </div>
+          <div class="event neutral">
+            <div class="date">2024年11月21日</div>
+            <div class="desc">百益服务中心投保公众责任险，保险费 <strong>780元</strong>；另支出工人工资19,000元、物资和电费24,084.17元，合计约<strong>43,864.17元</strong>用于项目</div>
+            <div class="tag neutral">中性 ⚠️ 部分履约（约15%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-litig">
+        <div class="phase-title">　诉讼期　</div>
+        <div class="track">
+          <div class="event neutral">
+            <div class="date">2025年2月5日</div>
+            <div class="desc">一审法院（道真仡佬族苗族自治县人民法院）立案受理</div>
+          </div>
+          <div class="event bad">
+            <div class="date">2025年4月28日</div>
+            <div class="desc">一审法院作出（2025）黔0325民初230号<strong>之一</strong>民事裁定：以"本案涉嫌经济犯罪"为由，裁定<strong>驳回起诉</strong>，适用《经济犯罪嫌疑规定》第11条</div>
+            <div class="tag bad">利空 ❌ 一审裁定适用法律错误</div>
+          </div>
+          <div class="event neutral">
+            <div class="date">2025年4月30日</div>
+            <div class="desc">厚德基金会收到民事裁定书，上诉期限<strong>10日内</strong>（至2025年5月10日）</div>
+          </div>
+          <div class="event good">
+            <div class="date">2025年5月（上诉期）</div>
+            <div class="desc">厚德基金会向<strong>贵州省遵义市中级人民法院</strong>提起上诉，请求撤销原裁定、指令一审法院审理本案</div>
+            <div class="tag good">利好 ✅ 上诉策略：适用《经济犯罪嫌疑规定》第1条、第10条"分开审理"</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i style="background:#1d9e75"></i> 利好（对上诉人有利）</span>
+    <span><i style="background:#f0a818"></i> 中性（需重点关注）</span>
+    <span><i style="background:#e24b4a"></i> 利空（对上诉人不利）</span>
+  </div>
+
+  <div class="note">
+    ⚠️ <strong>自检提示：</strong>本文件为AI生成初稿，所有法条和事实请依据官方数据库（北大法宝、Alpha数据库等）进行二次核对。本案核心争议：一审裁定适用《经济犯罪嫌疑规定》第11条是否正确，还是应适用第1条、第10条"分开审理"原则。
+  </div>
+</div>
+</body>
+</html>

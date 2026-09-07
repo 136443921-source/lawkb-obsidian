@@ -1,0 +1,132 @@
+{
+  "schema": "case-state/v1",
+  "caseId": "6658",
+  "caseNo": "(2026)黔0330民初6658号",
+  "title": "丁戊祥诉刘九零、刘维、黄茂姣、习水县欧派木门杉王店吊顶买卖合同纠纷案",
+  "court": "贵州省习水县人民法院 · 速裁法庭",
+  "judge": "龙雅清（独任审判员）",
+  "procedure": "简易程序",
+  "partyRole": "被告方",
+  "counselRole": "代书（未正式代理）",
+  "client": ["刘九零", "刘维"],
+  "domain": "建设工程/买卖合同",
+  "status": "进行中",
+  "stage": {
+    "current": 4,
+    "code": "trial",
+    "name": "④庭审查庭",
+    "enteredAt": "2026-09-01",
+    "note": "第一次开庭已毕，择期宣判；庭后补充意见呈递中"
+  },
+  "gates": {
+    "G0": { "name": "收案门禁", "status": "pass", "note": "已建档，案件笔记入 LawKB" },
+    "G1": { "name": "检索门禁", "status": "pass", "note": "07 法律检索报告、22 类案检索报告已出" },
+    "G2": { "name": "文书门禁", "status": "pass", "note": "01-05 答辩/举证/质证/发问/代理词已提交" },
+    "G3": { "name": "庭审门禁", "status": "active", "note": "9/1 开庭已毕，23 号笔录研读已出；择期宣判未结" },
+    "G4": { "name": "客户门禁", "status": "active", "note": "34 号交当事人核验中，待核验通过即呈递" },
+    "G5": { "name": "程序门禁", "status": "active", "note": "24/25/26 已提交，33 号调取申请已获准履行" },
+    "G6": { "name": "风控门禁", "status": "pass", "note": "34/35 号 LTI 校验 PASS（0 REJECT）" },
+    "G7": { "name": "结案回流", "status": "todo", "note": "待判决生效后启动经验回填" }
+  },
+  "deadlines": [
+    {
+      "id": "d1",
+      "name": "34 号庭后补充意见（证据⑨强化意见一版）呈递",
+      "due": "2026-09-07",
+      "type": "约定",
+      "level": "P0",
+      "state": "pending",
+      "basis": "2026-09-05 老强拍板呈递时机定为星期一",
+      "note": "与 31/33 号一并归整呈递；呈递清单待拍板"
+    },
+    {
+      "id": "d2",
+      "name": "撤诉裁定送达前窗口期处置（19 号备用稿）",
+      "due": null,
+      "type": "触发型",
+      "level": "P1",
+      "state": "armed",
+      "basis": "原告若申请撤诉即触发",
+      "note": "19 号《对原告申请撤诉的意见》备用，撤诉不妨碍审查+保留另诉/投诉/控告权利"
+    },
+    {
+      "id": "d3",
+      "name": "一审判决上诉期",
+      "due": null,
+      "type": "触发型",
+      "level": "P0",
+      "state": "armed",
+      "basis": "判决书送达之日起十五日（条文序号交付前须经 LTI 核验）",
+      "note": "择期宣判中，送达日起算；裁定为十日"
+    },
+    {
+      "id": "d4",
+      "name": "类案 R1-R5 黔2627 以外 3 案庭审引用前原文核验",
+      "due": null,
+      "type": "内部",
+      "level": "P1",
+      "state": "pending",
+      "basis": "防幻觉铁律：引用前必核原文",
+      "note": "未完成 C4 核验不得当庭引用"
+    }
+  ],
+  "timeline": [
+    { "date": "2026-07-14", "event": "刘维与丁戊祥通话录音（10分50秒，证据⑦）" },
+    { "date": "2026-08-19", "event": "丁戊祥《情况说明》，自认黄茂姣带客选货付订金" },
+    { "date": "2026-08-24", "event": "刘维与丁戊祥通话（3分13秒，证据⑧）；同日法官电话询问丁戊祥（证据⑨）" },
+    { "date": "2026-08-26", "event": "庭前准备报告 v3；类案检索 5 规则" },
+    { "date": "2026-09-01", "event": "第一次开庭（速裁法庭 15:00），实体审理至择期宣判", "key": true },
+    { "date": "2026-09-02", "event": "31 号 v4 纠错、32 号 v2 委托书矛盾分析" },
+    { "date": "2026-09-03", "event": "33 号调取法官询问录音笔录申请书定稿" },
+    { "date": "2026-09-05", "event": "真卷核验重大重构：冒名诉讼降补强，实体合同相对性升主攻；34 号四轮推翻改写为证据⑨强化意见一版", "key": true }
+  ],
+  "nextActions": [
+    "34 号交刘九零/刘维核验，核验通过即呈递（星期一）",
+    "呈递清单与 31/33 号一并归整，待老强拍板后执行",
+    "跟踪择期宣判时间节点，送达即起算上诉期",
+    "持续提示：程序异议属平行备位轨道，不遮蔽实体防御主线（01/05 号）"
+  ],
+  "risks": [
+    "真卷显示丁戊祥委托律师陈宇、妻子盖章、当庭确认授权，冒名诉讼驳回起诉路径被法庭实际否定，程序战成功概率有限",
+    "证据⑤《未起诉说明》已被丁戊祥当庭陈述推翻，不得再作程序战核心依据",
+    "刘九零/刘维当庭认可 75 元阳角，金额层面存在部分自认，须严守防自认铁律",
+    "34 号前后四轮推翻重写，版本混乱风险，呈递前须确认最终版本为证据⑨强化意见一版"
+  ],
+  "stance": {
+    "blue": 20,
+    "trend": "flat",
+    "reason": "实体防御有当庭自认支撑（刘维自认房子包给黄茂姣仅选货、黄茂姣代付定金及11万），但程序战被法庭否定、金额层面存在部分自认，整体略优于持平"
+  },
+  "meta": {
+    "schema": "case-meta/v1",
+    "agents": [
+      {"stage":"①接案建档","gate":"G0","role":"建档/决策留痕","agent":"CLM case-state.json + decision-capture","status":"已接入","artifacts":["/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/丁戊祥诉刘九零吊顶买卖合同纠纷案-案件笔记.md（案情笔录/案件备忘录）"]},
+      {"stage":"②检索研究","gate":"G1","role":"法律检索","agent":"元典MCP(yuandian-mcp) + 北大法宝MCP(pkulaw)","status":"已接入","note":"二源互补","artifacts":["/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/07_法律检索报告.docx"]},
+      {"stage":"②检索研究","gate":"G1","role":"类案检索","agent":"元典case vector + 北大法宝MCP + 法随案例库MCP","status":"已接入","note":"三源互补","artifacts":["/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/22_类案检索报告.docx"]},
+      {"stage":"②检索研究","gate":"G1","role":"检索归档","agent":"ima 知识库","status":"已接入","artifacts":["/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/丁戊祥诉刘九零吊顶买卖合同纠纷案-案件笔记.md"]},
+      {"stage":"③法律文书起草","gate":"G2","role":"法律文书（庭审六件套）","agent":"法律文书docx交付流水线 + LTI文本监控器","status":"已接入","artifacts":["/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/01_民事答辩状0810.docx","/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/02_举证清单.docx","/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/03_质证意见.docx","/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/04_庭审发问提纲.docx","/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/05_代理词.docx","/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/06_庭审预案.docx"]},
+      {"stage":"④庭审查庭","gate":"G3","role":"模拟法庭/审判要件","agent":"mock-trial-control-center + 审判要件卡拆卡流水线 + 本会话专家","status":"已接入"},
+      {"stage":"⑤客户协作","gate":"G4","role":"汇报/推送","agent":"案件工作汇报 + 调解和解 + CLM send_client_brief + agent-mail","status":"已接入（邮件通道待配webhook）"},
+      {"stage":"⑥程序执行","gate":"G5","role":"程序推进","agent":"案件全生命周期·程序推进包","status":"已建"},
+      {"stage":"⑦风控归档","gate":"G6/G8","role":"合规风控","agent":"LTI + lawkb-legal-consistency-audit + G8非诉专项","status":"已接入"},
+      {"stage":"结案回流","gate":"G7","role":"经验沉淀","agent":"mind-distill + LawKB 知识飞轮","status":"已接入"},
+      {"stage":"运维","gate":"-","role":"入口/监测","agent":"xiaoqiang-cockpit-hub + workbuddy-credit-monitor","status":"已接入"}
+    ]
+  },
+  "publicView": {
+    "stageText": "一审已开庭，等待法院宣判",
+    "done": [
+      "2026-09-01 已参加第一次开庭",
+      "已向法院提交答辩状、举证清单、质证意见、代理词等诉讼材料",
+      "已提交调取证据申请并获法院准许"
+    ],
+    "next": "呈递庭后补充意见（预计 2026-09-07），其后等待法院宣判",
+    "clientTodo": [
+      "核验并签署《庭后补充意见（二）》，确认无误后由我们代为呈递",
+      "收到法院判决书后第一时间告知我们，以便计算上诉期限"
+    ],
+    "contact": "陈友强"
+  },
+  "updatedAt": "2026-09-05",
+  "source": "桌面真卷「小强律师办案系统/丁戊祥诉刘九零吊顶案」+ LawKB 案件笔记（2026-09-05 真卷重构版）"
+}

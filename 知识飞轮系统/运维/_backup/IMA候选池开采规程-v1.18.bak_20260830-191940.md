@@ -5,7 +5,13 @@ created: 2026-08-30
 applies_to: automation-1783920420205（每日知识摄入 v1.18）
 supersedes: 原 SELECT_3 之 S1「首页候选不足 3 且库较大时用 offset 翻页补足」（该条长期未被执行）
 tools: 知识飞轮系统/03-连接/scripts/intake_runner.py（is_folder / filter_articles / unseen_articles / should_keep_paging / pending_folders / crawl_report）
-tags: [知识飞轮, IMA, 摄入流水线, 翻页铁律, P0]
+tags:
+  - 知识飞轮
+  - IMA
+  - 摄入流水线
+  - 翻页铁律
+  - P0
+updated: 2026-09-06T09:56
 ---
 
 # IMA 候选池开采规程 v1.18
@@ -122,3 +128,10 @@ print(crawl_report(stats_by_lib))
 
 改动均在 `intake_runner.py`（备份 `03-连接/scripts/_backup/intake_runner.py.bak_20260830-153320`）
 与本规程引用。回滚只需 `cp` 备份覆盖，prompt 的 v1.18 段落删除即可，无数据删除风险。
+
+## 相关笔记
+- [[新增文件列表-2026-07-14]] (共现关键词: 文件夹, 根目录)
+- [[IMA摄入量衰减诊断报告-2026-08-30.bak_20260830-191940]] (共现关键词: ---, 工伤, 摄入)
+- [[IMA摄入量衰减诊断报告-2026-08-30]] (共现关键词: ---, 工伤, 摄入)
+- [[IMA可开采清单-2026-08-30]] (共现关键词: ---, 开采, IMA)
+- [[IMA候选池开采规程-v1.18]] (共现关键词: ---, 工伤, 规程)
