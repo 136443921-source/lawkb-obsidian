@@ -3,9 +3,9 @@ title: 法律文书审查助手（非合同类）skill 配置说明书
 type: concept
 created: 2026-08-17
 tags:
-  - 概念页 概念-合同
+  - 概念-合同
 generated_by: 断链消解器resolve_broken_links v1.0
-updated: 2026-08-30T15:29
+updated: 2026-09-06T23:23
 ---
 
 # 法律文书审查助手（非合同类）skill 配置说明书
