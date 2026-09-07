@@ -13,13 +13,12 @@ key_finding: <一句话核心发现>
 value: <本次调用对分身的增量价值>
 source_skill: 蓝队律师合同审查
 created: 2026-08-03T11:36
-updated: 2026-08-28T19:31
+updated: 2026-09-06T23:11
 tags:
   - 合同法
   - 2026
   - 审查
   - 调用
-  - 
   - 规则
 ---
 
@@ -36,4 +35,6 @@ tags:
 > ⚠️ 本文件为格式模板（_template.md），不计入真实调用记录统计。真实记录命名：`YYYYMMDD-<主题>.md`。
 
 ## 相关笔记
-- [[_template]] (共现关键词: template, ..., 调用)
+- [[_template]] (共现关键词: ..., 2026, template)
+- [[LEARNINGS]] (共现关键词: ---, ...)
+- [[知识飞轮系统/05-调用/合同审查调用记录/_template]] (共现关键词: template, ..., 调用)
