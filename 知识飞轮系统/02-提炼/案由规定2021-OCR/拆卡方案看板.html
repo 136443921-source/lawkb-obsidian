@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《新民事案件案由规定理解与适用（上册）》拆卡方案看板 v1.0</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --card2:#1c2029; --bd:#262b36;
+    --tx:#e6e9ef; --tx2:#9aa4b2; --tx3:#6b7484;
+    --red:#ff5c5c; --green:#3ddc97; --blue:#5b9cff; --gold:#ffc857; --purple:#b48cff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--tx);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:32px 20px 60px}
+  .wrap{max-width:1180px;margin:0 auto}
+  header{border-bottom:1px solid var(--bd);padding-bottom:22px;margin-bottom:28px}
+  h1{font-size:26px;font-weight:700;letter-spacing:.5px}
+  .sub{color:var(--tx2);font-size:14px;margin-top:8px}
+  .verdict{margin-top:18px;background:linear-gradient(90deg,rgba(91,156,255,.14),rgba(91,156,255,0));border-left:3px solid var(--blue);padding:14px 18px;border-radius:0 8px 8px 0;font-size:16px}
+  .verdict b{color:var(--blue)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:24px 0 32px}
+  .stat{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px}
+  .stat .n{font-size:26px;font-weight:700;color:var(--tx)}
+  .stat .l{font-size:12px;color:var(--tx2);margin-top:4px}
+  .stat.g .n{color:var(--green)} .stat.r .n{color:var(--red)} .stat.b .n{color:var(--blue)} .stat.y .n{color:var(--gold)}
+  h2{font-size:19px;margin:38px 0 16px;display:flex;align-items:center;gap:9px}
+  h2::before{content:"";width:4px;height:18px;background:var(--blue);border-radius:2px}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;margin-bottom:16px}
+  .alert{background:rgba(255,92,92,.08);border:1px solid rgba(255,92,92,.35)}
+  .alert h3{color:var(--red);font-size:16px;margin-bottom:10px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{background:var(--card2);color:var(--tx2);font-weight:600;text-align:left;padding:11px 12px;border-bottom:1px solid var(--bd);white-space:nowrap}
+  td{padding:11px 12px;border-bottom:1px solid var(--bd);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .yes{color:var(--green);font-weight:600} .no{color:var(--red);font-weight:600}
+  .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:600;margin-right:5px}
+  .t-p0{background:rgba(255,92,92,.16);color:var(--red)}
+  .t-p1{background:rgba(255,200,87,.16);color:var(--gold)}
+  .t-p2{background:rgba(155,164,178,.16);color:var(--tx2)}
+  .layers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .layer{background:var(--card2);border:1px solid var(--bd);border-radius:10px;padding:16px;position:relative}
+  .layer .badge{position:absolute;top:-10px;left:14px;background:var(--blue);color:#0f1115;font-size:11px;font-weight:800;padding:2px 10px;border-radius:20px}
+  .layer.p .badge{background:var(--purple)} .layer.g .badge{background:var(--green)}
+  .layer h4{font-size:15px;margin:6px 0 8px}
+  .layer .meta{font-size:12px;color:var(--tx2)}
+  .layer ul{margin:10px 0 0 16px;font-size:12.5px;color:var(--tx2)}
+  .flow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .box{flex:1;min-width:150px;background:var(--card2);border:1px solid var(--bd);border-radius:9px;padding:13px}
+  .box .t{font-size:13.5px;font-weight:700;margin-bottom:5px}
+  .box .d{font-size:12px;color:var(--tx2)}
+  .arrow{display:flex;align-items:center;color:var(--tx3);font-size:18px}
+  .dec{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+  .dec .card{margin:0}
+  .opt{padding:9px 12px;border:1px solid var(--bd);border-radius:8px;margin-top:8px;font-size:13px;background:rgba(255,255,255,.02)}
+  .opt.rec{border-color:rgba(61,220,151,.45);background:rgba(61,220,151,.07)}
+  .opt b{color:var(--green)}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--bd);color:var(--tx3);font-size:12px;text-align:center}
+  code{background:var(--card2);padding:1px 6px;border-radius:4px;font-size:12px;color:var(--gold)}
+  @media(max-width:860px){.layers{grid-template-columns:1fr}.arrow{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>📚 《最高人民法院新民事案件案由规定理解与适用（上册）》拆卡方案</h1>
+  <div class="sub">2021-11 杨万明 主编 · 610 页 · 喂给小强律师数字分身系统 · 方案 v1.0 · 2026-09-06</div>
+  <div class="verdict">
+    <b>一句话结论：</b>这本书能吃掉你的<b>合同线</b>（吊顶 / 雅菲 / 面瘫协议 / 担保 / 基金会 / 名誉权），
+    但<b>吃不掉你的人伤线</b>——医疗损害责任、交通事故、股权转让、执行异议之诉<b>全在下册</b>。
+    且书内案由编号<b>已于 2026-01-01 整体作废</b>，拆卡必须带版本校正层。
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat b"><div class="n">610</div><div class="l">PDF 页数</div></div>
+  <div class="stat"><div class="n">46.7万</div><div class="l">OCR 提取字符</div></div>
+  <div class="stat g"><div class="n">610/610</div><div class="l">OCR 完成率</div></div>
+  <div class="stat y"><div class="n">0</div><div class="l">原生文本层（纯扫描）</div></div>
+  <div class="stat r"><div class="n">206</div><div class="l">案由已被增删改</div></div>
+</div>
+
+<h2>🔴 头号风险：版本漂移（已实地核实，非记忆）</h2>
+<div class="card alert">
+  <h3>⚠️ 本书解释的是 2020 版案由，现行已是 2025 第三次修正版</h3>
+  <table>
+    <tr><th style="width:22%">维度</th><th style="width:39%">本书（2020 版 · 法〔2020〕346号）</th><th style="width:39%">现行（2025 版 · 法〔2025〕226号）</th></tr>
+    <tr><td>施行日期</td><td>2021-01-01</td><td class="no">2026-01-01（已施行 8 个月）</td></tr>
+    <tr><td>编排体系</td><td>十一部分</td><td>十二部分（新增「数据·网络虚拟财产」+「特殊诉讼程序」）</td></tr>
+    <tr><td>案由总数</td><td>11 / 54 / 473 / 391 ＝ <b>929</b></td><td>12 / 59 / 514 / 470 ＝ <b>1055</b></td></tr>
+    <tr><td>变更幅度</td><td>—</td><td class="no">206 个（增 / 删 / 升级 / 降级）</td></tr>
+  </table>
+  <div style="margin-top:14px;font-size:13.5px;color:var(--tx2)">
+    <b style="color:var(--gold)">已核实的对撞样例（元典核填·现行有效）：</b>
+    <div style="margin-top:8px">承揽合同纠纷 <code>114 → 119</code> ｜ 建设工程合同纠纷 <code>115 → 120</code>（装饰装修仍在第7项）</div>
+    <div>执行异议之诉 <code>471 → 512</code> ｜ 医疗损害责任项下「侵害患者知情同意权责任纠纷」<span style="color:var(--red)">已变更为「医疗诊疗责任纠纷」</span></div>
+    <div style="margin-top:10px;color:var(--tx)">➡️ <b>硬性规则：每张卡必须同时标注 2020 版与 2025 版编号 + version_status，未做版本核填不得交付。</b></div>
+  </div>
+</div>
+
+<h2>🎯 上册 610 页 × 你的在办案件（覆盖矩阵）</h2>
+<div class="card" style="padding:0;overflow:hidden">
+  <table>
+    <tr><th style="width:8%">优先级</th><th style="width:24%">你的在办事务</th><th style="width:34%">相关案由</th><th style="width:14%">正文位置</th><th style="width:20%">上册有吗</th></tr>
+    <tr><td><span class="tag t-p0">P0</span></td><td>吊顶案 6658号（被告·定性之争）</td><td>买卖 / <b>承揽</b> / <b>建设工程（装饰装修）</b></td><td>PDF 283 / 381 / 384</td><td class="yes">✅ 有</td></tr>
+    <tr><td><span class="tag t-p0">P0</span></td><td>雅菲案 6660号</td><td>买卖合同纠纷</td><td>PDF 283-288</td><td class="yes">✅ 有</td></tr>
+    <tr><td><span class="tag t-p0">P0</span></td><td>林震巍名誉权事件</td><td>名誉权纠纷</td><td>PDF 110-123</td><td class="yes">✅ 有</td></tr>
+    <tr><td><span class="tag t-p0">P0</span></td><td>面瘫针灸协议合规</td><td>医疗服务合同纠纷</td><td>PDF 431</td><td class="yes">✅ 有</td></tr>
+    <tr><td><span class="tag t-p1">P1</span></td><td>王德明担保合同</td><td>保证合同 / 抵押权 / 质权</td><td>PDF 351 / 248 / 257</td><td class="yes">✅ 有（实体部分）</td></tr>
+    <tr><td><span class="tag t-p1">P1</span></td><td>厚德基金会法律服务</td><td><b>公益事业捐赠合同</b> / 赠与合同</td><td>PDF 344</td><td class="yes">✅ 有</td></tr>
+    <tr><td><span class="tag t-p1">P1</span></td><td>航合物流用工</td><td>劳动争议 / 劳务合同 / 竞业限制</td><td>PDF 572 / 440 / 556</td><td class="yes">✅ 有</td></tr>
+    <tr><td><span class="tag t-p2">P2</span></td><td>人伤通用</td><td>生命权、身体权、健康权纠纷</td><td>PDF 111</td><td class="yes">✅ 有</td></tr>
+    <tr><td><span class="tag t-p2">P2</span></td><td>娄山华庭租房合同</td><td>房屋租赁合同纠纷</td><td>PDF 320-326</td><td class="yes">✅ 有</td></tr>
+    <tr><td><span class="tag t-p1">P1</span></td><td>韩杰医生医疗事故罪再审</td><td>医疗损害责任纠纷</td><td>书页 992</td><td class="no">❌ 下册</td></tr>
+    <tr><td><span class="tag t-p0">P0</span></td><td>航合物流 9·01 致死事故</td><td>机动车交通事故责任纠纷</td><td>书页 992+</td><td class="no">❌ 下册</td></tr>
+    <tr><td><span class="tag t-p1">P1</span></td><td>至善公司 52% 股权转让</td><td>与公司有关纠纷（股权转让）</td><td>书页 706</td><td class="no">❌ 下册</td></tr>
+    <tr><td><span class="tag t-p1">P1</span></td><td>王德明案执行异议</td><td>执行程序中的异议之诉</td><td>书页 1081+</td><td class="no">❌ 下册</td></tr>
+  </table>
+</div>
+<div class="card" style="border-color:rgba(255,92,92,.3);background:rgba(255,92,92,.05)">
+  <b style="color:var(--red)">💡 判断：</b>上册能直接支援 <b>9 项</b>在办事务（含 P0 四项）；
+  但你的主战场人伤执业（医疗事故 / 工伤 / 交通事故）<b>全部落在下册</b>。
+  建议上册先拆批次 1~2，<b>同步把下册纳入采购清单</b>。
+</div>
+
+<h2>🧭 核心判断：这本书不能按「裁判规则卡」拆</h2>
+<div class="card">
+  <div style="font-size:14px;color:var(--tx2);margin-bottom:14px">
+    现有库 943 张卡回答的是「该怎么判」；这本书回答的是「<b style="color:var(--tx)">该定什么案由 / 案由之间怎么分界</b>」。
+    两者语义不同，硬塞在一起会稀释卡的纯度。因此采用三层结构：
+  </div>
+  <div class="layers">
+    <div class="layer p"><span class="badge">L0</span>
+      <h4>案由体系总表<br>+ 版本漂移对照表</h4>
+      <div class="meta">约 2 张 · 落 03-连接/概念页</div>
+      <ul><li>这个案由现在叫什么、几号</li><li>2020 ↔ 2025 全量映射</li><li>零成本（OCR 前 20 页即得）</li></ul>
+    </div>
+    <div class="layer"><span class="badge">L1 · 主力</span>
+      <h4>案由路由卡<br><code style="font-size:11px">R-AY-001</code></h4>
+      <div class="meta">45~60 张 · 新增 AY 域码</div>
+      <ul><li>该定什么案由</li><li>管辖在哪</li><li>请求权基础是什么</li><li>和谁容易混 ⭐</li></ul>
+    </div>
+    <div class="layer g"><span class="badge">L2 · 精拆</span>
+      <h4>深度审判要件卡</h4>
+      <div class="meta">12~18 张 · 落现有域</div>
+      <ul><li>只对 P0 案由做</li><li>沿用八段格式</li><li>直接喂模拟法庭法官</li></ul>
+    </div>
+  </div>
+</div>
+
+<h2>📖 书的体例 → 卡片字段（设计依据）</h2>
+<div class="card">
+  <div style="font-size:13.5px;color:var(--tx2);margin-bottom:12px">
+    实测每个案由固定四段式（以「115. 建设工程合同纠纷」PDF384 / 书页340 为例）：
+  </div>
+  <div class="flow">
+    <div class="box"><div class="t">【释义】</div><div class="d">案由是什么、主体是谁、法律关系性质</div><div style="margin-top:7px;color:var(--blue);font-size:11.5px">→ 卡内「释义与构成要件」</div></div>
+    <div class="arrow">▸</div>
+    <div class="box"><div class="t">【管辖】</div><div class="d">被告住所地 / 合同履行地；协议管辖优先性</div><div style="margin-top:7px;color:var(--blue);font-size:11.5px">→ 卡内「管辖」</div></div>
+    <div class="arrow">▸</div>
+    <div class="box"><div class="t">【法律适用】</div><div class="d">请求权基础法条清单（只给条号，无正文）</div><div style="margin-top:7px;color:var(--gold);font-size:11.5px">→ 必须权威源回填</div></div>
+    <div class="arrow">▸</div>
+    <div class="box" style="border-color:rgba(61,220,151,.4)"><div class="t" style="color:var(--green)">【确定该案由应当注意的问题】⭐</div><div class="d">与相邻案由的定性边界</div><div style="margin-top:7px;color:var(--green);font-size:11.5px">→ 卡内「定性边界」最高价值</div></div>
+  </div>
+  <div style="margin-top:14px;font-size:13.5px;color:var(--tx)">
+    ➡️ 第四段就是「定性之争」的官方答案 —— <b>吊顶案（买卖合同 vs 承揽 vs 装饰装修）的弹药直接在这里</b>。
+  </div>
+</div>
+
+<h2>📅 批次排期</h2>
+<div class="card" style="padding:0;overflow:hidden">
+  <table>
+    <tr><th style="width:10%">批次</th><th style="width:20%">主题</th><th style="width:40%">内容</th><th style="width:14%">预计卡数</th><th style="width:16%">触发理由</th></tr>
+    <tr><td><b>批次 1</b></td><td>合同线定性组</td><td>买卖 / 承揽 / 建设工程含装饰装修 / 医疗服务合同 / 保证合同 / 定金合同</td><td>L1×18 + L2×6</td><td>吊顶 + 雅菲 + 面瘫</td></tr>
+    <tr><td><b>批次 2</b></td><td>人格权线</td><td>名誉权 / 生命权身体权健康权 / 隐私权个人信息</td><td>L1×10 + L2×4</td><td>林震巍 + 人伤基础</td></tr>
+    <tr><td><b>批次 3</b></td><td>担保物权线</td><td>抵押权 / 质权 / 留置权 / 担保物权实现</td><td>L1×8 + L2×2</td><td>王德明担保案</td></tr>
+    <tr><td><b>批次 4</b></td><td>基金会线</td><td>公益事业捐赠合同 / 赠与合同 / 服务合同</td><td>L1×6</td><td>厚德基金会</td></tr>
+    <tr><td><b>批次 5</b></td><td>劳动劳务线</td><td>劳动争议 / 劳务合同 / 竞业限制</td><td>L1×8</td><td>航合物流</td></tr>
+    <tr><td style="color:var(--red)"><b>预留</b></td><td style="color:var(--red)"><b>下册</b></td><td>侵权责任（医疗损害 / 交通事故）/ 与公司有关 / 执行异议之诉</td><td>待定</td><td style="color:var(--red)"><b>需先采购下册</b></td></tr>
+  </table>
+</div>
+<div style="font-size:12.5px;color:var(--tx3);margin-top:-6px">
+  取号纪律：<b>当日实地取号，一次取满本批</b>——不为未来批次预分配号段（预分配必然被每日摄入流水线冲垮，已三度实证）。
+</div>
+
+<h2>⚠️ 风险与对策</h2>
+<div class="card" style="padding:0;overflow:hidden">
+  <table>
+    <tr><th style="width:6%">#</th><th style="width:28%">风险</th><th style="width:66%">对策</th></tr>
+    <tr><td>🔴</td><td>版本漂移（2020 vs 2025）</td><td>每张卡 version_check 字段 + 建 206 条对照表；未核填不交付</td></tr>
+    <tr><td>🔴</td><td>OCR 噪声（实测「管辖」→「管畦」、「仲裁」→「仲栽」、115→11S）</td><td>关键字段（条号、案由名、编号）<b>必须双源校验</b>（OCR + 法宝/元典），不做无校验批量灌入</td></tr>
+    <tr><td>🟡</td><td>页码映射非线性</td><td>抽样 Δ=44 但<b>禁止套公式</b>，执行阶段坐标法提取印刷页码建全量表</td></tr>
+    <tr><td>🟡</td><td>法条正文</td><td>绝不凭记忆：本地库 → 北大法宝 → 华宇元典，标注来源</td></tr>
+    <tr><td>🟢</td><td>号段被抢占 / 中间资产丢失</td><td>当日三查取号；OCR 全文与对照表一律落持久目录（已落 02-提炼）</td></tr>
+  </table>
+</div>
+
+<h2>🗳️ 需要你拍板的三个决策点</h2>
+<div class="dec">
+  <div class="card">
+    <b>决策 1 · 域码怎么给？</b>
+    <div class="opt rec"><b>A（推荐）</b> 新增 <code>AY</code> 域码，规范升版登记</div>
+    <div class="opt">B 挂 <code>PR</code>（程序法）域，不新增域码</div>
+    <div class="opt">C 不进规则卡库，只做 03-连接 概念页索引</div>
+  </div>
+  <div class="card">
+    <b>决策 2 · 拆多少？</b>
+    <div class="opt rec"><b>A（推荐）</b> 只拆业务半径内：L1 约 45~60 张 + L2 约 12~18 张</div>
+    <div class="opt">B 全拆上册约 300 张（工作量 4~5 倍，大量案由十年用不到，稀释飞轮纯度）</div>
+  </div>
+  <div class="card">
+    <b>决策 3 · 下册怎么办？</b>
+    <div class="opt rec"><b>A（推荐）</b> 上册先拆批次 1~2，同步采购下册（人伤主战场）</div>
+    <div class="opt">B 只拆上册，下册以后再说</div>
+    <div class="opt">C 上册全拆完再动下册</div>
+  </div>
+</div>
+
+<h2>✅ 已完成（零成本前置资产）</h2>
+<div class="card">
+  <div style="font-size:14px">
+    <div>1. ✅ 全书 OCR 完成 <b>610/610 页</b>，46.7 万字，已落 <code>知识飞轮系统/02-提炼/案由规定2021-OCR/</code></div>
+    <div>2. ✅ 上册覆盖范围探明：人格权 → 婚姻家庭继承 → 物权 → <b>合同·准合同</b> → 知识产权（开头）→ 劳动争议（开头）</div>
+    <div>3. ✅ 章节体例确认（四段式），卡片字段设计已有依据</div>
+    <div>4. ⏭️ 待做：从元典拉《修改决定》61 条全文 → 建版本漂移对照表（所有后续拆卡的钥匙）</div>
+    <div>5. ⏭️ 可出样卡：吊顶案「买卖合同 vs 承揽 vs 装饰装修」定性边界（PDF 283/381/384）1 张给你验货</div>
+  </div>
+</div>
+
+<div class="foot">方案 v1.0 · 2026-09-06 · 小强律师数字分身系统 · 待老强拍板后进入批次 1</div>
+
+</div>
+</body>
+</html>
