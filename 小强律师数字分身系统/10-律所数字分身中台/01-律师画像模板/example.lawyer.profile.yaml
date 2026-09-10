@@ -1,0 +1,98 @@
+# =============================================================
+# 律师画像模板 · 虚构实例样例（example）
+# -------------------------------------------------------------
+# 用途：示范 *.profile.yaml 的完整字段结构，供使用者照此填写。
+# 本文件全部内容为虚构，不含任何真实人员、机构、案号。
+#
+# ⚠️ 填写纪律（重要）：
+#   1. 案号一律用「<年份>黔<法院代字>民初<编号>号」尖括号占位形式书写，
+#      不要填成格式合法的数字串——那会被脱敏门禁判定为真实案号并阻断，
+#      且真实案号属 L2 数据层，本就不该出现在可入库文件中。
+#   2. 含真实在办案件的实例，请放 `11-人格层-L1私有/`（L1，绝不开源），
+#      不要放本开源域。
+#   3. seat_role 须与 cockpit-portal 的 RBAC 角色对齐
+#      （owner | lawyer | paralegal | client）。
+# =============================================================
+
+schema_version: "1.0"
+
+profile:
+  display_name: "示例律师（张三）"
+  seat_role: "lawyer"          # owner | lawyer | paralegal | client
+  firm: "示例律师事务所"
+  title: "执业律师"
+  avatar_handle: "小X"
+
+thinking_chain:
+  response_depth:
+    level: "doctrinal"         # doctrinal | balanced | popular
+    cite_precise: true         # 必须引「第X条」，禁写「相关规定」
+    forbid_popularizing: true
+    allow_neutral_balance: false
+    require_viewpoint: true
+  legal_verification:
+    forbid_memory_citation: true          # 铁律：永不凭记忆灌条文正文
+    allowed_sources:
+      - "pkulaw"                          # 北大法宝（主源）
+      - "yuandian-mcp"                    # 华宇元典（计费）
+      - "local_law_lib"                   # 本地法律法规库
+    pending_marker: "statute_text_pending"
+    require_article_number: true
+
+review_gates:
+  redblue_review: true
+  lti_qc: true
+  lti_dimensions: ["R", "L", "C", "T", "P"]
+  gate_levels: 6
+  reject_threshold: 0                     # REJECT=0 才准交付
+  block_rules: ["R101", "C301"]
+
+knowledge_flywheel:
+  retrieve_before_answer: true
+  retrieve_paths:
+    - "02-提炼/经验卡片"
+    - "06-沉淀/裁判规则库"
+  deposit_after_task: true
+  nonlitigation_trace: true
+
+delivery:
+  docx_dual_track: true
+  tencent_doc: true
+  desktop_archive: true
+  doc_format_law:                         # 最高法法〔2016〕221号 标准
+    font_body: "仿宋"
+    font_size: 16
+    font_title: "宋体"
+    font_title_size: 22
+    line_spacing: 28
+    margin_top: 3.3
+    margin_bottom: 3.2
+    margin_left: 2.7
+    margin_right: 2.4
+  forbid_thesis_style: true
+
+language_style:
+  structured_markdown: true
+  emoji_titles: true
+  one_line_conclusion: true
+  formal_doc_no_emoji: true
+
+safety:
+  six_b: true
+  backup_first: true
+  cp_backup: true
+  never_fabricate_token: true
+
+# —— 席位专属覆盖：按实际执业情况填写 ——
+seat_overrides:
+  practice_areas:                         # 执业领域重心（驱动检索 / 卡片路由）
+    - "民商事诉讼"
+    - "合同法"
+  legal_question_priority:
+    first: "lawyer-yourself-skill"
+    charity_only: "小德慈善组织合规专家"    # 纯慈善合规才走小德
+  active_cases:                           # ⚠️ 用尖括号占位，勿填真实案号
+    - "<年份>黔<法院代字>民初<编号>号 示例买卖合同纠纷（示例立场）"
+    - "<年份>黔<法院代字>民初<编号>号 示例服务合同（示例立场）"
+  memory_discipline:                      # 当事人信息须实地核实，不凭记忆占位
+    verify_from_source: true

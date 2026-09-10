@@ -113,6 +113,13 @@
       {"stage":"运维","gate":"-","role":"入口/监测","agent":"xiaoqiang-cockpit-hub + workbuddy-credit-monitor","status":"已接入"}
     ]
   },
+  "mockTrial": {
+    "prepReportReady": true,
+    "prepReportPath": "LawKB/法律文书/模拟法庭/庭前强化稿/庭审准备报告_v3.md",
+    "status": "未启动",
+    "lastTrialAt": null,
+    "trialBriefPath": null
+  },
   "publicView": {
     "stageText": "一审已开庭，等待法院宣判",
     "done": [

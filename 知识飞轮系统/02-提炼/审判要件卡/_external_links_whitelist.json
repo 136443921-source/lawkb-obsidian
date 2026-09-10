@@ -1,0 +1,613 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "built": "2026-09-08",
+    "note": "外部链接白名单：目标真实存在但位于 LawKB 之外，门禁放行。",
+    "scan_roots": [
+      "/Users/chenyouqiang/Desktop",
+      "/Users/chenyouqiang/Documents"
+    ]
+  },
+  "entries": {
+    "推演纪要6658二开举证质证主战场": {
+      "link": "推演纪要_6658_二开_举证质证主战场",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6658号 丁戊祥诉刘九零吊顶买卖合同纠纷/推演纪要_6658_二开_举证质证主战场.md",
+      "occ": 10
+    },
+    "案例恶意零对价转股价逃避债务追加原股东现股东海淀法院20260729": {
+      "link": "案例-恶意零对价转股价逃避债务追加原股东现股东-海淀法院-2026-07-29",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案例库/民商事诉讼/案例-恶意零对价转股价逃避债务追加原股东现股东-海淀法院-2026-07-29.md",
+      "occ": 7
+    },
+    "决策思维日常三句话": {
+      "link": "决策思维_日常三句话",
+      "path": "/Users/chenyouqiang/Documents/LawKB/提示词库/决策思维_日常三句话.md",
+      "occ": 5
+    },
+    "31庭后代理词起诉未经合法授权应裁定驳回起诉0904": {
+      "link": "31_庭后代理词_起诉未经合法授权应裁定驳回起诉0904",
+      "path": "/Users/chenyouqiang/Desktop/31_庭后代理词_起诉未经合法授权应裁定驳回起诉0904.docx",
+      "occ": 5
+    },
+    "ai行为规则": {
+      "link": "AI 行为规则",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/03-智驾-决策思维系统/AI 行为规则.md",
+      "occ": 5
+    },
+    "案例吴某华诉伊犁州医院医疗过错判断标准与诉讼时效起算2026072413001": {
+      "link": "案例-吴某华诉伊犁州医院医疗过错判断标准与诉讼时效起算-2026-07-2-413-001",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案例库/民商事诉讼/案例-吴某华诉伊犁州医院医疗过错判断标准与诉讼时效起算-2026-07-2-413-001.md",
+      "occ": 5
+    },
+    "贵州省道路交通安全条例节选事故处理与赔偿比例专题": {
+      "link": "贵州省道路交通安全条例（节选·事故处理与赔偿比例专题）",
+      "path": "/Users/chenyouqiang/Documents/LawKB/法律法规库/行政法律规章/贵州省道路交通安全条例（节选·事故处理与赔偿比例专题）.md",
+      "occ": 5
+    },
+    "庭审记录丁戊祥案202608222250": {
+      "link": "庭审记录_丁戊祥案_20260822_2250",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/庭审记录_丁戊祥案_20260822_2250.md",
+      "occ": 4
+    },
+    "00运维手册案件生命周期管理系统": {
+      "link": "00-运维手册-案件生命周期管理系统",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/00-运维手册-案件生命周期管理系统.md",
+      "occ": 3
+    },
+    "工作流1合同审查工作流": {
+      "link": "工作流1-合同审查工作流",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/工作流1-合同审查工作流.md",
+      "occ": 3
+    },
+    "复习操作手册obsidian版": {
+      "link": "复习操作手册-Obsidian 版",
+      "path": "/Users/chenyouqiang/Documents/LawKB/复习操作手册-Obsidian 版.md",
+      "occ": 3
+    },
+    "律师高效办公必备24组可直接复用的ai提示词": {
+      "link": "律师高效办公必备24组可直接复用的AI提示词",
+      "path": "/Users/chenyouqiang/Documents/LawKB/提示词库/律师高效办公必备24组可直接复用的AI提示词.md",
+      "occ": 3
+    },
+    "雅菲软装经营部诉刘九零刘维买卖合同纠纷案": {
+      "link": "雅菲软装经营部诉刘九零、刘维买卖合同纠纷案",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/雅菲软装经营部诉刘九零、刘维买卖合同纠纷案.md",
+      "occ": 3
+    },
+    "用workbuddy搞定pdf四件套解读转ppt转excel转word一个ai全包": {
+      "link": "用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包",
+      "path": "/Users/chenyouqiang/Documents/LawKB/知识库/workbuddy 使用技巧/用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包.md",
+      "occ": 3
+    },
+    "致命漏洞战报韩杰医疗事故罪申诉书202608141745": {
+      "link": "致命漏洞战报_韩杰医疗事故罪申诉书_20260814_1745",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/韩杰医疗事故案/致命漏洞战报_韩杰医疗事故罪申诉书_20260814_1745.md",
+      "occ": 3
+    },
+    "初中生ai学伴系统搭建方法论借鉴小强律师分身系统": {
+      "link": "初中生AI学伴系统搭建方法论-借鉴小强律师分身系统",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小哲AI 学伴系统/初中生AI学伴系统搭建方法论-借鉴小强律师分身系统.md",
+      "occ": 2
+    },
+    "模拟法庭系统运维手册v220260906": {
+      "link": "模拟法庭系统运维手册-v2-2026-09-06",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭系统运维手册-v2-2026-09-06.md",
+      "occ": 2
+    },
+    "skillmd": {
+      "link": "SKILL.md",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/06-沉淀/分身记忆备份/self_backup_20260829-221337/SKILL.md.bak",
+      "occ": 2
+    },
+    "小德慈善合规cms年度顾问包报价单": {
+      "link": "小德慈善合规CMS年度顾问包报价单",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/01-方案设计/小德慈善合规CMS年度顾问包报价单.md",
+      "occ": 2
+    },
+    "数字分身系统赋能复盘20260903": {
+      "link": "数字分身系统赋能复盘-2026-09-03",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/00-系统总览与运维中心/数字分身系统赋能复盘-2026-09-03.md",
+      "occ": 2
+    },
+    "丁茂祥案模拟庭审笔录20260823": {
+      "link": "丁茂祥案_模拟庭审笔录_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6658号 丁戊祥诉刘九零吊顶买卖合同纠纷/丁茂祥案_模拟庭审笔录_20260823.md",
+      "occ": 2
+    },
+    "雅菲软装窗帘案模拟庭审笔录20260823": {
+      "link": "雅菲软装窗帘案_模拟庭审笔录_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/雅菲软装窗帘案/雅菲软装窗帘案_模拟庭审笔录_20260823.md",
+      "occ": 2
+    },
+    "雅菲软装窗帘案模拟庭审判决书20260823": {
+      "link": "雅菲软装窗帘案_模拟庭审判决书_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/雅菲软装窗帘案/雅菲软装窗帘案_模拟庭审判决书_20260823.md",
+      "occ": 2
+    },
+    "人伤案例索引法随案例库闭环20260823": {
+      "link": "人伤案例索引-法随案例库闭环-2026-08-23",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案例库/人伤专业领域/人伤案例索引-法随案例库闭环-2026-08-23.md",
+      "occ": 2
+    },
+    "贵州习水县100mw光伏项目资源合作协议合同审查备忘录": {
+      "link": "贵州习水县100MW光伏项目资源合作协议-合同审查备忘录",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/合同审查意见书/贵州习水县100MW光伏项目资源合作协议-合同审查备忘录.md",
+      "occ": 2
+    },
+    "案件进展备忘丁茂祥案20260820": {
+      "link": "案件进展备忘-丁茂祥案-20260820",
+      "path": "/Users/chenyouqiang/Documents/LawKB/法律法规库/法律资讯周报/案件进展备忘-丁茂祥案-20260820.md",
+      "occ": 2
+    },
+    "二审代理词v1230号20260806": {
+      "link": "二审代理词_v1_230号_20260806",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭系统搭建/模拟法庭/庭前强化稿/二审代理词_v1_230号_20260806.md",
+      "occ": 2
+    },
+    "中华人民共和国刑法节选医疗事故罪与非法行医罪": {
+      "link": "中华人民共和国刑法（节选·医疗事故罪与非法行医罪）",
+      "path": "/Users/chenyouqiang/Documents/LawKB/法律法规库/通用实体法/中华人民共和国刑法（节选·医疗事故罪与非法行医罪）.md",
+      "occ": 2
+    },
+    "ai人伤法自学状态": {
+      "link": "AI人伤法自学状态",
+      "path": "/Users/chenyouqiang/Documents/LawKB/学习笔记/AI人伤法自学状态.md",
+      "occ": 2
+    },
+    "模拟庭审复盘丁戊祥案202608222250": {
+      "link": "模拟庭审复盘_丁戊祥案_20260822_2250",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/模拟庭审复盘_丁戊祥案_20260822_2250.md",
+      "occ": 2
+    },
+    "律师常用的12组提示词合同审查文书写作案件分析": {
+      "link": "律师常用的12组提示词合同审查文书写作案件分析",
+      "path": "/Users/chenyouqiang/Documents/LawKB/提示词库/律师常用的12组提示词合同审查文书写作案件分析.md",
+      "occ": 2
+    },
+    "v2常见法律文书错误案例库": {
+      "link": "V2常见法律文书错误案例库",
+      "path": "/Users/chenyouqiang/Documents/LawKB/智能体技能库/红队出庭律师/常见法律文书错误案例库/V2常见法律文书错误案例库.md",
+      "occ": 2
+    },
+    "案例电动车买卖违约金与迟延利息不可兼得莲花法院202608": {
+      "link": "案例-电动车买卖违约金与迟延利息不可兼得-莲花法院-2026-08",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案例库/民商事诉讼/案例-电动车买卖违约金与迟延利息不可兼得-莲花法院-2026-08.md",
+      "occ": 2
+    },
+    "经验卡片制度ai工具phi保密红线": {
+      "link": "经验卡片-制度-AI工具PHI保密红线",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/03-经验卡片/医院合规/经验卡片-制度-AI工具PHI保密红线.md",
+      "occ": 1
+    },
+    "合同风险审查智能体需求分析与设计": {
+      "link": "合同风险审查智能体-需求分析与设计",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/合同风险审查智能体-需求分析与设计.md",
+      "occ": 1
+    },
+    "imaintakestate": {
+      "link": "ima_intake_state",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/ima_intake_state.json",
+      "occ": 1
+    },
+    "个人工作台搭建指令": {
+      "link": "个人工作台搭建指令",
+      "path": "/Users/chenyouqiang/Documents/xiaoqianglawkb/个人工作台搭建指令.md",
+      "occ": 1
+    },
+    "workbuddy做ppt进阶版之宝藏工具pptmaster": {
+      "link": "Workbuddy做PPT进阶版之宝藏工具pptmaster",
+      "path": "/Users/chenyouqiang/Documents/LawKB/笔记助手/学习笔记/Workbuddy做PPT进阶版之宝藏工具pptmaster.md",
+      "occ": 1
+    },
+    "换电脑后workbuddy如何迁移": {
+      "link": "换电脑后WorkBuddy如何迁移",
+      "path": "/Users/chenyouqiang/Documents/LawKB/智能体技能库/换电脑后WorkBuddy如何迁移.md",
+      "occ": 1
+    },
+    "丁戊祥诉刘九零吊顶买卖合同纠纷案案件笔记": {
+      "link": "丁戊祥诉刘九零吊顶买卖合同纠纷案-案件笔记",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/丁戊祥诉刘九零吊顶买卖合同纠纷案-案件笔记.md",
+      "occ": 1
+    },
+    "焦联鹏诉刘九零窗帘买卖合同纠纷案案件笔记": {
+      "link": "焦联鹏诉刘九零窗帘买卖合同纠纷案-案件笔记",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/焦联鹏诉刘九零窗帘买卖合同纠纷案-案件笔记.md",
+      "occ": 1
+    },
+    "数字分身系统运维手册ev版20260903": {
+      "link": "数字分身系统运维手册-EV版-2026-09-03",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/00-系统总览与运维中心/数字分身系统运维手册-EV版-2026-09-03.md",
+      "occ": 1
+    },
+    "数字分身系统运维套件索引": {
+      "link": "数字分身系统运维套件索引",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/00-系统总览与运维中心/数字分身系统运维套件索引.md",
+      "occ": 1
+    },
+    "wikilink": {
+      "link": "wikilink",
+      "path": "/Users/chenyouqiang/Documents/xiaoqianglawkb/wikilink.md",
+      "occ": 1
+    },
+    "丁茂祥案模拟庭审判决书20260823": {
+      "link": "丁茂祥案_模拟庭审判决书_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6658号 丁戊祥诉刘九零吊顶买卖合同纠纷/丁茂祥案_模拟庭审判决书_20260823.md",
+      "occ": 1
+    },
+    "焦联鹏案模拟庭审笔录20260823": {
+      "link": "焦联鹏案_模拟庭审笔录_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6660号 焦联鹏诉刘九零刘维窗帘买卖合同纠纷/焦联鹏案_模拟庭审笔录_20260823.md",
+      "occ": 1
+    },
+    "焦联鹏案模拟庭审判决书20260823": {
+      "link": "焦联鹏案_模拟庭审判决书_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6660号 焦联鹏诉刘九零刘维窗帘买卖合同纠纷/焦联鹏案_模拟庭审判决书_20260823.md",
+      "occ": 1
+    },
+    "经验卡片运营患者知情同意与告知实务": {
+      "link": "经验卡片-运营-患者知情同意与告知实务",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/03-经验卡片/医院合规/经验卡片-运营-患者知情同意与告知实务.md",
+      "occ": 1
+    },
+    "模拟民事裁定书230号二审20260806": {
+      "link": "模拟民事裁定书_230号_二审_20260806",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭系统搭建/模拟庭审/模拟民事裁定书_230号_二审_20260806.md",
+      "occ": 1
+    },
+    "民事裁定书厚德基金会诉道真百益202605081444": {
+      "link": "民事裁定书_厚德基金会诉道真百益_20260508_1444",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/法律文书模板/模拟庭审/二审-厚德基金会诉道真百益合同纠纷案/民事裁定书_厚德基金会诉道真百益_20260508_1444.md",
+      "occ": 1
+    },
+    "民事裁定书厚德基金会诉百益服务中心202605151630": {
+      "link": "民事裁定书_厚德基金会诉百益服务中心_20260515_1630",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/法律文书模板/模拟庭审/民事裁定书_厚德基金会诉百益服务中心_20260515_1630.md",
+      "occ": 1
+    },
+    "经验卡片制度医院合规治理框架": {
+      "link": "经验卡片-制度-医院合规治理框架",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/03-经验卡片/医院合规/经验卡片-制度-医院合规治理框架.md",
+      "occ": 1
+    },
+    "经验卡片人资医院劳务派遣合规反哺慈善志愿者管理": {
+      "link": "经验卡片-人资-医院劳务派遣合规反哺慈善志愿者管理",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/03-经验卡片/慈法合规/经验卡片-人资-医院劳务派遣合规反哺慈善志愿者管理.md",
+      "occ": 1
+    },
+    "经验卡片人资医院人力资源与主体资格合规": {
+      "link": "经验卡片-人资-医院人力资源与主体资格合规",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/03-经验卡片/医院合规/经验卡片-人资-医院人力资源与主体资格合规.md",
+      "occ": 1
+    },
+    "庭审笔录丁戊祥案202608222318": {
+      "link": "庭审笔录_丁戊祥案_20260822_2318",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/庭审笔录_丁戊祥案_20260822_2318.md",
+      "occ": 1
+    },
+    "庭审笔录v2丁戊祥案202608222341": {
+      "link": "庭审笔录v2_丁戊祥案_20260822_2341",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/庭审笔录v2_丁戊祥案_20260822_2341.md",
+      "occ": 1
+    },
+    "执行异议申请书王德明担保合同纠纷案": {
+      "link": "执行异议申请书-王德明担保合同纠纷案",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/王德明担保合同纠纷案/执行异议申请书-王德明担保合同纠纷案.md",
+      "occ": 1
+    },
+    "v1合同规则库": {
+      "link": "v1合同规则库",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/合同审查工具/法律合同审查智能体迭代/v1合同规则库.md",
+      "occ": 1
+    },
+    "h1合同规则库": {
+      "link": "H1合同规则库",
+      "path": "/Users/chenyouqiang/Documents/LawKB/智能体技能库/红队律师合同审查库/H1合同规则库.md",
+      "occ": 1
+    },
+    "中华人民共和国道路交通安全法节选交通事故责任与赔偿专题": {
+      "link": "中华人民共和国道路交通安全法（节选·交通事故责任与赔偿专题）",
+      "path": "/Users/chenyouqiang/Documents/LawKB/法律法规库/通用实体法/中华人民共和国道路交通安全法（节选·交通事故责任与赔偿专题）.md",
+      "occ": 1
+    },
+    "机动车交通事故责任强制保险条例节选责任与赔偿专题": {
+      "link": "机动车交通事故责任强制保险条例（节选·责任与赔偿专题）",
+      "path": "/Users/chenyouqiang/Documents/LawKB/法律法规库/行政法律规章/机动车交通事故责任强制保险条例（节选·责任与赔偿专题）.md",
+      "occ": 1
+    },
+    "最高人民法院关于审理执行异议之诉案件适用法律问题的解释": {
+      "link": "最高人民法院关于审理执行异议之诉案件适用法律问题的解释",
+      "path": "/Users/chenyouqiang/Documents/LawKB/法律法规库/司法解释/最高人民法院关于审理执行异议之诉案件适用法律问题的解释.md",
+      "occ": 1
+    },
+    "公益筹款平台合作服务协议清洁版审查意见书20260525": {
+      "link": "公益筹款平台合作服务协议-清洁版-审查意见书-20260525",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/合同审查意见书/公益筹款平台合作服务协议-清洁版-审查意见书-20260525.md",
+      "occ": 1
+    },
+    "公益筹款平台合作服务协议修改版20260525": {
+      "link": "公益筹款平台合作服务协议_修改版_20260525",
+      "path": "/Users/chenyouqiang/Desktop/法律文书/公益筹款平台合作服务协议_修改版_20260525.docx",
+      "occ": 1
+    },
+    "庭审红队律师配置": {
+      "link": "庭审红队律师配置",
+      "path": "/Users/chenyouqiang/Documents/LawKB/智能体技能库/红队出庭律师/庭审红队律师配置.md",
+      "occ": 1
+    },
+    "经验卡片财务医院采购合规反哺慈善投资活动合规": {
+      "link": "经验卡片-财务-医院采购合规反哺慈善投资活动合规",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/03-经验卡片/医院合规/经验卡片-财务-医院采购合规反哺慈善投资活动合规.md",
+      "occ": 1
+    },
+    "复习回写": {
+      "link": "复习回写",
+      "path": "/Users/chenyouqiang/Documents/LawKB/文书模板/复习回写.md",
+      "occ": 1
+    },
+    "数字分身对老强支持能力评估20260827": {
+      "link": "数字分身对老强支持能力评估-2026-08-27",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/00-系统总览与运维中心/数字分身对老强支持能力评估-2026-08-27.md",
+      "occ": 10
+    },
+    "00索引合同文书管理系统制品清单": {
+      "link": "00-索引-合同文书管理系统制品清单",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/00-索引-合同文书管理系统制品清单.md",
+      "occ": 5
+    },
+    "助力成长暖心包项目合作协议红队审查报告ro20260520": {
+      "link": "助力成长暖心包项目合作协议_红队审查报告_RO-2026-0520",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/合同审查意见书/助力成长暖心包项目合作协议_红队审查报告_RO-2026-0520.md",
+      "occ": 5
+    },
+    "总闸控制报告丁戊祥案202608222318": {
+      "link": "总闸控制报告_丁戊祥案_20260822_2318",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/总闸控制报告_丁戊祥案_20260822_2318.md",
+      "occ": 4
+    },
+    "流程合规性检查报告丁戊祥案202608222318": {
+      "link": "流程合规性检查报告_丁戊祥案_20260822_2318",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/流程合规性检查报告_丁戊祥案_20260822_2318.md",
+      "occ": 4
+    },
+    "庭审报告韩杰医疗事故罪申诉案202608141742": {
+      "link": "庭审报告_韩杰医疗事故罪申诉案_20260814_1742",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/韩杰医疗事故案/庭审报告_韩杰医疗事故罪申诉案_20260814_1742.md",
+      "occ": 4
+    },
+    "01首期交付说明案件生命周期管理系统": {
+      "link": "01-首期交付说明-案件生命周期管理系统",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/01-首期交付说明-案件生命周期管理系统.md",
+      "occ": 3
+    },
+    "律师ai提示词清单终极版": {
+      "link": "律师AI提示词清单（终极版）",
+      "path": "/Users/chenyouqiang/Documents/LawKB/提示词库/律师AI提示词清单（终极版）.md",
+      "occ": 3
+    },
+    "合规与非诉支持维度升级方案20260827": {
+      "link": "合规与非诉支持维度升级方案-2026-08-27",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/01-方案设计/合规与非诉支持维度升级方案-2026-08-27.md",
+      "occ": 3
+    },
+    "丁茂祥案模拟庭审推演报告20260823": {
+      "link": "丁茂祥案_模拟庭审推演报告_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6658号 丁戊祥诉刘九零吊顶买卖合同纠纷/丁茂祥案_模拟庭审推演报告_20260823.md",
+      "occ": 3
+    },
+    "庭前检索报告230号20260806": {
+      "link": "庭前检索报告_230号_20260806",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭系统搭建/模拟法庭/庭前检索报告_230号_20260806.md",
+      "occ": 3
+    },
+    "02智能体路由与生命周期sop清单": {
+      "link": "02-智能体路由与生命周期SOP清单",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/02-智能体路由与生命周期SOP清单.md",
+      "occ": 2
+    },
+    "00索引案件生命周期管理系统制品清单": {
+      "link": "00-索引-案件生命周期管理系统制品清单",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/00-索引-案件生命周期管理系统制品清单.md",
+      "occ": 2
+    },
+    "合规与非诉维度p0升级落地报告20260827": {
+      "link": "合规与非诉维度P0升级落地报告-2026-08-27",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/02-落地报告/合规与非诉维度P0升级落地报告-2026-08-27.md",
+      "occ": 2
+    },
+    "焦联鹏案战情室分析报告20260823": {
+      "link": "焦联鹏案_战情室分析报告_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6660号 焦联鹏诉刘九零刘维窗帘买卖合同纠纷/焦联鹏案_战情室分析报告_20260823.md",
+      "occ": 2
+    },
+    "焦联鹏案模拟庭审推演报告20260823": {
+      "link": "焦联鹏案_模拟庭审推演报告_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6660号 焦联鹏诉刘九零刘维窗帘买卖合同纠纷/焦联鹏案_模拟庭审推演报告_20260823.md",
+      "occ": 2
+    },
+    "补充意见红蓝复核报告雅菲软装窗帘案20260901": {
+      "link": "补充意见红蓝复核报告_雅菲软装窗帘案_20260901",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭系统搭建/诉讼文书复核/补充意见红蓝复核报告_雅菲软装窗帘案_20260901.md",
+      "occ": 2
+    },
+    "合同审查报告简约版使用说明": {
+      "link": "合同审查报告-简约版-使用说明",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/合同审查意见书模板/合同审查报告-简约版-使用说明.md",
+      "occ": 2
+    },
+    "小德合规管理系统四阶段落地报告20260827": {
+      "link": "小德合规管理系统四阶段落地报告-2026-08-27",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/02-落地报告/小德合规管理系统四阶段落地报告-2026-08-27.md",
+      "occ": 1
+    },
+    "00索引小德合规管理系统制品清单": {
+      "link": "00-索引-小德合规管理系统制品清单",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/00-索引-小德合规管理系统制品清单.md",
+      "occ": 1
+    },
+    "律师ai提示词清单10版": {
+      "link": "律师AI提示词清单（1.0 版）",
+      "path": "/Users/chenyouqiang/Documents/LawKB/提示词库/律师AI提示词清单（1.0 版）.md",
+      "occ": 1
+    },
+    "厚德基金会诉道真百益合同纠纷上诉可行性分析报告": {
+      "link": "厚德基金会诉道真百益合同纠纷上诉可行性分析报告",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/法律文书模板/庭审战情室/厚德基金会诉道真百益合同纠纷上诉可行性分析报告.md",
+      "occ": 1
+    },
+    "数字分身系统技能配置清单20260527": {
+      "link": "数字分身系统_技能配置清单_20260527",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/00-系统总览与运维中心/数字分身系统_技能配置清单_20260527.md",
+      "occ": 1
+    },
+    "小德慈善合规cms产品服务模式说明书": {
+      "link": "小德慈善合规CMS产品服务模式说明书",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小德合规管理系统/01-方案设计/小德慈善合规CMS产品服务模式说明书.md",
+      "occ": 1
+    },
+    "丁茂祥案战情室分析报告20260823": {
+      "link": "丁茂祥案_战情室分析报告_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭推演专家/（2026）黔0330民初6658号 丁戊祥诉刘九零吊顶买卖合同纠纷/丁茂祥案_战情室分析报告_20260823.md",
+      "occ": 1
+    },
+    "证据清单罗江辉诉易思立达202605032252优化版": {
+      "link": "证据清单_罗江辉诉易思立达_20260503_2252_优化版",
+      "path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/罗江辉教育合同纠纷案/证据清单_罗江辉诉易思立达_20260503_2252_优化版.md",
+      "occ": 1
+    },
+    "雅菲软装窗帘案战情室分析报告20260823": {
+      "link": "雅菲软装窗帘案_战情室分析报告_20260823",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟庭审/雅菲软装窗帘案/雅菲软装窗帘案_战情室分析报告_20260823.md",
+      "occ": 1
+    },
+    "法律备忘录skill配置说明书": {
+      "link": "法律备忘录 skill 配置说明书",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/法律类skill 配置迭代-九阳神功/法律备忘录 skill 配置说明书.md",
+      "occ": 1
+    },
+    "00索引模拟法庭管理系统制品清单": {
+      "link": "00-索引-模拟法庭管理系统制品清单",
+      "path": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/00-索引-模拟法庭管理系统制品清单.md",
+      "occ": 1
+    },
+    "workbuddy提示词速查手册50个可复制的指令模板": {
+      "link": "WorkBuddy提示词速查手册50个可复制的指令模板",
+      "path": "/Users/chenyouqiang/Documents/LawKB/提示词库/WorkBuddy提示词速查手册50个可复制的指令模板.md",
+      "occ": 1
+    },
+    "公益筹款平台合作服务协议审查报告简约版20260526v2fixed": {
+      "link": "公益筹款平台合作服务协议_审查报告_简约版_20260526_v2_fixed",
+      "path": "/Users/chenyouqiang/Documents/LawKB/合同文书管理系统/合同审查意见书/公益筹款平台合作服务协议_审查报告_简约版_20260526_v2_fixed.md",
+      "occ": 1
+    },
+    "selfmd20260805": {
+      "link": "self.md-20260805",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/09-快照备份/self.md快照/self.md-20260805.md",
+      "occ": 16
+    },
+    "双向链接建立日志": {
+      "link": "双向链接建立日志",
+      "path": "/Users/chenyouqiang/Documents/LawKB/双向链接建立日志.md",
+      "occ": 5
+    },
+    "readme资产位置": {
+      "link": "README-资产位置",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/01-三电-知识飞轮与质检/README-资产位置.md",
+      "occ": 3
+    },
+    "法随案例库mcp集成说明": {
+      "link": "法随案例库 MCP 集成说明",
+      "path": "/Users/chenyouqiang/Documents/LawKB/智能体技能库/法随案例库 MCP 集成说明.md",
+      "occ": 3
+    },
+    "数字分身系统30使用指导手册": {
+      "link": "数字分身系统 3.0  使用指导手册",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/00-系统总览与运维中心/数字分身系统 3.0  使用指导手册.md",
+      "occ": 2
+    },
+    "selfmd20260810": {
+      "link": "self.md-20260810",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/09-快照备份/self.md快照 1/self.md-20260810.md",
+      "occ": 2
+    },
+    "知识图谱202608": {
+      "link": "知识图谱-2026-08",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/03-连接/知识图谱-2026-08.html",
+      "occ": 1
+    },
+    "selfmd20260831": {
+      "link": "self.md-20260831",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/09-快照备份/数字分身快照备份/self.md快照/self.md-20260831.md",
+      "occ": 1
+    },
+    "memory": {
+      "link": "memory",
+      "path": "/Users/chenyouqiang/Desktop/个人文件/Old_Homebrew/2026-05-29 14:30:57/opt/homebrew/homebrew/include/ImageMagick-7/MagickCore/memory_.h",
+      "occ": 2
+    },
+    "第六章医院医疗设备与药品采购法律实务": {
+      "link": "第六章_医院医疗设备与药品采购法律实务",
+      "path": "/Users/chenyouqiang/Documents/LawKB/知识库/医法知识库/医院法律顾问与医疗纠纷解决/第六章  医院医疗设备与药品采购法律实务.md",
+      "occ": 2
+    },
+    "第五章医院人力资源管理法律实务": {
+      "link": "第五章 [[医院人力资源管理法律实务",
+      "path": "/Users/chenyouqiang/Documents/LawKB/知识库/医法知识库/医院法律顾问与医疗纠纷解决/第五章 医院人力资源管理法律实务.md",
+      "occ": 2
+    },
+    "rht094": {
+      "link": "\"R-HT-094\"",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/06-沉淀/裁判规则库/合同风险/R-HT-094.md",
+      "occ": 2
+    },
+    "公司对外担保合规要点20260818": {
+      "link": "\"公司对外担保合规要点-2026-08-18\"",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/02-提炼/合规实务/公司对外担保合规要点-2026-08-18.md",
+      "occ": 2
+    },
+    "lti文本监察官系统配置说明": {
+      "link": "LTI-文本监察官系统配置说明\\",
+      "path": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/法律类skill 配置迭代-九阳神功/LTI-文本监察官系统配置说明.md",
+      "occ": 1
+    },
+    "华宇元典mcp评估与优化建议20260830": {
+      "link": "华宇元典MCP评估与优化建议-2026-08-30\\",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/运维/华宇元典MCP评估与优化建议-2026-08-30.md",
+      "occ": 1
+    },
+    "legalbase防幻觉清单继承效果评估20260830": {
+      "link": "legal-base防幻觉清单继承效果评估-2026-08-30\\",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/运维/legal-base防幻觉清单继承效果评估-2026-08-30.md",
+      "occ": 1
+    },
+    "ima摄入量衰减诊断报告20260830": {
+      "link": "IMA摄入量衰减诊断报告-2026-08-30\\",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/运维/IMA摄入量衰减诊断报告-2026-08-30.md",
+      "occ": 1
+    },
+    "法律文书防幻觉提示词lti校验版": {
+      "link": "法律文书防幻觉提示词_LTI校验版\\",
+      "path": "/Users/chenyouqiang/Documents/LawKB/提示词库/法律文书防幻觉提示词_LTI校验版.md",
+      "occ": 1
+    },
+    "中华人民共和国民事诉讼法": {
+      "link": "《[[中华人民共和国民事诉讼法",
+      "path": "/Users/chenyouqiang/Desktop/小强律师知识库/我的笔记/法律法规库/法律法规/中华人民共和国民事诉讼法.md",
+      "occ": 1
+    },
+    "35基金会与境外基金会合作案": {
+      "link": "35-[[基金会与境外基金会合作案",
+      "path": "/Users/chenyouqiang/Documents/LawKB/知识库/慈法知识库/慈善组织法律顾问实务与合规建设/基金会法律实务知识卡片/第七章 对外合作/35-基金会与境外基金会合作案.md",
+      "occ": 1
+    },
+    "知识图谱202607": {
+      "link": "[[知识图谱-2026-07",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/03-连接/知识图谱-2026-07.html",
+      "occ": 1
+    },
+    "rln022": {
+      "link": "\"R-LN-022\"",
+      "path": "/Users/chenyouqiang/Documents/LawKB.bak_20260906-095452/知识飞轮系统/06-沉淀/裁判规则库/公众号/R-LN-022.md",
+      "occ": 1
+    }
+  }
+}

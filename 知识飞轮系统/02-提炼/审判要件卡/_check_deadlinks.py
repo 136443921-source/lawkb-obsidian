@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-通用死链自检器 v1.2.0（2026-09-07）
+通用死链自检器 v1.6.0（2026-09-08）
 --------------------------------
 用途：检查任意规则卡 / 审判要件卡 / 工程事故卡 / 案由路由卡的
       frontmatter.related_links 与正文 [[...]] 是否为真实存在的笔记基名。
@@ -33,8 +33,32 @@
           「死链 0 ✅」。这与本卡治理的「校验通过≠交付合格」是同一类病：
           **门禁把"没查"当成"查过了没问题"**。现改为：解析失败计入
           parse_errors，汇总时优先报 FATAL 并 exit(2)。
+  v1.3.0  🔴 修复「related_links 写成字符串 → 被逐字符迭代」的批量误报。
+          实测 18 个文件的 related_links 是 str（如 "R-SH-024 R-SH-023"
+          或 "R-PI-083, [xxx-原始]"），旧代码 for x in <str> 逐字符拆出
+          'R' '-' '8' ',' '医' 等噪声，全部计入死链。
+          **这是「死链 1189」这个数字的绝大部分来源**——与 v1.2.0 同一类病：
+          门禁把"解析错了"当成"数据坏了"。
+          修法：抽公共函数 parse_related_links()，str 按 [,，、;；空白] 切分
+          并剥离 [] 包裹，list 原样处理。分析器复用同一函数，口径统一。
+  v1.3.1  🔴 修复「related_links 写成嵌套列表 - - 项」的伪死链。
+          实测（运维/LTI防幻觉能力实测评估-2026-08-30.md）：
+              related_links:
+                - - LTI-文本监察官系统配置说明
+          即 list-of-list（Obsidian 双向链接转坏的产物，与 looks_damaged()
+          安全网 guarding 的正是同一病）。旧代码对嵌套项 str() 得到
+          "['LTI-文本监察官系统配置说明']"，strip("[]") 后仍残留单引号
+          → 死链名变成 "'LTI-文本监察官系统配置说明'"，全库查无此物。
+          修法：递归展平任意层级嵌套 + 剥离首尾中英文引号。
+          与 v1.2.0/v1.3.0 同源：**门禁把「解析错」当「数据坏」**。
+  v1.4.0  🔴 加噪声过滤 is_noise()：指纹长度 < 4 的候选不参与死链判定。
+          实测 '...' 11 次、'名' 4 次、'-' '0' '医' 等单字符被计为死链。
+          这类是 **YAML 折叠/截断的残片**，不是链接 —— 计入死链既虚高数字，
+          又会把真问题淹在水里。修法：sig() 只留中英文数字，长度 < 4 视为噪声。
+          注意边界：'R-PI-176' 指纹 'rpi176' 长 6 → 保留（是合法编号引用）。
 """
 import io
+import json
 import os
 import re
 import sys
@@ -114,18 +138,103 @@ def normalize(link):
     return s.strip()
 
 
+# related_links 分割符：逗号/顿号/分号/空白/换行（实测三种写法并存）
+RL_SPLIT = re.compile(r"[,，、;；\s]+")
+
+
+QUOTES = "'\u201c\u201d\u2018\u2019`"
+
+
+def _flatten(x, out):
+    """递归展平任意层级嵌套（v1.3.1）
+
+    related_links 被写成 `- - 项`（list-of-list，Obsidian 转坏产物）时，
+    逐层 str() 会带出 "['项']" 的方括号与引号。必须递归到标量再清洗。
+    """
+    if x is None:
+        return
+    if isinstance(x, (list, tuple)):
+        for i in x:
+            _flatten(i, out)
+        return
+    s = str(x).strip()
+    if not s:
+        return
+    s = s.strip("[]").strip(QUOTES).strip()
+    if s:
+        out.append(s)
+
+
+def parse_related_links(fm):
+    """v1.3.1 公共解析：兼容 list / str / 嵌套 list 三种 related_links 写法。
+
+    坑 1（v1.3.0）：18 个历史卡把 related_links 写成字符串，
+        旧实现 for x in <str> 逐字符迭代，拆出 'R' '-' '医' 等噪声。
+    坑 2（v1.3.1）：写成 `- - 项` 嵌套列表时，str() 得到 "['项']"，
+        strip("[]") 后残留单引号 → 死链名带引号，全库查无此物。
+    """
+    rl = fm.get("related_links") or []
+    if isinstance(rl, str):
+        rl = RL_SPLIT.split(rl)
+    out = []
+    _flatten(rl, out)
+    return out
+
+
+NO_FM = "\x00NO_FM\x00"   # v1.6.0：合法跳过标记（非错误）
+
+NOISE_CHARS = re.compile(r"[^\u4e00-\u9fa5A-Za-z0-9]")
+
+
+def sig(s):
+    """指纹：只留中文/字母/数字（v1.4.0）"""
+    return NOISE_CHARS.sub("", str(s)).lower()
+
+
+def is_noise(name):
+    """解析噪声判定（v1.4.0）
+
+    实测噪声样本：'-' '0' '2' 'R' '8' '6' 'H' '1' ',' '医' '"' '疗' '...' '名'
+    来源：YAML 折叠残片、逐字符拆分、被截断的 wiki 链接。
+    判据：指纹长度 < 2。
+    阈值校准（2026-09-08）：初版设 4，误伤「民法典」（指纹 3 字，是真笔记名）——
+    **宁可放过噪声，不可误杀真链接**。改 2 后：'...' '' '0' 'R' '医' '名' 全为噪声，
+    「民法典」「民法典合同编」等短真名保留。
+    """
+    return len(sig(name)) < 2
+
+
+# ── 外部链接白名单（v1.5.0）────────────────────────────────
+_WL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "_external_links_whitelist.json")
+EXTERNAL_WL = {}
+if os.path.exists(_WL_PATH):
+    try:
+        _w = json.load(io.open(_WL_PATH, encoding="utf-8"))
+        EXTERNAL_WL = _w.get("entries") or {}
+    except Exception as e:
+        sys.stderr.write(f"WARN: 外部白名单加载失败（{e}），本次按严格模式判定\n")
+else:
+    sys.stderr.write("WARN: 未找到 _external_links_whitelist.json，本次按严格模式判定\n")
+
+
+def is_external(name):
+    """命中外部白名单 → 目标在 LawKB 之外真实存在，不算死链"""
+    return sig(name) in EXTERNAL_WL
+
+
 def check_one(path, allmd):
     """检查单张卡，返回 (死链列表, 链接总数)"""
     txt = io.open(path, encoding="utf-8").read()
     if not txt.startswith("---"):
-        return [], 0, "无 frontmatter，跳过链接检查"
+        return [], 0, NO_FM
 
     try:
         fm = yaml.safe_load(txt.split("---")[1]) or {}
     except Exception as e:
         return [], 0, "YAML 解析失败：%s" % e
 
-    links = [str(x).strip() for x in (fm.get("related_links") or [])]
+    links = parse_related_links(fm)
     body = re.findall(r"\[\[([^\]]+)\]\]", txt)
 
     # 归一化：剥离 [[]]、别名、锚点、路径前缀（见 normalize 文档）
@@ -133,7 +242,8 @@ def check_one(path, allmd):
     cand = [c for c in cand if c]
 
     total = len(cand)
-    bad = [l for l in cand if l and not is_concept(l) and l not in allmd]
+    bad = [l for l in cand if l and not is_noise(l)
+            and not is_concept(l) and not is_external(l) and l not in allmd]
     # 去重保持顺序
     seen, uniq = set(), []
     for b in bad:
@@ -164,9 +274,13 @@ def main():
     total_dead = 0
     files_with_dead = 0
     parse_errors = []          # v1.2.0：解析失败不再静默吞掉
+    skips = 0                  # v1.6.0：无 frontmatter 的合法跳过计数
     for p in sorted(targets):
         dead, total, err = check_one(p, allmd)
         name = os.path.basename(p)
+        if err is NO_FM:
+            skips += 1
+            continue
         if err:
             parse_errors.append((name, err))
             print("  🚫 %s：%s" % (name, err))
@@ -183,6 +297,9 @@ def main():
     print("\n===== 死链自检结果 =====")
     print("命中文件：%d / %d" % (files_with_dead, len(targets)))
     print("死链总数：%d" % total_dead)
+
+    if skips:
+        print("跳过（无 frontmatter 的普通文档，合法）：%d 个" % skips)
 
     # v1.2.0：解析失败优先于死链判定 —— 「没查」不等于「查过了没问题」
     if parse_errors:

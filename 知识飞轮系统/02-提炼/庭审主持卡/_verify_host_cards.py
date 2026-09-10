@@ -1,0 +1,80 @@
+# -*- coding: utf-8 -*-
+"""
+庭审主持卡族 交付校验器（2026-09-08）
+检查：YAML 合法 / 必填字段 / card_type / 八段齐全 / 互链零死链 / rule_id 与文件名一致
+用 envs/default python 跑：ERROR=0/WARN=0 才准交付
+退出码：0 通过 / 1 发现问题 / 2 未能完成检查
+"""
+import os, re, sys
+try:
+    import yaml
+except ImportError:
+    print("FATAL: 缺 pyyaml，请用 /Users/chenyouqiang/.workbuddy/binaries/python/envs/default/bin/python")
+    sys.exit(2)
+
+BASE = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/通用"
+CARDS = ["R-PR-061-庭审主持卡总索引与卡型定义",
+         "R-PR-062-开庭即固定争点主持卡", "R-PR-063-释明权适时行使主持卡",
+         "R-PR-064-举证质证围绕争点指挥主持卡", "R-PR-065-心证适度开示主持卡",
+         "R-PR-066-阶段小结主持卡", "R-PR-067-调解优先但不久调不决主持卡",
+         "R-PR-068-诉讼指挥克制主持卡"]
+
+REQUIRED = ["title", "rule_id", "card_type", "subtype", "source", "created", "geo_scope"]
+SECTIONS = ["一、定位与适用场景", "二、要素式结构", "三、红线清单", "四、错误示例",
+            "五、法条/格式依据", "六、与相邻", "七、来源与地域效力", "八、关联"]
+
+errors = 0
+warns = 0
+
+def exist_link(target):
+    base = target.strip()
+    if base.startswith("[[") and base.endswith("]]"):
+        base = base[2:-2].split("|")[0].strip()
+    if not base.endswith(".md"):
+        base = base + ".md"
+    return os.path.exists(os.path.join(BASE, base))
+
+for c in CARDS:
+    path = os.path.join(BASE, c + ".md")
+    if not os.path.exists(path):
+        print(f"ERROR: 文件缺失 {c}.md"); errors += 1; continue
+    txt = open(path, encoding="utf-8").read()
+    m = re.match(r"^---\n(.*?)\n---\n", txt, re.S)
+    if not m:
+        print(f"ERROR: {c} frontmatter 缺失"); errors += 1; continue
+    try:
+        fm = yaml.safe_load(m.group(1))
+    except Exception as e:
+        print(f"ERROR: {c} YAML 解析失败: {e}"); errors += 1; continue
+    rid = fm.get("rule_id", "")
+    if rid not in c:
+        print(f"ERROR: {c} rule_id={rid} 与文件名不符"); errors += 1
+    for k in REQUIRED:
+        if not fm.get(k):
+            print(f"ERROR: {c} 缺必填字段 {k}"); errors += 1
+    if fm.get("card_type") != "庭审主持卡":
+        print(f"ERROR: {c} card_type={fm.get('card_type')} 非庭审主持卡"); errors += 1
+    for s in SECTIONS:
+        if s not in txt:
+            print(f"ERROR: {c} 缺八段之『{s}』"); errors += 1
+    if "红线" not in txt:
+        print(f"WARN: {c} 未出现『红线』"); warns += 1
+    if "错误示例" not in txt and "翻车标本" not in txt:
+        print(f"WARN: {c} 未出现『错误示例/翻车标本』"); warns += 1
+    if "yuandian_source_pending" not in fm or fm.get("yuandian_source_pending") is not False:
+        print(f"WARN: {c} yuandian_source_pending 非 false（核填标记异常）"); warns += 1
+    for link in (fm.get("related_links") or []):
+        if isinstance(link, dict):
+            link = link.get("name", "")
+        if not exist_link(link):
+            print(f"ERROR: {c} related_links 死链: {link}"); errors += 1
+    for mm in re.finditer(r"\[\[([^\]]+)\]\]", txt):
+        if not exist_link(mm.group(1)):
+            print(f"ERROR: {c} 正文死链: {mm.group(1)}"); errors += 1
+    if "[[" in m.group(1) or "]]" in m.group(1):
+        print(f"ERROR: {c} frontmatter 含 [[ ]] 双链（坑18）"); errors += 1
+
+print(f"\n候选卡片：{len(CARDS)} 张")
+print(f"ERROR：{errors}")
+print(f"WARN：{warns}")
+sys.exit(1 if errors else 0)

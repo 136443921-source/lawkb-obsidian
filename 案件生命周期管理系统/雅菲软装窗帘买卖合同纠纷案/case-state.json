@@ -116,6 +116,13 @@
       {"stage":"运维","gate":"-","role":"入口/监测","agent":"xiaoqiang-cockpit-hub + workbuddy-credit-monitor","status":"已接入"}
     ]
   },
+  "mockTrial": {
+    "prepReportReady": true,
+    "prepReportPath": null,
+    "status": "未启动",
+    "lastTrialAt": null,
+    "trialBriefPath": null
+  },
   "publicView": {
     "stageText": "原告已申请撤诉，等待法院裁定送达",
     "done": [

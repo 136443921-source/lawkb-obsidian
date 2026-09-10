@@ -40,7 +40,9 @@ def law_block(keys):
             out.append(f"*（缺法条回填：{k}）*")
             continue
         txt=a["text"].strip()
-        out.append(f"**《{a['law']}》{a['num']}**\n\n> {txt}\n\n*效力状态：{a['sxx']}（{a['src']}）*\n")
+        _lb = a['law'].strip()
+        _lb = _lb if (_lb.startswith("《") and _lb.endswith("》")) else f"《{_lb}》"
+        out.append(f"**{_lb}{a['num']}**\n\n> {txt}\n\n*效力状态：{a['sxx']}（{a['src']}）*\n")
     return "\n".join(out)
 
 def yq(s):

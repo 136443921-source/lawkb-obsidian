@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="prnu1StD5pUytsJoVc98tH">
+<head data-page-node-id="oPojQ3gK7i39BsjOAwRm4r">
+<meta charset="UTF-8" data-page-node-id="lGqTc1KyVARqgrPNkXY2it">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="oRySfkLCMDpRAUs3llELRp">
+<title>把律所的知识系统，当成一辆电车来造 · 数字分身系统 EV 架构白皮书 v1.0</title>
+<style>
+:root{
+  --bg:#070b11;
+  --bg2:#0c121b;
+  --card:#111a26;
+  --card2:#16202e;
+  --line:#1e2b3a;
+  --line2:#2a3b50;
+  --txt:#dfe7f0;
+  --txt2:#9fb0c4;
+  --txt3:#6b7f96;
+  --acc:#00e0a4;
+  --acc2:#38bdf8;
+  --warn:#ff8a4c;
+  --danger:#ff5d6c;
+  --purple:#a78bfa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.85;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 12% -8%, rgba(0,224,164,.10), transparent 60%),
+    radial-gradient(800px 500px at 88% 4%, rgba(56,189,248,.09), transparent 60%),
+    radial-gradient(700px 600px at 50% 100%, rgba(167,139,250,.06), transparent 60%);
+}
+.wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 24px;display:flex;gap:40px;align-items:flex-start}
+
+/* ── HERO ── */
+header.hero{position:relative;z-index:1;padding:72px 24px 56px;border-bottom:1px solid var(--line)}
+.hero-in{max-width:1120px;margin:0 auto}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(0,224,164,.35);background:rgba(0,224,164,.08);
+  color:var(--acc);padding:6px 14px;border-radius:999px;
+  font-size:12.5px;letter-spacing:.14em;font-weight:600;
+}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+h1.title{
+  font-size:clamp(34px,5.4vw,60px);line-height:1.18;font-weight:800;
+  margin:26px 0 14px;letter-spacing:-.01em;
+  background:linear-gradient(105deg,#fff 8%,#b9f5e4 45%,#7dd3fc 92%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.subtitle{font-size:clamp(15px,1.8vw,19px);color:var(--txt2);font-weight:500;letter-spacing:.02em}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:28px;font-size:13px;color:var(--txt3)}
+.meta-row b{color:var(--txt2);font-weight:600}
+.claim{
+  margin-top:34px;padding:22px 26px;border-radius:14px;
+  background:linear-gradient(100deg,rgba(0,224,164,.10),rgba(56,189,248,.06));
+  border:1px solid rgba(0,224,164,.24);border-left:4px solid var(--acc);
+  font-size:16.5px;line-height:1.8;color:#e8f4f0;
+}
+.claim .lb{display:block;font-size:11.5px;letter-spacing:.2em;color:var(--acc);font-weight:700;margin-bottom:8px}
+.claim b{color:#fff;font-weight:700}
+
+/* ── TOC ── */
+nav.toc{
+  position:sticky;top:24px;flex:0 0 218px;width:218px;
+  max-height:calc(100vh - 60px);overflow-y:auto;padding:20px 4px 20px 0;
+}
+nav.toc .th{font-size:11px;letter-spacing:.2em;color:var(--txt3);font-weight:700;padding:0 12px 12px}
+nav.toc a{
+  display:block;padding:7px 12px;color:var(--txt3);text-decoration:none;
+  font-size:13.2px;border-left:2px solid transparent;border-radius:0 6px 6px 0;
+  transition:.18s;line-height:1.5;
+}
+nav.toc a:hover{color:var(--txt);background:rgba(255,255,255,.03)}
+nav.toc a.on{color:var(--acc);border-left-color:var(--acc);background:rgba(0,224,164,.07);font-weight:600}
+nav.toc a.sub{padding-left:24px;font-size:12.4px}
+nav.toc::-webkit-scrollbar{width:4px}
+nav.toc::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px}
+
+/* ── MAIN ── */
+main{flex:1;min-width:0;padding:44px 0 100px}
+section{margin-bottom:64px;scroll-margin-top:30px}
+h2{
+  font-size:27px;font-weight:800;margin:0 0 8px;letter-spacing:-.005em;
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+h2 .num{
+  font-size:12px;letter-spacing:.16em;color:var(--acc);font-weight:700;
+  border:1px solid rgba(0,224,164,.3);background:rgba(0,224,164,.07);
+  padding:3px 9px;border-radius:6px;white-space:nowrap;
+}
+h3{font-size:19.5px;font-weight:700;margin:38px 0 12px;color:#eaf3ff;display:flex;align-items:center;gap:9px}
+h3::before{content:"";width:3px;height:17px;background:var(--acc2);border-radius:2px;flex:none}
+h4{font-size:16px;font-weight:700;margin:24px 0 8px;color:var(--acc)}
+p{margin:12px 0;color:var(--txt2)}
+p strong,li strong{color:#f0f6ff;font-weight:700}
+em{color:var(--acc2);font-style:normal}
+ul,ol{margin:12px 0 12px 22px;color:var(--txt2)}
+li{margin:7px 0}
+code{
+  background:rgba(56,189,248,.10);color:#7dd3fc;padding:2px 7px;border-radius:5px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;
+}
+
+/* ── 摘要卡 ── */
+.abstract{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px;margin:22px 0 8px}
+.abs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.abs .k{font-size:11px;letter-spacing:.18em;font-weight:700;margin-bottom:9px}
+.abs.a1 .k{color:var(--warn)} .abs.a2 .k{color:var(--acc2)}
+.abs.a3 .k{color:var(--acc)} .abs.a4 .k{color:var(--danger)}
+.abs p{font-size:14.2px;margin:0;line-height:1.75}
+
+/* ── 表格 ── */
+.tw{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:14.2px;min-width:520px}
+th{
+  background:rgba(255,255,255,.035);text-align:left;padding:13px 16px;
+  font-weight:700;color:#cfe0f0;font-size:13px;letter-spacing:.04em;
+  border-bottom:1px solid var(--line2);white-space:nowrap;
+}
+td{padding:13px 16px;border-bottom:1px solid rgba(30,43,58,.65);color:var(--txt2);vertical-align:top;line-height:1.7}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,.022)}
+td strong{color:#fff}
+
+/* ─━ 六模块卡片 ─━ */
+.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:24px 0}
+.mod{
+  background:linear-gradient(160deg,var(--card2),var(--card));
+  border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;overflow:hidden;
+  transition:.22s;
+}
+.mod::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));
+  opacity:.75;
+}
+.mod:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.mod .ic{font-size:24px;line-height:1}
+.mod .no{
+  position:absolute;top:16px;right:18px;font-size:44px;font-weight:800;
+  color:rgba(255,255,255,.045);line-height:1;
+}
+.mod h4{margin:12px 0 4px;font-size:17px;color:#fff}
+.mod .car{font-size:12.5px;color:var(--acc);font-weight:600;letter-spacing:.03em;margin-bottom:10px}
+.mod p{font-size:14px;margin:0;line-height:1.72}
+.mod ul{margin:10px 0 0 18px;font-size:13.5px}
+.mod li{margin:4px 0}
+
+/* ── 引文 ── */
+blockquote{
+  margin:22px 0;padding:16px 22px;border-left:3px solid var(--acc);
+  background:linear-gradient(90deg,rgba(0,224,164,.07),transparent);
+  border-radius:0 10px 10px 0;color:#d6ece6;font-size:15.2px;
+}
+blockquote .qh{display:block;font-size:11px;letter-spacing:.18em;color:var(--acc);font-weight:700;margin-bottom:7px}
+blockquote.qb{border-left-color:var(--warn);background:linear-gradient(90deg,rgba(255,138,76,.07),transparent)}
+blockquote.qb .qh{color:var(--warn)}
+
+/* ── 能量链路 ── */
+.flow{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;
+  margin:22px 0;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+}
+.flow .n{
+  padding:9px 15px;border-radius:9px;background:rgba(0,224,164,.09);
+  border:1px solid rgba(0,224,164,.28);font-size:13.5px;color:#cdf5e9;font-weight:600;
+}
+.flow .n small{display:block;font-size:11px;color:var(--txt3);font-weight:400;margin-top:2px}
+.flow .ar{color:var(--txt3);font-size:15px}
+
+/* ── 公理 ── */
+.axiom{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin:16px 0}
+.axiom .at{font-size:16.5px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.axiom .at span{
+  font-size:11px;letter-spacing:.14em;color:var(--acc);border:1px solid rgba(0,224,164,.3);
+  background:rgba(0,224,164,.07);padding:2px 8px;border-radius:5px;font-weight:700;flex:none;
+}
+.axiom p{margin:6px 0 0;font-size:14.6px}
+
+/* ── 协同流程 ── */
+.step{display:flex;gap:16px;margin:0;padding:16px 0;border-bottom:1px solid rgba(30,43,58,.7)}
+.step:last-child{border-bottom:none}
+.step .sn{
+  flex:none;width:30px;height:30px;border-radius:50%;
+  background:rgba(0,224,164,.12);border:1px solid rgba(0,224,164,.35);
+  color:var(--acc);font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.step .sc h5{font-size:15px;color:#fff;font-weight:700;margin-bottom:4px}
+.step .sc .sm{font-size:12px;color:var(--acc2);margin-bottom:6px;font-weight:600}
+.step .sc p{font-size:14px;margin:0}
+
+/* ── 边界 ── */
+.limit{
+  display:flex;gap:14px;align-items:flex-start;padding:14px 18px;margin:10px 0;
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--danger);border-radius:0 10px 10px 0;
+}
+.limit .x{color:var(--danger);font-weight:800;flex:none;font-size:15px}
+.limit .lt{font-weight:700;color:#fff;font-size:15px}
+.limit p{font-size:13.8px;margin:3px 0 0}
+
+/* ── 起步档位 ── */
+.tier{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin:14px 0}
+.tier .tt{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px}
+.tier .tw2{font-size:12.5px;color:var(--acc2);margin-bottom:10px;font-weight:600}
+.tier ol{margin:0 0 0 20px;font-size:14.2px}
+
+/* ── 代码块 ── */
+pre{
+  background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;overflow-x:auto;margin:16px 0;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
+  color:#8fd9c4;line-height:1.8;
+}
+
+/* ── 最终守则 ── */
+.final{
+  margin-top:56px;padding:34px 30px;border-radius:16px;text-align:center;
+  background:linear-gradient(150deg,rgba(0,224,164,.11),rgba(56,189,248,.07));
+  border:1px solid rgba(0,224,164,.28);
+}
+.final .big{font-size:clamp(19px,3vw,27px);font-weight:800;color:#fff;line-height:1.55;margin-bottom:10px}
+.final .big span{color:var(--acc)}
+.final p{font-size:14.5px;color:#b9d4cc;margin:0}
+
+footer{
+  position:relative;z-index:1;border-top:1px solid var(--line);
+  padding:32px 24px 60px;color:var(--txt3);font-size:13px;
+}
+footer .fi{max-width:1120px;margin:0 auto;line-height:2}
+footer b{color:var(--txt2)}
+
+@media(max-width:900px){
+  .wrap{flex-direction:column;gap:0}
+  nav.toc{position:static;width:100%;flex:none;max-height:none;border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:8px}
+  nav.toc .links{display:flex;flex-wrap:wrap;gap:6px}
+  nav.toc a{border-left:none;border-radius:7px;padding:6px 11px;background:rgba(255,255,255,.035)}
+  nav.toc a.on{border-left:none;background:rgba(0,224,164,.13)}
+  nav.toc a.sub{padding-left:11px}
+  header.hero{padding:44px 20px 40px}
+  main{padding:24px 0 70px}
+  h2{font-size:23px}
+}
+</style>
+</head>
+<body data-page-node-id="57OoiDfcJ7TSupCqXaRsCr">
+
+<header class="hero" data-page-node-id="QU0fUlkxiGwPhjmHxJ9zux">
+  <div class="hero-in" data-page-node-id="RjWQqqTumfnPuqKsUiZJ5Z">
+    <div class="badge" data-page-node-id="k60mW0XLtEviwtYWxeSx9B"><span class="dot" data-page-node-id="soQcaF8IbaSYPKRuCchzUU"></span>ARCHITECTURE WHITE PAPER · v1.0</div>
+    <h1 class="title" data-page-node-id="1ubRveItrBZiQ3n1OekNvW">把律所的知识系统<br data-page-node-id="dTk9k5irJ5TeRk2L0yew69">当成一辆电车来造</h1>
+    <div class="subtitle" data-page-node-id="lySUrE1L4L14y0D6sqm3o9">小强律师数字分身系统 EV · 六大总成 · 四条公理 · 一条不可越界的 L3 边界</div>
+    <div class="meta-row" data-page-node-id="MSrulHwbiGtKcdC8ohiypL">
+      <div data-page-node-id="DQgyNRsWP68aro5rpX9dgy"><b data-page-node-id="tVRbREdKh1mqZnxJcHJyCB">发布</b> 2026-09-10</div>
+      <div data-page-node-id="SLGFZCFunmvHQjZjaoMILo"><b data-page-node-id="MekRjdLddz5ubNwTlV0wAO">作者</b> 小强律师 · 实习律师 · 贵州贵阳</div>
+      <div data-page-node-id="Z9X4umIL576pJMLh1pnbwN"><b data-page-node-id="AFS5ZR1HwMEMHXTquWf68l">性质</b> 个人可维护系统 · 非商业产品</div>
+      <div data-page-node-id="uDlc8xQbkqaZa4RKgzmsop"><b data-page-node-id="eslzGsYoSEcOW15wBjmyti">数据</b> 实时扫描 + 人工核验</div>
+    </div>
+    <div class="claim" data-page-node-id="Dt1DvFW6UVNQF2P9Ilb7S7">
+      <span class="lb" data-page-node-id="zoc5OBE7N9VhHDtCC2BrXG">一句话结论</span>
+      法律 AI 真正的瓶颈，从来不是模型不够聪明，而是律所的知识资产<b data-page-node-id="8Ayyu782dKAe2MvaJs6aVZ">没有能量闭环</b>——只进不出、召不回来、失控无拦截、人被甩在环外。我们用一套"造车"的工程语言重建了一个实习律师的个人知识系统：<b data-page-node-id="a5Orr5sEW4g60GFThRDWNt">六大总成、四条公理、一条不可越界的 L3 边界</b>。
+    </div>
+  </div>
+</header>
+
+<div class="wrap" data-page-node-id="bRLuoxU0TDoePcR30n6xOg">
+<nav class="toc" data-page-node-id="hetzYQ2MSqUgguVot1FoDj">
+  <div class="th" data-page-node-id="dnvPn89wwdP6oKYLaMS9lF">目录 · CONTENTS</div>
+  <div class="links" id="tocLinks" data-page-node-id="UkmZ5EDw4czeODuLKHCfel">
+    <a href="#s0" data-page-node-id="C31CQzmzKI9jVM92kVRqrh">摘要</a>
+    <a href="#s1" data-page-node-id="ZBy9QNP3xi1ziJHGA8EuGJ">一 · 为什么是电车</a>
+    <a href="#s2" data-page-node-id="W400QHRIwsAPPK6sqoOL6p">二 · 四条公理</a>
+    <a href="#s3" data-page-node-id="fPF5GmFqwSkFUVlC7bQkLp">三 · 六大总成总览</a>
+    <a href="#s4" class="sub" data-page-node-id="YWvoppaCME7T6KxjqTk0cC">模块一 三电系统</a>
+    <a href="#s5" class="sub" data-page-node-id="l0OTMxL9XE4dCPbrRKL4te">模块二 补能网络</a>
+    <a href="#s6" class="sub" data-page-node-id="ereS4QijNtgZLCF7jpmpDO">模块三 智驾系统</a>
+    <a href="#s7" class="sub" data-page-node-id="z30sf6Dt5DuGeGreCd41rN">模块四 座舱与影子模式</a>
+    <a href="#s8" class="sub" data-page-node-id="JABZcB6JpV2BAxCCXZmbee">模块五 健康度自检</a>
+    <a href="#s9" class="sub" data-page-node-id="LAlM036n5wFTqtNposDZSq">模块六 黑匣子与 OTA</a>
+    <a href="#s10" data-page-node-id="bmLNkQaz7SjQmONFaleKAg">四 · 整车协同</a>
+    <a href="#s11" data-page-node-id="et4X1DnfhpBhvlm9CYtFIX">五 · 边界：不做什么</a>
+    <a href="#s12" data-page-node-id="jMNmpEGGXu9C8Xfd7CUWsS">六 · 可复制性</a>
+    <a href="#a1" data-page-node-id="JvzEBUHZ33XmcjZ8YgO7lM">附录 A · 故障码</a>
+    <a href="#a2" data-page-node-id="01SxNPjJNd7GDzHqjqsfGU">附录 B · 保养周期</a>
+    <a href="#a3" data-page-node-id="1ft44dOESUq9ltFLAAvD39">附录 C · 术语对照</a>
+    <a href="#a4" data-page-node-id="U2nC5i9aqWYPm9NodS39JL">附录 D · 整车铭牌</a>
+  </div>
+</nav>
+
+<main data-page-node-id="HfrGADCs27qgpUKpdjyqod">
+
+<!-- 摘要 -->
+<section id="s0" data-page-node-id="BJbPoUyaCoW1AVRxAWxKSO">
+  <h2 data-page-node-id="ZjcggHzBCwXKw5qMjp8C55"><span class="num" data-page-node-id="bQPFNvMI902qjvTaML62FL">ABSTRACT</span>摘要</h2>
+  <div class="abstract" data-page-node-id="HWDSSn2IxYpIDmy1RcnDvE">
+    <div class="abs a1" data-page-node-id="cW8rJZUNWd3fAFr3JnXEWH">
+      <div class="k" data-page-node-id="GO9TqAbV5wEtze2u4H17B5">问题 · PROBLEM</div>
+      <p data-page-node-id="lzzC1hnFXf9SK8mXN9OIeQ">过去三年法律科技几乎把全部注意力押在"模型多聪明"上。但一线律师的真实困境是：办过的案子沉淀不下来，写过的文书下次还得重写，检索到的法条不敢直接引用，AI 生成的东西看着漂亮却不敢署名送出。知识不是不够多，是<strong data-page-node-id="RteExEBQzt3Hda6wrWeR15">不成系统</strong>——一堆零件，不是一台车。</p>
+    </div>
+    <div class="abs a2" data-page-node-id="8CT27EBlREvMCN2jAGLAmk">
+      <div class="k" data-page-node-id="858HWeN7q8yIUc1a3NEnhO">方法 · METHOD</div>
+      <p data-page-node-id="Q7sOdOCY8ZfRDidYuCf08m">放弃"图书馆"和"大脑"两个惯用隐喻，改用<strong data-page-node-id="eGshvq57QzVvGPTlSP7xVJ">智能电动车</strong>作为一级隐喻。理由不是修辞，是工程：电车的隐喻会逼你回答——能量从哪来、存在哪、怎么放出去、失控了怎么办，以及<strong data-page-node-id="vew9agSOGsFeAYiADHKsEL">谁坐在方向盘后面</strong>。</p>
+    </div>
+    <div class="abs a3" data-page-node-id="NcBolUKsuobRUZZv22YRrE">
+      <div class="k" data-page-node-id="gpSfE7GLYYbVGdgDc6Lewd">结果 · RESULT</div>
+      <p data-page-node-id="uR1ZdL6Wr72jPFjwZmTSBf">六大总成全部落地并实测运转：知识资产 <strong data-page-node-id="6GQzZRgAgdofqFxR4Jr0Vl">3,000+</strong> 篇文档、<strong data-page-node-id="Q15PwVO87O6RdSPLjBv3GY">800+</strong> 条裁判规则卡、质检门禁回归 <strong data-page-node-id="OUUvMCJq0SrePkshkDKzAa">131/131</strong> 全通过、资产断链率 <strong data-page-node-id="wqaQHWSKxAv5f1VuKLZfFF">0.111%</strong>、<strong data-page-node-id="G2BQzOctf7ykWb1eLIojYU">10</strong> 项自动化 OTA 常驻。它不生产判决，它生产<strong data-page-node-id="aFHPSxTgBoiqtQhABq42xC">可交付的确定性</strong>。</p>
+    </div>
+    <div class="abs a4" data-page-node-id="orvlMbfPDzYWNYVET0VO00">
+      <div class="k" data-page-node-id="H6CFy1B7gjAr8PMmfVDRsw">边界 · LIMIT</div>
+      <p data-page-node-id="VsjDAG8RMPzHu1wFeAsZGk">它是 <strong data-page-node-id="AB7NcFVxqhV4H5jAJz65vr">L3，不是 L5</strong>。独立法律判断、庭审临场应变、对客户的最终担责——三项<strong data-page-node-id="h3Z3ZbA2O2srEwUJgjf2O9">明确声明不做、且结构上无法代劳</strong>。这不是谦虚，是设计。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 一 -->
+<section id="s1" data-page-node-id="0xJdQiQW5EeFVRR1NS2JTw">
+  <h2 data-page-node-id="IU1WqxpDP6EVRG3ixC2XHi"><span class="num" data-page-node-id="Wvo6iAEPGBvwD6tetOarQR">CHAPTER 01</span>为什么是"电车"：三种隐喻的取舍</h2>
+  <p data-page-node-id="cMf3bC0tO2SOtGxUfEPS35">选一个隐喻，就是选一套工程约束。<strong data-page-node-id="xnH6Tcamd9AESeFXF62SWy">你用什么比喻你的知识系统，决定了你会问什么问题、忽略什么风险。</strong></p>
+  <div class="tw" data-page-node-id="K6OqAh7ilRuvEMwh6anT9N"><table data-page-node-id="NmtdT4XpXbWlSxFDtdqgj5">
+    <thead data-page-node-id="PBWTiZsFDxIPsvHWCBieZ5"><tr data-page-node-id="icXB0jpJAySbanL9kE702O"><th data-page-node-id="CbUInPvIlI5xBeB2zDwv1S">隐喻</th><th data-page-node-id="GJDknr42nmPa1WfS1daBGO">它解决的问题</th><th data-page-node-id="YOdEPvDmXQiMzBEqdYzpuH">它带来的盲区</th><th data-page-node-id="XpJS1keJz0quR8OLS49Mkc">典型失败形态</th></tr></thead>
+    <tbody data-page-node-id="UUK6ZWfLb0fnZmSvlYcPFZ">
+      <tr data-page-node-id="CKe6nlpeGBeNlCClIwX7HD"><td data-page-node-id="h0A87HTOiEXoWrXIkcnk74"><strong data-page-node-id="I2q8ayHeS2P4NMpSG99sSy">图书馆</strong></td><td data-page-node-id="ljVVBOFSU2rUWOgboFvDe9">分类、编目、检索</td><td data-page-node-id="sTkDKpBxCvenfF6XHqjUgb">只解决"存"，不解决"流"与"用"</td><td data-page-node-id="YulpOu91FqwqlLZ0F4qdxO">电子垃圾场：收藏数千篇，办案时一篇想不起来</td></tr>
+      <tr data-page-node-id="LfM6k5Vj9K0TpgYV93ox6W"><td data-page-node-id="EOX83P8dGgBGOgZROoo3Fb"><strong data-page-node-id="6oOKKt8FJ1hVDKwBUs6tFq">大脑 / 智能体</strong></td><td data-page-node-id="Y24tOnQjLNcqLbhexTiuii">推理、涌现、拟人</td><td data-page-node-id="Oopupw7spyW7ruXGkhDxhN">黑箱、不可审计、出事无法定责</td><td data-page-node-id="tQfbQlCHxGYL2UVQBVVncp">幻觉体：输出流畅自信，引用全是编的，且无法追责</td></tr>
+      <tr data-page-node-id="yx7TqLfQmAW5PkMJ5kDdij"><td data-page-node-id="i7HEEtHahehinkhi231Ou8"><strong data-page-node-id="b73la76jx1xXxFHyaJpHCp">电车（本系统）</strong></td><td data-page-node-id="iCzNG2t5yNm2WJlm3IhieK">能量闭环、可控、可保养、人在环上</td><td data-page-node-id="fIXHSiqp5Fd4o8oyyKFUdW">需要持续运维，不会自己开</td><td data-page-node-id="11CnHgqfnivl3Vb02WDHeO">保养得当则复利，疏于养护则趴窝——<strong data-page-node-id="U8r4ddg9QzCL3hPjToAB36">可预期、可诊断</strong></td></tr>
+    </tbody>
+  </table></div>
+  <h3 data-page-node-id="1rPFrPPVrDua4QtdEd6f4I">关键判断：法律行业不能接受黑箱，也不能接受仓库</h3>
+  <ul data-page-node-id="XTIA9SJXW6VZIJz60yAGzj">
+    <li data-page-node-id="IvUTMrBuHAk2BJTN8nx1Tv"><strong data-page-node-id="S3PM7b48poBph97MTRrqnu">黑箱的问题不在于它错</strong>，而在于错了你不知道错在哪、没法向法庭和客户解释。一份被 AI 编造案号污染过的代理词，代价不是重写，是<em data-page-node-id="g7KDMRGXgnZFtQyMwCO93u">职业信誉</em>。</li>
+    <li data-page-node-id="eExa23vlDDJaXnmlHyEMJf"><strong data-page-node-id="Cd36fP9gSBFZA12HcSCKYy">仓库的问题在于知识没有势能</strong>。存了等于没存，因为从"存"到"用"之间缺一套能量转换装置。</li>
+  </ul>
+  <p data-page-node-id="SHEOFyiO0vU8NCSSfYNfKa">电车隐喻的强悍之处在于，它天然包含四件事：</p>
+  <ol data-page-node-id="yCkvWPniWkySbeiTbAvgam">
+    <li data-page-node-id="rtSgarijD2Lsv8OlYFeFKO"><strong data-page-node-id="NssQkmL5mBTlcY97BOzaPV">能量必须闭环</strong>——充进去的电要能放出来，还得能回收（动能回收）。</li>
+    <li data-page-node-id="Sjr2wtVLvkHF5Iizg1ZQsv"><strong data-page-node-id="8MsBnzjF6s86DXUGGzKwL3">失控必须有硬拦截</strong>——BMS 的存在不是为了提速，是为了防止热失控。它的权限高于续航。</li>
+    <li data-page-node-id="zbQHoA34l9zokW1vNzvBmD"><strong data-page-node-id="kA9KT9cYVD33GdpaesFE42">级别必须诚实</strong>——L3 就是 L3。宣称 L5 的系统，出事时责任边界是模糊的。</li>
+    <li data-page-node-id="jebSa7boveDbfTlFLMIp2W"><strong data-page-node-id="iaFuMhVIkUA4p8TehjGA00">可保养、可诊断</strong>——故障码、保养周期、铭牌参数，全部可量化可核验。</li>
+  </ol>
+  <blockquote data-page-node-id="NS6pizNSBmUvFTcddkhGeS">
+    <span class="qh" data-page-node-id="ULRXyIpSYv73mcRlo3ZEmF">本节金句</span>
+    选隐喻不是文案工作，是架构决策。你用"大脑"形容它，就会去卷推理；你用"电车"形容它，就会去建 BMS、装黑匣子、写保养手册——<strong data-page-node-id="xl9ugPD7JgCBWssHFzs7m0">而后者才是律师真正需要的东西</strong>。
+  </blockquote>
+</section>
+
+<!-- 二 -->
+<section id="s2" data-page-node-id="Ttt1hZaydXiKDUGK68boKY">
+  <h2 data-page-node-id="L6HvkHeCkAeEy4XPm4IIzV"><span class="num" data-page-node-id="H7dpPcFAMlhfKul89cVdUa">CHAPTER 02</span>四条公理</h2>
+  <p data-page-node-id="EBQwcKTGgRfrfg2JuWPjt2">整套系统由四条不可协商的公理约束。任何新模块、新自动化上线前，先过这四条。</p>
+
+  <div class="axiom" data-page-node-id="1MEWDE6uVxnUGzdSBBSY5B">
+    <div class="at" data-page-node-id="gFGSvGZcUzpdJWMEPXmNW8"><span data-page-node-id="h5PON8WZvcQxXOyDHZBUvc">公理一</span>能量必须闭环</div>
+    <p data-page-node-id="YhadYZdTE0oSKOx6ghowjy">知识资产若只进不出，电池就会"鼓包"——体量增长，可用度下降。系统强制三条回流路径：每次红蓝对抗复核 → 沉淀为经验卡；每次质检拦截 → 登记为事故并反哺规则；每个案件结案 → 回填决策日志。判据很简单：<strong data-page-node-id="FmM3o4ZGuMAEdj8btIjPGT">月回流卡数 &gt; 0 即闭环正常，= 0 即系统停摆。</strong></p>
+  </div>
+  <div class="axiom" data-page-node-id="IekaijfVS4ELA2tGV2BjBM">
+    <div class="at" data-page-node-id="SqkMgHBf0DDbVfwNczsbUh"><span data-page-node-id="PjWSuF2AjIVORRThL1roMQ">公理二</span>失控优先于续航</div>
+    <p data-page-node-id="geSJYeW7PKIkbohqFWuNYg">在所有性能冲突中，<strong data-page-node-id="v2K12yD17NObiVuyVOiDeR">安全拦截一票否决</strong>。质检门禁具备对交付物的一票否决权：REJECT 计数不为 0，即不准交付。宁可不交，不可错交。这条公理在商业上很反直觉——它直接牺牲交付速度——但在法律行业，它是唯一正确的排序。<em data-page-node-id="GAg4ySkjkEeBTjBOY73Tyl">律师卖的不是字数，是署名。</em></p>
+  </div>
+  <div class="axiom" data-page-node-id="JyvCrh1SoXW7ya7Ea3ISmw">
+    <div class="at" data-page-node-id="xS24f24cnYk4J4emlzoWuD"><span data-page-node-id="sSwcfYPadUpSP5OvxiUdwq">公理三</span>L3 不是 L5</div>
+    <p data-page-node-id="ctjsuysCJuQqYQHNz8Oku0">系统明确定位为 <strong data-page-node-id="uTCfBuI5nPsBEkS7nnhqoN">L3 执业助理级</strong>：辅助驾驶，方向盘后必须有人。它产出的是"经质检的草案 + 推演"，不是"结论"。拍板、出庭、对客户担责，永远归人类律师。这不是免责声明，而是<strong data-page-node-id="RfSKIut2LQOPK8MkvbLzFz">能力边界的诚实标注</strong>——一个不声明自己边界的系统，本质上是在转嫁风险给使用者。</p>
+  </div>
+  <div class="axiom" data-page-node-id="TW5HryRNPPcFwEic0IciRq">
+    <div class="at" data-page-node-id="ROIZ33CrhPVpeCw3fiCHjf"><span data-page-node-id="wES3m4ZwIfaSTRVRqwHSQr">公理四</span>可扫描优先于可描述</div>
+    <p data-page-node-id="2mCFTDK7PUJKYIEatnqoRJ">系统里所有指标分两类，且<strong data-page-node-id="ha4rhtjk7XpiO2hVsQaiq7">严格区分标注</strong>：</p>
+    <div class="tw" data-page-node-id="d3YpoaHLRJXgxg96TX2typ"><table data-page-node-id="Ij1fN9Ajv1pnpNm0iOe06H">
+      <thead data-page-node-id="ttjqfRumahawfxHAUAHFPC"><tr data-page-node-id="Vhg5Ml7AG7FBXHZMjqR9Bh"><th data-page-node-id="1wvJQCSDJGPnfAQAmoJ4wj">类型</th><th data-page-node-id="yZz0TPSYrqckYCIN14q6yP">获取方式</th><th data-page-node-id="y4eRY1cZ5Fz08vGNExfVxW">例子</th></tr></thead>
+      <tbody data-page-node-id="n72qjs5FUsZyx7CZtFxdhB">
+        <tr data-page-node-id="NXEYc5trDJx92hJDSiSxbE"><td data-page-node-id="Z4I9lKpTlY1T4Qza1Iz0tU"><strong data-page-node-id="Crjyj9mXx86kbxmJHDDiNa">实时扫描值</strong></td><td data-page-node-id="CN5WDFu3P41JfUds7ygUmC">脚本定时遍历真实文件系统统计，刷新即变</td><td data-page-node-id="A1FLUET8oyLcI7DYuZzDCL">文档数、卡片数、规则库文件数、断链率</td></tr>
+        <tr data-page-node-id="vtswOnXgQzPyT9G9Bz7Iho"><td data-page-node-id="wv7E0RXFRpB59FZr4nWqJd"><strong data-page-node-id="QnZ0EqEnCyBtExrXMNROsu">人工核验值</strong></td><td data-page-node-id="7aC2LtV6BBEA9yfSQkYryi">需人工实地核验后写入，脚本不得伪造</td><td data-page-node-id="glJMmJTC7s6SpxNVokcmIu">连接器连通性、质检回归结果、成熟度定级</td></tr>
+      </tbody>
+    </table></div>
+    <p data-page-node-id="LwZobhFF5DUL59sv1P2eHl"><strong data-page-node-id="OpLfMJXs1GrNfCCAq13b2G">铁律：能扫描绝不写死，扫不出就标注"人工核验"，绝不假装知道。</strong></p>
+    <p data-page-node-id="UDhv45ecXUGtGDyxLZ17hB">这条公理带来一个反常识的界面设计：驾驶舱上同时显示<strong data-page-node-id="aLFPyia2sHAEikPIcEfXGB">铭牌值与实测值</strong>，两者不一致时<strong data-page-node-id="yZbQaVIPPXRxGcPmQZs0jb">不覆盖、不取舍，而是把口径差异摊开显示</strong>。因为口径差异本身就是最重要的一类信息——它告诉你系统哪里在自欺。</p>
+  </div>
+</section>
+
+<!-- 三 -->
+<section id="s3" data-page-node-id="b71NqJFOChhGBe7mx3ykcW">
+  <h2 data-page-node-id="YnutEVOCgUHtJGMDYmlBCB"><span class="num" data-page-node-id="8xcjV45DYOiCCoJoZfT54t">CHAPTER 03</span>六大总成总览</h2>
+  <p data-page-node-id="GN6sugiuTMNx2mO4FTllRl">整车由六大总成构成，对应一条完整的能量链路：</p>
+  <div class="flow" data-page-node-id="2RriwWgiJa87LV6hfvMxWO">
+    <div class="n" data-page-node-id="q9rj32saLZgglmKk8LVydu">充能<small data-page-node-id="h2iSidsqobxz74xhMT3yR8">充电桩</small></div><span class="ar" data-page-node-id="Qn6d1wG2fY9YKZTplBW6VI">→</span>
+    <div class="n" data-page-node-id="NDPH8kkxgEtLhkz5mf1i9p">存能<small data-page-node-id="F71BU8GV3MZSesraBUYoai">三电</small></div><span class="ar" data-page-node-id="xSgNzdp4VTwcPtybyGiT3t">→</span>
+    <div class="n" data-page-node-id="YuM01kkky5yQykBVvs3Q72">用能<small data-page-node-id="kci1HxbygtCFj6UHPYMXbs">召回 / 推演</small></div><span class="ar" data-page-node-id="6ki2Ylnx2K2L0PyOQQDEq8">→</span>
+    <div class="n" data-page-node-id="9XpeR8k3F9gDpbnF4yIz9m">交互<small data-page-node-id="vmkOzgBybCIL3MbgGWUJ8f">座舱</small></div><span class="ar" data-page-node-id="1BteI0Amg7ucBeYsa3dg24">→</span>
+    <div class="n" data-page-node-id="4enpLwDKo8BtXP7cbCJAVQ">自检<small data-page-node-id="ePu92B4NKL6KqsZSQLAi6g">健康度</small></div><span class="ar" data-page-node-id="aTSKjoDs35eC4AR6kYCGwS">→</span>
+    <div class="n" data-page-node-id="xQpN36HLPThDE511Se4Mfk">进化<small data-page-node-id="Bqp5VH6jwG7OUFS5Igzj6A">黑匣子 + OTA</small></div>
+  </div>
+  <div class="tw" data-page-node-id="UzyIxxENSks17RjuyzTBRx"><table data-page-node-id="Lf35HJ8kEEVyU1ubBTNnYe">
+    <thead data-page-node-id="ER2SFG9r6mOhxTzEFJbcPd"><tr data-page-node-id="Q29lA7L5BQVcMKTAHRJVOW"><th data-page-node-id="TjLmP4BtjqDgCPXvRxXqV6">#</th><th data-page-node-id="qHRgZ7IkAWs7Uspj4r4BbO">总成</th><th data-page-node-id="nwBUriPYGW9mMUgwQUCwoB">车辆对应</th><th data-page-node-id="2ttnzNJQoYYFBhev58pgme">系统实现</th><th data-page-node-id="Z57KOWVTmHeSU6w5xNjuFf">核心命题</th></tr></thead>
+    <tbody data-page-node-id="qbYw5kzBMDSwLiuA0JPW0G">
+      <tr data-page-node-id="9bvC0P9sMrdfgCYm3ia9M4"><td data-page-node-id="B28ltXl3fpSHphOYB0qluq">一</td><td data-page-node-id="1lSgtibhrLRoYgbWE7xh5I">🔋 <strong data-page-node-id="o0EfuxVrAQ2ZMKl5aGVqww">三电系统</strong></td><td data-page-node-id="CifBiuWmzJb79HxdPDqk1S">电池 / 电机 / 电控 / 动能回收</td><td data-page-node-id="Bh89eTmlhIRYSVMIiD7VnJ">知识飞轮 + 召回引擎 + 质检门禁 + 经验沉淀</td><td data-page-node-id="7bQuaWvoXspyjoYCr3hC9k">能量的存、放、控、收</td></tr>
+      <tr data-page-node-id="tCmK0ZykzgA10RjmBRs0Hu"><td data-page-node-id="GFo7ZYZ47Hh46wQT2YvBVK">二</td><td data-page-node-id="rgnokRbpUpNoF3CuLNVA6E">🔌 <strong data-page-node-id="Ze6nQcBEHsznvKHL2caYUT">补能网络</strong></td><td data-page-node-id="GuOI8Nv0Er4Uy7ETD3oita">充电桩</td><td data-page-node-id="0GqSN0aG0y5pAfUgKz0g4U">权威法律数据源连接器集群</td><td data-page-node-id="TukJUquTOBME47ILjbQWJ2">能量从哪来、断了怎么办</td></tr>
+      <tr data-page-node-id="uxrPbEwyAGsWkZNCWfvDxs"><td data-page-node-id="dd7Ae3HndUACnGAiLTUCuQ">三</td><td data-page-node-id="n5JERKYiv68ccKO7YB24ej">🧠 <strong data-page-node-id="j6Y0D4BfPVbve2Pqn3Hks4">智驾系统</strong></td><td data-page-node-id="Kk0Eky8APE1yWTRnhGjStg">域控芯片 + 激光雷达</td><td data-page-node-id="Z5s1FRjjPQTWdQlVClRR8E">决策思维系统 + 跨案模式识别</td><td data-page-node-id="ZDuEGfLssj0UGqmId8qFTu">谁在判断、凭什么判断</td></tr>
+      <tr data-page-node-id="vZ6h112mIFg1Vu6JyAJbpW"><td data-page-node-id="f6HyQ2TTpKffBDFAxLalxP">四</td><td data-page-node-id="F7SmUG4zBoHCIZQmdbcspW">🖥️ <strong data-page-node-id="07L4FdgAJeH6x7CZOwplJJ">座舱与影子模式</strong></td><td data-page-node-id="CgNTSC0wrNMYOFxDycdXtb">车机 + 数字孪生演练</td><td data-page-node-id="ELrhmytIkaYUOBtO01e1VV">人格配置 + 模拟法庭红蓝对抗</td><td data-page-node-id="2aZFVB2GbpvMRoDPnqWKBi">人机界面与碰撞预演</td></tr>
+      <tr data-page-node-id="cNxuWXAszdUKEw2AARAdM0"><td data-page-node-id="4iJUMcmip9IDBHBw29hVmv">五</td><td data-page-node-id="jb3CGN7wcrrlB92kCAg71w">📊 <strong data-page-node-id="KxdK0oJuY6kf4XdU4LFGIV">健康度自检</strong></td><td data-page-node-id="ecUp2m82yq3bU8N8ELKAjj">仪表盘 + 故障码 + 保养表</td><td data-page-node-id="tqJ03EusWIVvIwP8vhgrlC">指标体系 + DTC 故障码 + 周期保养</td><td data-page-node-id="XcQG3d8uaLYQxCrqizfOw5">怎么知道车还健康</td></tr>
+      <tr data-page-node-id="RV9YpREaC2bLP0E4shld9R"><td data-page-node-id="DPWEW0QCEBOuFhOT5YUnSL">六</td><td data-page-node-id="B9kK0LvaFXH0pei5arLHah">📦 <strong data-page-node-id="WClTNvanO26j341RSt6cOk">黑匣子与 OTA</strong></td><td data-page-node-id="8zFavnzxwIw4NPvry4JakN">EDR 行车记录 + 远程升级</td><td data-page-node-id="xrXilMhhg7f8CWdNZFRxGA">决策日志 + 自动化编排</td><td data-page-node-id="vRZU6uwSoAo0FryEW9EmmV">留痕定责与持续进化</td></tr>
+    </tbody>
+  </table></div>
+  <blockquote data-page-node-id="BkCKqd43hhnCtGqYKFkwHH">
+    <span class="qh" data-page-node-id="OYF1agxIcbIZAaEx1Z8ugp">设计说明</span>
+    六大总成不是六个软件模块，而是<strong data-page-node-id="whu8SCUreLwx4uF3mQYHhb">六个工程问题的答案</strong>。每一总成都自带"失效长什么样"的定义——这是电车隐喻区别于一般架构图的地方：<strong data-page-node-id="YHOkAmt3HqYb5yO24ubt8M">架构图只画成功路径，电车手册必须写故障码。</strong>
+  </blockquote>
+</section>
+
+<!-- 模块一 -->
+<section id="s4" data-page-node-id="qDxFdPTb8BdBQm8S2mIYPk">
+  <h2 data-page-node-id="opyziQHIaB32lFPc2TKIuD"><span class="num" data-page-node-id="UChDzf8uvrZ0avalFHQuWd">MODULE 01</span>🔋 三电系统：能量的存、放、控、收</h2>
+  <blockquote class="qb" data-page-node-id="hxKEkiaVBILxdTvju0QoAj"><span class="qh" data-page-node-id="TacoDAKmqFmWwp0QzvD3hB">本模块命题</span>知识怎么存下来、怎么调出来、怎么保证它不出错、怎么越用越多。</blockquote>
+
+  <h3 data-page-node-id="SNlfvBmDHuGtpmQ97Xg3Jl">1.1 动力电池包 = 知识飞轮</h3>
+  <p data-page-node-id="2JbhmY2luOQXOxgvBz8ugf"><strong data-page-node-id="oGdvLtUPf56IMYNCuANFXH">车上是什么</strong>：整车能量的唯一来源。容量决定续航，健康度决定寿命。<br data-page-node-id="sGQ2WjYVvmJm7HuyKf9eLs">
+  <strong data-page-node-id="hkfu7ZR47kfNSrbSfV8pZp">系统里是什么</strong>：分层组织的法律知识资产库（六层结构 + 时序调度算法）。</p>
+  <div class="tw" data-page-node-id="bCZwyDKJWxBUVqWFtfd1Ws"><table data-page-node-id="UZPoeT9rEMkh4qCiBoVAvK">
+    <thead data-page-node-id="BQCS37CECU1WRUBzJvQUG4"><tr data-page-node-id="KpFTLxjqziXhUcpBjHUxVI"><th data-page-node-id="DH4QJDbNXuTHCxgGd6fHCF">指标</th><th data-page-node-id="MSDFnA1pljE9D4Ly9PXBTa">实测值</th></tr></thead>
+    <tbody data-page-node-id="HCAXcFMQRxIPUYK7Hx9jDC">
+      <tr data-page-node-id="wvsjuTpUJ9EzVZ1aZMuzo5"><td data-page-node-id="xakpPFKyTuWrEOFLhMIjSu">知识文档总量</td><td data-page-node-id="ihxt7BI436aijgsJoiHDQL"><strong data-page-node-id="q1EYO6zceBaihQjYjZqxDb">3,000+</strong> 篇（六层结构）</td></tr>
+      <tr data-page-node-id="48Pq3DXrpK2OJWBXady0Wq"><td data-page-node-id="fqcY6S3wFvi6pM96prekan">经验卡</td><td data-page-node-id="3d4pP0nvFSyXP9gPz4QX1g"><strong data-page-node-id="iJfaMezxNlVcT0RLHQHW1A">205</strong> 张</td></tr>
+      <tr data-page-node-id="v09PBY9Dk8uqPDT63KBGDm"><td data-page-node-id="HT0J3ehfagPrFoQ9Qp2gLg">裁判规则库</td><td data-page-node-id="C8Br0p6CTfmRwf7pnpCMCt"><strong data-page-node-id="lO2KTD71vKJ6ZPvdpVqXUp">816</strong> 个文件 / <strong data-page-node-id="dcS3pZSWkoiwzFnoHG81CJ">785</strong> 张规范命名卡 / <strong data-page-node-id="8XD1TNbEGHOZLP84RQ7Rm8">26</strong> 个子库</td></tr>
+      <tr data-page-node-id="DbuEUtAMSWpuXdOfcXC0xl"><td data-page-node-id="9OZYNFng2jVXKXS1taK49Q">已归档案件</td><td data-page-node-id="QfxTRSxAuzSuUVvf1zAl19"><strong data-page-node-id="82B4o9mB0DzmAd9lNzxJXf">15</strong> 宗</td></tr>
+    </tbody>
+  </table></div>
+  <p data-page-node-id="8HKRRIF1ajYaBjgPV34uH4"><strong data-page-node-id="3iIb2RPJm6hHUhCvcYraFb">它解决的真问题</strong>：律师的知识库最大的敌人不是"没存"，而是<strong data-page-node-id="egCDcqSdLfEKMATvYi4EvC">存的都是不能直接用的原料</strong>。一篇裁判文书原文，和一条"可被引用的裁判规则"，是两种东西。飞轮的价值不在于装了多少，而在于<em data-page-node-id="RTChs3STBJ85Wf6mfWvbmm">完成了从原料到规则的炼制</em>。</p>
+  <p data-page-node-id="CeIhVxKqAleYaQG89s61P2"><strong data-page-node-id="s087D8EArE90h9Fb5gu00E">设计权衡</strong>：我们接受"入库慢"。一篇文档进入规则层，需经提炼、编号、交叉索引、断链校验多道工序。这是<strong data-page-node-id="2rB7G0uWdKpB3FPhmNB5cg">故意的摩擦</strong>——低摩擦的入库，必然带来高噪声的库容。</p>
+  <p data-page-node-id="kbrAwqtktiGlARC1GHqbLb"><strong data-page-node-id="sG0wvhqIPvqMEmIIYEJomc">失效模式</strong>：容量虚胖。文档数增长而规则卡不增长 = 电池鼓包，需触发资产审计而非继续采集。</p>
+  <div class="limit" data-page-node-id="MVQQOl8S2RJEgmvJi6Y1qb">
+    <span class="x" data-page-node-id="92X5fj7TVTZVMoGO9XzlPx">✕</span>
+    <div data-page-node-id="bjdw6q9ZEbMEFwvtPBanzB"><div class="lt" data-page-node-id="vLHvhShUaObYcauOpXxwAJ">红线：严禁凭记忆灌入法条正文</div>
+    <p data-page-node-id="YDr8PevNObstr2RBysRz7Q">实测数据显示，凭记忆引述法条的错引率约 <strong data-page-node-id="CTYTvpytekXNBSwPEnrmb4">22%</strong>，在特定部门法领域高达 <strong data-page-node-id="LmjlMkCRPOkXHdUvBIoclI">75%</strong>。一条记错的法条混进知识库，会像坏电芯一样污染整包——而且极难反向定位。</p></div>
+  </div>
+
+  <h3 data-page-node-id="ixGGNPdzFN9otqdBdqUon0">1.2 驱动电机 = 规则召回引擎</h3>
+  <p data-page-node-id="FCVkjqjU8QITFCsQJHMuNb"><strong data-page-node-id="AacyfWSxDNWl3g8eHL40LR">车上是什么</strong>：把电池里的电转成车轮的驱动力。<br data-page-node-id="Zz1oNteXYVyRcblZqYRRcO">
+  <strong data-page-node-id="LpgA3IuoR7hvrR9oNAX2Fa">系统里是什么</strong>：新案件进来时，从规则库语义匹配相关规则卡并输出建议的召回层。</p>
+  <p data-page-node-id="GycSrtKm3nuQw4XaPqpbhd"><strong data-page-node-id="7AeFQ0ftVG3XHYddXw2HF8">它解决的真问题</strong>：知识库"存了但想不起来"的本质，是<strong data-page-node-id="eaIO8qI7BcFT7X3FNOkMva">从存储到调用之间没有马达</strong>。召回引擎就是这台马达——它把静态资产转成办案时的即时驱动力。</p>
+  <p data-page-node-id="RtdoOipR4Wu4HbHolw9GzC"><strong data-page-node-id="EVM1j35OH7cDfTYZCsAEDi">设计权衡与已知缺陷</strong>：召回质量高度依赖索引一致性。本系统曾出现"案件库双轨错位"导致漏检（见附录 <code data-page-node-id="p9N5KECUCrrjjhoJMgxDm8">DTC-CASE-001</code>）。解法不是合并双轨，而是<strong data-page-node-id="IDmBcBpN7ViFVjNC8BNjY6">建立双向索引校准机制</strong>——两条轨道各有存在理由（一条对外归档、一条对内真卷），强行合并会破坏各自完整性。</p>
+
+  <h3 data-page-node-id="xeI9Wb8QzxAEguaXtkgRwJ">1.3 电控 + BMS = 质检门禁（LTI）</h3>
+  <p data-page-node-id="uUgQ7llBQwNlPMeXoPZO0k"><strong data-page-node-id="WPvbakrZ7togOAMiODwfCw">车上是什么</strong>：电池管理系统。防过充、过放、热失控。它的存在不是为了跑得快，是为了<em data-page-node-id="d5kGQmMd6Z5Cdcl4zm8bCc">不起火</em>。<br data-page-node-id="MB0P2ravj0UW3ItsJ0V3BR">
+  <strong data-page-node-id="2WOvwOoXycuJX5cp15qSBg">系统里是什么</strong>：文本质检监控器。五维校验（法条真实性 / 法理逻辑 / 一致性 / 可溯源 / 程序合规）+ 案例存在性核验。当前实测：<strong data-page-node-id="peW4b58RtCk4nYxak3IYDi">回归测试 131/131 全通过，六维逻辑门禁生效</strong>。</p>
+  <p data-page-node-id="9ujh5s00GK2J9jKUFEMAzE"><strong data-page-node-id="xCjMMUOCKpNly6rZyAm3rh">它解决的真问题</strong>：AI 生成内容在法律场景的致命伤不是"不够好"，是<strong data-page-node-id="2BSPZPcO88HfuWdvbjKeCV">看起来很好但经不起核</strong>。编造的案号、张冠李戴的法条、自相矛盾的金额——这些在通用场景只是瑕疵，在法庭上是事故。</p>
+  <p data-page-node-id="Rmzy94wmQlB2SuFFMsAZU9"><strong data-page-node-id="mJhB3u0xKiPq0MxDzkAMBb">设计决策</strong>：质检门禁<strong data-page-node-id="0AhvhFMDF0UJekKXueFWsJ">常驻在交付路径上，不可跳过</strong>。系统甚至规定：被质检拦截<strong data-page-node-id="waBoigBA10G7Dm0zFCzcFW">不算故障，是安全机制生效</strong>——因此故障码体系里，质检拦截码<strong data-page-node-id="z98TSznpuao7jXGLEQnnYj">永不点亮</strong>。这是一个刻意的反直觉设计：<em data-page-node-id="ka8CDK56IKi9eG0VbOy1D5">把"被拦住"从失败重新定义为成功。</em></p>
+  <p data-page-node-id="1D9sqmyZp0YijrBUAYNNU5"><strong data-page-node-id="aO7oL2cVrlu1fyFGgn8JjK">降级哲学</strong>：外部核验接口不可用时，不停工等待，而是<strong data-page-node-id="U2qhOtodzlgmLvjxLf5ThI">降级到替代核验路径 + 官方渠道交叉印证，同时明确标注降级状态</strong>。不中断流程，但绝不假装没降级。</p>
+
+  <h3 data-page-node-id="sPrfctJyJ19fZZgidq0YFn">1.4 动能回收系统 = 经验沉淀（HIR）</h3>
+  <p data-page-node-id="PfwTT1fXW8J9AeNaWBwHfy"><strong data-page-node-id="eW6aGQvlflIz8zNUETz87I">车上是什么</strong>：把刹车时的动能回收进电池。刹车不再是纯损耗，而是充电。<br data-page-node-id="D2eEESXGFkMtwqBFCfgDCt">
+  <strong data-page-node-id="HcxZBzD2PQ5r0MTrVgKIKy">系统里是什么</strong>：把每一次对抗、拦截、事故，回流成新的经验卡与规则。当前实测：<strong data-page-node-id="LIhTaEUBT27x71aKVatiqZ">36 份沉淀调用记录</strong>。</p>
+  <p data-page-node-id="ITssF8CFq8WEm7JKVeWIMt"><strong data-page-node-id="7iEpL6Vx8ioRNbP63475i1">它解决的真问题</strong>：大多数知识系统会在两年后失去价值，因为只有"采集"没有"回收"。动能回收让<strong data-page-node-id="hujh4gNQJK3Lqum127qGGg">犯错变成资产</strong>——被质检拦下一次，系统就多一条以后不再犯的规则。</p>
+  <blockquote data-page-node-id="Oc3q6KOgl2NpkUafUL0oU2"><span class="qh" data-page-node-id="xZBU5cZZf8nCPxZ30LLGqg">复利效应的来源</span>开得越多，电量越多；犯的错越多，下次越少犯错。</blockquote>
+</section>
+
+<!-- 模块二 -->
+<section id="s5" data-page-node-id="pB3JnVnVrB8e8He0IaAtHz">
+  <h2 data-page-node-id="AtEHSw0W7rNNG9WbG5QAfQ"><span class="num" data-page-node-id="tFBErGsGASNFOf8bEGlgeF">MODULE 02</span>🔌 补能网络：能量从哪来</h2>
+  <blockquote class="qb" data-page-node-id="2u5eO2rQ9IuPxGMDmVENyK"><span class="qh" data-page-node-id="5HGtrFzmFmmQIcbtXa20Rg">本模块命题</span>权威数据从哪进系统，断供时如何优雅降级。</blockquote>
+  <p data-page-node-id="D2JLrxV5ZSQlWeu1sPv5Xs"><strong data-page-node-id="vsbB03sgL22hH6by8gYYra">车上是什么</strong>：充电桩。车再好，桩断了就是废铁。<br data-page-node-id="GlJMAY4DIAS497ol5jPqNe">
+  <strong data-page-node-id="QQCNq1cgcgFzk0WNsuODRS">系统里是什么</strong>：外部权威法律数据源的连接器集群——法条核验、判例检索、机构业务数据、知识库摄入、报告投递。<strong data-page-node-id="6ZVI8aGqLVUY9A3vsoxrDJ">当前状态：6 个桩位全部实测连通（6/6 达标）。</strong></p>
+  <p data-page-node-id="PwMEH7yhYvTvGqS2UO6zIy"><strong data-page-node-id="KUmnRcVv2MrH9B6OVvx34d">它解决的真问题</strong>：律师最怕的不是"AI 说得不对"，是<strong data-page-node-id="3uZMnnM4zxSlAQB8xl4Fqh">"AI 说得像对，但你没法验证"</strong>。补能网络的本质不是接入更多数据，而是<em data-page-node-id="GNqEzwI7SR3kkv7zKvekEl">接入可被追责的权威源</em>。</p>
+  <h3 data-page-node-id="Esn9lofwTkWVDMcIriYPuy">设计权衡：多源而非单源，且允许此消彼长</h3>
+  <p data-page-node-id="cBuawKLKETnF9PLuPwAVoN">系统同时接入多个权威源，并保持"法条源"与"案例源"的分离冗余。曾出现某一案例检索源断开的时期，处置不是告警停工，而是套用固定的降级模板：</p>
+  <pre data-page-node-id="mfTh1UAvsTMjB3BIXp0BKM">充电焦虑解读模板
+────────────────────────
+明确说明 "法条权威源更宽 / 案例权威源收窄"
+  → 此消彼长，整体不中断
+  → 并指出 "性价比最高的恢复动作" 是什么</pre>
+  <div class="limit" data-page-node-id="xyChw7ISItefWSZskiO9PH">
+    <span class="x" data-page-node-id="ZNxBIHRWJNUG3fu0pQDWCj">✕</span>
+    <div data-page-node-id="Hp3HPF8QZVE2qtJJIXP275"><div class="lt" data-page-node-id="bFF1E03xc6Z37XUxFAxz39">关键设计：不代点原则</div>
+    <p data-page-node-id="6BgIRXJwPlYP7HA7aZtzFZ">部分连接器的重连需要人工授权操作。系统<strong data-page-node-id="oukhwkHG5lzWSAxexhGEuj">明确不代为执行</strong>，只负责诊断与提示。这条看似"不够智能"的规则，实则是把控制权留在人手里：<strong data-page-node-id="iiG6PK7Q03IlMGiHojMFyS">自动化可以做一切，除了替人类做授权决策。</strong></p></div>
+  </div>
+</section>
+
+<!-- 模块三 -->
+<section id="s6" data-page-node-id="jYoRHnTjChZcU4K2EsUgxV">
+  <h2 data-page-node-id="EMSH7bC79T7AIlppEa24ui"><span class="num" data-page-node-id="tjNKEpTdIPIjx3DeIzSABS">MODULE 03</span>🧠 智驾系统：谁在判断</h2>
+  <blockquote class="qb" data-page-node-id="e0OMOYfbTwsPYT5lzBF1Hp"><span class="qh" data-page-node-id="W11RIpCQXlk9CJDMBzRDwc">本模块命题</span>系统靠什么形成判断，以及它如何越来越像它的主人。</blockquote>
+
+  <h3 data-page-node-id="5MtSL1CvmwFo07WlOonbdv">6.1 智驾域控芯片 = 决策思维系统</h3>
+  <p data-page-node-id="rywS0mr6PE6DVF1dlxiqHM"><strong data-page-node-id="nWCt6SjKTAw4BiVEMkS5nL">车上是什么</strong>：融合感知、规划、决策的核心算力单元。<br data-page-node-id="fEg3NiuIr8Km1pF6UJEt6R">
+  <strong data-page-node-id="fNfqUQQ0TQemhvhFG4ASH7">系统里是什么</strong>：决策捕获 + 思维蒸馏 + 决策日志 + 核心权重文件（HOW-I-THINK）。</p>
+  <p data-page-node-id="i4wLq4uxD3P81cm9DX9Zcg"><strong data-page-node-id="FoO5oEdq2j07pdQPIcZXnB">当前实测状态（诚实标注）</strong>：</p>
+  <div class="tw" data-page-node-id="2JvDIZeVV8xrgdm7WNCPxG"><table data-page-node-id="e0MhGieoIuutV6FOMa64EE">
+    <thead data-page-node-id="Ikdh28RWLshtaimKxB8FHr"><tr data-page-node-id="J1aS5TgvXSxdM4wFeuWbea"><th data-page-node-id="aCC3LqHvY4UTsIICfEesNQ">子模块</th><th data-page-node-id="sfcbo0jLpaY1oXLK8vcTHQ">状态</th><th data-page-node-id="Xwnz8zm0vESp2giYnfern3">说明</th></tr></thead>
+    <tbody data-page-node-id="LacBXjGxbPWODH8avLxYWy">
+      <tr data-page-node-id="8t3QuJZTJnBIyWTc50hADP"><td data-page-node-id="TCgwAWQRqzvCoQn24bylRR">捕获侧</td><td data-page-node-id="mFN1RuIaPcEhUysFuPe2vg"><strong data-page-node-id="DYRXsELgYbGp9tqG0UCn6B">活跃</strong></td><td data-page-node-id="XAP8i2ONNcatM5cGZcNNEX">在册决策卡 2 张，均待验证</td></tr>
+      <tr data-page-node-id="5SiXxisoqqIbrpKrRf4Bc5"><td data-page-node-id="MBqWVAhd83NvmqwU4zgSIJ">蒸馏侧</td><td data-page-node-id="IaGx6AjNhNVpEWXw5BLhjG"><strong data-page-node-id="j1M5nTpLEJiTUMGNY77Q0S">观察级</strong></td><td data-page-node-id="GlBvTqWHoXGNELChGKMKP9">核心权重文件已填 5/7 节，样本不足</td></tr>
+      <tr data-page-node-id="t9MGhfFGDYekWdI7LTMivQ"><td data-page-node-id="lRcf54CyWRqvRCg7pPXHEk">决策月报</td><td data-page-node-id="3CrjqGKS5npjzlsJ94MVft"><strong data-page-node-id="1jYGwG1BXfTDcQMqHDF8c4">已启动</strong></td><td data-page-node-id="wZCLlYmEflPxKs7zv7J2ca">已产出 1 份样本</td></tr>
+    </tbody>
+  </table></div>
+  <p data-page-node-id="L9r7TUmKaMs1K0Q9d5dKZD"><strong data-page-node-id="KD9Au5oEaNUdTP0rYoEEqi">它解决的真问题</strong>：绝大多数 AI 助手"不像你"，是因为它只学了你的<strong data-page-node-id="A0Wmi32AfSAQxkitf1xGyU">输出</strong>，没学你的<strong data-page-node-id="GFRkFBbO3h1TzVOzYqtG8j">取舍</strong>。本系统的决策卡强制三行结构——<em data-page-node-id="DxcadyzugacTxaXHCAfBnp">考虑了哪些选项 / 为什么排除其他 / 什么信号会推翻它</em>——记录的是推理过程而非结论。</p>
+  <blockquote data-page-node-id="dzcDBWV1e7A1R4zRyzeVOc"><span class="qh" data-page-node-id="8plRU3flHkxK6XDaXu8v6j">关键架构选择</span>存结论，系统只能模仿你的答案；<strong data-page-node-id="f771kVoLVe8s8ZnavOBO0Q">存推理，系统才能模仿你的判断</strong>。</blockquote>
+  <p data-page-node-id="hvhUgFornZjEN0peKgad9y"><strong data-page-node-id="SGZA8XKY1DNUDmb24QFOIP">成熟度阶梯（诚实公开）</strong>：样本 &lt; 10 为"观察级"，≥ 10 升级"规律级"。当前 2 张。<strong data-page-node-id="flF8vHvpLXqXnn5tJDbw6A">这是本系统公开承认的最大短板</strong>——智驾层远未标定完成，目前只能算 L2+。</p>
+
+  <h3 data-page-node-id="Xvk0AP3bPTaqFbtSsBMIMC">6.2 激光雷达 / 环境感知 = 跨案模式识别</h3>
+  <p data-page-node-id="0zMnnF5m7o9b3kFQQUwOQG"><strong data-page-node-id="LfJ8eULSjC6QWzEq5TLiIS">车上是什么</strong>：看见路况的眼睛。<br data-page-node-id="vGa4VIwOSdHwgt2W7s8AtK">
+  <strong data-page-node-id="aGub8a1ZOKnSvMyp8Bfpvc">系统里是什么</strong>：识别跨案件相似模式、预警同类风险的模块。</p>
+  <p data-page-node-id="tAwmkxCc7qdy2BmBQjJPGL"><strong data-page-node-id="5TJc9cUHhtqRaNUr36E80n">它解决的真问题</strong>：律师的经验优势，很大程度体现在"这个案子我见过类似的"。但人脑的跨案联想不稳定、不可靠、不可传承。模式识别模块把它变成<em data-page-node-id="6pHCy7kg4RJtlqdmBdkibp">新案接入时的强制第一步</em>。</p>
+  <p data-page-node-id="Eo6ObQRlfIdGeZuJ5KtWIQ"><strong data-page-node-id="WyEpv1cc4gmdMeDRKnzsNs">设计决策</strong>：固化进接案 SOP 第一环——新案接入、庭审准备、文书起草前主动调用。因为<strong data-page-node-id="7oZ7vlYxIG62TXImVVBaY5">感知模块一旦变成"想起来才用"，就等于不存在</strong>。</p>
+</section>
+
+<!-- 模块四 -->
+<section id="s7" data-page-node-id="RXn9AkG3gLgBo8oqcsuMA7">
+  <h2 data-page-node-id="SzlcnTyN75eNRuLBS48LOP"><span class="num" data-page-node-id="Z5DU0Jh6f9GAkSn8f5b3go">MODULE 04</span>🖥️ 座舱与影子模式：人机界面与碰撞预演</h2>
+  <blockquote class="qb" data-page-node-id="sq89abdYvAfxts2UJHMtLw"><span class="qh" data-page-node-id="Pdby90RfnUDjKZGmDEWndd">本模块命题</span>人怎么跟系统相处，以及系统怎么在"真上路"前先撞一次。</blockquote>
+
+  <h3 data-page-node-id="MDukaX9kFwCcztFCmwdXZ0">7.1 智能座舱 = 人格配置</h3>
+  <p data-page-node-id="ZVIkPPauBovM4j5gel4e1o"><strong data-page-node-id="jHSLEGGO3rRkiQwefaR0aM">车上是什么</strong>：方向盘、仪表、语音交互——定义"这辆车怎么跟你说话"。<br data-page-node-id="0OEkmqvOaFlaQdSFs9ErGb">
+  <strong data-page-node-id="cZpMcAd2fwq4ZvKxYkl7oH">系统里是什么</strong>：分身的人格配置文件，定义"我是谁 / 什么风格 / 边界在哪"。</p>
+  <p data-page-node-id="m6Z3asc4C6Dt4etyyzSvF7"><strong data-page-node-id="FkLeRSM5aCLz0tFU4ZmLB2">它解决的真问题</strong>：通用 AI 的输出风格是平均值，是"谁都不像的律师"。人格配置把执业者的<em data-page-node-id="RILqDIkGxqexGLfnpQnSDC">专业背景、复合视角、论证框架</em>固化进系统，让输出带上个人印记。</p>
+  <p data-page-node-id="hDKUtEaJLqWOaSNoVXDKHe"><strong data-page-node-id="YUF0rPNdFVBIm9FwIQxJoD">一个有意思的实践</strong>：本系统的人格不是单一身份，而是<strong data-page-node-id="zrJmJY30guYH5tWSFdq7HT">多重资质的复合</strong>——法律职业资格 + 社会工作师 + 执业药师。这种复合不是简历堆砌，它真实改变了输出：处理医疗纠纷时能读懂临床逻辑，处理公益机构事务时能理解治理语境。<strong data-page-node-id="7CzmCWDIJrRtQfv6ESzbVr">人格配置的价值，在于让 AI 继承你的交叉优势，而不只是你的职业头衔。</strong></p>
+
+  <h3 data-page-node-id="GE6LNB7VCyv9H8zLm4xTIe">7.2 影子模式 / 碰撞预演 = 模拟法庭</h3>
+  <p data-page-node-id="vzkSVFzSc7ABin0GHCUSbn"><strong data-page-node-id="TbT11YlF7FqDNX3rrZYFnc">车上是什么</strong>：真上路前，先在数字孪生里跑一遍，看会不会撞。<br data-page-node-id="i0XGT86mlUxx9OXuQCBWko">
+  <strong data-page-node-id="yDq7gu1U7clIPdtIeuvQhh">系统里是什么</strong>：红蓝对抗庭审推演——一支队伍构建论证，另一支队伍专职攻击它。</p>
+  <p data-page-node-id="apV9MBGrtAYC6CKFCzOJY3"><strong data-page-node-id="4Alvj1Yfz5Q4JKMD23cTnL">它解决的真问题</strong>：律师最大的风险敞口是"庭上第一次听到对方的反驳"。红蓝对抗把这个时刻<em data-page-node-id="SpaHdejzEC7A4cilKOLekE">提前到开庭之前</em>。</p>
+  <blockquote data-page-node-id="qgRn8NvwA7Zvod3UenOQ0N"><span class="qh" data-page-node-id="W8fO6tEVNdbbS60ssPhy4K">设计精髓</span>攻击方不是评委，是敌人。蓝队负责把论证建到最完整，红队负责用最残酷的方式找漏洞。这不是"复核"，是<strong data-page-node-id="IYX22SBhVjDlUeI49JEJAy">预驳回攻击</strong>——假定自己会被驳回，倒推哪里会先崩。</blockquote>
+</section>
+
+<!-- 模块五 -->
+<section id="s8" data-page-node-id="BFGHnDrb8QwtXfjYDe7aEU">
+  <h2 data-page-node-id="sY7YHIfsc1AEzIZuwqzCg1"><span class="num" data-page-node-id="5bmOUdOcHyMbwNI836EoTu">MODULE 05</span>📊 健康度自检：怎么知道车还健康</h2>
+  <blockquote class="qb" data-page-node-id="h70dri6BkAE6Xe2og7QORx"><span class="qh" data-page-node-id="jK3ztZpcBTLSqKQ4eesO1T">本模块命题</span>系统现在还好吗，以及它坏的时候会怎么告诉你。</blockquote>
+
+  <h3 data-page-node-id="QMAxBhQS0ZHXdJO4si03x9">8.1 仪表的诚实边界</h3>
+  <p data-page-node-id="4Qlt3MPFe3DUEGJntmBMbA">系统公开区分两类指标，并且<strong data-page-node-id="rn6W8CYsxEwdJnjlUSIfNj">明确承认其中一类的局限</strong>：</p>
+  <blockquote data-page-node-id="c2hYceooJLjRhgSdiJhY5H"><span class="qh" data-page-node-id="y7dn8iS4MEPblCBllvOTPe">体量 ≠ 质量</span>健康度仪表盘显示的是"你有多少资产"，不是"这些资产有多好用"。质量要看召回命中率、质检回归通过率、思维文件填充度。<br data-page-node-id="citgOiCxUPkSgG0RDxZBZf"><br data-page-node-id="TTJr0AReTOgt6A5U6Z5hD7"><strong data-page-node-id="jiio6o00FzbQMR7LFUmHXP">这种自我限定的声明，是整套系统最值得被复制的设计之一。一个只报告好消息的仪表盘，比没有仪表盘更危险。</strong></blockquote>
+
+  <h3 data-page-node-id="9BIU8VOxAlS35UV9cyhHP3">8.2 故障码（DTC）体系</h3>
+  <p data-page-node-id="dI6I3GCuVZWss6wAjRVVCx">借鉴汽车 OBD 标准，为每类失效定义唯一故障码。完整清单见<a href="#a1" style="color:var(--acc);text-decoration:none" data-page-node-id="2BmLiNp5X4LPDI64wCE9YK"><strong data-page-node-id="zOC1OdgNxDYrbLoxv8QsW7">附录 A</strong></a>。</p>
+  <p data-page-node-id="YA7YQQ6yPczUE0BAEYWH4r"><strong data-page-node-id="3tLLWr4AMcbOUsuHYJsf32">关键设计</strong>：故障码只定义"含义"，<strong data-page-node-id="zYDI69Oox0mhWjM6f5sbsP">不写死"当前是否触发"</strong>。是否点亮由实时状态判定。手册新增但尚未映射的故障码，一律标注"未判定"，<em data-page-node-id="vFI1c5WEv08n2QGQg1Ioh9">不假装正常</em>。</p>
+
+  <h3 data-page-node-id="9NecUPpRwb0oZJe6fWxEX6">8.3 保养周期</h3>
+  <div class="tw" data-page-node-id="iB5CoZ9fnXuJPdpHIMpVah"><table data-page-node-id="UtStz030ci57Kh7GLvrgOl">
+    <thead data-page-node-id="YQXCubOvK1bcLb124jgV98"><tr data-page-node-id="lkwBGZ25AT9lLL3yJw7hcv"><th data-page-node-id="3wZxwJszY56dklTdterWom">周期</th><th data-page-node-id="eDxMTLVvJQaODqkTTEALoK">保养项</th></tr></thead>
+    <tbody data-page-node-id="7M5tzgypsJVc7Cz1wOxME5">
+      <tr data-page-node-id="a3tsOJZy9JaQqMwBOX1Bco"><td data-page-node-id="Gnn8M6vJApt4i1EbwbnYPn"><strong data-page-node-id="7FiAy6NXSX8qJPvTz1ckYk">每日</strong></td><td data-page-node-id="TdXF7OkeHvrvLaBZrPkbez">查收摄入报告；出文必过质检门禁；连接器健康守卫</td></tr>
+      <tr data-page-node-id="L0riCviBNLBQW1NQsOizPh"><td data-page-node-id="Z4GnxOrAfoaaK3tm4TKk9R"><strong data-page-node-id="QzOLIY5fFLBieZAvIo7jmd">每案</strong></td><td data-page-node-id="yMtuwNBnc51MkzQc46e5Gu">入案先跨案识别 → 出文红蓝对抗 + 质检 + 门禁 → 结案经验回填 → 决策卡建档</td></tr>
+      <tr data-page-node-id="goa6c9cXHWpxUcOcqGDHwD"><td data-page-node-id="EyofZFAmrogNQTG4sJMXGE"><strong data-page-node-id="zCeMImLNtvSAvZVGXaIxDn">每周</strong></td><td data-page-node-id="ZrFsAZx2aoJG3Q6S85KWLg">自检改进 + 链接刷新；周报复盘</td></tr>
+      <tr data-page-node-id="U5166epTfBM7j1q1ul22NC"><td data-page-node-id="cYagbIIr4qhdX5Lsq48x2b"><strong data-page-node-id="A5Y23XAMome9zi47PXHTk1">每月</strong></td><td data-page-node-id="WQJRk4gxN6uob0cKLWKVaQ">知识复利报告 + 案件蒸馏 + 规则对账 + 决策月报 + 连接器保活巡检</td></tr>
+      <tr data-page-node-id="UhVKTUNIydZlYnB6Ao61QQ"><td data-page-node-id="PTunpzbSHkApdnPWDkCA0v"><strong data-page-node-id="PZWlnGNDErWVIXVyPNGrFo">每季/年</strong></td><td data-page-node-id="xe4goEIWi8Ngoidu8BIEfp">资产断链审计（门禁 0.5%）；案件库双轨索引校准；外部接口可用性复盘</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 模块六 -->
+<section id="s9" data-page-node-id="CjsbTM2rjRBrOHGL6NHEdh">
+  <h2 data-page-node-id="1OsP5q4MHDKAQQNOq71dCf"><span class="num" data-page-node-id="vMBAa7G8EmqmN9HBujxOm8">MODULE 06</span>📦 黑匣子与 OTA：留痕与进化</h2>
+  <blockquote class="qb" data-page-node-id="dhIb1xnN2TtDFlEbosnbjk"><span class="qh" data-page-node-id="EwSIqQjgAWFR1zIQYbNukR">本模块命题</span>出事怎么定责，以及系统怎么在不拆车的情况下变强。</blockquote>
+
+  <h3 data-page-node-id="gib0xMFH49mMVw8uLN8sjx">9.1 黑匣子 / EDR = 决策日志</h3>
+  <p data-page-node-id="N3LTg3syG5zJuCtJiwTIpo"><strong data-page-node-id="zJJJXWorj13gvZzPlB9yYp">车上是什么</strong>：全程记录行车数据，事故后可回溯定责。<br data-page-node-id="5nFloP1fAg1vUWMkZserII">
+  <strong data-page-node-id="X7JVN11bBeqZdbGVK21Dt6">系统里是什么</strong>：决策日志 + 系统运行日志。</p>
+  <p data-page-node-id="0NrkGK0x2GUECrv9B8PpJ9"><strong data-page-node-id="jZXHIf13kMZnqIcFHWvrzO">它解决的真问题</strong>：法律行业的每一次输出都可能被追溯。当客户或法庭问"这个结论是怎么来的"，你需要的不只是答案，是<em data-page-node-id="ss4ebrBIHaqqZSWTXE93nB">推理链的存档</em>。黑匣子让系统的每个判断都可回放。</p>
+  <p data-page-node-id="K0zrLRLsznBgbRRStpZ4Ea"><strong data-page-node-id="U50MXgDYvlVG6N9BGoHZZB">配套设计</strong>：每个决策卡预留"复盘回填区"，并设到期提醒。因为<strong data-page-node-id="Z2bBqiBMixKEl47xHEuXAG">不复盘的决策日志，只是日志，不是学习</strong>。</p>
+
+  <h3 data-page-node-id="QPguRdeFMe7PDgjn6jGlpR">9.2 车规纪律 = 行为规则文件</h3>
+  <p data-page-node-id="nHuW0fgjvvhQMFSEZHXgJO"><strong data-page-node-id="LRlyYqyBbjxjsNnOFAAKma">车上是什么</strong>：车规级强制标准。<br data-page-node-id="y66aT3kg5UCQ1v9mMufA6U">
+  <strong data-page-node-id="LA1NI884E10559WD8wPSEI">系统里是什么</strong>：AI 行为规则文件，规定所有自动化必须"真跑 + 留痕"，<em data-page-node-id="nBNXPjCFBjY0XNOSWVrAf7">禁止摆设式自动化</em>。</p>
+  <p data-page-node-id="6AXSBRJEzqgD7gLcL2ntoz"><strong data-page-node-id="AnKsXrePfN7zhoCv0c9WBZ">核心条款（六-B 铁律）</strong>：所有写入型自动化必须包含——<strong data-page-node-id="cAwnXh3vMJK1aAzlNma79T">先排查 / 确认非误报 / 再批量修改 / 含安全扫描 + 预演（dry-run）+ 备份</strong>。</p>
+  <p data-page-node-id="gWHeDRa4xUNcVE0sw8keBS">这条铁律源自一次真实教训：自动化脚本在无人确认的情况下批量改写知识资产，代价是长时间的回滚。<strong data-page-node-id="F3fxznxHNZJCO7xZR3Nf57">它后来被扩展到全部写入型自动化，无例外。</strong></p>
+
+  <h3 data-page-node-id="YIolJP3T3H8rZ8GDIBxB3J">9.3 OTA 远程升级 = 自动化编排</h3>
+  <p data-page-node-id="jMrWP1oAnYETjbqwhfRFUh">系统常驻 10 项自动化任务：</p>
+  <div class="tw" data-page-node-id="hWFZKBAP6HviQQvMGmrGQH"><table data-page-node-id="to0W7AOjd4jZUm7bLi5w0h">
+    <thead data-page-node-id="Nsau85n6OdmkSHu3v1NlQl"><tr data-page-node-id="JHb3qyP8In0AwGG2CahkEx"><th data-page-node-id="ra3CoEcSlPcQAFdSnCGTBO">节拍</th><th data-page-node-id="RTtDLSWwAptp7OCjjeEIb9">任务</th></tr></thead>
+    <tbody data-page-node-id="Dhq6zWUMOfqxEGWpH9XQzI">
+      <tr data-page-node-id="jNsAL5N9KR1BWFYgr39FZ9"><td data-page-node-id="D2PGbk6DDrICMaQiUaOp0L">每日</td><td data-page-node-id="VPR8AWRNwUij6Fs9yzMp4V">知识摄入 / 稳定性守卫 / 案件归档</td></tr>
+      <tr data-page-node-id="RaHFyLJEgm0U6IbAFPRiq3"><td data-page-node-id="fOjXjaSMODXO8PZ1iQJuy1">每 4 小时</td><td data-page-node-id="2MBzqqazqJmdm2dbx1L9bj">驾驶舱仪表刷新</td></tr>
+      <tr data-page-node-id="vMU9jQRgdv3qPbGKCV13Sw"><td data-page-node-id="rOclGAjrNo0GFYadfGCE3d">每周</td><td data-page-node-id="oytKqB3xn2WUVTGPDy0i4n">自检改进 / 链接刷新 / 周报</td></tr>
+      <tr data-page-node-id="mwArqtWAnS1MtKh2VXdoho"><td data-page-node-id="FGQguU66X1Jgsqsb0TNq3j">每月</td><td data-page-node-id="bmQBPbKzuldvWypKsaMOgd">知识复利报告 / 规则对账 / 决策月报</td></tr>
+      <tr data-page-node-id="LQT7wdK3n4jSNmSHczf9qx"><td data-page-node-id="XOcSaNtk7EyZDtepqMZT58">常驻</td><td data-page-node-id="RxZGrLqwfvWH3Xv5FYPq3b">安全铁律校验</td></tr>
+    </tbody>
+  </table></div>
+  <blockquote data-page-node-id="YiqygeS9PirMleAgu7IpJr"><span class="qh" data-page-node-id="Yu8zcOXRosaAdX2lU98rNH">重要的运维认知</span>运行时提示"某连接器断开 / 能力降级"，<strong data-page-node-id="DvTDFHJlfreQA8pyrkRRYF">不是 OTA 故障，是授权未绑定</strong>。把"系统故障"和"权限问题"分开报，能省下大量无效排障时间。</blockquote>
+</section>
+
+<!-- 四 整车协同 -->
+<section id="s10" data-page-node-id="B5op49eFI7M9ESxG7dmr9M">
+  <h2 data-page-node-id="029Fcy7KKcHKDBkPJd8Agc"><span class="num" data-page-node-id="QCv1l4rRojJ2ITthujoQEz">CHAPTER 04</span>整车协同：一个案子跑完全程</h2>
+  <p data-page-node-id="pQg9ysKCjBWb24nolyLx0X">六大总成分开看是架构图，串起来才是一台车。以下是一个案件从进门到结案的完整流转：</p>
+  <div class="step" data-page-node-id="QWWmYrAjNq18dOilwuxZfX"><div class="sn" data-page-node-id="VQaCxjuE26m3gQzw23ZQr0">1</div><div class="sc" data-page-node-id="by5w3SCYhiOCZBWbw14xfl"><h5 data-page-node-id="LRoUF8xVfbnVQ8ZLy0ig9H">接案</h5><div class="sm" data-page-node-id="9UaGhGSJxmrT8fBA0zHDJF">感知雷达 + 充电桩</div><p data-page-node-id="oPUxglT6Pny3OEEYsPjTNB">跨案模式识别先扫历史相似案件；同步核验外部权威源连通性。</p></div></div>
+  <div class="step" data-page-node-id="lEFoMf3IuzB4vH6u48ZfN9"><div class="sn" data-page-node-id="PkHjePzQZi0XHs7It0xwi0">2</div><div class="sc" data-page-node-id="Bl0ABqoqFiiFF11VbxKDYj"><h5 data-page-node-id="bvSbNaUfYH9IztQnDFC1JN">法律检索</h5><div class="sm" data-page-node-id="PbQdCjDOHq5V1JAMCZgpGW">补能网络 + 电池</div><p data-page-node-id="A3aZJz5OtKDWhaIQJWDJhQ">从权威源取回法条与判例原文（禁止凭记忆）；与本地规则库交叉比对。</p></div></div>
+  <div class="step" data-page-node-id="33Xobg1Fqs8bAZXrMoKyUp"><div class="sn" data-page-node-id="GKFXtIraEJTgMVfZEGnBwC">3</div><div class="sc" data-page-node-id="JUI2baTQdn08kXOiKOLUet"><h5 data-page-node-id="ewqsTsoJgxGoJUhwVujBdu">文书起草</h5><div class="sm" data-page-node-id="hFKXPCk1Y8KpBQ6Hl0yeYe">座舱人格 + 电机召回</div><p data-page-node-id="6XdyVUdApD7j5bXkcBYCOv">以执业者人格生成初稿；规则引擎召回相关裁判规则注入论证。</p></div></div>
+  <div class="step" data-page-node-id="Hu6BapFMhcGNDdfDS8IsyM"><div class="sn" data-page-node-id="c0gOgJrYSWnwokjGn0r9Lg">4</div><div class="sc" data-page-node-id="E4DNIxBo0dTZOsVb2r4oS1"><h5 data-page-node-id="6DnyIQXzozs8pxr528hNUC">红蓝对抗</h5><div class="sm" data-page-node-id="E58VrtRDB6gffnrB6LkMF9">影子模式</div><p data-page-node-id="Z49sL9MAu5Mwa6WAULHQc5">蓝队补全论证，红队预驳回攻击，多轮迭代。</p></div></div>
+  <div class="step" data-page-node-id="Wjwe2YMdHc3Y90H6LafrXC"><div class="sn" data-page-node-id="NNL4zW6hZiHf7W69BF6z3b">5</div><div class="sc" data-page-node-id="mdd5SYDNWKVqOC860dZzbx"><h5 data-page-node-id="PPN3Epf6UMAcDGjFZlkVlF">质检放行</h5><div class="sm" data-page-node-id="VIUpSfA2OuoytmxLC0LByX">电控 BMS</div><p data-page-node-id="ZsHeD56QDJBBGdsO2pcPbB">五维校验 + 案例存在性核验；<strong data-page-node-id="QFlnpobiv4OLFgiD6OTtFH">REJECT = 0 才准交付</strong>。</p></div></div>
+  <div class="step" data-page-node-id="02gmroo0FDa3J81wYLS6pl"><div class="sn" data-page-node-id="5Xq2fj0S5jxMHo5M2NmAwz">6</div><div class="sc" data-page-node-id="8mlGs71fFcxADNRqBQ3QDq"><h5 data-page-node-id="NUXHDQPG3T5Na56VMLw1xD">出庭准备</h5><div class="sm" data-page-node-id="MgMoxuquSfGsQF9gF4YYy3">影子模式 + 感知</div><p data-page-node-id="r3vsENRySjntqquh8bpUKR">模拟庭审预演，暴露庭上可能的突袭点。</p></div></div>
+  <div class="step" data-page-node-id="EUcEjncg6Y9vQq9BfRjsAG"><div class="sn" data-page-node-id="Hz1RekLVKKXiMFO4P0Xc9S">7</div><div class="sc" data-page-node-id="hbj8jlQaDFvHFIqYXzm8k0"><h5 data-page-node-id="4XSy3Bnrm315hlTn4GSEmH">结案回填</h5><div class="sm" data-page-node-id="S5uNva1zEIuQQEUzExDUGK">动能回收 + 黑匣子</div><p data-page-node-id="Ajt4rrg4RzDhZyPQpZHfEC">经验沉淀成卡；决策日志存档复盘模板。</p></div></div>
+  <div class="step" data-page-node-id="JDnq7kG4S4zAKhuwIuLWKK"><div class="sn" data-page-node-id="4T210R8gYXCQQETdJByFzB">8</div><div class="sc" data-page-node-id="x4WEXOwPDrBFcyI6RLzoRh"><h5 data-page-node-id="wmFMWaxpdzvFMiBaZes6Co">周期进化</h5><div class="sm" data-page-node-id="HCEiMxMd89KFyEOYdQ29Q6">OTA + 域控</div><p data-page-node-id="HcEFRPRuQiv88TfGGsXny0">月度蒸馏进核心权重文件；自动化持续刷新仪表。</p></div></div>
+  <blockquote data-page-node-id="EMghQ0mlcPlCBhV0KF1dj9"><span class="qh" data-page-node-id="EVBWolIfEQis9pCgxe99f6">这段流程真正的价值</span>不在于"AI 代劳了多少"，而在于<strong data-page-node-id="0DPVhfj1CMjD0l7HD49FCp">每一环都有拦截、有留痕、有回流</strong>。任何一环失效，都会被下一环或仪表捕获——<strong data-page-node-id="ARp6tIK8RyG386zOQGLsui">这才是"车"与"一堆工具"的区别。</strong></blockquote>
+</section>
+
+<!-- 五 边界 -->
+<section id="s11" data-page-node-id="iNzS0CGVl2fwK4KVMTTa3P">
+  <h2 data-page-node-id="BGaaCbdO16ewMgkKuoRIt5"><span class="num" data-page-node-id="BfkMYMTeaofwi2OeP1Kw9H">CHAPTER 05</span>边界：这辆车不做什么</h2>
+  <p data-page-node-id="AzLFzmLQnXDU4PYomX7Bpl"><strong data-page-node-id="Mer7sOnLVtOqHWE6UYHcXY">一份不写边界的架构白皮书，本质上是广告。</strong></p>
+  <p data-page-node-id="TEoCXnyYm41o2lKuf4dxTO">以下是本系统<strong data-page-node-id="Fyj4d9C9CuoA7lH8vWs9cV">明确声明不做、且在结构上无法代劳</strong>的事项：</p>
+  <div class="limit" data-page-node-id="qNIzz0DjHotGKBbfpr0Vro"><span class="x" data-page-node-id="0GXdukD9gRm5IE2SvGHDaU">✕</span><div data-page-node-id="LmHvCGyLJE3yAjVqLUIEbe"><div class="lt" data-page-node-id="U3CSqr1Yly0OoG0IDeLWsS">独立法律判断</div><p data-page-node-id="pxkNJDkFiEc14YX2RAOycE">判断意味着价值权衡与后果承担，两者都需要主体资格。</p></div></div>
+  <div class="limit" data-page-node-id="ekUBGfrWmgIHu0DiAWqD1q"><span class="x" data-page-node-id="RG223Nq4OHGBZlk3p5S2Yx">✕</span><div data-page-node-id="sN2FFJHgodtWlKxBarUjSW"><div class="lt" data-page-node-id="CdfIiVguoU3bG9pxJudTWw">庭审临场应变</div><p data-page-node-id="W9qAIrxDFFfri2jEWmgIDS">法庭是高压实时博弈，容错窗口以秒计，且错误不可逆。</p></div></div>
+  <div class="limit" data-page-node-id="QjA14DLxHghmQyqCbCOizp"><span class="x" data-page-node-id="UVzXVks7Ei7qYWGjDJtRGb">✕</span><div data-page-node-id="aiFgxLFdEXYKIxbRFQ6ccn"><div class="lt" data-page-node-id="0RrZ7q4oIUBDkK0DS2HZau">对客户最终担责</div><p data-page-node-id="yUydHqizfnL96Vzx0EXnyI">责任的对称性：签字的人必须是能负责的人。</p></div></div>
+  <div class="limit" data-page-node-id="fLAFRCBKHpoc7SYY6Rgd9e"><span class="x" data-page-node-id="HCpDLUemaPTmVh60HBhAD2">✕</span><div data-page-node-id="KMcdJf9lVEq44XdgypkyWH"><div class="lt" data-page-node-id="PTyOqANxfBgLCFknNIzbCG">代替人工授权操作</div><p data-page-node-id="g53mPY5XADYv6eB0cNW5SF">授权行为具有法律意义，自动化不得代为行使。</p></div></div>
+  <div class="limit" data-page-node-id="FkPzhOYCMdKnLul05G3qAd"><span class="x" data-page-node-id="dWBtNhrXQvgDFNQpDBV7w8">✕</span><div data-page-node-id="a7L3sD3q0mAUFfhJCoK7Gi"><div class="lt" data-page-node-id="4BHnxnVSswlmYs2Yg9zQ0j">绕过质检门禁交付</div><p data-page-node-id="bX8EBvfTdSLcZodB7Mrwbg">速度永远不优先于署名信誉。</p></div></div>
+  <blockquote data-page-node-id="NLEbrRWfwECefVGUSr6kqv"><span class="qh" data-page-node-id="3AcCMmuwBqh6PAF7ngdnd2">关于"天花板"的态度</span>这五项不是"当前做不到，以后努力"，而是<strong data-page-node-id="m2qLDSIBAsKc0OB3ddjFtA">设计上就不应该做到</strong>。把 L3 的系统宣传成 L5，受益的是营销，受损的是使用者与他的客户。<br data-page-node-id="HpdD2qznFCcaCZ9CUUMfZX"><br data-page-node-id="A823qyssDWZWMtz88vjHph"><strong data-page-node-id="Fy0NKZ3eSO9E75Z29dmH7o">反直觉的竞争力判断</strong>：在法律行业，<em data-page-node-id="9TCO7aJKmKWgumSwcoOohC">诚实声明边界，本身就是一种专业能力</em>。因为客户真正购买的，从来不是"AI 能做什么"，而是"有人清楚地知道 AI 不能做什么，并且为此建了闸门"。</blockquote>
+</section>
+
+<!-- 六 可复制性 -->
+<section id="s12" data-page-node-id="gdmokfqcJOWCzQs9gHZLa2">
+  <h2 data-page-node-id="RDhwDk41LEhdDSQVPc3yL7"><span class="num" data-page-node-id="K3rxRG1YVUiwOJYIzzL72k">CHAPTER 06</span>可复制性：最小起步路径</h2>
+  <p data-page-node-id="JMUvJxEputZsByfE0gqe3d">这套系统由一名实习律师个人搭建并维护，没有工程团队，没有专门预算。<strong data-page-node-id="CTYoQPm9Bre3jQBIvFfn9l">它的可复制性高于它的复杂度。</strong></p>
+  <h3 data-page-node-id="EK1aE8tu9ya7HhFQVjw5bm">三档起步建议</h3>
+  <div class="tier" data-page-node-id="zDDtTQG34Al25v73iI8RC4">
+    <div class="tt" data-page-node-id="vegGE6HPpwocmeoSmF7Xkv">档一 · 单车</div><div class="tw2" data-page-node-id="TSKBySdDDPUt27OQyyWPtH">适用：独立执业律师</div>
+    <ol data-page-node-id="NXh5LXyFs4FLgDTbDGiMqP"><li data-page-node-id="n54NBKNZpbSvNATPtB9WBn">先建质检门禁（哪怕只有几条规则）</li><li data-page-node-id="DjiuyxB6ARHHA1yF3y9w2U">建经验卡（每案一张）</li><li data-page-node-id="0wGqwAlndUI6yXO6A4OLQS">接一个权威法源</li></ol>
+  </div>
+  <div class="tier" data-page-node-id="ZEKIXqpsKrqCZijJg1aTGE">
+    <div class="tt" data-page-node-id="rx57lcjCgAqmDLCr9GO7A5">档二 · 车队</div><div class="tw2" data-page-node-id="o2NPQGDWeF9fJpiLjqSHIg">适用：小团队 / 精品所</div>
+    <ol data-page-node-id="Wl5VBOZoCzUw31DdxVJELJ"><li data-page-node-id="AwVnxfCsaOPEZgFpApSvsC">统一规则库编号规范</li><li data-page-node-id="pPxYbKkF7464GKg6FCnfe6">红蓝对抗制度化（出文必过）</li><li data-page-node-id="HByj9ySHs4Ik4AFnPNBcjh">结案强制回填</li></ol>
+  </div>
+  <div class="tier" data-page-node-id="H0qiv21s40ZC3P71Fi5atu">
+    <div class="tt" data-page-node-id="0AWoJ9TNpTfOQakbGvbzlN">档三 · 运营</div><div class="tw2" data-page-node-id="mkkfLQwghjJvd1xvox9veF">适用：机构 / 大所</div>
+    <ol data-page-node-id="U59zpUPdIPFrCERKVduQb1"><li data-page-node-id="8ECHCZDAeoyy4tgKYpM9Jp">决策日志与复盘模板</li><li data-page-node-id="sE0AdSDk25xVO4AoUpXQWB">自动化保养编排</li><li data-page-node-id="gXn8zDuLLxDkauCfEN7xn9">断链率与召回率纳入考核</li></ol>
+  </div>
+  <h3 data-page-node-id="OVZqcdK2oNn5DwzaWDyT98">三条踩过的坑</h3>
+  <ol data-page-node-id="9hpHDAtWR4S6njrAt9RZNG">
+    <li data-page-node-id="6c4rXPQoUf2FW9Zlj7obS5"><strong data-page-node-id="HhWjwOgc7RpFhv0zxySpGb">不要先建库，先建闸门。</strong>没有质检的知识库，规模越大风险越高。我们最初的投入顺序是错的，返工代价很高。</li>
+    <li data-page-node-id="gCl2VuuAsE2GypUBpoyLDv"><strong data-page-node-id="b774lBlP7eV2dD8GzI9uWC">不要让采集快于炼制。</strong>采集是线性成本，炼制是能力壁垒。只采不炼，两年后你会得到一个 3,000 篇的电子垃圾场。</li>
+    <li data-page-node-id="tPazBMfg6j8As74mNfPqNW"><strong data-page-node-id="TpYs1zROlCR6vtsbXhFFaB">不要让自动化脱离"真跑 + 留痕"。</strong>一个你不检查它是否真的执行了的自动化，比没有自动化更危险——<em data-page-node-id="GDGXdMQRDSzdQh3nvlCHjx">它会让你误以为事情已经做了</em>。</li>
+  </ol>
+  <h3 data-page-node-id="4duUAZmy0zdOG5kbzoHOgB">一句话运维口诀</h3>
+  <blockquote data-page-node-id="xbWSpMxq9f2OfIpGlHyFLe"><span class="qh" data-page-node-id="kJEgbWYsJPUjuQ7CKRWE41">KEEP IT RUNNING</span>三电保健康（飞轮充能 / 质检防冒烟 / 经验回收），充电桩别断（权威源优先重连），智驾勤标定（决策卡累积 + 月报），出门必过机检（REJECT = 0），<strong data-page-node-id="4wxurMv7YmfwTcQ9CgV7Kj">方向盘后必须有人</strong>。</blockquote>
+</section>
+
+<!-- 附录 A -->
+<section id="a1" data-page-node-id="3tVm9WIUb2dUrhnIAmSckV">
+  <h2 data-page-node-id="JD30ADFddoLdse3TwQkRN3"><span class="num" data-page-node-id="KC8k0I7qYnD4CADGe2vdhT">APPENDIX A</span>故障码速查（DTC）</h2>
+  <p data-page-node-id="qIjBa20Lb1qRvgWEZRzRj9">本表只定义故障码"含义"，<strong data-page-node-id="6eiYCF3dkaCcHsCwViVxiw">不写死当前是否触发</strong>。是否点亮由实时状态判定；未被脚本映射的码标"未判定"，不假装正常。</p>
+  <div class="tw" data-page-node-id="6jy4JXtkC3w2HvgG8GZCY1"><table data-page-node-id="sKnf2Ma4upKRLB6NvXdqKT">
+    <thead data-page-node-id="MTecsvjeMDmRzQkqPimwUs"><tr data-page-node-id="BwuvCeezM7MxaUyOYOYfHK"><th data-page-node-id="P4YyjKgzo0yVqF6ICyoRqy">故障码</th><th data-page-node-id="gqpz6uqn5FRP20jMyrR9DX">现象</th><th data-page-node-id="l30XdGZzvyXl47iITkzmey">根因</th><th data-page-node-id="P8M0MlH7lMgTEQhWNDyiZJ">处置</th></tr></thead>
+    <tbody data-page-node-id="kpGz3NEng21KbCQuDiT9Cu">
+      <tr data-page-node-id="Pliz2jeFrE3PS93Ug5CRhn"><td data-page-node-id="ji1dfrEIuJh1qyPdpTPjEj"><code data-page-node-id="uYw5iJW4lYW2QRgdJQcQeu">DTC-KB-001</code></td><td data-page-node-id="FRjs1iSV61QgSS7OumcCkf">知识摄入降级 / 多库不吃新料</td><td data-page-node-id="lsTatdoBy5SuRbBl5NWyNp">知识库连接器断开</td><td data-page-node-id="VIAVOz0mDLrtnIxDgOkojp">人工重新授权连接</td></tr>
+      <tr data-page-node-id="HxHKkT9FY6qnGcE7Km2YNV"><td data-page-node-id="OGYHPy7iwFkoUj6fz3dFwl"><code data-page-node-id="XpXmYLCNfs9PIDtErqy1Ot">DTC-CASE-002</code></td><td data-page-node-id="XYj6dfU3BvVQ1eHR0Cf5IA">类案语义检索降级</td><td data-page-node-id="4e1uqAxQrCkDq45YIyknzB">案例库连接器断开</td><td data-page-node-id="WqfSpp3Ti9atyOQzRGOW8Z">重连；同时改指多源，避免单点硬依赖</td></tr>
+      <tr data-page-node-id="CgBZgifchlvBDBzxoXwaVT"><td data-page-node-id="yLNA8Gl8MJTLi6p4WzqS23"><code data-page-node-id="lLgs21dO3QWJjAsvtJpsEH">DTC-HALL-403</code></td><td data-page-node-id="rebsPy6HCZHfAt0QrLdTG2">外部案例核验接口不可用</td><td data-page-node-id="Aj32mGuNVyDWG5s0Fgi3xb">接口不在当前开放集</td><td data-page-node-id="u6y1cFJDeEQE3sonMEcwax">降级到替代检索路径 + 官方渠道交叉印证，不中断流程</td></tr>
+      <tr data-page-node-id="o3i8Fv19TWQYdP5aSrliYM"><td data-page-node-id="C084L3XpEAFUsi35vFj6wK"><code data-page-node-id="TCaAIQcNEWay8T78oFFRnz">DTC-LTI-REJECT</code></td><td data-page-node-id="CpGhgd0VBHkdrEfCwHd239">出文被质检拦截</td><td data-page-node-id="xtQw9csHllXSxNJHCz4Eu5">法条 / 案例未过机检</td><td data-page-node-id="r0jzl8ZBBPGJrbzDXsYTER"><strong data-page-node-id="f1ZOpqrMHcSiyAtJ8IZ88N">正常安全机制，非故障</strong>；回填权威源后重跑，严禁绕过</td></tr>
+      <tr data-page-node-id="rUziRRIwhkgcVMGRyG58xb"><td data-page-node-id="jng8U305QCcGEAsGXQcg5d"><code data-page-node-id="uPbEFQXdgaQvYg751eh1MJ">DTC-CASE-001</code></td><td data-page-node-id="GwShDSaQSzOyBaB4zgWhjj">检索漏案</td><td data-page-node-id="hQVTgKsIeaCvby2F5Lzk20">案件库双轨索引错位</td><td data-page-node-id="vUGrFLxPD8i7byao18YGgA">双向索引校准（不合并双轨）</td></tr>
+      <tr data-page-node-id="LEX0G9Z6dPk9SIQnOmpDJi"><td data-page-node-id="t33cH9kI8yXpXuTCtgABc3"><code data-page-node-id="q6JsnPKZuGnBwFbsoSMMOV">DTC-DISTILL-003</code></td><td data-page-node-id="NQKzbkcbALbfP1LffNZWmb">分身不像本人</td><td data-page-node-id="6wKlBIvlo2MAjb5y8Kgxzk">决策样本不足（&lt; 10）</td><td data-page-node-id="0oEXNLoPOFKNc2qVChrWCl">持续累积决策卡；跑决策月报</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 附录 B -->
+<section id="a2" data-page-node-id="CvWjfh9zA3RGFGFw3kiyF8">
+  <h2 data-page-node-id="mEzlpEAB6wgL0RzirTwKCc"><span class="num" data-page-node-id="rAep2YLgumN0F8AhbCpaKa">APPENDIX B</span>保养周期表（完整版）</h2>
+  <div class="tw" data-page-node-id="OLJ6GB2q2UhHmgCqENhBl0"><table data-page-node-id="IVYhrWmaA7MJesf5ZV70sy">
+    <thead data-page-node-id="brgi3Ef11hzHjIkZApKDuw"><tr data-page-node-id="VtHRZLGnN07ZGfpBex1ohX"><th data-page-node-id="GZwqZ9bTnoNa9MSims6VVc">周期</th><th data-page-node-id="jFTJgTmD0pZ1eAuZdB88Uk">保养项</th><th data-page-node-id="LYiwo3d4D9YlGNh52NbgDY">责任方</th></tr></thead>
+    <tbody data-page-node-id="XMrqlO4jiF0qit6HT8WkKe">
+      <tr data-page-node-id="K72e69Ois7UeD0VaWF6fbu"><td data-page-node-id="PqfUFcr9LtuPtum8EKvkKS"><strong data-page-node-id="2iCxPmpLBfl8VMBZzJQExE">每日</strong></td><td data-page-node-id="27jME63cybDazfScUecoV2">查收摄入报告；出文必过质检门禁（REJECT = 0 才交付）；连接器健康守卫自检</td><td data-page-node-id="IdCPonjh9OVrQOl12W1maK">自动化 + 律师确认</td></tr>
+      <tr data-page-node-id="5qCWJbNUV2O9ovgCF6tbFS"><td data-page-node-id="4gBQ6D33ya8xXkm9GQEAbC"><strong data-page-node-id="9VeZsViX20MBVkEv34IdQU">每案</strong></td><td data-page-node-id="jNqEpXvucQKB9D7ghjxjO7">① 入案先跨案识别 ② 出文红蓝对抗 + 质检 + 门禁 ③ 结案经验回填 ④ 决策卡建档 + 复盘模板预置</td><td data-page-node-id="hI57G23SECDmBMjeFoIIwo">律师 + 系统</td></tr>
+      <tr data-page-node-id="vTnvnI9NUjJamyGr4rwwAZ"><td data-page-node-id="HM1b5n7ezuJDeNFOsZig95"><strong data-page-node-id="RyWNCRQwQvvmO8ImsjKtTM">每周</strong></td><td data-page-node-id="1NQGwDmmStqJUHjxmVzQ0D">自检改进 + 链接刷新；周报复盘</td><td data-page-node-id="y1Nps4JD2fSeBa0NGTckhL">自动化</td></tr>
+      <tr data-page-node-id="wXMWNgu79Lr1SR8uIme1bS"><td data-page-node-id="bPRKGMpxD9q8CxHq7HHv73"><strong data-page-node-id="lQFHX2AK0I6XWtoCImzMQi">每月</strong></td><td data-page-node-id="myLGE7Jgt3CNkLYv8qN9gh">知识复利报告 + 案件蒸馏 + 规则对账；决策月报；连接器保活巡检</td><td data-page-node-id="pwOnPLk8o5e7iBzLOlqIsj">自动化 + 律师</td></tr>
+      <tr data-page-node-id="NiMKEd2joDjLLG4nCsuYMO"><td data-page-node-id="9Ae3DKx3i3Pg2SjT4Ggolb"><strong data-page-node-id="KkCUNaCwwFov15RLNwUenM">每季/年</strong></td><td data-page-node-id="heVCUWMEeC3nDakPIIYABf">资产断链审计（门禁 0.5%）；案件库双轨双向索引校准；外部接口可用性复盘</td><td data-page-node-id="4dJyKGBSD0DCrKUTkcRJ25">律师 + 系统</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 附录 C -->
+<section id="a3" data-page-node-id="yqEx38kJPbNOLIksxuq1mG">
+  <h2 data-page-node-id="WRkIXXDUErZmuU1uspXtWb"><span class="num" data-page-node-id="vJDAlcpzwjr3dwgETehJBJ">APPENDIX C</span>术语对照表（车 × 系统）</h2>
+  <div class="tw" data-page-node-id="E4gVPiRSmTiaspAsDYvEwQ"><table data-page-node-id="TNH9xFNQw2dU1tCBHq8ogm">
+    <thead data-page-node-id="jGExFMkSgz7lwXjHjMWuDI"><tr data-page-node-id="Ph9gZtxQOik8hlmrU3zrHL"><th data-page-node-id="z5HrasE8U1pRfQMh3huoCn">车辆部件</th><th data-page-node-id="DsoETX30ngwy9oxCpVdGFL">系统实现</th><th data-page-node-id="hVdDUs1b9FiUja9areTzjk">一句话功能</th></tr></thead>
+    <tbody data-page-node-id="MYmiYT5p3x1GI1uzDas153">
+      <tr data-page-node-id="paEZhxXAKpcU7KBz45Ze68"><td data-page-node-id="tHIU21tk2XU8bzzoGNnQ9T">动力电池包</td><td data-page-node-id="WDzEK1nYhg68EoQAzbjjDB">知识飞轮（六层结构）</td><td data-page-node-id="BUbDolBV3OODJ92MDmX6Cm">存储全部知识资产</td></tr>
+      <tr data-page-node-id="o0bNWcjTA27glpXfbtJQsV"><td data-page-node-id="PyDZ217aM60TjhqB289JVa">驱动电机</td><td data-page-node-id="ONoT2oXQ5DUp3nCeU9xdu4">规则召回引擎</td><td data-page-node-id="QpYh5v06suq515XWPvf4mn">把存储转成办案驱动力</td></tr>
+      <tr data-page-node-id="xDCy9NH79TAacBemaSxWF2"><td data-page-node-id="JINNNEMBeOkfCJSz9YAbUC">电控 + BMS</td><td data-page-node-id="Y9xQzpoAWGtgxsvzwm4XwY">文本质检监控器（LTI）</td><td data-page-node-id="KUCmJXOoNy0o9aQOIlORcP">防幻觉、防错引、防伪造</td></tr>
+      <tr data-page-node-id="cuZdroZjek8HDOmr7ItgNu"><td data-page-node-id="dMxyIV5u95GFAfbFwAE22F">动能回收</td><td data-page-node-id="Ixz2Lx1Ig5Hn7gdEsVDtcw">经验沉淀（HIR）</td><td data-page-node-id="gChYKGJ1trbPUsQvgxIsGg">把错误变成资产</td></tr>
+      <tr data-page-node-id="LOVJQJfHQtJn4EGIgGb4Px"><td data-page-node-id="vB4eA8i9xj6gr33W8uH0Cq">充电桩</td><td data-page-node-id="LI4XCPsN7X22y1TdvbE12A">权威数据源连接器</td><td data-page-node-id="Z1aqdyNrEAo0uOsoQwFxrm">输入可追责的权威信息</td></tr>
+      <tr data-page-node-id="D1DKhWjT4VWqNtghqOgJQ6"><td data-page-node-id="oD0GqAQl8ssVHjHkAY3i4H">智驾域控</td><td data-page-node-id="lgrdtwjk0xixjxXuGYD9Cl">决策思维系统</td><td data-page-node-id="o2XYazpdr3Bg0uQeXE7byZ">记录推理而非结论</td></tr>
+      <tr data-page-node-id="sEjVwOMOWkqqrQPO2jpYyt"><td data-page-node-id="ikhXUrf2g8tJH6Ar9fJfg9">激光雷达</td><td data-page-node-id="LRlTKQloohv8K2178IudkT">跨案模式识别</td><td data-page-node-id="X6rEhRixa7huG5tn3FCyMb">看见历史相似案件</td></tr>
+      <tr data-page-node-id="C5n66usoCarkUQBL9EuPzZ"><td data-page-node-id="VRx69sCZ4qw1kZA94newKQ">智能座舱</td><td data-page-node-id="DGvPIurUZ76nha0xPDDGZ2">分身人格配置</td><td data-page-node-id="1iiZTihF1KsxDkCnKo5JkE">继承执业者的交叉优势</td></tr>
+      <tr data-page-node-id="Ey3RdYhstzS10JgTe6IJGi"><td data-page-node-id="jtErzOtsqh9qH2m8KbUzZE">影子模式</td><td data-page-node-id="829Ty4zTFMF0u6q5WYfv0y">模拟法庭红蓝对抗</td><td data-page-node-id="JhwGO62m3jLyBKrxwBAYQB">开庭前先撞一次</td></tr>
+      <tr data-page-node-id="3DEWPH69w5utXaGeMaa7Qd"><td data-page-node-id="0GhVIb0a4T2ndjvDITiXgB">仪表盘</td><td data-page-node-id="jFLqMKPE0Dr2V4EsGlNXVd">健康度看板</td><td data-page-node-id="FbsDdOA61xdlj5IjGPD8gD">体量 ≠ 质量，明确区分</td></tr>
+      <tr data-page-node-id="uHbmIKEOtbYDdAiC0kUof8"><td data-page-node-id="hvEnz4DiIzSCbPAARQlbNA">故障码 OBD</td><td data-page-node-id="TgvEV3gmLziRJFtUBUAPuf">DTC 故障码体系</td><td data-page-node-id="1Ubt8WT0KjJiaNgnPFb0gO">失效可诊断、可预期</td></tr>
+      <tr data-page-node-id="sFWJJ0hiAdDJ7L1PnFRe1U"><td data-page-node-id="C0502vuh4elcKBJhCHyQ6g">黑匣子 EDR</td><td data-page-node-id="Ti5jAPJHza7m1IKeu0phGR">决策日志</td><td data-page-node-id="4SSBirLmQr0sdwE0PQUVNe">每个判断可回放</td></tr>
+      <tr data-page-node-id="o3nOUs8FmA01q8oEbO7vkK"><td data-page-node-id="Tb2tpfdHY6X26hnzFSCwqk">车规标准</td><td data-page-node-id="4zcPYEGIY0zr3AxCXg0uzC">AI 行为规则文件</td><td data-page-node-id="NjIjyBo0Bf7I7kDVGpqFgi">真跑 + 留痕，禁止摆设</td></tr>
+      <tr data-page-node-id="kM2hEnlA6NRv2wazMIVaSE"><td data-page-node-id="cOZE7NZmGgAiVHD0Gc9pE3">OTA 升级</td><td data-page-node-id="bBwOCfaCW3fRrmzuHsHu64">自动化编排</td><td data-page-node-id="69p4EsMIFSnBlebcDcY2cw">不拆车持续进化</td></tr>
+      <tr data-page-node-id="joKIAtUFHH8Pp9ktdcNAG9"><td data-page-node-id="yviyMXHRkDgiqC0wtqCAmx"><strong data-page-node-id="RmBxECsVUyacRCrDmWKpH6">驾驶员</strong></td><td data-page-node-id="SLotdkoq9ygAMToeNEXfmA"><strong data-page-node-id="KvDUHc9X1fAgwGRqy9CEZf">执业律师本人</strong></td><td data-page-node-id="b69kuFmmRuEKrjIM3L0ZhG"><strong data-page-node-id="K5jjll6qKMCq3O4IvYRpQO">方向盘后必须有人</strong></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 附录 D -->
+<section id="a4" data-page-node-id="E5qKyHrSKKyT7DUvDbNeNl">
+  <h2 data-page-node-id="YZjmCcLvESpOG0UF4hfDBB"><span class="num" data-page-node-id="mbp1aIEMD1Tt41cX0fWtdD">APPENDIX D</span>整车铭牌（实测参数）</h2>
+  <p data-page-node-id="tHeG5NwCHXU9JP4MNo5tRC">数据为系统实时扫描值与人工核验值的混合快照，采集于本白皮书发布时点。<strong data-page-node-id="GH1iumzP5DFwP7wJBuAdMH">扫描值会随系统运行而变动，人工核验值需周期性复检。</strong></p>
+  <div class="tw" data-page-node-id="LX2AFyHTj2EZYEhVcKs2sx"><table data-page-node-id="YUpSRxHjQBZjfBOFd6ffCS">
+    <thead data-page-node-id="3E0UP3Alny79j224Jg4VsN"><tr data-page-node-id="wCDRXz0Ek54E3sxuEhu8DN"><th data-page-node-id="iUNsWiKG0Z6DmVNHSHqfVt">项目</th><th data-page-node-id="Ka4xyRMCgGznBP3dPr08ZM">参数</th></tr></thead>
+    <tbody data-page-node-id="DkGIPPel0YQXuOqxJBKU0C">
+      <tr data-page-node-id="JhctGE7hlg1g9J8JKIuiXy"><td data-page-node-id="9v1WoE7Cw6tQL6ln1iCrqF">车型</td><td data-page-node-id="9WzlLG7b4cci335J1nZ8Bz">数字分身系统 EV</td></tr>
+      <tr data-page-node-id="bAlc54TCUVhCKaXYydJQFM"><td data-page-node-id="JHJC4QuU2L4KBKrrkA0hn5">自动驾驶级别</td><td data-page-node-id="PNOuCeHe9fkSi4EqZAGU8v"><strong data-page-node-id="SBIX6BGqKs4dxnnYWYr4Rm">L3 执业助理级</strong>（辅助驾驶，方向盘后必须有人）</td></tr>
+      <tr data-page-node-id="91NEDD5vnm7oN5CvhSjCMV"><td data-page-node-id="nXZN0QbhELKORdufsaSpxW">当前架构</td><td data-page-node-id="zCrkXx6jKPoCQcgDbVlUvx">五支柱 + 四大水平子系统 + 决策思维系统（灵魂层）</td></tr>
+      <tr data-page-node-id="7bGUEUW7cBHnj4znXjs8H4"><td data-page-node-id="5ymyEFuMzOG7x0y5z6pGYM">三电版本</td><td data-page-node-id="tWqogzKsc8Yys7d75lqVrY">电池：知识飞轮 3,000+ 文档 / 205 经验卡 / 816 规则文件 / 26 子库<br data-page-node-id="t4VmEcCNpgBXE1ibOkmqXF">电机：SR 召回引擎<br data-page-node-id="NmjQVtZdtKneDhbBX9bClA">电控：质检门禁（回归 131/131 通过）</td></tr>
+      <tr data-page-node-id="SURdtBlqiwoJuKpYk5USQn"><td data-page-node-id="DndcQHO8eXA7kHwrHHMvS2">整车定级</td><td data-page-node-id="xpVC5SnpmYpvmwWs7blwSd">放大器 + 保险丝 + 陪练 + 灵魂（四位一体）</td></tr>
+      <tr data-page-node-id="Z3B0LP5mXO0WMNlDEc1XXD"><td data-page-node-id="Kbv2IhHwqcHZzGkhEYyJEF">护城河</td><td data-page-node-id="VlHiOZhGmFXIzAastiyG1g">质检闭环 + 红蓝对抗 + 经验复利 + 决策思维</td></tr>
+      <tr data-page-node-id="EqkYEWnHql1HRDvw48I9pY"><td data-page-node-id="hNXfgkfwClriZDHDNc35gM">补能完整度</td><td data-page-node-id="K0qkkhjQhZCt6z3MnEjmkF">6/6 桩位连通</td></tr>
+      <tr data-page-node-id="MqSZ2lHKGdHp5zBAf9CEm4"><td data-page-node-id="1PWSJDnry83ZFaB1iNaxdl">资产断链率</td><td data-page-node-id="aO2aYZnJGu3bHbMCIu6IKN">0.111%（门禁 ≤ 0.5%）</td></tr>
+      <tr data-page-node-id="DSepYRHNQ5wDcW3h9Gyw5x"><td data-page-node-id="qyDVNLG8JsjSVMDTtDs93Q">天花板（不可升级）</td><td data-page-node-id="6puOO5Cp0Ci20BcLolWt9e">独立判断 / 庭审应变 / 客户担责</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="final" data-page-node-id="KfvDVDHRpYfBmjRyaeQncj">
+    <div class="big" data-page-node-id="F85IbYcbJFDPgCPOLIGmMX">再智能的车<br data-page-node-id="WnJ5fL7NerE2qYRpJfHah5"><span data-page-node-id="qWtBAuqHqxLxWXlvHJrb5Y">方向盘后也必须有人</span></div>
+    <p data-page-node-id="r55rFThJIVHRxSL8Lq9xxs">本系统产出的是"经质检的草案 + 推演"，拍板与出庭永远归执业律师本人。</p>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer data-page-node-id="fOWz1H9DU7agPkFb3Iptq5">
+  <div class="fi" data-page-node-id="e9J5Vzxiez7jqCGrP1wF0g">
+    <b data-page-node-id="CkIZMHgzVZBB54bXf8I68h">关于本文</b>　所有量化指标均来自系统实时扫描或人工实地核验。对外发布版本已隐去客户名称、真实案号、当事人姓名与内部系统标识；统计量为脱敏后的实测值，未作修饰。<br data-page-node-id="Yo5Q2hKEBFZqC7DM38tMHk">
+    <b data-page-node-id="6v0pGdhD4CVCjAZ0SWt1Qn">版本</b>　v1.0（2026-09-10）　　<b data-page-node-id="xDD7q5E5ywROVlt8rsBK9h">作者</b>　小强律师 · 实习律师（已通过国家统一法律职业资格考试）· 贵州贵阳　　<b data-page-node-id="o4rPMT8KlKZkJVxnUJdt8D">系统定位</b>　个人可维护的 L3 级法律知识系统，非商业产品<br data-page-node-id="2bpJxwOg5ILEawt4UiOF2m">
+    <span style="color:var(--txt3)" data-page-node-id="pyqTnx5chAHfQV5ZbP1eac">本白皮书描述的是一套工程方法论。文中所有设计决策均基于真实运维经验，包括那些走了弯路的——因为可复制的经验，必须包含失败。</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#tocLinks a'));
+  var secs  = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function upd(){
+    var y = window.scrollY + 140, idx = 0;
+    for (var i=0;i<secs.length;i++){ if (secs[i] && secs[i].offsetTop <= y) idx = i; }
+    links.forEach(function(a,i){ a.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+  window.addEventListener('resize', upd);
+  upd();
+})();
+</script>
+</body>
+</html>

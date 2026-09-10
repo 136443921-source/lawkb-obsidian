@@ -1,0 +1,6428 @@
+{
+  "generated_at": "2026-09-10T10:02:48",
+  "date": "2026-09-10",
+  "source": "automation-1783209043138 Spaced Repetition 复习提醒",
+  "stats": {
+    "total_notes": 2195,
+    "overdue_count": 374,
+    "today_due_count": 10,
+    "upcoming_7d_count": 257,
+    "completion_rate": 83.0
+  },
+  "overdue": [
+    {
+      "name": "病历记录完整率-关键诊疗记录缺失风险-2026-08-16",
+      "path": "02-提炼/经验卡片/人伤/病历记录完整率-关键诊疗记录缺失风险-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医院赔146万首诊医生批捕-医疗事故罪边界-2026-08-16",
+      "path": "02-提炼/人伤法/医疗事故/医院赔146万首诊医生批捕-医疗事故罪边界-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "韩杰案悖论-医疗事故罪与死亡赔偿金刑民交叉-2026-08-16",
+      "path": "02-提炼/人伤法/医疗事故/韩杰案悖论-医疗事故罪与死亡赔偿金刑民交叉-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "律师全流程SOP体系27项-2026-08-16",
+      "path": "02-提炼/学习笔记/律师全流程SOP体系27项-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "法律检索的方法与重点-2026-08-16",
+      "path": "02-提炼/学习笔记/法律检索的方法与重点-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "基金会审计报告对比分析-审计机构选聘合规-2026-08-16",
+      "path": "02-提炼/学习笔记/慈善/基金会审计报告对比分析-审计机构选聘合规-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "基金会关联交易核查方法论-采购供应商交叉比对-2026-08-16",
+      "path": "02-提炼/学习笔记/慈善/基金会关联交易核查方法论-采购供应商交叉比对-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "公信力危机与机构化信任-韩红基金会月捐暴跌启示-2026-08-16",
+      "path": "02-提炼/学习笔记/慈善/公信力危机与机构化信任-韩红基金会月捐暴跌启示-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "AI法律与合规指南第二章-双向著作权版图-2026-08-16",
+      "path": "02-提炼/学习笔记/合规/AI法律与合规指南第二章-双向著作权版图-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "四位一体协同运作体系-法务合规内控风险-2026-08-16",
+      "path": "02-提炼/学习笔记/合规/四位一体协同运作体系-法务合规内控风险-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "合同订立与履行十一问-裁判规则-2026-08-16",
+      "path": "02-提炼/合同文书笔记/合同订立与履行十一问-裁判规则-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "公司采购合同审查法律意见书-范本与写作要点-2026-08-16",
+      "path": "02-提炼/合同文书笔记/公司采购合同审查法律意见书-范本与写作要点-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "突破合同相对性的八类法定情形-2026-08-16",
+      "path": "02-提炼/合同文书笔记/突破合同相对性的八类法定情形-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 5,
+      "overdue_days": 11,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪44宗画像-2026-08-09",
+      "path": "02-提炼/人伤法/医疗事故/医疗事故罪44宗画像-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪入罪红线韩杰案-2026-08-09",
+      "path": "02-提炼/人伤法/医疗事故/医疗事故罪入罪红线韩杰案-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪严重不负责任辩护抗辩清单-2026-08-09",
+      "path": "02-提炼/人伤法/医疗事故/医疗事故罪严重不负责任辩护抗辩清单-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害诉讼时效起算-2026-08-09",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗损害诉讼时效起算-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "新生儿缺血缺氧性脑病医疗损害鉴定案-2026-08-09",
+      "path": "02-提炼/人伤法/医疗纠纷/新生儿缺血缺氧性脑病医疗损害鉴定案-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗纠纷处理全流程实务地图-2026-08-09",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗纠纷处理全流程实务地图-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "道交和解后起诉医院-2026-08-09",
+      "path": "02-提炼/人伤法/医疗纠纷/道交和解后起诉医院-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害诉讼时效与鉴定时点双窗口管理-2026-08-09",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗损害诉讼时效与鉴定时点双窗口管理-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "申请再审材料清单-2026-08-09",
+      "path": "02-提炼/公众号文章笔记/申请再审材料清单-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "虚假诉讼审查移送公安机关-2026-08-09",
+      "path": "02-提炼/公众号文章笔记/虚假诉讼审查移送公安机关-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 5,
+      "overdue_days": 1,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗合规行政线-病历质量与监管-2026-08-16",
+      "path": "02-提炼/经验卡片/人伤/医疗合规行政线-病历质量与监管-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 4,
+      "overdue_days": 11,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪入罪标准与刑民行衔接-2026-08-16",
+      "path": "02-提炼/人伤法/医疗事故/医疗事故罪入罪标准与刑民行衔接-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 4,
+      "overdue_days": 11,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害责任纠纷-过错鉴定与诉讼实务-2026-08-16",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗损害责任纠纷-过错鉴定与诉讼实务-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 4,
+      "overdue_days": 11,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "律师申请调查令实务要点-2026-08-16",
+      "path": "02-提炼/学习笔记/律师申请调查令实务要点-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 4,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "公司合规与风控法律意见书-范本与写作要点-2026-08-16",
+      "path": "02-提炼/学习笔记/合规/公司合规与风控法律意见书-范本与写作要点-2026-08-16.md",
+      "review_date": "2026-08-30",
+      "importance": 4,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "复习操作手册",
+      "path": "04-巩固/Spaced-Repetition/复习操作手册.md",
+      "review_date": "2026-09-03",
+      "importance": 4,
+      "overdue_days": 7,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "家庭财产分家协议-2026-08-09",
+      "path": "02-提炼/合同文书笔记/家庭财产分家协议-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 4,
+      "overdue_days": 1,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "交通事故赔偿协议书-2026-08-09",
+      "path": "02-提炼/合同文书笔记/交通事故赔偿协议书-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 4,
+      "overdue_days": 1,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "民事纠纷私了和解协议书-2026-08-09",
+      "path": "02-提炼/合同文书笔记/民事纠纷私了和解协议书-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 4,
+      "overdue_days": 1,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "谁捐的要讲清楚-2026-08-09",
+      "path": "02-提炼/公众号文章笔记/谁捐的要讲清楚-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 4,
+      "overdue_days": 1,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "法律资讯周报（2026年第32期）",
+      "path": "01-采集/法律资讯周报/法律资讯周报（2026年第32期）.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "员工自身过错受伤工伤认定无过错责任-2026-08-20",
+      "path": "02-提炼/人伤法/医疗纠纷·医疗事故·医疗合规/员工自身过错受伤工伤认定无过错责任-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医院误诊索赔医疗事故赔偿计算与诉讼受理-2026-08-20",
+      "path": "02-提炼/人伤法/医疗纠纷·医疗事故·医疗合规/医院误诊索赔医疗事故赔偿计算与诉讼受理-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害责任纠纷诉讼攻防要点巩固-2026-08-20",
+      "path": "02-提炼/人伤法/医疗纠纷·医疗事故·医疗合规/医疗损害责任纠纷诉讼攻防要点巩固-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "道交和解后诉医院医疗损害竞合按份责任-2026-08-20",
+      "path": "02-提炼/人伤法/医疗纠纷·医疗事故·医疗合规/道交和解后诉医院医疗损害竞合按份责任-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "审计署通报社会组织基金会违规-内审内控建设-2026-08-20",
+      "path": "02-提炼/慈法/审计署通报社会组织基金会违规-内审内控建设-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "慈法合规",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "基金会投资收益归属-限定性与非限定性之争-2026-08-20",
+      "path": "02-提炼/慈法/基金会投资收益归属-限定性与非限定性之争-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "慈法合规",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "民政部124号文超期试行的违法性审查-2026-08-20",
+      "path": "02-提炼/慈法/民政部124号文超期试行的违法性审查-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "慈法合规",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "贵州高院商品房买卖合同纠纷审判要件指南2025-蓝红双视角-2026-08-20",
+      "path": "02-提炼/合同文书笔记/贵州高院商品房买卖合同纠纷审判要件指南2025-蓝红双视角-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "房产抵押借款协议-蓝红双视角-2026-08-20",
+      "path": "02-提炼/合同文书笔记/房产抵押借款协议-蓝红双视角-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "房屋让与担保合同-蓝红双视角-2026-08-20",
+      "path": "02-提炼/合同文书笔记/房屋让与担保合同-蓝红双视角-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "司法部入库新生儿缺血缺氧性脑病医疗损害法医临床鉴定案-2026-08-20",
+      "path": "02-提炼/律师实务指引/司法部入库新生儿缺血缺氧性脑病医疗损害法医临床鉴定案-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "事实认定错误与法律适用错误的区分-2026-08-20",
+      "path": "02-提炼/律师实务指引/事实认定错误与法律适用错误的区分-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "未经庭审质证法院依职权调查证据能否作裁判依据-2026-08-20",
+      "path": "02-提炼/律师实务指引/未经庭审质证法院依职权调查证据能否作裁判依据-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "企业合规与合法的边界-2026-08-20",
+      "path": "02-提炼/合规实务/企业合规与合法的边界-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "有限责任公司员工持股计划核心员工绑定版含股权价值下跌条款-2026-08-20",
+      "path": "02-提炼/合规实务/有限责任公司员工持股计划核心员工绑定版含股权价值下跌条款-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "公司治理股东表决权行使法律风险及防范-2026-08-20",
+      "path": "02-提炼/合规实务/公司治理股东表决权行使法律风险及防范-2026-08-20.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HY-001",
+      "path": "06-沉淀/裁判规则库/婚姻家庭/R-HY-001.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HY-002",
+      "path": "06-沉淀/裁判规则库/婚姻家庭/R-HY-002.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-GS-002",
+      "path": "06-沉淀/裁判规则库/公司法/R-GS-002.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-GS-003",
+      "path": "06-沉淀/裁判规则库/公司法/R-GS-003.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-GS-001",
+      "path": "06-沉淀/裁判规则库/公司法/R-GS-001.md",
+      "review_date": "2026-08-27",
+      "importance": 3,
+      "overdue_days": 14,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害责任纠纷-过错参与度抗诉改判与院外康复费用-最高检典型案例2026",
+      "path": "02-提炼/经验卡片/人伤/医疗损害责任纠纷-过错参与度抗诉改判与院外康复费用-最高检典型案例2026.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "曹某诉某医院ECMO未备案加重赔偿案-摘要-2026-07-29",
+      "path": "02-提炼/案例摘要/曹某诉某医院ECMO未备案加重赔偿案-摘要-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "金某诉牲畜屠宰公司决议撤销案-摘要-2026-07-29",
+      "path": "02-提炼/案例摘要/金某诉牲畜屠宰公司决议撤销案-摘要-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "封闭公司董事会决议越权撤销案-摘要-2026-07-29",
+      "path": "02-提炼/案例摘要/封闭公司董事会决议越权撤销案-摘要-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "技术秘密保密义务案-摘要-2026-07-29",
+      "path": "02-提炼/案例摘要/技术秘密保密义务案-摘要-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪边界-医疗损害刑民行三层责任-2026-07-29",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗事故罪边界-医疗损害刑民行三层责任-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "基金会投资收益归属-限定性与非限定性分歧-2026-07-29",
+      "path": "02-提炼/慈法/基金会投资收益归属-限定性与非限定性分歧-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "慈法合规",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年07月29日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年07月29日.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "限期付租解除租赁合同通知函-审查要点与裁判规则-2026-07-29",
+      "path": "02-提炼/合同文书笔记/限期付租解除租赁合同通知函-审查要点与裁判规则-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "合作保密协议-范本与审查要点-2026-07-29",
+      "path": "02-提炼/合同文书笔记/合作保密协议-范本与审查要点-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "企业注销指引2025修订-清算注销全流程-2026-07-29",
+      "path": "02-提炼/公众号文章笔记/企业注销指引2025修订-清算注销全流程-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-003",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-003.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-035",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-035.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-019",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-019.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-021",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-021.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-020",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-020.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-07-29",
+      "path": "04-巩固/学习资料推荐-2026-07-29.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "月度知识复利报告-2026-07",
+      "path": "04-巩固/月度知识复利报告/月度知识复利报告-2026-07.md",
+      "review_date": "2026-08-28",
+      "importance": 3,
+      "overdue_days": 13,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "新职伤待遇不抵扣侵权损害赔偿案-摘要-2026-07-30",
+      "path": "02-提炼/案例摘要/新职伤待遇不抵扣侵权损害赔偿案-摘要-2026-07-30.md",
+      "review_date": "2026-08-29",
+      "importance": 3,
+      "overdue_days": 12,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "所有权保留买卖远程锁车案-摘要-2026-07-30",
+      "path": "02-提炼/案例摘要/所有权保留买卖远程锁车案-摘要-2026-07-30.md",
+      "review_date": "2026-08-29",
+      "importance": 3,
+      "overdue_days": 12,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "债务加入认定案-摘要-2026-07-30",
+      "path": "02-提炼/案例摘要/债务加入认定案-摘要-2026-07-30.md",
+      "review_date": "2026-08-29",
+      "importance": 3,
+      "overdue_days": 12,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年07月30日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年07月30日.md",
+      "review_date": "2026-08-29",
+      "importance": 3,
+      "overdue_days": 12,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-004",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-004.md",
+      "review_date": "2026-08-29",
+      "importance": 3,
+      "overdue_days": 12,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-037",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-037.md",
+      "review_date": "2026-08-29",
+      "importance": 3,
+      "overdue_days": 12,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-022",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-022.md",
+      "review_date": "2026-08-29",
+      "importance": 3,
+      "overdue_days": 12,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-07-30",
+      "path": "04-巩固/学习资料推荐-2026-07-30.md",
+      "review_date": "2026-08-29",
+      "importance": 3,
+      "overdue_days": 12,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "经验卡片-罗江辉诉易思立达教育培训合同纠纷案_结案摘要",
+      "path": "02-提炼/经验卡片/合同文书/经验卡片-罗江辉诉易思立达教育培训合同纠纷案_结案摘要.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "交通事故误工费举证标准与计算裁判规则-2026-07-31",
+      "path": "02-提炼/经验卡片/人伤/交通事故误工费举证标准与计算裁判规则-2026-07-31.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "交通事故非医保用药扣除抗辩裁判规则-2026-07-31",
+      "path": "02-提炼/经验卡片/人伤/交通事故非医保用药扣除抗辩裁判规则-2026-07-31.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "摘要-R-SH-006-刘某某一人公司财产混同连带",
+      "path": "02-提炼/案例摘要/摘要-R-SH-006-刘某某一人公司财产混同连带.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "摘要-R-HT-023-成都讯捷预约本约区分",
+      "path": "02-提炼/案例摘要/摘要-R-HT-023-成都讯捷预约本约区分.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "摘要-R-SH-005-宋文军股东资格确认",
+      "path": "02-提炼/案例摘要/摘要-R-SH-005-宋文军股东资格确认.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "摘要-R-PI-039-翟某某海上人身损害",
+      "path": "02-提炼/案例摘要/摘要-R-PI-039-翟某某海上人身损害.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "摘要-R-HT-024-某安全器材公司无责不赔条款无效",
+      "path": "02-提炼/案例摘要/摘要-R-HT-024-某安全器材公司无责不赔条款无效.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "摘要-R-PI-041-郭某华无接触交通事故因果关系",
+      "path": "02-提炼/案例摘要/摘要-R-PI-041-郭某华无接触交通事故因果关系.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "中习案例8月医疗纠纷判决汇总-十案精要-2026-08-23",
+      "path": "02-提炼/人伤法/中习案例8月医疗纠纷判决汇总-十案精要-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医源性医疗纠纷法律分析-过错性与非过错性二分-2026-08-23",
+      "path": "02-提炼/人伤法/医源性医疗纠纷法律分析-过错性与非过错性二分-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "交通事故与工伤双赔-项目清单-2026-08-23",
+      "path": "02-提炼/人伤法/交通事故与工伤双赔-项目清单-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "禁止疗效承诺与治愈保证-医疗合规规则卡-2026-08-23",
+      "path": "02-提炼/人伤法/医疗合规/禁止疗效承诺与治愈保证-医疗合规规则卡-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年07月31日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年07月31日.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年07月31日-续批",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年07月31日-续批.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "损害公司债权人利益责任纠纷指引-上海律协2024-要点-2026-08-23",
+      "path": "02-提炼/学习笔记/损害公司债权人利益责任纠纷指引-上海律协2024-要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "商业诋毁案件操作指引-上海律协2026-要点-2026-08-23",
+      "path": "02-提炼/学习笔记/商业诋毁案件操作指引-上海律协2026-要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "股东资格确认纠纷指引-上海律协2026-要点-2026-08-23",
+      "path": "02-提炼/学习笔记/股东资格确认纠纷指引-上海律协2026-要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "企业行政后勤管理制度-范本与要点-2026-08-23",
+      "path": "02-提炼/学习笔记/合规/企业行政后勤管理制度-范本与要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "采购供应链合规-合同组件拆解方法论-2026-08-23",
+      "path": "02-提炼/学习笔记/合规/采购供应链合规-合同组件拆解方法论-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "网络查控申请书-范本与要点-2026-08-23",
+      "path": "02-提炼/学习笔记/合规/网络查控申请书-范本与要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "技术咨询合同范本-蓝红双视角审查要点-2026-08-23",
+      "path": "02-提炼/合同文书笔记/技术咨询合同范本-蓝红双视角审查要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "房屋租赁合同-参考及操作建议-蓝红双视角审查要点-2026-08-23",
+      "path": "02-提炼/合同文书笔记/房屋租赁合同-参考及操作建议-蓝红双视角审查要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "技术转让技术秘密合同范本-蓝红双视角审查要点-2026-08-23",
+      "path": "02-提炼/合同文书笔记/技术转让技术秘密合同范本-蓝红双视角审查要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "合规与公众信任-韩红风波舆情启示-2026-08-23",
+      "path": "02-提炼/公众号文章笔记/合规与公众信任-韩红风波舆情启示-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "韩红基金会审计报告分析-合规但粗放-2026-08-23",
+      "path": "02-提炼/公众号文章笔记/韩红基金会审计报告分析-合规但粗放-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "基金会资助社会组织捐赠票据-财政部答疑合规要点-2026-08-23",
+      "path": "02-提炼/公众号文章笔记/基金会资助社会组织捐赠票据-财政部答疑合规要点-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-005",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-005.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-006",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-006.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-047",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-047.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-036",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-036.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-043",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-043.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-042",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-042.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-046",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-046.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-038",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-038.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-049",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-049.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-048",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-048.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-039",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-039.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "主题卡-人伤费用承担边界",
+      "path": "06-沉淀/裁判规则库/人伤法/主题卡-人伤费用承担边界.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-041",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-041.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-045",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-045.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-044",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-044.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-050",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-050.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-040",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-040.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-023",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-023.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-024",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-024.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-07-31-续批",
+      "path": "04-巩固/学习资料推荐-2026-07-31-续批.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-07-31",
+      "path": "04-巩固/学习资料推荐-2026-07-31.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-23",
+      "path": "04-巩固/学习资料推荐-2026-08-23.md",
+      "review_date": "2026-08-30",
+      "importance": 3,
+      "overdue_days": 11,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "法律资讯周报（2026年第33期）",
+      "path": "01-采集/法律资讯周报/法律资讯周报（2026年第33期）.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "A2自学习纪要-医院法治合规与医疗损害原因力-2026-08-24",
+      "path": "02-提炼/经验卡片/人伤/A2自学习纪要-医院法治合规与医疗损害原因力-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗纠纷处置八大实操雷区-2026-08-24",
+      "path": "02-提炼/经验卡片/人伤/医疗纠纷处置八大实操雷区-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医院法治专员-国卫办法规发2026-9号解读-2026-08-24",
+      "path": "02-提炼/经验卡片/人伤/医院法治专员-国卫办法规发2026-9号解读-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "对赌协议效力与履行案-摘要-2026-08-01",
+      "path": "02-提炼/案例摘要/对赌协议效力与履行案-摘要-2026-08-01.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "代持协议不能排除强制执行案-摘要-2026-08-01",
+      "path": "02-提炼/案例摘要/代持协议不能排除强制执行案-摘要-2026-08-01.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害诉讼时效起算案-摘要-2026-08-01",
+      "path": "02-提炼/案例摘要/医疗损害诉讼时效起算案-摘要-2026-08-01.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "多个被扶养人生活费计算-法释2026-9号第八条-2026-08-01",
+      "path": "02-提炼/人伤法/交通事故/多个被扶养人生活费计算-法释2026-9号第八条-2026-08-01.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "过错数量不等于责任比例-原因力规则-2026-08-24",
+      "path": "02-提炼/人伤法/医疗损害/过错数量不等于责任比例-原因力规则-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月01日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月01日.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "劳动争议一裁终局-适用情形与救济路径-2026-08-24",
+      "path": "02-提炼/学习笔记/劳动争议一裁终局-适用情形与救济路径-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "证据采信规则与救济路径-法官不采纳证据应对-2026-08-24",
+      "path": "02-提炼/学习笔记/证据采信规则与救济路径-法官不采纳证据应对-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "律师AI文书-4道防线7项核验-2026-08-24",
+      "path": "02-提炼/学习笔记/律师AI文书-4道防线7项核验-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "损害公司债权人利益纠纷-律师办理指引-2026-08-24",
+      "path": "02-提炼/学习笔记/慈善/损害公司债权人利益纠纷-律师办理指引-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "规章制度民主程序与公示告知全流程-2026-08-24",
+      "path": "02-提炼/学习笔记/慈善/规章制度民主程序与公示告知全流程-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "律师办理企业合规体系建设操作指引2026-结构化笔记-2026-08-24",
+      "path": "02-提炼/学习笔记/合规/律师办理企业合规体系建设操作指引2026-结构化笔记-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "企业生态环境合规管理指引-生态环境法典-2026-08-24",
+      "path": "02-提炼/学习笔记/合规/企业生态环境合规管理指引-生态环境法典-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "国企租金入股-方式限制与合规应对-2026-08-24",
+      "path": "02-提炼/学习笔记/合规/国企租金入股-方式限制与合规应对-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "著作权转让合同模版-蓝红双视角-2026-08-24",
+      "path": "02-提炼/合同文书笔记/著作权转让合同模版-蓝红双视角-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "房屋代持协议-范本与审查要点-2026-08-01",
+      "path": "02-提炼/合同文书笔记/房屋代持协议-范本与审查要点-2026-08-01.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "销售代理合作协议-蓝红双视角-2026-08-24",
+      "path": "02-提炼/合同文书笔记/销售代理合作协议-蓝红双视角-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "保证协议-蓝红双视角-2026-08-24",
+      "path": "02-提炼/合同文书笔记/保证协议-蓝红双视角-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "韩红基金会救护车采购争议-慈善组织采购合规评析-2026-08-24",
+      "path": "02-提炼/公众号文章笔记/韩红基金会救护车采购争议-慈善组织采购合规评析-2026-08-24.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-007",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-007.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-078-慈善组织采购须事前核查供应商资质与经营状况大额采购比价议价全程留痕",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-078-慈善组织采购须事前核查供应商资质与经营状况大额采购比价议价全程留痕.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-079-规章制度须民主程序制定公示告知方有效慈善组织劳动人事制度可参照",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-079-规章制度须民主程序制定公示告知方有效慈善组织劳动人事制度可参照.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-080-公司人格否认三情形横向否认关联公司连带一人公司举证责任倒置",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-080-公司人格否认三情形横向否认关联公司连带一人公司举证责任倒置.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-161-医院合规审核应审尽审未经审核不得提交决策涉法事项须报告",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-161-医院合规审核应审尽审未经审核不得提交决策涉法事项须报告.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-052",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-052.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-162-医疗纠纷处置须全程留痕纠纷受理双登记病历封存2小时启动赔偿超1万禁私了",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-162-医疗纠纷处置须全程留痕纠纷受理双登记病历封存2小时启动赔偿超1万禁私了.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-051",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-051.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-163-医疗损害责任比例取决于原因力大小而非过错数量关键过错须与损害后果有因果关联",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-163-医疗损害责任比例取决于原因力大小而非过错数量关键过错须与损害后果有因果关联.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-048-企业须依法环评持证排污三同时运行污染设施建立环境合规管理体系",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-048-企业须依法环评持证排污三同时运行污染设施建立环境合规管理体系.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-047-国企租金入股系债权出资须评估招租三法定条件流程八步走集体决策不免责",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-047-国企租金入股系债权出资须评估招租三法定条件流程八步走集体决策不免责.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-046-企业合规体系须组织制度运行文化四维构建重大决策法律与合规双审",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-046-企业合规体系须组织制度运行文化四维构建重大决策法律与合规双审.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-026-未经质证的证据不得作为定案依据证据采信错误系法定上诉再审事由",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-026-未经质证的证据不得作为定案依据证据采信错误系法定上诉再审事由.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-024-AI生成法律文书须律师四道防线核验法条时效与数据真实性不可跳过",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-024-AI生成法律文书须律师四道防线核验法条时效与数据真实性不可跳过.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-025-劳动争议一裁终局单向限制用人单位起诉权劳动者15日内可起诉",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-025-劳动争议一裁终局单向限制用人单位起诉权劳动者15日内可起诉.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-101-保证方式约定不明推定为一般保证保证期间届满责任消灭",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-101-保证方式约定不明推定为一般保证保证期间届满责任消灭.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-026",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-026.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-099-著作权转让仅限财产权人身权不得转让未列明权利视为保留",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-099-著作权转让仅限财产权人身权不得转让未列明权利视为保留.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-100-销售代理协议性质依实质履行认定违约金过高可请求调减",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-100-销售代理协议性质依实质履行认定违约金过高可请求调减.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-025",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-025.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-01",
+      "path": "04-巩固/学习资料推荐-2026-08-01.md",
+      "review_date": "2026-08-31",
+      "importance": 3,
+      "overdue_days": 10,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "经验卡片-通用补丁-执业立场与文书改写",
+      "path": "02-提炼/经验卡片/学习笔记/经验卡片-通用补丁-执业立场与文书改写.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "A2自学习纪要-医疗事故罪刑事边界与多因一果刑民交叉-2026-08-25",
+      "path": "02-提炼/人伤法/A2自学习纪要-医疗事故罪刑事边界与多因一果刑民交叉-2026-08-25.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月02日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月02日.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "防水保温工程施工合同（标准版）-审查要点与裁判规则-2026-08-25",
+      "path": "02-提炼/合同文书笔记/防水保温工程施工合同（标准版）-审查要点与裁判规则-2026-08-25.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "教育培训合同（学科培训版）-审查要点与裁判规则-2026-08-25",
+      "path": "02-提炼/合同文书笔记/教育培训合同（学科培训版）-审查要点与裁判规则-2026-08-25.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "房屋租赁合同（合租版）-审查要点与裁判规则-2026-08-25",
+      "path": "02-提炼/合同文书笔记/房屋租赁合同（合租版）-审查要点与裁判规则-2026-08-25.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-008",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-008.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-053",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-053.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-166-医疗损害赔偿范围界定与特殊责任形态死亡赔偿金缺陷儿特别抚养费非医保用药医美双属性",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-166-医疗损害赔偿范围界定与特殊责任形态死亡赔偿金缺陷儿特别抚养费非医保用药医美双属性.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-164-道交和解不丧失医疗损害诉权多因一果按份责任损失填平",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-164-道交和解不丧失医疗损害诉权多因一果按份责任损失填平.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-165-提供劳务者受害按过错分担雇主责任险怠于请求时第三者可直接诉保险公司",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-165-提供劳务者受害按过错分担雇主责任险怠于请求时第三者可直接诉保险公司.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-054",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-054.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-049-公司担保并存清偿顺序与保证期间规则",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-049-公司担保并存清偿顺序与保证期间规则.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-051-公司尽职调查须覆盖十三模块并穿透核查股权与关联交易",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-051-公司尽职调查须覆盖十三模块并穿透核查股权与关联交易.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-050-董监高任职资格负面清单与上市公司管理层稳定要求",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-050-董监高任职资格负面清单与上市公司管理层稳定要求.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-028-小额诉讼标的额三档适用标准与一审终审审限举证期限规则",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-028-小额诉讼标的额三档适用标准与一审终审审限举证期限规则.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-029-实习律师应建案件管理台账与电子卷宗并全程工作留痕防范执业过失",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-029-实习律师应建案件管理台账与电子卷宗并全程工作留痕防范执业过失.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-027-实习律师接案须先评估可诉性与诉讼价值并区分一般与特别授权",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-027-实习律师接案须先评估可诉性与诉讼价值并区分一般与特别授权.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-102",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-102.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-027",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-027.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-103",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-103.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-104",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-104.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "知识盲区扫描-2026-08-02",
+      "path": "06-沉淀/知识盲区扫描日志/知识盲区扫描-2026-08-02.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-02",
+      "path": "04-巩固/学习资料推荐-2026-08-02.md",
+      "review_date": "2026-09-01",
+      "importance": 3,
+      "overdue_days": 9,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "天津某甲航空服务公司诉深圳市某乙公司合同纠纷案-摘要-2026-08-03",
+      "path": "02-提炼/案例摘要/天津某甲航空服务公司诉深圳市某乙公司合同纠纷案-摘要-2026-08-03.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "周某琴诉李某张某明机动车交通事故责任纠纷案-摘要-2026-08-03",
+      "path": "02-提炼/案例摘要/周某琴诉李某张某明机动车交通事故责任纠纷案-摘要-2026-08-03.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "美国阿某斯公司诉河北阿某斯公司股东知情权纠纷案-摘要-2026-08-03",
+      "path": "02-提炼/案例摘要/美国阿某斯公司诉河北阿某斯公司股东知情权纠纷案-摘要-2026-08-03.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月03日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月03日.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-010",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-010.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-056",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-056.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-055",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-055.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-028",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-028.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-03",
+      "path": "04-巩固/学习资料推荐-2026-08-03.md",
+      "review_date": "2026-09-02",
+      "importance": 3,
+      "overdue_days": 8,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪与非法行医罪界分-2026-08-27",
+      "path": "02-提炼/经验卡片/人伤/医疗事故罪与非法行医罪界分-2026-08-27.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "病历管理合规义务与行政处罚-2026-08-27",
+      "path": "02-提炼/经验卡片/人伤/病历管理合规义务与行政处罚-2026-08-27.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "江苏某工程公司诉上海某风电公司深圳某担保公司建设工程合同纠纷案-摘要-2026-08-04",
+      "path": "02-提炼/案例摘要/江苏某工程公司诉上海某风电公司深圳某担保公司建设工程合同纠纷案-摘要-2026-08-04.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "张某文诉刘某甲侵权责任纠纷案-摘要-2026-08-04",
+      "path": "02-提炼/案例摘要/张某文诉刘某甲侵权责任纠纷案-摘要-2026-08-04.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "内蒙古某房地产诉马某某合作开发房地产合同纠纷案-摘要-2026-08-04",
+      "path": "02-提炼/案例摘要/内蒙古某房地产诉马某某合作开发房地产合同纠纷案-摘要-2026-08-04.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "缺陷医疗产品致害责任-民法典1223-2026-08-27",
+      "path": "02-提炼/人伤法/医疗纠纷/缺陷医疗产品致害责任-民法典1223-2026-08-27.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月04日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月04日.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-011",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-011.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-057",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-057.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-167",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-167.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-168",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-168.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-058",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-058.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-169",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-169.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-029",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-029.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-04",
+      "path": "04-巩固/学习资料推荐-2026-08-04.md",
+      "review_date": "2026-09-03",
+      "importance": 3,
+      "overdue_days": 7,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "工伤待遇项目计算与本人工资基数实务-2026-08-05",
+      "path": "02-提炼/经验卡片/人伤/工伤待遇项目计算与本人工资基数实务-2026-08-05.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "人伤伤残鉴定攻防-重新鉴定与鉴定人出庭质证实务-2026-08-05",
+      "path": "02-提炼/经验卡片/人伤/人伤伤残鉴定攻防-重新鉴定与鉴定人出庭质证实务-2026-08-05.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "工伤认定疑难情形-视同工伤48小时与上下班途中-2026-08-05",
+      "path": "02-提炼/经验卡片/人伤/工伤认定疑难情形-视同工伤48小时与上下班途中-2026-08-05.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "违反预约合同的违约责任界定-案例摘要-2026-08-21",
+      "path": "02-提炼/案例摘要/违反预约合同的违约责任界定-案例摘要-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "杨某棠诉上海伍某科技信息网络买卖合同纠纷案-摘要-2026-08-05",
+      "path": "02-提炼/案例摘要/杨某棠诉上海伍某科技信息网络买卖合同纠纷案-摘要-2026-08-05.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "孙某某诉北京某医疗美容诊所侵权责任纠纷案-摘要-2026-08-05",
+      "path": "02-提炼/案例摘要/孙某某诉北京某医疗美容诊所侵权责任纠纷案-摘要-2026-08-05.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "包头某商务信息咨询中心第三人撤销之诉-案例摘要-2026-08-21",
+      "path": "02-提炼/案例摘要/包头某商务信息咨询中心第三人撤销之诉-案例摘要-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "王某月诉薛某亮清算责任纠纷案-摘要-2026-08-05",
+      "path": "02-提炼/案例摘要/王某月诉薛某亮清算责任纠纷案-摘要-2026-08-05.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "胡某某诉德某餐厅生命权纠纷-多因一果按份责任-案例摘要-2026-08-21",
+      "path": "02-提炼/案例摘要/胡某某诉德某餐厅生命权纠纷-多因一果按份责任-案例摘要-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪严重不负责任认定七情形-韩杰案二审终审实务图谱-2026-08-21",
+      "path": "02-提炼/人伤法/医疗事故/医疗事故罪严重不负责任认定七情形-韩杰案二审终审实务图谱-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗类案例索引-人民法院案例库闭环-2026-08-21",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗类案例索引-人民法院案例库闭环-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "肿瘤误诊误治医疗纠纷-胆囊癌超范围根治术过错拆解-2026-08-21",
+      "path": "02-提炼/人伤法/医疗纠纷/肿瘤误诊误治医疗纠纷-胆囊癌超范围根治术过错拆解-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "申请重新鉴定全流程指南-四道门与救济路径-2026-08-21",
+      "path": "02-提炼/人伤法/医疗纠纷/申请重新鉴定全流程指南-四道门与救济路径-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "加强医院法治建设的意见-体面线点框架解读-2026-08-21",
+      "path": "02-提炼/人伤法/医疗合规/加强医院法治建设的意见-体面线点框架解读-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月05日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月05日.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "股权代持业务操作指引-效力判断与风险防范-2026-08-21",
+      "path": "02-提炼/学习笔记/股权代持业务操作指引-效力判断与风险防范-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "电子证据取证存证举证全指南-三性红线与九类实操-2026-08-21",
+      "path": "02-提炼/学习笔记/电子证据取证存证举证全指南-三性红线与九类实操-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "民事诉讼司法鉴定实务全流程指南-六控点与十大败诉风险-2026-08-21",
+      "path": "02-提炼/学习笔记/民事诉讼司法鉴定实务全流程指南-六控点与十大败诉风险-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "民政部慈善组织行政处罚裁量权基准2025-五阶次执法尺度-2026-08-21",
+      "path": "02-提炼/学习笔记/慈善/民政部慈善组织行政处罚裁量权基准2025-五阶次执法尺度-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "慈善组织年度支出管理费用募捐成本规定2026-量化红线解读-2026-08-21",
+      "path": "02-提炼/学习笔记/慈善/慈善组织年度支出管理费用募捐成本规定2026-量化红线解读-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "慈善组织信息公开办法2025修订-30条要点解读-2026-08-21",
+      "path": "02-提炼/学习笔记/慈善/慈善组织信息公开办法2025修订-30条要点解读-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "股东退出公司的路径及实操指引-新公司法五路径-2026-08-21",
+      "path": "02-提炼/学习笔记/合规/股东退出公司的路径及实操指引-新公司法五路径-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "自然人股权转让实操要点-税务全流程案例-2026-08-21",
+      "path": "02-提炼/学习笔记/合规/自然人股权转让实操要点-税务全流程案例-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "公司内控管理制度范本-七章结构与写作要点-2026-08-21",
+      "path": "02-提炼/学习笔记/合规/公司内控管理制度范本-七章结构与写作要点-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "代书遗嘱模版-形式要件与风险提示-2026-08-21",
+      "path": "02-提炼/合同文书笔记/代书遗嘱模版-形式要件与风险提示-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "企业劳务合同管理合规指引-十问答-2026-08-21",
+      "path": "02-提炼/合同文书笔记/企业劳务合同管理合规指引-十问答-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "国际贸易合同出口业务操作指引-不可抗力与结算实务-2026-08-21",
+      "path": "02-提炼/合同文书笔记/国际贸易合同出口业务操作指引-不可抗力与结算实务-2026-08-21.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-012",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-012.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-071-慈善组织信息公开真实完整及时重大资产变动与关联交易三十日内公开公募财务会计报告须审计",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-071-慈善组织信息公开真实完整及时重大资产变动与关联交易三十日内公开公募财务会计报告须审计.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-069-公募基金会年度慈善支出不低于上年总收入70%管理费不高于总支出10%募捐成本不高于前三年捐赠收入均值3%",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-069-公募基金会年度慈善支出不低于上年总收入70%管理费不高于总支出10%募捐成本不高于前三年捐赠收入均值3%.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-070-慈善组织行政处罚裁量五阶次初违轻微及时改正可不予处罚二年未发现不予立案",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-070-慈善组织行政处罚裁量五阶次初违轻微及时改正可不予处罚二年未发现不予立案.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-063",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-063.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-067",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-067.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-066",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-066.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-062",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-062.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-151-无病理依据实施根治性手术未行术中冰冻病理构成重大医疗过错",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-151-无病理依据实施根治性手术未行术中冰冻病理构成重大医疗过错.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-153-多主体过错致同一损害按过错程度与原因力大小承担按份责任受害人过错可减轻侵权人责任",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-153-多主体过错致同一损害按过错程度与原因力大小承担按份责任受害人过错可减轻侵权人责任.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-069",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-069.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-059",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-059.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-150-重新鉴定四类法定情形应当准许以证据打开四道门瑕疵可修复不予准许",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-150-重新鉴定四类法定情形应当准许以证据打开四道门瑕疵可修复不予准许.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-068",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-068.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-152-医疗事故罪以严重不负责任七情形为立案标准行刑衔接卫健委移送启动",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-152-医疗事故罪以严重不负责任七情形为立案标准行刑衔接卫健委移送启动.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-149-医院法治建设纳入等级评审巡查第一责任人制度与法律顾问机制并行",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-149-医院法治建设纳入等级评审巡查第一责任人制度与法律顾问机制并行.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-065",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-065.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-061",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-061.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-060",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-060.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-064",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-064.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-001",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-001.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-038-股东退出以股权转让优先异议回购须证明控股股东滥用权利定向减资须全体股东一致同意",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-038-股东退出以股权转让优先异议回购须证明控股股东滥用权利定向减资须全体股东一致同意.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-039-自然人股权转让个税以收入减原值减合理税费为应纳税所得额受让方为扣缴义务人",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-039-自然人股权转让个税以收入减原值减合理税费为应纳税所得额受让方为扣缴义务人.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-040-公司内控制度效力以民主程序与公示告知为前提企业合规建设五原则",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-040-公司内控制度效力以民主程序与公示告知为前提企业合规建设五原则.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-018-司法鉴定事项不得夹带法律判断责任划分由法院决定",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-018-司法鉴定事项不得夹带法律判断责任划分由法院决定.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-019-股权代持一般有效特殊无效内外有别保护善意第三人",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-019-股权代持一般有效特殊无效内外有别保护善意第三人.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-020-电子证据采信以真实性合法性关联性三性完整为前提缺失原始载体或非法取证即排除",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-020-电子证据采信以真实性合法性关联性三性完整为前提缺失原始载体或非法取证即排除.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-033",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-033.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-092-违反预约合同原则上不能主张继续履行损失在信赖利益与履行利益间酌定",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-092-违反预约合同原则上不能主张继续履行损失在信赖利益与履行利益间酌定.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-032",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-032.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-091-国际贸易合同不可抗力与情势变更只能择一主张情势变更须经裁判机关裁决",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-091-国际贸易合同不可抗力与情势变更只能择一主张情势变更须经裁判机关裁决.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-089-劳务合同与劳动合同区分以从属性实质审查为准",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-089-劳务合同与劳动合同区分以从属性实质审查为准.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-031",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-031.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-090-代书遗嘱形式要件严格认定见证人资格与全程在场缺一不可",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-090-代书遗嘱形式要件严格认定见证人资格与全程在场缺一不可.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-030",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-030.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-028-公司对外诉讼代表股东整体利益股东不具第三人撤销之诉主体资格",
+      "path": "06-沉淀/裁判规则库/商事/R-SH-028-公司对外诉讼代表股东整体利益股东不具第三人撤销之诉主体资格.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-05",
+      "path": "04-巩固/学习资料推荐-2026-08-05.md",
+      "review_date": "2026-09-04",
+      "importance": 3,
+      "overdue_days": 6,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "某银行涪陵分行诉某热电公司债权人代位权纠纷案-摘要-2026-08-06",
+      "path": "02-提炼/案例摘要/某银行涪陵分行诉某热电公司债权人代位权纠纷案-摘要-2026-08-06.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "吴某某诉孙某某某中学健康权纠纷案-摘要-2026-08-06",
+      "path": "02-提炼/案例摘要/吴某某诉孙某某某中学健康权纠纷案-摘要-2026-08-06.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "广州市泰某食品公司诉奥某科技买卖合同纠纷案-摘要-2026-08-06",
+      "path": "02-提炼/案例摘要/广州市泰某食品公司诉奥某科技买卖合同纠纷案-摘要-2026-08-06.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月06日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月06日.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-013",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-013.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-071",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-071.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-070",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-070.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-035",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-035.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-034",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-034.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "backup_log",
+      "path": "06-沉淀/分身记忆备份/backup_log.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "README",
+      "path": "06-沉淀/分身记忆备份/README.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-06",
+      "path": "04-巩固/学习资料推荐-2026-08-06.md",
+      "review_date": "2026-09-05",
+      "importance": 3,
+      "overdue_days": 5,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪与非法行医罪界分实务-2026-08-07",
+      "path": "02-提炼/经验卡片/人伤/医疗事故罪与非法行医罪界分实务-2026-08-07.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害责任纠纷诉讼时效起算实务-2026-08-07",
+      "path": "02-提炼/经验卡片/人伤/医疗损害责任纠纷诉讼时效起算实务-2026-08-07.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗执业资质双线合规与罚则竞合-2026-08-07",
+      "path": "02-提炼/经验卡片/人伤/医疗执业资质双线合规与罚则竞合-2026-08-07.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "经验卡片-通用补丁-协作边界与代执行纪律",
+      "path": "02-提炼/经验卡片/学习笔记/经验卡片-通用补丁-协作边界与代执行纪律.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "人民法院案例库采集摘要-2026-08-07",
+      "path": "02-提炼/案例摘要/人民法院案例库采集摘要-2026-08-07.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月07日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月07日.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-014",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-014.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-076-慈善组织信息公开以公开为原则不公开为例外捐赠人享有查询复制权",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-076-慈善组织信息公开以公开为原则不公开为例外捐赠人享有查询复制权.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-075-基金会净资产达标不等于高效限定净资产结转须有佐证专项资金不得长期沉淀",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-075-基金会净资产达标不等于高效限定净资产结转须有佐证专项资金不得长期沉淀.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-073",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-073.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-159-医源性损害须先判定过错性再定归责紧急抢救免责三要件从严把握",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-159-医源性损害须先判定过错性再定归责紧急抢救免责三要件从严把握.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-072",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-072.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-160-道交与工伤竞合有限兼得一次性补偿项目可双赔费用性项目损失填平补差",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-160-道交与工伤竞合有限兼得一次性补偿项目可双赔费用性项目损失填平补差.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-158-医疗纠纷赔偿竞合案件先核减已获赔部分再按原因力比例计算精神抚慰金单列酌定",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-158-医疗纠纷赔偿竞合案件先核减已获赔部分再按原因力比例计算精神抚慰金单列酌定.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-077-基金会资助社会组织非对外捐赠不得使用捐赠票据业务实质决定凭证类型",
+      "path": "06-沉淀/裁判规则库/慈善组织合同/R-CF-077-基金会资助社会组织非对外捐赠不得使用捐赠票据业务实质决定凭证类型.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-043-网络查控申请书须与财产保全同步提交防止胜诉后无法执行",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-043-网络查控申请书须与财产保全同步提交防止胜诉后无法执行.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-044-采购合同组件须逻辑咬合标准条款与罚则救济闭环否则沦为一纸空文",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-044-采购合同组件须逻辑咬合标准条款与罚则救济闭环否则沦为一纸空文.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-003",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-003.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-045-企业规章制度须经民主程序制定并公示告知方能作为用工管理依据",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-045-企业规章制度须经民主程序制定并公示告知方能作为用工管理依据.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-002",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-002.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-021-商业诋毁不以竞争关系为要件误导性信息三类情形可构成损害不以实际发生为要件",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-021-商业诋毁不以竞争关系为要件误导性信息三类情形可构成损害不以实际发生为要件.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-023-股东资格内外有别实质与形式相结合显名须其他股东半数同意失权异议三十日起诉",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-023-股东资格内外有别实质与形式相结合显名须其他股东半数同意失权异议三十日起诉.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-022-人格否认以独立意思与独立财产为根本标准清算责任因果关系举证责任倒置",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-022-人格否认以独立意思与独立财产为根本标准清算责任因果关系举证责任倒置.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-037",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-037.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-096-技术咨询合同以注意义务而非结果义务为审查基准验收标准须数据化",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-096-技术咨询合同以注意义务而非结果义务为审查基准验收标准须数据化.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-036",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-036.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-098-押金非违约金出租人不得径行没收主体结构维修义务法定不可约定排除",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-098-押金非违约金出租人不得径行没收主体结构维修义务法定不可约定排除.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-039",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-039.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-038",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-038.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-097-技术秘密界定以合同约定为准后续改进成果归属约定优先于法定",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-097-技术秘密界定以合同约定为准后续改进成果归属约定优先于法定.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-07",
+      "path": "04-巩固/学习资料推荐-2026-08-07.md",
+      "review_date": "2026-09-06",
+      "importance": 3,
+      "overdue_days": 4,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "条号位移卡族-总索引与调用纪律",
+      "path": "03-连接/概念页/条号位移卡族-总索引与调用纪律.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "病历书写不规范的三层法律责任与诊疗风险防控-2026-08-08",
+      "path": "02-提炼/经验卡片/人伤/病历书写不规范的三层法律责任与诊疗风险防控-2026-08-08.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "某医疗管理公司诉某市人民医院-情势变更下合同解除与损失分担",
+      "path": "02-提炼/案例摘要/某医疗管理公司诉某市人民医院-情势变更下合同解除与损失分担.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "人民法院案例库采集摘要-2026-08-08",
+      "path": "02-提炼/案例摘要/人民法院案例库采集摘要-2026-08-08.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "施某平诉崇明卫健委-病历书写不规范行政处罚幅度认定",
+      "path": "02-提炼/案例摘要/施某平诉崇明卫健委-病历书写不规范行政处罚幅度认定.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "长春某泽投资诉德惠市原种场-诉讼时效二十年最长保护期不适用",
+      "path": "02-提炼/案例摘要/长春某泽投资诉德惠市原种场-诉讼时效二十年最长保护期不适用.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月08日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月08日.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-015",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-015.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-074",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-074.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-040",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-040.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "WD-05-主题核对提醒卡",
+      "path": "06-沉淀/条号位移卡族/WD-05-主题核对提醒卡.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "WD-01-公司法条号位移卡-2023修订vs2018修正",
+      "path": "06-沉淀/条号位移卡族/WD-01-公司法条号位移卡-2023修订vs2018修正.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-08",
+      "path": "04-巩固/学习资料推荐-2026-08-08.md",
+      "review_date": "2026-09-07",
+      "importance": 3,
+      "overdue_days": 3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月09日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月09日.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-016",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-016.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-075",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-075.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-041",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-041.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "WD-06-核验状态码总览卡",
+      "path": "06-沉淀/条号位移卡族/WD-06-核验状态码总览卡.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "WD-00-条号位移卡族总索引与调用纪律",
+      "path": "06-沉淀/条号位移卡族/WD-00-条号位移卡族总索引与调用纪律.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "WD-04-三法过渡期适用规则卡",
+      "path": "06-沉淀/条号位移卡族/WD-04-三法过渡期适用规则卡.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "WD-02-民诉法条号位移卡-2023修正vs2021修正",
+      "path": "06-沉淀/条号位移卡族/WD-02-民诉法条号位移卡-2023修正vs2021修正.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "WD-03-慈善法条号位移卡-2023修正vs2016版",
+      "path": "06-沉淀/条号位移卡族/WD-03-慈善法条号位移卡-2023修正vs2016版.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "知识盲区扫描-2026-08-09",
+      "path": "06-沉淀/知识盲区扫描日志/知识盲区扫描-2026-08-09.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-09",
+      "path": "04-巩固/学习资料推荐-2026-08-09.md",
+      "review_date": "2026-09-08",
+      "importance": 3,
+      "overdue_days": 2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "经验卡片-赵某离婚案",
+      "path": "02-提炼/经验卡片/婚姻家庭/经验卡片-赵某离婚案.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医患纠纷高发真相-2026-08-09",
+      "path": "02-提炼/经验卡片/人伤/医患纠纷高发真相-2026-08-09.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "企业合规与合法的边界-2026-08-10",
+      "path": "02-提炼/学习笔记/合规/企业合规与合法的边界-2026-08-10.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HY-003",
+      "path": "06-沉淀/裁判规则库/婚姻家庭/R-HY-003.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-017",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-017.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-080",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-080.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-077",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-077.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-076",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-076.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-081",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-081.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-079",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-079.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-078",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-078.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-019",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-019.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-018",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-018.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-005",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-005.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-004",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-004.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-042",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-042.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-043",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-043.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-044",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-044.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-045",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-045.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-046",
+      "path": "06-沉淀/裁判规则库/慈法合规/R-CF-046.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-045",
+      "path": "06-沉淀/裁判规则库/慈法合规/R-CF-045.md",
+      "review_date": "2026-09-09",
+      "importance": 3,
+      "overdue_days": 1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    }
+  ],
+  "today_due": [
+    {
+      "name": "医疗事故罪刑民行三程序衔接与量刑变量-2026-08-10",
+      "path": "02-提炼/人伤法/医疗事故/医疗事故罪刑民行三程序衔接与量刑变量-2026-08-10.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "知情同意告知义务违反的责任构成与举证-2026-08-10",
+      "path": "02-提炼/人伤法/医疗纠纷/知情同意告知义务违反的责任构成与举证-2026-08-10.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗质量安全不良事件报告义务与行政处罚裁量-2026-08-10",
+      "path": "02-提炼/人伤法/医疗合规/医疗质量安全不良事件报告义务与行政处罚裁量-2026-08-10.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月10日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月10日.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-020",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-020.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-022",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-022.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-007",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-007.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-006",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-006.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-047",
+      "path": "06-沉淀/裁判规则库/慈法合规/R-CF-047.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-10",
+      "path": "04-巩固/学习资料推荐-2026-08-10.md",
+      "review_date": "2026-09-10",
+      "importance": 3,
+      "overdue_days": 0,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    }
+  ],
+  "upcoming_7d": [
+    {
+      "name": "指导案例189号-熊猫互娱诉李岑合同违约-原始",
+      "path": "01-采集/案例/人民法院案例库/2026-08-11/指导案例189号-熊猫互娱诉李岑合同违约-原始.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "山东某创投诉山东某纸业对赌协议-原始",
+      "path": "01-采集/案例/人民法院案例库/2026-08-11/山东某创投诉山东某纸业对赌协议-原始.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "最高法民再285号-曹君丁晟医疗损害篡改病历-原始",
+      "path": "01-采集/案例/人民法院案例库/2026-08-11/最高法民再285号-曹君丁晟医疗损害篡改病历-原始.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害纠纷100问-实务问答提炼",
+      "path": "02-提炼/经验卡片/人伤/医疗损害纠纷100问-实务问答提炼.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "山东某创投诉山东某纸业对赌协议-摘要-2026-08-11",
+      "path": "02-提炼/案例摘要/山东某创投诉山东某纸业对赌协议-摘要-2026-08-11.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "最高法民再285号-曹君丁晟医疗损害篡改病历-摘要-2026-08-11",
+      "path": "02-提炼/案例摘要/最高法民再285号-曹君丁晟医疗损害篡改病历-摘要-2026-08-11.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "指导案例189号-熊猫互娱诉李岑合同违约-摘要-2026-08-11",
+      "path": "02-提炼/案例摘要/指导案例189号-熊猫互娱诉李岑合同违约-摘要-2026-08-11.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪韩杰案二审维持与申诉焦点-2026-08-11",
+      "path": "02-提炼/人伤法/医疗事故/医疗事故罪韩杰案二审维持与申诉焦点-2026-08-11.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害责任过错推定与病历争议实务-贵州高院2025五案精解-2026-08-11",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗损害责任过错推定与病历争议实务-贵州高院2025五案精解-2026-08-11.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "病历质量管理行政监管实务口径-2026-08-11",
+      "path": "02-提炼/人伤法/医疗合规/病历质量管理行政监管实务口径-2026-08-11.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月12日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月12日.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月11日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月11日.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "股权转让协议模板-范本与审查要点-IMA-2026-08-02",
+      "path": "02-提炼/合同文书笔记/股权转让协议模板-范本与审查要点-IMA-2026-08-02.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "好的代理词6种写法-诉讼文书写作要点-2026-07-31",
+      "path": "02-提炼/合同文书笔记/好的代理词6种写法-诉讼文书写作要点-2026-07-31.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "法庭辩论10条金句-人身损害辩论三核心-2026-08-10",
+      "path": "02-提炼/律师实务指引/法庭辩论10条金句-人身损害辩论三核心-2026-08-10.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-018",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-018.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-084",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-084.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-082",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-082.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-083",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-083.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-008",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-008.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-046",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-046.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-047",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-047.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-11",
+      "path": "04-巩固/学习资料推荐-2026-08-11.md",
+      "review_date": "2026-09-11",
+      "importance": 3,
+      "overdue_days": -1,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "护理费与长期护理依赖实务-2026-08-12",
+      "path": "02-提炼/经验卡片/人伤/护理费与长期护理依赖实务-2026-08-12.md",
+      "review_date": "2026-09-12",
+      "importance": 4,
+      "overdue_days": -2,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "动物致害人身损害责任实务-2026-08-12",
+      "path": "02-提炼/经验卡片/人伤/动物致害人身损害责任实务-2026-08-12.md",
+      "review_date": "2026-09-12",
+      "importance": 4,
+      "overdue_days": -2,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "人伤-医疗损害诉讼时效与合理诊疗义务-(2025)新40民终2371号摘要-2026-08-13",
+      "path": "02-提炼/案例摘要/人伤-医疗损害诉讼时效与合理诊疗义务-(2025)新40民终2371号摘要-2026-08-13.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "商事-公司决议撤销司法审查范围-指导案例10号摘要-2026-08-12",
+      "path": "02-提炼/案例摘要/商事-公司决议撤销司法审查范围-指导案例10号摘要-2026-08-12.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "合同-房屋租赁合同无效损失分担-(2021)最高法民再145号摘要-2026-08-13",
+      "path": "02-提炼/案例摘要/合同-房屋租赁合同无效损失分担-(2021)最高法民再145号摘要-2026-08-13.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "商事-涉外股权转让准据法分别确定-摘要-2026-08-13",
+      "path": "02-提炼/案例摘要/商事-涉外股权转让准据法分别确定-摘要-2026-08-13.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "合同-政策调整致合同目的不能实现与责任划分-(2023)最高法民终142号摘要-2026-08-12",
+      "path": "02-提炼/案例摘要/合同-政策调整致合同目的不能实现与责任划分-(2023)最高法民终142号摘要-2026-08-12.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗纠纷-医疗损害诉讼时效起算与多机构就诊举证-吕某案摘要-2026-08-12",
+      "path": "02-提炼/案例摘要/医疗纠纷-医疗损害诉讼时效起算与多机构就诊举证-吕某案摘要-2026-08-12.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "安全保障义务致人身损害裁判规则与实务-2026-08-12",
+      "path": "02-提炼/人伤法/安全保障义务/安全保障义务致人身损害裁判规则与实务-2026-08-12.md",
+      "review_date": "2026-09-12",
+      "importance": 4,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪构成要件教义学争议与新综合说补强-2026-08-29",
+      "path": "02-提炼/人伤法/医疗事故/医疗事故罪构成要件教义学争议与新综合说补强-2026-08-29.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害责任案例索引-人民法院案例库闭环-2026-08-12",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗损害责任案例索引-人民法院案例库闭环-2026-08-12.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日知识摄入报告-2026年08月13日",
+      "path": "02-提炼/每日知识摄入报告/每日知识摄入报告-2026年08月13日.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗机构病历书写合规三层法律责任与2026判例口径补强-2026-08-29",
+      "path": "02-提炼/合规实务/医疗机构病历书写合规三层法律责任与2026判例口径补强-2026-08-29.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-019",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-019.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-090",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-090.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-094",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-094.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-095",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-095.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-085",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-085.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-091",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-091.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-181-医疗事故罪严重不负责任教义学认定争议与新综合说",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-181-医疗事故罪严重不负责任教义学认定争议与新综合说.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-089",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-089.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-096",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-096.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-086",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-086.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-092",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-092.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-093",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-093.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-087",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-087.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-056-医疗机构病历书写合规三层法律责任与推定过错最新判例口径",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-056-医疗机构病历书写合规三层法律责任与推定过错最新判例口径.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-048",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-048.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-12",
+      "path": "04-巩固/学习资料推荐-2026-08-12.md",
+      "review_date": "2026-09-12",
+      "importance": 3,
+      "overdue_days": -2,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害责任案例索引-人民法院案例库闭环-2026-08-13",
+      "path": "02-提炼/经验卡片/人伤/医疗损害责任案例索引-人民法院案例库闭环-2026-08-13.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗事故罪因果关系多环节介入与尸检缺失存疑-韩杰案再审争点-2026-08-30",
+      "path": "02-提炼/经验卡片/人伤/医疗事故罪因果关系多环节介入与尸检缺失存疑-韩杰案再审争点-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "经验卡片",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗损害二元鉴定模式选择与赔偿标准双轨-2026-08-30",
+      "path": "02-提炼/人伤法/医疗损害二元鉴定模式选择与赔偿标准双轨-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗说明义务告知对象与意见冲突处理-2026-08-30",
+      "path": "02-提炼/人伤法/医疗说明义务告知对象与意见冲突处理-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗纠纷三类日课-2026-08-30",
+      "path": "02-提炼/人伤法/医疗纠纷三类日课-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗纠纷三条主路与卫健委医调委法院功能分工-2026-08-30",
+      "path": "02-提炼/人伤法/医疗纠纷/医疗纠纷三条主路与卫健委医调委法院功能分工-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "电子病历真实性认定与无痕型瑕疵过错推定-2026-08-30",
+      "path": "02-提炼/人伤法/医疗纠纷/电子病历真实性认定与无痕型瑕疵过错推定-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "上海医疗行政处罚裁量双基准2026-08-01施行与民营机构联合督查-2026-08-30",
+      "path": "02-提炼/人伤法/医疗合规/上海医疗行政处罚裁量双基准2026-08-01施行与民营机构联合督查-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "基金会不得提供公益捐赠回扣三条红线-2026-08-30",
+      "path": "02-提炼/慈法/基金会不得提供公益捐赠回扣三条红线-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "慈法合规",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "疫情防控捐赠税收优惠全额扣除要点-2026-08-30",
+      "path": "02-提炼/慈法/疫情防控捐赠税收优惠全额扣除要点-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "慈法合规",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "全面放开养老服务市场要点与慈善组织参与路径-2026-08-30",
+      "path": "02-提炼/慈法/全面放开养老服务市场要点与慈善组织参与路径-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "慈法合规",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "合伙业务操作指引与合伙关系认定穿透规则-2026-08-30",
+      "path": "02-提炼/学习笔记/合伙业务操作指引与合伙关系认定穿透规则-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "法律尽职调查十五模块核查框架与股权代持识别-2026-08-30",
+      "path": "02-提炼/学习笔记/法律尽职调查十五模块核查框架与股权代持识别-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "保证合同模板六处加重保证人责任条款-2026-08-30",
+      "path": "02-提炼/合同文书笔记/保证合同模板六处加重保证人责任条款-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "一致行动人协议六要素与决策兜底机制-2026-08-30",
+      "path": "02-提炼/合同文书笔记/一致行动人协议六要素与决策兜底机制-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "代理词九处用语规范纠偏-2026-08-30",
+      "path": "02-提炼/律师实务指引/代理词九处用语规范纠偏-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "民事代理词三性标准与庭后提交-2026-08-30",
+      "path": "02-提炼/律师实务指引/民事代理词三性标准与庭后提交-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "民事再审申请书结构与法条纠偏-2026-08-30",
+      "path": "02-提炼/律师实务指引/民事再审申请书结构与法条纠偏-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "法务案件分析报告三部曲与类案要素表-2026-08-30",
+      "path": "02-提炼/律师实务指引/法务案件分析报告三部曲与类案要素表-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "股东定向减资退出协议要点与债权人保护程序-2026-08-30",
+      "path": "02-提炼/合规实务/股东定向减资退出协议要点与债权人保护程序-2026-08-30.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-020",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-020.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-021",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-021.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-JG-005",
+      "path": "06-沉淀/裁判规则库/建设工程/R-JG-005.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-057",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-057.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-053",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-053.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-052",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-052.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-056",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-056.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-090-疫情防控捐赠税收优惠全额扣除要点",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-090-疫情防控捐赠税收优惠全额扣除要点.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-089-基金会不得提供公益捐赠回扣三条红线",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-089-基金会不得提供公益捐赠回扣三条红线.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-091-全面放开养老服务市场要点与慈善组织参与路径",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-091-全面放开养老服务市场要点与慈善组织参与路径.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-055",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-055.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-054",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-054.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-107",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-107.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-113",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-113.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-103",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-103.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-112",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-112.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-102",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-102.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-186-医疗损害二元鉴定模式选择与赔偿标准双轨",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-186-医疗损害二元鉴定模式选择与赔偿标准双轨.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-106",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-106.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-109",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-109.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-183-医疗事故罪刑法因果关系多环节介入与尸检缺失存疑有利被告",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-183-医疗事故罪刑法因果关系多环节介入与尸检缺失存疑有利被告.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-185-医疗纠纷五条法定路径功能分工与选择规则",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-185-医疗纠纷五条法定路径功能分工与选择规则.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-108",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-108.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-182-电子病历无痕型瑕疵与篡改的过错推定",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-182-电子病历无痕型瑕疵与篡改的过错推定.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-184-病历瑕疵五档裁判梯度从推定全责到酌定因素",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-184-病历瑕疵五档裁判梯度从推定全责到酌定因素.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-187-医疗说明义务告知对象与意见冲突处理规则",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-187-医疗说明义务告知对象与意见冲突处理规则.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-111",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-111.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-101",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-101.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-105",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-105.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-114",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-114.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-104",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-104.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-110",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-110.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-100",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-100.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-031",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-031.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-030",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-030.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-033",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-033.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-032",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-032.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-029",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-029.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-028",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-028.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-015",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-015.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-014",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-014.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-019",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-019.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-018",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-018.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-013",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-013.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-057-2026上海医疗行政处罚裁量双基准与民营机构联合督查",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-057-2026上海医疗行政处罚裁量双基准与民营机构联合督查.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-017",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-017.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-016",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-016.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-036-民事再审申请书结构与再审事由法条纠偏",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-036-民事再审申请书结构与再审事由法条纠偏.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-037-法务案件分析报告三部曲与类案要素表",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-037-法务案件分析报告三部曲与类案要素表.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-034-民事代理词三性标准与庭后提交书面代理词规则",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-034-民事代理词三性标准与庭后提交书面代理词规则.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-035-代理词九处用语规范纠偏对照表",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-035-代理词九处用语规范纠偏对照表.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-114-一致行动人协议六要素与决策兜底机制",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-114-一致行动人协议六要素与决策兜底机制.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-056",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-056.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-057",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-057.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-112-法律尽职调查十五模块核查框架与股权代持识别",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-112-法律尽职调查十五模块核查框架与股权代持识别.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-058",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-058.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-059",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-059.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-111-买受人怠于质量异议视为符合约定与出卖人抗辩三要件",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-111-买受人怠于质量异议视为符合约定与出卖人抗辩三要件.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-113-保证合同六处加重保证人责任条款的效力边界",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-113-保证合同六处加重保证人责任条款的效力边界.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-054",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-054.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-060",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-060.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-055",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-055.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-033-未届期股权转让出资责任与新公司法88条不溯及适用",
+      "path": "06-沉淀/裁判规则库/商事/R-SH-033-未届期股权转让出资责任与新公司法88条不溯及适用.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-034-合伙关系认定四要素与名为合伙实为XX的穿透规则",
+      "path": "06-沉淀/裁判规则库/商事/R-SH-034-合伙关系认定四要素与名为合伙实为XX的穿透规则.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-035-股东定向减资退出协议要点与债权人保护程序",
+      "path": "06-沉淀/裁判规则库/商事/R-SH-035-股东定向减资退出协议要点与债权人保护程序.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-13",
+      "path": "04-巩固/学习资料推荐-2026-08-13.md",
+      "review_date": "2026-09-13",
+      "importance": 3,
+      "overdue_days": -3,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗纠纷三类日课-2026-08-31",
+      "path": "02-提炼/人伤法/医疗纠纷三类日课-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "医疗费赔偿项目及相关法律问题-2026-08-31",
+      "path": "02-提炼/人伤法/人身损害赔偿/医疗费赔偿项目及相关法律问题-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "专家辅助人定义法律地位证据属性-2026-08-31",
+      "path": "02-提炼/人伤法/医疗纠纷/专家辅助人定义法律地位证据属性-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "首诊负责制度-2026-08-31",
+      "path": "02-提炼/人伤法/医疗合规/首诊负责制度-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "行政复议实操指南全流程要点-2026-08-31",
+      "path": "02-提炼/学习笔记/行政复议实操指南全流程要点-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "房屋租赁纠纷争议焦点及规则梳理-2026-08-31",
+      "path": "02-提炼/学习笔记/房屋租赁纠纷争议焦点及规则梳理-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "行政庭审质证干货三性两力证明目的-2026-08-31",
+      "path": "02-提炼/学习笔记/行政庭审质证干货三性两力证明目的-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "公开募捐违法案件管辖规定-2026-08-31",
+      "path": "02-提炼/学习笔记/慈善/公开募捐违法案件管辖规定-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "社会组织评估管理办法2026-2026-08-31",
+      "path": "02-提炼/学习笔记/慈善/社会组织评估管理办法2026-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "公益事业捐赠票据使用管理办法-2026-08-31",
+      "path": "02-提炼/学习笔记/慈善/公益事业捐赠票据使用管理办法-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "麻醉药品精神药品生产经营管理办法征求意见稿-2026-08-31",
+      "path": "02-提炼/学习笔记/合规/麻醉药品精神药品生产经营管理办法征求意见稿-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "药品管理法实施条例2026修订-2026-08-31",
+      "path": "02-提炼/学习笔记/合规/药品管理法实施条例2026修订-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "学习笔记",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "劳动合同范本审查要点-2026-08-31",
+      "path": "02-提炼/学习笔记/合规/劳动合同范本审查要点-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "最高人民法院50个民间借贷裁判规则蒸馏笔记-2026-08-31",
+      "path": "02-提炼/合同文书笔记/最高人民法院50个民间借贷裁判规则蒸馏笔记-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "买卖合同纠纷法律适用疑难问题蒸馏笔记-2026-08-31",
+      "path": "02-提炼/合同文书笔记/买卖合同纠纷法律适用疑难问题蒸馏笔记-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "违约损失赔偿金额计算公式蒸馏笔记-2026-08-31",
+      "path": "02-提炼/合同文书笔记/违约损失赔偿金额计算公式蒸馏笔记-2026-08-31.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-041-劳动合同范本九章结构与试用期工资工时制度红线",
+      "path": "06-沉淀/裁判规则库/劳动人事/R-LN-041-劳动合同范本九章结构与试用期工资工时制度红线.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-022",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-022.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-059",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-059.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-058",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-058.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-060",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-060.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-117",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-117.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-190-具备介入条件的医院未及时行急诊PCI构成过错",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-190-具备介入条件的医院未及时行急诊PCI构成过错.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-116",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-116.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-189-医疗事故罪结果归责误区与刑法最后手段性",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-189-医疗事故罪结果归责误区与刑法最后手段性.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-119",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-119.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-118",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-118.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-192-专家辅助人有专门知识的人申请与证据属性",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-192-专家辅助人有专门知识的人申请与证据属性.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-188-未遵循手术操作指南按原因力担责",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-188-未遵循手术操作指南按原因力担责.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-115",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-115.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-121",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-121.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-120",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-120.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-191-首诊负责制度责任边界与转诊义务",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-191-首诊负责制度责任边界与转诊义务.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-193-医疗费赔偿范围计算与继续治疗费先予执行",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-193-医疗费赔偿范围计算与继续治疗费先予执行.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-035",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-035.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-034",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-034.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-037",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-037.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-036",
+      "path": "06-沉淀/裁判规则库/通用/R-PR-036.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-GZ-022-工伤认定不认为是工伤举证责任倒置",
+      "path": "06-沉淀/裁判规则库/证据规则/R-GZ-022-工伤认定不认为是工伤举证责任倒置.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-060-证据链构建全案证据综合审查",
+      "path": "06-沉淀/裁判规则库/证据规则/R-PR-060-证据链构建全案证据综合审查.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-267-医疗过错举证责任与过错推定攻防",
+      "path": "06-沉淀/裁判规则库/证据规则/R-PI-267-医疗过错举证责任与过错推定攻防.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-058-高度盖然性证明标准适用边界",
+      "path": "06-沉淀/裁判规则库/证据规则/R-PR-058-高度盖然性证明标准适用边界.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HJ-002-环境侵权因果关系举证责任倒置",
+      "path": "06-沉淀/裁判规则库/证据规则/R-HJ-002-环境侵权因果关系举证责任倒置.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PR-059-非法证据排除民事证据资格红线",
+      "path": "06-沉淀/裁判规则库/证据规则/R-PR-059-非法证据排除民事证据资格红线.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-021",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-021.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-020",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-020.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-059-药品管理法实施条例2026修订MAH责任与网络销售平台义务",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-059-药品管理法实施条例2026修订MAH责任与网络销售平台义务.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-058-电子病历系统身份标识未妥善保管的合规责任",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-058-电子病历系统身份标识未妥善保管的合规责任.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-060-麻精药品生产经营管理办法2026修订禁委托生产禁网络销售",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-060-麻精药品生产经营管理办法2026修订禁委托生产禁网络销售.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-022",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-022.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-040-行政复议全流程期限复议机关确定与受理阶段攻防",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-040-行政复议全流程期限复议机关确定与受理阶段攻防.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-039-房屋租赁六类争议焦点与次承租人代付转租视为同意规则",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-039-房屋租赁六类争议焦点与次承租人代付转租视为同意规则.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-038-行政庭审质证三性两力证明目的闭环与三句话质证法",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-038-行政庭审质证三性两力证明目的闭环与三句话质证法.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-066",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-066.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-062",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-062.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-063",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-063.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-118-民间借贷穿透审查与虚假诉讼五特征及LPR四倍利率",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-118-民间借贷穿透审查与虚假诉讼五特征及LPR四倍利率.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-115-约定检验期限怠于通知视为质量符合约定",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-115-约定检验期限怠于通知视为质量符合约定.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-116-买卖合同增值税发票不能单独证明交付与违约金调减30%界限",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-116-买卖合同增值税发票不能单独证明交付与违约金调减30%界限.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-117-违约损失赔偿可得利益三法与完整计算公式",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-117-违约损失赔偿可得利益三法与完整计算公式.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-064",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-064.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-065",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-065.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-061",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-061.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-092-公益事业捐赠票据使用管理办法开票规范与五禁",
+      "path": "06-沉淀/裁判规则库/慈法合规/R-CF-092-公益事业捐赠票据使用管理办法开票规范与五禁.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-094-公开募捐违法案件管辖规定互联网公募按住所地管辖",
+      "path": "06-沉淀/裁判规则库/慈法合规/R-CF-094-公开募捐违法案件管辖规定互联网公募按住所地管辖.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-093-社会组织评估管理办法2026五级评估与3A4A激励",
+      "path": "06-沉淀/裁判规则库/慈法合规/R-CF-093-社会组织评估管理办法2026五级评估与3A4A激励.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-036-股权转让款逾期预期违约加速到期与保证方式",
+      "path": "06-沉淀/裁判规则库/商事/R-SH-036-股权转让款逾期预期违约加速到期与保证方式.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-14",
+      "path": "04-巩固/学习资料推荐-2026-08-14.md",
+      "review_date": "2026-09-14",
+      "importance": 3,
+      "overdue_days": -4,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-023",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-023.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-063",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-063.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-062",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-062.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-061",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-061.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-123",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-123.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-122",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-122.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-125",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-125.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-124",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-124.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CS-006",
+      "path": "06-沉淀/裁判规则库/案例/R-CS-006.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-025",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-025.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-024",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-024.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-023",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-023.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-008",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-008.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-006",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-006.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-007",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-007.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-067",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-067.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-068",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-068.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-069",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-069.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-15",
+      "path": "04-巩固/学习资料推荐-2026-08-15.md",
+      "review_date": "2026-09-15",
+      "importance": 3,
+      "overdue_days": -5,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "股东恶意零元转让股权逃废债案-摘要-2026-08-17",
+      "path": "02-提炼/案例摘要/股东恶意零元转让股权逃废债案-摘要-2026-08-17.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "杨某诉某公司特许经营合同纠纷案-摘要-2026-08-17",
+      "path": "02-提炼/案例摘要/杨某诉某公司特许经营合同纠纷案-摘要-2026-08-17.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "四川省人民医院病历篡改医疗损害责任纠纷案-摘要-2026-08-17",
+      "path": "02-提炼/案例摘要/四川省人民医院病历篡改医疗损害责任纠纷案-摘要-2026-08-17.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-SH-024",
+      "path": "06-沉淀/裁判规则库/商事纠纷/R-SH-024.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-065",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-065.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-CF-064",
+      "path": "06-沉淀/裁判规则库/慈善/R-CF-064.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-127",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-127.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-128",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-128.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-028",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-028.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-027",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-027.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-026",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-026.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-010",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-010.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-011",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-011.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-LN-009",
+      "path": "06-沉淀/裁判规则库/学习笔记/R-LN-009.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-072",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-072.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-073",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-073.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-070",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-070.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HT-071",
+      "path": "06-沉淀/裁判规则库/合同风险/R-HT-071.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "知识盲区扫描-2026-08-16",
+      "path": "06-沉淀/知识盲区扫描日志/知识盲区扫描-2026-08-16.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-17",
+      "path": "04-巩固/学习资料推荐-2026-08-17.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "学习资料推荐-2026-08-16",
+      "path": "04-巩固/学习资料推荐-2026-08-16.md",
+      "review_date": "2026-09-16",
+      "importance": 3,
+      "overdue_days": -6,
+      "category": "其他",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "股东恶意零元转让股权逃废债-商事-2026-08-17",
+      "path": "01-采集/案例/人民法院案例库/2026-08-17/股东恶意零元转让股权逃废债-商事-2026-08-17.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "案例摘要",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "四川省人民医院病历篡改医疗损害-人身伤害-2026-08-17",
+      "path": "01-采集/案例/人民法院案例库/2026-08-17/四川省人民医院病历篡改医疗损害-人身伤害-2026-08-17.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "商业特许经营典型案例-杨某案-合同-2026-08-17",
+      "path": "01-采集/案例/人民法院案例库/2026-08-17/商业特许经营典型案例-杨某案-合同-2026-08-17.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "每日自学-医疗纠纷实务三维攻防自查清单-2026-08-17",
+      "path": "02-提炼/学习笔记/每日自学-医疗纠纷实务三维攻防自查清单-2026-08-17.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "人伤法",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "商品房买卖合同纠纷审判要件指南-贵州高院2025-2026-08-17",
+      "path": "02-提炼/合同文书笔记/商品房买卖合同纠纷审判要件指南-贵州高院2025-2026-08-17.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "保证合同纠纷实务100问-要点提炼-2026-08-17",
+      "path": "02-提炼/合同文书笔记/保证合同纠纷实务100问-要点提炼-2026-08-17.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "建设工程招标代理合同-范本与写作要点-2026-08-17",
+      "path": "02-提炼/合同文书笔记/建设工程招标代理合同-范本与写作要点-2026-08-17.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "合同文书",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-PI-126",
+      "path": "06-沉淀/裁判规则库/人伤法/R-PI-126.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-030-公司对外担保决议为效力基石善意决定担保效力",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-030-公司对外担保决议为效力基石善意决定担保效力.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-029-员工手册生效三要件与内容合法性边界",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-029-员工手册生效三要件与内容合法性边界.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    },
+    {
+      "name": "R-HG-031-股权转让先税后工商低价转让将被核定补税",
+      "path": "06-沉淀/裁判规则库/合规/R-HG-031-股权转让先税后工商低价转让将被核定补税.md",
+      "review_date": "2026-09-17",
+      "importance": 3,
+      "overdue_days": -7,
+      "category": "裁判规则",
+      "repetition": 0,
+      "ease_factor": 2.5
+    }
+  ]
+}
