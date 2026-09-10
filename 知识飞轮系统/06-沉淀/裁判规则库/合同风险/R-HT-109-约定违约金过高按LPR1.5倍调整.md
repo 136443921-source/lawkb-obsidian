@@ -16,7 +16,7 @@ rule_card: R-HT-109
 ima_true: false
 review_date: 2026-11-28
 created: 2026-08-28T11:40
-updated: 2026-09-06T23:00
+updated: 2026-09-08T23:09
 yuandian_ah: (2025)湘1021民初5218号
 yuandian_checked: 2026-08-29
 yuandian_verify_pending: true
