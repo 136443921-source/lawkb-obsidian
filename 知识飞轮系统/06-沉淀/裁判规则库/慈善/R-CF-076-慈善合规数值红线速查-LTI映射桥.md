@@ -2,20 +2,25 @@
 created: 2026-08-23
 date: 2026-08-23
 created_month: 2026-08
-updated: 2026-09-08T23:08
+updated: 2026-09-11T19:07
 tags:
   - 慈善
   - 数值红线
   - 速查
   - 裁判规则
 review_date: 2026-11-23
-rule_id: R-HG-074
-aliases: [R-HG-074]
+rule_id: R-HG-077
+aliases:
+  - R-HG-077
+  - R-HG-074
+  - R-HG-058
+rule_id_prev: R-HG-074
+rule_id_fixed: 2026-09-11
+card_type: 通用裁判规则卡
+card_type_inferred: true
 source_note: 三专项×四大系统联动配置方案 P1-2 落地（2026-08-23）；数值经民政部官网/人民日报 2026-08-23 权威核录
 yuandian_source_pending: true
 yuandian_checked: 2026-08-29
-aliases:
-  - R-HG-058
 related_links:
   - 连接枢纽-慈法合规
   - R-CF-052-税前扣除资格双比例红线公益支出公募70非公募8管理费10-12
