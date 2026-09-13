@@ -63,3 +63,6 @@ for hubfile, cats in hub_to_cats.items():
 - 全量快照备份（`.backup_link_YYYYMMDD_HHMMSS`）是批量归位/重跑的回滚基线，每次动手前必做。
 
 > 关联代码：`03-连接/scripts/link_cards_rules.py`（v3.1.1 变更记录 + 「生成枢纽页」段，约 243–275 行）。
+
+## 相关笔记
+- [[经验卡片-连接层共享枢纽聚合覆盖bug修复]] (共现关键词: 覆盖, 分类, 卡片)

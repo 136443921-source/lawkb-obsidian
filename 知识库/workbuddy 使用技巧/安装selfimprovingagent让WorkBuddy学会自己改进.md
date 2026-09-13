@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T15:22
-updated: 2026-09-06T09:56
+updated: 2026-09-11T19:06
 title: 安装selfimprovingagent让WorkBuddy学会自己改进
 tags: []
 maturity: 🌱种子

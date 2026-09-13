@@ -6,7 +6,7 @@ source_db: 贵州省高级人民法院发布典型案例（参考案例）
 collected_at: 2026-07-29
 generated_by: 每日知识摄入自动化 D（2026-07-29）
 created: 2026-07-29T09:37
-updated: 2026-09-07T12:52
+updated: 2026-09-11T19:07
 tags:
   - 赔偿
   - 加重
