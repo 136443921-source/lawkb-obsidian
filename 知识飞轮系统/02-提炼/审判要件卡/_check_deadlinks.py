@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-通用死链自检器 v1.6.0（2026-09-08）
+通用死链自检器 v1.7.0（2026-09-12）
 --------------------------------
 用途：检查任意规则卡 / 审判要件卡 / 工程事故卡 / 案由路由卡的
       frontmatter.related_links 与正文 [[...]] 是否为真实存在的笔记基名。
@@ -56,6 +56,22 @@
           这类是 **YAML 折叠/截断的残片**，不是链接 —— 计入死链既虚高数字，
           又会把真问题淹在水里。修法：sig() 只留中英文数字，长度 < 4 视为噪声。
           注意边界：'R-PI-176' 指纹 'rpi176' 长 6 → 保留（是合法编号引用）。
+
+  v1.7.0  🔴 修复「判定口径虚高」——把「待建笔记/主题名」与「跨库引用」误算成死链。
+          2026-09-12 存量卡质量巡检实测（829 条候选）：
+            C 待建笔记/主题名 621 条（75%）——如「小德慈善合规CMS产品化商业计划」
+              「习水县新能源光伏光电会议备忘录」，是**提及但未建笔记的主题软引用**，
+              属知识库常态，不是缺陷；
+            A 跨库误报 63 条——如「中华人民共和国民法典（红队）」「H1合同规则库」，
+              实存于 法律法规库 / 智能体技能库 / 知识库，而旧版 build_basename_set()
+              只扫「知识飞轮系统」一个 root，必然判死。
+          与 v1.2.0/v1.3.0/v1.4.0 同一类病：**门禁把「口径外的合法引用」当「数据坏」**，
+          后果是真问题（D 类编号引用 118 条）被 621 条噪声淹没。
+          修法：
+            ① build_basename_set() 扩为多 root（+法律法规库/智能体技能库/知识库）；
+            ② 新增 classify_dead()：死链分「真死链（编号引用/语法残片）」与
+               「待建笔记（主题名）」两类；
+            ③ 汇总分别输出，退出码只按「真死链」判定；--strict 复原旧口径。
 """
 import io
 import json
@@ -90,15 +106,27 @@ except ImportError:
     sys.exit(2)
 
 
-def build_basename_set(root=ROOT):
-    """收集知识飞轮系统内全部 .md 的基名（不含 .md），用于集合比对。
-    跳过备份与系统目录，避免把备份副本也算作有效链接目标。"""
+LAWKB = "/Users/chenyouqiang/Documents/LawKB"
+EXTRA_ROOTS = [os.path.join(LAWKB, "法律法规库"),
+               os.path.join(LAWKB, "智能体技能库"),
+               os.path.join(LAWKB, "知识库")]
+
+
+def build_basename_set(root=ROOT, extra=True):
+    """收集全部 .md 的基名（不含 .md），用于集合比对。
+
+    v1.7.0：extra=True 时**额外并入法律法规库/智能体技能库/知识库**。
+    旧版只扫「知识飞轮系统」一个 root，导致「中华人民共和国民法典（红队）」
+    「H1合同规则库」等合法跨库引用被判死链（实测 63 条误报）。
+    """
     names = set()
-    for r, dirs, files in os.walk(root):
-        dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith(".backup")]
-        for f in files:
-            if f.endswith(".md"):
-                names.add(f[:-3])
+    roots = [root] + ([r for r in EXTRA_ROOTS if os.path.isdir(r)] if extra else [])
+    for rt in roots:
+        for r, dirs, files in os.walk(rt):
+            dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith(".backup")]
+            for f in files:
+                if f.endswith(".md"):
+                    names.add(f[:-3])
     return names
 
 
@@ -253,6 +281,28 @@ def check_one(path, allmd):
     return uniq, total, None
 
 
+NUM_REF = re.compile(r"^(R-[A-Z]{2}-\d+|LC-\d+|IMA-\d+|\d{3,})")
+DATE_REF = re.compile(r"^20\d\d-")
+
+
+def classify_dead(names):
+    """v1.7.0：死链二分。
+
+    真死链：编号引用（R-XX-nnn / LC-nnn / IMA-nnn）、语法残片（'.md'、
+            纯数字）——指向「本应存在却不存在」的对象，是真缺陷。
+    待建笔记：其余主题名软引用（如「小德慈善合规CMS产品化商业计划」），
+            是「提及但未建笔记」，属知识库常态，**不计入门禁退出码**。
+    """
+    real, pending = [], []
+    for n in names:
+        s = n.strip()
+        if s == ".md" or s.endswith(".md") or NUM_REF.match(s) or DATE_REF.match(s):
+            real.append(n)
+        else:
+            pending.append(n)
+    return real, pending
+
+
 def main():
     args = sys.argv[1:]
     if not args:
@@ -272,6 +322,7 @@ def main():
     print("待检卡片：%d 张\n" % len(targets))
 
     total_dead = 0
+    all_dead = []          # v1.7.0：汇总用于分类
     files_with_dead = 0
     parse_errors = []          # v1.2.0：解析失败不再静默吞掉
     skips = 0                  # v1.6.0：无 frontmatter 的合法跳过计数
@@ -288,15 +339,27 @@ def main():
         if dead:
             files_with_dead += 1
             total_dead += len(dead)
+            all_dead.extend(dead)
             print("  ❌ %s（链接 %d 条，死链 %d 条）" % (name, total, len(dead)))
             for d in dead:
                 print("       - %s" % d)
         else:
             print("  ✅ %s（链接 %d 条，死链 0）" % (name, total))
 
-    print("\n===== 死链自检结果 =====")
-    print("命中文件：%d / %d" % (files_with_dead, len(targets)))
-    print("死链总数：%d" % total_dead)
+    strict = "--strict" in args
+    if strict:
+        print("\n===== 死链自检结果（strict 旧口径）=====")
+        print("命中文件：%d / %d" % (files_with_dead, len(targets)))
+        print("死链总数：%d" % total_dead)
+    else:
+        real, pending = classify_dead(all_dead)
+        print("\n===== 死链自检结果（v1.7.0 分类口径）=====")
+        print("命中文件：%d / %d" % (files_with_dead, len(targets)))
+        print("  🔴 真死链（编号引用/语法残片，须修）：%d" % len(real))
+        print("  🌱 待建笔记（主题名软引用，非缺陷）：%d" % len(pending))
+        print("  （旧口径合计 %d 条；--strict 可复原旧口径）" % total_dead)
+        for x in real[:40]:
+            print("     - %s" % x)
 
     if skips:
         print("跳过（无 frontmatter 的普通文档，合法）：%d 个" % skips)
