@@ -8,7 +8,7 @@ tags:
 created: 2026-09-05
 decision_id: DEC-20260905-006
 status: 已执行（方案确定）
-updated: 2026-09-06T09:56
+updated: 2026-09-11T19:07
 ---
 
 # 决策卡 · 平台化路径：挂 Skill vs 挂 Expert vs 都不挂
