@@ -5,7 +5,7 @@ created: 2026-09-06
 tags:
   - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.2
-updated: 2026-09-06T23:23
+updated: 2026-09-11T19:07
 ---
 
 # lti_semantic_rules.json
@@ -37,3 +37,8 @@ updated: 2026-09-06T23:23
 - [[R-PI-201-民法典1192条个人劳务]]
 - [[R-LN-045-双锚点跨案识别]]
 
+
+## 相关笔记
+- [[工作流卡-连接层维护SOP]] (共现关键词: rules, 医疗)
+- [[蓝队合同审查律师迭代建议报告-v1.0-20260525]] (共现关键词: 民法, json)
+- [[lti_element_cards.json]] (共现关键词: PI, 医疗, lti)
