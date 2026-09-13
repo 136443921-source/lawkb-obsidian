@@ -1,6 +1,14 @@
 ---
 created: 2026-09-10T16:26
-updated: 2026-09-10T18:08
+updated: 2026-09-11T19:07
+tags:
+  - md
+  - sh
+  - 合同法
+  - 模板
+  - 知识产权
+  - profile
+  - lawyer
 ---
 # 中小律所数字分身模板 · 开源核心骨架
 
@@ -60,3 +68,6 @@ cp templates/example.lawyer.profile.yaml templates/zhang.profile.yaml
 定价与交付细节见 `04-商业化方法论-服务变现实施报告-v1.0.md`（内部手册，对外前须脱敏）。
 
 > v2.0 口径修正：本段原写"MIT 开源 + 轻 SaaS 收费"，与白皮书 §5.2 / §8.1 及 04 报告冲突，已统一。
+
+## 相关笔记
+- [[多席位接入指南]] (共现关键词: md, combine, self)

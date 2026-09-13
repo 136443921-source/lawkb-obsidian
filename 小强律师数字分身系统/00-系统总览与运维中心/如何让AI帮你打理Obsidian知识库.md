@@ -5,7 +5,7 @@ tags:
   - AI
   - 知识库
 created: 2026-05-28T10:51
-updated: 2026-09-06T09:56
+updated: 2026-09-11T19:07
 title: 如何让AI帮你打理Obsidian知识库
 maturity: 🌱种子
 source: ""

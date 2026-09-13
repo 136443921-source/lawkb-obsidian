@@ -18,7 +18,7 @@ sensitivity: 对外可发布版（客户名称/真实案号/当事人姓名/内�
 publish_url: https://81a84e0ca20149bf9fd56afe3cd5edf2.app.workbuddy.link
 publish_date: 2026-09-10
 created: 2026-09-10T16:45
-updated: 2026-09-10T17:12
+updated: 2026-09-11T19:07
 ---
 
 # 把律所的知识系统，当成一辆电车来造

@@ -7,7 +7,7 @@ tags:
   - THINK
   - md
 created: 2026-09-03T15:43
-updated: 2026-09-06T09:56
+updated: 2026-09-11T19:07
 ---
 
 # AGENTS.md — 小强律师数字分身 · AI 行为规则

@@ -22,7 +22,7 @@ tags:
   - 法规
   - 司法解释
 created: 2026-05-28T10:51
-updated: 2026-09-07T16:34
+updated: 2026-09-11T19:07
 title: 庭审准备助手skill配置说明书
 maturity: 🌱种子
 source: ""
