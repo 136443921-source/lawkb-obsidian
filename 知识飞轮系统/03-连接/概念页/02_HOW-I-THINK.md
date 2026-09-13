@@ -5,7 +5,7 @@ created: 2026-09-06
 tags:
   - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.2
-updated: 2026-09-06T23:23
+updated: 2026-09-11T19:07
 ---
 
 # 02_HOW-I-THINK
@@ -31,3 +31,8 @@ updated: 2026-09-06T23:23
 - [[R-PI-201-民法典1192条个人劳务]]
 - [[R-LN-045-双锚点跨案识别]]
 
+
+## 相关笔记
+- [[决策月报-2026-09]] (共现关键词: 02, HOW, ---)
+- [[HOW-I-THINK]] (共现关键词: 民法, THINK, HOW)
+- [[决策思维_日常三句话]] (共现关键词: ---, THINK, HOW)

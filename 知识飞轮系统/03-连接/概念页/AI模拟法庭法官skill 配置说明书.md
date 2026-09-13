@@ -5,7 +5,7 @@ tags:
   - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.0
 created: 2026-07-28T23:06
-updated: 2026-09-09T12:11
+updated: 2026-09-11T19:07
 ---
 
 # AI模拟法庭法官skill 配置说明书
