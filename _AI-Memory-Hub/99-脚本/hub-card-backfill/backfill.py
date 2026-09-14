@@ -8,6 +8,8 @@ Obsidian LawKB 共享记忆中枢 · 按需补卡助手（hub-card-backfill skil
   ② 若「待沉淀」清单有匹配本卡 id/title 的项则删除，空了则移除该节标题
   ③ 精确 git add（卡+索引）+ commit + push origin main（含 index.lock 安全重试）
 
+索引撞号/幂等门禁统一复用 index_guard.py（单一真源，见经验卡 EXP-2026-001）。
+
 仅做本地文件读写 + 用户自有仓库的 git 操作，无外部网络 / 凭据访问，可逆（git）。
 """
 import os
@@ -15,6 +17,7 @@ import re
 import sys
 import subprocess
 import argparse
+from index_guard import parse_index_ids, build_row, insert_row, index_gate
 
 HUB = "/Users/chenyouqiang/Documents/LawKB"
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---", re.S)
@@ -40,72 +43,43 @@ def norm_date(d):
     return (d or "").split("T")[0]
 
 
-def parse_index_ids(idx_path):
-    """从「已沉淀」表解析 {id: 文件名(无扩展名)}，用于撞号 / 幂等判定。"""
-    if not os.path.exists(idx_path):
-        return {}
-    out = {}
-    for ln in open(idx_path, encoding="utf-8").read().splitlines():
-        m = re.match(r"^\|\s*\[\[([^|\]\\]+)\\?\|([^\]]+)\]\]\s*\|\s*([^|]+?)\s*\|", ln)
-        if m:
-            out[m.group(3).strip()] = m.group(1).strip()
-    return out
-
-
 def update_index(dir_, card_path, fields):
     """更新 dir_/_索引.md：插入已沉淀行 + 删除待沉淀匹配项。
     返回 (inserted, removed)：
       inserted=True  正常插入；False 幂等跳过（同文件已存在）；None 撞号中止（未做任何改动）。
-    """
+    撞号/幂等判定复用 index_guard（单一真源，见 EXP-2026-001）。"""
     idx = os.path.join(dir_, "_索引.md")
     if not os.path.exists(idx):
         print(f"[WARN] 无索引文件 {idx}，跳过索引更新（请手动补）")
         return False, 0
 
-    lines = open(idx, encoding="utf-8").read().splitlines(keepends=True)
     id_ = fields.get("id", "")
     title = fields.get("title", "")
     scope = fields.get("scope", "global")
     updated = norm_date(fields.get("updated", ""))
     fname = os.path.splitext(os.path.basename(card_path))[0]
-    new_row = f"| [[{fname}\\|{id_}]] | {id_} | {title} | {scope} | {updated} | ✅ active |\n"
 
-    # ── 撞号 / 幂等判定（核心安全网）────────────────────────────
-    # 仅比对 id 字符串不够：并发补卡可能让不同卡片抢到同一 id。
-    # 必须校验「该 id 在索引中指向的文件是否与本次卡片一致」。
-    existing = parse_index_ids(idx)
-    if id_ in existing:
-        if existing[id_] == fname:
-            print(f"[INFO] 索引已含 {id_}（同文件 {fname}），跳过重复插入（幂等）")
-            return False, 0
+    # ── 撞号 / 幂等门禁（核心安全网，单一真源 index_guard）──────
+    gate = index_gate(idx, fname, id_)
+    if gate == "collision":
+        occ = parse_index_ids(idx).get(id_)
         print(
             f"[ABORT] 撞号！索引中 {id_} 已被另一张卡片占用："
-            f"{existing[id_]} ≠ {fname}。\n"
+            f"{occ} ≠ {fname}。\n"
             f"        请为本次卡片改用空闲 id（参考 WF-024 取号器 next_rule_id），"
             f"严禁覆盖他人卡片。未做任何改动。"
         )
         return None, 0
+    if gate == "idempotent":
+        print(f"[INFO] 索引已含 {id_}（同文件 {fname}），跳过重复插入（幂等）")
+        return False, 0
 
-    # 正常插入：定位「待沉淀」节，在它之前插入新行（保证落入已沉淀表）
-    # 若其与上表间有空行，则顶掉空行，避免表格被空行截断
-    pending_idx = next(
-        (i for i, ln in enumerate(lines) if ln.strip().startswith("##") and "待沉淀" in ln),
-        None,
-    )
-    if pending_idx is not None:
-        insert_at = pending_idx
-        if pending_idx > 0 and lines[pending_idx - 1].strip() == "":
-            insert_at = pending_idx - 1
-        lines.insert(insert_at, new_row)
-    else:
-        # 没有待沉淀节：插到最后一个表行之后
-        last_table = max((i for i, ln in enumerate(lines) if ln.strip().startswith("|")), default=-1)
-        if last_table >= 0:
-            lines.insert(last_table + 1, new_row)
-        else:
-            lines.append("\n" + new_row)
+    # 正常插入
+    new_row = build_row(fname, id_, title, scope, updated)
+    insert_row(idx, new_row, before_pending=True)
 
     # 移除「待沉淀」中匹配 id/title 的 bullet
+    lines = open(idx, encoding="utf-8").read().splitlines(keepends=True)
     cleaned = []
     in_pending = False
     pending_has_bullet = False
@@ -120,16 +94,14 @@ def update_index(dir_, card_path, fields):
             in_pending = False
         if in_pending:
             if stripped.startswith("-"):
-                if id_ and id_ in ln or (title and title in ln):
+                if (id_ and id_ in ln) or (title and title in ln):
                     removed += 1
                     continue
                 pending_has_bullet = True
         cleaned.append(ln)
 
-    # 若待沉淀节变空（无 bullet），移除该节标题及其后空白
     if not pending_has_bullet:
         cleaned = [ln for ln in cleaned if not (ln.strip().startswith("##") and "待沉淀" in ln.strip())]
-        # 清掉节标题后可能残留的连续空行（保留至多一段空行）
         out_lines = []
         blank = 0
         for ln in cleaned:

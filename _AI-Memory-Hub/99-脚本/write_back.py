@@ -23,6 +23,10 @@ import difflib
 import argparse
 import datetime
 
+# ── 索引撞号/幂等门禁（与 backfill.py 共用 index_guard 单一真源，见经验卡 EXP-2026-001）──
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "hub-card-backfill"))
+import index_guard
+
 HUB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TYPE_DIR = {
@@ -77,8 +81,16 @@ def scan_existing_ids(prefix):
     return ids
 
 
-def next_id(prefix):
-    """分配下一个 id：扫描全库同前缀，取数字最大值 +1，永不复用"""
+def next_id(prefix, directory=None):
+    """分配下一个 id：优先读该目录索引的已用 id 取 max+1（与 backfill 同源）；
+    无索引/无该目录则回退全库文件系统扫描。"""
+    if directory:
+        idx = INDEX_FILE.get(directory)
+        if idx:
+            ip = os.path.join(HUB, directory, idx)
+            if os.path.isfile(ip):
+                return index_guard.next_free_id(ip, prefix)
+    # 回退：全库扫描（原有逻辑）
     nums = []
     for rid in scan_existing_ids(prefix):
         tail = rid[len(prefix):].lstrip("-")
@@ -173,30 +185,25 @@ def build_content(args, new_id):
     return "\n".join(fm)
 
 
-def append_index(directory, new_id, title, updated, scope):
-    """把新条目追加到该目录的索引文件"""
+def append_index(directory, fname, new_id, title, updated, scope):
+    """把新条目追加到该目录的索引文件（经 index_guard 门禁）。
+    返回 ipath；若撞号(collision)则打印 ABORT 警告并跳过本次写入（绝不覆盖他人卡）。"""
     idxname = INDEX_FILE.get(directory)
     if not idxname:
         return None
     ipath = os.path.join(HUB, directory, idxname)
     if not os.path.isfile(ipath):
         return None
-    with open(ipath, "r", encoding="utf-8") as f:
-        text = f.read()
-    row = "| [[%s|%s]] | %s | %s | %s | ✅ active |" % (
-        slugify(title), new_id, title, scope, updated)
-    if new_id in text:
+    # ── 撞号 / 幂等门禁（单一真源 index_guard，见 EXP-2026-001）──
+    gate = index_guard.index_gate(ipath, fname, new_id)
+    if gate == "idempotent":
+        print("  索引门禁：%s 已由同文件占用，幂等跳过" % new_id)
         return ipath
-    # 插到表格最后一行之后
-    lines = text.split("\n")
-    last_pipe = None
-    for i, ln in enumerate(lines):
-        if ln.startswith("|"):
-            last_pipe = i
-    insert_at = (last_pipe + 1) if last_pipe is not None else len(lines)
-    lines.insert(insert_at, row)
-    with open(ipath, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
+    if gate == "collision":
+        print("  ⚠️ [ABORT] 撞号：%s 已被另一卡片占用，本次不写入索引（绝不覆盖他人卡）。" % new_id)
+        return None
+    row = index_guard.build_row(fname, new_id, title, scope, updated)
+    index_guard.insert_row(ipath, row, before_pending=True)
     return ipath
 
 
@@ -224,7 +231,7 @@ def main():
 
     directory = TYPE_DIR[args.type]
     prefix = TYPE_PREFIX[args.type]
-    new_id = next_id(prefix)
+    new_id = next_id(prefix, directory)
     today = datetime.datetime.now().strftime("%Y-%m-%d")
 
     similar = find_similar(args.title, directory)
@@ -282,11 +289,12 @@ def main():
 
     slug_title = slugify(args.title)
     fname = "%s-%s.md" % (new_id, slug_title)
+    fname_noext = "%s-%s" % (new_id, slug_title)
     fpath = os.path.join(HUB, directory, fname)
     with open(fpath, "w", encoding="utf-8") as f:
         f.write(content)
 
-    idxp = append_index(directory, new_id, args.title, today, args.scope)
+    idxp = append_index(directory, fname_noext, new_id, args.title, today, args.scope)
 
     # 若声明了 supersedes，把旧条目标为 superseded
     if args.supersedes:
@@ -310,6 +318,8 @@ def main():
     print("✅ 已写入：%s" % fpath)
     if idxp:
         print("✅ 索引已更新：%s" % idxp)
+    elif idxp is None:
+        print("⚠️ 索引写回被门禁跳过（撞号保护），卡片已落盘但未入索引，请人工核对。")
     print("🗂 备份目录：%s（共 %d 个文件）" % (bkdir, len(backed)))
     print()
     print("💡 提醒：若内容冲突，请以本中枢 status=active 且 updated 最新者为准。")
