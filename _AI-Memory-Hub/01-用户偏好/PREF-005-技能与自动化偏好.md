@@ -3,7 +3,7 @@ id: PREF-005
 title: 技能、自动化与 AI 路由偏好（含排障收尾主动提议沉淀）
 type: preference
 status: active
-updated: 2026-09-14T18:26
+updated: 2026-09-14
 source_ai: human
 scope: global
 confidence: high
