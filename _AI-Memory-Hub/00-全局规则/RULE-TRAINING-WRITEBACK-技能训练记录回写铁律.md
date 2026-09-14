@@ -17,6 +17,9 @@ related:
   - PREF-007
   - WF-032
   - WF-033
+  - WF-034
+  - WF-035
+  - WF-036
   - PROJ-001
   - PROJ-002
   - PROJ-模拟法官心智成熟度备忘录
