@@ -164,9 +164,10 @@ def _git(args, cwd):
                 return True, ""
             except subprocess.CalledProcessError as e2:
                 last_err = e2.stderr or ""
-                if "index.lock" not in last_err:
-                    return False, last_err
-                continue
+                # 锁争用迹象：stderr 含 index.lock，或 stderr 为空（刚删过锁，多为锁争用）→ 继续重试
+                if "index.lock" in last_err or not last_err.strip():
+                    continue
+                return False, last_err
         return False, last_err or "retry_exhausted_after_lock_removal"
 
 
