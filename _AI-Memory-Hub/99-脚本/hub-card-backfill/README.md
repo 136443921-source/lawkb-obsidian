@@ -1,8 +1,23 @@
-# hub-card-backfill（镜像副本）
+---
+created: 2026-09-14
+updated: 2026-09-14T18:26
+---
+# hub-card-backfill（多设备同步源）
 
-> ⚠️ 本目录是 `~/.workbuddy/skills/hub-card-backfill/` 的**镜像副本**，用于跨设备复用。
+> 本目录是 `~/.workbuddy/skills/hub-card-backfill/` 的 **git 版本真源**，受 LawKB 仓库管理，用于跨设备复用。
 
-- **运行时位置**：仍为 `~/.workbuddy/skills/hub-card-backfill/`（WorkBuddy 从 skills 目录加载 skill，`~/.workbuddy` 非 git 仓库，故无法直接纳入版本控制）。
-- **本副本用途**：中枢 git 仓库（LawKB）受 git 管理，任意设备 `git pull` 即可取得最新版，再手动 `cp -r` 回 `~/.workbuddy/skills/` 即生效——这是当前唯一的多设备同步通道。
-- **修改以源为准**：改脚本请改 `~/.workbuddy/skills/hub-card-backfill/`，改完手动 `cp` SKILL.md + backfill.py 回本目录并重提交，保持镜像与源同步。
-- **当前版本含撞号防护**：`parse_index_ids()` 解析 `{id: 文件名}`；`update_index()` 仅当 id 指向**同文件**才幂等跳过，**异文件占同一 id 则 `[ABORT] 撞号` 中止、不写不提交**（严禁覆盖他人卡片）。详见经验卡 `EXP-2026-001`。
+## 架构
+
+- **真源（git）**：`LawKB/_AI-Memory-Hub/99-脚本/hub-card-backfill/`（SKILL.md + backfill.py + index_guard.py）
+- **运行时（非 git）**：`~/.workbuddy/skills/hub-card-backfill/`，WorkBuddy 从此加载 skill；`~/.workbuddy` 本身非 git 仓库，故以 LawKB 副本作真源。
+
+## 多设备同步（两步，已闭环）
+
+1. 任意设备 `git pull` LawKB → 取得最新真源
+2. 运行 `bash 99-脚本/hub-card-backfill/sync_to_skills.sh` → 一键同步到运行时 skills（自动备份旧版到 /tmp）
+
+## 修改规范
+
+- **改在真源**：在本目录改 SKILL.md / backfill.py / index_guard.py，再 `git add` + commit + push
+- **勿直接改运行时**：`~/.workbuddy/skills/` 下的副本由 sync 脚本维护，手动改动会在下次 sync 被覆盖
+- 撞号防护机制详见经验卡 `EXP-2026-001`
