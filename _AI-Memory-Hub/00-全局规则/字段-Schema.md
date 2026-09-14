@@ -3,7 +3,7 @@ id: RULE-SCHEMA
 title: 字段 Schema 与条目模板
 type: rule
 status: active
-updated: 2026-09-14T14:56
+updated: 2026-09-14T16:42
 source_ai: workbuddy
 scope: global
 confidence: high

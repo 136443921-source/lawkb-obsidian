@@ -174,7 +174,8 @@ def do_ingest(items, maxn, dry):
             break
         if it["type"] not in ("workflow", "decision", "preference", "rule"):
             continue
-        title = it["seg"][:40].replace("\n", " ").strip() or "遗留资产提炼"
+        title = it.get("fname", "").rsplit(".", 1)[0][:50].strip() or \
+                it["seg"][:40].replace("\n", " ").strip() or "遗留资产提炼"
         body = "来源：%s\n\n%s" % (it["path"], it["seg"][:400])
         cmd = [sys.executable, wb, "--type", it["type"], "--title", title, "--body", body]
         if dry:
@@ -207,14 +208,19 @@ def main():
     md_files = grep_files(LEGACY, "*.md", "|".join(KW))
     print("旧库命中 md: %d" % len(md_files))
     for p in md_files:
-        for seg, ln in scan_md(p):
-            cands.append(("md", seg, p))
+        segs = scan_md(p)
+        if segs:
+            # Fix-the-source：每文件只取最长段作代表卡，避免「规则库」被逐段切碎灌爆中枢
+            best = max(segs, key=lambda x: len(x[0]))
+            cands.append(("md", best[0], p))
     if args.include_jsonl:
         jf = grep_files(PROJECTS, "*.jsonl", "|".join(sum(STRONG.values(), [])))
         print("projects 命中 jsonl: %d" % len(jf))
         for p in jf:
-            for seg, ln in scan_jsonl(p):
-                cands.append(("jsonl", seg, p))
+            segs = scan_jsonl(p)
+            if segs:
+                best = max(segs, key=lambda x: len(x[0]))
+                cands.append(("jsonl", best[0], p))
 
     # 去重聚合（前40字为指纹）
     seen = {}
@@ -230,8 +236,20 @@ def main():
     print("原始片段 %d → 去重后 %d" % (len(cands), len(dedup)))
 
     # 分类
-    items = [{"type": classify(seg), "seg": seg, "path": paths[0], "sources": paths}
+    items = [{"type": classify(seg), "seg": seg, "path": paths[0],
+              "fname": os.path.basename(paths[0]), "sources": paths}
              for src, seg, paths in dedup]
+
+    # 轻量净化：丢弃 wikilink 拼接噪声段、跳过个案卷宗文件名（避免个案入中枢）
+    def _is_noise(seg, fname):
+        if seg.count("[[") > max(1, len(seg) // 40):
+            return True
+        if any(w in fname for w in ("代理词", "上诉状", "答辩状", "起诉状",
+                                     "执行异议", "判决书", "裁定书", "质证意见")):
+            return True
+        return False
+    items = [it for it in items if not _is_noise(it["seg"], it["fname"])]
+    print("净化后候选 %d（已丢弃 wikilink 噪声与个案文件名）" % len(items))
 
     # 写报告
     os.makedirs(REPORT_DIR, exist_ok=True)
