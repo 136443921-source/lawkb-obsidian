@@ -176,6 +176,28 @@ def git_commit_push(changed, message=None):
     ok1, e1 = _git(["git", "add"] + list(changed), repo)
     if not ok1:
         print("[WARN] git add 失败：" + (e1 or "")); return False
+    # 验证暂存区含全部 changed 文件（防并发锁争用下静默漏暂存）
+    # 口径修正 2026-09-14：`git diff --cached --name-only` 输出已是「相对仓库根」的相对路径，
+    # 再经 os.path.relpath(s, repo) 会以 cwd 为基准二次解析 → 路径失真 → 误判"未暂存"而中止提交。
+    # 统一口径：两侧都归一化为「相对仓库根」的 POSIX 相对路径。
+    def _rel(p):
+        # 相对路径一律按 repo 基准解析（git 以 repo 为 cwd 执行，语义即相对仓库根），
+        # 不可用 abspath 直接处理——那会按脚本所在 cwd 解析，导致路径翻倍。
+        ap = p if os.path.isabs(p) else os.path.join(repo, p)
+        return os.path.relpath(os.path.abspath(ap), repo).replace(os.sep, "/")
+
+    staged = subprocess.run(["git", "diff", "--cached", "--name-only"], cwd=repo, capture_output=True, text=True).stdout.splitlines()
+    staged_set = set(_rel(s) for s in staged if s.strip())
+    missing = [c for c in changed if _rel(c) not in staged_set]
+    if missing:
+        print("[WARN] add 后暂存区缺 %d 个文件，逐个补 add：%s" % (len(missing), ", ".join(os.path.basename(m) for m in missing)))
+        for m in missing:
+            _git(["git", "add", m], repo)
+        staged = subprocess.run(["git", "diff", "--cached", "--name-only"], cwd=repo, capture_output=True, text=True).stdout.splitlines()
+        staged_set = set(_rel(s) for s in staged if s.strip())
+        missing2 = [c for c in changed if _rel(c) not in staged_set]
+        if missing2:
+            print("[WARN] 仍无法暂存：" + ", ".join(os.path.basename(m) for m in missing2)); return False
     msg = message or ("chore(memory-hub): 按需补卡 " + ", ".join(os.path.basename(c) for c in changed))
     ok2, e2 = _git(["git", "commit", "-q", "-m", msg], repo)
     if not ok2:
