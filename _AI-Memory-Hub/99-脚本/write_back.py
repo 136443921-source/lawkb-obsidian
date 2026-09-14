@@ -30,7 +30,7 @@ TYPE_DIR = {
     "preference": "01-用户偏好",
     "project-fact": "02-当前项目",
     "decision": "03-决策档案",
-    "workflow": "03-决策档案",
+    "workflow": "04-Workflows",
 }
 TYPE_PREFIX = {
     "rule": "RULE",
@@ -44,6 +44,7 @@ INDEX_FILE = {
     "01-用户偏好": "_索引.md",
     "02-当前项目": "_活跃项目.md",
     "03-决策档案": "_近期决策.md",
+    "04-Workflows": "_索引.md",
 }
 FM_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 
