@@ -8,6 +8,7 @@ daily_review.py — AI 共享记忆中枢 · 每日复盘
 用法：
   python3 daily_review.py --dry-run                 # 只出报告不落盘（默认）
   python3 daily_review.py --apply                   # 写入 04-每日日志/YYYY-MM-DD.md + 哨兵
+  python3 daily_review.py --auto-ingest             # 在 --apply 基础上，高价值候选自动写回中枢
   python3 daily_review.py --date 2026-09-13         # 指定复盘日（默认昨天）
   python3 daily_review.py --check-idempotent        # 只看某日是否已复盘（供 8 点补跑判断）
 
@@ -28,6 +29,7 @@ import io
 import sys
 import time
 import json
+import subprocess
 import difflib
 import argparse
 import datetime
@@ -255,6 +257,36 @@ def retire_candidates(hub_items, today):
     return sorted(out, key=lambda x: -x["age"])
 
 
+# T4：放宽复盘自动入库阈值 —— 高价值且无冲突的候选直接写回
+# 只自动处理这四类（project-fact 含案件细节、波动大，仍留人工裁决）
+AUTO_TYPES = {"rule", "preference", "decision", "workflow"}
+AUTO_CAP = 20  # 每轮封顶，防止一次性灌爆中枢
+
+
+def auto_ingest(fresh, py_exe):
+    """把高价值、无冲突的新增候选直接写回中枢。
+    安全网：write_back.py 自身带 0.85 相似度拦截 + 写入前 /tmp 备份，
+    且本轮已通过 dedupe 确认 ratio<0.55（无冲突），双重保险。
+    返回 [(type, title), ...] 供报告展示。"""
+    done = []
+    picks = [c for c in fresh if c["type"] in AUTO_TYPES][:AUTO_CAP]
+    wb = os.path.join(os.path.dirname(os.path.abspath(__file__)), "write_back.py")
+    for c in picks:
+        title = c["sentence"][:60].strip()
+        body = c["sentence"].strip()
+        if len(title) < 6:
+            continue
+        cmd = [py_exe, wb, "--type", c["type"], "--title", title,
+               "--body", body, "--source-ai", "workbuddy", "--confidence", "medium"]
+        try:
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+            if r.returncode == 0:
+                done.append((c["type"], title))
+        except Exception:
+            pass  # 任何异常都不阻断复盘主流程
+    return done
+
+
 def already_done(datestr):
     return os.path.isfile(SENTINEL) and datestr in read_text(SENTINEL)
 
@@ -271,7 +303,7 @@ def mark_done(datestr):
 VERDICT = {"candidate": "候选胜出", "hub": "中枢胜出", "unknown": "⚠️待人工"}
 
 
-def build_report(date, buckets, cands, fresh, dup, conflict, retire, decisions):
+def build_report(date, buckets, cands, fresh, dup, conflict, retire, decisions, auto_ingested=None):
     L = []
     L += ["---", "type: meta", "title: 每日复盘 %s" % date, "status: active",
           "updated: %s" % datetime.date.today().isoformat(), "source_ai: workbuddy",
@@ -348,6 +380,18 @@ def build_report(date, buckets, cands, fresh, dup, conflict, retire, decisions):
     else:
         L.append("_暂无需淘汰条目_")
     L.append("")
+    L.append("## 🤖 本次自动入库（--auto-ingest）")
+    L.append("")
+    if auto_ingested:
+        L.append("> 以下高价值且无冲突的候选已由 `write_back.py` 直接写回中枢（每轮封顶 %d 条，project-fact 除外）。" % AUTO_CAP)
+        L.append("")
+        for t, title in auto_ingested:
+            L.append("- ✅ `%s` %s" % (t, title))
+        L.append("")
+        L.append("> 其余候选（含 project-fact、疑似重复/冲突）仍列于上方，待人工确认。")
+    else:
+        L.append("_本轮无自动入库（候选均非高价值类型，或已被去重/冲突过滤）。_")
+    L.append("")
     L.append("---")
     L.append("")
     L.append("_生成时间：%s ｜ 中枢：共享记忆协议 v1.0_"
@@ -362,7 +406,12 @@ def main():
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--skip-sentinel", action="store_true")
     ap.add_argument("--check-idempotent", action="store_true")
+    ap.add_argument("--auto-ingest", action="store_true",
+                    help="高价值且无冲突的候选（rule/preference/decision/workflow）自动写回中枢，每轮封顶 %d 条" % AUTO_CAP)
     args = ap.parse_args()
+
+    if args.auto_ingest:
+        args.apply = True  # 自动入库必须以落盘为前提
 
     today = datetime.date.today()
     target = (datetime.datetime.strptime(args.date, "%Y-%m-%d").date()
@@ -392,7 +441,13 @@ def main():
     retire = retire_candidates(hub_items, today)
     print("   建议淘汰 %d 条" % len(retire))
 
-    report = build_report(dstr, buckets, cands, fresh, dup, conflict, retire, decisions)
+    auto_ingested = []
+    if args.auto_ingest:
+        print("🤖 自动入库高价值候选 …")
+        auto_ingested = auto_ingest(fresh, sys.executable)
+        print("   自动入库 %d 条" % len(auto_ingested))
+
+    report = build_report(dstr, buckets, cands, fresh, dup, conflict, retire, decisions, auto_ingested)
 
     if not args.apply:
         print()
