@@ -102,33 +102,72 @@ def update_index(dir_, card_path, fields):
     return True, removed
 
 
+def _locate_lock(cwd):
+    try:
+        git_dir = subprocess.check_output(
+            ["git", "rev-parse", "--git-dir"], cwd=cwd, text=True
+        ).strip()
+    except Exception:
+        git_dir = ".git"
+    return os.path.abspath(os.path.join(cwd, git_dir, "index.lock"))
+
+
+def _lock_holder(lock):
+    """True=有其它进程真实持有 lock（不应硬删）；False=无持有者（可安全删）。"""
+    # 优先用 lsof 直接看文件持有者——能识别 WorkBuddy sandbox-cli 托管的 git 子进程
+    try:
+        out = subprocess.run(["lsof", lock], capture_output=True, text=True).stdout
+        if out.strip():
+            return True
+    except Exception:
+        pass
+    # 兜底：pgrep 命中含 LawKB+git 的进程（旧逻辑）
+    try:
+        ps = subprocess.run(["pgrep", "-fl", "git"], capture_output=True, text=True).stdout
+        if any("LawKB" in l and "git" in l for l in ps.splitlines()):
+            return True
+    except Exception:
+        pass
+    return False
+
+
 def _git(args, cwd):
     try:
         subprocess.run(args, cwd=cwd, check=True, capture_output=True, text=True)
         return True, ""
     except subprocess.CalledProcessError as e:
         stderr = e.stderr or ""
-        if "index.lock" in stderr:
-            try:
-                git_dir = subprocess.check_output(
-                    ["git", "rev-parse", "--git-dir"], cwd=cwd, text=True
-                ).strip()
-            except Exception:
-                git_dir = ".git"
-            lock = os.path.abspath(os.path.join(cwd, git_dir, "index.lock"))
-            if os.path.exists(lock):
-                ps = subprocess.run(["pgrep", "-fl", "git"], capture_output=True, text=True).stdout
-                real = [l for l in ps.splitlines() if "LawKB" in l and "git" in l]
-                if real:
-                    return False, "[ABORT] 检测到真实 git 进程，放弃自动推送:\n" + "\n".join(real)
+        if "index.lock" not in stderr:
+            return False, stderr
+        lock = _locate_lock(cwd)
+        last_err = stderr
+        for attempt in range(3):
+            if not os.path.exists(lock):
+                # 锁已不在（并发可能已释放），直接重试命令
                 try:
-                    os.remove(lock)
-                    print("[INFO] 已移除残留 index.lock（%s），重试" % lock)
                     subprocess.run(args, cwd=cwd, check=True, capture_output=True, text=True)
                     return True, ""
-                except OSError as oe:
-                    return False, f"[ERR] 无法移除锁：{oe}"
-        return False, stderr
+                except subprocess.CalledProcessError as e2:
+                    last_err = e2.stderr or ""
+                    if "index.lock" not in last_err:
+                        return False, last_err
+                    continue
+            if _lock_holder(lock):
+                return False, "[ABORT] 检测到真实 git 进程持有 index.lock，放弃自动推送（请等其释放后重试）：%s" % lock
+            try:
+                os.remove(lock)
+            except OSError as oe:
+                return False, f"[ERR] 无法移除锁：{oe}"
+            print("[INFO] 已移除残留 index.lock（%s），重试(%d)" % (lock, attempt + 1))
+            try:
+                subprocess.run(args, cwd=cwd, check=True, capture_output=True, text=True)
+                return True, ""
+            except subprocess.CalledProcessError as e2:
+                last_err = e2.stderr or ""
+                if "index.lock" not in last_err:
+                    return False, last_err
+                continue
+        return False, last_err or "retry_exhausted_after_lock_removal"
 
 
 def git_commit_push(changed, message=None):
