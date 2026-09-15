@@ -1,0 +1,251 @@
+{
+  "_comment": "模拟法庭管理系统 · 席位↔技能绑定【单一事实源】。改席位绑定只改本文件，四处引用（红队SKILL / 蓝队SKILL / 模拟法庭庭审系统 / 模拟法庭主控协调器）均以本文件为准。v1.2.0（2026-09-09）：C方案根治——审判长 mustNotCall 主持动作放开（法官 v3.1.0 已具庭上主持模式）。 ｜ v1.3.0（2026-09-14）R7 根治：真源已从会话级临时工作区 WorkBuddy/2026-09-05-03-33-49/ 迁至持久化 LawKB/模拟法庭管理系统/（会话工作区会随会话切换而漂移，不适合放单一事实源）；旧路径保留为软链指向本文件，向后兼容。",
+  "configVersion": "1.3.0",
+  "updated": "2026-09-14",
+  "版本锚定": {
+    "蓝队": "蓝队出庭律师 v4.6.2",
+    "红队": "红队出庭律师 v2.6.0",
+    "审判长": "ai-mock-court-judge v3.1.0",
+    "审判长推演裁决内核": "judge_mind.js v2.0.0",
+    "审判长推演裁决内核路径": "/Users/chenyouqiang/WorkBuddy/2026-09-08-00-59-48/mock-trial-integration/judge_mind.js",
+    "质量总闸": "QC-Controller v1.1.0",
+    "统一入口": "模拟法庭庭审系统 v1.5.0",
+    "庭审引擎": "模拟法庭主控协调器 v1.6.0",
+    "铁律": "任一技能升版须回本表同步版本号，否则视为接线断裂",
+    "铁律自检": "本表须覆盖 seats[] 中全部席位的技能与版本；新增席位必须同步登记，不得只写 seats 不写锚定"
+  },
+  "seats": [
+    {
+      "seat": "我方代理人",
+      "camp": "blue",
+      "emoji": "🔵",
+      "label": "蓝队（防御方）",
+      "skill": "蓝队出庭律师",
+      "skillPath": "/Users/chenyouqiang/.workbuddy/skills/蓝队出庭律师/SKILL.md",
+      "version": "4.6.2",
+      "centerSide": "blue",
+      "defaultOperator": "老强本人",
+      "operatorMode": "参谋（老强发言）或 代打（系统接管）",
+      "stages": [
+        "阶段3 庭前强化",
+        "阶段4 庭审模拟"
+      ],
+      "ammoFields": [
+        "ruling.support",
+        "elements",
+        "negative_note"
+      ],
+      "outputs": [
+        "大事记",
+        "争议焦点",
+        "证据清单",
+        "质证意见",
+        "辩论要点",
+        "代理词v1~v3"
+      ]
+    },
+    {
+      "seat": "对方代理人",
+      "camp": "red",
+      "emoji": "🔴",
+      "label": "红队（攻击方）",
+      "skill": "红队出庭律师",
+      "skillPath": "/Users/chenyouqiang/.workbuddy/skills/红队出庭律师/SKILL.md",
+      "version": "2.6.0",
+      "centerSide": "red",
+      "defaultOperator": "系统（AI扮演）",
+      "operatorMode": "参战（系统发言）；老强切入时降级为攻击参谋",
+      "stages": [
+        "阶段3 庭前强化",
+        "阶段4 庭审模拟"
+      ],
+      "ammoFields": [
+        "negative_note",
+        "ruling.reject",
+        "elements"
+      ],
+      "outputs": [
+        "致命漏洞战报",
+        "质证意见（三性摧毁）",
+        "攻击性辩论要点"
+      ]
+    },
+    {
+      "seat": "审判长/首席仲裁员",
+      "camp": "neutral",
+      "emoji": "⚖️",
+      "label": "中立裁判",
+      "skill": "ai-mock-court-judge",
+      "skillPath": "/Users/chenyouqiang/.workbuddy/skills/ai-mock-court-judge/SKILL.md",
+      "version": "3.1.0",
+      "centerSide": "neutral",
+      "defaultOperator": "系统",
+      "operatorMode": "双模式：庭上主持（十二步主持程式·庭上主持模式）+ 实体裁判（归纳焦点·法庭询问问题·评议宣判·心证四步法）",
+      "stages": [
+        "阶段1 角色分配",
+        "阶段4 庭审模拟",
+        "阶段5 评议宣判"
+      ],
+      "scopeNote": "v3.1.0（C方案根治·2026-09-09）：新增「庭上主持模式」，十二步主持程式台词权威源由主控迁回本席位，与「心证四步法」并列——一为出庭之形、一为裁判之心。主控 v1.6.0 只编排+门禁+触发，不再代念台词。原 v3.0.0『不具备主持程式能力』定位作废，mustNotCall 主持动作相应放开。",
+      "ammoFields": [
+        "review_step",
+        "elements",
+        "burden_of_proof",
+        "ruling.support",
+        "ruling.reject",
+        "negative_note"
+      ],
+      "outputs": [
+        "十二步主持程式台词（庭上主持模式）",
+        "争议焦点归纳",
+        "法庭询问问题清单",
+        "合议庭评议与心证",
+        "判决结果与裁判说理"
+      ],
+      "mustCall": [
+        "第四阶段 十二步主持（庭上主持模式，逐步触发）",
+        "步骤9.4 归纳争议焦点（心证四步法）",
+        "步骤9.7 法庭询问问题（心证四步法）",
+        "第五阶段 评议宣判（心证四步法）"
+      ],
+      "mustNotCall": [],
+      "内核": "judge_mind.js v2.0.0",
+      "内核路径": "/Users/chenyouqiang/WorkBuddy/2026-09-08-00-59-48/mock-trial-integration/judge_mind.js",
+      "内核激活证据": "B 方案落地（A 自动挂载 JUDGE_CARDS 215 张 + 推演裁决接矩阵；eval_suite 51/51）",
+      "v3.1.0注": "主持动作已全部放开：宣布开庭/法庭纪律/请审判员入庭/询问回避/敲击法槌/组织举证质证/宣布休庭 7 项现由本席位「庭上主持模式」产出，故 mustNotCall 清空"
+    },
+    {
+      "seat": "质量总闸",
+      "camp": "neutral",
+      "emoji": "🔒",
+      "label": "QC",
+      "skill": "QC-Controller",
+      "skillPath": "/Users/chenyouqiang/.workbuddy/skills/QC-Controller/SKILL.md",
+      "version": "1.1.0",
+      "centerSide": "neutral",
+      "defaultOperator": "系统",
+      "stages": [
+        "阶段5 质量闸门"
+      ]
+    }
+  ],
+  "pipeline": [
+    {
+      "stage": "阶段0",
+      "name": "归案源",
+      "engine": "模拟法庭庭审系统",
+      "note": "默认对话内材料优先"
+    },
+    {
+      "stage": "阶段1",
+      "name": "定向",
+      "engine": "模拟法庭庭审系统",
+      "note": "一次收敛决策，锁定我方/对方席位"
+    },
+    {
+      "stage": "阶段2",
+      "name": "庭前检索",
+      "engine": "法律检索助手",
+      "note": "双向喂料"
+    },
+    {
+      "stage": "阶段3",
+      "name": "庭前强化",
+      "engine": "三轮冲击控制器",
+      "note": "🔵蓝队打磨 v1~v3 → 🔴红队批驳 → 战情室评分"
+    },
+    {
+      "stage": "阶段4",
+      "name": "庭审模拟",
+      "engine": "模拟法庭红蓝对抗工作流 → 模拟法庭主控协调器",
+      "note": "两方律师正式出任，门禁6点+总闸4点"
+    },
+    {
+      "stage": "阶段5",
+      "name": "质量闸门",
+      "engine": "QC-Controller + 庭审战情室"
+    },
+    {
+      "stage": "阶段6",
+      "name": "收口飞轮回写",
+      "engine": "场景化知识推送",
+      "note": "红队攻击点 → 文书防御要点卡"
+    }
+  ],
+  "interfaceContract": {
+    "主控_to_蓝队": [
+      "定向卡（程序/审级/我方角色/对方角色/争议焦点）",
+      "案情材料",
+      "阶段2检索结论",
+      "红队战报（v2+迭代输入）"
+    ],
+    "蓝队_to_主控": [
+      "大事记",
+      "争议焦点",
+      "证据清单（按要件逐项标证据编号）",
+      "质证意见",
+      "辩论要点",
+      "代理词v1~v3"
+    ],
+    "主控_to_红队": [
+      "定向卡",
+      "蓝队v1代理词/答辩状/证据清单",
+      "阶段2检索结论"
+    ],
+    "红队_to_主控": [
+      "致命漏洞战报（S/A/B三级）",
+      "质证意见（三性摧毁）",
+      "攻击性辩论要点"
+    ],
+    "LTI门禁": "两方每轮产出均须 wrap_output(text, caller=\"<红队|蓝队>出庭律师\")；REJECT 一律不入庭审笔录"
+  },
+  "campSwitchRules": [
+    "默认：老强坐🔵蓝队位（我方代理人），🔴红队由系统扮演",
+    "老强切入红队席 → 红队出庭律师降级为攻击参谋，不代发言",
+    "老强切入审判长席 → 蓝队席交还系统代打，蓝队出庭律师接管",
+    "老强说『你来打/系统代打』 → 蓝队全权接管，进入全自动对抗",
+    "禁止同席双占：任一席位同一时刻只允许一个操控者，阶段1定向时一次性锁定",
+    "中台『视角』切换仅改观看视角，不改阵营归属"
+  ],
+  "centerMapping": {
+    "说明": "中台（mock-trial-center）单文件静态站，剧本 JSON 的 roles[].side 决定席位配色与发言归属",
+    "stateKey": "mocktrial_state_v2",
+    "syncedBy": "BroadcastChannel 跨标签页实时同步",
+    "sideValues": {
+      "red": "🔴红队＝对方代理人",
+      "blue": "🔵蓝队＝我方代理人",
+      "neutral": "⚖️中立（审判长/书记员/证人）"
+    },
+    "transcriptTypes": {
+      "atk": "⚔️进攻",
+      "def": "🛡️防守",
+      "say": "陈述",
+      "evi": "举证",
+      "stage": "阶段标记"
+    },
+    "⚠️踩坑警告": "剧本 JSON 的 side 必须按『我方=blue、对方=red』编写，而非固定按原被告。6658案老强是被告方所以恰好 blue=被告；若换到原告立场办案，必须把原告写成 blue、被告写成 red，否则中台配色与我方阵营会整体反向。"
+  },
+  "skillOverridesRequired": {
+    "file": "/Users/chenyouqiang/.workbuddy/settings.json",
+    "required": "on",
+    "skills": [
+      "红队出庭律师",
+      "蓝队出庭律师",
+      "模拟法庭庭审系统",
+      "模拟法庭主控协调器",
+      "模拟法庭红蓝对抗工作流",
+      "三轮冲击控制器",
+      "庭审战情室",
+      "诉讼文书红蓝复核工作流"
+    ],
+    "verifiedAt": "2026-09-08 23:47",
+    "status": "全部已置为 on"
+  },
+  "preflightChecklist": [
+    "蓝队出庭律师 / 红队出庭律师 在 settings.json → skillOverrides 为 on",
+    "两技能 frontmatter 版本号与本文件『版本锚定』一致",
+    "定向卡已明确 我方角色=蓝队 / 对方角色=红队",
+    "两方每轮产出均过 LTI 且 caller 已透传",
+    "中台剧本 JSON 的 side 字段与席位一致（我方=blue、对方=red）"
+  ]
+}
