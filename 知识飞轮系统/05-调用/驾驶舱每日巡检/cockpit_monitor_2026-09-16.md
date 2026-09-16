@@ -1,0 +1,173 @@
+---
+created: 2026-09-16T15:10
+updated: 2026-09-16T15:18
+---
+# 🏛️ 驾驶舱每日整改清单 · 2026-09-16 15:18
+
+> 生成者：律所主任·驾驶舱全量巡检引擎（L1 只读）｜**本清单仅建议，所有整改动作由老强核实处理后执行**
+> 全量刷新 = 重新扫描所有本地真源并重建本报告；本脚本**不改任何驾驶舱站点/自动化/技能文件**。
+
+## 一、优先级汇总
+
+| 级别 | 数量 | 含义 |
+|---|---|---|
+| **P0** | 3 | 立即·<30min（门户/评分卡不可访问·真实案号外泄·严重越界） |
+| **P1** | 4 | 紧急·<2h（单屏断流·门禁待办·未决事故卡·屏级分<60） |
+| **P2** | 24 | 当日（新鲜度超标·六维短板·期限/风险·零命中规则堆积） |
+| **P3** | 10 | 周例行（标签/文案/对齐/覆盖不全·屏上疑似问题需人工确认） |
+| **P4** | 2 | 观察项/优化建议（非紧急） |
+
+> 合计 43 项；其中标注「需人工确认」的为启发式/跨源核验项，供老强复核。
+
+## 二、按优先级排列的整改清单
+
+### P0 级（3 项）
+
+1. **[C4] C4 焦联鹏（习水县焦鹏雅菲软装经营部）诉刘九零、刘维窗帘买卖合同纠纷案** · 期限 〔屏内级别 P0〕
+   - 事项：[P0·urgent] 撤诉裁定送达前窗口期：自认钉死 + 录音附卷（准许撤诉裁定不可上诉、不可复议，唯一救济为诉讼费院长复核）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json
+2. **[C4] C4 焦联鹏（习水县焦鹏雅菲软装经营部）诉刘九零、刘维窗帘买卖合同纠纷案** · 期限 〔屏内级别 P0〕
+   - 事项：[P0·armed] 对撤诉意见（二）[含⑦调查取证、⑧录音刻录附卷、⑨焦联鹏到庭询问] 经当事人核验确认，待周一（2026-09-07）递交法院（⑦⑧⑨ 已并入⑪意见（二），不另立申请；2026-09-06 老强确认口径）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json
+3. **[C4] C4 丁戊祥诉刘九零、刘维、黄茂姣、习水县欧派木门杉王店吊顶买卖合同纠纷案** · 期限 〔屏内级别 P0〕
+   - 事项：[P0·armed] 一审判决上诉期（判决书送达之日起十五日（条文序号交付前须经 LTI 核验））
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/case-state.json
+
+### P1 级（4 项）
+
+4. **[C4] C4 焦联鹏（习水县焦鹏雅菲软装经营部）诉刘九零、刘维窗帘买卖合同纠纷案** · 门禁告警
+   - 事项：门禁 G6（风控门禁）状态=warn：撤诉法条曾凭记忆写错（误用145条），已实地核验为148条第1款
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json
+5. **[C4] C4 焦联鹏（习水县焦鹏雅菲软装经营部）诉刘九零、刘维窗帘买卖合同纠纷案** · 期限 〔屏内级别 P1〕
+   - 事项：[P1] 封堵原样再诉（民诉法解释第214条第1款）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json
+6. **[C4] C4 丁戊祥诉刘九零、刘维、黄茂姣、习水县欧派木门杉王店吊顶买卖合同纠纷案** · 期限 〔屏内级别 P1〕
+   - 事项：[P1] 撤诉裁定送达前窗口期处置（19 号备用稿）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/case-state.json
+7. **[C4] C4 丁戊祥诉刘九零、刘维、黄茂姣、习水县欧派木门杉王店吊顶买卖合同纠纷案** · 期限 〔屏内级别 P1〕
+   - 事项：[P1] 类案 R1-R5 黔2627 以外 3 案庭审引用前原文核验
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/case-state.json
+
+### P2 级（24 项）
+
+8. **[C8] C8 AI幻觉监控看板(LTI)** · 模块激活
+   - 事项：模块「法理逻辑审查」激活率 16.7%（active_rules=1）偏低
+   - 来源：/Users/chenyouqiang/Desktop/小强律师办案系统/_LTI工具/dashboard/dashboard_data.json
+9. **[C8] C8 AI幻觉监控看板(LTI)** · 模块激活
+   - 事项：模块「金额/名称一致性」激活率 28.6%（active_rules=2）偏低
+   - 来源：/Users/chenyouqiang/Desktop/小强律师办案系统/_LTI工具/dashboard/dashboard_data.json
+10. **[C8] C8 AI幻觉监控看板(LTI)** · 模块激活
+   - 事项：模块「溯源出口」激活率 33.3%（active_rules=1）偏低
+   - 来源：/Users/chenyouqiang/Desktop/小强律师办案系统/_LTI工具/dashboard/dashboard_data.json
+11. **[C8] C8 AI幻觉监控看板(LTI)** · 模块激活
+   - 事项：模块「程序时效/管辖」激活率 25.0%（active_rules=1）偏低
+   - 来源：/Users/chenyouqiang/Desktop/小强律师办案系统/_LTI工具/dashboard/dashboard_data.json
+12. **[C8] C8 AI幻觉监控看板(LTI)** · 模块激活
+   - 事项：模块「慈善合规数值校验」激活率 16.7%（active_rules=1）偏低
+   - 来源：/Users/chenyouqiang/Desktop/小强律师办案系统/_LTI工具/dashboard/dashboard_data.json
+13. **[C8] C8 AI幻觉监控看板(LTI)** · 数据质量
+   - 事项：LTI errors=10358 占调用 66.2%（异常偏高）
+   - 来源：/Users/chenyouqiang/Desktop/小强律师办案系统/_LTI工具/dashboard/dashboard_data.json
+14. **[C4] C4 焦联鹏（习水县焦鹏雅菲软装经营部）诉刘九零、刘维窗帘买卖合同纠纷案** · 期限 〔屏内级别 P2〕
+   - 事项：黄茂姣资金流水调取（另案索赔前置）（级别 P2）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json
+15. **[C4] C4 案件生命周期大屏** · 评分卡标记
+   - 事项：评分卡对该屏置 flag（risk=运行健康度维度 32 为短板，建议优先治理。）
+   - 来源：scorecard
+16. **[C4] C4 案件生命周期大屏** · 屏级分偏低
+   - 事项：屏级分 61.5 < 70
+   - 来源：scorecard
+17. **[C4] C4 案件生命周期大屏** · 六维短板
+   - 事项：六维「health」=32 < 60
+   - 来源：scorecard
+18. **[C4] C4 案件生命周期大屏** · 六维短板
+   - 事项：六维「output」=52 < 60
+   - 来源：scorecard
+19. **[C4] C4 案件生命周期大屏** · 六维短板
+   - 事项：六维「compliance」=55 < 60
+   - 来源：scorecard
+20. **[C2] C2 决策思维树** · 评分卡标记
+   - 事项：评分卡对该屏置 flag（risk=覆盖完备度维度 40 为短板，建议优先治理。）
+   - 来源：scorecard
+21. **[C2] C2 决策思维树** · 屏级分偏低
+   - 事项：屏级分 69.5 < 70
+   - 来源：scorecard
+22. **[C2] C2 决策思维树** · 六维短板
+   - 事项：六维「coverage」=40 < 60
+   - 来源：scorecard
+23. **[C2] C2 决策思维树** · 六维短板
+   - 事项：六维「output」=40 < 60
+   - 来源：scorecard
+24. **[C9] C9 积分监测看板** · 评分卡标记
+   - 事项：评分卡对该屏置 flag（risk=数据源缺失（未取到最新数据），建议注入后重扫。）
+   - 来源：scorecard
+25. **[C6] C6 模拟法庭控制中台** · 评分卡标记
+   - 事项：评分卡对该屏置 flag（risk=产出有效性维度 15 为短板，建议优先治理。）
+   - 来源：scorecard
+26. **[C6] C6 模拟法庭控制中台** · 屏级分偏低
+   - 事项：屏级分 62.0 < 70
+   - 来源：scorecard
+27. **[C6] C6 模拟法庭控制中台** · 六维短板
+   - 事项：六维「output」=15 < 60
+   - 来源：scorecard
+28. **[C3] C3 知识飞轮中台** · 新鲜度
+   - 事项：数据源 mtime 已 52.4h > 24h（建议触发对应刷新自动化）
+   - 来源：/Users/chenyouqiang/Desktop/飞轮中台.html
+29. **[C1] C1 车机驾驶舱** · 新鲜度
+   - 事项：数据源 mtime 已 52.4h > 24h（建议触发对应刷新自动化）
+   - 来源：/Users/chenyouqiang/Desktop/分身系统驾驶舱.html
+30. **[C2] C2 决策思维树** · 新鲜度
+   - 事项：数据源 mtime 已 52.4h > 24h（建议触发对应刷新自动化）
+   - 来源：/Users/chenyouqiang/Desktop/决策思维树.html
+31. **[C9] C9 积分监测看板** · 新鲜度
+   - 事项：数据源 mtime 已 52.4h > 24h（建议触发对应刷新自动化）
+   - 来源：/Users/chenyouqiang/Desktop/积分监测看板.html
+
+### P3 级（10 项）
+
+32. **[C8] C8 AI幻觉监控看板(LTI)** · 屏上整改建议（汇总·5项） ⚠️需人工确认
+   - 事项：共 5 项；示例：[健康度85] 补单测：在 references/tests/test_lti.py 为 R115 各补 1 正例、1 反例；样例文本可直接复用 dashboard/probe_modules.py 中的探针用例。；[健康度85] 【误报高发】5 份事故卡归因到本模块，已成系统性问题。建议暂停依赖本模块的自动裁决，走 lti-rule-falsepositive-fix 流水线逐条根治后回归验证再放开。；[健康度84] 补单测：在 references/tests/test_lti.py 为 L204、L-ENHANCE 各补 1 正例、1 反例；样例文本可直接复用 dashboard/probe_modules.py 中的探针用例。 …（其余见各来源文件）
+   - 来源：/Users/chenyouqiang/Desktop/小强律师办案系统/_LTI工具/dashboard/dashboard_data.json
+33. **[C4] C4 跨2源汇总** · 门禁待办（汇总·6项）
+   - 事项：共 6 项；示例：门禁 G3（庭审门禁）状态=waived：9/1 开庭当日原告申请撤诉，未正式开庭；门禁 G5（程序门禁）状态=active：撤诉裁定送达前窗口期；⑦调查取证/⑧录音刻录附卷/⑨焦联鹏到庭询问 已并入⑪《撤诉意见（二）》，不另立申请；意见（二）已发当事人核验，待周一（2026-09-07）递交；门禁 G7（结案回流）状态=todo：撤诉裁定送达、再诉封堵完成后启动 …（其余见各来源文件）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/case-state.json；/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json
+34. **[C4] C4 跨2源汇总** · 风险（汇总·8项） ⚠️需人工确认
+   - 事项：共 8 项；示例：撤诉裁定送达即生效且不可上诉不可复议，窗口期一旦关闭再无补救空间；撤诉法条曾凭记忆写错（误用民诉法145条第2款），正确为148条第1款——同类法条引用须实地核验；原告撤诉后可依《民诉法解释》第214条第1款原样再诉，自认钉死不到位则前功尽弃 …（其余见各来源文件）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/case-state.json；/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json
+35. **[C4] C4 跨11源汇总** · 门禁待回填(占位)（汇总·99项） ⚠️需人工确认
+   - 事项：共 99 项；示例：门禁 G0（门禁G0）为自动生成占位，待人工从案卷回填；门禁 G1（门禁G1）为自动生成占位，待人工从案卷回填；门禁 G2（门禁G2）为自动生成占位，待人工从案卷回填 …（其余见各来源文件）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/众志救援场地使用收回案件/case-state.json；/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/冒井渔业vs厚德渔业合同纠纷/case-state.json；/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/厚德基金会审计业务约定书审查/case-state.json；/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/厚德基金会诉百益服务中心合同纠纷上诉案/c
+36. **[—] 评分卡** · 覆盖不全（汇总·1项） ⚠️需人工确认
+   - 事项：共 1 项；示例：评分卡未覆盖屏 key：cloud, contractlifecycle, xiaode（与九屏+C0 不一致，建议对齐）
+   - 来源：scorecard
+37. **[C7] C7 卡族** · 扫描异常（汇总·1项）
+   - 事项：共 1 项；示例：scan_cardfamily 抛错：No module named 'yaml'
+38. **[C3] C3 知识飞轮中台** · 屏上疑似问题(启发式)（汇总·1项） ⚠️需人工确认
+   - 事项：共 1 项；示例：efs": 492}, {"title": "合同风险连接枢纽", "refs": 414}, {"ti；un:"2026-08-15", result:"失败", nextRun:"2026-09-15"},；"_模板_法条核验段.md", "v1常见法律文书错误案例库.md", "裁判规则库.md.bak-20 …
+   - 来源：/Users/chenyouqiang/Desktop/飞轮中台.html
+39. **[C1] C1 车机驾驶舱** · 屏上疑似问题(启发式)（汇总·1项） ⚠️需人工确认
+   - 事项：共 1 项；示例：br>⑤ 到期未复盘的卡<br>⑥ 下月建议与风险预警<br><br>输出至 <code>知识飞轮系统/；ckground:var(--red)"></i>风险 / 待办</span>     </div>；<b>四段式</b>（事故概况 → 管理问题 → 整改措施 → 举一反三），篇幅 800–1000 字， …
+   - 来源：/Users/chenyouqiang/Desktop/分身系统驾驶舱.html
+40. **[C2] C2 决策思维树** · 屏上疑似问题(启发式)（汇总·1项） ⚠️需人工确认
+   - 事项：共 1 项；示例：br>⑤ 到期未复盘的卡<br>⑥ 下月建议与风险预警<br><br>输出至 <code>知识飞轮系统/；IueQ02RX6DiiEIKBd9j"></i>风险 / 待办</span>   </div>；<b>四段式</b>（事故概况 → 管理问题 → 整改措施 → 举一反三），篇幅 800–1000 字， …
+   - 来源：/Users/chenyouqiang/Desktop/决策思维树.html
+41. **[C9] C9 积分监测看板** · 屏上疑似问题(启发式)（汇总·1项） ⚠️需人工确认
+   - 事项：共 1 项；示例：n-top: 8px; }    /* —— 外发告警条 —— */   .footnote { mar；chat'><td>5</td><td>类案检索降级故障根因排查</td><td>对话</td><td
+   - 来源：/Users/chenyouqiang/Desktop/积分监测看板.html
+
+### P4 级（2 项）
+
+42. **[C8] C8 AI幻觉监控看板(LTI)** · 规则治理（汇总·1项）
+   - 事项：共 1 项；示例：零命中规则 29 条堆积，建议评估下线/合并（P4 清理候选）
+   - 来源：/Users/chenyouqiang/Desktop/小强律师办案系统/_LTI工具/dashboard/dashboard_data.json
+43. **[C4] C4 跨2源汇总** · 下一步行动（汇总·8项） ⚠️需人工确认
+   - 事项：共 8 项；示例：意见（二）[含⑦⑧⑨]已发当事人核验确认，待周一（2026-09-07）递交法院；递交后持续跟踪裁定送达；裁定送达前完成自认钉死（原告亲笔《情况说明》+ 法官电话核实录音附卷）；主张《民诉法解释》第238条第1款：当事人有违法行为需依法处理的，法院可以不准许撤诉 …（其余见各来源文件）
+   - 来源：/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/case-state.json；/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json
+
+## 三、说明与边界
+
+- **P0–P4 统一口径**：在 xiaoqiang-cockpit-hub 既有 P0–P3 事件分级基础上扩展 P4（观察/优化）。
+- **聚合说明**：P0–P2 逐条可处置；P3/P4 长尾按「屏+类别」聚合为汇总项（含计数与示例），完整逐条明细保留在各自来源文件，老强按需下钻。
+- **屏上整改项来源**：LTI=`health_rows[].actions`/事故卡/零命中规则；CLM=`gates[status≠pass]`/`deadlines[level]`/`nextActions`/`risks`；评分卡=`screens[].flag/score/six`；卡族=frontmatter 实扫；HTML 屏=关键词启发式。
+- **只读护栏**：本引擎不触发任何站点重发、不改配置；线上刷新由各自既有自动化负责。
+- **敏感隔离**：CLM 含真实案号/当事人姓名，本报告不展开当事人姓名，仅老强本人可见。
