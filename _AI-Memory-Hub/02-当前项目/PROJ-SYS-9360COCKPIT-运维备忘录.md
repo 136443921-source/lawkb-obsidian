@@ -28,7 +28,7 @@ tags:
 | 访问地址 | `http://127.0.0.1:9360/`（本地，令牌登录） |
 | 源目录 | `/Users/chenyouqiang/WorkBuddy/2026-09-12-01-29-05/outputs/cockpit-hub-ops/` |
 | 当前服务 | 运行中 · PID 见 `.cockpit_ops.pid`（2026-09-16 实测 HTTP 200） |
-| **数据快照基准** | 2026-09-16 18:10（scorecard 总评 77.2 / 良好 B；C5/C7 六维已统一为算法驱动；D2·D4 数据 2026-09-16 16:24） |
+| **数据快照基准** | 2026-09-16 18:31（scorecard 总评 77.2 / 良好 B；C5/C7 六维已统一为算法驱动；D2 竞态已根治·sync 改原子写；D2·D4 数据 2026-09-16 16:24） |
 | 总评（含九计分屏） | **77.2 / 良好 B**（详见 §4；标签与 rescan 阈值(≥70=B)一致 ✅） |
 | 敏感级别 | 🔴 **严禁外发**（含真实案号/当事人/额度/评分） |
 
@@ -168,7 +168,7 @@ python3 rescan_scorecard.py         # 备份旧 json 后写入（六-B 铁律）
 - ✅ `xiaoqiang-cockpit-hub` 技能已同步至 v1.1.13（分叉对照+备忘录指针），描述滞后问题已解决。
 - ✅ **C5/C7 采集器已补建**：`scan_scorecard.py` 新增 `collect_xiaode`/`collect_contractlifecycle`（实扫 `subapps/xiaode/compliance-state.json` 与 `subapps/contract-lifecycle/contract-state.json`）；`rescan` 改为**骨架模式**（以 9360 真源为权威，仅用采集器 raw 刷新 updated/kpis/risk/flag），一键刷新已跑通，C5/C7 动态追新、权重/六维/评分基线稳定。
 - ✅ **C5/C7 六维已统一为算法驱动（2026-09-16 18:10）**：`collect_xiaode`/`collect_contractlifecycle` 的六维从硬编码常量改为调用 `scan_scorecard.py` 统一的 `six_*` 六维子函数（fresh/coverage/output/automation/health/compliance 由 JSON 真实数据算出，参数已调校贴合原手工基线：C5 score≈61 / C7 score≈71）；`rescan` 的 `convert()` 对 C5/C7 优先采用采集器算法 scores，彻底消除「硬编码兜底」。`_risk_text()` 已拼出含具体风险名的文案（R2 审计约定书主体缺失 / R6 航合表态稿 / R8 众志救援 / CG2·CG3·CG6 门禁 / 雅菲·道真百益等 6 争议案）。其余 7 屏 six 仍沿用 9360 真源手工基线（不在本轮范围）。
-- ✅ **D2 知识冲突中台数据源（2026-09-16 18:24 复核闭环）**：原 18:10 报 `queue.json` line 201 损坏，经 18:23 复测文件已**合法可解析**（413KB，顶层 `count=303`/`resolved_count=293`）——判定为「冲突仲裁 sync 进程并发改写该文件、rescan 读到半截」的**瞬时写入竞态**，非数据损坏；D2 实时数据已恢复（冲突303 / AI裁决96.7% / 待复核10 / 跨卡型291，`updated=2026-09-16 18:24`）。`build_conflict_screen()`/`build_mind_screen()` 的 JSON 解析异常保护**保留为常驻防御**（未来 sync 再竞态时 rescan 不崩、仅降级用骨架值）。⚠️ **根治建议（P3）**：`sync_conflict_queue.py` 写 `queue.json` 应改为「写临时文件 + 原子 rename」消除半截读取竞态。
+- ✅ **D2 知识冲突中台数据源（2026-09-16 18:24 复核闭环 + 18:31 P3 根治）**：原 18:10 报 `queue.json` line 201 损坏，经 18:23 复测文件已**合法可解析**（413KB，顶层 `count=303`/`resolved_count=293`）——判定为「冲突仲裁 sync 进程并发改写该文件、rescan 读到半截」的**瞬时写入竞态**，非数据损坏；D2 实时数据已恢复（冲突303 / AI裁决96.7% / 待复核10 / 跨卡型291，`updated=2026-09-16 18:24`）。`build_conflict_screen()`/`build_mind_screen()` 的 JSON 解析异常保护**保留为常驻防御**（未来 sync 再竞态时 rescan 不崩、仅降级用骨架值）。✅ **P3 根治已完成（2026-09-16 18:31）**：`sync_conflict_queue.py` 已新增 `atomic_write_json()`（写同目录隐藏临时文件 + `f.flush()`/`os.fsync()` 落盘 + `os.replace` 原子覆盖），`main()` 以原子写替代原 `open(OUT,'w')` 截断写；**跨进程压力测试实证**：旧截断写 3000 次读中半截失败 **2138** 次，新原子写 **0** 次（APFS rename 原子性保证读方永远拿到完整旧版或完整新版）。备份 `/tmp/sync_repair_20260916-182741/`。
 - ℹ️ `rescan` 的 `KEY_MAP` 仍列 `cardfamily`（旧 C7 残留映射），但 `convert()` 已显式跳过 cardfamily（9360 无此屏），不污染现网；属无害遗留，可择期清理。
 
 ---
@@ -177,7 +177,7 @@ python3 rescan_scorecard.py         # 备份旧 json 后写入（六-B 铁律）
 
 | 日期 | 变更 |
 |---|---|
-| 2026-09-16 18:24 | **D2 知识冲突中台数据源复核闭环（非损坏，瞬时 sync 竞态）**：复测确认 `subapps/conflict-arbitration/queue.json` 已合法可解析（413KB，顶层 count=303/resolved_count=293），原 18:10 的 line 201 报错系冲突仲裁 sync 并发改写时的瞬时半截读取竞态，非数据损坏；D2 实时数据（冲突303/AI裁决96.7%/待复核10/跨卡型291）已重跑 rescan 写回 9360 真源并对外生效（`updated=2026-09-16 18:24`）；保留 `build_conflict_screen`/`build_mind_screen` 的 JSON 解析异常保护作常驻防御；建议 `sync_conflict_queue.py` 改原子写（临时文件+rename）根治竞态。备份 `/tmp/queue_json_repair_20260916-182311/`（原稿，未改动）。 |
+| 2026-09-16 18:31 | **P3 根治：sync_conflict_queue.py 改原子写消除 D2 竞态**：新增 `atomic_write_json()`（写同目录隐藏临时文件 + `f.flush()`/`os.fsync()` 落盘 + `os.replace` 原子覆盖），`main()` 以原子写替代原 `open(OUT,'w')` 截断写；**跨进程压力测试实证**：旧截断写 3000 次读中半截失败 **2138** 次、新原子写 **0** 次（APFS rename 原子性保证读方永远拿到完整旧版或完整新版）。D2 数据源竞态从「瞬时竞态 + 异常保护降级」升级为「写入侧根因消除」。备份 `/tmp/sync_repair_20260916-182741/`。 |
 | 2026-09-16 18:10 | **增强 C5/C7 风险名自动显示 + 统一六维评分算法**：① `scan_scorecard.py` 新增 `six_health/six_coverage/six_output/six_compliance/six_automation` 统一六维子函数（合规/合同类标准口径）；② `collect_xiaode`/`collect_contractlifecycle` 六维从硬编码常量改为算法驱动（参数调校贴合原基线：C5 score≈61 / C7 score≈71），并从 JSON 提取 redRiskNames/orangeRiskNames/warnGateNames/disputeNames 风险名；③ `rescan` 的 `convert()` 对 C5/C7 优先采用算法 scores，`_risk_text()` 拼出含具体风险名的文案（R2审计约定书主体缺失、R6航合表态稿、R8众志救援、CG2/CG3/CG6 门禁、雅菲/道真百益等6争议案）；④ 给 `build_conflict_screen`/`build_mind_screen` 加 JSON 解析异常保护（修复 D2 `queue.json` 损坏引发的崩溃）；⑤ 实跑验证：12 屏、总评 77.2/良好 B、C5/C7 动态六维+风险名生效、其余7屏 six 不变；⑥ 备份 `/tmp/unify_six_backup_20260916-181039/`。 |
 | 2026-09-16 17:55 | **C5/C7 采集器补建 + rescan 骨架模式 + 一键刷新跑通**：① `scan_scorecard.py` 新增 `collect_xiaode`/`collect_contractlifecycle`（实扫 `subapps/xiaode/compliance-state.json` 与 `contract-lifecycle/contract-state.json`，WEIGHTS 置 0 不影响旧门户总评）；② `rescan_scorecard.py` 的 `convert()` 改为**骨架模式**（以 9360 真源为权威，保留手工权重/六维/评分基线，仅用采集器 raw 刷新 updated/kpis/risk/flag，显式跳过 cardfamily）；③ 护栏由「缺屏 exit 5」放宽为「骨架兜底+警告」；④ 实跑验证：12 屏齐全、总评稳定 77.2/良好 B、C5/C7 动态追新、cardfamily 不污染；⑤ 备份 `/tmp/collector_backup_20260916-175006/`。 |
 | 2026-09-16 | **评分标签统一 + 技能同步 + 脚本护栏**：① 修正 9360 `scorecard_data.json` 的 grade 标签 77.2「合格 C」→「良好 B」（符合 `grade_of()` 阈值，原误标）；② 修 `rescan_scorecard.py` 的 `PORTAL_DIR` 错位（原指旧门户，现指 cockpit-hub-ops）+ 加硬护栏（缺 xiaode/contractlifecycle 拒绝写入 exit 5）；③ 定位 `scan_scorecard.py` 的 `COLLECTORS` 仅 8 屏、缺 C5/C7 采集器，故该管线暂不能覆盖 9360；④ 同步 `xiaoqiang-cockpit-hub` 技能至 v1.1.13（分叉对照+备忘录指针+管线缺口）；⑤ 备份至 `/tmp/scorecard_backup_20260916-173434/`。 |
