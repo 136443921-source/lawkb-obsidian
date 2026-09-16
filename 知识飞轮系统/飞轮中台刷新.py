@@ -4,9 +4,18 @@
 # 扫描知识飞轮六层 + CaseDrop + WorkBuddy 自动化矩阵 + link_audit 断链率 + 摄入管道，
 # 重算全部指标，写回 飞轮中台.html 的 const DATA = {...} 块。
 # 手动运行：python3 飞轮中台刷新.py
-import re, sys, json, subprocess
+import re, sys, json, subprocess, os
 from pathlib import Path
 from datetime import date, timedelta, datetime
+
+
+def atomic_write(dst, content, encoding="utf-8"):
+    """原子写：先写临时文件再 os.replace 原子替换，避免读者经 iframe/serve 加载时读到半截/空文件。"""
+    dst = Path(dst)
+    tmp = dst.with_suffix(dst.suffix + ".tmp_" + datetime.now().strftime("%Y%m%d%H%M%S%f"))
+    tmp.write_text(content, encoding=encoding)
+    os.replace(tmp, dst)
+
 
 ROOT = Path("/Users/chenyouqiang/Documents/LawKB/知识飞轮系统")
 # 真实文件落在 Desktop（门户/预览直接可读）；LawKB/知识飞轮系统/飞轮中台.html 为指向它的软链接
@@ -322,7 +331,7 @@ m = re.search(r"const DATA = \{[\s\S]*?\n\s*\};", html)
 if not m:
     raise SystemExit("未找到 DATA 块")
 html = html[: m.start()] + new_block + html[m.end():]
-DASH.write_text(html, encoding="utf-8")
+atomic_write(DASH, html, "utf-8")
 
 print("[飞轮中台] %s 经验卡=%d(真实%d) 规则库=%d 六层=%d 自动化=%d 断链率=%s 摄入=%d例/%d天(%s)"
       % (today.isoformat(), experience_cards, real_cards, rule_files, six_total, len(autos),

@@ -1,11 +1,11 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-09-12T08:39",
+  "updated": "2026-09-16T21:02",
   "ima_connector": "ima-mcp",
-  "ima_status": "recovered_after_restart_2026-08-30",
+  "ima_status": "down_2026-09-15_config_disabled",
   "note": "2026-08-27 A1/B 漏窗回补完成：15/15 全量摄入（A1 合同3 + B 四库12）。HT 含 老年人意定监护协议（backlog 唯一未摄入）；CF 从第2页50条未摄入中选 3（备案指引解读/贵州三指引/关联关系雷区）。经验卡片15+规则卡15（R-HT-106~108/R-LN-030~032/R-PI-171~173/R-HG-052~054/R-CF-086~088）。ingested 269→284，pending_windows 清零。",
-  "last_run_ts_ms": 1789144930328,
+  "last_run_ts_ms": 1789439014799,
   "b_pending_backfill": {
     "reason": "RESOLVED 2026-08-19 —— 原候选 3 篇（善款挪作他用/谁捐的/到底什么是公益）经标题级去重核对均已在 ingested（含蒸馏笔记别名），未重复摄入；改选 3 篇确证 NEW 候选（八项罪名/60家取消资格/互捐合规）并完成摄入。",
     "candidates_selected": 3,
@@ -3903,6 +3903,84 @@
           ]
         }
       ]
+    },
+    {
+      "window_id": "w_2026-09-14_A1B_channel_down",
+      "target": 15,
+      "done": 0,
+      "status": "open",
+      "reason": "ima-mcp 本会话运行态掉线（enabled=true 但工具不在索引）；A1/B 15篇未摄入",
+      "opened_at": "2026-09-14T08:30",
+      "backfill_log": [
+        {
+          "date": "2026-09-14",
+          "note": "IMA running-state down; 15 candidates pending IMA UI re-auth + restart"
+        },
+        {
+          "date": "2026-09-15",
+          "note": "09-15 本会话 ima-mcp enabled=false 仍 down；A1/B 15篇再次跳过，漏窗延长至 N=2。待 UI 重授权后续跑回补。"
+        }
+      ],
+      "consecutive_note": "连续第2天(09-14→09-15)IMA disabled，A1/B 连续2日未摄入；本会话 ima-mcp enabled=false（配置态），依「不代点」规则不翻转，须老强 UI 重新授权+重启。"
+    },
+    {
+      "window_id": "w_2026-09-15_A1B_channel_down",
+      "target": 15,
+      "done": 0,
+      "status": "open",
+      "start": "2026-09-15T08:30",
+      "opened_at": "2026-09-15T08:30",
+      "reason": "ima-mcp 本会话配置态 down（enabled=false，非 userDisabled，非网络）；A1/B 15篇未摄入。连续第2天漏窗（09-14+09-15）。依「不代点」规则脚本不翻转 enabled，须老强 UI 重新授权+重启 WorkBuddy 生效。",
+      "targets": [
+        {
+          "stage": "A1",
+          "lib": "合同文书AI助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "律师AI助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "人伤法律实务助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "合规与政府监管AI助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "慈善组织合规AI助手",
+          "target": 3,
+          "done": 0
+        }
+      ],
+      "total_target": 15,
+      "total_done": 0,
+      "consecutive_day": 2,
+      "backfill_log": [
+        {
+          "date": "2026-09-15",
+          "note": "IMA running-state/config disabled; 15 candidates pending IMA UI re-auth + restart. Channel-down escalation N=2."
+        }
+      ]
+    },
+    {
+      "window_id": "w_2026-09-16_A1B_channel_down",
+      "target": 15,
+      "done": 0,
+      "status": "open",
+      "start": "2026-09-16T08:30",
+      "opened_at": "2026-09-16T08:30",
+      "reason": "ima-mcp 本会话配置态 down（enabled 不含 ima-mcp、userDisabled['ima-mcp']=true）且工具不在会话索引；A1/B 15篇未摄入。依不代点UI红线未 --apply；待人工 UI 重授权+重启。"
     }
   ],
   "totals": {
@@ -4341,62 +4419,27 @@
     }
   ],
   "checkpoint": {
-    "session_id": "run-20260911-1430",
-    "stage": "D",
-    "status": "in_progress",
-    "started_at": "2026-09-11T14:30",
-    "prior_done_from_0909": [
+    "session_id": "run-1789563726641",
+    "stage": "FINAL",
+    "status": "completed_degraded",
+    "started_at": "2026-09-16T21:02",
+    "done": [
       "A0",
-      "A1",
+      "A0.1",
+      "A0.2",
+      "A0.3",
+      "A0.4",
       "A2",
-      "A2_5",
+      "A2.5",
       "C",
       "D",
       "FINAL"
     ],
-    "done_this_run": [
-      "B_人伤_b347db48_registered",
-      "B_人伤_3_collection_notes_written",
-      "R-PI-367_card_created",
-      "totals_self_healed"
+    "skipped": [
+      "A1",
+      "B"
     ],
-    "blocked_220030": {
-      "慈善": [
-        "ffa7c0825d9e0c4d2a9e3f7c...",
-        "cb126b8b2c1f4e9a8b7d6c5e...",
-        "d8bac8a4f3e2d1c0b9a8f7e6..."
-      ],
-      "律师": [
-        "8c559b6f1a2b3c4d5e6f7a8b...",
-        "1fb41039a1b2c3d4e5f6a7b8...",
-        "e3ddaf35b2c3d4e5f6a7b8c9..."
-      ],
-      "合规": [
-        "47e1dc47c3d4e5f6a7b8c9d0...",
-        "6fda0177d4e5f6a7b8c9d0e1...",
-        "77cbe7b6e5f6a7b8c9d0e1f2..."
-      ]
-    },
-    "stub_notes_flagged_from_corrupted_fetch": [
-      "R-CF-123",
-      "R-CF-124",
-      "R-CF-125",
-      "R-HG-074",
-      "R-HG-075",
-      "R-HG-076",
-      "律师库-司法鉴定实务",
-      "律师库-工伤案例库要旨",
-      "律师库-机动车事故指引"
-    ],
-    "note": "人伤库 B 阶段完成(3笔记+1卡)；律师/合规/慈善库 B 阶段因 IMA 220030 内容侧损坏 9 候选全失败，现有 stub 笔记为损坏前/损坏态产物，未注册；待用户在 IMA 内重新处理或由 b5ffd012 重试器回补",
-    "finished_at": null,
-    "done": [
-      "A0",
-      "A2",
-      "A2_5",
-      "C",
-      "D"
-    ]
+    "finished_at": "2026-09-16T21:15"
   },
   "abandoned_windows": [
     {
@@ -4460,5 +4503,6 @@
       "abandon_note": "用户于 2026-09-09T22:55 (GMT+8) 明确决策：不回补、清除未回补内容。对应 failed_220030 队列（16 条）已清空，故本窗标记 abandoned——done 维持 0，未伪造 backfilled/ingested。"
     }
   ],
-  "ingested_total": 411
+  "ingested_total": 411,
+  "last_run": "2026-09-15T10:23"
 }
