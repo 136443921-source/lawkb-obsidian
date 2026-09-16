@@ -1,0 +1,42 @@
+---
+id: WF-049
+title: 部署/刷新前先侦查目标 app 生命周期（避免误推已退役 app）
+type: workflow
+status: active
+updated: 2026-09-16
+source_ai: workbuddy
+scope: global
+confidence: high
+---
+
+# WF-049 · 部署/刷新前先侦查目标 app 生命周期
+
+> 一句话：**动手部署/刷新任何公网或本地 app 之前，先确认它"还活着、且是当前真源"；否则可能把数据推到一个已被退役的死 app 上，白干甚至复活淘汰品。**
+> 源自 2026-09-16 车机驾驶舱复盘事故：初版复盘报告建议把刷新数据部署到 `wbapp_C3x8Gq5FNczqfM7otctF6P`(xq-cockpit-sub)，但经查该 app 早在 9/12 就被"残留清零"退役，子屏群已迁新独立 app——若直接推，等于往淘汰品灌数据。
+
+## 一、适用场景
+- 收到"把数据刷新到 X app / 重新部署 X 站点"类任务。
+- 复盘报告、旧 SOP、历史记忆里写着一个 appId 或域名，要复用。
+- 多 app 迁移/重构后，不确定哪个是"当前真源"。
+
+## 二、先侦查再行动的 5 步 Gate（动手前必过）
+1. **查目标 app 的部署/退役任务状态**：搜 `.workbuddy/tasks/` 与该 app 相关的任务，看是否 `completed` 且含"残留清零 / 退役 / 迁移"语义。
+2. **确认当前真源目录**：找出线上数据实际由哪个目录/新 app 提供（grep `appId` / `domainPrefix` / 子域名）。
+3. **核对线上是否仍活**：`curl -s -o /dev/null -w "%{http_code}" <目标URL>` + 抽 `updatedTime`/`data-update-time`，确认未陈旧。
+4. **比对"建议目标"与"真源"是否一致**：不一致 → 停下来问用户拍板，绝不默认往旧 app 推。
+5. **动前备份 + 用护栏**：部署类操作带 `sandboxId`/时间戳双重校验；本地源改动先备份。
+
+## 三、本次真实案例（车机驾驶舱）
+- 现象：截图显示 `xq-cockpit-sub/cheji` 停在 2026-09-12 10:22。
+- 误判：初版复盘建议"部署到 `wbapp_C3x8Gq5FNczqfM7otctF6P`"。
+- 侦查反转：任务 `a08595b9` 全部 `completed`——9/12 已计划退役并"残留清零"，真源已迁 `Claw/cockpit-portal-deploy/` 新独立 app；`xq-cockpit-sub` 是残影。
+- 决策：老强拍板"以 9360 本地驾驶舱为准，公网旧 app 弃用"→ 修正自动化 Prompt、启用受护栏的子屏刷新、显式 `workbuddy_sites_unpublish` 下线旧 app（验证全路径 404）。
+
+## 四、红线
+- ❌ 不把数据推到"已退役/已迁移"的旧 app（复活淘汰品 = 数据孤岛 + 误导）。
+- ❌ 不盲信复盘报告/SOP 里写死的 appId——先侦查当前状态。
+- ❌ 不做无校验的部署（缺 `updatedTime` 校验曾导致陈旧 4 天未被发现）。
+- ✅ 任何部署/刷新自动化必须带"部署后 `updatedTime`/`sandboxId` 校验"护栏。
+
+## 五、口诀
+> **先查任务状态、再认真源目录、后核对活链；目标≠真源，停手问人，绝不默认推旧 app。**

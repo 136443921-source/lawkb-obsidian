@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-09-15 23:52:06",
+  "drift_status": "LOCKED",
+  "items": [
+    {
+      "metric": "裁判规则库R卡",
+      "path": "rule_library.rule_cards_R",
+      "prev": 1891,
+      "curr": 1891,
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
+    },
+    {
+      "metric": "子库数",
+      "path": "rule_library.sub_libs",
+      "prev": 32,
+      "curr": 32,
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
+    },
+    {
+      "metric": "negative_note覆盖",
+      "path": "rule_library.negative_note_coverage",
+      "prev": 599,
+      "curr": 599,
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
+    },
+    {
+      "metric": "案由路由卡R-AY",
+      "path": "ay_routing_cards",
+      "prev": 290,
+      "curr": 290,
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
+    },
+    {
+      "metric": "经验卡",
+      "path": "experience_cards",
+      "prev": 413,
+      "curr": 413,
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
+    },
+    {
+      "metric": "审判要件卡物理",
+      "path": "trial_elements.physical_cards",
+      "prev": 70,
+      "curr": 70,
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
+    },
+    {
+      "metric": "审判长声明张数",
+      "path": "trial_elements.judge_persona_declared",
+      "prev": 215,
+      "curr": 215,
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
+    },
+    {
+      "metric": "反面案例库行数",
+      "path": "counter_case_lib.lines",
+      "prev": 271,
+      "curr": 273,
+      "delta": 2,
+      "pct": 0.7,
+      "status": "OK"
+    },
+    {
+      "metric": "卡族索引指针",
+      "path": "cardfamily_index_pointers",
+      "prev": 17,
+      "curr": 17,
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
+    },
+    {
+      "metric": "六层.md总数",
+      "path": "six_layers_total",
+      "prev": 4837,
+      "curr": 4840,
+      "delta": 3,
+      "pct": 0.1,
+      "status": "OK"
+    }
+  ]
+}

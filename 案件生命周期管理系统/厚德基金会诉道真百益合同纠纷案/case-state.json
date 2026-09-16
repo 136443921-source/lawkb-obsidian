@@ -1,0 +1,108 @@
+{
+  "schema": "case-state/v1",
+  "caseId": "道真百益",
+  "caseNo": "(2025)黔0325民初230号之一",
+  "title": "厚德基金会诉道真百益合同纠纷案（公益理财服务协议履行/款项返还）",
+  "court": "道真仡佬族苗族自治县人民法院（一审）；二审上诉阶段",
+  "partyRole": "上诉人（一审原告）",
+  "opposingParty": [
+    "道真仡佬族苗族自治县百益社会工作服务中心",
+    "李丽",
+    "李佳豪"
+  ],
+  "domain": "合作合同/基金会服务协议",
+  "status": "进行中（二审上诉阶段）",
+  "client": [
+    "贵州省厚德公益基金会"
+  ],
+  "stage": {
+    "current": 0,
+    "code": "calibrated",
+    "name": "DTC-CASE-001 补建·待人工回填",
+    "enteredAt": "2026-09-14",
+    "note": "独立夹原无 state；要素取自本夹案件笔记原文(案号/法院/身份/对方)，其余待人工回填"
+  },
+  "gates": {
+    "G0": {
+      "name": "门禁G0",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G1": {
+      "name": "门禁G1",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G2": {
+      "name": "门禁G2",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G3": {
+      "name": "门禁G3",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G4": {
+      "name": "门禁G4",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G5": {
+      "name": "门禁G5",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G6": {
+      "name": "门禁G6",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G7": {
+      "name": "门禁G7",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G8": {
+      "name": "门禁G8",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    }
+  },
+  "calibration": {
+    "ticket": "DTC-CASE-001",
+    "generatedAt": "2026-09-14",
+    "source": "本夹案件笔记原文(厚德基金会诉道真百益合同纠纷案-案件笔记.md)",
+    "verifiedFields": [
+      "caseNo",
+      "title",
+      "court",
+      "partyRole",
+      "domain",
+      "status",
+      "client",
+      "opposingParty"
+    ],
+    "pendingFields": [
+      "judge",
+      "deadlines",
+      "meta.agents",
+      "timeline",
+      "nextActions",
+      "risks"
+    ],
+    "note": "要素取自笔记原文；judge/deadlines/agents/timeline 须人工从笔记与桌面真卷实地回填，禁止凭记忆完善。"
+  },
+  "meta": {
+    "schema": "case-meta/v1",
+    "agents": [
+      {
+        "stage": "校准占位",
+        "role": "DTC-CASE-001",
+        "agent": "待回填",
+        "status": "todo",
+        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+      }
+    ]
+  }
+}

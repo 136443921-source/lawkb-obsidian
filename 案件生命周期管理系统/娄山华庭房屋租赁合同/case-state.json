@@ -1,0 +1,94 @@
+{
+  "schema": "case-state/v1",
+  "caseId": "娄山华庭",
+  "caseNo": "（非诉审查）",
+  "title": "娄山华庭房屋租赁合同审查",
+  "domain": "房屋租赁合同",
+  "status": "非诉",
+  "stage": {
+    "current": 0,
+    "code": "calibrated",
+    "name": "DTC-CASE-001 校准生成·待人工回填",
+    "enteredAt": "2026-09-14",
+    "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+  },
+  "gates": {
+    "G0": {
+      "name": "门禁G0",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    },
+    "G1": {
+      "name": "门禁G1",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    },
+    "G2": {
+      "name": "门禁G2",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    },
+    "G3": {
+      "name": "门禁G3",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    },
+    "G4": {
+      "name": "门禁G4",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    },
+    "G5": {
+      "name": "门禁G5",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    },
+    "G6": {
+      "name": "门禁G6",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    },
+    "G7": {
+      "name": "门禁G7",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    },
+    "G8": {
+      "name": "门禁G8",
+      "status": "todo",
+      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+    }
+  },
+  "calibration": {
+    "ticket": "DTC-CASE-001",
+    "generatedAt": "2026-09-14",
+    "source": "案件-知识映射索引 + 案件笔记存在性",
+    "verifiedFields": [
+      "caseNo",
+      "title",
+      "domain",
+      "status"
+    ],
+    "pendingFields": [
+      "court",
+      "judge",
+      "client",
+      "deadlines",
+      "meta.agents",
+      "timeline"
+    ],
+    "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+  },
+  "meta": {
+    "schema": "case-meta/v1",
+    "agents": [
+      {
+        "stage": "校准占位",
+        "role": "DTC-CASE-001",
+        "agent": "待回填",
+        "status": "todo",
+        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+      }
+    ]
+  }
+}

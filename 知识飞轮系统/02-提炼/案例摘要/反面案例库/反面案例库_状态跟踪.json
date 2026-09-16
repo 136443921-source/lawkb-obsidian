@@ -1,0 +1,912 @@
+{
+  "schema": "反面案例库_状态跟踪器 v1 (2026-09-15)",
+  "canonical_lib": "知识飞轮系统/02-提炼/案例摘要/反面案例库/反面案例库.md",
+  "states": {
+    "未消": "蓝队尚未建立成熟规避剧本；红队应主动攻击（默认）",
+    "已消": "蓝队 D3 已确证建立成熟规避剧本；红队不得重复攻击以免对抗强度隐性退化",
+    "新发": "新追加错误类型（编号顺延）；红队应优先攻击（蓝队未见）"
+  },
+  "read_by": [
+    "红队出庭律师/red_persona_v1.md(攻击弹药筛选)",
+    "蓝队出庭律师/blue_persona_v1.md(D3写回)"
+  ],
+  "total": 112,
+  "entries": [
+    {
+      "id": 1,
+      "error_type": "信息不全·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 2,
+      "error_type": "信息错误·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 3,
+      "error_type": "诉讼请求模糊·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 4,
+      "error_type": "格式不规范·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 5,
+      "error_type": "事实情绪化·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 6,
+      "error_type": "副本数量不足·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 7,
+      "error_type": "联系方式错误·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 8,
+      "error_type": "关键细节泄露·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 9,
+      "error_type": "未附证据清单·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 10,
+      "error_type": "绝对化表述·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 11,
+      "error_type": "案由错误·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 12,
+      "error_type": "主体不适格·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 13,
+      "error_type": "管辖错误·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 14,
+      "error_type": "时效未审查·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 15,
+      "error_type": "证据未对应·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 16,
+      "error_type": "主观臆断·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 17,
+      "error_type": "法律引用错误·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 18,
+      "error_type": "未写诉讼费承担·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 19,
+      "error_type": "未列感情破裂事实·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 20,
+      "error_type": "遗漏子女抚养诉求·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 21,
+      "error_type": "财产分割模糊·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 22,
+      "error_type": "未提调解底线·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 23,
+      "error_type": "利息计算错误·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 24,
+      "error_type": "未写执行依据·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 25,
+      "error_type": "要素式填写不全·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 26,
+      "error_type": "结构流水账·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 27,
+      "error_type": "无证据标注·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 28,
+      "error_type": "情绪化表述·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 29,
+      "error_type": "未留副本·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 30,
+      "error_type": "格式不规范·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 31,
+      "error_type": "未归纳争议焦点·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 32,
+      "error_type": "自认风险·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 33,
+      "error_type": "程序异议遗漏·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 34,
+      "error_type": "主体不适格未提·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 35,
+      "error_type": "时效抗辩遗漏·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 36,
+      "error_type": "证据反驳不足·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 37,
+      "error_type": "未附赔偿计算表·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 38,
+      "error_type": "答辩超期·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 39,
+      "error_type": "未提子女抚养方案·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 40,
+      "error_type": "未提财产分割方案·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 41,
+      "error_type": "未提债务抗辩·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 42,
+      "error_type": "情绪化攻击配偶·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 43,
+      "error_type": "承认对方证据·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 44,
+      "error_type": "未提反诉·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 45,
+      "error_type": "语言模糊·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 46,
+      "error_type": "无结论先行·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 47,
+      "error_type": "逻辑跳跃·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 48,
+      "error_type": "重复庭审内容·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 49,
+      "error_type": "情绪化攻击·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 50,
+      "error_type": "绝对化表述·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 51,
+      "error_type": "未回应争议焦点·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 52,
+      "error_type": "法条引用错误·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 53,
+      "error_type": "未附类案参考·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 54,
+      "error_type": "篇幅冗长·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 55,
+      "error_type": "未补强质证意见·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 56,
+      "error_type": "未提调解底线·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 57,
+      "error_type": "格式不规范·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 58,
+      "error_type": "未用三段论结构·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 59,
+      "error_type": "未回应对方核心观点·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 60,
+      "error_type": "庭后提交超期·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 61,
+      "error_type": "证据名称模糊·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 62,
+      "error_type": "证明目的错误·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 63,
+      "error_type": "页码错误·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 64,
+      "error_type": "未分组证据·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 65,
+      "error_type": "证据目录无序号·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 66,
+      "error_type": "真实性异议无理由·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 67,
+      "error_type": "原始载体未要求核对·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 68,
+      "error_type": "签字伪造未申请鉴定·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 69,
+      "error_type": "电子数据未公证·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 70,
+      "error_type": "证据与起诉状矛盾·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 71,
+      "error_type": "合法性异议无依据·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 72,
+      "error_type": "单位证明形式不合法·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 73,
+      "error_type": "鉴定意见未提资质·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 74,
+      "error_type": "证人未出庭证言直接认·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 75,
+      "error_type": "关联性异议无逻辑·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 76,
+      "error_type": "证明力异议缺失·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 77,
+      "error_type": "逾期证据未提异议·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 78,
+      "error_type": "忽视证据补强规则·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 79,
+      "error_type": "证明目的未对应焦点·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 80,
+      "error_type": "质证话术模糊·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 81,
+      "error_type": "写成一审代理词·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 82,
+      "error_type": "未聚焦法定事由·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 83,
+      "error_type": "逻辑混乱·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 84,
+      "error_type": "绝对化表述·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 85,
+      "error_type": "未留副本·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 86,
+      "error_type": "事实认定错误无新证据·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 87,
+      "error_type": "未针对一审判决书·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 88,
+      "error_type": "新证据未附清单·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 89,
+      "error_type": "未提一审程序违法·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 90,
+      "error_type": "法律适用错误未对比法条·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 91,
+      "error_type": "引用失效法条·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 92,
+      "error_type": "上诉请求模糊·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 93,
+      "error_type": "超上诉期·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 94,
+      "error_type": "上诉费计算错误·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 95,
+      "error_type": "未附生效文书原件·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 96,
+      "error_type": "执行依据未写·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 97,
+      "error_type": "债权金额计算错误·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 98,
+      "error_type": "未附生效文书原件·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 99,
+      "error_type": "格式错误·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 100,
+      "error_type": "绝对化表述·总类",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 101,
+      "error_type": "财产线索不明确·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 102,
+      "error_type": "超申请执行时效·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 103,
+      "error_type": "未申请查控·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 104,
+      "error_type": "保全措施未提·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 105,
+      "error_type": "未追加被执行人·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 106,
+      "error_type": "被执行人配偶财产未查·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 107,
+      "error_type": "未申请限制高消费·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 108,
+      "error_type": "未申请司法拘留·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 109,
+      "error_type": "终本后未跟进·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 110,
+      "error_type": "执行和解协议未公证·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 111,
+      "error_type": "案外人异议未应对·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    },
+    {
+      "id": 112,
+      "error_type": "未申请迟延履行金·分类型",
+      "status": "未消",
+      "last_reviewed": "2026-09-15",
+      "promoted_by": null,
+      "note": ""
+    }
+  ]
+}

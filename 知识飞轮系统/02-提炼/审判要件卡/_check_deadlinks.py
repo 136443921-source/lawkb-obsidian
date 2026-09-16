@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-通用死链自检器 v1.7.0（2026-09-12）
+通用死链自检器 v1.7.2（2026-09-16）
 --------------------------------
 用途：检查任意规则卡 / 审判要件卡 / 工程事故卡 / 案由路由卡的
       frontmatter.related_links 与正文 [[...]] 是否为真实存在的笔记基名。
@@ -72,6 +72,13 @@
             ② 新增 classify_dead()：死链分「真死链（编号引用/语法残片）」与
                「待建笔记（主题名）」两类；
             ③ 汇总分别输出，退出码只按「真死链」判定；--strict 复原旧口径。
+  v1.7.2  🔴 修复 v1.7.1 引入的回归（纯编号命名卡专项）：build_basename_set()
+          读 frontmatter 提取 aliases 时用 `os.path.join(rt, f)` 拼路径，但 `rt`
+          是 root、`f` 只是基名，子目录卡（慈法合规/人伤法/… 全部真实卡）必然
+          FileNotFoundError，被 `except` 静默吞掉 → **别名从未入集**，aliases
+          消解死链的功能形同虚设。改 `rt→r`（walk 当前目录）。回归验证：R-CF-115
+          / R-PI-182 的别名现正确入集。教训：门禁「改了但没生效」= 静默失败，
+          须用成员测试（目标别名 in 集合）验证而非只看 exit code。
 """
 import io
 import json
@@ -89,6 +96,11 @@ ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
 SKIP_DIRS = {".backup", ".backup_link_20260830_152052", ".backup_link_20260830_153501",
              ".backup_link_20260830_153728", ".workbuddy", ".git", "node_modules",
              "__pycache__", ".venv", "venv"}
+
+# v1.7.1：隔离区（回收站 / 垃圾概念页）必须排除——否则「隔离」形同虚设，
+# 被隔离的坏文件仍会拉黑门禁（exit=2）。判据：目录名以 .trash 开头，或含「隔离_」。
+def is_quarantine(d):
+    return d.startswith(".trash") or "_隔离_" in d or d.startswith("_quarantine")
 
 # 概念页 / 枢纽页：不以 .md 卡片形式存在于规则库，视为合法链接
 CONCEPT_PREFIXES = (
@@ -112,6 +124,44 @@ EXTRA_ROOTS = [os.path.join(LAWKB, "法律法规库"),
                os.path.join(LAWKB, "知识库")]
 
 
+def extract_aliases(txt):
+    """v2026-09-16（纯编号命名卡专项）：从 frontmatter 轻量提取 aliases。
+
+    不全量 YAML 解析（5000+ 文件 × yaml.safe_load 太慢），只取首段 frontmatter
+    （前 8K 足够），支持两种 Obsidian 写法：
+      行内：aliases: [名称A, 名称B]
+      块式：aliases:\n  - 名称A\n  - 名称B
+    返回的别名并入基名集，使 [[别名]] 不再判死链。
+    """
+    if not txt.startswith("---"):
+        return []
+    parts = txt.split("---", 2)
+    if len(parts) < 3:
+        return []
+    block = parts[1]
+    out = []
+    # 行内形式
+    m = re.search(r"^aliases:\s*\[(.*?)\]\s*$", block, re.M)
+    if m:
+        for a in m.group(1).split(","):
+            a = a.strip().strip("\"'[]").strip()
+            if a:
+                out.append(a)
+        return out
+    # 块形式
+    lines = block.splitlines()
+    for i, ln in enumerate(lines):
+        if re.match(r"^aliases:\s*$", ln):
+            j = i + 1
+            while j < len(lines) and re.match(r"^\s*-\s+(.+)$", lines[j]):
+                a = re.match(r"^\s*-\s+(.+)$", lines[j]).group(1).strip().strip("\"'")
+                if a:
+                    out.append(a)
+                j += 1
+            break
+    return out
+
+
 def build_basename_set(root=ROOT, extra=True):
     """收集全部 .md 的基名（不含 .md），用于集合比对。
 
@@ -123,10 +173,20 @@ def build_basename_set(root=ROOT, extra=True):
     roots = [root] + ([r for r in EXTRA_ROOTS if os.path.isdir(r)] if extra else [])
     for rt in roots:
         for r, dirs, files in os.walk(rt):
-            dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith(".backup")]
+            dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith(".backup") and not is_quarantine(d)]
             for f in files:
                 if f.endswith(".md"):
                     names.add(f[:-3])
+                    # v2026-09-16：别名也并入基名集（轻量提取，不全量 YAML）
+                    # ⚠️ 必须用 walk 当前目录 r 拼路径，rt 是 root 只首层巧合匹配，
+                    # 子目录卡会 FileNotFoundError 被 except 吞掉 → 别名永不入集（已修 2026-09-16）
+                    try:
+                        with io.open(os.path.join(r, f), encoding="utf-8") as _fh:
+                            _t = _fh.read(8192)
+                        for _al in extract_aliases(_t):
+                            names.add(_al)
+                    except Exception:
+                        pass
     return names
 
 
@@ -134,7 +194,7 @@ def md_files(root=ROOT):
     """列出待检 md 文件（同样跳过备份目录）"""
     out = []
     for r, dirs, files in os.walk(root):
-        dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith(".backup")]
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith(".backup") and not is_quarantine(d)]
         for f in files:
             if f.endswith(".md"):
                 out.append(os.path.join(r, f))

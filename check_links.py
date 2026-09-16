@@ -109,44 +109,41 @@ def is_placeholder_link(name):
 
 def check_links(files):
     """检查链接"""
-    # 构建文件名字典（文件名 -> 文件路径）
+    # 2026-09-14 性能根治：原第136行对零出链文件逐文件整库重扫描（O(n^2) 全库 read），
+    # 随 vault 增长（2831→4862 笔记）耗时飙至 ~50min。改为单遍构建反向索引（O(n)）。
+    # meta 报告目录（孤立笔记检测报告、知识库压缩去重报告）内含大量示例/历史断链链接，
+    # 不扫描其作为源，避免把报告自身的示例链接误计为本体断链（会造成假断链累积）。
+    META_SKIP = {"孤立笔记检测报告", "知识库压缩去重报告"}
+    # 构建文件名字典（文件名 -> 文件路径）+ 单遍反向索引（raw link target -> set(source fp)）
+    all_files = get_all_files()
     filename_to_path = {}
-    for fp in get_all_files():
+    incoming = {}  # raw 链接目标 -> 来源文件集合（用于孤立反向判定）
+    for fp in all_files:
         filename = os.path.splitext(os.path.basename(fp))[0]
         filename_to_path[filename] = fp
+        if any(meta in fp for meta in META_SKIP):
+            continue
+        for lk in extract_links(fp):
+            incoming.setdefault(lk, set()).add(fp)
     
     # 检查结果
     isolated_notes = []  # 孤立笔记
     broken_links = []    # 断链
     low_links_notes = [] # 链接数量过少的笔记
     
-    # meta 报告目录（孤立笔记检测报告、知识库压缩去重报告）内含大量示例/历史断链链接，
-    # 不扫描其作为源，避免把报告自身的示例链接误计为本体断链（会造成假断链累积）。
-    META_SKIP = {"孤立笔记检测报告", "知识库压缩去重报告"}
     for fp in files:
         if any(meta in fp for meta in META_SKIP):
             continue
         filename = os.path.splitext(os.path.basename(fp))[0]
         links = extract_links(fp)
         
-        # 检查是否为孤立笔记
+        # 检查是否为孤立笔记（单遍反向索引判定：无任何他文件链接到本文件 basename）
         if len(links) == 0:
-            # 检查是否有其他文件链接到它
             is_isolated = True
-            for other_fp in get_all_files():
-                if other_fp == fp:
-                    continue
-                # 2026-08-13 修复④：反向链接检查同样跳过 META_SKIP 报告目录——
-                # 否则「链接检查报告.md」自身列出的 [[孤立笔记]] 会让孤立笔记被误判为"有人链接"，
-                # 导致孤立计数在 0 与真实值之间逐轮交替（自污染）。
-                if any(meta in other_fp for meta in META_SKIP):
-                    continue
-                
-                other_links = extract_links(other_fp)
-                if filename in other_links:
+            for src_fp in incoming.get(filename, ()):
+                if src_fp != fp:
                     is_isolated = False
                     break
-            
             if is_isolated:
                 isolated_notes.append((filename, fp))
         

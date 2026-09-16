@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-09-15 23:52:06",
+  "source": "count_rules.py (自动统计，非人工记忆)",
+  "rule_library": {
+    "sub_libs": 32,
+    "rule_cards_R": 1891,
+    "negative_note_coverage": 599
+  },
+  "ay_routing_cards": 290,
+  "experience_cards": 413,
+  "trial_elements": {
+    "physical_cards": 70,
+    "judge_persona_declared": 215,
+    "note": "physical=实体卡文件数；declared=审判长persona声明的『内联+矩阵』口径(215含3张裁量尺度卡)，二者不冲突"
+  },
+  "counter_case_lib": {
+    "lines": 273,
+    "location": "已迁飞轮canonical(02-提炼/案例摘要/反面案例库/)，skill镜像保留为运行时工作镜像"
+  },
+  "cardfamily_index_pointers": 17,
+  "six_layers_md": {
+    "01-采集": 253,
+    "02-提炼": 1373,
+    "03-连接": 1023,
+    "04-巩固": 89,
+    "05-调用": 142,
+    "06-沉淀": 1960
+  },
+  "six_layers_total": 4840
+}

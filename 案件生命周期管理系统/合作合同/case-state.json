@@ -1,0 +1,103 @@
+{
+  "schema": "case-state/v1",
+  "caseId": "凤仪村",
+  "caseNo": "（无案号·预测阶段尚未起诉）",
+  "title": "凤仪村与赤水月亮湖合作合同纠纷案",
+  "partyRole": "代理被告/被上诉人（凤仪村委）",
+  "opposingParty": [
+    "赤水月亮湖"
+  ],
+  "domain": "合作合同纠纷",
+  "status": "准备/预测阶段（尚未起诉）",
+  "client": [
+    "凤仪村委"
+  ],
+  "stage": {
+    "current": 0,
+    "code": "calibrated",
+    "name": "DTC-CASE-001 收窄·待人工回填",
+    "enteredAt": "2026-09-14",
+    "note": "由合作合同夹双案描述收窄为凤仪村案（道真百益已独立成案）；要素取自凤仪村笔记原文"
+  },
+  "gates": {
+    "G0": {
+      "name": "门禁G0",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G1": {
+      "name": "门禁G1",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G2": {
+      "name": "门禁G2",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G3": {
+      "name": "门禁G3",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G4": {
+      "name": "门禁G4",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G5": {
+      "name": "门禁G5",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G6": {
+      "name": "门禁G6",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G7": {
+      "name": "门禁G7",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    },
+    "G8": {
+      "name": "门禁G8",
+      "status": "todo",
+      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+    }
+  },
+  "calibration": {
+    "ticket": "DTC-CASE-001",
+    "generatedAt": "2026-09-14",
+    "source": "本夹凤仪村与赤水月亮湖合作合同纠纷案-案件笔记.md",
+    "verifiedFields": [
+      "caseNo",
+      "title",
+      "partyRole",
+      "domain",
+      "status",
+      "client",
+      "opposingParty"
+    ],
+    "pendingFields": [
+      "court",
+      "judge",
+      "deadlines",
+      "meta.agents",
+      "timeline"
+    ],
+    "note": "要素取自笔记原文；court/judge/deadlines/agents/timeline 须人工回填。"
+  },
+  "meta": {
+    "schema": "case-meta/v1",
+    "agents": [
+      {
+        "stage": "校准占位",
+        "role": "DTC-CASE-001",
+        "agent": "待回填",
+        "status": "todo",
+        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+      }
+    ]
+  }
+}

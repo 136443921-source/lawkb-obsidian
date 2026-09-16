@@ -6,7 +6,7 @@ tags:
   - LawKB
   - 仓库
 created: 2026-09-11T19:06
-updated: 2026-09-11T19:06
+updated: 2026-09-14T18:03
 ---
 
 # 00 · 发布说明：本目录与 lawtwin-open 的关系
@@ -54,7 +54,7 @@ cd ~/lawtwin-open
    （门禁扫不到二进制，`.gitignore` 已排除，开仓前仍须人工过一遍）。
 
 ## 相关笔记
-- [[README]] (共现关键词: ---, git, LawKB)
+- [[小强律师数字分身系统/10-律所数字分身中台/03-开源核心骨架/README]] (共现关键词: ---, git, LawKB)
 - [[2026-09-10]] (共现关键词: git, ##)
 - [[LEARNINGS]] (共现关键词: ---, git)
 - [[换电脑后WorkBuddy如何迁移]] (共现关键词: git, 同步)

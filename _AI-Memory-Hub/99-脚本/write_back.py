@@ -81,24 +81,96 @@ def scan_existing_ids(prefix):
     return ids
 
 
+def _id_pattern(rid, prefix):
+    """提取 id 的「格式签名」：纯数字段替换为 N。
+
+    DEC-2026-007 -> DEC-N-N ／ DEC-006 -> DEC-N ／ PREF-007 -> PREF-N
+    """
+    tail = rid[len(prefix):].lstrip("-")
+    segs = tail.split("-") if tail else []
+    return prefix + "-" + "-".join(
+        "N" if re.fullmatch(r"\d+", s) else s for s in segs
+    )
+
+
+def _is_incrementable(rid, prefix):
+    """最后一段是否含数字（可被 +1 递增）。"""
+    body = rid[len(prefix):].lstrip("-")
+    segs = body.split("-") if body else []
+    return bool(segs) and bool(re.search(r"\d+", segs[-1]))
+
+
+def _next_in_group(rids, prefix):
+    """给定同格式、末段可递增的一组 id，返回其 +1 结果（宽度对齐末段数字）。"""
+    sample = max(rids)  # 字典序最大 ⇒ 年份/序号最新
+    body = sample[len(prefix):].lstrip("-")
+    segs = body.split("-")
+    last = segs[-1]
+    m = re.search(r"\d+", last)
+    if not m:
+        return None
+    num = int(m.group())
+    width = m.end() - m.start()
+    new_last = last[:m.start()] + str(num + 1).zfill(width) + last[m.end():]
+    segs[-1] = new_last
+    return prefix + "-" + "-".join(segs)
+
+
 def next_id(prefix, directory=None):
-    """分配下一个 id：优先读该目录索引的已用 id 取 max+1（与 backfill 同源）；
-    无索引/无该目录则回退全库文件系统扫描。"""
+    """分配下一个 id（v3 · 2026-09-15 修复「末段非数字 / 多格式并列取错主流」）。
+
+    事故复盘（v2 的不足）：
+      • RULE 目录下唯一条目 `RULE-TRAINING-WRITEBACK-技能训练记录回写铁律` 末段为
+        中文非数字 → v2 把数字 zfill 到中文串长度 → 产出
+        `RULE-TRAINING-WRITEBACK-0000000001` 这种荒谬 id（"报错/乱号"）。
+      • PROJ 目录下 `PROJ-N`（PROJ-001/002）与 `PROJ-LAW-N`（PROJ-LAW-6658/6660）
+        各 2 条并列，v2 按「签名更长者」取主流 → 误产 `PROJ-LAW-6661`，
+        偏离通用新项目应有的 `PROJ-003`。
+
+    新规则（v3）：
+      ① 双源取并集（文件系统 ∪ 索引），防漏登记撞号。
+      ② **只从「末段可递增」的格式组里挑主流**，避免选中纯文本末段导致乱号。
+      ③ 主流排序：条目数最多 → 段数更少（更通用）→ 签名更短（确定性 tie-break）。
+      ④ 组内对样本末段数字 +1，保持宽度对齐，其余段（如年份）照抄样本。
+      ⑤ 若所有现存 id 末段均非数字（如纯自由文本 RULE）：回退 `PREFIX-001`
+         并自增避让，保证唯一不撞号。
+    """
+    cands = set(scan_existing_ids(prefix))  # 文件系统（全库，排除 05-归档）
     if directory:
         idx = INDEX_FILE.get(directory)
         if idx:
             ip = os.path.join(HUB, directory, idx)
             if os.path.isfile(ip):
-                return index_guard.next_free_id(ip, prefix)
-    # 回退：全库扫描（原有逻辑）
-    nums = []
-    for rid in scan_existing_ids(prefix):
-        tail = rid[len(prefix):].lstrip("-")
-        digits = re.findall(r"\d+", tail)
-        if digits:
-            nums.append(int(digits[-1]))
-    base = max(nums) if nums else 0
-    return "%s-%03d" % (prefix, base + 1)
+                try:
+                    cands |= {i for i in index_guard.parse_index_ids(ip)
+                              if i.startswith(prefix)}
+                except Exception:
+                    pass
+    cands = {c for c in cands if c.startswith(prefix + "-")}
+    if not cands:
+        return "%s-%03d" % (prefix, 1)
+
+    # ② 分组 + 区分「末段可递增」与「不可递增（纯文本末段）」
+    incr, non_incr = {}, {}
+    for rid in cands:
+        bucket = incr if _is_incrementable(rid, prefix) else non_incr
+        bucket.setdefault(_id_pattern(rid, prefix), []).append(rid)
+
+    if incr:
+        # ③ 主流格式：条目最多 → 段数更少（更通用）→ 签名更短（确定性 tie-break）
+        def _score(kv):
+            pat, items = kv
+            return (len(items), -len(pat.split("-")), -len(pat))
+        pat = max(incr.items(), key=_score)[0]
+        nxt = _next_in_group(incr[pat], prefix)
+        if nxt:
+            return nxt
+
+    # ⑤ 全不可递增（或递增组异常）→ 回退 PREFIX-NNN 并自增避让，保证唯一不撞号
+    i = 1
+    while "%s-%03d" % (prefix, i) in cands:
+        i += 1
+    return "%s-%03d" % (prefix, i)
 
 
 def find_similar(title, directory):

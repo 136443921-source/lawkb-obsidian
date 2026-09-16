@@ -1,0 +1,256 @@
+{
+  "generated": "20260914-103434",
+  "basename_set": 4828,
+  "A_safe": {},
+  "B_candidate": {
+    "R-PI-244-指导案例24号受害人无过错体质不减轻侵权人责任": {
+      "to": "R-PI-244-指导案例24号体质不减轻侵权人责任",
+      "sim": 0.885,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/人伤/R-PI-244-指导案例24号体质不减轻侵权人责任.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/孤立笔记检测报告/链接检查报告.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/概念页/R-PI-244.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/人伤法/R-PI-244-受害人无过错时体质因素不减轻侵权人责任.md"
+      ],
+      "why": "同编号 4 个候选，best sim=0.88，须人工选定"
+    },
+    "R-PI-245-交通事故营养费索赔指南": {
+      "to": "R-PI-245-交通事故营养费索赔实务",
+      "sim": 0.882,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/人伤/R-PI-245-交通事故营养费索赔实务.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/概念页/R-PI-245.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/人伤法/R-PI-245-营养费的计算标准与证据清单.md"
+      ],
+      "why": "同编号 4 个候选，best sim=0.88，须人工选定"
+    },
+    "R-PI-247-人身损害赔偿项目及计算标准一览表": {
+      "to": "R-PI-247-人身损害赔偿项目计算总表",
+      "sim": 0.85,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/01-采集/IMA缓存/2026-09-04/人伤库-2025：人身损害赔偿项目及计算标准一览表.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/法条解读/R-PI-247_人身损害赔偿项目计算总表_要件映射_提炼索引.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/人伤法/R-PI-247-人身损害赔偿项目计算总表.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/合同风险/R-HT-247-著作权代理合同结构性风险与裁判要点.md"
+      ],
+      "why": "同编号 2 个候选，best sim=0.85，须人工选定"
+    },
+    "R-PI-182-电子病历无痕型瑕疵过错推定": {
+      "to": "R-PI-182-电子病历无痕型瑕疵与篡改的过错推定",
+      "sim": 0.905,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/人伤法/医疗损害二元鉴定模式选择与赔偿标准双轨-2026-08-30.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    },
+    "R-PI-276-医疗广告疗效承诺红线": {
+      "to": "R-PI-276-医疗美容与服务广告疗效承诺治愈保证合规红线",
+      "sim": 0.744,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/人伤法/医疗纠纷/A2自学习纪要-医疗损害鉴定意见实质审查与知情同意-2026-09-09.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    },
+    "R-PI-240-医疗事故罪严重不负责任的认定与鉴定意见证据地位": {
+      "to": "R-PI-240-医疗事故罪严重不负责任的认定与鉴定意见的证据地位",
+      "sim": 0.983,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/人伤法/医疗纠纷·医疗事故·医疗合规/A2自学习纪要-医疗美容事故刑法评价与医疗事故罪辩护锚点-2026-09-14.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/04-巩固/学习资料推荐-2026-09-14.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/人伤法/R-PI-384-医疗美容事故中医疗事故罪的严重不负责任认定.md"
+      ],
+      "why": "同编号 2 个候选，best sim=0.98，须人工选定"
+    },
+    "R-PI-276-医疗美容广告疗效承诺红线": {
+      "to": "R-PI-276-医疗美容与服务广告疗效承诺治愈保证合规红线",
+      "sim": 0.8,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/人伤法/医疗纠纷·医疗事故·医疗合规/A2自学习纪要-医疗美容事故刑法评价与医疗事故罪辩护锚点-2026-09-14.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    },
+    "R-LN-034-代理词三性与庭后提交": {
+      "to": "R-LN-034-民事代理词三性标准与庭后提交书面代理词规则",
+      "sim": 0.744,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/学习笔记/行政庭审质证干货三性两力证明目的-2026-08-31.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    },
+    "R-CF-091-养老服务市场": {
+      "to": "R-CF-091-全面放开养老服务市场要点与慈善组织参与路径",
+      "sim": 0.615,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/学习笔记/慈善/社会组织评估管理办法2026-2026-08-31.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    },
+    "R-CF-090-疫情捐赠全额扣除": {
+      "to": "R-CF-090-疫情防控捐赠税收优惠全额扣除要点",
+      "sim": 0.778,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/学习笔记/慈善/公益事业捐赠票据使用管理办法-2026-08-31.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    },
+    "R-PI-183-医疗事故罪刑法因果关系与韩杰案再审五争点": {
+      "to": "R-PI-183-医疗事故罪刑法因果关系多环节介入与尸检缺失存疑有利被告",
+      "sim": 0.61,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/律师实务指引/民事再审申请书结构与法条纠偏-2026-08-30.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    },
+    "R-SH-033-再审改判商事规则": {
+      "to": "R-SH-033-未届期股权转让出资责任与新公司法88条不溯及适用",
+      "sim": 0.273,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/合规实务/股东定向减资退出协议要点与债权人保护程序-2026-08-30.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    },
+    "R-CF-111-基金会换届理事忠实义务与关联交易禁止": {
+      "to": "R-CF-111-基金会理事会换届与理事忠实义务合规边界",
+      "sim": 0.694,
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/慈善/R-CF-172-慈善组织关联交易未披露的行政处罚与负责人忠实义务边界.md"
+      ],
+      "why": "唯一候选但为中间字符替换（坑45），须人工确认语义同一"
+    }
+  },
+  "C_manual": {
+    "2026-07-22": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/孤立笔记检测报告/链接检查报告.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/IMA-220030修复定位表-2026-09-03.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/月度回灌日志.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    ".md": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/数字分身系统-架构复盘-2026-08-29.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/数字分身系统-能力评估报告-2026-09-01.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/月度回灌日志.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/知识飞轮系统-索引.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/飞轮运转复盘-2026-07-18.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/飞轮运转复盘-2026-07-23.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "2026-07-28": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/孤立笔记检测报告/补链日志-2026-08-13.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/孤立笔记检测报告/链接检查报告.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/月度回灌日志.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/知识飞轮系统-索引.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/运维/_backup/知识飞轮系统-索引.bak_20260830-192353.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/运维/_backup/连接枢纽-运维过程.bak_20260830-191940.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/运维/_backup/连接枢纽-运维过程.bak_20260830-212856.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/运维/_backup/连接枢纽-运维过程.bak_20260830-214729.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/运维/_backup/连接枢纽-运维过程.bak_20260830-220600.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/运维/稳定性监测.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "2026-07-29": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/孤立笔记检测报告/链接检查报告.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/概念页/目标.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/04-巩固/日志/学习时间统计.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/04-巩固/集中复习计划-2026-07-29.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/05-调用/协同命中/README.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/05-调用/协同命中/协同命中记录-2026-08.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/数字分身系统-架构复盘-2026-08-29.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "6658案_战情室分析报告_20260909": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/孤立笔记检测报告/链接检查报告.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/运维/DTC处理记录-2026-09-09.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "2026-07-19": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/孤立笔记检测报告/链接检查报告.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/运维/稳定性监测.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "R-PI-130-[[医疗损害鉴定": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/孤立笔记检测报告/断链构成排查-2026-08-30.md"
+      ],
+      "why": "同编号 2 个候选且 best sim=0.67 < 0.85"
+    },
+    "R-PI-243-雇主责任险理赔款支付工伤待遇后不得重复主张": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/01-采集/IMA缓存/2026-09-04/人伤库-案例库案例：用人单位用雇主责任险理赔款支付工伤保险待遇后.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/人伤/R-PI-243-雇主责任险与工伤保险待遇双重赔偿边界.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/法条解读/R-PI-243_雇主责任险理赔款与工伤保险待遇的关系_要件映射_提炼索引.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/03-连接/概念页/R-PI-243.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/人伤法/R-PI-243-雇主责任险理赔款与工伤保险待遇的关系.md"
+      ],
+      "why": "同编号 4 个候选且 best sim=0.71 < 0.85"
+    },
+    "6658案_模拟庭审推演报告_20260909": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/04-LOG/2026-09-03.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "6658案_模拟庭审笔录_20260909": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/复习记录/防坑题-丁戊祥案复盘-20260821.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "6658案_v160编排式验证庭审笔录_20260910": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/飞轮运维/复盘报告-小强律师数字分身系统一年运维分析-20260910.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/飞轮运维/方法卡-四模板联动_CLM与模拟法庭闭环-20260910.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/飞轮运维/评分与行业对标-小强律师数字分身系统-20260910.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/复习记录/防坑题-丁戊祥案复盘-20260821.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "R-PI-246-交通事故护理费计算标准": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/01-采集/IMA缓存/2026-09-04/人伤库-交通事故中的护理费：计算标准与法律依据.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/经验卡片/法条解读/R-PI-246_护理费的计算口径与护理依赖_要件映射_提炼索引.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/人伤法/R-PI-246-护理费的计算口径与护理依赖.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/人伤法/R-PI-275-护理费计算护理期护理人数护理级别.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/建设工程/R-JG-018-无效合同折价补偿的付款条件与参照范围.md"
+      ],
+      "why": "同编号 2 个候选且 best sim=0.61 < 0.85"
+    },
+    "033": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/01-采集/案例/人民法院案例库/2026-08-01/医疗损害诉讼时效起算案-采集.md"
+      ],
+      "why": "无编号前缀（语法残片/纯数字），需人工判断"
+    },
+    "R-PI-254": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/人伤法/医疗纠纷/A2自学习纪要-医疗损害鉴定原因力区间司法采信与以鉴代审否定边界-2026-09-12.md"
+      ],
+      "why": "同编号 3 个候选且 best sim=0.48 < 0.85"
+    },
+    "R-PI-240-医疗事故罪严重不负责任与以鉴代审否定": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/人伤法/医疗纠纷/A2自学习纪要-医疗损害鉴定意见实质审查与知情同意-2026-09-09.md"
+      ],
+      "why": "同编号 2 个候选且 best sim=0.80 < 0.85"
+    },
+    "R-PI-254-医疗损害鉴定原因力区间司法采信与以鉴代审否定": {
+      "files": [
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/人伤法/医疗纠纷·医疗事故·医疗合规/A2自学习纪要-医疗美容事故刑法评价与医疗事故罪辩护锚点-2026-09-14.md",
+        "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/人伤法/R-PI-384-医疗美容事故中医疗事故罪的严重不负责任认定.md"
+      ],
+      "why": "同编号 3 个候选且 best sim=0.73 < 0.85"
+    }
+  },
+  "D_missing_num": {}
+}
