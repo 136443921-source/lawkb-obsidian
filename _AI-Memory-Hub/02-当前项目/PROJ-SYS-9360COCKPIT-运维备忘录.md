@@ -91,6 +91,7 @@ cd /Users/chenyouqiang/WorkBuddy/2026-09-12-01-29-05/outputs/cockpit-hub-ops
 - ✅ 四席位均用 `LZ-001 / lz001@2026` 登录成功，并各自进入对应视图（owner/lawyer 13 屏、paralegal 6 屏、client 1 屏）。
 - ✅ 错误密码被 `demoErr` 拦截；按所选席位精确配屏，徽标正确（律所主任·管理员 / 执业律师 / 律师助理 / 当事人（只读））。
 - ✅ `rbac.js` 的 `users` 表已收敛为单一演示账号；`auth.js` 已去除「工号角色=所选席位」强校验。
+- **2026-09-16 23:27 复核纠正**：执业律师席位可见屏由「含 home 的 13 屏」调整为 **C1–C8 + D1–D4 共 12 屏（不含 home 导航中枢）**；端到端浏览器实测 `tabCount=12`（C1车机/C2决策/C3飞轮/C4案件/C5合规/C6模拟/C7合同/C8幻觉/D1积分/D2冲突/D3云/D4心智），与矩阵一致。备份 `/tmp/cockpit_lawyer_12screen_20260916-232705/`。
 
 **⚠️ 部署提醒（待办）**：
 - 当事人席位指向 `clm`（案件管理中台），**尚未部署「脱敏版案件大屏」独立子应用**——正式给当事人看前需补建脱敏版（屏蔽真实案号/当事人/额度），或切换 `clm` 为脱敏数据源。
@@ -201,6 +202,7 @@ python3 rescan_scorecard.py         # 备份旧 json 后写入（六-B 铁律）
 | 日期 | 变更 |
 |---|---|
 | 2026-09-16 22:52 | **演示席位统一凭据改造**：四席位共用主任凭据（工号 `LZ-001` / 密码 `lz001@2026`）。`rbac.js` 的 `users` 表收敛为单一演示账号；`auth.js` 去除「工号角色=所选席位」强校验、改按所选席位签发令牌。浏览器端到端实测四席位均用统一凭据登录并各自进入对应视图（owner/lawyer 13 屏、paralegal 6 屏、client 1 屏）。备份 `/tmp/cockpit_unify_seat_20260916-225606/`。 |
+| 2026-09-16 23:27 | **执业律师席位配屏纠正为 12 屏**：执业律师可见屏由含 home 的 13 屏调整为 C1–C8 业务驾驶舱 + D1–D4 中台共 12 屏（不含 home 导航中枢）。`rbac.js` 的 `lawyer.sites` 去除 `home`；`index.html` 的 `rbac.js` 缓存参数 bump 至 `?v=20260916c`。端到端浏览器实测 `tabCount=12`（C1车机/C2决策/C3飞轮/C4案件/C5合规/C6模拟/C7合同/C8幻觉/D1积分/D2冲突/D3云/D4心智）。备份 `/tmp/cockpit_lawyer_12screen_20260916-232705/`。 |
 | 2026-09-16 22:39 | **演示席位认证改造（工号密码 + 角色精确配屏）**：`index.html` 登录浮层改工号密码表单 + `auth.js` 选席位→SHA-256 校验→签发令牌 + `rbac.js` 新增 `users` 账号表（工号+密码哈希）并精确配屏（主任全屏+manage / 律师 C0–C9 / 助理六屏 C3·C4·C5·C7·C8·D1 / 当事人仅 C4 脱敏大屏）。前端只存 SHA-256 哈希不存明文；浏览器端到端实测四席位登录 + 角色隔离全部通过。备份 `/tmp/cockpit_seat_auth_20260916-222654/`、中枢 `/tmp/cockpit_memo_backup_20260916-224057/`。 |
 | 2026-09-16 18:31 | **P3 根治：sync_conflict_queue.py 改原子写消除 D2 竞态**：新增 `atomic_write_json()`（写同目录隐藏临时文件 + `f.flush()`/`os.fsync()` 落盘 + `os.replace` 原子覆盖），`main()` 以原子写替代原 `open(OUT,'w')` 截断写；**跨进程压力测试实证**：旧截断写 3000 次读中半截失败 **2138** 次、新原子写 **0** 次（APFS rename 原子性保证读方永远拿到完整旧版或完整新版）。D2 数据源竞态从「瞬时竞态 + 异常保护降级」升级为「写入侧根因消除」。备份 `/tmp/sync_repair_20260916-182741/`。 |
 | 2026-09-16 18:10 | **增强 C5/C7 风险名自动显示 + 统一六维评分算法**：① `scan_scorecard.py` 新增 `six_health/six_coverage/six_output/six_compliance/six_automation` 统一六维子函数（合规/合同类标准口径）；② `collect_xiaode`/`collect_contractlifecycle` 六维从硬编码常量改为算法驱动（参数调校贴合原基线：C5 score≈61 / C7 score≈71），并从 JSON 提取 redRiskNames/orangeRiskNames/warnGateNames/disputeNames 风险名；③ `rescan` 的 `convert()` 对 C5/C7 优先采用算法 scores，`_risk_text()` 拼出含具体风险名的文案（R2审计约定书主体缺失、R6航合表态稿、R8众志救援、CG2/CG3/CG6 门禁、雅菲/道真百益等6争议案）；④ 给 `build_conflict_screen`/`build_mind_screen` 加 JSON 解析异常保护（修复 D2 `queue.json` 损坏引发的崩溃）；⑤ 实跑验证：12 屏、总评 77.2/良好 B、C5/C7 动态六维+风险名生效、其余7屏 six 不变；⑥ 备份 `/tmp/unify_six_backup_20260916-181039/`。 |
