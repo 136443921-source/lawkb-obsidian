@@ -40,7 +40,7 @@ tags:
 
 | 维度 | 公网门户（技能版） | **9360 内部操作版（本备忘录对象）** |
 |---|---|---|
-| 登录 | OIDC 真 IdP（Auting/Keycloak） | 本地令牌（Web Crypto HMAC 演示） |
+| 登录 | OIDC 真 IdP（Auting/Keycloak） | **演示席位工号+密码**（SHA-256 哈希存 rbac.js，明文不落盘）+ 角色精确配屏（见 §2.1） |
 | C5 小德合规 | **预留占位**（reserved.html） | **真实系统**（综合合规指数 61，在管主体 8） |
 | C7 | 系统卡族看板 | **合同管理中台** |
 | 新增屏 | 无 | **D2 知识冲突中台 / D4 心智模型中台** |
@@ -73,6 +73,29 @@ cd /Users/chenyouqiang/WorkBuddy/2026-09-12-01-29-05/outputs/cockpit-hub-ops
 ./start_cockpit_hub_ops.sh            # 已在跑则复用保活
 ./start_cockpit_hub_ops.sh --restart  # 杀旧进程并重启为受管进程
 ```
+
+---
+
+### 2.1 演示席位账号与权限矩阵（统一凭据版，2026-09-16 22:52）
+
+> 演示席位为**统一演示账号**：四席位共用工号 `LZ-001` + 密码 `lz001@2026`（SHA-256 哈希存 `rbac.js`，明文不落盘）。`auth.js` 流程：选席位 → 填统一工号密码 → SHA-256 校验 → **按所选席位签发令牌**进对应视图（已去除「工号角色=所选席位」强校验，避免统一工号被拦）。
+
+| 席位（角色） | 统一工号 | 统一密码 | 可见屏（sites） | 权限管理 |
+|---|---|---|---|---|
+| 律所主任（owner） | `LZ-001` | `lz001@2026` | home + C1–C8 + D1–D4 全部（13 屏） | ✅ 含 manage |
+| 执行/执业律师（lawyer） | `LZ-001` | `lz001@2026` | C1–C8 业务驾驶舱 + D1–D4 中台（共 12 屏，不含 home 导航中枢） | ❌ |
+| 律师助理（paralegal） | `LZ-001` | `lz001@2026` | 飞轮(C3)/积分(D1)/合同(C7)/案件(C4)/合规(C5)/幻觉冲突(C8) 六屏 | ❌ |
+| 当事人（client，只读） | `LZ-001` | `lz001@2026` | 仅脱敏案件大屏（C4 案件管理中台，1 屏） | ❌ |
+
+**实测结论（2026-09-16 22:52 端到端浏览器验证，统一凭据）**：
+- ✅ 四席位均用 `LZ-001 / lz001@2026` 登录成功，并各自进入对应视图（owner/lawyer 13 屏、paralegal 6 屏、client 1 屏）。
+- ✅ 错误密码被 `demoErr` 拦截；按所选席位精确配屏，徽标正确（律所主任·管理员 / 执业律师 / 律师助理 / 当事人（只读））。
+- ✅ `rbac.js` 的 `users` 表已收敛为单一演示账号；`auth.js` 已去除「工号角色=所选席位」强校验。
+
+**⚠️ 部署提醒（待办）**：
+- 当事人席位指向 `clm`（案件管理中台），**尚未部署「脱敏版案件大屏」独立子应用**——正式给当事人看前需补建脱敏版（屏蔽真实案号/当事人/额度），或切换 `clm` 为脱敏数据源。
+- 统一演示密码为静态哈希，生产环境迁移至真实 IdP（Auting/Keycloak）+ 服务端用户目录。
+- **会话保持说明**：登录一次后会话存 localStorage，刷新自动以该席位身份进舱、不弹登录框；切换其他席位需先点页面「登出」清会话。
 
 ---
 
@@ -177,6 +200,8 @@ python3 rescan_scorecard.py         # 备份旧 json 后写入（六-B 铁律）
 
 | 日期 | 变更 |
 |---|---|
+| 2026-09-16 22:52 | **演示席位统一凭据改造**：四席位共用主任凭据（工号 `LZ-001` / 密码 `lz001@2026`）。`rbac.js` 的 `users` 表收敛为单一演示账号；`auth.js` 去除「工号角色=所选席位」强校验、改按所选席位签发令牌。浏览器端到端实测四席位均用统一凭据登录并各自进入对应视图（owner/lawyer 13 屏、paralegal 6 屏、client 1 屏）。备份 `/tmp/cockpit_unify_seat_20260916-225606/`。 |
+| 2026-09-16 22:39 | **演示席位认证改造（工号密码 + 角色精确配屏）**：`index.html` 登录浮层改工号密码表单 + `auth.js` 选席位→SHA-256 校验→签发令牌 + `rbac.js` 新增 `users` 账号表（工号+密码哈希）并精确配屏（主任全屏+manage / 律师 C0–C9 / 助理六屏 C3·C4·C5·C7·C8·D1 / 当事人仅 C4 脱敏大屏）。前端只存 SHA-256 哈希不存明文；浏览器端到端实测四席位登录 + 角色隔离全部通过。备份 `/tmp/cockpit_seat_auth_20260916-222654/`、中枢 `/tmp/cockpit_memo_backup_20260916-224057/`。 |
 | 2026-09-16 18:31 | **P3 根治：sync_conflict_queue.py 改原子写消除 D2 竞态**：新增 `atomic_write_json()`（写同目录隐藏临时文件 + `f.flush()`/`os.fsync()` 落盘 + `os.replace` 原子覆盖），`main()` 以原子写替代原 `open(OUT,'w')` 截断写；**跨进程压力测试实证**：旧截断写 3000 次读中半截失败 **2138** 次、新原子写 **0** 次（APFS rename 原子性保证读方永远拿到完整旧版或完整新版）。D2 数据源竞态从「瞬时竞态 + 异常保护降级」升级为「写入侧根因消除」。备份 `/tmp/sync_repair_20260916-182741/`。 |
 | 2026-09-16 18:10 | **增强 C5/C7 风险名自动显示 + 统一六维评分算法**：① `scan_scorecard.py` 新增 `six_health/six_coverage/six_output/six_compliance/six_automation` 统一六维子函数（合规/合同类标准口径）；② `collect_xiaode`/`collect_contractlifecycle` 六维从硬编码常量改为算法驱动（参数调校贴合原基线：C5 score≈61 / C7 score≈71），并从 JSON 提取 redRiskNames/orangeRiskNames/warnGateNames/disputeNames 风险名；③ `rescan` 的 `convert()` 对 C5/C7 优先采用算法 scores，`_risk_text()` 拼出含具体风险名的文案（R2审计约定书主体缺失、R6航合表态稿、R8众志救援、CG2/CG3/CG6 门禁、雅菲/道真百益等6争议案）；④ 给 `build_conflict_screen`/`build_mind_screen` 加 JSON 解析异常保护（修复 D2 `queue.json` 损坏引发的崩溃）；⑤ 实跑验证：12 屏、总评 77.2/良好 B、C5/C7 动态六维+风险名生效、其余7屏 six 不变；⑥ 备份 `/tmp/unify_six_backup_20260916-181039/`。 |
 | 2026-09-16 17:55 | **C5/C7 采集器补建 + rescan 骨架模式 + 一键刷新跑通**：① `scan_scorecard.py` 新增 `collect_xiaode`/`collect_contractlifecycle`（实扫 `subapps/xiaode/compliance-state.json` 与 `contract-lifecycle/contract-state.json`，WEIGHTS 置 0 不影响旧门户总评）；② `rescan_scorecard.py` 的 `convert()` 改为**骨架模式**（以 9360 真源为权威，保留手工权重/六维/评分基线，仅用采集器 raw 刷新 updated/kpis/risk/flag，显式跳过 cardfamily）；③ 护栏由「缺屏 exit 5」放宽为「骨架兜底+警告」；④ 实跑验证：12 屏齐全、总评稳定 77.2/良好 B、C5/C7 动态追新、cardfamily 不污染；⑤ 备份 `/tmp/collector_backup_20260916-175006/`。 |
