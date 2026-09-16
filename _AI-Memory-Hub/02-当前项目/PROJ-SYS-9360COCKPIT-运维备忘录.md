@@ -96,9 +96,11 @@ cd /Users/chenyouqiang/WorkBuddy/2026-09-12-01-29-05/outputs/cockpit-hub-ops
 | D3 | cloud | 云服务中台 | ❌ | null | false | 云能力4/4/模型29/应用1/**DB 0 表/端用户 0（已开通未启用）**；快照 09-12 未接刷新 |
 | D4 | mindmodel | 心智模型中台 | ❌ | null | false | 席位4/ACTIVE 4/最高~98/平均~85/配置v1.4.5 |
 
+> 注：C5/C7 的 `risk` 文案现由 rescan 骨架模式按采集器风险计数**自动生成**（详见 SOP-02）；上表为屏级分 / flag / 关键结构的静态快照，动态风险以 scorecard 实际值为准。
+
 ---
 
-## 4. 六维评分基线（scorecard_data.json；屏数 09-14 快照，grade 标签 2026-09-16 17:34 修正）
+## 4. 六维评分基线（scorecard_data.json；基线 09-14 快照，2026-09-16 17:55 经 rescan 骨架模式刷新）
 
 | 维度 | 值 | 备注 |
 |---|---|---|
@@ -161,10 +163,11 @@ python3 rescan_scorecard.py         # 备份旧 json 后写入（六-B 铁律）
 | 5 | P2 | C7 合同管理 | CG2 合规门禁预警（R-CF 合同域实体卡=0）、CG6 王德明担保敞口 | 补实体卡或固化人工审查替代说明；跟踪王德明案 |
 | 6 | P3 | D3 云监控 | 快照 09-12 未接定时刷新、DB 0 表/端用户 0 | 接入定时刷新或标注「已开通未启用」 |
 
-**技术债 / 数据质量**：
-- ⚠️ 总评 77.2 但标签写「合格 C」，按 `rescan` 阈值(≥70=良好 B)应为 B —— 建议重跑 rescan 统一标签。
-- ⚠️ `rescan_scorecard.py` 的 `KEY_MAP` 仍含 `cardfamily`（旧 C7），而现网 C7=contractlifecycle；脚本不影响现网（现网数据已正确），但应清理避免歧义。
-- ⚠️ `xiaoqiang-cockpit-hub` 技能描述已滞后（见 §1），建议同步或加「以 9360 运维备忘录为准」提示。
+**技术债 / 数据质量（2026-09-16 17:55 复核，多数已闭环）**：
+- ✅ 总评标签已统一为「良好 B」（`grade_of()` 自动计算，≥70=B），不再手工误标。
+- ✅ `xiaoqiang-cockpit-hub` 技能已同步至 v1.1.13（分叉对照+备忘录指针），描述滞后问题已解决。
+- ✅ **C5/C7 采集器已补建**：`scan_scorecard.py` 新增 `collect_xiaode`/`collect_contractlifecycle`（实扫 `subapps/xiaode/compliance-state.json` 与 `subapps/contract-lifecycle/contract-state.json`）；`rescan` 改为**骨架模式**（以 9360 真源为权威，仅用采集器 raw 刷新 updated/kpis/risk/flag），一键刷新已跑通，C5/C7 动态追新、权重/六维/评分基线稳定。
+- ℹ️ `rescan` 的 `KEY_MAP` 仍列 `cardfamily`（旧 C7 残留映射），但 `convert()` 已显式跳过 cardfamily（9360 无此屏），不污染现网；属无害遗留，可择期清理。
 
 ---
 
@@ -172,5 +175,6 @@ python3 rescan_scorecard.py         # 备份旧 json 后写入（六-B 铁律）
 
 | 日期 | 变更 |
 |---|---|
+| 2026-09-16 17:55 | **C5/C7 采集器补建 + rescan 骨架模式 + 一键刷新跑通**：① `scan_scorecard.py` 新增 `collect_xiaode`/`collect_contractlifecycle`（实扫 `subapps/xiaode/compliance-state.json` 与 `contract-lifecycle/contract-state.json`，WEIGHTS 置 0 不影响旧门户总评）；② `rescan_scorecard.py` 的 `convert()` 改为**骨架模式**（以 9360 真源为权威，保留手工权重/六维/评分基线，仅用采集器 raw 刷新 updated/kpis/risk/flag，显式跳过 cardfamily）；③ 护栏由「缺屏 exit 5」放宽为「骨架兜底+警告」；④ 实跑验证：12 屏齐全、总评稳定 77.2/良好 B、C5/C7 动态追新、cardfamily 不污染；⑤ 备份 `/tmp/collector_backup_20260916-175006/`。 |
 | 2026-09-16 | **评分标签统一 + 技能同步 + 脚本护栏**：① 修正 9360 `scorecard_data.json` 的 grade 标签 77.2「合格 C」→「良好 B」（符合 `grade_of()` 阈值，原误标）；② 修 `rescan_scorecard.py` 的 `PORTAL_DIR` 错位（原指旧门户，现指 cockpit-hub-ops）+ 加硬护栏（缺 xiaode/contractlifecycle 拒绝写入 exit 5）；③ 定位 `scan_scorecard.py` 的 `COLLECTORS` 仅 8 屏、缺 C5/C7 采集器，故该管线暂不能覆盖 9360；④ 同步 `xiaoqiang-cockpit-hub` 技能至 v1.1.13（分叉对照+备忘录指针+管线缺口）；⑤ 备份至 `/tmp/scorecard_backup_20260916-173434/`。 |
 | 2026-09-16 | 建活文档备忘录（首版）。全量复盘确认：9360 已分叉为公网门户之外独立系统；新增 D2 知识冲突 / D4 心智模型两屏；C5 小德合规已成真实系统；D1 积分监测超额度(-2095/112.3%)为头号风险；总评 77.2（标签与阈值存疑，本日已修正）。服务在线 PID 37597。 |
