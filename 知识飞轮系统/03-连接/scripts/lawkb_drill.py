@@ -146,6 +146,10 @@ for c in cards:
 # ---------- 5. 集群归属 ----------
 def assign(c):
     ct = c['card_type']; dom = c['domain']; title = c['title']; kind = c['kind']; sub = c['sub']
+    # 通用/案例规则卡恒为共享公地，必须在 domain 判定之前返回，
+    # 否则会被下方 dom=='LD'/'CF'/'PR' 等规则误分到 C5/C6，导致 shared_pool 少算。
+    if ct in ('通用裁判规则卡', '案例规则卡'):
+        return 'SHARED'
     if kind == 'WD':
         return 'C7'
     if kind == 'LC':

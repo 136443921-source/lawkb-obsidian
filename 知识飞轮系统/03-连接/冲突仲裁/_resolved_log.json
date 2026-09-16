@@ -1,0 +1,1467 @@
+{
+  "CF-0001": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0002": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0003": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0004": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0005": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0006": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0007": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0008": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0009": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0010": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0011": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0012": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0013": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0014": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0015": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0016": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0017": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0018": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0019": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0020": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0021": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0022": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0023": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0024": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0025": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0026": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0027": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0028": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0029": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0030": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0031": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0032": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0033": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0034": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0035": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0036": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0037": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0038": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0039": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0040": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0041": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0042": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0043": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0044": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0045": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0046": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0047": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0048": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0049": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0050": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0051": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0052": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0053": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0054": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0055": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0056": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0057": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0058": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0059": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0060": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0061": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0062": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0063": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0064": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0065": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0066": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0067": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0068": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0069": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0070": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0071": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0072": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0073": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0074": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0075": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0076": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0077": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0078": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0079": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0080": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0081": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0082": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0083": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0084": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0085": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0086": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0087": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0088": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0089": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0090": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0091": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0092": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0093": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0094": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0095": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0096": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0097": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0098": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0099": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0100": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0101": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0102": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0103": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0104": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0105": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0106": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0107": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0108": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0109": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0110": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0111": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0112": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0113": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0114": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0115": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0116": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0117": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0118": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0119": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0120": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0121": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0122": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0123": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0124": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0125": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0126": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0127": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0128": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0129": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0130": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0131": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0132": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0133": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0134": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0135": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0136": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0137": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0138": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0139": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0140": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0141": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0142": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0143": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0144": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0145": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0146": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0147": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0148": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0149": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0150": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0151": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0152": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0153": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0154": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0155": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0156": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0157": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0158": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0159": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0160": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0161": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0162": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0163": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0164": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0165": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0166": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0167": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0168": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0169": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0170": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0171": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0172": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0173": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0174": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0175": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0176": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0177": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0178": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0179": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0180": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0181": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0182": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0183": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0184": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0185": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0186": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0187": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0188": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0189": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0190": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0191": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0192": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0193": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0194": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0195": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0196": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0197": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0198": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0199": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0200": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0201": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0202": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0203": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0204": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0205": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0206": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0207": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0208": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0209": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0210": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0211": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0212": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0213": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0214": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0215": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0216": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0217": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0218": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0219": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0220": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0221": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0222": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0223": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0224": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0225": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0226": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0227": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0228": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0229": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0230": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0231": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0232": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0233": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0234": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0235": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0236": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0237": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0238": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0239": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0240": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0241": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0242": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0243": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0244": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0245": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0246": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0247": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0248": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0249": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0250": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0251": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0252": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0253": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0254": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0255": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0256": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0257": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0258": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0259": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0260": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0261": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0262": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0263": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0264": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0265": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0266": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0267": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0268": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0269": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0270": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0271": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0272": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0273": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0274": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0275": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0276": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0277": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0278": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0279": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0280": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0281": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0282": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0288": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0289": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0290": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0292": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0302": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CC"
+  },
+  "CF-0303": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CC"
+  },
+  "CF-0283": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0284": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0285": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0286": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  },
+  "CF-0287": {
+    "decision": "no_conflict",
+    "at": "2026-09-16",
+    "type": "CR"
+  }
+}
