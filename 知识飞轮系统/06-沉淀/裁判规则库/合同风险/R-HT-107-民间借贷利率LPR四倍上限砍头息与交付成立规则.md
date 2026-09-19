@@ -2,7 +2,7 @@
 title: 民间借贷合同（有息版）参考模版（裁判规则）
 rule_id: R-HT-107
 card_type: 通用裁判规则卡
-card_type_original: 实务规则卡  # P2-B 四向分流溯源 2026-09-16
+card_type_original: 实务规则卡
 card_type_inferred: true
 card_type_confidence: 0.55
 type: 裁判规则卡
@@ -18,7 +18,7 @@ rule_card: R-HT-107
 ima_true: true
 review_date: 2026-11-27
 created: 2026-08-27T15:13
-updated: 2026-09-15T13:30
+updated: 2026-09-18T20:35
 yuandian_source_pending: true
 yuandian_checked: 2026-08-29
 aliases:
@@ -54,3 +54,6 @@ related_links:
 - 同域语义关联：
   - [[R-HT-076-格式条款未尽提示说明义务不成为合同内容]] · [[R-HT-092-违反预约合同原则上不能主张继续履行损失在信赖利益与履行利益间酌定]] · [[R-HT-121-借款合同要素式审查要点与利息上限合规红线]] · [[R-HT-179-违约金调整的130%上限与举证]]
   - [[民间借贷合同（有息版）参考模版-经验卡片]] · [[R-HT-087-贵州商品房买卖预约转本约与逾期违约金不重合计算及消费者优先顺位]]
+
+## 相关笔记
+- [[R-HT-107-民间借贷利率LPR四倍上限砍头息与交付成立规则]] (共现关键词: 2026, HT, 规则)
