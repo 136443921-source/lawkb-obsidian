@@ -1,3 +1,19 @@
+---
+tags:
+  - 刑法
+  - 物权法
+  - 知识产权
+  - 规则
+  - 沉淀
+  - 合同法
+  - 慈善法
+  - 刑事诉讼
+  - 民事诉讼
+  - 行政诉讼
+created: 2026-09-18T20:19
+updated: 2026-09-18T20:19
+---
+
 > 📌 **双文件治理（唯一编辑源）**：本 `self.md` 是小强律师数字分身人格与经验的**唯一编辑源（single source of truth）**。`SKILL.md` 由 `tools/skill_writer.py --action combine` 自动合并 `self.md` + `persona.md` 派生生成，**勿直接编辑 SKILL.md**；每次修改 self.md 后须重新运行 combine 重新生成 SKILL.md，否则二者会漂移。
 
 # Self Memory — 小强律师

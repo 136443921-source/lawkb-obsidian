@@ -7,7 +7,7 @@ tags:
   - 技能
   - 必装
 created: 2026-05-28T10:51
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:19
 title: 装上这7个Skills你的WorkBuddy直接起飞
 maturity: 🌱种子
 source: ""

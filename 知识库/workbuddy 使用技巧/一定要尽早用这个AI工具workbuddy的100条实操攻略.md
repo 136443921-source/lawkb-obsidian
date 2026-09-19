@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T23:51
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:19
 title: 一定要尽早用这个AI工具workbuddy的100条实操攻略
 tags: []
 maturity: 🌱种子
@@ -293,6 +293,8 @@ https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ)*
 
 ## 相关笔记
+- [[_活跃项目]] (共现关键词: 合同, 100)
+- [[PROJ-SYS-LAWKB-知识飞轮运维]] (共现关键词: AI, 工具)
 - [[民商事律师庭审核心技巧精要100问]] (共现关键词: 合同, 100)
 - [[自动化任务质量监控周报-2026-W35]] (共现关键词: 医疗, 任务)
 - [[memory]] (共现关键词: 医疗, 任务, 关键词)

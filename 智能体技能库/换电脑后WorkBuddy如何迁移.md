@@ -1,6 +1,6 @@
 ---
 created: 2026-07-30T12:40
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:19
 tags:
   - 连接器
   - WorkBuddy
@@ -309,6 +309,9 @@ WorkBuddy 的迁移本质上就是搬一个目录：```
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/UfcoG5_TZHM45yIJQzZJjw)*
 
 ## 相关笔记
+- [[LTI文本监控器v4.0迁移与调用规范]] (共现关键词: 迁移, 共现)
+- [[ln01_青年律师如何从0到1建立万粉公众号]] (共现关键词: 共现, 如何)
+- [[LEARNINGS]] (共现关键词: git, 共现)
 - [[00-发布说明-本目录与lawtwin-open的关系]] (共现关键词: git, 同步)
 - [[R-LN-047-调取同步录音录像的程序抗辩]] (共现关键词: 公司, 同步)
 - [[2026-08-29]] (共现关键词: 公司, git)

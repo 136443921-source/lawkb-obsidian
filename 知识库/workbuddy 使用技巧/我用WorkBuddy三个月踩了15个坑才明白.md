@@ -8,7 +8,7 @@ tags:
   - 正确
   - 模板
 created: 2026-05-28T10:51
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:19
 title: 我用WorkBuddy三个月踩了15个坑才明白
 maturity: 🌱种子
 source: ""
@@ -232,6 +232,7 @@ https://mp.weixin.qq.com/s/iUXa1N0v2pPDkLVlMEhoMQ
 
 
 ## 相关笔记
+- [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: WorkBuddy, 合同, 关键词)
 - [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 合同, Skill, 关键词)
 - [[怎么设计一个能交付的合同审查 Skill]] (共现关键词: 合同, 审查, Skill)
 - [[每日学习笔记-2026-07-07]] (共现关键词: 合同, 审查, Skill)

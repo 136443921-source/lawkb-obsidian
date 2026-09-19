@@ -1,6 +1,6 @@
 ---
 created: 2026-06-23T18:31
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:19
 title: 用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包
 tags: []
 maturity: 🌳核心
@@ -342,6 +342,7 @@ markitdown / pptx-generator / minimax-xlsx / minimax-docx
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/zmrIPFHKnOj-rVWR6va_7Q)*
 
 ## 相关笔记
+- [[WF-007-怎么设计一个能交付的合同审查-Skill]] (共现关键词: 一个, 合同)
 - [[患者复制病程记录权-医疗纠纷条例解读-2026-08-05]] (共现关键词: 解读, 慈善, 关键词)
 - [[用ObsidianCodex搭一个会主动思考的个人知识库]] (共现关键词: 合同, 关键词, 一个)
 - [[贵州类案指南第二卷-抚养纠纷-提取文本]] (共现关键词: 合同, 慈善, PDF)

@@ -1,6 +1,6 @@
 ---
 created: 2026-06-26T20:38
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:19
 title: 法随案例库 MCP 集成说明
 tags:
   - 案例

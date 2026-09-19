@@ -1,6 +1,6 @@
 ---
 created: 2026-06-17T17:09
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:19
 title: 一文吃透腾讯WorkBuddy全功能模式模型技能连接器专家与自动化实操指南
 tags:
   - 合同
@@ -181,6 +181,8 @@ https://mp.weixin.qq.com/s/GGyF1bkhdN6i3ncPDnwT7A?from=singlemessage&scene=1&sub
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/GGyF1bkhdN6i3ncPDnwT7A?from=singlemessage&scene=1&subscene=10000&sessionid=1781677060&clicktime=1781687310&enterid=1781687310&ascene=1&realreporttime=1781687310509&forceh5=1)*
 
 ## 相关笔记
+- [[R-CF-157-腾讯公益平台公募方运营操作指引卡]] (共现关键词: 腾讯, 慈善)
+- [[R-CF-167-腾讯数字化执行工具箱操作卡]] (共现关键词: 腾讯, 证据, 慈善)
 - [[律师搞懂AI必知的42个术语]] (共现关键词: 基金会, 公司, 模型)
 - [[新增文件列表-2026-07-30]] (共现关键词: 连接器, 2026)
 - [[去重跳过列表-2026-07-28]] (共现关键词: 连接器, 2026)
