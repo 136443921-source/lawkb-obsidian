@@ -354,7 +354,7 @@ def build_report(date, buckets, cands, fresh, dup, conflict, retire, decisions, 
         L.append("|---|---|---|---|")
         for c, d in decisions:
             L.append("| %s | `%s` | **%s** | %s |"
-                     % (c["sentence"][:60].replace("|", "/"), d["match"]["id"],
+                     % (c["sentence"][:60].replace("|", "/"), c["match"]["id"],
                         VERDICT.get(d["winner"], d["winner"]), d["reason"]))
         need = [d for _c, d in decisions if d.get("need_human")]
         if need:
@@ -364,7 +364,7 @@ def build_report(date, buckets, cands, fresh, dup, conflict, retire, decisions, 
             for c, d in decisions:
                 if d.get("need_human"):
                     L.append("- ⚠️CONFLICT：「%s…」 vs `%s` %s"
-                             % (c["sentence"][:40], d["match"]["id"], d["match"]["title"]))
+                             % (c["sentence"][:40], c["match"]["id"], c["match"]["title"]))
     else:
         L.append("_无冲突_")
     L.append("")
@@ -460,8 +460,21 @@ def main():
 
     os.makedirs(LOG_DIR, exist_ok=True)
     out = os.path.join(LOG_DIR, "%s.md" % dstr)
+    existing = read_text(out) if os.path.isfile(out) else ""
     with io.open(out, "w", encoding="utf-8") as f:
-        f.write(report)
+        if existing.strip():
+            # 既有每日日志（手写）保留在前，复盘报告追加在后，避免覆盖老强日志
+            report_body = report
+            if report_body.startswith("---"):
+                end = report_body.find("\n---", 3)
+                if end != -1:
+                    report_body = report_body[end + 4:].lstrip("\n")
+            f.write(existing.rstrip())
+            f.write("\n\n---\n\n")
+            f.write("# 🔎 附录 · 每日复盘自动报告（%s）\n\n" % dstr)
+            f.write(report_body)
+        else:
+            f.write(report)
     mark_done(dstr)
     print("✅ 已写入：%s" % out)
     print("✅ 哨兵已标记：%s" % SENTINEL)

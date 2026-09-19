@@ -6,7 +6,7 @@ cms_subtemplate: 子模板C-合同合规审查
 related_skill: 小德合规管理系统（L0）
 gate: G8（非诉合规门禁）
 铁律约束: 数字分身系统第 6 条 + 六-B 安全铁律
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:19
 tags:
   - 合同
   - 民事诉讼

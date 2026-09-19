@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.xiaoqiang.lti-gate</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/chenyouqiang/Documents/LawKB/lawtwin/律师分身系统（单机密文版）/05-门禁/lti-gate-daemon.py</string>
+        <string>--socket</string>
+        <string>/tmp/lti-gate.sock</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>/Users/chenyouqiang/Documents/LawKB/lawtwin/律师分身系统（单机密文版）/05-门禁</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/lti-gate.out</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/lti-gate.err</string>
+    <key>ProcessType</key>
+    <string>Standard</string>
+</dict>
+</plist>

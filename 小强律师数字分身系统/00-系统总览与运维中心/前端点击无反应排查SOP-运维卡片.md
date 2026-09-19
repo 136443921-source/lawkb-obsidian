@@ -6,7 +6,7 @@ tags:
   - 浏览器缓存
   - jsdom
 created: 2026-09-12
-updated: 2026-09-12
+updated: 2026-09-18T20:19
 source: ~/.workbuddy/skills/frontend-click-cache-debug-sop/SKILL.md
 ---
 
@@ -78,3 +78,10 @@ source: ~/.workbuddy/skills/frontend-click-cache-debug-sop/SKILL.md
 ## 变更日志
 ### v1.0.0（2026-09-12）
 - 创建并同步进 LawKB 运维知识体系（可读副本，真身见 user-level skill `frontend-click-cache-debug-sop`）。基于 2026-09-12 小强总驾驶舱门户「选角色不弹账号密码框」实战：代码逻辑正确（jsdom 复现点击成功、零报错）→ 线上 `.js` 仅回 `Last-Modified` 无 `Cache-Control`/`ETag` → 浏览器启发式缓存旧 `auth.js` → 加 `?v=20260912b` 版本号修复并上线验证通过。固化五步排查法 + 踩坑（jsdom@22.1.0 降级）+ 红线。
+
+## 相关笔记
+- [[00-启动清单]] (共现关键词: ##, Step)
+- [[03-克隆迁移SOP]] (共现关键词: ##, Step, SOP)
+- [[修复备忘录-20260916-D5权限管理中心新建]] (共现关键词: ##, js)
+- [[WF-034-jsdom无头校验替代浏览器手点]] (共现关键词: ##, jsdom, 浏览器)
+- [[WF-029-静态看板改版前端三坑排障流水线]] (共现关键词: 缓存, 前端, 浏览器)

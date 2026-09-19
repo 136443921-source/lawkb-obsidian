@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "description": "《9655 驾驶舱运维手册》v1.3 的机器可读口径基线。本文件是'手册 vs 实车'漂移比对的唯一参照真源；功能一变，运维手册与本文须同步修订。",
+  "manual_file": "9655 驾驶舱运维手册.md",
+  "manual_version": "v1.3",
+  "captured_at": "2026-09-19T13:45:00",
+  "cockpit_port": 9655,
+  "expected_screen_count": 17,
+  "expected_screens": {
+    "home":              {"cno": "C0", "name": "九屏维度",     "lawFirm": false, "weight": 0.00, "scoring": false},
+    "ev":                {"cno": "C1", "name": "车机驾驶舱",   "lawFirm": false, "weight": 0.10, "scoring": true},
+    "decision":          {"cno": "C2", "name": "决策思维舱",   "lawFirm": false, "weight": 0.12, "scoring": true},
+    "flywheel":          {"cno": "C3", "name": "知识飞轮舱",   "lawFirm": false, "weight": 0.12, "scoring": true},
+    "clm":               {"cno": "C4", "name": "案件管理中台", "lawFirm": true,  "weight": 0.00, "scoring": true},
+    "xiaode":            {"cno": "C5", "name": "合规管理中台", "lawFirm": true,  "weight": 0.00, "scoring": true},
+    "mock":              {"cno": "C6", "name": "模拟庭审中台", "lawFirm": true,  "weight": 0.00, "scoring": true},
+    "contractlifecycle": {"cno": "C7", "name": "合同管理中台", "lawFirm": true,  "weight": 0.00, "scoring": true},
+    "lti":               {"cno": "C8", "name": "AI 幻觉监控舱","lawFirm": false, "weight": 0.15, "scoring": true},
+    "credits":           {"cno": "D1", "name": "积分监测中台", "lawFirm": false, "weight": 0.10, "scoring": true},
+    "conflict":          {"cno": "D2", "name": "知识冲突中台", "lawFirm": false, "weight": 0.11, "scoring": true},
+    "cloud":             {"cno": "D3", "name": "云服务中台",   "lawFirm": false, "weight": 0.00, "scoring": false},
+    "mindmodel":         {"cno": "D4", "name": "心智模型中台", "lawFirm": false, "weight": 0.10, "scoring": true},
+    "permcenter":        {"cno": "D5", "name": "权限管理中心", "lawFirm": false, "weight": 0.10, "scoring": true},
+    "d6permcenter":      {"cno": "D6", "name": "权限调用中台", "lawFirm": false, "weight": 0.10, "scoring": true},
+    "agenthub":          {"cno": "D7", "name": "智能体中台",   "lawFirm": false, "weight": 0.10, "scoring": true},
+    "workflowhub":       {"cno": "D8", "name": "工作流中台",   "lawFirm": false, "weight": 0.10, "scoring": true}
+  },
+  "forbidden_cno": [],
+  "law_firm_static_scores": {"C4": 66.5, "C5": 61.0, "C6": 62.0, "C7": 71.0},
+  "non_scored_cno": ["C0", "D3"],
+  "grade_thresholds": {"A": 90, "B": 75, "C": 60, "D": 45},
+  "score_tolerance": 0.05,
+  "total_grade_floor": "C 合格",
+  "invariant_sources": {
+    "expected_screens": "scan_9655.py:SCREENS_DEF + rbac.js:sites",
+    "law_firm_static_scores": "scan_9655.py:LAWFIRM_9360_SCORE",
+    "grade_thresholds": "scan_9655.py:grade_of()",
+    "non_scored_cno": "scan_9655.py:SCREENS_DEF(scored=False)",
+    "forbidden_cno": "曾禁用 D7/D8；v1.3 起智能体中台/工作流中台已正式回归，forbidden_cno 置空"
+  }
+}

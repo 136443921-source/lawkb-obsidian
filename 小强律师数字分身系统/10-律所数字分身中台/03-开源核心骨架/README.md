@@ -1,6 +1,6 @@
 ---
 created: 2026-09-10T16:26
-updated: 2026-09-11T19:07
+updated: 2026-09-18T20:19
 tags:
   - md
   - sh
@@ -70,4 +70,5 @@ cp templates/example.lawyer.profile.yaml templates/zhang.profile.yaml
 > v2.0 口径修正：本段原写"MIT 开源 + 轻 SaaS 收费"，与白皮书 §5.2 / §8.1 及 04 报告冲突，已统一。
 
 ## 相关笔记
+- [[WF-046-心智卡实战转正四判据取证流水线]] (共现关键词: profile, ##)
 - [[多席位接入指南]] (共现关键词: md, combine, self)

@@ -3,6 +3,14 @@ name: hub-card-backfill
 description: Obsidian LawKB 共享记忆中枢「按需补卡」一条龙——读索引→写卡→更新索引→commit/push。当用户说"补卡 XXX"/"把 XXX 补进中枢"/"沉淀一张工作流卡"/"按待沉淀清单补卡"时触发。覆盖 workflow/rule/preference/decision/project-fact 各型，自动取号、更新索引、隐私红线校验、git 推送多设备同步。
 agent_created: true
 version: 1.0.0
+
+tags:
+  - 民事诉讼
+  - ##
+  - 索引
+  - md
+  - id
+  - WF
 ---
 
 # 共享记忆中枢 · 按需补卡流水线
@@ -74,3 +82,11 @@ $PY /Users/chenyouqiang/.workbuddy/skills/hub-card-backfill/backfill.py \
 - 取号治理见 `lawkb-rule-id-governance`（R-xxx 规则卡用，与本流水线 WF-xxx 编号空间不同）。
 - 双轨交付 WF-001、LTI 门禁 WF-002 为本流水线常用交叉引用目标。
 - 中枢元规则：`00-全局规则/共享记忆协议-v1.0.md`、`冲突仲裁规则.md`、`字段-Schema.md`。
+
+## 相关笔记
+- [[红队心智模型与训练备忘录-2026-09-14]] (共现关键词: SKILL, 证据)
+- [[红队心智模型复盘-2026-09-14]] (共现关键词: ##, SKILL, 证据)
+- [[WF-028-知识飞轮卡库接线]] (共现关键词: ##, SKILL, 证据)
+- [[DEC-006-蓝队训练记录落位与版本号冻结]] (共现关键词: SKILL, 中枢, md)
+- [[字段-Schema]] (共现关键词: ##, updated, 仲裁)
+- [[RULE-006-若本目录某个条目与-`_AI-Memory-Hub`-冲突-→-一律以-`_AI]] (共现关键词: updated, 仲裁)

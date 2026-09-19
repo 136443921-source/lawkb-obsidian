@@ -1,3 +1,12 @@
+---
+tags:
+  - 2026
+  - 09
+  - 关键词
+  - chenyouqiang
+  - 共现
+---
+
 # Automation: 共享记忆中枢每日复盘（自动化入库版）
 
 > automation id: 39f8bbfa-66a8-45fd-aa4a-bc6abf106cd8
@@ -17,3 +26,12 @@
 ## 备注
 - 该 automation 为无人值守，遇到冲突/淘汰只会报告、绝不自动处置。
 - project-fact 候选按"宁缺毋滥"默认跳过，避免污染中枢；如需放宽可在 user_query 显式要求入库。
+
+## 相关笔记
+- [[2026-07-20]] (共现关键词: 2026, memory)
+- [[自动化任务质量监控周报-2026-W34]] (共现关键词: 2026, automation)
+- [[cockpit_monitor_2026-09-17]] (共现关键词: 2026, 09, chenyouqiang)
+- [[cockpit_monitor_2026-09-16]] (共现关键词: 2026, 09, chenyouqiang)
+- [[worklog]] (共现关键词: 2026, ##, 09)
+- [[裁判规则三任务职责边界]] (共现关键词: 2026, 入库)
+- [[WF-016-frontmatter批量更新报告]] (共现关键词: Users, chenyouqiang)
