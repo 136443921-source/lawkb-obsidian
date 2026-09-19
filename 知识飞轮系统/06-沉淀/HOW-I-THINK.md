@@ -1,6 +1,6 @@
 ---
 type: mind-spec
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:35
 maturity: 观察级(部分填充·2卡样本)
 tags:
   - 思维DNA

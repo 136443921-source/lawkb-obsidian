@@ -5,11 +5,12 @@ created: 2026-08-17
 tags:
   - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.0
-updated: 2026-09-11T19:07
+updated: 2026-09-18T20:19
 ---
 
 # 装上这7个Skills你的WorkBuddy直接起飞
 本页为「装上这7个Skills你的WorkBuddy直接起飞」概念枢纽，聚合知识飞轮系统内相关笔记，用于消解双向链接断链。
 
 ## 相关笔记
+- [[如何让AI帮你打理Obsidian知识库]] (共现关键词: Skills, WorkBuddy)
 - [[装上这7个Skills你的WorkBuddy直接起飞]] (共现关键词: 起飞, 装上, 直接)
