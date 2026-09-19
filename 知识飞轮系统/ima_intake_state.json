@@ -1,7 +1,7 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-09-16T21:02",
+  "updated": "2026-09-18T08:39",
   "ima_connector": "ima-mcp",
   "ima_status": "down_2026-09-15_config_disabled",
   "note": "2026-08-27 A1/B 漏窗回补完成：15/15 全量摄入（A1 合同3 + B 四库12）。HT 含 老年人意定监护协议（backlog 唯一未摄入）；CF 从第2页50条未摄入中选 3（备案指引解读/贵州三指引/关联关系雷区）。经验卡片15+规则卡15（R-HT-106~108/R-LN-030~032/R-PI-171~173/R-HG-052~054/R-CF-086~088）。ingested 269→284，pending_windows 清零。",
@@ -3981,6 +3981,16 @@
       "start": "2026-09-16T08:30",
       "opened_at": "2026-09-16T08:30",
       "reason": "ima-mcp 本会话配置态 down（enabled 不含 ima-mcp、userDisabled['ima-mcp']=true）且工具不在会话索引；A1/B 15篇未摄入。依不代点UI红线未 --apply；待人工 UI 重授权+重启。"
+    },
+    {
+      "id": "w_2026-09-18_A1B_channel_down",
+      "date": "2026-09-18",
+      "type": "A1B_channel_down",
+      "target": 15,
+      "done": 0,
+      "status": "open",
+      "reason": "ima-mcp enabled=false/userDisabled=true 配置态故障；本会话工具索引 absent；依不代点UI铁律未翻转，待人工 UI 重授权+重启后回补",
+      "registered_at": "2026-09-18T08:34:05.111571"
     }
   ],
   "totals": {
@@ -4419,27 +4429,21 @@
     }
   ],
   "checkpoint": {
-    "session_id": "run-1789563726641",
+    "session_id": "run-1789691978100",
     "stage": "FINAL",
-    "status": "completed_degraded",
-    "started_at": "2026-09-16T21:02",
+    "status": "done",
+    "started_at": "2026-09-18T08:39",
     "done": [
       "A0",
-      "A0.1",
-      "A0.2",
-      "A0.3",
-      "A0.4",
+      "A1",
+      "B",
       "A2",
-      "A2.5",
+      "A2_5",
       "C",
       "D",
       "FINAL"
     ],
-    "skipped": [
-      "A1",
-      "B"
-    ],
-    "finished_at": "2026-09-16T21:15"
+    "finished_at": "2026-09-18T08:39"
   },
   "abandoned_windows": [
     {

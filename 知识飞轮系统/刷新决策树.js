@@ -24,6 +24,10 @@ const BASE = '/Users/chenyouqiang/Documents/LawKB/知识飞轮系统';
 const LOG_DIR = path.join(BASE, '04-LOG', '决策日志');
 const TPL = path.join(BASE, '决策树_模板.html');
 const STATIC = path.join(BASE, '决策树_静态结构.json');
+// 【2026-09-18 路线B】思维轨迹卡仍以 03-决策档案/ 为 SSOT（常驻规则 RULE-TRAINING-WRITEBACK 约定），
+// 本脚本在扫 LOG_DIR 之余额外收纳 03-决策档案 中文件名含「思维轨迹」的卡，使其与 04-LOG 普通决策卡并列上树。
+const EXTRA_DIR = '/Users/chenyouqiang/Documents/LawKB/_AI-Memory-Hub/03-决策档案';
+const isExtra = d => d === EXTRA_DIR;
 // 文件名刻意用「决策树总览」——Spotlight 搜这四个字可精确命中，
 // 不会被同名的「决策思维层」文件夹、决策卡 md 正文里的「决策思维层」字样抢走首位。
 //
@@ -108,8 +112,9 @@ function pickDeadline(sec3) {
 }
 
 /** 把一张决策卡 md 转成树节点 */
-function cardNode(file, idx) {
-  const full = path.join(LOG_DIR, file);
+function cardNode(file, idx, dir) {
+  const full = path.join(dir, file);
+  const srcPrefix = isExtra(dir) ? '03-决策档案/' : '04-LOG/决策日志/';
   const raw = fs.readFileSync(full, 'utf8');
   const { fm, body } = parseFM(raw);
   const sec = sections(body);
@@ -134,7 +139,7 @@ function cardNode(file, idx) {
   if (fm.reversible) meta.push('reversible：' + fm.reversible);
   if (review) meta.push('复盘日：' + review + (overdue ? '　⚠️ 已逾期' : ''));
   meta.push('判定：' + vm.tag);
-  meta.push('文件：' + file);
+  meta.push('文件：' + srcPrefix + file);
 
   // 一句话结论
   const concl = (sec['一句话结论'] || '').replace(/<!--[\s\S]*?-->/g, '').trim();
@@ -242,7 +247,7 @@ function cardNode(file, idx) {
     bold: 1,
     verdict, review_date: review, deadline,
     desc: (concl ? md(concl) + '<br><br>' : '') +
-      `<span style="color:var(--txt3);font-size:12px">本节点由脚本从卡片自动生成 · 源文件：<code>${esc(file)}</code></span>`,
+      `<span style="color:var(--txt3);font-size:12px">本节点由脚本从卡片自动生成 · 源文件：<code>${esc(srcPrefix + file)}</code></span>`,
     meta,
     children: kids.length ? kids : undefined
   };
@@ -256,11 +261,16 @@ function main() {
 
   const tree = JSON.parse(fs.readFileSync(STATIC, 'utf8'));
 
-  const files = fs.existsSync(LOG_DIR)
-    ? fs.readdirSync(LOG_DIR).filter(f => f.endsWith('.md') && !f.startsWith('_模板')).sort()
+  const primary = fs.existsSync(LOG_DIR)
+    ? fs.readdirSync(LOG_DIR).filter(f => f.endsWith('.md') && !f.startsWith('_模板')).map(f => ({ file: f, dir: LOG_DIR }))
     : [];
+  // 【路线B】额外收纳 03-决策档案 中文件名含「思维轨迹」的卡（SSOT 仍在 obsidian，不改常驻规则）
+  const extra = fs.existsSync(EXTRA_DIR)
+    ? fs.readdirSync(EXTRA_DIR).filter(f => f.endsWith('.md') && f.includes('思维轨迹')).map(f => ({ file: f, dir: EXTRA_DIR }))
+    : [];
+  const allCards = [...primary, ...extra].sort((a, b) => a.file.localeCompare(b.file));
 
-  const cards = files.map(cardNode);
+  const cards = allCards.map((x, i) => cardNode(x.file, i, x.dir));
 
   // 重建卡片分支
   const cb = tree.children.find(c => c.id === 'cards');

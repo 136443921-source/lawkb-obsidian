@@ -3,7 +3,7 @@ title: LTI 主题词表（LAW_TOPIC_ARTICLES）条号核验台账
 type: 运维台账
 date: 2026-08-30
 created: 2026-08-30T21:45
-updated: 2026-09-11T19:06
+updated: 2026-09-18T20:35
 purpose: 主题词→条号映射的权威核验记录。**扩表前必查本台账**，命中即可复用，未命中须经元典核验后再写入
 verified_by: 小强律师 AI 助手
 verify_source: 华宇元典 MCP（rh_ft_detail 1分/条 · rh_ft_search 5分/次）
