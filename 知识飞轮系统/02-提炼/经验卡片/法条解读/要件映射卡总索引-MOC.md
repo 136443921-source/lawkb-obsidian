@@ -6,7 +6,7 @@ tags:
   - 经验卡片
   - LTI门禁
 created: 2026-09-07
-updated: 2026-09-15T13:30
+updated: 2026-09-18T20:35
 consumed_by:
   - 红蓝对抗工作流
   - 模拟法庭推演
