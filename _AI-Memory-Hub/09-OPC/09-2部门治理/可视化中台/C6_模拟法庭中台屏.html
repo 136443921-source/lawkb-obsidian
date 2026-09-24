@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPC 模拟法庭中台屏 · 9655（C6）</title>
+<style>
+  :root{
+    --bg:#0f1420; --card:#1a2030; --line:#2a3346; --txt:#e6ebf2; --sub:#9aa7bd;
+    --ok:#3fb950; --warn:#f0a020; --block:#ec5972; --blue:#4f9dff; --purple:#a98bff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:20px 24px}
+  h1{font-size:22px;margin:0 0 2px}
+  h2{font-size:16px;margin:26px 0 12px;border-left:4px solid var(--blue);padding-left:10px}
+  .meta{color:var(--sub);font-size:12.5px;margin-bottom:16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .kpi .n{font-size:22px;font-weight:700}
+  .kpi .l{color:var(--sub);font-size:12px;margin-top:3px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card h3{margin:0 0 6px;font-size:15px}
+  .card .st{font-size:12.5px;color:var(--sub)}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .block{color:var(--block)} .blue{color:var(--blue)} .purple{color:var(--purple)}
+  .pill{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11.5px;font-weight:600;margin:2px 3px 2px 0}
+  .p-ok{background:rgba(63,185,80,.15);color:var(--ok)}
+  .p-warn{background:rgba(240,160,32,.15);color:var(--warn)}
+  .p-blue{background:rgba(79,157,255,.15);color:var(--blue)}
+  .p-purple{background:rgba(169,139,255,.15);color:var(--purple)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:#222b3d;color:var(--sub);font-weight:600}
+  .law-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+  .law{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+  .law .t{font-weight:600;font-size:13px}
+  .law .d{color:var(--sub);font-size:12px;margin-top:3px}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:10px 0}
+  .flow .step{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:12.5px;min-width:120px;flex:1}
+  .flow .step .s{font-weight:700;color:var(--blue);font-size:13px}
+  .flow .arrow{display:flex;align-items:center;color:var(--sub);font-size:18px}
+  .bar-row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+  .bar-row .name{width:170px;flex-shrink:0;color:var(--txt)}
+  .bar-row .track{flex:1;background:#222b3d;border-radius:6px;height:14px;overflow:hidden}
+  .bar-row .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--purple));transition:width 1s}
+  .bar-row .val{width:88px;text-align:right;color:var(--sub);font-size:12px;flex-shrink:0}
+  .foot{margin-top:26px;color:var(--sub);font-size:11.5px;border-top:1px solid var(--line);padding-top:12px}
+  .note{font-size:12px;color:var(--sub)}
+  code{background:#222b3d;padding:1px 6px;border-radius:4px;font-size:12px;color:var(--blue)}
+</style>
+</head>
+<body>
+<h1>⚖️ OPC 模拟法庭中台屏（9655 · C6）</h1>
+<div class="meta">模拟法庭中台屏 · 数据快照 2026-09-24 · 口径：MCM-DEV 试点脱敏运行态 + 驾驶舱复盘方法论 · 本屏=C1 同族治理中台屏（规划内屏位 C6，不新建）；常规屏增=总经理 A/R 已授权，复用设备总线既有数据源，不触发 R④ · 已接 9655 实屏 C9 双视图（与 C1 治理中台屏同屏 tab 切换；规范源见本文件，运行态见 治理中台屏.html）</div>
+
+<div class="grid">
+  <div class="kpi"><div class="n blue">1</div><div class="l">在制设备（MCM-DEV）</div></div>
+  <div class="kpi"><div class="n purple">1 份</div><div class="l">产能：推演战报+复盘（草稿态）</div></div>
+  <div class="kpi"><div class="n ok">✅ REJECT=0</div><div class="l">LTI 门禁通过率（双轨）</div></div>
+  <div class="kpi"><div class="n ok">仅闸程序</div><div class="l">RULE-QCJUDGE-DISAMBIG 边界</div></div>
+  <div class="kpi"><div class="n warn">⏳ 试点</div><div class="l">MCM 常驻定型（阶段1三台全过）</div></div>
+  <div class="kpi"><div class="n ok">6658 已跑通</div><div class="l">驾驶舱复盘闭环（红蓝对抗实例）</div></div>
+</div>
+
+<h2>一、监控设置（C6 屏监控什么）</h2>
+<div class="cards">
+  <div class="card"><h3>在制设备 / 在制件</h3><div class="st">当前台数、在跑推演件数、关联案件代号（脱敏）</div></div>
+  <div class="card"><h3>产能指标</h3><div class="st">本周期产出的推演战报+复盘份数、草稿态/终稿态分布</div></div>
+  <div class="card"><h3>门禁通过率</h3><div class="st">LTI 双轨（轨A 本地源 / 轨B 权威源）REJECT=0 占比、UNVERIFIED 计数</div></div>
+  <div class="card"><h3>实体裁判不闸红线</h3><div class="st">QCJUDGE-DISAMBIG 守持：QC 仅闸程序合规，未闸实体裁判（状态灯）</div></div>
+  <div class="card"><h3>三处同步齐套率</h3><div class="st">办案隔离目录 / 中枢 / 回传（git backfill）三处落点一致校验</div></div>
+  <div class="card"><h3>抽检合规</h3><div class="st">老强抽检 6 项（单一入口/frontmatter/LTI/齐套/三处同步/R-1未触发）通过态</div></div>
+</div>
+<div class="note">⚠️ C6 复用设备总线（SOP-BUS-05）既有数据源，不新增数据源、不新建子系统 → 依 SOP-VIS-02 属<b>常规屏增</b>，总经理 A/R 拍板即可（老强 2026-09-24 确认），<b>不触发 R④</b>。大屏只呈脱敏设备指标，个案卷宗（当事人/案号/证据原件）不入屏（隐私铁律）。</div>
+
+<h2>二、数据呈现（脱敏运行态 · MCM-DEV 试点快照）</h2>
+<div class="bar-row"><span class="name">门禁通过率（LTI REJECT=0）</span><div class="track"><div class="fill" data-w="100"></div></div><span class="val">100% · 0 UNVERIFIED</span></div>
+<div class="bar-row"><span class="name">轨A 本地源 PASS（M01/M02）</span><div class="track"><div class="fill" data-w="100"></div></div><span class="val">2/2 PASS</span></div>
+<div class="bar-row"><span class="name">三处同步齐套率</span><div class="track"><div class="fill" data-w="66"></div></div><span class="val">2/3 · 回传⏳</span></div>
+<div class="bar-row"><span class="name">QCJUDGE-DISAMBIG 守持</span><div class="track"><div class="fill" data-w="100"></div></div><span class="val">仅闸程序</span></div>
+
+<table>
+<tr><th>指标</th><th>当前值（脱敏）</th><th>说明</th></tr>
+<tr><td>在制设备</td><td>MCM-DEV（1 台）</td><td>智能体型，复用模拟法庭子科室，不新建智能体</td></tr>
+<tr><td>产能</td><td>推演战报+复盘 1 份（草稿态）</td><td>载体=6658 冒名诉讼程序战（脱敏代号）</td></tr>
+<tr><td>门禁</td><td>REJECT=0（M01/M02 PASS，M03 条号命中 0 UNVERIFIED）</td><td>轨A 民诉法(122/154)+民诉法解释(208)</td></tr>
+<tr><td>QC 边界</td><td>QC 仅闸程序，未闸实体裁判</td><td>RULE-QCJUDGE-DISAMBIG 落地</td></tr>
+<tr><td>载体案件（脱敏）</td><td>6658 程序战</td><td>原告署名与营业执照姓名不一致→起诉主体瑕疵</td></tr>
+</table>
+
+<h2>三、如何通过驾驶舱开展模拟法庭复盘（方法论闭环）</h2>
+<div class="flow">
+  <div class="step"><span class="s">① C6 看异常</span><br>在制件超标/门禁 REJECT≠0/三处不同步 → 标红</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">② 调战报</span><br>经设备总线（SOP-BUS-05）调出 MCM 推演战报+复盘</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">③ 红蓝复盘</span><br>QC（参谋长）程序/态势复盘，不闸实体裁判</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">④ 整改</span><br>程序瑕疵/引用错漏/同步缺失 → 整改清单</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">⑤ 三处回写</span><br>办案目录+中枢+git backfill 齐套</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">⑥ C6 刷新</span><br>指标回填本屏，闭环</div>
+</div>
+<div class="note">📌 <b>6658 实例</b>：C6 标"在制 1 件"→ 调出 6658 红蓝对抗战报 → QC 依 QCJUDGE-DISAMBIG 仅闸程序（门禁/引用规范/流程合规），确认"冒名是否成立"属实体裁量不评 → 复盘得出"原审查混淆驳回起诉与实体胜诉"整改点 → 战报+试点报告三处回写 → C6 门禁通过率刷新为 100%。全流程未触 R-1（推演非对外终稿）。</div>
+
+<h2>四、红线守持</h2>
+<div class="law-grid">
+  <div class="law"><div class="t">RULE-QCJUDGE-DISAMBIG</div><div class="d"><span class="pill p-ok">守持</span> 模拟法官实体裁判 ≠ QC 程序质控；禁互评、禁互套评分卡</div></div>
+  <div class="law"><div class="t">R-1 对外终稿</div><div class="d"><span class="pill p-ok">未触发</span> MCM 推演非对外出具裁判/裁决，不触 R-1</div></div>
+  <div class="law"><div class="t">§二 LTI 双轨门禁</div><div class="d"><span class="pill p-ok">守持</span> REJECT=0 才准交付；轨A 缺失转轨B 不阻断</div></div>
+  <div class="law"><div class="t">设备总线单一入口</div><div class="d"><span class="pill p-ok">守持</span> 四台设备禁绕门禁直连（SOP-BUS-05 红线）</div></div>
+</div>
+
+<h2>五、关联文件</h2>
+<div class="cards">
+  <div class="card"><h3>SOP-BUS-05</h3><div class="st">法律服务中台设备总调度（设备总线单一入口）</div></div>
+  <div class="card"><h3>SOP-BUS-09</h3><div class="st">模拟法庭设备（MCM）接入</div></div>
+  <div class="card"><h3>SOP-BUS-10</h3><div class="st">驾驶舱复盘（模拟法庭）— 本屏配套 SOP</div></div>
+  <div class="card"><h3>模拟法庭设备运行管理制度</h3><div class="st">MCM 常驻运行管理（派工/门禁/三处同步/抽检/C6监控/复盘）</div></div>
+  <div class="card"><h3>SOP-VIS-01/02</h3><div class="st">驾驶舱运维 / 屏增审批（本屏=常规屏增）</div></div>
+  <div class="card"><h3>阶段1试点_MCM-DEV</h3><div class="st">6658 红蓝对抗载体 + 试点报告（脱敏）</div></div>
+</div>
+
+<div class="foot">
+数据源（均 09-OPC 现有治理文档 + MCM-DEV 试点脱敏运行态，本屏不改任何配置）：SOP-BUS-05/09/10 · 模拟法庭设备运行管理制度 · 阶段1试点_MCM-DEV（推演战报/试点报告/运行日志，脱敏）· SOP-VIS-01/02 · 数字员工岗位手册 v1.1（〔设备主机职责段〕）。<br>
+落点：<code>09-OPC/09-2部门治理/可视化中台/C6_模拟法庭中台屏.html</code>（C6 单文件交付物，与 C1 治理中台屏同族）。<br>
+说明：本屏为「模拟法庭中台屏」首份实体产物，把 MCM 设备运行态 + 驾驶舱复盘方法论可视化；本屏内容已作为 9655 实屏 C9 双视图中「C6 模拟法庭中台屏」视图的渲染源（与 C1 治理中台屏同屏切换；运行态见 治理中台屏.html）。运行态实时数据待 MCM 常驻定型后接入设备总线实时源。
+</div>
+
+<script>
+  window.addEventListener('load', function(){
+    document.querySelectorAll('.fill').forEach(function(el){
+      el.style.width = (el.getAttribute('data-w')||0) + '%';
+    });
+  });
+</script>
+</body>
+</html>
