@@ -57,7 +57,7 @@ CLM 设备（案件生命周期）经**设备总线单一入口**跑通"授权�
 |---|---|---|
 | 办案系统 | `桌面/小强律师办案系统/案件/6658/_试点_CLM/`（制品+claims+LTI报告） | ✅ 已落 |
 | 中枢 | `_AI-Memory-Hub/09-OPC/09-2部门治理/业务中台/`（试点方案v1.0+运行日志） | ✅ 已 cp -n |
-| 回传 | 中枢 git backfill（push origin main） | 🟡 执行中 |
+| 回传 | 中枢 git backfill（push origin main） | ✅ 本地提交达成（HEAD 7e9c4dae，ahead 2；origin push 待网络/SSH 授权，环境限制） |
 
 ## 5. 推广建议（CMS / Cont-LCM / MCM）
 
