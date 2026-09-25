@@ -1,0 +1,2564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案件生命周期大屏 · 小强律师数字分身系统</title>
+<style>
+:root{
+  --bg:#08090d; --panel:rgba(255,255,255,.038); --panel-hi:rgba(255,255,255,.062);
+  --line:rgba(255,255,255,.085); --line-hi:rgba(255,255,255,.16);
+  --txt:#e9ecf1; --txt2:#9aa3b2; --txt3:#aab3c5;
+  --red:#E24B4A; --blue:#378ADD; --green:#1D9E75; --amber:#EF9F27; --gray:#888780;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+     padding:20px;line-height:1.6;font-size:14px}
+.wrap{max-width:1440px;margin:0 auto}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px;
+       padding-bottom:14px;border-bottom:1px solid var(--line)}
+h1{font-size:20px;font-weight:600;letter-spacing:.5px}
+.sub{color:var(--txt3);font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .n{font-size:26px;font-weight:600;line-height:1.2}
+.kpi .l{font-size:12px;color:var(--txt3);margin-top:2px}
+.kpi.alarm .n{color:var(--red)} .kpi.warn .n{color:var(--amber)} .kpi.ok .n{color:var(--green)}
+section{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+        padding:16px 18px;margin-bottom:16px}
+h2{font-size:14px;font-weight:600;color:var(--txt);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:3px;height:14px;background:var(--blue);border-radius:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--txt3);font-weight:500;font-size:12px;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.045);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.badge{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap}
+.b-overdue{background:rgba(226,75,74,.18);color:#F09595;border:1px solid rgba(226,75,74,.45)}
+.b-urgent{background:rgba(239,159,39,.16);color:#FAC775;border:1px solid rgba(239,159,39,.42)}
+.b-warn{background:rgba(239,159,39,.10);color:#EF9F27;border:1px solid rgba(239,159,39,.28)}
+.b-normal{background:rgba(255,255,255,.06);color:var(--txt2);border:1px solid var(--line)}
+.b-armed{background:rgba(55,138,221,.14);color:#85B7EB;border:1px solid rgba(55,138,221,.38)}
+.b-pending{background:rgba(255,255,255,.05);color:var(--txt3);border:1px solid var(--line)}
+.b-done{background:rgba(29,158,117,.14);color:#5DCAA5;border:1px solid rgba(29,158,117,.35)}
+.casegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(560px,1fr));gap:16px}
+.case{background:var(--panel-hi);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
+.case-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px}
+.case-t{font-size:15px;font-weight:600}
+.case-no{font-size:12px;color:var(--txt3);font-family:ui-monospace,monospace}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
+.chip{font-size:11px;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.06);
+      border:1px solid var(--line);color:var(--txt2)}
+.stages{display:flex;gap:4px;margin-bottom:12px}
+.st{flex:1;text-align:center;font-size:10.5px;padding:5px 2px;border-radius:6px;
+    background:rgba(255,255,255,.04);color:var(--txt3);border:1px solid transparent}
+.st.done{background:rgba(29,158,117,.12);color:#5DCAA5}
+.st.cur{background:rgba(55,138,221,.20);color:#B5D4F4;border-color:rgba(55,138,221,.5);font-weight:600}
+.gates{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.gate{display:flex;align-items:center;gap:4px;font-size:11px;padding:3px 8px;border-radius:6px;
+      background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.dot{width:7px;height:7px;border-radius:50%}
+.g-pass .dot{background:var(--green)} .g-active .dot{background:var(--blue)}
+.g-warn .dot{background:var(--amber)} .g-fail .dot{background:var(--red)}
+.g-todo .dot,.g-waived .dot{background:var(--gray)}
+.meter{margin:10px 0 4px}
+.meter-bar{position:relative;height:8px;border-radius:4px;background:rgba(226,75,74,.30);overflow:hidden}
+.meter-fill{position:absolute;top:0;bottom:0;left:50%;background:var(--blue);border-radius:2px}
+.meter-fill.neg{left:auto;right:50%;background:var(--red)}
+.meter-lbl{display:flex;justify-content:space-between;font-size:10.5px;color:var(--txt3);margin-top:3px}
+.sec-t{font-size:11.5px;color:var(--txt3);margin:10px 0 5px;letter-spacing:.4px}
+ul{list-style:none}
+li{font-size:12.5px;color:var(--txt2);padding:3px 0 3px 14px;position:relative}
+li::before{content:"";position:absolute;left:2px;top:11px;width:4px;height:4px;border-radius:50%;background:var(--txt3)}
+li.risk::before{background:var(--amber)}
+li.act::before{background:var(--blue)}
+footer{color:var(--txt3);font-size:11px;text-align:center;padding:14px 0 4px}
+.empty{color:var(--txt3);font-size:13px;padding:8px 0}
+.mt-block{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:6px 0 2px}
+.mt-btn{display:inline-block;padding:4px 12px;border-radius:8px;background:rgba(55,138,221,.18);
+       color:#9CC7F0;border:1px solid rgba(55,138,221,.45);font-size:12px;text-decoration:none}
+.mt-btn:hover{background:rgba(55,138,221,.32)}
+.mt-ready{font-size:12px;color:var(--green)}
+.mt-noready{font-size:12px;color:var(--txt3)}
+.mt-prog{font-size:12px;margin:6px 0 2px;padding:4px 8px;border-radius:6px}
+.mt-prog.b-blue{background:rgba(55,138,221,.14);color:#3a8bdd}
+.mt-prog.b-green{background:rgba(46,160,67,.14);color:var(--green)}
+/* ── 当事人进度页发送台 ── */
+.sender{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sel{background:var(--panel-hi);color:var(--txt);border:1px solid var(--line-hi);border-radius:8px;
+     padding:8px 12px;font-size:13px;min-width:360px;font-family:inherit;max-width:100%}
+.sel:focus{outline:none;border-color:var(--blue)}
+.send-btn{background:rgba(29,158,117,.18);color:#5DCAA5;border:1px solid rgba(29,158,117,.45);
+          border-radius:8px;padding:8px 22px;font-size:13px;cursor:pointer;font-family:inherit;font-weight:600}
+.send-btn:hover{background:rgba(29,158,117,.32)}
+.send-hint{font-size:12px;color:var(--txt3)}
+.link-box{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.link-input{flex:1;min-width:300px;background:rgba(0,0,0,.28);color:var(--green);border:1px solid var(--line);
+           border-radius:8px;padding:8px 12px;font-size:13px;font-family:ui-monospace,monospace}
+.copy-btn{background:rgba(55,138,221,.18);color:#9CC7F0;border:1px solid rgba(55,138,221,.45);
+          border-radius:8px;padding:8px 16px;font-size:13px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.copy-btn:hover{background:rgba(55,138,221,.32)}
+.copy-btn.ok{background:rgba(29,158,117,.18);color:#5DCAA5;border-color:rgba(29,158,117,.45)}
+.preview-btn{display:inline-block;padding:8px 16px;border-radius:8px;background:rgba(255,255,255,.06);
+             color:var(--txt2);border:1px solid var(--line);font-size:13px;text-decoration:none;white-space:nowrap}
+.preview-btn:hover{background:rgba(255,255,255,.12)}
+.send-note{font-size:11px;color:var(--txt3);margin-top:10px;line-height:1.5}
+.qr-box{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:14px;
+        background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:14px 10px}
+.qr-img{width:140px;height:140px;background:#fff;border-radius:10px;padding:7px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.qr-cap{font-size:12px;color:var(--txt2)}
+</style>
+<style>
+/* 数据更新时间：紧贴标题（2026-09-16 由右上 fixed 浮块改为标题内联） */
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+  .clm-tabs{display:flex;gap:8px;margin:14px 0 4px;flex-wrap:wrap}
+  .clm-tab{font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:var(--txt3);background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:9px 16px;cursor:pointer;transition:.15s}
+  .clm-tab:hover{border-color:var(--line-hi);color:var(--txt)}
+  .clm-tab.on{border-color:var(--gold);color:var(--text);background:rgba(212,175,55,.10)}
+  #viewClient{margin-top:6px}
+  .hide{display:none!important}
+</style>
+<script src="report-render.js?v=20260917a"></script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>C4 案件管理中台<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-25 13:43（北京时间）</span></h1>
+    <span class="sub">小强律师数字分身系统 · 案件全程驾驶舱</span>
+    <span class="sub" id="gen"></span>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="clm-tabs" id="clmTabs">
+    <button class="clm-tab on" data-view="full">C4-1 全量看板</button>
+    <button class="clm-tab" data-view="single">C4-2 单案看板</button>
+    <button class="clm-tab" data-view="client">当事人可视化报告（脱敏）</button>
+  </div>
+
+  <!-- ═══ C4-1 全量看板：每案待办事项汇总 + 期限倒计时榜 ═══ -->
+  <section id="todosSection">
+    <h2>在办案件待办事项汇总</h2>
+    <div class="casegrid" id="todos"></div>
+  </section>
+
+  <section id="dlSection">
+    <h2>期限倒计时榜</h2>
+    <div id="dl"></div>
+  </section>
+
+  <!-- ═══ C4-2 单案看板：案号输入查询，Harvey Command Center 式单案全景 ═══ -->
+  <div id="viewSingle" class="hide">
+    <section id="singleSearchSection">
+      <h2>单案查询</h2>
+      <div class="sender">
+        <input id="singleInput" class="link-input" style="max-width:430px" placeholder="输入案号 / 案件ID / 关键词，如：6658 或 6660" list="caseNoList" autocomplete="off">
+        <datalist id="caseNoList"></datalist>
+        <button id="singleBtn" class="send-btn">查询</button>
+        <span id="singleHint" class="send-hint"></span>
+      </div>
+      <div class="chips" id="quickCases" style="margin-top:8px"></div>
+    </section>
+    <div id="singleOut"></div>
+  </div>
+
+  <!-- ═══ 当事人可视化报告（脱敏）+ 发送台 ═══ -->
+  <section id="senderSection" class="hide">
+    <h2>当事人进度页发送</h2>
+    <div class="sender">
+      <select id="caseSel" class="sel"></select>
+      <button id="sendBtn" class="send-btn">生成链接</button>
+      <span id="sendHint" class="send-hint"></span>
+    </div>
+    <div class="sender-row">
+      <label class="sr-label">分享链接前缀</label>
+      <input id="shareHost" class="link-input" value="">
+      <button id="lanBtn" class="copy-btn" title="自动把前缀改为电脑局域网地址，便于手机同WiFi扫码打开">填入本机IP</button>
+    </div>
+    <div id="linkBox" class="link-box" style="display:none">
+      <input id="linkInput" class="link-input" readonly>
+      <button id="copyBtn" class="copy-btn">复制</button>
+      <button id="exportBtn" class="copy-btn">导出报告文件</button>
+      <a id="previewBtn" class="preview-btn" target="_blank" rel="noopener">预览当事人页 ↗</a>
+    </div>
+    <div id="qrBox" class="qr-box" style="display:none">
+      <img id="qrImg" class="qr-img" alt="进度页二维码">
+      <div class="qr-cap">微信长按识别二维码，直接打开当事人进度（微信内可开，无需浏览器）</div>
+    </div>
+    <div class="send-note">选「案号 · 委托人」后点「生成链接」自动产出该案件独立当事人可视化报告（只读脱敏）。<b>手机扫码需与电脑同一 WiFi</b>：先点「填入本机IP」把前缀改为电脑局域网地址（如 http://192.168.2.83:9360）再生成链接/扫码即可。<b>若不便同网</b>，点「导出报告文件」生成完全自包含 HTML，直接发微信/邮件，对方下载离线打开，最稳、不依赖服务器。</div>
+  </section>
+
+  <section id="dlSection">
+    <h2>期限倒计时榜</h2>
+    <div id="dl"></div>
+  </section>
+
+  <div id="viewClient" class="hide"></div>
+
+  <footer>数据源：LawKB / 案件生命周期管理系统 / case-state.json（单一事实源）· 本页为内部全量视图，对外传播前须走脱敏管线</footer>
+</div>
+
+<script>
+const DATA = {
+  "generatedAt": "2026-09-25 13:43",
+  "today": "2026-09-25",
+  "stageNames": [
+    "①接案建档",
+    "②检索研究",
+    "③文书起草",
+    "④庭审查庭",
+    "⑤客户协作",
+    "⑥程序执行",
+    "⑦风控归档"
+  ],
+  "gateStatusText": {
+    "pass": "通过",
+    "active": "进行中",
+    "warn": "警示",
+    "fail": "未通过",
+    "todo": "待办",
+    "waived": "免除",
+    "skip": "跳过"
+  },
+  "kpi": {
+    "caseCount": 13,
+    "p0Count": 3,
+    "overdueCount": 2,
+    "deadlineCount": 8
+  },
+  "deadlines": [
+    {
+      "id": "d1",
+      "name": "34 号庭后补充意见（证据⑨强化意见一版）呈递",
+      "due": "2026-09-07",
+      "type": "约定",
+      "level": "P0",
+      "state": "done",
+      "basis": "2026-09-05 老强拍板呈递时机定为星期一",
+      "note": "已于 2026-09-07 呈递法院（与 31/33 号一并归整呈递）；34 号为证据⑨强化意见一版终稿",
+      "_caseNo": "(2026)黔0330民初6658号",
+      "_caseId": "6658",
+      "_daysLeft": -18,
+      "_level": "overdue",
+      "_rank": 0
+    },
+    {
+      "id": "d2",
+      "name": "对撤诉意见（二）[含⑦调查取证、⑧录音刻录附卷、⑨焦联鹏到庭询问] 经当事人核验确认，已于 2026-09-07 前后递交法院",
+      "due": "2026-09-07",
+      "type": "计划",
+      "level": "P0",
+      "state": "done",
+      "basis": "⑦⑧⑨ 已并入⑪意见（二），不另立申请；2026-09-06 老强确认口径",
+      "note": "意见（二）已发当事人核验确认并递交法院（老强 2026-09-16 核实：实际已递交，案卷原 armed 为状态陈旧未更新）；原「未递交前不得视为已提交」约束现已解除",
+      "_caseNo": "(2026)黔0330民初6660号",
+      "_caseId": "6660",
+      "_daysLeft": -18,
+      "_level": "overdue",
+      "_rank": 0
+    },
+    {
+      "id": "d2",
+      "name": "撤诉裁定送达前窗口期处置（19 号备用稿）",
+      "due": null,
+      "type": "触发型",
+      "level": "P1",
+      "state": "armed",
+      "basis": "原告若申请撤诉即触发",
+      "note": "19 号《对原告申请撤诉的意见》备用，撤诉不妨碍审查+保留另诉/投诉/控告权利",
+      "_caseNo": "(2026)黔0330民初6658号",
+      "_caseId": "6658",
+      "_daysLeft": null,
+      "_level": "armed",
+      "_rank": 4
+    },
+    {
+      "id": "d3",
+      "name": "一审判决上诉期",
+      "due": null,
+      "type": "触发型",
+      "level": "P0",
+      "state": "armed",
+      "basis": "判决书送达之日起十五日（条文序号交付前须经 LTI 核验）",
+      "note": "择期宣判中，送达日起算；裁定为十日",
+      "_caseNo": "(2026)黔0330民初6658号",
+      "_caseId": "6658",
+      "_daysLeft": null,
+      "_level": "armed",
+      "_rank": 4
+    },
+    {
+      "id": "d1",
+      "name": "撤诉裁定送达前窗口期（自认钉死+录音附卷已闭环，静候送达）",
+      "due": null,
+      "type": "触发型",
+      "level": "P2",
+      "state": "armed",
+      "basis": "准许撤诉裁定不可上诉、不可复议，唯一救济为诉讼费院长复核",
+      "note": "自认钉死（8.19《情况说明》真卷证据9 / 8.24被告方通话录音说明 / 法院官方8.24电话询问录音笔录已调取归卷）已于裁定送达前闭环；窗口期仍开放，送达即关闭不可补救，故仍须保持可见",
+      "_caseNo": "(2026)黔0330民初6660号",
+      "_caseId": "6660",
+      "_daysLeft": null,
+      "_level": "armed",
+      "_rank": 4
+    },
+    {
+      "id": "d4",
+      "name": "类案 R1-R5 黔2627 以外 3 案庭审引用前原文核验",
+      "due": null,
+      "type": "内部",
+      "level": "P1",
+      "state": "pending",
+      "basis": "防幻觉铁律：引用前必核原文",
+      "note": "未完成 C4 核验不得当庭引用",
+      "_caseNo": "(2026)黔0330民初6658号",
+      "_caseId": "6658",
+      "_daysLeft": null,
+      "_level": "pending",
+      "_rank": 5
+    },
+    {
+      "id": "d3",
+      "name": "封堵原样再诉（民诉法解释第214条第1款）",
+      "due": null,
+      "type": "持续",
+      "level": "P1",
+      "state": "pending",
+      "basis": "撤诉后可再诉，须以自认钉死+附卷阻断",
+      "note": "条文序号交付前须经 LTI 核验",
+      "_caseNo": "(2026)黔0330民初6660号",
+      "_caseId": "6660",
+      "_daysLeft": null,
+      "_level": "pending",
+      "_rank": 5
+    },
+    {
+      "id": "d4",
+      "name": "黄茂姣资金流水调取（另案索赔前置）",
+      "due": null,
+      "type": "内部",
+      "level": "P2",
+      "state": "pending",
+      "basis": "与 6658 案联动",
+      "note": "属另案索赔前置条件，非本案当期必办",
+      "_caseNo": "(2026)黔0330民初6660号",
+      "_caseId": "6660",
+      "_daysLeft": null,
+      "_level": "pending",
+      "_rank": 5
+    }
+  ],
+  "cases": [
+    {
+      "schema": "case-state/v1",
+      "caseId": "6658",
+      "caseNo": "(2026)黔0330民初6658号",
+      "title": "丁戊祥诉刘九零、刘维、黄茂姣、习水县欧派木门杉王店吊顶买卖合同纠纷案",
+      "court": "贵州省习水县人民法院 · 速裁法庭",
+      "judge": "龙雅清（独任审判员）",
+      "procedure": "简易程序",
+      "partyRole": "被告方",
+      "counselRole": "代书（未正式代理）",
+      "client": [
+        "刘九零",
+        "刘维"
+      ],
+      "domain": "建设工程/买卖合同",
+      "status": "进行中",
+      "stage": {
+        "current": 4,
+        "code": "trial",
+        "name": "④庭审查庭",
+        "enteredAt": "2026-09-01",
+        "note": "第一次开庭已毕，择期宣判；34 号庭后补充意见（证据⑨强化意见一版）已于 2026-09-07 呈递法院"
+      },
+      "gates": {
+        "G0": {
+          "name": "收案门禁",
+          "status": "pass",
+          "note": "已建档，案件笔记入 LawKB"
+        },
+        "G1": {
+          "name": "检索门禁",
+          "status": "pass",
+          "note": "07 法律检索报告、22 类案检索报告已出"
+        },
+        "G2": {
+          "name": "文书门禁",
+          "status": "pass",
+          "note": "01-05 答辩/举证/质证/发问/代理词已提交"
+        },
+        "G3": {
+          "name": "庭审门禁",
+          "status": "active",
+          "note": "9/1 开庭已毕，23 号笔录研读已出；择期宣判未结"
+        },
+        "G4": {
+          "name": "客户门禁",
+          "status": "pass",
+          "note": "34 号已交当事人核验通过，并于 2026-09-07 呈递法院"
+        },
+        "G5": {
+          "name": "程序门禁",
+          "status": "active",
+          "note": "24/25/26 已提交，33 号调取申请已获准履行"
+        },
+        "G6": {
+          "name": "风控门禁",
+          "status": "pass",
+          "note": "34/35 号 LTI 校验 PASS（0 REJECT）"
+        },
+        "G7": {
+          "name": "结案回流",
+          "status": "todo",
+          "note": "待判决生效后启动经验回填"
+        }
+      },
+      "deadlines": [
+        {
+          "id": "d1",
+          "name": "34 号庭后补充意见（证据⑨强化意见一版）呈递",
+          "due": "2026-09-07",
+          "type": "约定",
+          "level": "P0",
+          "state": "done",
+          "basis": "2026-09-05 老强拍板呈递时机定为星期一",
+          "note": "已于 2026-09-07 呈递法院（与 31/33 号一并归整呈递）；34 号为证据⑨强化意见一版终稿"
+        },
+        {
+          "id": "d2",
+          "name": "撤诉裁定送达前窗口期处置（19 号备用稿）",
+          "due": null,
+          "type": "触发型",
+          "level": "P1",
+          "state": "armed",
+          "basis": "原告若申请撤诉即触发",
+          "note": "19 号《对原告申请撤诉的意见》备用，撤诉不妨碍审查+保留另诉/投诉/控告权利"
+        },
+        {
+          "id": "d3",
+          "name": "一审判决上诉期",
+          "due": null,
+          "type": "触发型",
+          "level": "P0",
+          "state": "armed",
+          "basis": "判决书送达之日起十五日（条文序号交付前须经 LTI 核验）",
+          "note": "择期宣判中，送达日起算；裁定为十日"
+        },
+        {
+          "id": "d4",
+          "name": "类案 R1-R5 黔2627 以外 3 案庭审引用前原文核验",
+          "due": null,
+          "type": "内部",
+          "level": "P1",
+          "state": "pending",
+          "basis": "防幻觉铁律：引用前必核原文",
+          "note": "未完成 C4 核验不得当庭引用"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-07-14",
+          "event": "刘维与丁戊祥通话录音（10分50秒，证据⑦）"
+        },
+        {
+          "date": "2026-08-19",
+          "event": "丁戊祥《情况说明》，自认黄茂姣带客选货付订金"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "刘维与丁戊祥通话（3分13秒，证据⑧）；同日法官电话询问丁戊祥（证据⑨）"
+        },
+        {
+          "date": "2026-08-26",
+          "event": "庭前准备报告 v3；类案检索 5 规则"
+        },
+        {
+          "date": "2026-09-01",
+          "event": "第一次开庭（速裁法庭 15:00），实体审理至择期宣判",
+          "key": true
+        },
+        {
+          "date": "2026-09-02",
+          "event": "31 号 v4 纠错、32 号 v2 委托书矛盾分析"
+        },
+        {
+          "date": "2026-09-03",
+          "event": "33 号调取法官询问录音笔录申请书定稿"
+        },
+        {
+          "date": "2026-09-05",
+          "event": "真卷核验重大重构：冒名诉讼降补强，实体合同相对性升主攻；34 号四轮推翻改写为证据⑨强化意见一版",
+          "key": true
+        },
+        {
+          "date": "2026-09-07",
+          "event": "34 号庭后补充意见（证据⑨强化意见一版）呈递法院（与 31/33 号一并归整呈递）",
+          "key": true
+        }
+      ],
+      "nextActions": [
+        "34 号庭后补充意见（证据⑨强化意见一版）已于 2026-09-07 呈递法院，持续跟踪择期宣判节点",
+        "呈递清单与 31/33 号一并归整，待老强拍板后执行",
+        "跟踪择期宣判时间节点，送达即起算上诉期",
+        "持续提示：程序异议属平行备位轨道，不遮蔽实体防御主线（01/05 号）"
+      ],
+      "risks": [
+        "真卷显示丁戊祥委托律师陈宇、妻子盖章、当庭确认授权，冒名诉讼驳回起诉路径被法庭实际否定，程序战成功概率有限",
+        "证据⑤《未起诉说明》已被丁戊祥当庭陈述推翻，不得再作程序战核心依据",
+        "刘九零/刘维当庭认可 75 元阳角，金额层面存在部分自认，须严守防自认铁律",
+        "34 号前后四轮推翻重写，版本混乱风险，呈递前须确认最终版本为证据⑨强化意见一版"
+      ],
+      "stance": {
+        "blue": 20,
+        "trend": "flat",
+        "reason": "实体防御有当庭自认支撑（刘维自认房子包给黄茂姣仅选货、黄茂姣代付定金及11万），但程序战被法庭否定、金额层面存在部分自认，整体略优于持平"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "①接案建档",
+            "gate": "G0",
+            "role": "建档/决策留痕",
+            "agent": "CLM case-state.json + decision-capture",
+            "status": "已接入",
+            "artifacts": [
+              "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/丁戊祥诉刘九零吊顶买卖合同纠纷案-案件笔记.md（案情笔录/案件备忘录）"
+            ]
+          },
+          {
+            "stage": "②检索研究",
+            "gate": "G1",
+            "role": "法律检索",
+            "agent": "元典MCP(yuandian-mcp) + 北大法宝MCP(pkulaw)",
+            "status": "已接入",
+            "note": "二源互补",
+            "artifacts": [
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/07_法律检索报告.docx"
+            ]
+          },
+          {
+            "stage": "②检索研究",
+            "gate": "G1",
+            "role": "类案检索",
+            "agent": "元典case vector + 北大法宝MCP + 法随案例库MCP",
+            "status": "已接入",
+            "note": "三源互补",
+            "artifacts": [
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/22_类案检索报告.docx"
+            ]
+          },
+          {
+            "stage": "②检索研究",
+            "gate": "G1",
+            "role": "检索归档",
+            "agent": "ima 知识库",
+            "status": "已接入",
+            "artifacts": [
+              "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/丁戊祥诉刘九零吊顶买卖合同纠纷案-案件笔记.md"
+            ]
+          },
+          {
+            "stage": "③法律文书起草",
+            "gate": "G2",
+            "role": "法律文书（庭审六件套）",
+            "agent": "法律文书docx交付流水线 + LTI文本监控器",
+            "status": "已接入",
+            "artifacts": [
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/01_民事答辩状0810.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/02_举证清单.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/03_质证意见.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/04_庭审发问提纲.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/05_代理词.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_丁戊祥诉刘九零吊顶案（6658）/06_庭审预案.docx"
+            ]
+          },
+          {
+            "stage": "④庭审查庭",
+            "gate": "G3",
+            "role": "模拟法庭/审判要件",
+            "agent": "mock-trial-control-center + 审判要件卡拆卡流水线 + 本会话专家",
+            "status": "已接入"
+          },
+          {
+            "stage": "⑤客户协作",
+            "gate": "G4",
+            "role": "汇报/推送",
+            "agent": "案件工作汇报 + 调解和解 + CLM send_client_brief + agent-mail",
+            "status": "已接入（邮件通道待配webhook）"
+          },
+          {
+            "stage": "⑥程序执行",
+            "gate": "G5",
+            "role": "程序推进",
+            "agent": "案件全生命周期·程序推进包",
+            "status": "已建"
+          },
+          {
+            "stage": "⑦风控归档",
+            "gate": "G6/G8",
+            "role": "合规风控",
+            "agent": "LTI + lawkb-legal-consistency-audit + G8非诉专项",
+            "status": "已接入"
+          },
+          {
+            "stage": "结案回流",
+            "gate": "G7",
+            "role": "经验沉淀",
+            "agent": "mind-distill + LawKB 知识飞轮",
+            "status": "已接入"
+          },
+          {
+            "stage": "运维",
+            "gate": "-",
+            "role": "入口/监测",
+            "agent": "xiaoqiang-cockpit-hub + workbuddy-credit-monitor",
+            "status": "已接入"
+          }
+        ]
+      },
+      "mockTrial": {
+        "prepReportReady": true,
+        "prepReportPath": "LawKB/法律文书/模拟法庭/庭前强化稿/庭审准备报告_v3.md",
+        "status": "未启动",
+        "lastTrialAt": null,
+        "trialBriefPath": null
+      },
+      "publicView": {
+        "stageText": "一审已开庭，等待法院宣判",
+        "done": [
+          "2026-09-01 已参加第一次开庭",
+          "已向法院提交答辩状、举证清单、质证意见、代理词等诉讼材料",
+          "已提交调取证据申请并获法院准许"
+        ],
+        "next": "34 号庭后补充意见（证据⑨强化意见一版）已于 2026-09-07 呈递法院，其后等待法院宣判",
+        "clientTodo": [
+          "核验并签署《庭后补充意见（二）》，确认无误后由我们代为呈递",
+          "收到法院判决书后第一时间告知我们，以便计算上诉期限"
+        ],
+        "contact": "陈友强"
+      },
+      "updatedAt": "2026-09-14",
+      "source": "桌面真卷「小强律师办案系统/丁戊祥诉刘九零吊顶案」+ LawKB 案件笔记（2026-09-05 真卷重构版）",
+      "_folder": "丁戊祥诉刘九零吊顶买卖合同纠纷案",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "众志救援",
+      "caseNo": "（行政争议·非诉咨询）",
+      "title": "众志救援中心场地收回行政补偿案",
+      "domain": "行政协议/行政补偿",
+      "status": "非诉",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "众志救援场地使用收回案件",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/众志救援场地使用收回案件/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "冒井",
+      "caseNo": "（二审改判·遵义中院2023）",
+      "title": "冒井渔业vs厚德渔业合同纠纷（退出补偿协议履行）",
+      "domain": "商事合同/退出补偿",
+      "status": "已结案",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "冒井渔业vs厚德渔业合同纠纷",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/冒井渔业vs厚德渔业合同纠纷/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "审计约定",
+      "caseNo": "（非诉审查）",
+      "title": "厚德基金会审计业务约定书审查",
+      "domain": "基金会审计业务合规",
+      "status": "非诉",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "厚德基金会审计业务约定书审查",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/厚德基金会审计业务约定书审查/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "百益上诉",
+      "caseNo": "（二审/另案进行中）",
+      "title": "厚德基金会诉百益服务中心合同纠纷上诉案",
+      "domain": "基金会服务协议",
+      "status": "进行中",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "厚德基金会诉百益服务中心合同纠纷上诉案",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/厚德基金会诉百益服务中心合同纠纷上诉案/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "道真百益",
+      "caseNo": "(2025)黔0325民初230号之一",
+      "title": "厚德基金会诉道真百益合同纠纷案（公益理财服务协议履行/款项返还）",
+      "court": "道真仡佬族苗族自治县人民法院（一审）；二审上诉阶段",
+      "partyRole": "上诉人（一审原告）",
+      "opposingParty": [
+        "道真仡佬族苗族自治县百益社会工作服务中心",
+        "李丽",
+        "李佳豪"
+      ],
+      "domain": "合作合同/基金会服务协议",
+      "status": "进行中（二审上诉阶段）",
+      "client": [
+        "贵州省厚德公益基金会"
+      ],
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 补建·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "独立夹原无 state；要素取自本夹案件笔记原文(案号/法院/身份/对方)，其余待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "本夹案件笔记原文(厚德基金会诉道真百益合同纠纷案-案件笔记.md)",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "court",
+          "partyRole",
+          "domain",
+          "status",
+          "client",
+          "opposingParty"
+        ],
+        "pendingFields": [
+          "judge",
+          "deadlines",
+          "meta.agents",
+          "timeline",
+          "nextActions",
+          "risks"
+        ],
+        "note": "要素取自笔记原文；judge/deadlines/agents/timeline 须人工从笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "厚德基金会诉道真百益合同纠纷案",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/厚德基金会诉道真百益合同纠纷案/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "凤仪村",
+      "caseNo": "（无案号·预测阶段尚未起诉）",
+      "title": "凤仪村与赤水月亮湖合作合同纠纷案",
+      "partyRole": "代理被告/被上诉人（凤仪村委）",
+      "opposingParty": [
+        "赤水月亮湖"
+      ],
+      "domain": "合作合同纠纷",
+      "status": "准备/预测阶段（尚未起诉）",
+      "client": [
+        "凤仪村委"
+      ],
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 收窄·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "由合作合同夹双案描述收窄为凤仪村案（道真百益已独立成案）；要素取自凤仪村笔记原文"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "本夹凤仪村与赤水月亮湖合作合同纠纷案-案件笔记.md",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "partyRole",
+          "domain",
+          "status",
+          "client",
+          "opposingParty"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "要素取自笔记原文；court/judge/deadlines/agents/timeline 须人工回填。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "合作合同",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/合作合同/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "娄山华庭",
+      "caseNo": "（非诉审查）",
+      "title": "娄山华庭房屋租赁合同审查",
+      "domain": "房屋租赁合同",
+      "status": "非诉",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "娄山华庭房屋租赁合同",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/娄山华庭房屋租赁合同/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "1497",
+      "caseNo": "(2018)黔0330民初1497号",
+      "title": "王德明担保合同签名伪造案",
+      "domain": "担保合同/执行异议",
+      "status": "进行中",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "王德明担保合同纠纷案",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/王德明担保合同纠纷案/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "罗江辉",
+      "caseNo": "(2026)黔0103民初□□□□号（案号待核实）",
+      "title": "罗江辉教育培训合同纠纷（闭店退费）",
+      "domain": "教育培训合同/预付式消费",
+      "status": "已结案",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "罗江辉教育合同纠纷案",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/罗江辉教育合同纠纷案/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "陈长卫",
+      "caseNo": "（二审改判·黔东南中院2022）",
+      "title": "陈长卫劳务致害案（高压电击伤）",
+      "domain": "提供劳务受害/建设工程",
+      "status": "已结案",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "陈长卫劳务致害案",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/陈长卫劳务致害案/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "6660",
+      "caseNo": "(2026)黔0330民初6660号",
+      "title": "焦联鹏（习水县焦鹏雅菲软装经营部）诉刘九零、刘维窗帘买卖合同纠纷案",
+      "court": "贵州省习水县人民法院",
+      "judge": "龙雅清",
+      "procedure": "一审",
+      "partyRole": "被告方",
+      "counselRole": "代理",
+      "client": [
+        "刘九零",
+        "刘维"
+      ],
+      "domain": "建设工程/买卖合同",
+      "status": "撤诉窗口期",
+      "stage": {
+        "current": 6,
+        "code": "procedure",
+        "name": "⑥程序执行",
+        "enteredAt": "2026-09-01",
+        "note": "原告开庭当日申请撤诉，准许裁定未送达；窗口期处置为主战场"
+      },
+      "gates": {
+        "G0": {
+          "name": "收案门禁",
+          "status": "pass",
+          "note": "已建档，案件笔记入 LawKB"
+        },
+        "G1": {
+          "name": "检索门禁",
+          "status": "pass",
+          "note": "2026-07-14 法律检索报告、08 号法律检索报告"
+        },
+        "G2": {
+          "name": "文书门禁",
+          "status": "pass",
+          "note": "01-06 答辩/举证/质证/发问/代理词/庭审预案已备"
+        },
+        "G3": {
+          "name": "庭审门禁",
+          "status": "waived",
+          "note": "9/1 开庭当日原告申请撤诉，未正式开庭"
+        },
+        "G4": {
+          "name": "客户门禁",
+          "status": "pass",
+          "note": "意见（二）[含⑦⑧⑨]已发当事人核验确认，待确认后周一（2026-09-07）递交"
+        },
+        "G5": {
+          "name": "程序门禁",
+          "status": "active",
+          "note": "撤诉裁定送达前窗口期；自认钉死+录音附卷（含8.19说明真卷证据9、8.24被告方通话录音说明、法院官方8.24电话询问录音笔录已调取归卷）已于裁定送达前闭环；当前仅静候法院撤诉裁定送达，送达即窗口关闭"
+        },
+        "G6": {
+          "name": "风控门禁",
+          "status": "warn",
+          "note": "撤诉法条曾凭记忆写错（误用145条），已实地核验为148条第1款"
+        },
+        "G7": {
+          "name": "结案回流",
+          "status": "todo",
+          "note": "撤诉裁定送达、再诉封堵完成后启动"
+        }
+      },
+      "deadlines": [
+        {
+          "id": "d1",
+          "name": "撤诉裁定送达前窗口期（自认钉死+录音附卷已闭环，静候送达）",
+          "due": null,
+          "type": "触发型",
+          "level": "P2",
+          "state": "armed",
+          "basis": "准许撤诉裁定不可上诉、不可复议，唯一救济为诉讼费院长复核",
+          "note": "自认钉死（8.19《情况说明》真卷证据9 / 8.24被告方通话录音说明 / 法院官方8.24电话询问录音笔录已调取归卷）已于裁定送达前闭环；窗口期仍开放，送达即关闭不可补救，故仍须保持可见"
+        },
+        {
+          "id": "d2",
+          "name": "对撤诉意见（二）[含⑦调查取证、⑧录音刻录附卷、⑨焦联鹏到庭询问] 经当事人核验确认，已于 2026-09-07 前后递交法院",
+          "due": "2026-09-07",
+          "type": "计划",
+          "level": "P0",
+          "state": "done",
+          "basis": "⑦⑧⑨ 已并入⑪意见（二），不另立申请；2026-09-06 老强确认口径",
+          "note": "意见（二）已发当事人核验确认并递交法院（老强 2026-09-16 核实：实际已递交，案卷原 armed 为状态陈旧未更新）；原「未递交前不得视为已提交」约束现已解除"
+        },
+        {
+          "id": "d3",
+          "name": "封堵原样再诉（民诉法解释第214条第1款）",
+          "due": null,
+          "type": "持续",
+          "level": "P1",
+          "state": "pending",
+          "basis": "撤诉后可再诉，须以自认钉死+附卷阻断",
+          "note": "条文序号交付前须经 LTI 核验"
+        },
+        {
+          "id": "d4",
+          "name": "黄茂姣资金流水调取（另案索赔前置）",
+          "due": null,
+          "type": "内部",
+          "level": "P2",
+          "state": "pending",
+          "basis": "与 6658 案联动",
+          "note": "属另案索赔前置条件，非本案当期必办"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2025-06-01",
+          "event": "刘九零与欧派门业签装修合同（整装178,000元含窗帘5,000元）"
+        },
+        {
+          "date": "2025-09-25",
+          "event": "黄茂姣确定雅菲软装、谈价、下单"
+        },
+        {
+          "date": "2025-11-20",
+          "event": "承包方整改通知（质量问题）"
+        },
+        {
+          "date": "2025-11-25",
+          "event": "原告制订货单，刘维仅签收"
+        },
+        {
+          "date": "2026-01-22",
+          "event": "原告催款，被告指向黄茂姣"
+        },
+        {
+          "date": "2026-07-14",
+          "event": "法律检索报告完成（防御型）"
+        },
+        {
+          "date": "2026-08-12",
+          "event": "庭审准备报告（追加第三人策略修订版）"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "法官电话核实（14-附2 说明）"
+        },
+        {
+          "date": "2026-09-01",
+          "event": "原告开庭当日申请撤诉，未正式开庭；13 号撤诉后处置建议报告出具",
+          "key": true
+        },
+        {
+          "date": "2026-09-03",
+          "event": "9/4 递交底稿就绪（⑦⑪⑧⑨ 四份申请）"
+        },
+        {
+          "date": "2026-09-06",
+          "event": "意见（二）发当事人核验确认；⑦调查取证、⑧录音刻录附卷、⑨焦联鹏到庭询问确定并入意见（二），不另立申请；待周一（2026-09-07）递交",
+          "key": true
+        }
+      ],
+      "nextActions": [
+        "意见（二）[含⑦⑧⑨]已发当事人核验确认，待周一（2026-09-07）递交法院；递交后持续跟踪裁定送达",
+        "裁定送达前完成自认钉死（原告亲笔《情况说明》+ 法官电话核实录音附卷）",
+        "主张《民诉法解释》第238条第1款：当事人有违法行为需依法处理的，法院可以不准许撤诉",
+        "持续跟踪裁定送达状态，送达后立即评估再诉风险"
+      ],
+      "risks": [
+        "撤诉裁定送达即生效且不可上诉不可复议，窗口期一旦关闭再无补救空间",
+        "撤诉法条曾凭记忆写错（误用民诉法145条第2款），正确为148条第1款——同类法条引用须实地核验",
+        "原告撤诉后可依《民诉法解释》第214条第1款原样再诉，自认钉死不到位则前功尽弃",
+        "金额混乱（'295二元'笔误与微信'5000'矛盾），若再诉须咬死原告举证责任"
+      ],
+      "stance": {
+        "blue": 65,
+        "trend": "up",
+        "reason": "原告开庭当日撤诉，被告方未进入实体对抗即解除主要风险；剩余敞口为再诉封堵，裁定送达前完成自认钉死即可大幅压缩"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "①接案建档",
+            "gate": "G0",
+            "role": "建档/决策留痕",
+            "agent": "CLM case-state.json + decision-capture",
+            "status": "已接入",
+            "artifacts": [
+              "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/焦联鹏诉刘九零窗帘买卖合同纠纷案-案件笔记.md（案情笔录/案件备忘录）"
+            ]
+          },
+          {
+            "stage": "②检索研究",
+            "gate": "G1",
+            "role": "法律检索",
+            "agent": "元典MCP(yuandian-mcp) + 北大法宝MCP(pkulaw)",
+            "status": "已接入",
+            "note": "二源互补",
+            "artifacts": [
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_雅菲软装窗帘案（6660）/08_法律检索报告_雅菲软装窗帘案.docx"
+            ]
+          },
+          {
+            "stage": "②检索研究",
+            "gate": "G1",
+            "role": "类案检索",
+            "agent": "元典case vector + 北大法宝MCP + 法随案例库MCP",
+            "status": "待补",
+            "note": "三源互补；6660 暂未单独成件，或并入法律检索报告",
+            "artifacts": []
+          },
+          {
+            "stage": "②检索研究",
+            "gate": "G1",
+            "role": "检索归档",
+            "agent": "ima 知识库",
+            "status": "已接入",
+            "artifacts": [
+              "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/焦联鹏诉刘九零窗帘买卖合同纠纷案-案件笔记.md"
+            ]
+          },
+          {
+            "stage": "③法律文书起草",
+            "gate": "G2",
+            "role": "法律文书（庭审六件套）",
+            "agent": "法律文书docx交付流水线 + LTI文本监控器",
+            "status": "已接入",
+            "artifacts": [
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_雅菲软装窗帘案（6660）/01_民事答辩状_雅菲软装窗帘案_最新版.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_雅菲软装窗帘案（6660）/02_举证清单_雅菲软装窗帘案_最新版.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_雅菲软装窗帘案（6660）/03_质证意见_雅菲软装窗帘案_最新版.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_雅菲软装窗帘案（6660）/04_庭审发问提纲_雅菲软装窗帘案.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_雅菲软装窗帘案（6660）/05_代理词_雅菲软装窗帘案.docx",
+              "/Users/chenyouqiang/Desktop/小强律师办案系统/庭审10件套_雅菲软装窗帘案（6660）/06_庭审预案_法官裁判预判备忘_雅菲软装窗帘案.docx"
+            ]
+          },
+          {
+            "stage": "④庭审查庭",
+            "gate": "G3",
+            "role": "模拟法庭/审判要件",
+            "agent": "mock-trial-control-center + 审判要件卡拆卡流水线 + 本会话专家",
+            "status": "已接入"
+          },
+          {
+            "stage": "⑤客户协作",
+            "gate": "G4",
+            "role": "汇报/推送",
+            "agent": "案件工作汇报 + 调解和解 + CLM send_client_brief + agent-mail",
+            "status": "已接入（邮件通道待配webhook）"
+          },
+          {
+            "stage": "⑥程序执行",
+            "gate": "G5",
+            "role": "程序推进",
+            "agent": "案件全生命周期·程序推进包",
+            "status": "已建"
+          },
+          {
+            "stage": "⑦风控归档",
+            "gate": "G6/G8",
+            "role": "合规风控",
+            "agent": "LTI + lawkb-legal-consistency-audit + G8非诉专项",
+            "status": "已接入"
+          },
+          {
+            "stage": "结案回流",
+            "gate": "G7",
+            "role": "经验沉淀",
+            "agent": "mind-distill + LawKB 知识飞轮",
+            "status": "已接入"
+          },
+          {
+            "stage": "运维",
+            "gate": "-",
+            "role": "入口/监测",
+            "agent": "xiaoqiang-cockpit-hub + workbuddy-credit-monitor",
+            "status": "已接入"
+          }
+        ]
+      },
+      "mockTrial": {
+        "prepReportReady": true,
+        "prepReportPath": null,
+        "status": "未启动",
+        "lastTrialAt": null,
+        "trialBriefPath": null
+      },
+      "publicView": {
+        "stageText": "原告已申请撤诉，等待法院裁定送达",
+        "done": [
+          "已完成答辩状、举证清单、质证意见等应诉材料准备",
+          "2026-09-01 已到庭，对方当日申请撤诉",
+          "已出具撤诉后处置建议报告并拟递交相关申请"
+        ],
+        "next": "自认钉死（含8.19《情况说明》真卷证据9、8.24被告方通话录音说明、法院官方8.24电话询问录音笔录已调取归卷）已在裁定送达前闭环；当前仅静候法院撤诉裁定送达，送达后窗口关闭不可补救",
+        "clientTodo": [
+          "如收到法院任何裁定书或传票，请第一时间拍照告知我们",
+          "保留与本案相关的全部微信记录、收据、合同原件，不要删除"
+        ],
+        "contact": "陈友强"
+      },
+      "caseStateDetail": {
+        "schema": "case-detail/v1",
+        "factSummary": "原告习水县焦鹏雅菲软装经营部（个体工商户，经营者焦联鹏）以2025-11-25《雅菲软装订货单》（窗帘等软装产品）为由，诉请被告刘九零、刘维（刘九零之兄，曾用名刘军）支付货款。起诉状OCR识别金额约2,952元，存疑，以法院核定为准。被告抗辩：真交易相对方为房屋装修承包方欧派门业习水专卖店（负责人黄茂娇），被告仅系受承包方指示的收货验收人，与原告无直接买卖合同关系。",
+        "disputeFocus": [
+          "买卖合同关系是否成立：无书面合同时，被告刘维在订货单上的签收行为性质（数量验收 vs 买受人确认）",
+          "合同相对性可否突破：隐名代理（民法典925/926条）、表见代理（172条）、债务加入（552条）是否成立",
+          "备位抗辩边界：先履行抗辩权（526条）、法定抵销（568条）以有效买卖债务为前提，须避免自认债务"
+        ],
+        "legalBasis": [
+          {
+            "law": "民法典第465条",
+            "point": "合同相对性——被告方防御第一道防线根基：无证据证明与原告达成买卖合意，原告只能向真相对方主张"
+          },
+          {
+            "law": "买卖合同纠纷解释第1条",
+            "point": "无书面合同买卖关系认定标准：送货单/收货单仅为间接证据，须结合交易方式、交易习惯及其他证据综合认定（本案胜负手规则）"
+          },
+          {
+            "law": "民法典第925/926条",
+            "point": "隐名代理——双刃剑：若原告交易时明知相对方为欧派、被告仅收货人，则合同直接约束欧派（有利）；若原告有理由相信被告为买受人则不利"
+          },
+          {
+            "law": "民法典第526条",
+            "point": "先履行抗辩权——备位抗辩，以被告对原告负有有效买卖债务为前提"
+          },
+          {
+            "law": "民法典第568条",
+            "point": "法定抵销——备位抗辩，互负同种类金钱债务时适用"
+          },
+          {
+            "law": "民诉法解释第90条",
+            "point": "举证责任分配：原告须证明其主张的买卖关系事实，证据不足则承担不利后果"
+          }
+        ],
+        "evidence": [
+          "《雅菲软装订货单》（2025-11-25，刘维仅签收，未载明单价/总价）",
+          "刘九零与欧派门业《装修合同》（整装178,000元含窗帘5,000元，包工包料）",
+          "黄茂姣确定雅菲软装、谈价、下单的记录（实际买受人线索）",
+          "原告催款微信记录（被告指向黄茂姣为交易相对方）",
+          "2026-08-24 法官电话核实录音（14-附2 说明，对抗原告再诉自认）"
+        ],
+        "strategy": {
+          "blue": "第一道防线咬死合同相对性：原告与欧派门业成立买卖、被告仅收货验收人，引用买卖合同解释第1条+有利类案（宁波北仑'签字收货房主'案）。严防在载明欠款金额的单据上签名被认定为共同买受人（类案4/6/7风险警示）。备位主张装修质量瑕疵抗辩+法定抵销，但避免任何自认债务表述。",
+          "red": "原告若证明被告实际参与磋商、选货、结算或付款，或在含金额单据签名，则被告可能被认定为买受人（类案4张签名确认欠款/类案6方某甲签字结算付款/类案7本人签字选货）。金额混乱（'295二元'笔误 vs 微信'5000'矛盾）须由原告举证，被告咬死举证责任。"
+        },
+        "relatedCases": [
+          {
+            "case": "(2026)黔0330民初6658号 丁戊祥诉刘九零吊顶买卖合同纠纷案",
+            "relation": "平行案件，同涉黄茂姣为涉嫌实际买受人；6660案撤诉后须联动调取黄茂姣资金流水（d4内部前置），封堵原样再诉"
+          },
+          {
+            "case": "宁波北仑'签字收货的房主'案（2014）",
+            "relation": "有利类案：签收=收货验收非买受人，二审维持，事实结构高度一致"
+          },
+          {
+            "case": "江西新干(2026)瓷砖买卖案（类案4）",
+            "relation": "风险警示：在载明欠款单据签名=共同买受人，本案须严防"
+          }
+        ],
+        "riskLevel": "中风险",
+        "windowNote": "撤诉窗口期：原告2026-09-01开庭当日申请撤诉，准许裁定尚未送达。裁定送达即生效且不可上诉、不可复议，唯一救济为诉讼费院长复核。所有动作（自认钉死——原告亲笔《情况说明》+法官电话核实录音附卷）须在送达前完成。撤诉后可依民诉法解释第214条第1款原样再诉，须以自认钉死+附卷阻断。"
+      },
+      "updatedAt": "2026-09-16",
+      "source": "桌面真卷「庭审10件套_雅菲软装窗帘案（6660）」+ LawKB 案件笔记（2026-09-04 蒸馏版）",
+      "_folder": "雅菲软装窗帘买卖合同纠纷案",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/雅菲软装窗帘买卖合同纠纷案/case-state.json"
+    },
+    {
+      "schema": "case-state/v1",
+      "caseId": "韩杰",
+      "caseNo": "（刑事申诉·再审辩护）",
+      "title": "韩杰医生医疗事故罪申诉/再审辩护",
+      "domain": "医疗事故罪/刑事",
+      "status": "进行中",
+      "stage": {
+        "current": 0,
+        "code": "calibrated",
+        "name": "DTC-CASE-001 校准生成·待人工回填",
+        "enteredAt": "2026-09-14",
+        "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+      },
+      "gates": {
+        "G0": {
+          "name": "门禁G0",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G1": {
+          "name": "门禁G1",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G2": {
+          "name": "门禁G2",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G3": {
+          "name": "门禁G3",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G4": {
+          "name": "门禁G4",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G5": {
+          "name": "门禁G5",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G6": {
+          "name": "门禁G6",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G7": {
+          "name": "门禁G7",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        },
+        "G8": {
+          "name": "门禁G8",
+          "status": "todo",
+          "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
+        }
+      },
+      "calibration": {
+        "ticket": "DTC-CASE-001",
+        "generatedAt": "2026-09-14",
+        "source": "案件-知识映射索引 + 案件笔记存在性",
+        "verifiedFields": [
+          "caseNo",
+          "title",
+          "domain",
+          "status"
+        ],
+        "pendingFields": [
+          "court",
+          "judge",
+          "client",
+          "deadlines",
+          "meta.agents",
+          "timeline"
+        ],
+        "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+      },
+      "meta": {
+        "schema": "case-meta/v1",
+        "agents": [
+          {
+            "stage": "校准占位",
+            "role": "DTC-CASE-001",
+            "agent": "待回填",
+            "status": "todo",
+            "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
+          }
+        ]
+      },
+      "_folder": "韩杰医生医疗事故罪申诉案",
+      "_path": "/Users/chenyouqiang/Documents/LawKB/案件生命周期管理系统/韩杰医生医疗事故罪申诉案/case-state.json"
+    }
+  ]
+};
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// 模拟法庭控制中台（小强总驾驶舱挂载的模拟法庭大屏）
+const MOCK_TRIAL_URL = "https://93a0d6458e084c0eb62529531a22b48c.app.workbuddy.link";
+
+document.getElementById("gen").textContent = "数据生成 " + DATA.generatedAt;
+
+const k = DATA.kpi;
+document.getElementById("kpis").innerHTML = [
+  ["在办案件", k.caseCount, "ok"],
+  ["P0 待办", k.p0Count, k.p0Count > 0 ? "warn" : "ok"],
+  ["已超期", k.overdueCount, k.overdueCount > 0 ? "alarm" : "ok"],
+  ["期限总数", k.deadlineCount, ""]
+].map(([l, n, c]) => `<div class="kpi ${c}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+
+const LVL_TXT = {overdue:"超期", urgent:"紧急", warn:"临近", normal:"正常",
+                 armed:"待触发", pending:"待办", done:"已完成"};
+
+function dlRows(){
+  const all = DATA.deadlines || [];
+  const act = all.filter(d => d.state !== "done");   // 倒计时榜只看未决期限，已办结折叠计数
+  const doneN = all.length - act.length;
+  const note = doneN ? `<div style="font-size:12px;color:var(--txt3);margin:2px 0 8px">已办结 ${doneN} 项已折叠，以下为未决期限 ${act.length} 项</div>` : "";
+  if(!act.length) return note + '<div class="empty">无未决期限登记</div>';
+  return note + `<table><thead><tr>
+    <th style="width:90px">案件</th><th>事项</th><th style="width:78px">优先级</th>
+    <th style="width:96px">期限</th><th style="width:110px">状态</th><th>依据 / 备注</th>
+  </tr></thead><tbody>` + act.map(d => {
+    const lv = d._level || "pending";
+    let dueTxt = "触发型";
+    if(d.due){
+      const dl2 = d._daysLeft;
+      dueTxt = esc(d.due) + (dl2 === null ? "" :
+        (dl2 < 0 ? ` <span style="color:var(--red)">已过${-dl2}天</span>`
+                 : ` <span style="color:var(--txt3)">剩${dl2}天</span>`));
+    }
+    const p0 = d.level === "P0" ? '<span class="badge b-overdue">P0</span>' : esc(d.level || "");
+    return `<tr>
+      <td class="case-no">${esc(d._caseNo)}</td>
+      <td>${esc(d.name)}</td>
+      <td>${p0}</td>
+      <td>${dueTxt}</td>
+      <td><span class="badge b-${esc(lv)}">${LVL_TXT[lv] || esc(d.state || lv)}</span></td>
+      <td style="color:var(--txt3);font-size:12px">${esc(d.basis || "")}${d.note ? " · " + esc(d.note) : ""}</td>
+    </tr>`;
+  }).join("") + "</tbody></table>";
+}
+document.getElementById("dl").innerHTML = dlRows();
+
+function gatesHtml(gates){
+  const order = ["G0","G1","G2","G3","G4","G5","G6","G7"];
+  return order.map(g => {
+    const v = gates[g];
+    if(!v) return "";
+    const st = v.status || "todo";
+    const txt = DATA.gateStatusText[st] || st;
+    return `<span class="gate g-${esc(st)}" title="${esc(v.note || "")}">
+      <span class="dot"></span>${g} ${txt}</span>`;
+  }).join("");
+}
+
+function stagesHtml(cur){
+  return DATA.stageNames.map((n, i) => {
+    const idx = i + 1;
+    const cls = idx < cur ? "done" : (idx === cur ? "cur" : "");
+    return `<div class="st ${cls}">${esc(n)}</div>`;
+  }).join("");
+}
+
+function meterHtml(s){
+  const v = Math.max(-100, Math.min(100, s.blue || 0));
+  const w = Math.abs(v) / 2;
+  const neg = v < 0;
+  const trend = s.trend === "up" ? "↑ 上升" : (s.trend === "down" ? "↓ 下降" : "→ 持平");
+  return `<div class="meter">
+    <div class="meter-bar"><div class="meter-fill ${neg ? "neg" : ""}" style="width:${w}%"></div></div>
+    <div class="meter-lbl"><span>红方（原告）有利</span><span>蓝方 ${v > 0 ? "+" : ""}${v} · ${trend}</span><span>蓝方（本方）有利</span></div>
+    <div style="font-size:11.5px;color:var(--txt3);margin-top:5px">拨动原因：${esc(s.reason || "—")}</div>
+  </div>`;
+}
+
+function mockTrialHtml(c){
+  const m = c.mockTrial;
+  if(!m) return "";
+  const ready = !!m.prepReportReady;
+  const statusTxt = ({未启动:"未启动", 进行中:"进行中", 已完成:"已完成"})[m.status] || m.status || "—";
+  const readyTxt = ready
+    ? '<span class="mt-ready">✔ 庭审准备报告已就绪</span>'
+    : '<span class="mt-noready">✘ 准备报告未就绪（暂不可开模拟）</span>';
+  const lastTrial = m.lastTrialAt ? " · 最近推演 " + esc(m.lastTrialAt) : "";
+  const btn = ready
+    ? `<a class="mt-btn" href="${MOCK_TRIAL_URL}?case=${esc(c.caseId)}" target="_blank">进入模拟法庭控制中台 →</a>`
+    : '<span class="mt-noready">（完成准备报告后解锁入口）</span>';
+  return `<div class="sec-t">模拟法庭推演</div>
+    <div class="mt-block">${readyTxt}<span class="badge b-normal">${esc(statusTxt)}</span>${lastTrial}</div>
+    <div class="mt-block">${btn}</div>`;
+}
+
+/* ── C4-1 全量看板：每案待办事项汇总 ──
+ * 每张卡：案号 + 当前阶段 + 未决期限（armed/pending）+ 下一步动作摘录；已办结只计数。 */
+(function(){
+  document.getElementById("todos").innerHTML = DATA.cases.map(c => {
+    const open = (c.deadlines || []).filter(d => d.state !== "done");
+    const doneN = (c.deadlines || []).length - open.length;
+    const acts = (c.nextActions || []).slice(0, 3);
+    const openHtml = open.length ? open.slice(0, 4).map(d => {
+      const p0 = d.level === "P0" ? '<span class="badge b-overdue">P0</span>' : `<span class="badge b-pending">${esc(d.level || "")}</span>`;
+      const st = d.state === "armed" ? '<span class="badge b-armed">待触发</span>' : "";
+      const due = d.due ? `<span style="color:var(--txt3);font-size:11.5px">${esc(d.due)}</span>` : "";
+      return `<li class="act">${p0} ${st} ${esc(d.name)} ${due}</li>`;
+    }).join("") + (open.length > 4 ? `<li class="act" style="color:var(--txt3)">…另有 ${open.length - 4} 项未决</li>` : "")
+      : '<li class="act" style="color:var(--green)">✅ 无未决期限</li>';
+    const actsHtml = acts.length ? `<div class="sec-t">下一步动作（摘 ${acts.length} 条）</div><ul>${
+      acts.map(a => `<li class="act">${esc(a)}</li>`).join("")}</ul>` : "";
+    return `<div class="case">
+      <div class="case-hd">
+        <div>
+          <div class="case-t" style="font-size:13.5px">${esc(c.caseNo || c.title || "")}</div>
+          <div class="case-no">${esc((c.client || []).join("、") || c.title || "")}</div>
+        </div>
+        <span class="chip">${esc((c.stage && c.stage.name) || "")}</span>
+      </div>
+      <div class="sec-t">未决期限 ${open.length} 项${doneN ? ` · 已办结 ${doneN} 项` : ""}</div>
+      <ul>${openHtml}</ul>
+      ${actsHtml}
+    </div>`;
+  }).join("");
+})();
+
+// ── 智能体挂载面板（读取 case-state.json 的 meta.agents）──
+function agentsHtml(c){
+  const ags = (c.meta && c.meta.agents) || [];
+  if(!ags.length) return '<div class="empty">未配置 meta.agents</div>';
+  return `<table><thead><tr>
+      <th style="width:118px">阶段/门禁</th><th style="width:118px">职能</th>
+      <th>路由智能体</th><th style="width:104px">状态</th>
+    </tr></thead><tbody>` + ags.map(a => {
+    const st = a.status || "";
+    const cls = st.indexOf("待") >= 0 ? "b-pending" : "b-done";
+    return `<tr>
+      <td class="case-no">${esc(a.stage || "")}<br>${esc(a.gate || "")}</td>
+      <td>${esc(a.role || "")}</td>
+      <td>${esc(a.agent || "")}${a.note ? ` <span style="color:var(--txt3);font-size:11px">(${esc(a.note)})</span>` : ""}</td>
+      <td><span class="badge ${cls}">${esc(st)}</span></td>
+    </tr>`;
+  }).join("") + "</tbody></table>";
+}
+/* ── C4-2 单案看板（Harvey Command Center 式单案全景）──
+ * 九段式：①案件概况 ②案件事实脉络 ③当事人提交证据清单及证明目的 ④当前阶段进度
+ * ⑤案件态势 ⑥下一步动作 ⑦委托协议及期限 ⑧费用缴纳情况 ⑨当事人风险提示
+ * 附加：CLM 智能体路由 + 模拟法庭推演入口。
+ * 数据契约：evidence/retainer/fees 为可选字段（case-state.json 增补后自动显示），缺省显示待录入。 */
+function renderSingle(c){
+  const st = c.stage || {};
+  const gates = c.gates || {};
+
+  // ① 案件概况
+  const sec1 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-hd">
+      <div>
+        <div class="case-t">${esc(c.title || "")}</div>
+        <div class="case-no">${esc(c.caseNo || "（无案号）")} · ${esc(c.court || "")} · ${esc(c.judge || "")}</div>
+      </div>
+      <span class="chip">${esc(st.name || "")}</span>
+    </div>
+    <div class="chips">
+      <span class="chip">诉讼地位：${esc(c.partyRole || "—")}</span>
+      <span class="chip">代理/协办：${esc(c.counselRole || "—")}</span>
+      <span class="chip">委托人：${esc((c.client || []).join("、") || "—")}</span>
+      <span class="chip">${esc(c.procedure || "")}</span>
+      <span class="chip">领域：${esc(c.domain || "—")}</span>
+      <span class="chip">状态：${esc(c.status || "")}</span>
+    </div>
+    ${st.note ? `<div style="font-size:12.5px;color:var(--txt2);margin-top:8px">阶段备注：${esc(st.note)}</div>` : ""}
+    <div style="font-size:11px;color:var(--txt3);margin-top:8px">数据更新 ${esc(c.updatedAt || "—")} · 案件夹：${esc(c._folder || "—")}</div>
+  </div>`;
+
+  // ② 案件事实脉络（时间线，key 节点置顶标记）
+  const tl = (c.timeline || []).slice().sort((a,b) => String(a.date) < String(b.date) ? -1 : 1);
+  const sec2 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-t" style="font-size:14px">② 案件事实脉络</div>
+    ${tl.length ? `<table><thead><tr><th style="width:104px">时间</th><th>事实节点</th></tr></thead><tbody>${
+      tl.map(t => `<tr><td class="case-no">${esc(t.date || "—")}${t.key ? ' <span class="badge b-done">关键</span>' : ""}</td><td>${esc(t.event || "")}</td></tr>`).join("")
+    }</tbody></table>` : '<div class="empty">暂无事实脉络记录</div>'}
+  </div>`;
+
+  // ③ 当事人提交证据清单及证明目的（可选字段 evidence）
+  const ev = c.evidence || [];
+  const sec3 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-t" style="font-size:14px">③ 当事人提交证据清单及证明目的</div>
+    ${ev.length ? `<table><thead><tr><th style="width:64px">编号</th><th>证据名称</th><th style="width:120px">来源/形成时间</th><th>证明目的</th></tr></thead><tbody>${
+      ev.map(e => `<tr><td class="case-no">${esc(e.no || "—")}</td><td>${esc(e.name || "")}</td><td>${esc(e.source || "—")}</td><td>${esc(e.purpose || "—")}</td></tr>`).join("")
+    }</tbody></table>`
+    : '<div class="empty">证据清单待录入 —— 在案件夹 case-state.json 增补 <code>evidence: [{no, name, source, purpose}]</code> 后本表自动生成（可从桌面「小强律师办案系统」证据目录同步）</div>'}
+  </div>`;
+
+  // ④ 当前阶段进度（七阶段条 + 门禁）
+  const sec4 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-t" style="font-size:14px">④ 当前阶段进度</div>
+    <div class="stages">${stagesHtml(st.current || 1)}</div>
+    <div class="gates">${gatesHtml(gates)}</div>
+  </div>`;
+
+  // ⑤ 案件态势（红蓝杠杆）
+  const sec5 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-t" style="font-size:14px">⑤ 案件态势</div>
+    ${meterHtml(c.stance || {})}
+  </div>`;
+
+  // ⑥ 下一步动作
+  const acts = c.nextActions || [];
+  const sec6 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-t" style="font-size:14px">⑥ 下一步动作</div>
+    ${acts.length ? `<ul>${acts.map(a => `<li class="act">${esc(a)}</li>`).join("")}</ul>` : '<div class="empty">暂无登记</div>'}
+  </div>`;
+
+  // ⑦ 委托协议及期限（可选字段 retainer + 案内全部 deadlines）
+  const ret = c.retainer || null;
+  const dls = c.deadlines || [];
+  const sec7 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-t" style="font-size:14px">⑦ 委托协议及期限</div>
+    <div class="chips" style="margin:6px 0 10px">
+      <span class="chip">委托人：${esc((c.client || []).join("、") || "—")}</span>
+      <span class="chip">委托方式：${esc(c.counselRole || "—")}</span>
+      ${ret ? `<span class="chip">协议签订：${esc(ret.agreementDate || "—")}</span><span class="chip">委托期限：${esc(ret.term || ret.expiry || "—")}</span>${ret.scope ? `<span class="chip">委托范围：${esc(ret.scope)}</span>` : ""}` : ""}
+    </div>
+    ${dls.length ? `<table><thead><tr><th>期限事项</th><th style="width:70px">优先级</th><th style="width:96px">期限</th><th style="width:86px">状态</th><th>依据 / 备注</th></tr></thead><tbody>${
+      dls.map(d => {
+        const lv = d._level || (d.state === "done" ? "done" : "pending");
+        const due = d.due ? esc(d.due) : '<span style="color:var(--txt3)">触发型</span>';
+        return `<tr><td>${esc(d.name)}</td><td>${d.level === "P0" ? '<span class="badge b-overdue">P0</span>' : esc(d.level || "")}</td><td>${due}</td><td><span class="badge b-${esc(lv)}">${LVL_TXT[d.state || lv] || esc(d.state || lv)}</span></td><td style="color:var(--txt3);font-size:12px">${esc(d.basis || "")}${d.note ? " · " + esc(d.note) : ""}</td></tr>`;
+      }).join("")
+    }</tbody></table>` : '<div class="empty">暂无期限登记</div>'}
+  </div>`;
+
+  // ⑧ 费用缴纳情况（可选字段 fees）
+  const fees = c.fees || [];
+  const sec8 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-t" style="font-size:14px">⑧ 费用缴纳情况</div>
+    ${fees.length ? `<table><thead><tr><th>费用项目</th><th style="width:110px">金额</th><th style="width:90px">状态</th><th style="width:96px">日期</th><th>备注</th></tr></thead><tbody>${
+      fees.map(f => `<tr><td>${esc(f.item || "—")}</td><td>${esc(f.amount || "—")}</td><td>${f.status === "已缴" ? '<span class="badge b-done">已缴</span>' : (f.status === "部分" ? '<span class="badge b-pending">部分缴纳</span>' : '<span class="badge b-overdue">未缴</span>')}</td><td>${esc(f.date || "—")}</td><td style="color:var(--txt3);font-size:12px">${esc(f.note || "")}</td></tr>`).join("")
+    }</tbody></table>`
+    : '<div class="empty">暂无费用记录 —— 在 case-state.json 增补 <code>fees: [{item, amount, status, date, note}]</code> 后自动显示（具体以《委托代理协议》约定为准）</div>'}
+  </div>`;
+
+  // ⑨ 当事人风险提示
+  const risks = c.risks || [];
+  const sec9 = `<div class="case" style="margin-bottom:14px">
+    <div class="case-t" style="font-size:14px">⑨ 当事人风险提示</div>
+    ${risks.length ? `<ul>${risks.map(r => `<li class="risk">${esc(r)}</li>`).join("")}</ul>` : '<div class="empty">暂无风险登记</div>'}
+  </div>`;
+
+  // 附加：CLM 智能体路由 + 模拟法庭推演
+  const extra = `<div class="case">
+    <div class="case-t" style="font-size:14px">附加 · CLM 智能体路由与模拟法庭</div>
+    <div style="margin:8px 0">${mockTrialHtml(c) || '<div class="empty">未配置模拟法庭</div>'}</div>
+    ${agentsHtml(c)}
+  </div>`;
+
+  return sec1 + sec2 + sec3 + sec4 + sec5 + sec6 + sec7 + sec8 + sec9 + extra;
+}
+
+(function(){
+  const input = document.getElementById("singleInput");
+  const btn = document.getElementById("singleBtn");
+  const hint = document.getElementById("singleHint");
+  const out = document.getElementById("singleOut");
+
+  function findCase(q){
+    q = String(q || "").trim();
+    if(!q) return null;
+    const qs = q.replace(/\s+/g, "");
+    // 精确 caseId → 案号包含 → 标题/委托人包含
+    let hit = (DATA.cases || []).find(c => String(c.caseId) === qs);
+    if(!hit) hit = (DATA.cases || []).find(c => (c.caseNo || "").replace(/\s+/g, "").indexOf(qs) >= 0);
+    if(!hit) hit = (DATA.cases || []).find(c => ((c.title || "") + (c.client || []).join("")).indexOf(qs) >= 0);
+    return hit || null;
+  }
+
+  function run(){
+    const q = input.value;
+    const c = findCase(q);
+    if(!c){
+      out.innerHTML = `<div class="case"><div class="case-t" style="font-size:14px">未找到匹配案件</div>
+        <div style="font-size:12.5px;color:var(--txt3);margin-top:6px">当前库内可查：${(DATA.cases || []).map(x => esc(x.caseNo || x.caseId)).join(" ｜ ")}</div></div>`;
+      hint.textContent = "⚠ 未找到，可点下方快捷案卡或核对案号"; hint.style.color = "var(--amber)";
+      return;
+    }
+    hint.textContent = "✅ 已定位：" + (c.caseNo || c.caseId); hint.style.color = "var(--green)";
+    out.innerHTML = renderSingle(c);
+  }
+
+  btn.addEventListener("click", run);
+  input.addEventListener("keydown", e => { if(e.key === "Enter") run(); });
+
+  // 快捷案卡 + datalist 提示
+  document.getElementById("caseNoList").innerHTML = (DATA.cases || []).map(c =>
+    `<option value="${esc(c.caseNo || c.caseId)}">${esc(c.title || "")}</option>`).join("");
+  document.getElementById("quickCases").innerHTML = (DATA.cases || []).map(c =>
+    `<button class="chip" style="cursor:pointer" data-cid="${esc(c.caseId)}">${esc(c.caseNo || c.title || c.caseId)}</button>`).join("");
+  document.getElementById("quickCases").addEventListener("click", e => {
+    const b = e.target.closest("[data-cid]");
+    if(!b) return;
+    input.value = b.getAttribute("data-cid");
+    run();
+  });
+})();
+// ── 当事人进度页发送台 ──
+// 一键生成「当事人可视化报告」独立链接：report.html?case=<caseId>
+// 链接为本地自包含只读脱敏视图，离线/微信内可直接打开；不再依赖写死的腾讯文档映射。
+const IS_REDACT = false;
+(function(){
+  const sel = document.getElementById("caseSel");
+  const hint = document.getElementById("sendHint");
+  const linkBox = document.getElementById("linkBox");
+  const linkInput = document.getElementById("linkInput");
+  const previewBtn = document.getElementById("previewBtn");
+  const qrBox = document.getElementById("qrBox");
+  const qrImg = document.getElementById("qrImg");
+  const shareHost = document.getElementById("shareHost");
+  const lanBtn = document.getElementById("lanBtn");
+  const exportBtn = document.getElementById("exportBtn");
+  // 默认前缀 = 当前页所在目录（含 /subapps/clm/），保证 report.html 相对路径正确
+  try { shareHost.value = location.href.substring(0, location.href.lastIndexOf("/") + 1); } catch (e) {}
+  // 脱敏公开版不暴露发送台，避免泄漏真实当事人页链接
+  if(IS_REDACT){ document.getElementById("senderSection").style.display = "none"; return; }
+  const casesForSend = (DATA.cases || []).filter(c => c.caseId);
+  if(!casesForSend.length){
+    sel.innerHTML = '<option value="">（无案件）</option>';
+  } else {
+    sel.innerHTML = casesForSend.map(c =>
+      `<option value="${esc(c.caseId)}">${esc(c.caseNo || "")} · 委托人：${esc((c.client || []).join("、") || "—")}</option>`
+    ).join("");
+  }
+  document.getElementById("sendBtn").addEventListener("click", () => {
+    const cid = sel.value;
+    if(!cid){
+      linkBox.style.display = "none"; qrBox.style.display = "none";
+      hint.textContent = "⚠ 请先选择案件"; hint.style.color = "var(--amber)";
+      return;
+    }
+    // 一键生成：独立自包含报告页链接（基于「分享链接前缀」+ 同目录 report.html，读 ?case= 参数）
+    const base = (shareHost.value && shareHost.value.trim()) || location.href.substring(0, location.href.lastIndexOf("/") + 1);
+    const url = new URL("report.html?case=" + encodeURIComponent(cid), base.replace(/\/+$/, "/")).href;
+    // 回环地址告警：手机无法访问 127.0.0.1 / localhost
+    if (/127\.0\.0\.1|localhost|\[::1\]/i.test(url)) {
+      hint.textContent = "⚠ 当前前缀为本机地址，手机微信无法访问！请先点「填入本机IP」改用局域网地址再生成。";
+      hint.style.color = "var(--amber)";
+    } else {
+      hint.textContent = "✅ 已生成当事人可视化报告链接（只读脱敏）";
+      hint.style.color = "var(--green)";
+    }
+    linkInput.value = url;
+    previewBtn.href = url;
+    linkBox.style.display = "flex";
+    // 二维码：qrserver 生成（需联网；离线时仅隐藏二维码，链接仍可用）
+    try {
+      qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + encodeURIComponent(url);
+      qrBox.style.display = "flex";
+    } catch(e) { qrBox.style.display = "none"; }
+    linkInput.focus();
+    linkInput.select();
+  });
+  document.getElementById("copyBtn").addEventListener("click", () => {
+    linkInput.select();
+    const ok = () => {
+      const b = document.getElementById("copyBtn");
+      b.textContent = "已复制 ✔"; b.classList.add("ok");
+      setTimeout(() => { b.textContent = "复制"; b.classList.remove("ok"); }, 1600);
+    };
+    const fb = () => { try { document.execCommand("copy"); ok(); } catch(e) {} };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(linkInput.value).then(ok, fb);
+    } else { fb(); }
+  });
+  // 用 WebRTC 探测本机局域网 IP（手机同WiFi扫码场景）
+  function detectLanIP(cb) {
+    try {
+      const pc = new RTCPeerConnection({ iceServers: [] });
+      pc.createDataChannel("");
+      pc.createOffer().then(o => pc.setLocalDescription(o)).catch(() => cb(""));
+      pc.onicecandidate = e => {
+        if (!e || !e.candidate || !e.candidate.candidate) return;
+        const m = /(\d{1,3}\.){3}\d{1,3}/.exec(e.candidate.candidate);
+        if (m && !m[0].startsWith("127.")) { cb(m[0]); try { pc.close(); } catch (_) {} }
+      };
+      setTimeout(() => cb(""), 1500);
+    } catch (e) { cb(""); }
+  }
+  lanBtn.addEventListener("click", () => {
+    detectLanIP(ip => {
+      if (ip) {
+        try {
+          const dir = location.href.substring(0, location.href.lastIndexOf("/") + 1);
+          const u = new URL(dir);
+          u.host = ip + (u.port ? ":" + u.port : "");
+          shareHost.value = u.href;
+          hint.textContent = "✅ 已用本机局域网IP：" + ip + "（请确保手机与电脑同一WiFi）";
+          hint.style.color = "var(--green)";
+        } catch (e) {
+          hint.textContent = "⚠ 自动填充失败，请手动填入本机IP"; hint.style.color = "var(--amber)";
+        }
+      } else {
+        hint.textContent = "⚠ 未能自动获取局域网IP；请在「系统设置-网络」查本机IP（如 192.168.x.x）填入上方前缀";
+        hint.style.color = "var(--amber)";
+      }
+    });
+  });
+  exportBtn.addEventListener("click", () => {
+    const cid = sel.value;
+    if (!cid) { hint.textContent = "⚠ 请先选择案件"; hint.style.color = "var(--amber)"; return; }
+    let c = null;
+    for (const x of (DATA.cases || [])) { if (String(x.caseId) === String(cid)) { c = x; break; } }
+    if (!c) { hint.textContent = "⚠ 未找到该案件数据"; hint.style.color = "var(--amber)"; return; }
+    const html = window.buildStandaloneReport(c, DATA);
+    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "当事人可视化报告_" + cid + ".html";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => { try { URL.revokeObjectURL(a.href); } catch (_) {} }, 2000);
+    hint.textContent = "✅ 已导出「" + a.download + "」（自包含HTML，可直接发微信/邮件，对方下载离线打开）";
+    hint.style.color = "var(--green)";
+  });
+})();
+
+/* ── 2026-09-17 老强指令：C4 内新增「当事人只读（脱敏）」子页签 ──
+ * 原「当事人（只读）」登录席位已改为 IT 运维员（权限管理）；其只读案件视图下沉为本屏子页签。
+ * 脱敏规则：案号序列打码、委托人姓名打码、隐藏发送台/期限榜/智能体挂载/风险敞口；只读无操作。 */
+// 当事人可视化报告（六段式·Harvey 风格·脱敏友好）由 report-render.js 的 renderClientReport 统一渲染，单一模板源
+document.getElementById("viewClient").innerHTML = (DATA.cases || []).map(function(c){ return renderClientReport(c, DATA); }).join('<hr style="margin:18px 0;border-color:rgba(255,255,255,.08)">');
+
+(function(){
+  const tabs = document.getElementById("clmTabs");
+  // 三态视图映射：C4-1 全量看板 / C4-2 单案看板 / 当事人可视化报告（脱敏）
+  const VIEW_ELS = {
+    full:   ["todosSection", "dlSection"],
+    single: ["viewSingle"],
+    client: ["senderSection", "viewClient"]
+  };
+  const allEls = Object.values(VIEW_ELS).flat().map(id => document.getElementById(id));
+  tabs.querySelectorAll(".clm-tab").forEach(btn => {
+    btn.addEventListener("click", () => {
+      tabs.querySelectorAll(".clm-tab").forEach(x => x.classList.remove("on"));
+      btn.classList.add("on");
+      const show = VIEW_ELS[btn.dataset.view] || [];
+      // 用 classList 切换（.hide 带 !important，内联 style 顶不过它，必须走类切换）
+      allEls.forEach(el => { if(el) el.classList.toggle("hide", !show.includes(el.id)); });
+    });
+  });
+})();
+</script>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var s=null;
+    var _cd=(window.CLM_DATA&&(window.CLM_DATA.generatedAt||window.CLM_DATA.updatedAt))||'';
+    if(_cd){ s=_cd; }
+    else { var d=new Date(document.lastModified); if(!isNaN(d.getTime())) s=fmt(d); }
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：'+(s||'—')+'（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+(s||'—'));}
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>

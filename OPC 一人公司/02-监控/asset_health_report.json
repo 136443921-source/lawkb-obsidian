@@ -1,0 +1,84 @@
+{
+  "report_date": "2026-09-24",
+  "report_type": "资产健康月报",
+  "dimensions": [
+    {
+      "dim": "D1",
+      "name": "编目完整性",
+      "status": "PASS",
+      "summary": "大类 9 / 已入册资产 26 / 分布 {'知识库': 1, '规则库': 1, '卡库': 1, '技能': 1, '连接器': 1, '中台面板': 1, '自动化': 1, '心智模型手册': 1, '规则包(交付物)': 18}",
+      "findings": []
+    },
+    {
+      "dim": "D2",
+      "name": "数据漂移",
+      "status": "PASS",
+      "summary": "发现 0 项（P0=0 / P1=0）",
+      "findings": []
+    },
+    {
+      "dim": "D3",
+      "name": "配置一致性",
+      "status": "PASS",
+      "summary": "seat=1.4.5 panel=1.4.5 → PASS",
+      "findings": []
+    },
+    {
+      "dim": "D4",
+      "name": "自动化健康",
+      "status": "PASS",
+      "summary": "实测自动化 8 / 登记 8",
+      "findings": []
+    },
+    {
+      "dim": "D5",
+      "name": "规则库归库",
+      "status": "PASS",
+      "summary": "rules=835 variants=730 dimensions=71",
+      "findings": []
+    },
+    {
+      "dim": "D6",
+      "name": "连接器状态",
+      "status": "PASS",
+      "summary": "缓存连接器目录 6（实时连接态以 WorkBuddy UI 为准）",
+      "findings": []
+    },
+    {
+      "dim": "D7",
+      "name": "连接层完整性",
+      "status": "PASS",
+      "summary": "补链脚本=在 / 覆盖 2577 文件",
+      "findings": [
+        {
+          "severity": "P2",
+          "detail": "自动补链段覆盖 2577 个文件（补链器已运行）"
+        },
+        {
+          "severity": "P2",
+          "detail": "未找到 link_lastrun 标记目录，无法确认最近一次补链时间，建议落 lastrun 时间戳"
+        }
+      ]
+    },
+    {
+      "dim": "D8",
+      "name": "心智成熟度",
+      "status": "PASS",
+      "summary": "实测手册 17 / 登记 17 / 成熟度追踪文件 6",
+      "findings": []
+    }
+  ],
+  "p0": [],
+  "p1": [],
+  "p2": [
+    {
+      "severity": "P2",
+      "detail": "自动补链段覆盖 2577 个文件（补链器已运行）"
+    },
+    {
+      "severity": "P2",
+      "detail": "未找到 link_lastrun 标记目录，无法确认最近一次补链时间，建议落 lastrun 时间戳"
+    }
+  ],
+  "summary": "P0=0 P1=0 P2=2"
+}

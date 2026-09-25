@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9655 · 智能体中台 D7</title>
+<link rel="stylesheet" href="../../subapp_shell.css">
+</head>
+<body data-cno="D7">
+  <div class="topbar"><a class="back" href="../../index.html">← 返回作战地图</a></div>
+  <div id="app"></div>
+  <script src="../../subapp_shell.js"></script>
+<script>
+// O3 单机密文版成熟度 · S1 范式 overlay（独立 o3_maturity.json + no-store；不改 D7 视觉层 / 六维环）
+(function(){
+  var rel = (location.pathname.indexOf('/subapps/') >= 0) ? '../' : './';
+  function mount(nodeId, html){
+    var sels = ['.topbar','header','body'];
+    function put(a){var old=document.getElementById(nodeId);if(old)old.parentNode.removeChild(old);var el=document.createElement('div');el.id=nodeId;el.style.marginTop='6px';el.style.fontSize='12px';el.innerHTML=html;a.appendChild(el);}
+    for(var i=0;i<sels.length;i++){var a=document.querySelector(sels[i]);if(a){put(a);return;}}
+    var t=0;function retry(){for(var i=0;i<sels.length;i++){var a=document.querySelector(sels[i]);if(a){put(a);return;}}if(t++<8)setTimeout(retry,400);}retry();
+  }
+  fetch(rel+'o3_maturity.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():Promise.reject();}).then(function(j){
+    var m=j.metrics||{};var drift=(j.drifts||[]).length;var c=drift?'#ff8a87':'#9fe6c3';
+    mount('o3-maturity','🧬 O3 单机密文版成熟度：<b>'+m.maturity_score+'/100</b>（安装 '+m.install_rate+'% · 版本达标 '+m.version_ok_rate+'% · 回填 '+m.rebate_complete_rate+'%）· 漂移 <b style="color:'+c+'">'+drift+'</b> 项');
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>

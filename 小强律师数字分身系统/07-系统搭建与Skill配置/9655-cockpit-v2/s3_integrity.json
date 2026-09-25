@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-09-21 09:05:32",
+  "ring_value": 64.0,
+  "computed_mean": 64.0,
+  "six_dims": [
+    {
+      "name": "部署就绪度",
+      "val": 62
+    },
+    {
+      "name": "架构健康度",
+      "val": 75
+    },
+    {
+      "name": "安全合规度",
+      "val": 67
+    },
+    {
+      "name": "门禁运行度",
+      "val": 30
+    },
+    {
+      "name": "版本锁回填",
+      "val": 100
+    },
+    {
+      "name": "缺口闭环度",
+      "val": 50
+    }
+  ],
+  "diff": 0.0,
+  "consistent": true,
+  "verdict": "OK",
+  "note": ""
+}

@@ -1,0 +1,5730 @@
+{
+  "screens": [
+    {
+      "key": "home",
+      "name": "九屏维度",
+      "cno": "C0",
+      "url": "",
+      "dot": "m",
+      "lawFirm": false,
+      "weight": 0.0,
+      "scoring": false,
+      "score": null,
+      "six": null,
+      "kpis": [],
+      "gaps": null,
+      "panels": null,
+      "sixDims": null,
+      "metacog": null,
+      "updated": "2026-09-25 19:37:11",
+      "flag": null,
+      "risk": "监控位 · 不纳入评分"
+    },
+    {
+      "key": "ev",
+      "name": "车机驾驶舱",
+      "cno": "C1",
+      "url": "subapps/ev/index.html",
+      "dot": "a",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": true,
+      "score": 100.0,
+      "six": {
+        "fresh": 100.0,
+        "coverage": 100.0,
+        "health": 100.0,
+        "output": 100.0,
+        "compliance": 100.0,
+        "automation": 100.0
+      },
+      "kpis": [
+        [
+          "9655 门户",
+          "✅ HTTP 200"
+        ],
+        [
+          "LTI 门禁守护进程",
+          "🔄 未启动（独立状态·不计入本屏评分）"
+        ],
+        [
+          "主机负载",
+          "—"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "主机实时指标（实采 macOS/Linux）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "CPU 占用",
+              "status": "silent",
+              "detail": "本机命令不可用·需人工确认",
+              "stats": [
+                [
+                  "CPU",
+                  "需人工确认"
+                ]
+              ]
+            },
+            {
+              "name": "内存占用",
+              "status": "warn",
+              "detail": "实采 77.5%",
+              "stats": [
+                [
+                  "MEM",
+                  "77.5%"
+                ]
+              ]
+            },
+            {
+              "name": "系统负载(1m)",
+              "status": "silent",
+              "detail": "需人工确认",
+              "stats": [
+                [
+                  "LOAD",
+                  "需人工确认"
+                ]
+              ]
+            },
+            {
+              "name": "运行时长",
+              "status": "active",
+              "detail": "310.7 小时",
+              "stats": [
+                [
+                  "UPTIME",
+                  "310.7h"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "主机与门禁守护",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "LTI 门禁守护进程",
+              "status": "alert",
+              "detail": "🔄 未启动（待 launchctl load）；plist 已装=是",
+              "stats": [
+                [
+                  "守护进程",
+                  "未启动"
+                ],
+                [
+                  "plist",
+                  "已装"
+                ],
+                [
+                  "门禁版本",
+                  "4.9.1"
+                ],
+                [
+                  "REJECT",
+                  "待回填"
+                ]
+              ]
+            },
+            {
+              "name": "9655 门户服务",
+              "status": "active",
+              "detail": "http://127.0.0.1:9655/ HTTP 200 可达",
+              "stats": [
+                [
+                  "端口",
+                  "9655"
+                ],
+                [
+                  "绑定",
+                  "127.0.0.1"
+                ],
+                [
+                  "状态",
+                  "200"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "磁盘水位",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "单机密文版源目录",
+              "status": "silent",
+              "detail": "源目录磁盘占用 79%",
+              "pct": 79,
+              "stats": [
+                [
+                  "占用",
+                  "79%"
+                ],
+                [
+                  "水位",
+                  "中"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": false,
+      "risk": "车机驾驶舱本体实时状态（门户可达 + 主机健康）；LTI 门禁状态仅作并列展示，不再作为满分开关"
+    },
+    {
+      "key": "decision",
+      "name": "决策思维舱",
+      "cno": "C2",
+      "url": "subapps/decision/index.html",
+      "dot": "d",
+      "lawFirm": false,
+      "weight": 0.12,
+      "scoring": true,
+      "score": 100.0,
+      "six": {
+        "fresh": 100.0,
+        "coverage": 100.0,
+        "health": 100.0,
+        "output": 100.0,
+        "compliance": 100.0,
+        "automation": 100.0
+      },
+      "kpis": [
+        [
+          "版本锁回填",
+          "20/20"
+        ],
+        [
+          "实测漂移",
+          "2 项⚠️"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "技能版本锁明细（实扫）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "legal-consult-router",
+              "status": "active",
+              "detail": "快照版本 1.0.0 → 实测 1.0.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P0"
+                ],
+                [
+                  "快照",
+                  "1.0.0"
+                ],
+                [
+                  "实测",
+                  "1.0.0"
+                ]
+              ]
+            },
+            {
+              "name": "lawyer-yourself-skill",
+              "status": "active",
+              "detail": "快照版本 1.2.0 → 实测 1.2.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P0"
+                ],
+                [
+                  "快照",
+                  "1.2.0"
+                ],
+                [
+                  "实测",
+                  "1.2.0"
+                ]
+              ]
+            },
+            {
+              "name": "LTI 文本监控器",
+              "status": "active",
+              "detail": "快照版本 4.9.1 → 实测 4.9.1 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P0"
+                ],
+                [
+                  "快照",
+                  "4.9.1"
+                ],
+                [
+                  "实测",
+                  "4.9.1"
+                ]
+              ]
+            },
+            {
+              "name": "legal-base（基座）",
+              "status": "active",
+              "detail": "快照版本 1.3.0 → 实测 1.3.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P0"
+                ],
+                [
+                  "快照",
+                  "1.3.0"
+                ],
+                [
+                  "实测",
+                  "1.3.0"
+                ]
+              ]
+            },
+            {
+              "name": "法律智能体基座",
+              "status": "active",
+              "detail": "快照版本 1.1.0 → 实测 1.1.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P0"
+                ],
+                [
+                  "快照",
+                  "1.1.0"
+                ],
+                [
+                  "实测",
+                  "1.1.0"
+                ]
+              ]
+            },
+            {
+              "name": "诉讼文书红蓝复核工作流",
+              "status": "active",
+              "detail": "快照版本 1.0.0 → 实测 1.0.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P1"
+                ],
+                [
+                  "快照",
+                  "1.0.0"
+                ],
+                [
+                  "实测",
+                  "1.0.0"
+                ]
+              ]
+            },
+            {
+              "name": "蓝队出庭律师",
+              "status": "active",
+              "detail": "快照版本 4.6.2 → 实测 4.6.2 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P1"
+                ],
+                [
+                  "快照",
+                  "4.6.2"
+                ],
+                [
+                  "实测",
+                  "4.6.2"
+                ]
+              ]
+            },
+            {
+              "name": "红队出庭律师",
+              "status": "active",
+              "detail": "快照版本 2.6.0 → 实测 2.6.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P1"
+                ],
+                [
+                  "快照",
+                  "2.6.0"
+                ],
+                [
+                  "实测",
+                  "2.6.0"
+                ]
+              ]
+            },
+            {
+              "name": "模拟法庭主控协调器",
+              "status": "active",
+              "detail": "快照版本 1.6.4 → 实测 1.6.4 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P1"
+                ],
+                [
+                  "快照",
+                  "1.6.4"
+                ],
+                [
+                  "实测",
+                  "1.6.4"
+                ]
+              ]
+            },
+            {
+              "name": "模拟法庭书记员",
+              "status": "active",
+              "detail": "快照版本 1.0.2 → 实测 1.0.2 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P1"
+                ],
+                [
+                  "快照",
+                  "1.0.2"
+                ],
+                [
+                  "实测",
+                  "1.0.2"
+                ]
+              ]
+            },
+            {
+              "name": "庭审战情室",
+              "status": "active",
+              "detail": "快照版本 2.1.0 → 实测 2.1.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P1"
+                ],
+                [
+                  "快照",
+                  "2.1.0"
+                ],
+                [
+                  "实测",
+                  "2.1.0"
+                ]
+              ]
+            },
+            {
+              "name": "审判要件卡拆卡流水线",
+              "status": "alert",
+              "detail": "快照版本 1.38.0 → 实测 1.41.0 ⚠️ 实测1.41.0≠快照1.38.0",
+              "stats": [
+                [
+                  "优先级",
+                  "P1"
+                ],
+                [
+                  "快照",
+                  "1.38.0"
+                ],
+                [
+                  "实测",
+                  "1.41.0"
+                ]
+              ]
+            },
+            {
+              "name": "文书范式卡建卡流水线",
+              "status": "active",
+              "detail": "快照版本 1.2.0 → 实测 1.2.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P1"
+                ],
+                [
+                  "快照",
+                  "1.2.0"
+                ],
+                [
+                  "实测",
+                  "1.2.0"
+                ]
+              ]
+            },
+            {
+              "name": "知识飞轮卡库接线",
+              "status": "active",
+              "detail": "快照版本 1.0.0 → 实测 1.0.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P2"
+                ],
+                [
+                  "快照",
+                  "1.0.0"
+                ],
+                [
+                  "实测",
+                  "1.0.0"
+                ]
+              ]
+            },
+            {
+              "name": "lawkb-legal-consistency-audit",
+              "status": "active",
+              "detail": "快照版本 1.0.1 → 实测 1.0.1 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P2"
+                ],
+                [
+                  "快照",
+                  "1.0.1"
+                ],
+                [
+                  "实测",
+                  "1.0.1"
+                ]
+              ]
+            },
+            {
+              "name": "案件生命周期大屏流水线",
+              "status": "active",
+              "detail": "快照版本 1.1.0 → 实测 1.1.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P2"
+                ],
+                [
+                  "快照",
+                  "1.1.0"
+                ],
+                [
+                  "实测",
+                  "1.1.0"
+                ]
+              ]
+            },
+            {
+              "name": "xiaoqiang-cockpit-hub",
+              "status": "alert",
+              "detail": "快照版本 1.11.13 → 实测 1.1.13 ⚠️ 实测1.1.13≠快照1.11.13",
+              "stats": [
+                [
+                  "优先级",
+                  "P2"
+                ],
+                [
+                  "快照",
+                  "1.11.13"
+                ],
+                [
+                  "实测",
+                  "1.1.13"
+                ]
+              ]
+            },
+            {
+              "name": "静态数据看板生成流水线",
+              "status": "active",
+              "detail": "快照版本 1.0.1 → 实测 1.0.1 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P2"
+                ],
+                [
+                  "快照",
+                  "1.0.1"
+                ],
+                [
+                  "实测",
+                  "1.0.1"
+                ]
+              ]
+            },
+            {
+              "name": "合规审查卡建卡流水线",
+              "status": "active",
+              "detail": "快照版本 1.5.0 → 实测 1.5.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P2"
+                ],
+                [
+                  "快照",
+                  "1.5.0"
+                ],
+                [
+                  "实测",
+                  "1.5.0"
+                ]
+              ]
+            },
+            {
+              "name": "三轮冲击控制器",
+              "status": "active",
+              "detail": "快照版本 1.5.0 → 实测 1.5.0 ",
+              "stats": [
+                [
+                  "优先级",
+                  "P2"
+                ],
+                [
+                  "快照",
+                  "1.5.0"
+                ],
+                [
+                  "实测",
+                  "1.5.0"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": true,
+      "risk": "版本锁实地探测 vs 总体方案快照"
+    },
+    {
+      "key": "flywheel",
+      "name": "知识飞轮舱",
+      "cno": "C3",
+      "url": "subapps/flywheel/index.html",
+      "dot": "b",
+      "lawFirm": false,
+      "weight": 0.12,
+      "scoring": true,
+      "score": 100.0,
+      "six": {
+        "fresh": 100.0,
+        "coverage": 100.0,
+        "health": 100.0,
+        "output": 100.0,
+        "compliance": 100.0,
+        "automation": 100.0
+      },
+      "kpis": [
+        [
+          "卡库规模",
+          "2198 个 md"
+        ],
+        [
+          "覆盖",
+          "100%"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "知识体分布（06-沉淀 实扫）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "P-补字段治理_dryrun",
+              "status": "silent",
+              "detail": "0 个 md",
+              "stats": [
+                [
+                  "md",
+                  0
+                ]
+              ]
+            },
+            {
+              "name": "__pycache__",
+              "status": "silent",
+              "detail": "0 个 md",
+              "stats": [
+                [
+                  "md",
+                  0
+                ]
+              ]
+            },
+            {
+              "name": "人伤法域库",
+              "status": "active",
+              "detail": "427 个 md",
+              "stats": [
+                [
+                  "md",
+                  427
+                ]
+              ]
+            },
+            {
+              "name": "公司法域库",
+              "status": "active",
+              "detail": "112 个 md",
+              "stats": [
+                [
+                  "md",
+                  112
+                ]
+              ]
+            },
+            {
+              "name": "分身记忆备份",
+              "status": "active",
+              "detail": "2 个 md",
+              "stats": [
+                [
+                  "md",
+                  2
+                ]
+              ]
+            },
+            {
+              "name": "刑事域库",
+              "status": "active",
+              "detail": "48 个 md",
+              "stats": [
+                [
+                  "md",
+                  48
+                ]
+              ]
+            },
+            {
+              "name": "劳动人事域库",
+              "status": "active",
+              "detail": "88 个 md",
+              "stats": [
+                [
+                  "md",
+                  88
+                ]
+              ]
+            },
+            {
+              "name": "合同风险规则库",
+              "status": "active",
+              "detail": "283 个 md",
+              "stats": [
+                [
+                  "md",
+                  283
+                ]
+              ]
+            },
+            {
+              "name": "合规域库",
+              "status": "active",
+              "detail": "95 个 md",
+              "stats": [
+                [
+                  "md",
+                  95
+                ]
+              ]
+            },
+            {
+              "name": "商事纠纷域库",
+              "status": "active",
+              "detail": "64 个 md",
+              "stats": [
+                [
+                  "md",
+                  64
+                ]
+              ]
+            },
+            {
+              "name": "婚姻家庭域库",
+              "status": "active",
+              "detail": "101 个 md",
+              "stats": [
+                [
+                  "md",
+                  101
+                ]
+              ]
+            },
+            {
+              "name": "年度知识总结",
+              "status": "silent",
+              "detail": "0 个 md",
+              "stats": [
+                [
+                  "md",
+                  0
+                ]
+              ]
+            },
+            {
+              "name": "建设工程域库",
+              "status": "active",
+              "detail": "35 个 md",
+              "stats": [
+                [
+                  "md",
+                  35
+                ]
+              ]
+            },
+            {
+              "name": "律师实务域库",
+              "status": "active",
+              "detail": "66 个 md",
+              "stats": [
+                [
+                  "md",
+                  66
+                ]
+              ]
+            },
+            {
+              "name": "慈善合规域库",
+              "status": "active",
+              "detail": "188 个 md",
+              "stats": [
+                [
+                  "md",
+                  188
+                ]
+              ]
+            },
+            {
+              "name": "数字分身系统设计",
+              "status": "active",
+              "detail": "2 个 md",
+              "stats": [
+                [
+                  "md",
+                  2
+                ]
+              ]
+            },
+            {
+              "name": "条号位移卡族",
+              "status": "active",
+              "detail": "7 个 md",
+              "stats": [
+                [
+                  "md",
+                  7
+                ]
+              ]
+            },
+            {
+              "name": "案例库",
+              "status": "active",
+              "detail": "11 个 md",
+              "stats": [
+                [
+                  "md",
+                  11
+                ]
+              ]
+            },
+            {
+              "name": "案由路由卡族",
+              "status": "active",
+              "detail": "321 个 md",
+              "stats": [
+                [
+                  "md",
+                  321
+                ]
+              ]
+            },
+            {
+              "name": "知识盲区扫描日志",
+              "status": "active",
+              "detail": "10 个 md",
+              "stats": [
+                [
+                  "md",
+                  10
+                ]
+              ]
+            },
+            {
+              "name": "类案检索报告卡族",
+              "status": "active",
+              "detail": "15 个 md",
+              "stats": [
+                [
+                  "md",
+                  15
+                ]
+              ]
+            },
+            {
+              "name": "裁判规则库",
+              "status": "active",
+              "detail": "90 个 md",
+              "stats": [
+                [
+                  "md",
+                  90
+                ]
+              ]
+            },
+            {
+              "name": "证据规则卡族",
+              "status": "active",
+              "detail": "189 个 md",
+              "stats": [
+                [
+                  "md",
+                  189
+                ]
+              ]
+            },
+            {
+              "name": "通用裁判规则库",
+              "status": "active",
+              "detail": "39 个 md",
+              "stats": [
+                [
+                  "md",
+                  39
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "卡库规模",
+          "kind": "kpis",
+          "rows": [
+            [
+              "文档总数",
+              "2198 个 md"
+            ],
+            [
+              "覆盖度",
+              "100%"
+            ],
+            [
+              "今日变更",
+              "47 个"
+            ]
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": false,
+      "risk": "知识飞轮卡库规模与覆盖"
+    },
+    {
+      "key": "clm",
+      "name": "案件管理中台",
+      "cno": "C4",
+      "url": "subapps/clm/index.html",
+      "dot": "f",
+      "lawFirm": true,
+      "weight": 0.0,
+      "scoring": true,
+      "score": 66.5,
+      "six": {
+        "fresh": 66.5,
+        "coverage": 66.5,
+        "health": 66.5,
+        "output": 66.5,
+        "compliance": 66.5,
+        "automation": 66.5
+      },
+      "kpis": [],
+      "gaps": null,
+      "panels": null,
+      "sixDims": null,
+      "metacog": null,
+      "updated": "2026-09-18(9360真源)",
+      "flag": false,
+      "risk": "9360 真源业务屏 · 全屏显示"
+    },
+    {
+      "key": "xiaode",
+      "name": "合规管理中台",
+      "cno": "C5",
+      "url": "subapps/xiaode/index.html",
+      "dot": "k",
+      "lawFirm": true,
+      "weight": 0.0,
+      "scoring": true,
+      "score": 61.0,
+      "six": {
+        "fresh": 61.0,
+        "coverage": 61.0,
+        "health": 61.0,
+        "output": 61.0,
+        "compliance": 61.0,
+        "automation": 61.0
+      },
+      "kpis": [],
+      "gaps": null,
+      "panels": null,
+      "sixDims": null,
+      "metacog": null,
+      "updated": "2026-09-18(9360真源)",
+      "flag": false,
+      "risk": "9360 真源业务屏 · 全屏显示"
+    },
+    {
+      "key": "mock",
+      "name": "模拟庭审中台",
+      "cno": "C6",
+      "url": "subapps/mock/index.html",
+      "dot": "c",
+      "lawFirm": true,
+      "weight": 0.0,
+      "scoring": true,
+      "score": 62.0,
+      "six": {
+        "fresh": 62.0,
+        "coverage": 62.0,
+        "health": 62.0,
+        "output": 62.0,
+        "compliance": 62.0,
+        "automation": 62.0
+      },
+      "kpis": [],
+      "gaps": null,
+      "panels": null,
+      "sixDims": null,
+      "metacog": null,
+      "updated": "2026-09-18(9360真源)",
+      "flag": false,
+      "risk": "9360 真源业务屏 · 全屏显示"
+    },
+    {
+      "key": "contractlifecycle",
+      "name": "合同管理中台",
+      "cno": "C7",
+      "url": "subapps/contract-lifecycle/index.html",
+      "dot": "g",
+      "lawFirm": true,
+      "weight": 0.0,
+      "scoring": true,
+      "score": 71.0,
+      "six": {
+        "fresh": 71.0,
+        "coverage": 71.0,
+        "health": 71.0,
+        "output": 71.0,
+        "compliance": 71.0,
+        "automation": 71.0
+      },
+      "kpis": [],
+      "gaps": null,
+      "panels": null,
+      "sixDims": null,
+      "metacog": null,
+      "updated": "2026-09-18(9360真源)",
+      "flag": false,
+      "risk": "9360 真源业务屏 · 全屏显示"
+    },
+    {
+      "key": "lti",
+      "name": "AI 幻觉监控舱",
+      "cno": "C8",
+      "url": "subapps/lti/index.html",
+      "dot": "h",
+      "lawFirm": false,
+      "weight": 0.15,
+      "scoring": true,
+      "score": 30.0,
+      "six": {
+        "fresh": 30.0,
+        "coverage": 30.0,
+        "health": 30.0,
+        "output": 30.0,
+        "compliance": 30.0,
+        "automation": 30.0
+      },
+      "kpis": [
+        [
+          "门禁守护进程",
+          "🔄 未启动"
+        ],
+        [
+          "REJECT 闭环",
+          "⚠️ 待试点回填"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "门禁守护进程",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "LTI 门禁守护进程",
+              "status": "alert",
+              "detail": "🔄 未启动（待 launchctl load）；五维 QC，REJECT=0 才准交付；v4.9.1 已交付为独立门禁进程（消除 G2）。",
+              "stats": [
+                [
+                  "版本",
+                  "4.9.1"
+                ],
+                [
+                  "守护进程",
+                  "未启动"
+                ],
+                [
+                  "plist",
+                  "已装"
+                ],
+                [
+                  "REJECT",
+                  "待回填"
+                ]
+              ]
+            },
+            {
+              "name": "五维 QC 门禁",
+              "status": "active",
+              "detail": "R 法条真实 / L 法理逻辑 / C 一致性 / T 溯源 / P 程序；REJECT=0 才准交付。",
+              "stats": [
+                [
+                  "R 法条真实",
+                  "✓"
+                ],
+                [
+                  "L 法理逻辑",
+                  "✓"
+                ],
+                [
+                  "C 一致性",
+                  "✓"
+                ],
+                [
+                  "T 溯源",
+                  "✓"
+                ],
+                [
+                  "P 程序",
+                  "✓"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": true,
+      "risk": "LTI 五维 QC 门禁真探活"
+    },
+    {
+      "key": "credits",
+      "name": "积分监测中台",
+      "cno": "D1",
+      "url": "subapps/credits/index.html",
+      "dot": "e",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": true,
+      "score": 65.1,
+      "six": {
+        "fresh": 65.1,
+        "coverage": 65.1,
+        "health": 65.1,
+        "output": 65.1,
+        "compliance": 65.1,
+        "automation": 65.1
+      },
+      "kpis": [
+        [
+          "积分余额率",
+          "65.1%"
+        ],
+        [
+          "余额/容量",
+          "156157089/239712000"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "WorkBuddy 积分余额（实读 ~/.workbuddy/workbuddy.db）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "积分余额（workbuddy.db 聚合·真值）",
+              "status": "active",
+              "detail": "workbuddy.db session_usage 实读；余额 = 容量 - 已用。",
+              "stats": [
+                [
+                  "余额",
+                  "156157089"
+                ],
+                [
+                  "已用",
+                  "83554911"
+                ],
+                [
+                  "容量",
+                  "239712000"
+                ],
+                [
+                  "余额率",
+                  "65.1%"
+                ],
+                [
+                  "会话数",
+                  "1045"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "存储与备份（独立指标·不计入积分分）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "源目录磁盘水位",
+              "status": "silent",
+              "detail": "源目录占用 79%",
+              "pct": 79,
+              "stats": [
+                [
+                  "占用",
+                  "79%"
+                ]
+              ]
+            },
+            {
+              "name": "备份基线",
+              "status": "silent",
+              "detail": "备份基线目录 /tmp/lawtwin_deploy_*；按六-B 铁律部署前须建。",
+              "stats": [
+                [
+                  "基线",
+                  "缺"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "各 MCP 接口积分（⚠️ 代理指标·非计费真值·待采集）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "agent-mail",
+              "status": "active",
+              "detail": "代理指标（调用活跃度）·非接口级计费真值·待采集；最近使用 2026-09-25",
+              "stats": [
+                [
+                  "累计活跃天数",
+                  "3"
+                ],
+                [
+                  "近7日活跃",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "name": "fasui-caselibrary",
+              "status": "silent",
+              "detail": "代理指标（调用活跃度）·非接口级计费真值·待采集；最近使用 2026-08-26",
+              "stats": [
+                [
+                  "累计活跃天数",
+                  "3"
+                ],
+                [
+                  "近7日活跃",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "name": "ima-mcp",
+              "status": "silent",
+              "detail": "代理指标（调用活跃度）·非接口级计费真值·待采集；最近使用 2026-08-31",
+              "stats": [
+                [
+                  "累计活跃天数",
+                  "18"
+                ],
+                [
+                  "近7日活跃",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "name": "kdocs",
+              "status": "silent",
+              "detail": "代理指标（调用活跃度）·非接口级计费真值·待采集；最近使用 2026-08-31",
+              "stats": [
+                [
+                  "累计活跃天数",
+                  "14"
+                ],
+                [
+                  "近7日活跃",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "name": "netdrive",
+              "status": "active",
+              "detail": "代理指标（调用活跃度）·非接口级计费真值·待采集；最近使用 2026-09-23",
+              "stats": [
+                [
+                  "累计活跃天数",
+                  "1"
+                ],
+                [
+                  "近7日活跃",
+                  "1"
+                ]
+              ]
+            },
+            {
+              "name": "qcc-legal",
+              "status": "active",
+              "detail": "代理指标（调用活跃度）·非接口级计费真值·待采集；最近使用 2026-09-25",
+              "stats": [
+                [
+                  "累计活跃天数",
+                  "3"
+                ],
+                [
+                  "近7日活跃",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "name": "yuandian-mcp",
+              "status": "silent",
+              "detail": "代理指标（调用活跃度）·非接口级计费真值·待采集；最近使用 2026-08-31",
+              "stats": [
+                [
+                  "累计活跃天数",
+                  "4"
+                ],
+                [
+                  "近7日活跃",
+                  "0"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": false,
+      "risk": "WorkBuddy 积分余额率 65.1%"
+    },
+    {
+      "key": "conflict",
+      "name": "知识冲突中台",
+      "cno": "D2",
+      "url": "subapps/conflict-arbitration/index.html",
+      "dot": "conf",
+      "lawFirm": false,
+      "weight": 0.11,
+      "scoring": true,
+      "score": 60.0,
+      "six": {
+        "fresh": 60.0,
+        "coverage": 60.0,
+        "health": 60.0,
+        "output": 60.0,
+        "compliance": 60.0,
+        "automation": 60.0
+      },
+      "kpis": [
+        [
+          "缺口闭环",
+          "50%"
+        ],
+        [
+          "架构层一致",
+          "✅"
+        ]
+      ],
+      "gaps": [
+        {
+          "id": "G1",
+          "name": "**专属模板目录为空**",
+          "status": "✅ 已消除（依文档）"
+        },
+        {
+          "id": "G2",
+          "name": "LTI 门禁未独立进程化 ✅ **已建（2026-09-17）**",
+          "status": "✅ 已消除（实探 daemon 产物）"
+        },
+        {
+          "id": "G3",
+          "name": "本地检索层未建（M2） ✅ **已建（2026-09-17）**",
+          "status": "✅ 已消除（实探 L2 检索层）"
+        },
+        {
+          "id": "G4",
+          "name": "M1 未实现流式 / 计费 ✅ **已建（2026-09-17）**",
+          "status": "⚠️ 部分（streaming.py 缺失，与文档『已建』不符）"
+        },
+        {
+          "id": "G5",
+          "name": "**L2 本地法规库快照**",
+          "status": "🔄 待建"
+        },
+        {
+          "id": "G6",
+          "name": "**版本锁目标列为空**",
+          "status": "🔄 待建"
+        }
+      ],
+      "panels": [
+        {
+          "title": "配置缺口实扫（G1–G6）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "G1 **专属模板目录为空**",
+              "status": "active",
+              "detail": "✅ 已消除（依文档）",
+              "stats": [
+                [
+                  "状态",
+                  "✅ 已消除"
+                ]
+              ]
+            },
+            {
+              "name": "G2 LTI 门禁未独立进程化 ✅ **已建（2026-09-17）**",
+              "status": "active",
+              "detail": "✅ 已消除（实探 daemon 产物）",
+              "stats": [
+                [
+                  "状态",
+                  "✅ 已消除"
+                ]
+              ]
+            },
+            {
+              "name": "G3 本地检索层未建（M2） ✅ **已建（2026-09-17）**",
+              "status": "active",
+              "detail": "✅ 已消除（实探 L2 检索层）",
+              "stats": [
+                [
+                  "状态",
+                  "✅ 已消除"
+                ]
+              ]
+            },
+            {
+              "name": "G4 M1 未实现流式 / 计费 ✅ **已建（2026-09-17）**",
+              "status": "alert",
+              "detail": "⚠️ 部分（streaming.py 缺失，与文档『已建』不符）",
+              "stats": [
+                [
+                  "状态",
+                  "⚠️ 部分"
+                ]
+              ]
+            },
+            {
+              "name": "G5 **L2 本地法规库快照**",
+              "status": "silent",
+              "detail": "🔄 待建",
+              "stats": [
+                [
+                  "状态",
+                  "🔄 待建"
+                ]
+              ]
+            },
+            {
+              "name": "G6 **版本锁目标列为空**",
+              "status": "silent",
+              "detail": "🔄 待建",
+              "stats": [
+                [
+                  "状态",
+                  "🔄 待建"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": false,
+      "risk": "配置一致性与缺口闭环度"
+    },
+    {
+      "key": "cloud",
+      "name": "云服务中台",
+      "cno": "D3",
+      "url": "https://xiaoqiang-cloud-service.app.workbuddy.host/",
+      "dot": "i",
+      "lawFirm": false,
+      "weight": 0.0,
+      "scoring": false,
+      "score": null,
+      "six": null,
+      "kpis": [],
+      "gaps": null,
+      "panels": null,
+      "sixDims": null,
+      "metacog": null,
+      "updated": "2026-09-25 19:37:11",
+      "flag": null,
+      "risk": "监控位 · 不纳入评分"
+    },
+    {
+      "key": "mindmodel",
+      "name": "心智模型中台",
+      "cno": "D4",
+      "url": "subapps/mind-models/index.html",
+      "dot": "mm",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": true,
+      "score": 80.0,
+      "six": {
+        "fresh": 80.0,
+        "coverage": 80.0,
+        "health": 70.0,
+        "output": 80.0,
+        "compliance": 80.0,
+        "automation": 80.0
+      },
+      "kpis": [
+        [
+          "推理层 M1",
+          "✅ 就绪"
+        ],
+        [
+          "网络策略",
+          "allow_external"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "分身四层架构健康",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "L0 内核层（路由+双基座）",
+              "status": "active",
+              "detail": "legal-consult-router 五问分诊 + legal-base/法律智能体基座 双基座。",
+              "stats": [
+                [
+                  "证据",
+                  "skills/legal-con"
+                ]
+              ]
+            },
+            {
+              "name": "L1 人格层（AES-256 密文）",
+              "status": "silent",
+              "detail": "profile→self.md→tar→aes-256-cbc+pbkdf2(iter=600000)→钥匙串；交付前 round-trip 验证。",
+              "stats": [
+                [
+                  "证据",
+                  "03-人格层L1 加密产物数=0"
+                ]
+              ]
+            },
+            {
+              "name": "L2 数据层（本地知识+M2）",
+              "status": "active",
+              "detail": "知识库/案卷/法规库全部留本机；M2 sqlite-vec 检索索引。",
+              "stats": [
+                [
+                  "证据",
+                  "04-知识层L2 存在=True"
+                ]
+              ]
+            },
+            {
+              "name": "推理层 M1（lawtwin-infer）",
+              "status": "active",
+              "detail": "本机 Ollama 降级 / 客户 API 可插拔；M1 核心 已交付(v0.1.0)。网络策略：allow_external；模型：deepseek-chat。",
+              "stats": [
+                [
+                  "证据",
+                  "~/lawtwin-open/c"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": false,
+      "risk": "推理层与模型可用性"
+    },
+    {
+      "key": "permcenter",
+      "name": "权限管理中心",
+      "cno": "D5",
+      "url": "subapps/permcenter/index.html",
+      "dot": "pc",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": true,
+      "score": 50.0,
+      "six": {
+        "fresh": 50.0,
+        "coverage": 50.0,
+        "health": 50.0,
+        "output": 50.0,
+        "compliance": 50.0,
+        "automation": 50.0
+      },
+      "kpis": [
+        [
+          "L1 密文封装",
+          "🔄 待加密"
+        ],
+        [
+          "role key",
+          "macOS 钥匙串"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "访问控制与密钥管理",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "L1 人格层加密",
+              "status": "silent",
+              "detail": "profile→self.md→tar→aes-256-cbc+pbkdf2(iter=600000)→钥匙串；交付前 round-trip 验证。；round-trip 待人工确认。",
+              "stats": [
+                [
+                  "状态",
+                  "🔄 待加密封装"
+                ]
+              ]
+            },
+            {
+              "name": "密钥管理",
+              "status": "silent",
+              "detail": "推理密钥只走 api_key_env；L1 密码存 macOS 钥匙串；跨所重新授权、不打印明文。",
+              "stats": [
+                [
+                  "管理",
+                  "钥匙串/环境变量"
+                ]
+              ]
+            },
+            {
+              "name": "role key 持有",
+              "status": "active",
+              "detail": "L1 密文封装明文密钥存 macOS 钥匙串（role key 按角色隔离）。",
+              "stats": [
+                [
+                  "位置",
+                  "macOS 钥匙串"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": true,
+      "risk": "L1 人格层加密与访问控制"
+    },
+    {
+      "key": "d6permcenter",
+      "name": "权限调用中台",
+      "cno": "D6",
+      "url": "subapps/d6permcenter/index.html",
+      "dot": "d6",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": true,
+      "score": 80.0,
+      "six": {
+        "fresh": 80.0,
+        "coverage": 80.0,
+        "health": 80.0,
+        "output": 80.0,
+        "compliance": 80.0,
+        "automation": 80.0
+      },
+      "kpis": [
+        [
+          "部署记录",
+          "2 份"
+        ],
+        [
+          "审计轨迹",
+          "06-部署记录"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "部署记录留存（06-部署记录 实扫）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "2026-09-18-初版部署记录.md",
+              "status": "active",
+              "detail": "最近修改 2026-09-23 15:53",
+              "stats": [
+                [
+                  "时间",
+                  "2026-09-23 15:53"
+                ]
+              ]
+            },
+            {
+              "name": "2026-09-21-小强律师数字分身系统（单机密文版）.md",
+              "status": "active",
+              "detail": "最近修改 2026-09-21 10:26",
+              "stats": [
+                [
+                  "时间",
+                  "2026-09-21 10:26"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": null,
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": false,
+      "risk": "部署记录与权限调用留存"
+    },
+    {
+      "key": "agenthub",
+      "name": "智能体中台",
+      "cno": "D7",
+      "url": "subapps/agenthub/index.html",
+      "dot": "ag",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": true,
+      "score": 93.2,
+      "six": {
+        "fresh": 93.2,
+        "coverage": 93.2,
+        "health": 93.2,
+        "output": 93.2,
+        "compliance": 93.2,
+        "automation": 93.2
+      },
+      "kpis": [
+        [
+          "智能体总数",
+          "20"
+        ],
+        [
+          "版本治理均分",
+          "100"
+        ],
+        [
+          "迭代活跃度均分",
+          "98"
+        ],
+        [
+          "系统作用度均分",
+          "88"
+        ],
+        [
+          "运行健康均分",
+          "86"
+        ],
+        [
+          "审计合规均分",
+          "92"
+        ],
+        [
+          "文档完备均分",
+          "100"
+        ],
+        [
+          "🟢健康基线",
+          "20"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "智能体中台 KPI（实扫 6 维 · 对标 Harvey）",
+          "kind": "kpis",
+          "rows": [
+            [
+              "智能体总数",
+              "20"
+            ],
+            [
+              "版本治理均分",
+              "100"
+            ],
+            [
+              "迭代活跃度均分",
+              "98"
+            ],
+            [
+              "系统作用度均分",
+              "88"
+            ],
+            [
+              "运行健康均分",
+              "86"
+            ],
+            [
+              "审计合规均分",
+              "92"
+            ],
+            [
+              "文档完备均分",
+              "100"
+            ],
+            [
+              "🟢健康基线",
+              "20"
+            ],
+            [
+              "六维加权基线",
+              "93.2"
+            ]
+          ]
+        },
+        {
+          "title": "智能体清单（6 维 · Harvey 式）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "红队出庭律师",
+              "status": "active",
+              "detail": "红蓝对抗·攻击方（预驳回攻击/最残酷庭审压力测试）",
+              "stats": [
+                [
+                  "版本",
+                  "2.6.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "蓝队出庭律师",
+              "status": "active",
+              "detail": "红蓝对抗·防御方（庭审准备/证据组织/攻防策略）",
+              "stats": [
+                [
+                  "版本",
+                  "4.6.2"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "60"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "蓝队律师合同审查",
+              "status": "active",
+              "detail": "合同审查防御专家（蓝队口径的条款风险审查）",
+              "stats": [
+                [
+                  "版本",
+                  "10.1.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "60"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "庭审战情室",
+              "status": "active",
+              "detail": "第三方观察员（红蓝对抗全程评估+战情分析报告）",
+              "stats": [
+                [
+                  "版本",
+                  "2.1.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "庭审准备助手",
+              "status": "active",
+              "detail": "庭前准备（大事记/法官预判/争点提炼）",
+              "stats": [
+                [
+                  "版本",
+                  "2.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "80"
+                ],
+                [
+                  "运行健康",
+                  "60"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "庭审实时助手",
+              "status": "active",
+              "detail": "庭审实时辅助（当庭提示/临场应对）",
+              "stats": [
+                [
+                  "版本",
+                  "1.1.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "80"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "模拟法庭主控协调器",
+              "status": "active",
+              "detail": "庭审推演主控（协调各智能体+落实门禁）",
+              "stats": [
+                [
+                  "版本",
+                  "1.6.4"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "模拟法庭书记员",
+              "status": "active",
+              "detail": "庭审记录（查明到庭/笔录/证据台账/争点映射）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.2"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "80"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "模拟法庭庭审系统",
+              "status": "active",
+              "detail": "统一庭审推演入口（派发红蓝对抗引擎）",
+              "stats": [
+                [
+                  "版本",
+                  "1.7.1"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "律所主任·管理合伙人",
+              "status": "active",
+              "detail": "治理席位（系统运维/红蓝指导/子自动化研判）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.1"
+                ],
+                [
+                  "迭代",
+                  "2天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "100"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "100"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "律所主任·驾驶舱监控",
+              "status": "active",
+              "detail": "驾驶舱全量巡检执行器（每日重扫大屏）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.1"
+                ],
+                [
+                  "迭代",
+                  "2天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "80"
+                ],
+                [
+                  "运行健康",
+                  "60"
+                ],
+                [
+                  "审计合规",
+                  "100"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "分身系统IT运维员",
+              "status": "active",
+              "detail": "系统可靠性工程师（事故取证/建卡/互联）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "2天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "小德慈善合规中枢",
+              "status": "active",
+              "detail": "慈善组织合规中枢（合规审查/制度/方案设计）",
+              "stats": [
+                [
+                  "版本",
+                  "1.1.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "100"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "小德合规管理系统",
+              "status": "active",
+              "detail": "合规管理系统（慈善合规全流程承载）",
+              "stats": [
+                [
+                  "版本",
+                  "1.8.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "90"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "100"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "小哲AI学伴",
+              "status": "active",
+              "detail": "教育陪伴智能体（学习辅助/陪练）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "14天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "80"
+                ],
+                [
+                  "运行健康",
+                  "85"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "元认知分析师",
+              "status": "active",
+              "detail": "元认知分析（思维/学习行为分析）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "14天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "80"
+                ],
+                [
+                  "运行健康",
+                  "85"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "xiaoqianglvshi",
+              "status": "active",
+              "detail": "小强律师数字分身·主分身（总入口/咨询路由下游聚合）",
+              "stats": [
+                [
+                  "版本",
+                  "1.5.1"
+                ],
+                [
+                  "迭代",
+                  "5天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "100"
+                ],
+                [
+                  "运行健康",
+                  "60"
+                ],
+                [
+                  "审计合规",
+                  "100"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "法律智能体基座",
+              "status": "active",
+              "detail": "法律智能体能力基座（支撑层，供各法律 agent 调用）",
+              "stats": [
+                [
+                  "版本",
+                  "1.1.0"
+                ],
+                [
+                  "迭代",
+                  "5天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "100"
+                ],
+                [
+                  "运行健康",
+                  "60"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "法律AI防幻觉能力实测方法",
+              "status": "active",
+              "detail": "防幻觉能力实测方法（质量基线实测 agent）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "系统作用度",
+                  "80"
+                ],
+                [
+                  "运行健康",
+                  "85"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "三轮冲击控制器",
+              "status": "active",
+              "detail": "红蓝迭代控制器（蓝军→红军三轮冲击编排）",
+              "stats": [
+                [
+                  "版本",
+                  "1.5.0"
+                ],
+                [
+                  "迭代",
+                  "42天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "70"
+                ],
+                [
+                  "系统作用度",
+                  "80"
+                ],
+                [
+                  "运行健康",
+                  "100"
+                ],
+                [
+                  "审计合规",
+                  "90"
+                ],
+                [
+                  "文档完备",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": [
+        [
+          "版本治理",
+          100.0
+        ],
+        [
+          "迭代活跃度",
+          98.0
+        ],
+        [
+          "系统作用度",
+          88.0
+        ],
+        [
+          "运行健康",
+          86.0
+        ],
+        [
+          "审计合规",
+          92.0
+        ],
+        [
+          "文档完备",
+          100.0
+        ]
+      ],
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": false,
+      "risk": "智能体中台·20 个具名智能体·6 维实扫（版本/迭代=真实值，作用度/健康/合规/文档=SKILL.md 静态估算）"
+    },
+    {
+      "key": "workflowhub",
+      "name": "工作流中台",
+      "cno": "D8",
+      "url": "subapps/workflowhub/index.html",
+      "dot": "wf",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": true,
+      "score": 94.9,
+      "six": {
+        "fresh": 94.9,
+        "coverage": 94.9,
+        "health": 94.9,
+        "output": 94.9,
+        "compliance": 94.9,
+        "automation": 94.9
+      },
+      "kpis": [
+        [
+          "工作流总数",
+          "33"
+        ],
+        [
+          "版本治理均分",
+          "94"
+        ],
+        [
+          "迭代活跃度均分",
+          "98"
+        ],
+        [
+          "流程覆盖度均分",
+          "96"
+        ],
+        [
+          "执行效能均分",
+          "95"
+        ],
+        [
+          "审计监控均分",
+          "91"
+        ],
+        [
+          "复用度均分",
+          "94"
+        ],
+        [
+          "无版本",
+          "2"
+        ],
+        [
+          "🟢健康基线",
+          "31"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "工作流中台 KPI（实扫 6 维 · 对标 Harvey）",
+          "kind": "kpis",
+          "rows": [
+            [
+              "工作流总数",
+              "33"
+            ],
+            [
+              "版本治理均分",
+              "94"
+            ],
+            [
+              "迭代活跃度均分",
+              "98"
+            ],
+            [
+              "流程覆盖度均分",
+              "96"
+            ],
+            [
+              "执行效能均分",
+              "95"
+            ],
+            [
+              "审计监控均分",
+              "91"
+            ],
+            [
+              "复用度均分",
+              "94"
+            ],
+            [
+              "无版本",
+              "2"
+            ],
+            [
+              "🟢健康基线",
+              "31"
+            ],
+            [
+              "六维加权基线",
+              "94.9"
+            ]
+          ]
+        },
+        {
+          "title": "工作流清单（6 维 · Harvey 式）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "诉讼文书红蓝复核工作流",
+              "status": "active",
+              "detail": "诉讼/仲裁类文书红蓝对抗复核+ LTI 门禁",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "非诉文书红蓝复核工作流",
+              "status": "active",
+              "detail": "非诉文书红蓝复核（合同/意见/制度类）",
+              "stats": [
+                [
+                  "版本",
+                  "1.2.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "案件生命周期大屏流水线",
+              "status": "active",
+              "detail": "CLM 扫描→内部大屏+脱敏简报双管线",
+              "stats": [
+                [
+                  "版本",
+                  "1.1.0"
+                ],
+                [
+                  "迭代",
+                  "11天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "94"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "静态数据看板生成流水线",
+              "status": "active",
+              "detail": "文件系统状态→单文件离线 HTML 看板",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.1"
+                ],
+                [
+                  "迭代",
+                  "19天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "85"
+                ],
+                [
+                  "流程覆盖度",
+                  "86"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "审判要件卡拆卡流水线",
+              "status": "active",
+              "detail": "审判要件指南 PDF→审判要件卡六层挂载",
+              "stats": [
+                [
+                  "版本",
+                  "1.41.0"
+                ],
+                [
+                  "迭代",
+                  "0天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "文书范式卡建卡流水线",
+              "status": "active",
+              "detail": "文书范式卡（要素式+红线+错例）建卡",
+              "stats": [
+                [
+                  "版本",
+                  "1.2.0"
+                ],
+                [
+                  "迭代",
+                  "5天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "合规审查卡建卡流水线",
+              "status": "active",
+              "detail": "慈善合规审查卡（R-CF 域）批量建卡",
+              "stats": [
+                [
+                  "版本",
+                  "1.5.0"
+                ],
+                [
+                  "迭代",
+                  "5天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "100"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "存量卡法条核验段批量回填",
+              "status": "active",
+              "detail": "存量卡法条段「元典核填」批量回填",
+              "stats": [
+                [
+                  "版本",
+                  "1.3.0"
+                ],
+                [
+                  "迭代",
+                  "13天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "82"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "知识飞轮卡库接线",
+              "status": "active",
+              "detail": "智能体技能接知识飞轮卡库（可回溯卡源）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "5天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "裁量尺度卡拆卡流水线",
+              "status": "active",
+              "detail": "裁量尺度卡（量化锚点）批量拆建",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "8天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "84"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "要件映射卡批量补卡",
+              "status": "warn",
+              "detail": "要件映射卡指针卡批量补建（LTI 负向拦截）",
+              "stats": [
+                [
+                  "版本",
+                  "—"
+                ],
+                [
+                  "迭代",
+                  "5天前"
+                ],
+                [
+                  "版本治理",
+                  "0"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "88"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟡关注"
+                ]
+              ]
+            },
+            {
+              "name": "请求权基础卡族拆卡流水线",
+              "status": "active",
+              "detail": "请求权基础/法条竞合卡族拆建",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "8天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "90"
+                ],
+                [
+                  "执行效能",
+                  "86"
+                ],
+                [
+                  "审计监控",
+                  "78"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "合同审查工作流",
+              "status": "active",
+              "detail": "合同审查端到端流程编排",
+              "stats": [
+                [
+                  "版本",
+                  "1.1.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "86"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "案件全生命周期·编排器",
+              "status": "active",
+              "detail": "案件全生命周期主编排器",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "86"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "收案审批流程",
+              "status": "active",
+              "detail": "收案审批流程编排",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "案件归档管理",
+              "status": "active",
+              "detail": "案件归档管理流程",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "cockpit-builder",
+              "status": "active",
+              "detail": "驾驶舱 1:1 复刻 9360 构建流水线",
+              "stats": [
+                [
+                  "版本",
+                  "1.1.0"
+                ],
+                [
+                  "迭代",
+                  "7天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "88"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "yuandian-statute-bridge",
+              "status": "warn",
+              "detail": "法条实时核验桥接（pkulaw+yuandian 双源）",
+              "stats": [
+                [
+                  "版本",
+                  "—"
+                ],
+                [
+                  "迭代",
+                  "13天前"
+                ],
+                [
+                  "版本治理",
+                  "0"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟡关注"
+                ]
+              ]
+            },
+            {
+              "name": "lawkb-card-field-batch-backfill",
+              "status": "active",
+              "detail": "LawKB 卡 frontmatter 字段批量补标",
+              "stats": [
+                [
+                  "版本",
+                  "1.2.0"
+                ],
+                [
+                  "迭代",
+                  "9天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "lawkb-conflict-arbitration",
+              "status": "active",
+              "detail": "LawKB 知识冲突仲裁（融合/采纳/不冲突）",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.2"
+                ],
+                [
+                  "迭代",
+                  "9天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "lawkb-legal-consistency-audit",
+              "status": "active",
+              "detail": "LawKB 法条一致性/冲突审计",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.1"
+                ],
+                [
+                  "迭代",
+                  "19天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "85"
+                ],
+                [
+                  "流程覆盖度",
+                  "90"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "100"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "lawkb-rule-id-governance",
+              "status": "active",
+              "detail": "LawKB 编号治理（取号/撞号/改号）",
+              "stats": [
+                [
+                  "版本",
+                  "1.2.0"
+                ],
+                [
+                  "迭代",
+                  "7天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "hub-card-backfill",
+              "status": "active",
+              "detail": "Obsidian 共享记忆中枢按需补卡流水线",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "9天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "92"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "statute-pending-clear",
+              "status": "active",
+              "detail": "statute_text_pending 待回源清零",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "15天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "85"
+                ],
+                [
+                  "流程覆盖度",
+                  "94"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "知识飞轮链接与编号治理",
+              "status": "active",
+              "detail": "飞轮链接与编号治理 utility 流水线",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "19天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "85"
+                ],
+                [
+                  "流程覆盖度",
+                  "84"
+                ],
+                [
+                  "执行效能",
+                  "86"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "88"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "经验总结与知识沉淀",
+              "status": "active",
+              "detail": "经验总结与知识沉淀流程",
+              "stats": [
+                [
+                  "版本",
+                  "1.1.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "跨案件模式识别",
+              "status": "active",
+              "detail": "跨案件模式识别（类案/策略聚类）",
+              "stats": [
+                [
+                  "版本",
+                  "1.4.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "86"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "场景化知识推送",
+              "status": "active",
+              "detail": "场景化知识推送（按情境命中卡源）",
+              "stats": [
+                [
+                  "版本",
+                  "2.2.0"
+                ],
+                [
+                  "迭代",
+                  "13天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "86"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "案件全生命周期·案件工作汇报",
+              "status": "active",
+              "detail": "案件工作汇报生成",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "92"
+                ],
+                [
+                  "执行效能",
+                  "86"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "案件全生命周期·程序推进包",
+              "status": "active",
+              "detail": "程序推进包生成",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "案件全生命周期·调解和解方案",
+              "status": "active",
+              "detail": "调解和解方案生成",
+              "stats": [
+                [
+                  "版本",
+                  "1.0.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "96"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "案件全生命周期·门禁体系",
+              "status": "active",
+              "detail": "案件门禁体系（合规闸）",
+              "stats": [
+                [
+                  "版本",
+                  "1.4.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "86"
+                ],
+                [
+                  "审计监控",
+                  "100"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            },
+            {
+              "name": "案件执行助手",
+              "status": "active",
+              "detail": "案件执行流程辅助",
+              "stats": [
+                [
+                  "版本",
+                  "1.2.0"
+                ],
+                [
+                  "迭代",
+                  "1天前"
+                ],
+                [
+                  "版本治理",
+                  "100"
+                ],
+                [
+                  "迭代活跃度",
+                  "100"
+                ],
+                [
+                  "流程覆盖度",
+                  "100"
+                ],
+                [
+                  "执行效能",
+                  "98"
+                ],
+                [
+                  "审计监控",
+                  "90"
+                ],
+                [
+                  "复用度",
+                  "100"
+                ],
+                [
+                  "健康",
+                  "🟢健康"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": [
+        [
+          "版本治理",
+          94.0
+        ],
+        [
+          "迭代活跃度",
+          98.0
+        ],
+        [
+          "流程覆盖度",
+          96.0
+        ],
+        [
+          "执行效能",
+          95.0
+        ],
+        [
+          "审计监控",
+          91.0
+        ],
+        [
+          "复用度",
+          94.0
+        ]
+      ],
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": true,
+      "risk": "工作流中台·33 条流水线·6 维实扫（版本/迭代=真实值，覆盖度/效能/监控/复用=SKILL.md 静态估算）"
+    },
+    {
+      "key": "sharedhub",
+      "name": "共享中枢中台",
+      "cno": "D9",
+      "url": "subapps/sharedhub/index.html",
+      "dot": "sh",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": true,
+      "score": 95.2,
+      "six": {
+        "fresh": 95.2,
+        "coverage": 95.2,
+        "health": 95.2,
+        "output": 95.2,
+        "compliance": 95.2,
+        "automation": 95.2
+      },
+      "kpis": [
+        [
+          "卡总量",
+          "218"
+        ],
+        [
+          "子库数",
+          "11"
+        ],
+        [
+          "协议治理分",
+          "88"
+        ],
+        [
+          "迭代活跃度分",
+          "100"
+        ],
+        [
+          "覆盖完备度分",
+          "100"
+        ],
+        [
+          "运行健康分",
+          "96"
+        ],
+        [
+          "审计合规分",
+          "85"
+        ],
+        [
+          "文档完备分",
+          "100"
+        ],
+        [
+          "最近日志",
+          "0天前"
+        ],
+        [
+          "门禁调用量",
+          "1"
+        ],
+        [
+          "门禁对齐率",
+          "100.0%"
+        ],
+        [
+          "门禁已声明接线",
+          "73"
+        ],
+        [
+          "门禁实测触发",
+          "0"
+        ]
+      ],
+      "gaps": null,
+      "panels": [
+        {
+          "title": "共享中枢 KPI（实扫 · 对标 Harvey）",
+          "kind": "kpis",
+          "rows": [
+            [
+              "卡总量",
+              "218"
+            ],
+            [
+              "子库数",
+              "11"
+            ],
+            [
+              "协议治理分",
+              "88"
+            ],
+            [
+              "迭代活跃度分",
+              "100"
+            ],
+            [
+              "覆盖完备度分",
+              "100"
+            ],
+            [
+              "运行健康分",
+              "96"
+            ],
+            [
+              "审计合规分",
+              "85"
+            ],
+            [
+              "文档完备分",
+              "100"
+            ],
+            [
+              "最近日志",
+              "0天前"
+            ],
+            [
+              "六维加权基线",
+              "95.2"
+            ]
+          ]
+        },
+        {
+          "title": "需求拷问门禁遥测（Grill-Me · 运行时真值）",
+          "kind": "kpis",
+          "rows": [
+            [
+              "门禁状态",
+              "运行中"
+            ],
+            [
+              "调用量(invoke)",
+              "1"
+            ],
+            [
+              "对齐率(aligned/invoke)",
+              "100.0%"
+            ],
+            [
+              "放行数(skip)",
+              "0"
+            ],
+            [
+              "拦截率(invoke/决策)",
+              "100.0%"
+            ]
+          ]
+        },
+        {
+          "title": "门禁接线覆盖（Grill-Me · 声明 vs 实测）",
+          "kind": "kpis",
+          "rows": [
+            [
+              "接线总集",
+              "73"
+            ],
+            [
+              "已声明接线",
+              "73"
+            ],
+            [
+              "实测触发(caller)",
+              "0"
+            ]
+          ]
+        },
+        {
+          "title": "子库分布（_AI-Memory-Hub 实扫）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "00-全局规则",
+              "status": "active",
+              "detail": "56 个 md",
+              "stats": [
+                [
+                  "md",
+                  56
+                ],
+                [
+                  "占比",
+                  "25.7%"
+                ]
+              ]
+            },
+            {
+              "name": "01-用户偏好",
+              "status": "active",
+              "detail": "12 个 md",
+              "stats": [
+                [
+                  "md",
+                  12
+                ],
+                [
+                  "占比",
+                  "5.5%"
+                ]
+              ]
+            },
+            {
+              "name": "02-当前项目",
+              "status": "active",
+              "detail": "20 个 md",
+              "stats": [
+                [
+                  "md",
+                  20
+                ],
+                [
+                  "占比",
+                  "9.2%"
+                ]
+              ]
+            },
+            {
+              "name": "03-决策档案",
+              "status": "active",
+              "detail": "19 个 md",
+              "stats": [
+                [
+                  "md",
+                  19
+                ],
+                [
+                  "占比",
+                  "8.7%"
+                ]
+              ]
+            },
+            {
+              "name": "04-Workflows",
+              "status": "active",
+              "detail": "85 个 md",
+              "stats": [
+                [
+                  "md",
+                  85
+                ],
+                [
+                  "占比",
+                  "39.0%"
+                ]
+              ]
+            },
+            {
+              "name": "04-每日日志",
+              "status": "active",
+              "detail": "16 个 md",
+              "stats": [
+                [
+                  "md",
+                  16
+                ],
+                [
+                  "占比",
+                  "7.3%"
+                ]
+              ]
+            },
+            {
+              "name": "05-归档",
+              "status": "active",
+              "detail": "1 个 md",
+              "stats": [
+                [
+                  "md",
+                  1
+                ],
+                [
+                  "占比",
+                  "0.5%"
+                ]
+              ]
+            },
+            {
+              "name": "06-经验沉淀",
+              "status": "active",
+              "detail": "4 个 md",
+              "stats": [
+                [
+                  "md",
+                  4
+                ],
+                [
+                  "占比",
+                  "1.8%"
+                ]
+              ]
+            },
+            {
+              "name": "07-卡族总索引",
+              "status": "active",
+              "detail": "1 个 md",
+              "stats": [
+                [
+                  "md",
+                  1
+                ],
+                [
+                  "占比",
+                  "0.5%"
+                ]
+              ]
+            },
+            {
+              "name": "08-心智资产",
+              "status": "active",
+              "detail": "2 个 md",
+              "stats": [
+                [
+                  "md",
+                  2
+                ],
+                [
+                  "占比",
+                  "0.9%"
+                ]
+              ]
+            },
+            {
+              "name": "99-脚本",
+              "status": "active",
+              "detail": "2 个 md",
+              "stats": [
+                [
+                  "md",
+                  2
+                ],
+                [
+                  "占比",
+                  "0.9%"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "共享中枢 → 律师数字分身 作用链路（供给/召回/写回/仲裁）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "中枢供给规模",
+              "status": "active",
+              "detail": "分身系统可消费记忆资产总量 = 218 卡",
+              "stats": [
+                [
+                  "卡总量",
+                  218
+                ],
+                [
+                  "子库",
+                  11
+                ]
+              ]
+            },
+            {
+              "name": "召回协议(Recal)执行",
+              "status": "active",
+              "detail": "分身启动按 PROJ/DEC 卡召回中枢（39 张项目/决策卡被引用）",
+              "stats": [
+                [
+                  "召回卡",
+                  39
+                ],
+                [
+                  "状态",
+                  "✅ 已接中枢"
+                ]
+              ]
+            },
+            {
+              "name": "写回协议(Write-back)执行",
+              "status": "active",
+              "detail": "任务产出回写中枢（每日日志含回写标记 11 次）",
+              "stats": [
+                [
+                  "回写命中",
+                  11
+                ]
+              ]
+            },
+            {
+              "name": "冲突仲裁命中",
+              "status": "active",
+              "detail": "中枢仲裁知识冲突（05-归档 deprecated 处理 4 张）",
+              "stats": [
+                [
+                  "仲裁",
+                  4
+                ],
+                [
+                  "泄露",
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "记忆中枢卡族（_AI-Memory-Hub · RULE/PREF/PROJ/DEC/WF 文件名前缀实扫）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "RULE 规则卡族",
+              "status": "active",
+              "detail": "53 张",
+              "stats": [
+                [
+                  "卡",
+                  53
+                ]
+              ]
+            },
+            {
+              "name": "PREF 偏好卡族",
+              "status": "active",
+              "detail": "10 张",
+              "stats": [
+                [
+                  "卡",
+                  10
+                ]
+              ]
+            },
+            {
+              "name": "PROJ 项目卡族",
+              "status": "active",
+              "detail": "18 张",
+              "stats": [
+                [
+                  "卡",
+                  18
+                ]
+              ]
+            },
+            {
+              "name": "DEC 决策卡族",
+              "status": "active",
+              "detail": "18 张",
+              "stats": [
+                [
+                  "卡",
+                  18
+                ]
+              ]
+            },
+            {
+              "name": "WF 工作流卡族",
+              "status": "active",
+              "detail": "84 张",
+              "stats": [
+                [
+                  "卡",
+                  84
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "分身消费卡族分布·汇总（被引用·真实消费 · 数据源：runtime埋点真值）",
+          "kind": "kpis",
+          "rows": [
+            [
+              "被引用卡族",
+              "19 族"
+            ],
+            [
+              "被引用卡量",
+              "627 张"
+            ],
+            [
+              "引用率",
+              "69.5%"
+            ],
+            [
+              "库存合计",
+              "902 张"
+            ]
+          ]
+        },
+        {
+          "title": "分身消费卡族分布（被引用·真实消费 · 按《07-卡族总索引》17 族）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "裁判规则库(R-*)",
+              "status": "active",
+              "detail": "被引用 71 张（占库存 7.9%）",
+              "stats": [
+                [
+                  "被引",
+                  71
+                ],
+                [
+                  "占库存",
+                  "7.9%"
+                ]
+              ]
+            },
+            {
+              "name": "案由路由卡",
+              "status": "active",
+              "detail": "被引用 3 张（占库存 0.3%）",
+              "stats": [
+                [
+                  "被引",
+                  3
+                ],
+                [
+                  "占库存",
+                  "0.3%"
+                ]
+              ]
+            },
+            {
+              "name": "证据规则卡",
+              "status": "active",
+              "detail": "被引用 1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "被引",
+                  1
+                ],
+                [
+                  "占库存",
+                  "0.1%"
+                ]
+              ]
+            },
+            {
+              "name": "文书范式卡",
+              "status": "active",
+              "detail": "被引用 5 张（占库存 0.6%）",
+              "stats": [
+                [
+                  "被引",
+                  5
+                ],
+                [
+                  "占库存",
+                  "0.6%"
+                ]
+              ]
+            },
+            {
+              "name": "请求权基础卡",
+              "status": "active",
+              "detail": "被引用 2 张（占库存 0.2%）",
+              "stats": [
+                [
+                  "被引",
+                  2
+                ],
+                [
+                  "占库存",
+                  "0.2%"
+                ]
+              ]
+            },
+            {
+              "name": "裁量尺度卡",
+              "status": "active",
+              "detail": "被引用 1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "被引",
+                  1
+                ],
+                [
+                  "占库存",
+                  "0.1%"
+                ]
+              ]
+            },
+            {
+              "name": "审判要件卡",
+              "status": "active",
+              "detail": "被引用 1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "被引",
+                  1
+                ],
+                [
+                  "占库存",
+                  "0.1%"
+                ]
+              ]
+            },
+            {
+              "name": "类案检索报告卡族",
+              "status": "active",
+              "detail": "被引用 17 张（占库存 1.9%）",
+              "stats": [
+                [
+                  "被引",
+                  17
+                ],
+                [
+                  "占库存",
+                  "1.9%"
+                ]
+              ]
+            },
+            {
+              "name": "条号位移卡族",
+              "status": "active",
+              "detail": "被引用 4 张（占库存 0.4%）",
+              "stats": [
+                [
+                  "被引",
+                  4
+                ],
+                [
+                  "占库存",
+                  "0.4%"
+                ]
+              ]
+            },
+            {
+              "name": "要件映射卡",
+              "status": "active",
+              "detail": "被引用 135 张（占库存 15.0%）",
+              "stats": [
+                [
+                  "被引",
+                  135
+                ],
+                [
+                  "占库存",
+                  "15.0%"
+                ]
+              ]
+            },
+            {
+              "name": "慈善合规卡",
+              "status": "active",
+              "detail": "被引用 12 张（占库存 1.3%）",
+              "stats": [
+                [
+                  "被引",
+                  12
+                ],
+                [
+                  "占库存",
+                  "1.3%"
+                ]
+              ]
+            },
+            {
+              "name": "合规治理卡",
+              "status": "active",
+              "detail": "被引用 5 张（占库存 0.6%）",
+              "stats": [
+                [
+                  "被引",
+                  5
+                ],
+                [
+                  "占库存",
+                  "0.6%"
+                ]
+              ]
+            },
+            {
+              "name": "合同实务卡",
+              "status": "active",
+              "detail": "被引用 15 张（占库存 1.7%）",
+              "stats": [
+                [
+                  "被引",
+                  15
+                ],
+                [
+                  "占库存",
+                  "1.7%"
+                ]
+              ]
+            },
+            {
+              "name": "人伤医疗卡",
+              "status": "active",
+              "detail": "被引用 70 张（占库存 7.8%）",
+              "stats": [
+                [
+                  "被引",
+                  70
+                ],
+                [
+                  "占库存",
+                  "7.8%"
+                ]
+              ]
+            },
+            {
+              "name": "商事纠纷卡",
+              "status": "active",
+              "detail": "被引用 1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "被引",
+                  1
+                ],
+                [
+                  "占库存",
+                  "0.1%"
+                ]
+              ]
+            },
+            {
+              "name": "案例规则卡",
+              "status": "active",
+              "detail": "被引用 2 张（占库存 0.2%）",
+              "stats": [
+                [
+                  "被引",
+                  2
+                ],
+                [
+                  "占库存",
+                  "0.2%"
+                ]
+              ]
+            },
+            {
+              "name": "决策卡",
+              "status": "active",
+              "detail": "被引用 1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "被引",
+                  1
+                ],
+                [
+                  "占库存",
+                  "0.1%"
+                ]
+              ]
+            },
+            {
+              "name": "思维轨迹卡",
+              "status": "active",
+              "detail": "被引用 22 张（占库存 2.4%）",
+              "stats": [
+                [
+                  "被引",
+                  22
+                ],
+                [
+                  "占库存",
+                  "2.4%"
+                ]
+              ]
+            },
+            {
+              "name": "经验卡片",
+              "status": "active",
+              "detail": "被引用 259 张（占库存 28.7%）",
+              "stats": [
+                [
+                  "被引",
+                  259
+                ],
+                [
+                  "占库存",
+                  "28.7%"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "卡族库存分布（全量·参照口径 · 非消费）",
+          "kind": "modules",
+          "mods": [
+            {
+              "name": "裁判规则库(R-*)",
+              "status": "active",
+              "detail": "88 张（占库存 9.8%）",
+              "stats": [
+                [
+                  "卡",
+                  88
+                ],
+                [
+                  "占比",
+                  "9.8%"
+                ]
+              ]
+            },
+            {
+              "name": "案由路由卡",
+              "status": "active",
+              "detail": "26 张（占库存 2.9%）",
+              "stats": [
+                [
+                  "卡",
+                  26
+                ],
+                [
+                  "占比",
+                  "2.9%"
+                ]
+              ]
+            },
+            {
+              "name": "证据规则卡",
+              "status": "active",
+              "detail": "1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "卡",
+                  1
+                ],
+                [
+                  "占比",
+                  "0.1%"
+                ]
+              ]
+            },
+            {
+              "name": "文书范式卡",
+              "status": "active",
+              "detail": "22 张（占库存 2.4%）",
+              "stats": [
+                [
+                  "卡",
+                  22
+                ],
+                [
+                  "占比",
+                  "2.4%"
+                ]
+              ]
+            },
+            {
+              "name": "庭审主持卡",
+              "status": "active",
+              "detail": "9 张（占库存 1.0%）",
+              "stats": [
+                [
+                  "卡",
+                  9
+                ],
+                [
+                  "占比",
+                  "1.0%"
+                ]
+              ]
+            },
+            {
+              "name": "请求权基础卡",
+              "status": "active",
+              "detail": "3 张（占库存 0.3%）",
+              "stats": [
+                [
+                  "卡",
+                  3
+                ],
+                [
+                  "占比",
+                  "0.3%"
+                ]
+              ]
+            },
+            {
+              "name": "裁量尺度卡",
+              "status": "active",
+              "detail": "1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "卡",
+                  1
+                ],
+                [
+                  "占比",
+                  "0.1%"
+                ]
+              ]
+            },
+            {
+              "name": "审判要件卡",
+              "status": "active",
+              "detail": "2 张（占库存 0.2%）",
+              "stats": [
+                [
+                  "卡",
+                  2
+                ],
+                [
+                  "占比",
+                  "0.2%"
+                ]
+              ]
+            },
+            {
+              "name": "类案检索报告卡族",
+              "status": "active",
+              "detail": "17 张（占库存 1.9%）",
+              "stats": [
+                [
+                  "卡",
+                  17
+                ],
+                [
+                  "占比",
+                  "1.9%"
+                ]
+              ]
+            },
+            {
+              "name": "条号位移卡族",
+              "status": "active",
+              "detail": "8 张（占库存 0.9%）",
+              "stats": [
+                [
+                  "卡",
+                  8
+                ],
+                [
+                  "占比",
+                  "0.9%"
+                ]
+              ]
+            },
+            {
+              "name": "要件映射卡",
+              "status": "active",
+              "detail": "138 张（占库存 15.3%）",
+              "stats": [
+                [
+                  "卡",
+                  138
+                ],
+                [
+                  "占比",
+                  "15.3%"
+                ]
+              ]
+            },
+            {
+              "name": "慈善合规卡",
+              "status": "active",
+              "detail": "32 张（占库存 3.5%）",
+              "stats": [
+                [
+                  "卡",
+                  32
+                ],
+                [
+                  "占比",
+                  "3.5%"
+                ]
+              ]
+            },
+            {
+              "name": "合规治理卡",
+              "status": "active",
+              "detail": "16 张（占库存 1.8%）",
+              "stats": [
+                [
+                  "卡",
+                  16
+                ],
+                [
+                  "占比",
+                  "1.8%"
+                ]
+              ]
+            },
+            {
+              "name": "合同实务卡",
+              "status": "active",
+              "detail": "43 张（占库存 4.8%）",
+              "stats": [
+                [
+                  "卡",
+                  43
+                ],
+                [
+                  "占比",
+                  "4.8%"
+                ]
+              ]
+            },
+            {
+              "name": "人伤医疗卡",
+              "status": "active",
+              "detail": "126 张（占库存 14.0%）",
+              "stats": [
+                [
+                  "卡",
+                  126
+                ],
+                [
+                  "占比",
+                  "14.0%"
+                ]
+              ]
+            },
+            {
+              "name": "商事纠纷卡",
+              "status": "active",
+              "detail": "4 张（占库存 0.4%）",
+              "stats": [
+                [
+                  "卡",
+                  4
+                ],
+                [
+                  "占比",
+                  "0.4%"
+                ]
+              ]
+            },
+            {
+              "name": "劳动人事卡",
+              "status": "active",
+              "detail": "2 张（占库存 0.2%）",
+              "stats": [
+                [
+                  "卡",
+                  2
+                ],
+                [
+                  "占比",
+                  "0.2%"
+                ]
+              ]
+            },
+            {
+              "name": "建设工程卡",
+              "status": "active",
+              "detail": "1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "卡",
+                  1
+                ],
+                [
+                  "占比",
+                  "0.1%"
+                ]
+              ]
+            },
+            {
+              "name": "案例规则卡",
+              "status": "active",
+              "detail": "3 张（占库存 0.3%）",
+              "stats": [
+                [
+                  "卡",
+                  3
+                ],
+                [
+                  "占比",
+                  "0.3%"
+                ]
+              ]
+            },
+            {
+              "name": "决策卡",
+              "status": "active",
+              "detail": "10 张（占库存 1.1%）",
+              "stats": [
+                [
+                  "卡",
+                  10
+                ],
+                [
+                  "占比",
+                  "1.1%"
+                ]
+              ]
+            },
+            {
+              "name": "思维轨迹卡",
+              "status": "active",
+              "detail": "29 张（占库存 3.2%）",
+              "stats": [
+                [
+                  "卡",
+                  29
+                ],
+                [
+                  "占比",
+                  "3.2%"
+                ]
+              ]
+            },
+            {
+              "name": "经验卡片",
+              "status": "active",
+              "detail": "320 张（占库存 35.5%）",
+              "stats": [
+                [
+                  "卡",
+                  320
+                ],
+                [
+                  "占比",
+                  "35.5%"
+                ]
+              ]
+            },
+            {
+              "name": "HOW-I-THINK",
+              "status": "active",
+              "detail": "1 张（占库存 0.1%）",
+              "stats": [
+                [
+                  "卡",
+                  1
+                ],
+                [
+                  "占比",
+                  "0.1%"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sixDims": [
+        [
+          "协议治理",
+          88
+        ],
+        [
+          "迭代活跃度",
+          100
+        ],
+        [
+          "覆盖完备度",
+          100
+        ],
+        [
+          "运行健康",
+          96
+        ],
+        [
+          "审计合规",
+          85
+        ],
+        [
+          "文档完备",
+          100
+        ]
+      ],
+      "metacog": {
+        "decision_total": 33,
+        "traj_total": 22,
+        "traj_real": 21,
+        "how_total": 8,
+        "c1_linked": 27,
+        "c2_linked": 4,
+        "c1_pct": 81.8,
+        "c2_pct": 12.1,
+        "error_capture": 0,
+        "scanned_at": "2026-09-25 19:37:11"
+      },
+      "updated": "2026-09-25 19:37:11",
+      "flag": true,
+      "risk": "共享中枢中台·11 子库 / 218 卡 · 6 维实扫（协议/迭代/覆盖=真实值，健康/合规/文档=frontmatter 静态估算）"
+    },
+    {
+      "key": "governance",
+      "name": "OPC治理中台",
+      "cno": "C9",
+      "url": "subapps/governance/index.html",
+      "dot": "n",
+      "lawFirm": false,
+      "weight": 0.1,
+      "scoring": false,
+      "score": null,
+      "six": null,
+      "kpis": [],
+      "gaps": null,
+      "panels": null,
+      "sixDims": null,
+      "metacog": null,
+      "updated": "2026-09-25 19:37:11",
+      "flag": null,
+      "risk": "监控位 · 不纳入评分"
+    }
+  ],
+  "dims": [
+    {
+      "name": "部署就绪度",
+      "val": 62,
+      "color": "#5b9bff"
+    },
+    {
+      "name": "架构健康度",
+      "val": 75,
+      "color": "#2dd4bf"
+    },
+    {
+      "name": "安全合规度",
+      "val": 67,
+      "color": "#a78bfa"
+    },
+    {
+      "name": "门禁运行度",
+      "val": 30,
+      "color": "#ef5350"
+    },
+    {
+      "name": "版本锁回填",
+      "val": 100,
+      "color": "#34d399"
+    },
+    {
+      "name": "缺口闭环度",
+      "val": 50,
+      "color": "#f59e0b"
+    }
+  ],
+  "sharedhub": {
+    "sub_counts": {
+      "00-全局规则": 56,
+      "01-用户偏好": 12,
+      "02-当前项目": 20,
+      "03-决策档案": 19,
+      "04-Workflows": 85,
+      "04-每日日志": 16,
+      "05-归档": 1,
+      "06-经验沉淀": 4,
+      "07-卡族总索引": 1,
+      "08-心智资产": 2,
+      "99-脚本": 2
+    },
+    "total_cards": 218,
+    "sub_count": 11,
+    "gov": 88,
+    "iter": 100,
+    "cov": 100,
+    "health": 96,
+    "compliance": 85,
+    "doc": 100,
+    "composite": 95.2,
+    "dims_keys": [
+      "协议治理",
+      "迭代活跃度",
+      "覆盖完备度",
+      "运行健康",
+      "审计合规",
+      "文档完备"
+    ],
+    "dims": {
+      "gov": 88,
+      "iter": 100,
+      "cov": 100,
+      "health": 96,
+      "compliance": 85,
+      "doc": 100
+    },
+    "last_log_days": 0,
+    "active_ratio": 90.0,
+    "deprecated": 4,
+    "key_leak": 1,
+    "sub_idx": 7,
+    "idx_present": true,
+    "recall_cards": 39,
+    "writeback_hits": 11,
+    "arbitration": 4,
+    "family": {
+      "RULE": 53,
+      "PREF": 10,
+      "PROJ": 18,
+      "DEC": 18,
+      "WF": 84
+    },
+    "grill_gate": {
+      "available": true,
+      "invoke": 1,
+      "aligned": 1,
+      "skip": 0,
+      "align_rate": 100.0,
+      "intercept_rate": 100.0,
+      "status": "运行中",
+      "callers": [],
+      "declared": 73,
+      "unwired": [],
+      "total": 73
+    }
+  },
+  "gaps": [
+    {
+      "id": "G1",
+      "name": "**专属模板目录为空**",
+      "status": "✅ 已消除（依文档）"
+    },
+    {
+      "id": "G2",
+      "name": "LTI 门禁未独立进程化 ✅ **已建（2026-09-17）**",
+      "status": "✅ 已消除（实探 daemon 产物）"
+    },
+    {
+      "id": "G3",
+      "name": "本地检索层未建（M2） ✅ **已建（2026-09-17）**",
+      "status": "✅ 已消除（实探 L2 检索层）"
+    },
+    {
+      "id": "G4",
+      "name": "M1 未实现流式 / 计费 ✅ **已建（2026-09-17）**",
+      "status": "⚠️ 部分（streaming.py 缺失，与文档『已建』不符）"
+    },
+    {
+      "id": "G5",
+      "name": "**L2 本地法规库快照**",
+      "status": "🔄 待建"
+    },
+    {
+      "id": "G6",
+      "name": "**版本锁目标列为空**",
+      "status": "🔄 待建"
+    }
+  ],
+  "total": 64.0,
+  "grade": "C 合格",
+  "generated_at": "2026-09-25 19:37:11",
+  "note": "环形总评 = 六维部署健康综合均值(与维度条一致)；各屏监控卡片/评分总表为独立探针明细，不反向聚合进总评；律所 4 屏(C4/C5/C6/C7)全屏显示且权重 0、不影响总评。"
+}

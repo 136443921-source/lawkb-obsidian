@@ -1,0 +1,90 @@
+{
+  "report_date": "2026-09-24",
+  "maturity_index": 96.4,
+  "components": {
+    "coverage": 100.0,
+    "billing": 100.0,
+    "consistency": 100.0,
+    "reuse": 100.0,
+    "verify": 75.7
+  },
+  "dimensions": {
+    "M1": {
+      "n_domain_libs": 15,
+      "domain_packages": 16,
+      "cross_packages": 2,
+      "total_packages": 18,
+      "coverage_pct": 100.0
+    },
+    "M2": {
+      "expected_model": "subscription_by_domain",
+      "expected_license": "internal_commercial_unit",
+      "consistent": true,
+      "bad": []
+    },
+    "M3": {
+      "total_rules_indexed": 2053,
+      "reused_rule_count": 814,
+      "cross_package_reuse_hits": 628,
+      "sample": [
+        {
+          "rule_id": "R-PI-174",
+          "packages": [
+            "人伤法",
+            "医疗"
+          ]
+        },
+        {
+          "rule_id": "R-PI-006",
+          "packages": [
+            "人伤法",
+            "医疗"
+          ]
+        },
+        {
+          "rule_id": "R-PI-415",
+          "packages": [
+            "人伤法",
+            "医疗"
+          ]
+        },
+        {
+          "rule_id": "R-PI-334",
+          "packages": [
+            "人伤法",
+            "医疗",
+            "审判要件"
+          ]
+        },
+        {
+          "rule_id": "R-PI-175",
+          "packages": [
+            "人伤法",
+            "医疗"
+          ]
+        }
+      ]
+    },
+    "M4": {
+      "total_rules": 2901,
+      "total_source_pending": 705,
+      "pending_ratio_pct": 24.3,
+      "leak": []
+    },
+    "M5": {
+      "consistent": true,
+      "issues": [],
+      "dup_notes": []
+    },
+    "M6": {
+      "主体": 835,
+      "变体": 730,
+      "维度": 71,
+      "重复ID": 0,
+      "口径": "2026-09-15 归库实测"
+    }
+  },
+  "p0": [],
+  "p1": [],
+  "summary": "P0=0 P1=0"
+}

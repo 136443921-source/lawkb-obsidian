@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合同生命周期中台</title>
+<style>
+:root{
+  --bg:#0a0e14; --bg2:#0e131c; --panel:rgba(255,255,255,.035); --panel2:rgba(255,255,255,.055);
+  --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.16);
+  --txt:#e8edf4; --txt2:#9aa6b6; --txt3c:#aab3c5;
+  --teal:#1fc8b0; --teal-d:#13a892; --cyan:#39b7e8; --green:#28b485;
+  --amber:#f0a52b; --red:#ec5a5a; --yellow:#e8c64a; --purple:#8b82e8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 80% -10%,#122026 0%,var(--bg) 55%) fixed,var(--bg);
+  color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  padding:22px;line-height:1.55;font-size:14px}
+.wrap{max-width:1480px;margin:0 auto}
+header{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px;
+  padding-bottom:16px;border-bottom:1px solid var(--line)}
+h1{font-size:23px;font-weight:700;letter-spacing:.5px}
+h1 .accent{color:var(--teal)}
+.sub{color:var(--txt3c);font-size:12px}
+.badges{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+.badge{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid var(--line2);
+  color:var(--txt2);background:rgba(255,255,255,.03)}
+.badge b{color:var(--teal);font-weight:600}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;
+  background:linear-gradient(135deg,rgba(31,200,176,.07),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-bottom:22px}
+.gauge{position:relative;width:148px;height:148px;flex:none}
+.gauge .score{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge .n{font-size:40px;font-weight:700;line-height:1}
+.gauge .t{font-size:11px;color:var(--txt3c);margin-top:3px;letter-spacing:1px}
+.gauge .lbl{font-size:10px;color:var(--txt3c);margin-top:6px}
+.hero-r{display:flex;flex-direction:column;gap:14px}
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+.stat .n{font-size:22px;font-weight:700}
+.stat .l{font-size:11.5px;color:var(--txt3c);margin-top:1px}
+.stat.alarm .n{color:var(--red)} .stat.warn .n{color:var(--amber)} .stat.ok .n{color:var(--green)}
+.stat.teal .n{color:var(--teal)}
+.hero-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  font-size:12px;color:var(--txt3c)}
+.idx-note{font-size:11px;color:var(--txt3c);font-style:italic}
+
+/* LOOP */
+.loop{display:flex;align-items:stretch;gap:0;margin-bottom:22px;flex-wrap:wrap}
+.band{flex:1;min-width:320px;background:var(--panel);border:1px solid var(--line);border-radius:15px;
+  padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+.arrow{display:flex;align-items:center;justify-content:center;color:var(--teal);
+  font-size:26px;padding:0 6px;flex:none}
+.band-head{display:flex;align-items:center;gap:11px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.band-no{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:700;background:rgba(31,200,176,.13);color:var(--teal);border:1px solid rgba(31,200,176,.32)}
+.band-head .bt{font-size:15px;font-weight:600}
+.band-head .bp{font-size:11.5px;color:var(--txt3c);margin-top:1px}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.card .ct{font-size:12px;color:var(--txt2);margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.card .ct::before{content:"";width:3px;height:12px;background:var(--teal);border-radius:2px}
+
+/* bars */
+.dbar{display:flex;flex-direction:column;gap:9px}
+.dbar .row{display:grid;grid-template-columns:72px 1fr 30px;align-items:center;gap:9px;font-size:12.5px}
+.dbar .name{color:var(--txt2)}
+.dbar .track{height:9px;border-radius:5px;background:rgba(255,255,255,.06);overflow:hidden}
+.dbar .track i{display:block;height:100%;background:linear-gradient(90deg,var(--teal-d),var(--teal));border-radius:5px}
+.dbar .v{text-align:right;font-weight:600;color:var(--txt)}
+
+/* gates */
+.gates{display:flex;gap:7px;flex-wrap:wrap}
+.gate{display:flex;align-items:center;gap:6px;font-size:11.5px;padding:5px 10px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+.g-pass .dot{background:var(--green)} .g-normal .dot{background:var(--cyan)}
+.g-warn .dot{background:var(--amber)} .g-fail .dot{background:var(--red)} .g-todo .dot{background:var(--txt3c)}
+.gate .gn{color:var(--txt2)} .gate .gid{color:var(--txt);font-weight:600}
+
+/* 七阶段流水线 */
+.stages{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.stage{flex:1;min-width:118px;background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:11px 10px;display:flex;flex-direction:column;gap:5px}
+.stage .sno{font-size:10.5px;color:var(--teal);font-weight:700}
+.stage .snm{font-size:12.5px;font-weight:600}
+.stage .sc{font-size:21px;font-weight:700;color:var(--txt)}
+.stage .sbar{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--teal-d),var(--teal))}
+.stage .snote{font-size:10px;color:var(--txt3c);line-height:1.4}
+.stage-arrow{display:flex;align-items:center;color:var(--line2);font-size:16px;padding:0 1px;flex:none}
+.stage .scontracts{display:flex;flex-direction:column;gap:3px;margin-top:5px;border-top:1px dashed var(--line);padding-top:6px}
+.schip{font-size:9.5px;line-height:1.3;padding:3px 6px;border-radius:5px;background:rgba(255,255,255,.04);
+  border:1px solid var(--line);color:var(--txt2);cursor:pointer;transition:.15s}
+.schip:hover{background:rgba(57,183,232,.12);border-color:var(--cyan);color:var(--txt)}
+.schip.t{background:rgba(255,255,255,.02);border-style:dashed;color:var(--txt3c)}
+.schip .ci{color:var(--teal);font-weight:700;margin-right:3px}
+.cdetail{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+.cdetail.hidden{display:none}
+.cd-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+.cd-name{font-size:14.5px;font-weight:700;color:var(--txt)}
+.cd-tag{font-size:10.5px;padding:2px 8px;border-radius:5px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--txt2)}
+.cd-tag.risk-高{background:rgba(236,90,90,.16);color:#f59a9a;border-color:rgba(236,90,90,.4)}
+.cd-tag.risk-中{background:rgba(240,165,43,.14);color:#f6c074;border-color:rgba(240,165,43,.35)}
+.cd-tag.risk-低{background:rgba(40,180,133,.14);color:#5fd6ad;border-color:rgba(40,180,133,.3)}
+.cd-tag.tpl{background:rgba(255,255,255,.03);color:var(--txt3c)}
+.cd-stage{font-size:12px;color:var(--txt2);margin-bottom:11px}
+.cd-stage b{color:var(--teal)}
+.cd-cg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:11px}
+.cgmini{display:flex;align-items:center;gap:6px;font-size:10.5px;padding:5px 7px;border-radius:7px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.cgmini .d{width:8px;height:8px;border-radius:50%;flex:none}
+.cgmini .gid{font-weight:700;color:var(--txt)}
+.cgmini .gnm{color:var(--txt3c)}
+.cgmini.pass .d{background:var(--green)} .cgmini.warn .d{background:var(--amber)}
+.cgmini.todo .d{background:var(--txt3c)} .cgmini.fail .d{background:var(--red)} .cgmini.in_progress .d{background:var(--cyan)}
+.cd-action{font-size:12px;color:var(--txt2);line-height:1.65;background:rgba(255,255,255,.02);padding:9px 11px;border-radius:8px;border-left:3px solid var(--teal)}
+.cd-src{font-size:10px;color:var(--txt3c);margin-top:7px}
+
+/* risk matrix */
+.matrix-wrap{display:flex;justify-content:center}
+.matrix text{fill:var(--txt3c);font-size:10px}
+.matrix .axis{fill:var(--txt2);font-size:11px;font-weight:600}
+.matrix .cell{fill:rgba(255,255,255,.025);stroke:rgba(255,255,255,.07)}
+.rdot{font-size:10px;font-weight:700;fill:#0a0e14}
+
+/* attribution */
+.attr-bar{display:flex;height:13px;border-radius:7px;overflow:hidden;border:1px solid var(--line);margin-bottom:9px}
+.attr-bar span{display:block;height:100%}
+.attr-legend{display:flex;gap:14px;font-size:11.5px;color:var(--txt2);flex-wrap:wrap}
+.attr-legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
+.attr-txt{font-size:12px;color:var(--txt2);margin-top:8px;line-height:1.6}
+.attr-txt b{color:var(--amber)}
+
+/* action list */
+.act{display:flex;flex-direction:column;gap:8px}
+.act .a{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);border-left-width:3px;border-radius:8px}
+.act .a.p0{border-left-color:var(--red)} .act .a.p1{border-left-color:var(--amber)}
+.act .a.p2{border-left-color:var(--cyan)}
+.act .lv{font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;flex:none;margin-top:1px}
+.act .p0 .lv{background:rgba(236,90,90,.18);color:#f59a9a} .act .p1 .lv{background:rgba(240,165,43,.16);color:#f6c074}
+.act .p2 .lv{background:rgba(57,183,232,.16);color:#8fd0f0}
+.act .at{font-size:12.5px} .act .ad{font-size:11px;color:var(--txt3c);margin-top:2px}
+
+/* kanban */
+.kanban{display:flex;flex-direction:column;gap:8px}
+.kb{display:flex;gap:10px;align-items:center;font-size:12px;padding:9px 11px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);border-radius:8px}
+.kb .id{font-weight:700;flex:none;width:30px}
+.kb .body{flex:1} .kb .kt{font-weight:600} .kb .ka{font-size:11px;color:var(--txt3c);margin-top:2px}
+.kb.red .id{color:var(--red)} .kb.orange .id{color:var(--amber)} .kb.yellow .id{color:var(--yellow)}
+
+/* RCF shared */
+.rcf{display:flex;flex-direction:column;gap:7px}
+.rcf .r{display:flex;align-items:center;gap:9px;font-size:12px;padding:8px 11px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);border-radius:8px}
+.rcf .r .tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;flex:none}
+.rcf .r .warn{background:rgba(240,165,43,.16);color:#f6c074}
+.rcf .r .ok{background:rgba(40,180,133,.12);color:#5fd6ad}
+.rcf .r .td{color:var(--txt3c);font-size:11px;margin-left:auto}
+.rcf .r .tx{color:var(--txt2)}
+
+/* redact */
+.redact{display:flex;flex-direction:column;gap:7px}
+.redact .row{display:grid;grid-template-columns:96px 1fr;gap:9px;align-items:center;font-size:11.5px;
+  padding:7px 10px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:8px}
+.redact .f{color:var(--txt2);font-weight:600}
+.redact .ex{color:var(--txt3c)}
+.redact .ex b{color:var(--teal)}
+
+/* AUDIT RIBBON */
+.audit{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 18px;margin-bottom:18px}
+.audit .ah{font-size:13px;font-weight:600;margin-bottom:13px;display:flex;align-items:center;gap:7px}
+.audit .ah::before{content:"";width:3px;height:13px;background:var(--cyan);border-radius:2px}
+.timeline{display:flex;gap:0;overflow-x:auto;padding-bottom:4px}
+.tl{display:flex;flex-direction:column;align-items:center;min-width:150px;flex:1;position:relative}
+.tl:not(:last-child)::after{content:"";position:absolute;top:7px;left:50%;width:100%;height:2px;
+  background:linear-gradient(90deg,var(--line2),var(--line));z-index:0}
+.tl .dotc{width:15px;height:15px;border-radius:50%;background:var(--teal);border:3px solid var(--bg);z-index:1;
+  box-shadow:0 0 0 1px var(--teal-d)}
+.tl.alt .dotc{background:var(--cyan)}
+.tl .td{font-size:11px;color:var(--txt3c);margin-top:7px;font-family:ui-monospace,monospace}
+.tl .te{font-size:11.5px;color:var(--txt2);text-align:center;padding:0 8px;margin-top:2px}
+.tl .tb{font-size:10.5px;color:var(--txt3c)}
+
+footer{color:var(--txt3c);font-size:11px;text-align:center;padding:10px 0 2px;line-height:1.7}
+@media(max-width:1080px){.arrow{display:none}.band{min-width:100%}.hero{grid-template-columns:1fr}}
+/* DEEP CARDS */
+.deep{margin-top:22px;background:linear-gradient(135deg,rgba(31,200,176,.05),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.deep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:14px;margin-top:12px}
+.dc{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:14px 16px;
+  display:flex;flex-direction:column;gap:10px}
+.dc.red{border-left:3px solid var(--red)} .dc.orange{border-left:3px solid var(--amber)} .dc.yellow{border-left:3px solid var(--yellow)}
+.dc-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding-bottom:9px;border-bottom:1px solid var(--line)}
+.dc-id{font-weight:700;color:var(--teal)} .dc-title{font-weight:600;font-size:14px}
+.dc-tag{font-size:10.5px;padding:2px 8px;border-radius:10px;background:rgba(236,90,90,.14);color:var(--red)}
+.dc-tag2{font-size:10.5px;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.06);color:var(--txt2)}
+.dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dc-col{min-width:0}
+.dc-row{display:flex;gap:8px;font-size:12px;margin-bottom:4px}
+.dc-row .k{color:var(--txt3c);min-width:62px;flex:none} .dc-row .v{color:var(--txt)}
+.dc-sub{font-size:11.5px;color:var(--teal);margin:9px 0 5px;font-weight:600;letter-spacing:.3px}
+.dc-sub.warn{color:var(--amber)}
+.dc-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.dc-list li{font-size:11.5px;color:var(--txt2);line-height:1.5}
+.dc-list .dt{color:var(--txt3c);font-family:ui-monospace,monospace;margin-right:6px}
+.dc-list .lvl{font-size:10px;padding:1px 6px;border-radius:6px;background:rgba(31,200,176,.16);color:var(--teal);margin-right:6px}
+.dc-list .own{color:var(--txt3c);font-size:10.5px}
+.dc-lbs{display:flex;flex-wrap:wrap;gap:5px}
+.lb{font-size:10.5px;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt2)}
+.dc-gates{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.dg{font-size:10.5px;padding:3px 9px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.dg b{color:var(--txt)} .g-pass{box-shadow:inset 0 0 0 1px rgba(40,180,133,.4)} .g-pass b{color:var(--green)}
+.g-warn{box-shadow:inset 0 0 0 1px rgba(240,165,43,.4)} .g-warn b{color:var(--amber)}
+.g-todo{opacity:.7} .g-in_progress{box-shadow:inset 0 0 0 1px rgba(57,183,232,.4)} .g-in_progress b{color:var(--cyan)}
+.dc-note{font-size:12px;color:var(--txt2)} .dc-pend{list-style:none;display:flex;flex-direction:column;gap:3px}
+.dc-pend li{font-size:11px;color:var(--amber)}
+@media(max-width:1080px){.dc-grid{grid-template-columns:1fr}.deep-grid{grid-template-columns:1fr}}
+</style>
+<style>
+/* 数据更新时间：紧贴标题（2026-09-16 由右上 fixed 浮块改为标题内联） */
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+</style>
+</head>
+<body data-cno="C7">
+<div class="wrap">
+  <header>
+    <div>
+      <h1>C7 合同管理中台<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-25 13:43（北京时间）</span></h1>
+      <div class="sub">LawKB 合同文书管理系统 · 从拟稿到归档的全生命周期指挥（对标 CLM 七阶段 + Harvey Command Center 四原则）</div>
+    </div>
+    <div class="badges">
+      <span class="badge">集中<b>可观测</b></span>
+      <span class="badge">合规<b>优先</b></span>
+      <span class="badge">门禁化<b>变更</b></span>
+      <span class="badge">可追溯<b>审计</b></span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="gauge">
+      <svg viewBox="0 0 148 148" width="148" height="148">
+        <circle cx="74" cy="74" r="60" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="11"/>
+        <circle id="arc" cx="74" cy="74" r="60" fill="none" stroke="var(--amber)" stroke-width="11"
+                stroke-linecap="round" transform="rotate(-90 74 74)" stroke-dasharray="0 377"/>
+      </svg>
+      <div class="score"><div class="n" id="scoreN" style="color:var(--amber)">--</div>
+        <div class="t">综合合同健康指数</div><div class="lbl">CONTRACT HEALTH</div></div>
+    </div>
+    <div class="hero-r">
+      <div class="hero-stats" id="heroStats"></div>
+      <div class="hero-foot">
+        <span id="idxNote" class="idx-note"></span>
+        <div class="conn" id="conn"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEE · UNDERSTAND · ACT -->
+  <div class="loop">
+    <!-- ① SEE -->
+    <div class="band">
+      <div class="band-head"><div class="band-no">①</div>
+        <div><div class="bt">SEE · 态势感知</div><div class="bp">合同全量一屏统揽，现状是什么</div></div></div>
+      <div class="card">
+        <div class="ct">合同类型分布（15 份真实审过合同）</div>
+        <div class="dbar" id="dbar"></div>
+      </div>
+      <div class="card">
+        <div class="ct">七阶段生命周期流水线（CG0–CG7 门禁贯穿）</div>
+        <div class="stages" id="stages"></div>
+        <div id="contractDetail" class="cdetail hidden"></div>
+        <div style="font-size:10.5px;color:var(--txt3c);margin-top:6px">注：审查意见书覆盖②③④，模板处于①，争议案处于⑤⑥，案例库为⑦；同一合同跨多阶段，故阶段计数非互斥。</div>
+      </div>
+    </div>
+
+    <div class="arrow">▶</div>
+
+    <!-- ② UNDERSTAND -->
+    <div class="band">
+      <div class="band-head"><div class="band-no">②</div>
+        <div><div class="bt">UNDERSTAND · 归因洞察</div><div class="bp">风险在哪、为何失分</div></div></div>
+      <div class="card">
+        <div class="ct">风险热力矩阵（6 争议案 · 影响 × 可能性）</div>
+        <div class="matrix-wrap"><svg class="matrix" id="matrix" viewBox="0 0 340 250"></svg></div>
+      </div>
+      <div class="card">
+        <div class="ct">门禁健康分布（8 道合同闸门）</div>
+        <div class="attr-bar" id="attrBar"></div>
+        <div class="attr-legend">
+          <span><i style="background:var(--green)"></i>通过</span>
+          <span><i style="background:var(--cyan)"></i>正常</span>
+          <span><i style="background:var(--amber)"></i>预警</span>
+          <span><i style="background:var(--txt3c)"></i>待办</span>
+        </div>
+        <div class="attr-txt" id="attrTxt"></div>
+      </div>
+      <div class="card">
+        <div class="ct">R-CF 合规门禁（与 C5 合规中枢共享判据）</div>
+        <div class="rcf" id="rcf"></div>
+      </div>
+    </div>
+
+    <div class="arrow">▶</div>
+
+    <!-- ③ ACT -->
+    <div class="band">
+      <div class="band-head"><div class="band-no">③</div>
+        <div><div class="bt">ACT · 行动推荐</div><div class="bp">今天该推哪几件事</div></div></div>
+      <div class="card">
+        <div class="ct">今日行动清单（P0→P2 派发）</div>
+        <div class="act" id="act"></div>
+      </div>
+      <div class="card">
+        <div class="ct">整改看板（升级风险争议案）</div>
+        <div class="kanban" id="kanban"></div>
+      </div>
+      <div class="card">
+        <div class="ct">对外脱敏双管线（publicView 红线）</div>
+        <div class="redact" id="redact"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIT RIBBON -->
+  <div class="audit">
+    <div class="ah">可追溯审计轨迹 · Audit Trail（合规优先 + 可追溯审计）</div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <!-- DEEP CARDS · 争议案深度卡 -->
+  <section class="deep">
+    <div class="ah">争议案深度卡 · Dispute Deep Cards（G0–G7 门禁 + 时间线 + 证据链 + 行动 · 单一事实源 contract-state.json 实时读取）</div>
+    <div class="deep-grid" id="deepCards"></div>
+  </section>
+
+  <footer id="ft"></footer>
+</div>
+
+<script>
+const FALLBACK_DATA = {"schema": "contract-state/v1", "title": "合同生命周期中台", "generated_at": "2026-09-14 13:25", "source": "LawKB/合同文书管理系统 + 案件生命周期管理系统（实扫 2026-09-14）", "summary": {"reviewedContracts": 15, "supportAssets": 8, "totalAssets": 26, "disputes": 6, "byType": {"项目合作": 4, "公益服务": 3, "审计服务": 3, "投资合作": 2, "建设工程": 1, "捐赠": 1, "委托加工": 1}, "byRisk": {"高": 1, "中": 4, "低": 1}, "stages": [{"no": 1, "code": "draft", "name": "拟稿", "count": 8, "note": "模板/案例库初稿"}, {"no": 2, "code": "review", "name": "审查", "count": 15, "note": "意见书覆盖"}, {"no": 3, "code": "approval", "name": "审批用印", "count": 15, "note": "审结待用印"}, {"no": 4, "code": "sign", "name": "签署生效", "count": 15, "note": "假定已签"}, {"no": 5, "code": "perform", "name": "履行监控", "count": 6, "note": "争议案在履行/争议"}, {"no": 6, "code": "change", "name": "变更/终止", "count": 1, "note": "雅菲撤诉=终止"}, {"no": 7, "code": "archive", "name": "归档", "count": 3, "note": "案例库"}], "healthIndex": 71}, "gates": {"CG0": {"name": "收案建档门禁", "status": "pass", "note": "合同已入 LawKB 合同文书管理系统"}, "CG1": {"name": "检索研究门禁", "status": "pass", "note": "15 份均有审查意见书，检索留痕完整"}, "CG2": {"name": "合规门禁(共享R-CF)", "status": "warn", "note": "R-CF 合同域实体卡=0，当前靠人工合规审查替代；与 C5 合规中枢共享 R-CF 判据框架"}, "CG3": {"name": "用印门禁(LTI PASS)", "status": "warn", "note": "审计/捐赠等协议用印前需 LTI 复核，部分未闭环"}, "CG4": {"name": "客户门禁", "status": "pass", "note": "审查意见均已交付当事人核验"}, "CG5": {"name": "程序门禁", "status": "pass", "note": "争议案程序推进中（雅菲撤诉窗口期/王德明执行异议）"}, "CG6": {"name": "风控门禁", "status": "warn", "note": "6 争议案敞口，王德明担保涉经侦/举报为高风险"}, "CG7": {"name": "结案回流门禁", "status": "todo", "note": "合同审查经验卡待沉淀回 LawKB 飞轮"}}, "disputes": [{"id": "D1", "name": "雅菲软装窗帘买卖合同纠纷案", "type": "买卖合同", "role": "被告(我方)", "stage": "撤诉窗口期", "risk": "中", "caseState": "有 case-state.json", "action": "裁定送达前自认钉死+录音附卷，封堵原样再诉"}, {"id": "D2", "name": "厚德基金会诉道真百益合同纠纷案", "type": "服务/项目合作", "role": "原告(厚德)", "stage": "审理中", "risk": "中", "caseState": "无 case-state", "action": "二审/审理材料整合，理事会专项回填"}, {"id": "D3", "name": "冒井渔业 vs 厚德渔业合同纠纷", "type": "买卖/渔业", "role": "争议方", "stage": "争议处置", "risk": "中", "caseState": "无 case-state", "action": "履约争议处置，固定微信/收据证据"}, {"id": "D4", "name": "王德明担保合同纠纷案", "type": "担保/借贷", "role": "申请人", "stage": "执行异议+经侦举报+再审", "risk": "高", "caseState": "无 case-state", "action": "执行异议申请书+经侦/金融监管局举报程序推进"}, {"id": "D5", "name": "众志救援场地使用收回案件", "type": "场地使用", "role": "权益方", "stage": "行政争议", "risk": "低", "caseState": "无 case-state", "action": "信赖利益证据固化（行政协议司法解释第5/23条）"}, {"id": "D6", "name": "凤仪村与赤水月亮湖合作合同纠纷案", "type": "合作", "role": "争议方", "stage": "争议评估", "risk": "中", "caseState": "无 case-state", "action": "合作合同履约争议评估"}], "riskPos": {"D1": [1, 0], "D2": [1, 1], "D3": [0, 1], "D4": [2, 0], "D5": [0, 2], "D6": [1, 2]}, "actions": [{"level": "P0", "name": "王德明担保合同纠纷案 执行异议+经侦举报程序推进", "state": "urgent", "basis": "担保制度解释/民诉法执行异议"}, {"level": "P0", "name": "雅菲撤诉窗口期 自认钉死+录音附卷", "state": "urgent", "basis": "民诉法解释第238条第1款"}, {"level": "P1", "name": "审计业务约定书乙方主体信息补正（CG3 用印门禁卡点）", "state": "armed", "basis": "慈善组织信息公开办法/民间非营利组织会计制度"}, {"level": "P1", "name": "厚德诉道真百益 二审/审理材料整合", "state": "armed", "basis": "案件生命周期"}, {"level": "P2", "name": "冒井渔业 vs 厚德渔业 履约争议处置", "state": "pending", "basis": "买卖合同"}, {"level": "P2", "name": "众志救援场地收回 信赖利益证据固化", "state": "pending", "basis": "行政协议司法解释第5/23条"}, {"level": "P2", "name": "凤仪村/月亮湖合作合同 争议评估", "state": "pending", "basis": "合作协议"}], "rcf": {"sharedWith": "C5 小德·合规管理中枢", "contractCards": 0, "status": "warn", "note": "R-CF 合同域实体合规审查卡 = 0（目录仅含生成脚本与索引）；当前以人工合规审查替代，判据框架共享 C5。P0 待建合同域 R-CF 卡族。"}, "redactRules": [{"field": "当事人姓名", "method": "脱敏为 当事人A/B", "example": "刘九零/刘维 → 当事人A/B"}, {"field": "企业全称", "method": "脱敏为 行业+地域", "example": "习水县焦鹏雅菲软装经营部 → 某软装经营部"}, {"field": "精确标的额", "method": "区间化", "example": "178,000元 → 十余万元级"}, {"field": "身份证/账号", "method": "全抹除", "example": "522132********2816 → 已脱敏"}, {"field": "内部案号", "method": "脱敏为 类型+年份", "example": "(2026)黔0330民初6660号 → 某买卖纠纷案-2026"}], "auditLog": [{"ts": "2026-09-14T13:25", "action": "init_contract_lifecycle_dashboard", "by": "小强"}, {"ts": "2026-09-06T00:00", "action": "雅菲案 case-state 蒸馏（含 G0-G7 门禁）", "by": "小德"}, {"ts": "2026-09-01T00:00", "action": "雅菲原告开庭当日申请撤诉，进入窗口期", "by": "小德"}, {"ts": "2026-05-26T00:00", "action": "公益筹款平台合作服务协议 审查报告定稿", "by": "小德"}, {"ts": "2026-05-20T00:00", "action": "助力成长暖心包项目合作协议 红队审查", "by": "小德"}], "updatedAt": "2026-09-14", "_formula": "0.4×门禁71+0.4×审查覆盖65+0.2×风险健康83"};
+let DATA = FALLBACK_DATA;
+function renderAll(){
+
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---- 综合合同健康指数（透明合成，同 xiaode 口径，可调权重，不构成法律意见） ---- */
+const SCORE = DATA.summary.healthIndex;
+const scoreColor = SCORE>=85?"var(--green)":SCORE>=70?"var(--teal)":SCORE>=60?"var(--amber)":"var(--red)";
+(function(){
+  const C=2*Math.PI*60, off=C*(1-SCORE/100);
+  const arc=document.getElementById("arc");
+  arc.setAttribute("stroke-dasharray",(C-off).toFixed(1)+" "+C.toFixed(1));
+  arc.setAttribute("stroke",scoreColor);
+  const n=document.getElementById("scoreN"); n.textContent=SCORE; n.style.color=scoreColor;
+})();
+
+const k=DATA.summary;
+document.getElementById("heroStats").innerHTML=[
+  ["已审合同",k.reviewedContracts,"teal"],
+  ["合同资产",k.totalAssets,""],
+  ["争议案",k.disputes,"alarm"],
+  ["CG 门禁","8 道","warn"]
+].map(([l,n,c])=>`<div class="stat ${c}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+
+document.getElementById("idxNote").textContent=
+  `指数=${DATA._formula}（原型合成指标，权重可调，不构成法律意见）`;
+document.getElementById("conn").innerHTML=
+  `<span class="c" style="font-size:11px;padding:2px 9px;border-radius:6px;background:rgba(40,180,133,.12);color:#5fd6ad;border:1px solid rgba(40,180,133,.3)">数据源：${esc(DATA.source)}</span>`;
+
+/* ---- ① SEE: 类型分布 ---- */
+const bt=k.byType, max=Math.max(...Object.values(bt));
+document.getElementById("dbar").innerHTML=Object.entries(bt).map(([n,v])=>
+  `<div class="row"><span class="name">${esc(n)}</span>
+   <span class="track"><i style="width:${Math.round(v/max*100)}%"></i></span>
+   <span class="v">${v}</span></div>`).join("");
+
+/* ---- ① SEE: 七阶段流水线（每阶段下列出所属合同名，点击展开详细阶段）---- */
+const contractsByStage = {};
+(DATA.contracts||[]).forEach(c=>{(contractsByStage[c.stage]=contractsByStage[c.stage]||[]).push(c);});
+document.getElementById("stages").innerHTML=k.stages.map((s,i,arr)=>{
+  const cl=(contractsByStage[s.code]||[]).map(c=>
+    `<div class="schip ${c.isTemplate?'t':''}" data-cid="${c.id}" title="点击查看 ${esc(c.name)} 的详细阶段（CG0–CG7门禁）">`
+    +`<span class="ci">${c.id}</span>${esc(c.name)}</div>`).join("");
+  const list = cl || `<span class="schip" style="cursor:default;color:var(--txt3c)">（该阶段暂无合同明细）</span>`;
+  const node=`<div class="stage"><div class="sno">阶段 ${s.no}</div>
+    <div class="snm">${esc(s.name)}</div><div class="sc">${s.count}</div>
+    <div class="sbar"></div><div class="snote">${esc(s.note)}</div>
+    <div class="scontracts">${list}</div></div>`;
+  const arrw = i<arr.length-1 ? `<div class="stage-arrow">›</div>` : "";
+  return node+arrw;
+}).join("");
+
+/* ---- ② UNDERSTAND: 风险矩阵 ---- */
+(function(){
+  const m=document.getElementById("matrix");
+  const X0=50,X1=320,Y0=30,Y1=220;
+  const colX=[110,200,290], rowY=[60,125,190];
+  let s="";
+  for(let r=0;r<3;r++)for(let c=0;c<3;c++)
+    s+=`<rect class="cell" x="${X0+c*90}" y="${Y0+r*63.3}" width="90" height="63.3"/>`;
+  s+=`<rect x="${X0}" y="${Y0}" width="${X1-X0}" height="${Y1-Y0}" fill="none" stroke="rgba(255,255,255,.12)"/>`;
+  s+=`<text class="axis" x="${X0-8}" y="${rowY[0]+4}" text-anchor="end">高</text>`;
+  s+=`<text class="axis" x="${X0-8}" y="${rowY[1]+4}" text-anchor="end">中</text>`;
+  s+=`<text class="axis" x="${X0-8}" y="${rowY[2]+4}" text-anchor="end">低</text>`;
+  s+=`<text class="axis" x="${colX[0]}" y="${Y1+18}" text-anchor="middle">低</text>`;
+  s+=`<text class="axis" x="${colX[1]}" y="${Y1+18}" text-anchor="middle">中</text>`;
+  s+=`<text class="axis" x="${colX[2]}" y="${Y1+18}" text-anchor="middle">高</text>`;
+  s+=`<text x="${(X0+X1)/2}" y="${Y1+34}" text-anchor="middle" style="font-size:10px;fill:var(--txt3c)">发生可能性 →</text>`;
+  s+=`<text x="${X0-26}" y="${(Y0+Y1)/2}" text-anchor="middle" transform="rotate(-90 ${X0-26} ${(Y0+Y1)/2})" style="font-size:10px;fill:var(--txt3c)">影响程度 →</text>`;
+  const col={高:"var(--red)",中:"var(--amber)",低:"var(--yellow)"};
+  DATA.disputes.forEach(d=>{
+    const p=DATA.riskPos[d.id]; if(!p)return;
+    const cx=colX[p[0]], cy=rowY[p[1]];
+    s+=`<circle cx="${cx}" cy="${cy}" r="14" fill="${col[d.risk]}" stroke="rgba(0,0,0,.35)" stroke-width="1.5"><title>${esc(d.id)} ${esc(d.name)} (${esc(d.risk)}风险)</title></circle>`;
+    s+=`<text class="rdot" x="${cx}" y="${cy+3.5}" text-anchor="middle">${esc(d.id)}</text>`;
+  });
+  m.innerHTML=s;
+})();
+
+/* ---- ② UNDERSTAND: 门禁健康 ---- */
+(function(){
+  const g=Object.entries(DATA.gates);
+  const cnt=cls=>g.filter(([_,v])=>v.status===cls).length;
+  const pass=cnt("pass"),normal=cnt("normal"),warn=cnt("warn"),todo=cnt("todo"),total=g.length;
+  document.getElementById("attrBar").innerHTML=
+    `<span style="width:${pass/total*100}%;background:var(--green)"></span>`+
+    `<span style="width:${normal/total*100}%;background:var(--cyan)"></span>`+
+    `<span style="width:${warn/total*100}%;background:var(--amber)"></span>`+
+    `<span style="width:${todo/total*100}%;background:var(--txt3c)"></span>`;
+  const warnNames=g.filter(([_,v])=>v.status==="warn").map(([id,v])=>`${id}(${v.name})`);
+  document.getElementById("attrTxt").innerHTML=
+    `8 道闸门中 <b>${warn} 道预警、${todo} 道待办</b>；核心堵点是 <b>${warnNames.join("、")}</b>，`+
+    `尤其 <b>CG2 合规门禁</b>（R-CF 合同域实体卡=0）与 <b>CG6 风控门禁</b>（王德明担保高风险敞口）。`;
+})();
+
+/* ---- ② UNDERSTAND: R-CF 共享 ---- */
+document.getElementById("rcf").innerHTML=
+  `<div class="r"><span class="tag warn">WARN</span>
+   <span class="tx">合同域 R-CF 实体合规审查卡 = <b style="color:var(--amber)">${DATA.rcf.contractCards}</b> 张（目录仅含生成脚本+索引）</span>
+   <span class="td">${esc(DATA.rcf.sharedWith)}</span></div>
+   <div class="r"><span class="tag ok">共享</span>
+   <span class="tx">判据框架与 C5 合规中枢同源；当前以人工合规审查替代</span>
+   <span class="td">${esc(DATA.rcf.status)}</span></div>
+   <div class="r" style="border-style:dashed"><span class="tag warn">P0</span>
+   <span class="tx">${esc(DATA.rcf.note)}</span></div>`;
+
+/* ---- ③ ACT: 行动清单 ---- */
+const actOrder={P0:0,P1:1,P2:2};
+const acts=DATA.actions.slice().sort((a,b)=>(actOrder[a.level]||9)-(actOrder[b.level]||9));
+document.getElementById("act").innerHTML=acts.map(d=>
+  `<div class="a ${d.level.toLowerCase()}"><span class="lv">${esc(d.level)}</span>
+   <div><div class="at">${esc(d.name)}</div>
+   <div class="ad">${esc(d.state)} · 依据 ${esc(d.basis)}</div></div></div>`).join("");
+
+/* ---- ③ ACT: 整改看板（争议案）---- */
+const RK={高:"red",中:"orange",低:"yellow"};
+document.getElementById("kanban").innerHTML=DATA.disputes.map(d=>
+  `<div class="kb ${RK[d.risk]}"><span class="id">${esc(d.id)}</span>
+   <div class="body"><div class="kt">${esc(d.name)} <span style="font-size:10px;color:var(--txt3c)">[${esc(d.type)}·${esc(d.role)}]</span></div>
+   <div class="ka">${esc(d.stage)} · 整改：${esc(d.action)}</div></div></div>`).join("");
+
+/* ---- ③ ACT: 脱敏双管线 ---- */
+document.getElementById("redact").innerHTML=DATA.redactRules.map(r=>
+  `<div class="row"><span class="f">${esc(r.field)}</span>
+   <span class="ex">${esc(r.method)} · <b>${esc(r.example)}</b></span></div>`).join("");
+
+/* ---- AUDIT 轨迹 ---- */
+document.getElementById("timeline").innerHTML=DATA.auditLog.map((e,i)=>
+  `<div class="tl ${i%2?'alt':''}"><div class="dotc"></div>
+   <div class="td">${esc(e.ts)}</div>
+   <div class="te">${esc(e.action)}</div>
+   <div class="tb">by ${esc(e.by)}</div></div>`).join("");
+
+/* ---- 争议案深度卡（实时读取 caseStateDetail）---- */
+(function(){
+  const dc=document.getElementById("deepCards");
+  if(!dc) return;
+  const riskCls={高:"red",中:"orange",低:"yellow"};
+  function cardWrap(d, body){
+    const rc=riskCls[d.risk]||"";
+    return `<div class="dc ${rc}">
+      <div class="dc-head"><span class="dc-id">${esc(d.id)}</span>
+        <span class="dc-title">${esc(d.name)}</span>
+        <span class="dc-tag">${esc(d.risk)}风险</span>
+        <span class="dc-tag2">${esc(d.stage)}</span></div>${body}</div>`;
+  }
+  dc.innerHTML=DATA.disputes.map(d=>{
+    const cs=d.caseStateDetail;
+    if(!cs){
+      return cardWrap(d, `<div class="dc-note">本案 case-state 状态：<b>${esc(d.caseState)}</b>，单一事实源暂未含结构化深度卡（caseStateDetail）。</div>`);
+    }
+    const b=cs.basic||{}, gates=cs.gates||{};
+    const gHtml=Object.entries(gates).map(([g,v])=>`<span class="dg g-${esc(v.status||'todo')}"><b>${esc(g)}</b> ${esc(v.name||'')}·${esc(v.status||'')}</span>`).join("");
+    const tl=(cs.timeline||[]).map(t=>`<li><span class="dt">${esc(t.date)}</span>${esc(t.event)}</li>`).join("");
+    const lb=(cs.legalBasis||[]).map(x=>`<span class="lb">${esc(x)}</span>`).join("");
+    const ap=(cs.actionPlan||[]).map(a=>`<li><span class="lvl">${esc(a.level)}</span>${esc(a.action)}<span class="own"> · ${esc(a.owner||a.state||'')}</span></li>`).join("");
+    const pv=(cs.pendingVerification||[]).map(x=>`<li>⚠️ ${esc(x)}</li>`).join("");
+    const no=b.caseNo_2018||b.caseNo_1st||b.caseNo||b.caseNo_2nd||"-";
+    const body=`<div class="dc-grid">
+        <div class="dc-col">
+          <div class="dc-row"><span class="k">案号</span><span class="v">${esc(no)}</span></div>
+          <div class="dc-row"><span class="k">审级/法院</span><span class="v">${esc(b.court||"-")}</span></div>
+          <div class="dc-row"><span class="k">我方</span><span class="v">${esc(b.ourRole||"-")}</span></div>
+          <div class="dc-row"><span class="k">标的</span><span class="v">${esc(b.subjectAmount||"-")}</span></div>
+          <div class="dc-row"><span class="k">状态</span><span class="v">${esc(b.status||b.stage||"-")}</span></div>
+        </div>
+        <div class="dc-col">
+          <div class="dc-sub">时间线</div><ul class="dc-list">${tl}</ul>
+          <div class="dc-sub">法律依据</div><div class="dc-lbs">${lb}</div>
+        </div>
+      </div>
+      <div class="dc-gates">${gHtml}</div>
+      <div class="dc-sub">行动清单</div><ul class="dc-list">${ap}</ul>
+      ${pv?`<div class="dc-sub warn">待核 pendingVerification</div><ul class="dc-pend">${pv}</ul>`:""}`;
+    return cardWrap(d, body);
+  }).join("");
+})();
+
+document.getElementById("ft").textContent=
+  "单一事实源 contract-state.json（实时 fetch，对标 case-state.json）· 数据全量来自 LawKB 实扫 2026-09-14，不编造 · 对外传播前须走脱敏双管线 · 更新 "+DATA.updatedAt;
+}
+
+/* 合同详情：点击七阶段卡内合同名 → 展开该合同的当前阶段 + CG0–CG7 门禁贯穿状态 */
+const GATE_SHORT = {"CG0":"收案建档","CG1":"检索研究","CG2":"合规R-CF","CG3":"用印LTI","CG4":"客户","CG5":"程序","CG6":"风控","CG7":"结案回流"};
+function showContractDetail(c){
+  const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const cg=Object.entries(c.cg).map(([gid,st])=>
+    `<div class="cgmini ${st}"><span class="d"></span><span class="gid">${gid}</span><span class="gnm">${GATE_SHORT[gid]||gid}</span></div>`).join("");
+  const riskTag = c.isTemplate ? '<span class="cd-tag tpl">模板</span>'
+    : (c.risk && c.risk!=='—' ? `<span class="cd-tag risk-${c.risk}">${c.risk}风险</span>` : '');
+  const box=document.getElementById("contractDetail");
+  box.classList.remove("hidden");
+  box.innerHTML=`<div class="cd-head"><span class="cd-name">${esc(c.name)}</span>`
+    +`<span class="cd-tag">${esc(c.type)}</span>${riskTag}<span class="cd-tag">${c.id}</span></div>`
+    +`<div class="cd-stage">当前阶段：<b>${esc(c.stageName)}</b>（${esc(c.stage)}）· 以下为 CG0–CG7 门禁贯穿状态</div>`
+    +`<div class="cd-cg">${cg}</div>`
+    +`<div class="cd-action">${esc(c.action)}</div>`
+    +`<div class="cd-src">来源：${esc(c.source)}</div>`;
+  box.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+document.addEventListener("click", e=>{
+  const chip=e.target.closest("#stages .schip[data-cid]"); if(!chip) return;
+  const c=(DATA.contracts||[]).find(x=>x.id===chip.dataset.cid); if(!c) return;
+  showContractDetail(c);
+});
+
+/* 初始渲染（内联兜底）→ 实时 fetch 重载 */
+renderAll();
+(async()=>{
+  try{
+    const r=await fetch('contract-state.json',{cache:'no-store'});
+    if(r.ok){ const j=await r.json(); if(j&&Array.isArray(j.disputes)){ DATA=j; renderAll(); } }
+  }catch(e){ console.warn('fetch contract-state.json 失败，使用内联兜底', e); }
+})();
+</script>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var d=new Date(document.lastModified);
+    if(isNaN(d.getTime())) return;
+    var s=fmt(d);
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：'+s+'（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+s);}
+  }catch(e){}
+})();
+</script>
+
+<script src="/subapp_score_override.js?v=20260919b"></script>
+</body>
+</html>

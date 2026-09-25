@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>系统心智模型总览大屏 · 9360 驾驶舱</title>
+<style>
+:root{
+  --bg:#0f1424; --panel:#171d32; --panel2:#10162a; --line:#2a3354; --accent:#4f9dff;
+  --sub:#9fb0d8; --text:#e6ecff; --green:#3fd07f; --amber:#ffb547; --red:#ff6b6b;
+  --purple:#a78bfa; --teal:#2dd4bf; --pink:#f472b6; --orange:#f59e0b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1100px 500px at 12% -8%, #16203a 0%, var(--bg) 60%);
+  color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;padding:22px 26px 60px}
+header{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px}
+h1{margin:0;font-size:21px;display:flex;align-items:center;gap:10px}
+.sub{color:var(--sub);margin-top:6px;font-size:12.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+.kpi .n{font-size:25px;font-weight:800;color:var(--accent)}
+.kpi .l{color:var(--sub);font-size:12px;margin-top:3px}
+.kpi.red .n{color:var(--red)} .kpi.amber .n{color:var(--amber)} .kpi.green .n{color:var(--green)} .kpi.teal .n{color:var(--teal)} .kpi.purple .n{color:var(--purple)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:18px}
+.card h2{font-size:15px;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.card h2 .tag{font-size:11px;font-weight:500;color:var(--sub);background:#243056;padding:2px 9px;border-radius:999px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--sub);font-weight:600;position:sticky;top:0;background:var(--panel);z-index:1}
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700}
+.b-active{background:#1d3a2a;color:#8effb0}.b-draft{background:#3a3a12;color:#ffcf8e}
+.tier{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700}
+.t-m5{background:#1d3a5f;color:#8ec5ff}.t-m4{background:#1d4d2e;color:#8effb0}.t-m3{background:#5a3a12;color:#ffcf8e}.t-m2{background:#5a1d1d;color:#ff9a9a}.t-top{background:#3a1d5a;color:#d29aff}
+.flag{color:var(--red);font-weight:700}
+a{color:var(--accent);text-decoration:none}
+.muted{color:var(--sub);font-size:12px}
+.bar{display:flex;gap:14px;flex-wrap:wrap;margin-top:4px}
+.dim{flex:1 1 140px;min-width:140px}
+.dim .top{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.dim .top b{font-size:14px}
+.dim .track{height:8px;background:var(--panel2);border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.dim .fill{height:100%;border-radius:5px}
+.sixcell{display:flex;gap:3px;align-items:flex-end;height:26px}
+.sixcell .s{width:7px;border-radius:2px 2px 0 0}
+.matbar{height:7px;background:var(--panel2);border-radius:4px;overflow:hidden;border:1px solid var(--line);min-width:80px}
+.matbar .f{height:100%}
+.d4{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:6px}
+.d4 .c{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px}
+.d4 .c .v{font-size:17px;font-weight:800}
+.d4 .c .k{font-size:11px;color:var(--sub);margin-top:2px}
+.lead{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lead .col{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
+.lead h3{margin:0 0 8px;font-size:13px}
+.lead li{margin:5px 0;line-height:1.5}
+.foot{margin-top:10px;color:var(--sub);font-size:11.5px;border-top:1px solid var(--line);padding-top:10px}
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+</style>
+</head>
+<body data-cno="D4">
+<header>
+  <h1>D4 心智模型中台<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-25 13:43（北京时间）</span></h1>
+  <div class="sub" id="sub">数据更新时间：2026-09-16 21:27（北京时区）｜ 心智资产 v1.4.1 / 九屏评分 09-14 / 系统评估 09-14 ｜ 按小强总驾驶舱标准 · dark 主题</div>
+</header>
+
+<!-- 六维作战评分导航 -->
+<section class="card">
+  <h2>六维作战评分 <span class="tag" id="totalTag">总维度 77.2 · 合格 C</span></h2>
+  <div class="bar" id="dims"></div>
+</section>
+
+<!-- 系统总评 KPI -->
+<div class="grid" id="kpis"></div>
+
+<!-- 九屏明细 -->
+<section class="card">
+  <h2>九屏 + 1 维度明细 <span class="tag">C0 云监控不计分 · 🚩=需治理</span></h2>
+  <table>
+    <thead><tr><th>屏</th><th>名称</th><th>屏级分</th><th>战略权重</th><th>flag</th><th>六维(鲜/覆/健/产/合/自)</th><th>风险</th></tr></thead>
+    <tbody id="screenRows"></tbody>
+  </table>
+</section>
+
+<!-- 六方 persona -->
+<section class="card">
+  <h2>六方 persona 心智卡 <span class="tag">5 ACTIVE / 1 DRAFT</span></h2>
+  <table>
+    <thead><tr><th>席位</th><th>阵营</th><th>状态</th><th>成熟度</th><th>梯队</th><th>成熟度条</th></tr></thead>
+    <tbody id="personaRows"></tbody>
+  </table>
+  <div class="muted" style="margin-top:8px">寄生型心智（无独立 persona 卡，已并入六方成熟度对比）：🔵-A 蓝队律师助理 73/100·M3（PROJ-003）｜ 🔵 蓝队非诉律师 80/100·M4（PROJ-007）｜ 🧑‍⚖️ 小强律师本体分身 persona.md（无状态字段）</div>
+</section>
+
+<!-- 四方五维成熟度 -->
+<section class="card">
+  <h2>审录红蓝六方智能体心智模型 · 五维成熟度对比 <span class="tag">审·录·红·蓝诉讼·蓝助理·蓝非诉</span></h2>
+  <table>
+    <thead><tr><th>六方</th><th>合计(五维加权)</th><th>D1训练场次(20)</th><th>D2弹药台账(25)</th><th>D3身份留痕(15)</th><th>D4案由覆盖(20)</th><th>D5病灶修复(20)</th><th>profile 成熟度(08-索引)</th></tr></thead>
+    <tbody id="fourRows"></tbody>
+  </table>
+</section>
+
+<!-- 心智资产统计 -->
+<section class="card">
+  <h2>心智资产统计 <span class="tag">共 38 项 · 活文档 v1.4.1</span></h2>
+  <div class="grid" id="assetGrid"></div>
+</section>
+
+<!-- 诊断结论 -->
+<section class="card">
+  <h2>诊断结论与改进路线 <span class="tag">综合评估 79/100 良好 B</span></h2>
+  <div class="lead">
+    <div class="col">
+      <h3>✅ 最强三项</h3>
+      <ul>
+        <li>① 审录红蓝六方对抗体系（红·蓝诉讼·蓝助理·蓝非诉·审判长·书记员 六心智，五章同构 + 弹药取自真实翻车标本 + 自动成熟度追踪）</li>
+        <li>② 知识飞轮数据规模（规则库 1891+ / 卡片 413+ / 法条缓存 1054，断链率 0.111%）</li>
+        <li>③ LTI 防幻觉质检（80.6% 检出 / 0% 误报，所有输出硬门禁）</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>🚩 最弱三项</h3>
+      <ul>
+        <li>① 业务出口屏产出薄（C4 案件 66.5 / C5 小德 61.0 / C6 模拟法庭 62.0 均 flag）</li>
+        <li>② 运行健康度与自动化（health 72.6 / automation 74.6，连接器保活）</li>
+        <li>③ 书记员真实实战积累（真实分 25.6~37.6，中台 clerk 面板空壳）</li>
+      </ul>
+    </div>
+  </div>
+  <table style="margin-top:12px">
+    <thead><tr><th>优先级</th><th>动作</th><th>预期收益</th></tr></thead>
+    <tbody>
+      <tr><td class="flag">🔴 P0</td><td>① 元典积分充值（余额 0，C9 health=29 直接拖累）；② 新案由喂书记员实战（韩杰医疗再审/王德明执行异议/航合物流）提 D4</td><td>消 C9 flag + 书记员真实分↑</td></tr>
+      <tr><td>🟠 P1</td><td>③ CLM/C5/C6 三屏产出补强（飞轮与对抗成果显化为屏产出）；④ 蓝队接 pkulaw/元典自动核条 + 建 eval 套件（对标法官）</td><td>消三 flag + 蓝队代差收敛</td></tr>
+      <tr><td>🟡 P2</td><td>⑤ 中台 clerk 席位面板接线；⑥ CK3 笔录规范合并单一权威源；⑦ CK5 回源核填《法庭规则》消 pending</td><td>体系对称性收尾</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 待办病灶 -->
+<section class="card">
+  <h2>待办病灶 <span class="tag">B1–B4 已于 2026-09-16 全部闭环</span></h2>
+  <table>
+    <thead><tr><th>#</th><th>病灶</th><th>级别</th><th>状态</th></tr></thead>
+    <tbody>
+      <tr><td>B-1</td><td>模拟法官缺飞轮详细版心智备忘录</td><td>P1</td><td class="b-active" style="background:#1d3a2a;color:#8effb0;padding:2px 8px;border-radius:6px">✅ 已闭环 09-16</td></tr>
+      <tr><td>B-2</td><td>WF-047 编号撞号</td><td>P1</td><td style="background:#1d3a2a;color:#8effb0;padding:2px 8px;border-radius:6px">✅ 已闭环 09-16</td></tr>
+      <tr><td>B-3</td><td>QC 审判长心智无独立 persona 卡</td><td>P2</td><td style="background:#1d3a2a;color:#8effb0;padding:2px 8px;border-radius:6px">✅ 已闭环 09-16</td></tr>
+      <tr><td>B-4</td><td>索引与源卡状态漂移</td><td>P2</td><td style="background:#1d3a2a;color:#8effb0;padding:2px 8px;border-radius:6px">✅ 已闭环 09-16</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="foot">
+  数据源：08-心智资产/_索引.md (v1.4.1, 09-16) ｜ scorecard_data.json (09-14 13:30) ｜ 系统能力与心智模型综合评估报告 (09-14) ｜ 模拟法庭四方卡库挂载复盘 (09-15) ｜ 所有数字来自实跑脚本与文件实测，未凭记忆填数。
+</div>
+
+<script src="/subapps/mind-models/mind-data.js"></script>
+<script>
+function colorFor(v){ if(v==null) return "#444a66"; return v>=85?"#3fd07f":(v>=70?"#ffb547":"#ff6b6b"); }
+function pct(v){ return v==null?0:Math.max(0,Math.min(100,v)); }
+
+document.getElementById("totalTag").textContent="总维度 "+TOTAL.val+" · "+TOTAL.grade;
+document.getElementById("dims").innerHTML=DIMS.map(d=>`
+  <div class="dim">
+    <div class="top"><span>${d.name}</span><b>${d.val}</b></div>
+    <div class="track"><div class="fill" style="width:${d.val}%;background:${d.color}"></div></div>
+  </div>`).join("");
+
+document.getElementById("kpis").innerHTML=KPI.map(k=>`<div class="kpi ${k.cls}"><div class="n">${k.n}</div><div class="l">${k.l}</div></div>`).join("");
+
+document.getElementById("screenRows").innerHTML=SCREENS.map(s=>{
+  const six=s.six?`<div class="sixcell">${s.six.map(v=>`<div class="s" style="height:${pct(v)/4+4}px;background:${colorFor(v)}" title="${v}"></div>`).join("")}</div>`:'<span class="muted">不计分</span>';
+  return `<tr>
+    <td><b>${s.cno}</b></td><td>${s.name}</td>
+    <td><b style="color:${colorFor(s.score)}">${s.score==null?"—":s.score}</b></td>
+    <td>${s.weight? (s.weight*100).toFixed(1)+"%":"0%"}</td>
+    <td>${s.flag?'<span class="flag">🚩</span>':'—'}</td>
+    <td>${six}</td><td class="muted">${s.risk}</td>
+  </tr>`;
+}).join("");
+
+document.getElementById("personaRows").innerHTML=PERSONA.map(p=>`
+  <tr>
+    <td><b>${p.seat}</b></td><td class="muted">${p.role}</td>
+    <td><span class="badge ${p.status==='ACTIVE'?'b-active':'b-draft'}">${p.status}</span></td>
+    <td><b>${p.mat}</b></td>
+    <td><span class="tier ${p.ts}">${p.tier}</span></td>
+    <td><div class="matbar"><div class="f" style="width:${p.pct}%;background:${p.cls}"></div></div></td>
+  </tr>`).join("");
+
+document.getElementById("fourRows").innerHTML=FOUR.map(f=>`
+  <tr>
+    <td><b>${f.name}</b></td>
+    <td><b style="color:${colorFor(f.total)}">${f.total==null?'<span class="muted">源未分解</span>':f.total}</b></td>
+    ${f.D.map(v=>`<td>${v==null?'<span class="muted">—</span>':v}</td>`).join("")}
+    <td><b>${f.mat}</b></td>
+  </tr>`).join("");
+
+document.getElementById("assetGrid").innerHTML=ASSETS.map(a=>`<div class="kpi ${a.cls}"><div class="n">${a.n}</div><div class="l">${a.l}</div></div>`).join("");
+</script>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var d=new Date(document.lastModified);
+    if(isNaN(d.getTime())) return;
+    var s=fmt(d);
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：'+s+'（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+s);}
+  }catch(e){}
+})();
+</script>
+
+<script src="/subapp_score_override.js?v=20260919b"></script>
+</body>
+</html>

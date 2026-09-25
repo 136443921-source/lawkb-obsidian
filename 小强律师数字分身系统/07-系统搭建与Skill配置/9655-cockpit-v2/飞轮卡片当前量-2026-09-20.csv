@@ -1,0 +1,20 @@
+﻿指标,当前值(2026-09-20),09-15基线,净增,来源
+裁判规则库R卡,2073,1891,182,count_rules.py 基线
+案由路由卡R-AY,319,290,29,count_rules.py 基线
+经验卡,426,413,13,count_rules.py 基线
+审判要件卡物理,78,70,8,count_rules.py 基线
+六层md总数,5106,4840,266,count_rules.py 基线
+01-采集,255,253,2,count_rules.py 基线
+02-提炼,1419,1373,46,count_rules.py 基线
+03-连接,1040,1023,17,count_rules.py 基线
+04-巩固,91,89,2,count_rules.py 基线
+05-调用,156,142,14,count_rules.py 基线
+06-沉淀,2145,1960,185,count_rules.py 基线
+
+六层近7日真实增量(git),,,,git diff-filter=A
+01-采集,7,,,git
+02-提炼,142,,,git
+03-连接,81,,,git
+04-巩固,6,,,git
+05-调用,63,,,git
+06-沉淀,634,,,git

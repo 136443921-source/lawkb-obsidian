@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>知识冲突仲裁看板 · 9360 驾驶舱</title>
+<style>
+:root{
+  --bg:#0f1424; --panel:#171d32; --panel2:#10162a; --line:#2a3354; --accent:#4f9dff;
+  --sub:#9fb0d8; --text:#e6ecff; --green:#3fd07f; --amber:#ffb547; --red:#ff6b6b;
+  --purple:#a78bfa; --teal:#2dd4bf; --pink:#f472b6; --orange:#f59e0b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1100px 500px at 12% -8%, #16203a 0%, var(--bg) 60%);
+  color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;padding:22px 26px 60px}
+header{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px}
+h1{margin:0;font-size:21px;display:flex;align-items:center;gap:10px}
+.sub{color:var(--sub);margin-top:6px;font-size:12.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+.kpi .n{font-size:25px;font-weight:800;color:var(--accent)}
+.kpi .l{color:var(--sub);font-size:12px;margin-top:3px}
+.kpi.red .n{color:var(--red)} .kpi.amber .n{color:var(--amber)} .kpi.green .n{color:var(--green)} .kpi.teal .n{color:var(--teal)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:18px}
+.card h2{font-size:15px;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.card h2 .tag{font-size:11px;font-weight:500;color:var(--sub);background:#243056;padding:2px 9px;border-radius:999px}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.toolbar input[type=text]{background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:7px 11px;border-radius:7px;min-width:240px}
+.toolbar label{color:var(--sub);display:flex;gap:5px;align-items:center;cursor:pointer;font-size:12.5px}
+.warn{margin:6px 0 12px;padding:10px 13px;background:#3a2a2a;border:1px solid #6b4040;border-radius:8px;color:#ffd9d9;font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--sub);font-weight:600;position:sticky;top:0;background:var(--panel);z-index:1}
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700}
+.b-KE{background:#1d3a5f;color:#8ec5ff}.b-FC{background:#1d4d2e;color:#8effb0}.b-VC{background:#5a3a12;color:#ffcf8e}
+.b-CC{background:#5a1d1d;color:#ff9a9a}.b-CR{background:#3a1d5a;color:#d29aff}.b-MC{background:#13484a;color:#8effe8}
+.conf{font-weight:700}
+.rel{color:var(--sub);font-size:11px;word-break:break-all}
+.sug{display:inline-block;padding:1px 7px;border-radius:5px;font-size:11px;background:#243056;color:#cfe0ff}
+.sug.no_conflict{background:#1d3a2a;color:#8effb0}
+.sug.merge{background:#3a2e12;color:#ffcf8e}
+.row-pending{color:var(--amber)} .row-done{color:var(--green)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.muted{color:var(--sub);font-size:12px}
+.foot{margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+#err{display:none;margin:20px 0;padding:14px 16px;background:#3a1d1d;border:1px solid #6b4040;border-radius:9px;color:#ffb3b3}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.bar .seg{font-size:11.5px;color:var(--sub)}
+.bar .seg b{color:var(--text)}
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+</style>
+</head>
+<body data-cno="D2">
+<header>
+  <h1>D2 知识冲突中台<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-25 13:43（北京时间）</span></h1>
+  <div class="sub" id="sub">加载中… ｜ 六类全覆盖（KE/FC/VC/CC/CR/MC）｜ 防知识打架·有人管闭环</div>
+</header>
+
+<div id="err">⚠️ 无法加载冲突队列数据（queue.json）。请先在 9360 驾驶舱运行 <code>sync_conflict_queue.py</code> 或 <code>refresh_8139.py --screen conflict</code> 同步最新扫描结果。</div>
+
+<div class="grid" id="cards"></div>
+
+<div class="card">
+  <h2>仲裁情况 <span class="tag">待处理 / 已处置 / 高置信</span></h2>
+  <div class="bar" id="arbBar"></div>
+</div>
+
+<div class="card">
+  <h2>候选冲突清单 <span class="tag">点击表头排序 · 可勾选生成处理命令</span></h2>
+  <div class="toolbar">
+    <input type="text" id="q" placeholder="搜索 ID / 标题 / 路径…" oninput="render()">
+    <label><input type="checkbox" id="hi" onchange="render()">仅看高置信(≥0.8)</label>
+    <label><input type="checkbox" id="pend" checked onchange="render()">仅看待处理</label>
+    <label><input type="checkbox" id="fight" onchange="render()">仅看硬冲突(VC/CC/MC)</label>
+  </div>
+  <div class="warn">⚠️ 本看板为 AI 候选裁决。<b>CC 内容矛盾必人工复核</b>；建议先预览处理命令，再于 LawKB「冲突仲裁」目录执行。已处置项带标记后将不再出现于待处理视图。</div>
+  <table>
+    <thead><tr>
+      <th><input type="checkbox" id="all" onchange="toggleAll(this)"></th>
+      <th onclick="sortBy('id')">ID</th><th onclick="sortBy('type')">类型</th>
+      <th onclick="sortBy('confidence')">置信度</th>
+      <th>A（胜方候选）</th><th>B（落败候选）</th>
+      <th onclick="sortBy('ai_suggestion')">AI 建议</th><th>人工决策</th><th>备注</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="foot">
+    <button onclick="genCmd()">生成处理命令</button>
+    <button class="sec" onclick="copyCmd()">复制</button>
+    <code id="cmd" style="background:var(--panel2);padding:8px 11px;border-radius:7px;flex:1;white-space:pre-wrap;word-break:break-all;color:#bde">（勾选行并选择决策后生成）</code>
+  </div>
+</div>
+
+<div class="muted">数据源：LawKB「知识飞轮系统/03-连接/冲突仲裁」目录 ｜ 实时同步进 9360 驾驶舱 ｜ 完整可操作版见该目录下的「冲突仲裁看板_*.html」。</div>
+
+<script>
+const TYPE_LABEL={KE:"知识演进",FC:"事实纠正",VC:"版本冲突",CC:"内容矛盾",CR:"上下文相关",MC:"成熟度冲突"};
+const SUG_LABEL={adopt_a:"采纳A",adopt_b:"采纳B",merge:"融合",no_conflict:"不冲突"};
+let DATA=[], sortKey="confidence", sortDir=-1;
+
+function load(){
+  fetch("./queue.json?t="+Date.now()).then(r=>{ if(!r.ok) throw 0; return r.json(); })
+    .then(d=>{ DATA=d.conflicts||[]; document.getElementById("sub").textContent=
+        "生成："+d.generated+" ｜ 同步："+d.synced_at+" ｜ 候选冲突："+DATA.length+" 项 ｜ 六类全覆盖 ｜ 防知识打架·有人管闭环";
+      renderCards(); renderArb(); render(); })
+    .catch(()=>{ document.getElementById("err").style.display="block"; });
+}
+
+function renderCards(){
+  const t={}; let pend=0, hi=0;
+  DATA.forEach(c=>{ t[c.type]=(t[c.type]||0)+1; if(c.status==="pending"||!c.decision)pend++; if(c.confidence>=0.8)hi++; });
+  const order=["KE","FC","VC","CC","CR","MC"];
+  const cls={"CC":"red","VC":"amber","MC":"amber","CR":"teal","FC":"green","KE":""};
+  let html=order.map(k=>`<div class="kpi ${cls[k]||''}"><div class="n">${t[k]||0}</div><div class="l">${k} ${TYPE_LABEL[k]}</div></div>`).join("");
+  html+=`<div class="kpi amber"><div class="n">${pend}</div><div class="l">待处理</div></div>`;
+  html+=`<div class="kpi green"><div class="n">${DATA.length-pend}</div><div class="l">已处置</div></div>`;
+  html+=`<div class="kpi teal"><div class="n">${hi}</div><div class="l">高置信(≥0.8)</div></div>`;
+  document.getElementById("cards").innerHTML=html;
+}
+
+function renderArb(){
+  const by={adopt_a:0,adopt_b:0,merge:0,no_conflict:0};
+  DATA.forEach(c=>{ const s=c.ai_suggestion; if(s in by) by[s]++; });
+  const seg=k=>`<span class="seg">${SUG_LABEL[k]}：<b>${by[k]}</b></span>`;
+  document.getElementById("arbBar").innerHTML=seg("no_conflict")+seg("merge")+seg("adopt_a")+seg("adopt_b");
+}
+
+function sortBy(k){ if(sortKey===k) sortDir*=-1; else {sortKey=k;sortDir=1;} render(); }
+
+function render(){
+  const q=document.getElementById("q").value.toLowerCase();
+  const hi=document.getElementById("hi").checked;
+  const pend=document.getElementById("pend").checked;
+  const fight=document.getElementById("fight").checked;
+  let rows=DATA.filter(c=>{
+    if(hi && c.confidence<0.8) return false;
+    if(pend && c.status!=="pending" && c.decision) return false;
+    if(fight && !["VC","CC","MC"].includes(c.type)) return false;
+    if(q){ const hay=(c.id+" "+(c.side_a.title||"")+" "+(c.side_b.title||"")+" "+(c.side_a.rel||"")+" "+(c.side_b.rel||"")).toLowerCase(); if(!hay.includes(q)) return false; }
+    return true;
+  });
+  rows.sort((a,b)=>{ let x=a[sortKey], y=b[sortKey]; if(sortKey==="confidence"){x=+x;y=+y;} if(x<y)return -1*sortDir; if(x>y)return 1*sortDir; return 0; });
+  document.getElementById("rows").innerHTML=rows.map(c=>{
+    const done=(c.status!=="pending"||c.decision);
+    const dec=c.decision?`<span class="row-done">${SUG_LABEL[c.decision]||c.decision}</span>`:`<span class="row-pending">待处理</span>`;
+    return `<tr>
+      <td><input type="checkbox" class="sel" value="${c.id}"></td>
+      <td>${c.id}</td>
+      <td><span class="badge b-${c.type}">${c.type}</span><div class="muted">${TYPE_LABEL[c.type]}</div></td>
+      <td><span class="conf">${c.confidence}</span></td>
+      <td><div>${c.side_a.title||""}</div><div class="rel">${c.side_a.rel||""}</div></td>
+      <td><div>${c.side_b.title||""}</div><div class="rel">${c.side_b.rel||""}</div></td>
+      <td><span class="sug ${c.ai_suggestion}">${SUG_LABEL[c.ai_suggestion]||c.ai_suggestion}</span></td>
+      <td>${dec}</td>
+      <td class="muted">${c.decision_note||c.evidence||""}</td>
+    </tr>`;
+  }).join("");
+}
+
+function toggleAll(b){ document.querySelectorAll(".sel").forEach(x=>x.checked=b.checked); }
+function selIds(){ return [...document.querySelectorAll(".sel:checked")].map(x=>x.value); }
+function genCmd(){
+  const ids=selIds(); if(!ids.length){ document.getElementById("cmd").textContent="（请先勾选行）"; return; }
+  document.getElementById("cmd").textContent=
+    "python3 ~/.workbuddy/skills/lawkb-conflict-arbitration/arbitrate.py --ids "+ids.join(",")+"  # 于 LawKB 冲突仲裁目录执行";
+}
+function copyCmd(){ const t=document.getElementById("cmd").textContent; if(navigator.clipboard) navigator.clipboard.writeText(t); }
+
+load();
+</script>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var d=new Date(document.lastModified);
+    if(isNaN(d.getTime())) return;
+    var s=fmt(d);
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：2026-09-16 21:27（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+s);}
+  }catch(e){}
+})();
+</script>
+
+<script src="/subapp_score_override.js?v=20260919b"></script>
+<script>
+// H2 双源核验 · S1 范式 overlay（独立 h2_verify.json + no-store；不改 D2 视觉层）
+(function(){
+  var rel = (location.pathname.indexOf('/subapps/') >= 0) ? '../../' : './';
+  function mount(nodeId, html){
+    var sels = ['header','.meta','body'];
+    function put(a){var old=document.getElementById(nodeId);if(old)old.parentNode.removeChild(old);var el=document.createElement('div');el.id=nodeId;el.style.marginTop='6px';el.style.fontSize='12px';el.innerHTML=html;a.appendChild(el);}
+    for(var i=0;i<sels.length;i++){var a=document.querySelector(sels[i]);if(a){put(a);return;}}
+    var t=0;function retry(){for(var i=0;i<sels.length;i++){var a=document.querySelector(sels[i]);if(a){put(a);return;}}if(t++<8)setTimeout(retry,400);}retry();
+  }
+  fetch(rel+'h2_verify.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():Promise.reject();}).then(function(j){
+    var c = j.verdict==='ok' ? '#9fe6c3' : '#f0c674';
+    mount('h2-verify','🔎 H2 双源核验：本地法规库 <b style="color:'+c+'">'+(j.local_source_available?'已接入':'不可达')+'</b> · 法条 '+j.statute_lib_count+' 篇 · pending 残留 '+j.pending_residual+' · '+j.generated_at.slice(0,16));
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>

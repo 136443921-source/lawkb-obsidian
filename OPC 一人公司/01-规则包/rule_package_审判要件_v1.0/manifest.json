@@ -1,0 +1,65 @@
+{
+  "package": "审判要件规则包",
+  "domain": "审判要件",
+  "version": "v1.0",
+  "generated": "2026-09-23",
+  "generator": "gen_rule_package.py（B方案P0-3·参数化·无依赖导出）",
+  "source_of_truth": "数字资产登记册（OPC 一人公司/00-数字资产登记册/asset_registry.json）",
+  "selection": {
+    "mode": "横切标签",
+    "card_dir": null,
+    "card_type": "审判要件",
+    "title_contains": null
+  },
+  "billing": {
+    "model": "subscription_by_domain",
+    "license_type": "internal_commercial_unit",
+    "pricing_owner": "运营部门负责人（定价与定位由运营部门核定，本席只交付规则包质量）",
+    "price": "由运营部门负责人核定（本席不代定商务）",
+    "scope": "单域订阅；跨域需另购对应域包",
+    "redlines": [
+      "个案卷宗/当事人隐私绝不入包",
+      "包内资产须来自登记册实测，禁编造清单",
+      "yuandian_source_pending=true 的条目标'待核验源'，不冒充权威法源"
+    ]
+  },
+  "asset_inventory": {
+    "rules": 579,
+    "laws": 5,
+    "internal_manual_articles": 0,
+    "experience_cards": 0,
+    "checklists": 0
+  },
+  "quality_report": {
+    "source_pending_count": 25,
+    "source_pending_ids": [
+      "R-JG-035",
+      "R-JG-034",
+      "R-HG-086",
+      "R-HG-084",
+      "R-HG-091",
+      "R-HG-098",
+      "R-HG-087",
+      "R-HG-095",
+      "R-HG-089",
+      "R-HG-085",
+      "R-HG-090",
+      "R-HG-093",
+      "R-HG-094",
+      "R-HG-096",
+      "R-HG-088",
+      "R-HG-092",
+      "R-HG-097",
+      "R-PR-031",
+      "R-PR-030",
+      "R-PR-033",
+      "R-PR-032",
+      "R-HT-087",
+      "R-HT-071",
+      "R-PI-142",
+      "R-PI-371"
+    ],
+    "missing_summary_count": 6,
+    "missing_keypoints_count": 6
+  }
+}

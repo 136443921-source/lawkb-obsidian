@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一人公司（OPC）治理架构 · 建设排期建议表</title>
+<style>
+  :root{
+    --bg:#0f1420; --card:#1a2030; --line:#2a3346; --txt:#e6ebf2; --sub:#9aa7bd;
+    --ok:#3fb950; --warn:#f0a020; --block:#ec5972; --blue:#4f9dff; --purple:#a98bff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:24px}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:28px 0 12px;border-left:4px solid var(--blue);padding-left:10px}
+  .meta{color:var(--sub);font-size:13px;margin-bottom:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .n{font-size:26px;font-weight:700}
+  .kpi .l{color:var(--sub);font-size:13px;margin-top:4px}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .block{color:var(--block)} .blue{color:var(--blue)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#222b3d;color:var(--sub);font-weight:600}
+  .tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px;font-weight:600}
+  .t-ok{background:rgba(63,185,80,.15);color:var(--ok)}
+  .t-warn{background:rgba(240,160,32,.15);color:var(--warn)}
+  .t-block{background:rgba(236,89,114,.15);color:var(--block)}
+  .t-blue{background:rgba(79,157,255,.15);color:var(--blue)}
+  .gantt{display:flex;gap:3px;margin-top:4px}
+  .gantt span{height:10px;border-radius:3px;flex:1}
+  .g1{background:var(--blue)} .g2{background:var(--purple)} .g3{background:var(--ok)} .g4{background:var(--warn)} .g5{background:var(--block)} .g0{background:#2a3346}
+  .legend{font-size:12px;color:var(--sub);margin:6px 0 0}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin:0 4px 0 12px;vertical-align:middle}
+  ul{margin:8px 0;padding-left:20px} li{margin:4px 0}
+  .note{font-size:12.5px;color:var(--sub)}
+  .foot{margin-top:28px;color:var(--sub);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<h1>⚖️ 一人公司（OPC）治理架构 · 建设排期建议表</h1>
+<div class="meta">复盘源：09-OPC 全部治理文件（09100 方案 v1.1 / 09101 章程 v1.5 / 09102 总经理职权 / 09103 nominee / 09104 编制方案 / 09105 岗位手册 / 09-2 部门治理 / 09-3 商业化运营）｜产出日期：2026-09-22｜性质：建议稿，待老强裁决是否排期</div>
+
+<h2>一、复盘结论（一句话）</h2>
+<div class="grid">
+  <div class="kpi"><div class="n ok">✅ 100%</div><div class="l">治理「文档层」——设计稿已齐备，全部声明"未改动任何系统配置"</div></div>
+  <div class="kpi"><div class="n block">≈ 0%</div><div class="l">治理「建设层」（配置/代码落地）——尚未启动</div></div>
+  <div class="kpi"><div class="n ok">✅ 3/3</div><div class="l">决策阻塞已全决（维持C / 脱敏+免责 / 对外明示，2026-09-23）</div></div>
+  <div class="kpi"><div class="n blue">9 岗</div><div class="l">数字员工已编制（纯内部治理），心智成熟度 M3~M5 不等</div></div>
+</div>
+<div class="card">
+<strong>📌 复盘要点</strong>
+<ul>
+<li><b>文档层已完成</b>：v1.1 方案固化 5 项开放问题 + 公司章程单一收敛点（v1.8）+ 总经理职权/nominee 双支柱 + 9 岗编制与岗位手册 + 部门治理横向铁律 + 商业化经营线 SOP。结构完整、效力层级清晰。</li>
+<li><b>建设层是真空</b>：所有文件均标注"纯治理文件，不碰任何系统配置"。即章程铁律、四类 R 红线、LTI 门禁、nominee 保全——尚未以代码/配置形式真正接进 skills / automation / 驾驶舱。</li>
+<li><b>子目录深度不均</b>：09-2 四中台中，业务/数字资产中台已有"SOP 部门规章制度.md"；<b>运营中台、可视化中台规章制度仍"⏸ 待填"</b>。</li>
+<li><b>nominee 基线已稳</b>：资产 nominee（中枢+LawKB+git）已自动固化；治理 nominee 确认 <b>C（失能即冻结）</b> 已生效，A/B 为可选升级（待老强决策）。</li>
+<li><b>商业化归位 C（文档先行）</b>：规则包业态试点跑顺后再升 A（独立商业中台）。当前无对外经营闭环在跑。</li>
+</ul>
+</div>
+
+<h2>二、待「建设」任务映射（09100 §8 路线图 → 建设动作）</h2>
+<table>
+<tr><th>Phase</th><th>原路线图（文档）</th><th>建设动作（需落地）</th><th>建设量</th><th>阻塞</th></tr>
+<tr><td>Phase 1</td><td>治理层固化：总经理职权 + nominee</td><td>① 总经理职权"明文化"接入系统（律所主任技能/驾驶舱监控执行器获管内治管线）② nominee A/B 决策</td><td>小</td><td>⚠️ A/B 待老强拍板</td></tr>
+<tr><td>Phase 2</td><td>章程整合为单一收敛点</td><td>文档层已完成；建设=章程四类 R 引用进 pre-action-guard（并入 Phase 4）</td><td>—</td><td>无</td></tr>
+<tr><td>Phase 3</td><td>资产确权 + 9655 治理中台屏</td><td>① LawKB 独立仓库物理隔离核验 ② <b>9655 增"治理中台屏"</b>（章程铁律/四类R拦截/LTI/nominee/9岗成熟度）</td><td>大</td><td>依赖 cockpit-builder</td></tr>
+<tr><td>Phase 4</td><td>责任边界代码化</td><td>① 四类 R 落 pre-action-guard 拦截 ② <b>私有部署包 SOP+实际打包</b> ③ 静默成功熔断接入构建流 ④ 数字员工对外披露条款</td><td>最大</td><td>⚠️ 合规前置（脱敏/免责）</td></tr>
+<tr><td>Phase 5</td><td>年审机制</td><td>① 治理复盘自动化模板 ② <b>nominee 演练</b>（资产保全链路验证）</td><td>中</td><td>无</td></tr>
+</table>
+
+<h2>三、建议排期表（波浪式 · 相对周次 W1–W5）</h2>
+<p class="note">说明：无绝对日历约束，按"依赖 + 阻塞"排序。Wave A 无决策阻塞可<b>立即排期</b>；Wave B/C/D 含决策或技能依赖；并行轨道（数字员工心智）独立于主线程，随时可推。</p>
+<table>
+<tr><th>波浪</th><th>周次</th><th>任务</th><th>产出</th><th>依赖</th><th>决策点</th><th>状态</th></tr>
+<tr><td>A1</td><td>W1</td><td>总经理职权系统接线（律所主任技能获管内治 A/R 管线；驾驶舱监控执行器接总经理视图）</td><td>技能/执行器更新</td><td>—</td><td>无</td><td><span class="tag t-blue">可立即启动</span></td></tr>
+<tr><td>A2</td><td>W1</td><td>四类 R 动作落 pre-action-guard 拦截（引用章程 §3）</td><td>guard 配置 + 回归测试</td><td>pre-action-guard 技能（已存在）</td><td>无</td><td><span class="tag t-blue">可立即启动</span></td></tr>
+<tr><td>A3</td><td>W1</td><td>LawKB 独立仓库物理隔离核验 + 单源重建 cp 备份脚本固化</td><td>核验报告 + 脚本</td><td>—</td><td>无</td><td><span class="tag t-blue">可立即启动</span></td></tr>
+<tr><td>B1</td><td>W2</td><td><b>nominee A/B 决策</b>（维持 C / 升 A 自然人 / 升 B 智能体）</td><td>写入 09103 §4 + 章程 §7</td><td>—</td><td>✅ 已决：维持C</td><td><span class="tag t-ok">已决·维持C</span></td></tr>
+<tr><td>B2</td><td>W2</td><td>治理复盘自动化模板（周五周报+周日 self-improve 增治理复盘段）</td><td>模板 + 自动化</td><td>—</td><td>无</td><td><span class="tag t-blue">可立即启动</span></td></tr>
+<tr><td>B3</td><td>W2</td><td>补全 09-2 运营/可视化中台规章制度（⏸ 待填）</td><td>两中台 SOP</td><td>—</td><td>无</td><td><span class="tag t-blue">可立即启动</span></td></tr>
+<tr><td>C1</td><td>W3</td><td><b>9655 增"治理中台屏"</b>（章程铁律/四类R状态/LTI门禁/nominee/9岗成熟度）</td><td>驾驶舱新屏</td><td>A1/A2（拦截状态有数据源）</td><td>无</td><td><span class="tag t-blue">🔨 进行中（屏已建，待接 9655）</span></td></tr>
+<tr><td>D1</td><td>W4</td><td>私有部署包 SOP + 实际打包（9655+四中台+密文+部署SOP）</td><td>可交付部署包</td><td>C1（9655 基准）</td><td>⚠️ 合规前置</td><td><span class="tag t-warn">建设量大</span></td></tr>
+<tr><td>D2</td><td>W4</td><td>数据脱敏管线（去当事人隐私/证件号）+ 服务协议免责条款模板</td><td>脱敏管线 + 模板</td><td>—</td><td>✅ 已决：脱敏+免责</td><td><span class="tag t-ok">口径已确认</span></td></tr>
+<tr><td>D3</td><td>W4</td><td>规则包业态试点（脱敏打包 LawKB 规则卡，跑顺后升 A）</td><td>首个对外制品</td><td>D2</td><td>无（呼应 09-3 归位 C→A）</td><td><span class="tag t-blue">可试点</span></td></tr>
+<tr><td>E1</td><td>W5</td><td><b>nominee 演练</b>（资产保全链路真实验证）</td><td>演练报告</td><td>B1（若升 A/B）</td><td>无</td><td><span class="tag t-ok">收口</span></td></tr>
+<tr><td>E2</td><td>W5</td><td>首次治理年审（RACI 复盘 + 章程修订建议）</td><td>年审报告</td><td>全</td><td>无</td><td><span class="tag t-ok">收口</span></td></tr>
+</table>
+
+<h2>四、甘特视图（相对周次跨度）</h2>
+<table>
+<tr><th>波浪</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th></tr>
+<tr><td>A 治理接线</td><td colspan="5"><div class="gantt"><span class="g1"></span><span class="g1"></span><span class="g0"></span><span class="g0"></span><span class="g0"></span></div></td></tr>
+<tr><td>B 决策+补全</td><td colspan="5"><div class="gantt"><span class="g0"></span><span class="g2"></span><span class="g0"></span><span class="g0"></span><span class="g0"></span></div></td></tr>
+<tr><td>C 治理中台屏</td><td colspan="5"><div class="gantt"><span class="g0"></span><span class="g0"></span><span class="g3"></span><span class="g0"></span><span class="g0"></span></div></td></tr>
+<tr><td>D 私有部署+合规</td><td colspan="5"><div class="gantt"><span class="g0"></span><span class="g0"></span><span class="g0"></span><span class="g4"></span><span class="g0"></span></div></td></tr>
+<tr><td>E 年审+演练</td><td colspan="5"><div class="gantt"><span class="g0"></span><span class="g0"></span><span class="g0"></span><span class="g0"></span><span class="g5"></span></div></td></tr>
+</table>
+<div class="legend"><i class="g1"></i>治理接线 <i class="g2"></i>决策+补全 <i class="g3"></i>治理中台屏 <i class="g4"></i>私有部署+合规 <i class="g5"></i>年审+演练 <i class="g0"></i>空闲</div>
+
+<h2>五、阻塞与决策点（需老强拍板）</h2>
+<div class="card">
+<ul>
+<li>🟢 <b>B1 nominee A/B（2026-09-23 已决）</b>：老强裁决维持 C（失能即冻结），A/B 升级暂不启动。</li>
+<li>🟢 <b>D2 私有部署合规（2026-09-23 已决）</b>：对外交付强制前置 = 数据脱敏 + 服务协议免责条款；D3 规则包试点先于 D1 完整私有部署（规则包不含当事人数据，合规风险更低）。</li>
+<li>🟡 <b>D1 9655 屏建设量</b>：依赖 cockpit-builder 技能复刻 9360；治理中台屏为新增屏，需验证驾驶舱代码可扩展。</li>
+<li>🟡 <b>部门 SOP 缺口</b>：运营/可视化中台规章制度 ⏸ 待填，B3 补全是低风险可立即项。</li>
+</ul>
+</div>
+
+<h2>六、建议推进策略</h2>
+<div class="card">
+<strong>先打"无阻塞地基"，再啃"建设量大+需决策"：</strong>
+<ol>
+<li><b>立即排期 Wave A（W1，零决策）</b>：总经理职权接线 + 四类 R 拦截 + LawKB 隔离核验——三项纯执行，产出即治理"活"起来。</li>
+<li><b>W2 并行 B2/B3（零决策）+ 等 B1 决策</b>：治理复盘模板与中台 SOP 补全同步做；nominee A/B 等你拍板（默认建议维持 C）。</li>
+<li><b>W3 上 C1（9655 治理中台屏）</b>：建设量最大但无决策阻塞，依赖 A 的数据源。</li>
+<li><b>W4 合规优先于完整部署</b>：先 D2 脱敏管线 + D3 规则包试点（低风险对外），再 D1 完整私有部署包。</li>
+<li><b>W5 收口 E</b>：nominee 演练 + 首次年审，闭环治理。</li>
+</ol>
+<p class="note">并行轨道（独立于主线程，可随时）：数字员工心智建设——蓝队非诉/蓝队助理抽独立 persona 卡（PROJ-007/PROJ-003 固化）、小德合规身份固化、元心智 DRAFT→ACTIVE 训练。这些提升 9 岗成熟度，不直接阻塞 OPC 治理建设。</p>
+</div>
+
+<div class="foot">
+落点文件（均为现有治理文档，本表不改任何配置）：09100 调整方案 v1.1 §8 / 09101 公司章程 v1.8 / 09103 nominee v1.2 / 09-2 部门治理 _索引 / 09-3 商业化运营 SOP 总册。<br>
+本排期表为建议稿，待老强裁决"是否排期 + 从哪一波浪启动"后，再拆为可执行任务逐条落地（先备份、先 dry-run、双目录同步、零残留验证）。<br>🟢 <b>进展（2026-09-23）</b>：Wave A/B 已全部完成；C1 治理中台屏已建为单文件 HTML（09-OPC/09-2部门治理/可视化中台/治理中台屏.html），待经 cockpit-builder 接进 9655 实屏；D/E 排 W4–W5。
+</div>
+</body>
+</html>

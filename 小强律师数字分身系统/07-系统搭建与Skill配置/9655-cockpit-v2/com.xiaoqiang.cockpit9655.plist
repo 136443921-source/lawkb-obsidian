@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.xiaoqiang.cockpit9655</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/bin/python3</string>
+    <string>/Users/chenyouqiang/WorkBuddy/2026-09-17-16-22-53/outputs/9655-cockpit-v2/serve_nocache.py</string>
+    <string>9655</string>
+    <string>127.0.0.1</string>
+    <string>/Users/chenyouqiang/WorkBuddy/2026-09-17-16-22-53/outputs/9655-cockpit-v2</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/chenyouqiang/WorkBuddy/2026-09-17-16-22-53/outputs/9655-cockpit-v2</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+  <key>StandardOutPath</key>
+  <string>/Users/chenyouqiang/WorkBuddy/2026-09-17-16-22-53/outputs/9655-cockpit-v2/.9655.launchd.out</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/chenyouqiang/WorkBuddy/2026-09-17-16-22-53/outputs/9655-cockpit-v2/.9655.launchd.err</string>
+</dict>
+</plist>

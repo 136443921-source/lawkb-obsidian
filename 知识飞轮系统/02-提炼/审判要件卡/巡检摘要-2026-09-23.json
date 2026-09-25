@@ -1,0 +1,49 @@
+{
+  "round": 9,
+  "date": "2026-09-23",
+  "mode": "存量卡质量巡检",
+  "channel": {
+    "qcc_legal": "AVAILABLE (恢复, 2026-09-23 10:0X 真调用民法典§1079 返回现行有效逐字)",
+    "pkulaw": "未单独验证",
+    "yuandian": "未单独验证",
+    "note": "连续 5+ 轮形态②后本会话恢复，坑 43 实证：形态②须换会话重试"
+  },
+  "statute_pending": {
+    "frontmatter_flag_true": 0,
+    "inline_markers_cards": 8,
+    "inline_cards": [
+      "R-HY-003", "R-PR-001", "R-HY-001", "R-CS-002",
+      "R-XR-001", "R-CS-001", "R-HG-001", "R-HG-002"
+    ],
+    "fill_count": 0,
+    "note": "【候选·待人工确认】内联标记系旧口径遗留，建议立项专项核填（通道已通）"
+  },
+  "yaml_fix": {
+    "broken_before": 10,
+    "broken_after": 0,
+    "files": [
+      "R-AY-282","R-AY-283","R-AY-284","R-AY-285","R-AY-286","R-AY-287",
+      "R-AY-296","R-AY-297","R-AY-298","R-HY-001"
+    ],
+    "cause": "R-AY 中段正文泄漏进 frontmatter（缺闭合---）；R-HY-001 title 引号未包裹整值",
+    "backup": "/tmp/存量卡巡检YAML修复_20260923-1003/"
+  },
+  "deadlinks": {
+    "hit_files": 519,
+    "total_scanned": 5539,
+    "true_dead": 123,
+    "pending_notes": 847,
+    "parse_fail_before": 10,
+    "parse_fail_after": 0,
+    "autofix_candidates": 0,
+    "autofix_tool": "_fix_deadlinks_v9_20260918.py (坑70 严格白名单, 幂等0命中)"
+  },
+  "deviation_blocked": 0,
+  "remaining_human": [
+    "真死链 123（同号不同主题禁自动修，归 P0-4）",
+    "内联 statute_text_pending 8 卡（建议专项核填）",
+    "待建笔记 847（非缺陷）",
+    "R-AY 生成器 fm/正文错位 bug 修源头"
+  ],
+  "convergence": "本轮有可修项(10 YAML)，未触发连续3轮无项条款；核填连续6轮0，但根因已转通道恢复，建议下轮起立项核填8卡内联标记"
+}

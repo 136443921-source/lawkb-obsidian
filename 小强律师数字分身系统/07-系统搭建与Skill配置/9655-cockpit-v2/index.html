@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>律所数字分身系统 内网驾驶舱</title>
+<link rel="icon" href="data:," />
+<style>
+  :root{
+    --bg:#0b0d12; --bg2:#10141c; --panel:#151a24; --panel2:#1b2230;
+    --border:#2a313d; --border2:#363f4d;
+    --text:#e7eaf0; --muted:#9aa3b2; --dim:#aab3c5;
+    --gold:#d4af37; --gold2:#b8932c;
+    --red:#ef5350; --blue:#5b9bff; --purple:#a78bfa; --teal:#2dd4bf; --orange:#f59e0b; --green:#34d399; --pink:#f472b6;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:radial-gradient(1100px 600px at 18% -10%, #1a2030 0%, var(--bg) 60%);
+    color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+    font-size:14px;
+  }
+  .hide{display:none !important}
+
+  /* —— 登录浮层（SSO 门禁） —— */
+  .overlay{
+    position:fixed; inset:0; z-index:100; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(900px 500px at 50% -10%, #1a2030 0%, var(--bg) 65%);
+    padding:20px;
+  }
+  .loginCard{
+    width:420px; max-width:100%; background:linear-gradient(180deg,#161c27,#11151d);
+    border:1px solid var(--border2); border-radius:16px; box-shadow:var(--shadow);
+    padding:28px 26px;
+  }
+  .loginCard .crest{font-size:30px}
+  .loginCard h2{margin:10px 0 4px; font-size:19px; letter-spacing:.5px}
+  .loginCard .sub{color:var(--muted); font-size:12.5px; line-height:1.6; margin-bottom:18px}
+  .loginCard .firm{margin:2px 0 4px; font-size:13px; font-weight:600; color:var(--gold); letter-spacing:.5px}
+  .loginCard label{display:block; font-size:12px; color:var(--muted); margin:14px 0 6px}
+  .loginCard input[type=text], .loginCard input[type=password]{
+    width:100%; padding:11px 13px; border-radius:10px; border:1px solid var(--border2);
+    background:#0e1219; color:var(--text); font-size:13px; font-family:ui-monospace,Menlo,Consolas,monospace;
+    outline:none;
+  }
+  .loginCard input[type=text]:focus, .loginCard input[type=password]:focus{border-color:var(--gold)}
+  /* —— 演示席位工号+密码登录表单（2026-09-16）—— */
+  .demoLoginFormWrap{
+    margin-top:10px; padding:12px; border-radius:10px; border:1px solid var(--border2);
+    background:#0e1219;
+  }
+  .demoLoginFormWrap .seatTitle{font-size:12.5px; font-weight:700; color:var(--gold); margin-bottom:8px}
+  .demoLoginFormWrap input{margin-bottom:8px}
+  .demoLoginFormWrap .row{display:flex; gap:8px}
+  .demoLoginFormWrap .row .btn{margin-top:2px}
+  .btnGhost{
+    flex:0 0 auto; width:auto; padding:11px 14px; border-radius:10px; border:1px solid var(--border2);
+    background:var(--panel2); color:var(--muted); font-weight:700; font-size:12.5px; cursor:pointer; transition:.15s;
+  }
+  .btnGhost:hover{border-color:var(--gold); color:var(--text)}
+  .demoBtn.on{border-color:var(--gold); color:var(--text); background:rgba(212,175,55,.08)}
+  .btn{
+    width:100%; margin-top:14px; padding:11px 14px; border-radius:10px; border:1px solid var(--gold2);
+    background:linear-gradient(180deg,var(--gold),var(--gold2)); color:#1a1408;
+    font-weight:800; font-size:13.5px; cursor:pointer; transition:.15s;
+  }
+  .btn:hover{filter:brightness(1.06)}
+  .divider{display:flex; align-items:center; gap:10px; margin:20px 0 6px; color:var(--dim); font-size:11.5px}
+  .divider::before,.divider::after{content:""; flex:1; height:1px; background:var(--border)}
+  .demoGrid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .demoBtn{
+    padding:10px; border-radius:10px; border:1px solid var(--border2); background:var(--panel2);
+    color:var(--muted); font-size:12.5px; font-weight:600; cursor:pointer; text-align:left; transition:.15s;
+  }
+  .demoBtn:hover{border-color:var(--gold); color:var(--text)}
+  .demoBtn b{display:block; color:var(--text); font-size:13px}
+  .demoBtn span{font-size:11px; color:var(--dim)}
+  .err{color:var(--red); font-size:12px; margin-top:8px}
+  .footnote{margin-top:18px; font-size:11px; color:var(--dim); line-height:1.6; border-top:1px solid var(--border); padding-top:12px}
+
+  /* —— 应用主体 —— */
+  /* —— v4 布局（grid 三行两列）——
+   *  row1 全宽：🛰️ 小强总驾驶舱（整体移到原「九屏导航」位置＝左上角）
+   *  row2 左格：九屏导航 cap ｜ 右格：当前/地址 + 统一工作台（同一行，天然对齐）
+   *  row3 左列：C0–D4 导航 ｜ 右格：作战地图 / 子屏 iframe
+   *  理由：用 grid 行高自适应，不再靠固定像素偏移，标题换行/栏宽变化都不会错位。
+   */
+  #appRoot{display:grid; grid-template-columns:216px 1fr; grid-template-rows:auto auto 1fr; height:100vh}
+  header.topbar{
+    grid-column:1 / -1; grid-row:1;
+    display:flex; align-items:center; gap:14px; padding:12px 20px;
+    background:linear-gradient(180deg,#1b2130,#141922);
+    border-bottom:1px solid var(--border); position:relative; z-index:30; flex-wrap:wrap;
+  }
+  .crest{font-size:22px}
+  .topbar h1{font-size:16px;margin:0;letter-spacing:1px;font-weight:700}
+  .topbar .sub{color:var(--muted);font-size:12px;margin-top:2px}
+  .spacer{flex:1}
+  /* —— v4 左侧导航栏（grid 第 3 行第 1 列；随行高自适应，不再 fixed 像素偏移） —— */
+  .tabs{
+    grid-column:1; grid-row:3;
+    display:flex; flex-direction:column; align-items:stretch; gap:8px;
+    padding:12px 12px 16px; margin:0;
+    background:linear-gradient(180deg,#121724,#0d1119);
+    border-right:1px solid var(--border);
+    box-shadow:10px 0 30px rgba(0,0,0,.35);
+    z-index:20; overflow:auto; min-height:0;
+  }
+  /* —— v4「九屏导航」标题：由栏顶下移至第 2 行左格，与右侧「🗺️ 统一工作台」同一行对齐 —— */
+  .navCap{
+    grid-column:1; grid-row:2;
+    display:flex; align-items:center; justify-content:center;
+    padding:0 12px; font-size:13px; font-weight:800; letter-spacing:3px;
+    color:var(--gold); background:linear-gradient(180deg,#151b29,#121724);
+    border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+  }
+  .tab{
+    display:flex;align-items:center;gap:9px;
+    width:100%; justify-content:flex-start;
+    padding:11px 13px;border-radius:11px;cursor:pointer;
+    background:var(--panel2);border:1px solid var(--border2);color:var(--muted);
+    font-size:13.5px;font-weight:600;transition:.15s;white-space:nowrap;
+  }
+  .tab:hover{border-color:var(--gold);color:var(--text)}
+  .tab.on{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#1a1408;border-color:var(--gold2);font-weight:800;border-left:3px solid #fff3cf}
+  .tab .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .tab .dot.c{background:var(--red)} .tab .dot.a{background:var(--purple)} .tab .dot.b{background:var(--teal)}
+  .tab .dot.d{background:var(--orange)} .tab .dot.e{background:var(--blue)} .tab .dot.f{background:var(--gold)} .tab .dot.g{background:var(--green)} .tab .dot.h{background:var(--pink)}
+  .tab .dot.i{background:#38bdf8} .tab .dot.k{background:#22d3ee} .tab .dot.m{background:#94a3b8} .tab .dot.conf{background:#fbbf24} .tab .dot.mm{background:#a78bfa}
+  .tab .dot.pc{background:#c084fc} .tab .dot.d6{background:#fb7185}
+  .tab .dot.ag{background:#f97316} .tab .dot.wf{background:#06b6d4} .tab .dot.sh{background:#e879f9} .tab .dot.n{background:#a3e635}
+  .tab .cno.home{margin-left:0;padding:1px 6px;font-size:10.5px;color:var(--muted);border-color:var(--border2);background:rgba(255,255,255,.05)}
+  .tab .ext{font-size:12px;opacity:.6;margin-left:auto}
+  .tab .cno{margin-left:8px;padding:1px 7px;border-radius:6px;font-size:11px;font-weight:800;background:rgba(212,175,55,.16);color:var(--gold);border:1px solid var(--gold2);letter-spacing:.5px}
+  .badge{padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid var(--border2)}
+  .role-owner{background:rgba(212,175,55,.16);color:var(--gold);border-color:var(--gold2)}
+  .role-lawyer{background:rgba(91,155,255,.16);color:var(--blue);border-color:#3a5fa0}
+  .role-paralegal{background:rgba(45,212,191,.16);color:var(--teal);border-color:#1c7a70}
+  .role-itops{background:rgba(90,160,255,.16);color:#9ec5ff;border-color:rgba(90,160,255,.42)}
+  #logoutBtn{padding:6px 14px;border-radius:9px;border:1px solid var(--border2);background:var(--panel2);color:var(--muted);font-size:12px;cursor:pointer}
+  #logoutBtn:hover{border-color:var(--red);color:var(--red)}
+
+  /* —— 对外分享按钮（唯一脱敏出口） —— */
+  #shareBtn{
+    padding:6px 14px;border-radius:9px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap;
+    border:1px solid #1c7a70;background:rgba(45,212,191,.16);color:var(--teal);transition:.15s;
+  }
+  #shareBtn:hover{background:rgba(45,212,191,.28);border-color:var(--teal);color:#d3fff8}
+  #shareBtn.on{background:var(--teal);color:#062320;border-color:var(--teal)}
+  /* —— 统一工作台跳转（与门户同源同数据，单一部署） —— */
+  .navLink{
+    padding:6px 14px;border-radius:9px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap;
+    border:1px solid var(--gold2);background:rgba(212,175,55,.14);color:var(--gold);transition:.15s;text-decoration:none;
+  }
+  .navLink:hover{background:rgba(212,175,55,.28);border-color:var(--gold);color:#fff3cf}
+  .shareModal{
+    position:fixed;inset:0;z-index:200;display:flex;align-items:flex-start;justify-content:center;
+    padding-top:12vh;background:rgba(3,5,9,.72);backdrop-filter:blur(3px);
+  }
+  .shareCard{
+    width:560px;max-width:calc(100% - 32px);
+    background:linear-gradient(180deg,#161c27,#11151d);
+    border:1px solid var(--teal);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.6);
+    padding:24px 26px;
+  }
+  .shareCard .sh{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;color:#d3fff8}
+  .shareCard .sh .ic{font-size:22px}
+  .shareCard .ss{color:var(--muted);font-size:12.5px;line-height:1.7;margin:8px 0 16px}
+  .shareBox{
+    display:flex;align-items:center;gap:8px;padding:11px 13px;border-radius:10px;
+    border:1px solid var(--border2);background:#0e1219;
+  }
+  .shareBox input{
+    flex:1;min-width:0;border:0;background:transparent;color:var(--teal);outline:none;
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;
+  }
+  .shareBox button{
+    flex:none;padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;
+    border:1px solid #1c7a70;background:rgba(45,212,191,.16);color:var(--teal);transition:.15s;
+  }
+  .shareBox button:hover{background:var(--teal);color:#062320}
+  .shareBox button.done{background:var(--teal);color:#062320}
+  .shareMeta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .shareMeta a,.shareMeta button{
+    padding:8px 16px;border-radius:9px;font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;
+    border:1px solid var(--border2);background:var(--panel2);color:var(--muted);transition:.15s;
+  }
+  .shareMeta a:hover,.shareMeta button:hover{border-color:var(--teal);color:var(--teal)}
+  .shareMeta a.pri{background:linear-gradient(180deg,var(--teal),#14b8a6);color:#062320;border-color:#14b8a6}
+  .shareMeta a.pri:hover{filter:brightness(1.08);color:#062320}
+  .warnBox{
+    margin-top:16px;padding:12px 14px;border-radius:10px;font-size:11.8px;line-height:1.75;
+    background:rgba(239,83,80,.08);border:1px solid rgba(239,83,80,.35);color:#f0a9a7;
+  }
+  .warnBox b{color:#ff8a87;display:block;margin-bottom:4px;font-size:12px}
+  .safeBox{
+    margin-top:10px;padding:12px 14px;border-radius:10px;font-size:11.8px;line-height:1.75;
+    background:rgba(45,212,191,.07);border:1px solid rgba(45,212,191,.3);color:#a9e9e0;
+  }
+  .safeBox b{color:var(--teal);display:block;margin-bottom:4px;font-size:12px}
+  .closeX{margin-left:auto;cursor:pointer;color:var(--dim);font-size:18px;line-height:1;padding:2px 6px}
+  .closeX:hover{color:var(--text)}
+  .bar{grid-column:2;grid-row:2;display:flex;align-items:center;gap:10px;padding:7px 20px;background:#0e1219;border-bottom:1px solid var(--border);font-size:12px;color:var(--dim)}
+  .bar .cur{color:var(--gold);font-weight:700}
+  .bar .url{color:var(--muted);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bar .spacer{flex:1}
+  .bar a{color:var(--blue);text-decoration:none}
+  .bar a:hover{text-decoration:underline}
+  .framewrap{grid-column:2;grid-row:3;position:relative;background:#05070b;min-height:0}
+  iframe{width:100%;height:100%;border:0;display:block;background:#05070b}
+
+  /* ====== 作战地图容器 ====== */
+  #homeView{grid-column:2;grid-row:3;overflow:auto;padding:22px 26px 46px;background:radial-gradient(1200px 500px at 80% -10%, #161d2b 0%, var(--bg) 60%)}
+  .mapHead{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:22px}
+  .mapHead .ttl{font-size:23px;font-weight:800;letter-spacing:1px}
+  .mapHead .ttl small{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:5px;letter-spacing:0}
+  .ring{position:relative;width:128px;height:128px;flex:none}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring .ctr b{font-size:32px;font-weight:900;color:var(--gold);line-height:1}
+  .ring .ctr span{font-size:11px;color:var(--muted);margin-top:4px}
+  .gradePill{font-size:13px;font-weight:800;padding:5px 14px;border-radius:999px;border:1px solid var(--gold2);background:rgba(212,175,55,.14);color:var(--gold)}
+
+  .hexWrap{flex:1;min-width:280px}
+  .hexRow{display:flex;align-items:center;gap:12px;margin:9px 0}
+  .hexRow .lab{width:104px;font-size:12.5px;color:var(--muted);flex:none}
+  .hexBar{flex:1;height:12px;border-radius:7px;background:#0e1219;overflow:hidden;border:1px solid var(--border)}
+  .hexBar i{display:block;height:100%;border-radius:7px}
+  .hexRow .val{width:48px;text-align:right;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;flex:none}
+
+  .secTtl{font-size:15px;font-weight:800;margin:30px 0 14px;letter-spacing:.5px;display:flex;align-items:center;gap:9px}
+  .secTtl::before{content:"";width:4px;height:17px;background:var(--gold);border-radius:2px;display:inline-block}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .card{
+    background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--border2);border-radius:15px;padding:16px 17px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:11px;transition:.15s;
+  }
+  .card:hover{border-color:var(--gold)}
+  .card .ctop{display:flex;align-items:center;gap:9px}
+  .card .ctop .dot{width:11px;height:11px;border-radius:50%;flex:none}
+  .card .ctop .nm{font-size:15px;font-weight:800}
+  .card .ctop .cno{margin-right:8px;padding:2px 9px;border-radius:7px;font-size:12px;font-weight:800;background:rgba(212,175,55,.16);color:var(--gold);border:1px solid var(--gold2);flex:none}
+  .card .ctop .sc{margin-left:auto;font-size:21px;font-weight:900;font-variant-numeric:tabular-nums}
+  .card .meta{font-size:11.5px;color:var(--dim);display:flex;gap:12px;flex-wrap:wrap}
+  .card .meta b{color:var(--muted);font-weight:600}
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:7px 12px}
+  .kpi{display:flex;justify-content:space-between;font-size:12px;border-bottom:1px dashed var(--border);padding-bottom:5px}
+  .kpi span{color:var(--muted)}
+  .kpi b{color:var(--text);font-variant-numeric:tabular-nums}
+  .mini{display:flex;gap:5px;align-items:flex-end;height:46px}
+  .mini .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+  .mini .col .bar{width:100%;border-radius:4px 4px 0 0;min-height:3px;transition:.3s}
+  .mini .col em{font-size:10px;font-style:normal;color:var(--text);font-weight:700}
+  .risk{font-size:11.3px;line-height:1.6;background:rgba(239,83,80,.08);border:1px solid rgba(239,83,80,.28);
+    color:#f0a9a7;border-radius:9px;padding:7px 10px}
+  .risk.none{background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.3);color:#9fe7c9}
+  .risk b{color:#ff8a87}
+  .cbtn{margin-top:2px;display:flex;gap:9px}
+  .cbtn button{
+    flex:1;padding:8px;border-radius:9px;cursor:pointer;font-size:12.5px;font-weight:700;border:1px solid var(--border2);
+    background:var(--panel2);color:var(--muted);transition:.15s;
+  }
+  .cbtn button:hover{border-color:var(--gold);color:var(--text)}
+  .cbtn button.go{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#1a1408;border-color:var(--gold2)}
+  .card .ctop .rf{margin-left:12px;flex:none;width:30px;height:30px;border-radius:8px;border:1px solid var(--border2);
+    background:var(--panel2);color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.15s}
+  .card .ctop .rf:hover{border-color:var(--gold);color:var(--gold)}
+  .card .ctop .rf.spin{animation:cfspin .7s linear infinite;color:var(--gold)}
+  .card.flash{outline:2px solid var(--gold);outline-offset:2px}
+  @keyframes cfspin{to{transform:rotate(360deg)}}
+
+  table.score{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+  table.score th,table.score td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border)}
+  table.score th{color:var(--muted);font-weight:600;background:#0e1219;position:sticky;top:0}
+  table.score td.nm,table.score th.nm{text-align:left}
+  table.score td.nm{font-weight:700}
+  table.score .cnoChip{display:inline-block;margin-right:8px;padding:1px 7px;border-radius:6px;font-size:11px;font-weight:800;
+    background:rgba(212,175,55,.16);color:var(--gold);border:1px solid var(--gold2);letter-spacing:.5px;vertical-align:middle}
+  .card.monitor{border-style:dashed;opacity:.94}
+  .mini .noscore{display:flex;align-items:center;justify-content:center;height:44px;border-radius:8px;
+    border:1px dashed var(--border2);color:var(--muted);font-size:11.5px;letter-spacing:.4px;background:rgba(255,255,255,.02)}
+  table.score tfoot td{font-weight:800;background:rgba(212,175,55,.1);color:var(--gold);border-top:2px solid var(--gold2)}
+  table.score .sc{font-weight:800;font-variant-numeric:tabular-nums}
+  .dotc{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+  .method{columns:2;column-gap:26px;font-size:12px;line-height:1.7;color:var(--muted)}
+  .method b{color:var(--text)}
+  .forbid{
+    margin-top:26px;padding:14px 16px;border-radius:12px;font-size:12px;line-height:1.8;
+    background:rgba(239,83,80,.09);border:1px solid rgba(239,83,80,.4);color:#f0a9a7;
+  }
+  .forbid b{color:#ff8a87}
+  .foot{margin-top:30px;font-size:11px;color:var(--dim);text-align:center;line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+
+  /* —— 已合并为单一版本（律师版·全屏显示），不再有模式切换 —— */
+  .lawTag{margin-left:5px;padding:0 5px;border-radius:5px;font-size:9.5px;font-weight:800;background:rgba(167,139,250,.18);color:#c4b5fd;vertical-align:middle}
+</style>
+<style>
+/* 数据更新时间：紧贴标题（2026-09-16 由右上 fixed 浮块改为标题内联） */
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+</style>
+</head>
+<body>
+  <!-- ===== SSO 登录浮层 ===== -->
+  <div id="loginOverlay" class="overlay">
+    <div class="loginCard">
+      <div class="crest">🛰️</div>
+      <h2>小强律师数字分身系统 单机密文版</h2>
+      <div class="firm">小强医法律师事务所</div>
+      <div class="sub">数据不出机、经验可沉淀、运维可审计、制品防幻觉</div>
+
+      <label for="tokenInput">访问令牌（SSO Token）</label>
+      <input type="text" id="tokenInput" placeholder="粘贴 id_token / 访问令牌…" autocomplete="off" />
+      <button class="btn" id="tokenLoginBtn">使用访问令牌登录</button>
+      <div id="tokenErr" class="err hide"></div>
+
+      <div class="divider">或选择演示席位（工号 + 密码登录）</div>
+      <div class="demoGrid">
+        <button class="demoBtn" data-role="owner"><b>超级管理员</b><span>全部屏 + 权限管理</span></button>
+        <button class="demoBtn" data-role="lawyer"><b>执业律师</b><span>C0–C8 + D1–D6 全部监控屏</span></button>
+        <button class="demoBtn" data-role="paralegal"><b>律师助理</b><span>作战地图 + 各监控屏只读</span></button>
+        <button class="demoBtn" data-role="itops"><b>IT 运维员</b><span>权限管理 + 部署记录</span></button>
+      </div>
+      <div id="demoLoginForm" class="demoLoginFormWrap hide">
+        <div class="seatTitle" id="demoSeatTitle">演示席位登录</div>
+        <input type="text" id="demoUser" placeholder="工号（如 LZ-001）" autocomplete="off" />
+        <input type="password" id="demoPass" placeholder="密码" autocomplete="off" />
+        <div class="row">
+          <button class="btn" id="demoLoginBtn">登录演示席位</button>
+          <button class="btnGhost" id="demoCancelBtn">返回</button>
+        </div>
+        <div id="demoErr" class="err hide"></div>
+      </div>
+
+      <div class="footnote">
+        演示席位采用「工号 + 密码」认证：密码仅以 SHA-256 哈希存于 rbac.js，令牌由 Web Crypto HMAC 签名校验。<br/>
+        生产环境请替换为真实 IdP（Authing / Keycloak / WorkBuddy SSO）的 OIDC id_token 验签，
+        并将「用户→角色」映射迁移至服务端（详见 rbac.js 注释）。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 应用主体 ===== -->
+  <div id="appRoot" class="hide">
+    <header class="topbar">
+      <span class="crest">🛰️</span>
+      <div>
+        <h1>小强律师数字分身系统 驾驶舱<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-25 13:43（北京时间）</span></h1>
+        <div class="sub">九屏维度 · 全屏统一版 · 角色权限控制</div>
+      </div>
+      <div class="spacer"></div>
+      <button id="shareBtn" title="获取可对外分享的脱敏链接">🔗 对外分享</button>
+      <!-- 已移除双版本切换：统一为律师版（全屏显示） -->
+      <span id="roleBadge" class="badge">—</span>
+      <span id="userBadge" class="badge" style="border-color:var(--border2);color:var(--muted)">—</span>
+      <button id="logoutBtn" class="hide">登出</button>
+      <button id="refreshAllBtn" title="重扫并刷新全部九屏最新数据" onclick="CockpitMap.refresh()">↻ 刷新数据</button>
+    </header>
+    <!-- v4：左格「九屏导航」cap —— 与右格「🗺️ 统一工作台」同一行（grid row2），视觉天然对齐 -->
+    <div class="navCap">九屏导航</div>
+    <div class="bar">
+      <span>当前：</span><span class="cur" id="curName">—</span>
+      <span class="url" id="curUrl"></span>
+      <span class="spacer"></span>
+      <a class="navLink" id="workbenchLink" href="workbench.html" target="_blank" rel="noopener" title="打开统一工作台（与门户同源同数据）">🗺️ 统一工作台 ↗</a>
+      <a id="openNew" href="#" target="_blank" rel="noopener">在新标签打开 ↗</a>
+    </div>
+    <div class="tabs" id="tabs"></div>
+
+    <!-- ===== 作战地图首页（默认视图） ===== -->
+    <div id="homeView" class="hide">
+      <div class="mapHead">
+        <div class="ring">
+          <svg width="128" height="128" viewBox="0 0 128 128">
+            <circle cx="64" cy="64" r="56" fill="none" stroke="#0e1219" stroke-width="14"/>
+            <circle id="ringFg" cx="64" cy="64" r="56" fill="none" stroke="#d4af37" stroke-width="14"
+              stroke-linecap="round" stroke-dasharray="351.86" stroke-dashoffset="351.86"/>
+          </svg>
+          <div class="ctr"><b id="totalSc">77.2</b><span>总维度评分</span></div>
+        </div>
+        <div class="hexWrap">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:6px">六维健康度（按战略权重加权）</div>
+          <div id="hexRows"></div>
+          <div style="margin-top:12px"><span class="gradePill" id="gradePill">良好 B</span>
+            <span style="font-size:11.5px;color:var(--dim);margin-left:10px">短板：运行健康度 73.7 / 自动化 74.6 / 产出有效性 75.0</span>
+            <span id="generatedAt" style="font-size:11px;color:var(--muted);margin-left:12px"></span></div>
+        </div>
+      </div>
+
+      <div class="secTtl">九屏作战卡片 · KPI · 六维评分 · 风险</div>
+      <div class="grid" id="cardGrid"></div>
+
+      <div class="secTtl">评分总表（屏级分 × 战略权重）</div>
+      <table class="score" id="scoreTable">
+        <thead><tr>
+          <th class="nm">屏</th><th>权重</th><th>屏级分</th>
+          <th>新鲜</th><th>覆盖</th><th>健康</th><th>产出</th><th>合规</th><th>自动化</th>
+        </tr></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+
+      <div class="secTtl">评分方法论</div>
+      <div class="method">
+        <p><b>六维部署健康模型（每维 0–100）：</b>部署就绪度 / 架构健康度 / 安全合规度 / 门禁运行度 / 版本锁回填 / 缺口闭环度。由 scan_9655.py 实扫单机密文版真源（四层架构 / 部署阶段 / 版本锁 / 缺口 / 安全红线 / LTI 门禁 / 部署记录）计算，非凭记忆填写。</p>
+        <p><b>环形总评</b> = 六维算术平均（与维度条完全一致，杜绝"屏加权均值"式假自洽，对齐 R-LN-114 教训）；<b>各屏监控卡片 / 评分总表</b> = 各监控屏独立探针分（车机驾驶舱 / 决策思维 / 知识飞轮 / AI 幻觉监控 / 积分监测 / 知识冲突 / 心智模型 / 权限管理 / 权限调用），仅作明细，不反向聚合进总评。</p>
+        <p><b>律所业务屏（C4/C5/C6/C7）：</b>已统一显示、权重 0、不影响总评（沿用 9360 真源业务分）。</p>
+        <p><b>数据真源：</b>scorecard_data.json 由 scan_9655.py 实扫生成（门禁真探活 pgrep，非 socket 文件判定）；云服务中台 D3 为外部链接占位，不纳入评分。</p>
+        <p><b>等级：</b>A≥90 优秀 / B≥75 良好 / C≥60 合格 / D≥45 待改进 / E&lt;45 高危。</p>
+      </div>
+
+      <div class="forbid">
+        <b>⛔ 严禁外发（含真实运维数据）。</b> 本作战地图含单机密文版内部资产路径、L1 密文封装与 role key、安全红线与部署记录等敏感信息，
+        仅限老强本人访问。对外演示一律走门户「🔗 对外分享」唯一脱敏出口，不得直接外发本页。
+      </div>
+
+      <div class="foot">
+        9655 驾驶舱 · 九屏统一作战地图 ｜ 评分导航首页 ｜ 数据源基准 2026-09-18 ｜ 环形总评 = 六维部署健康均值；律所业务屏(C4/C5/C6/C7)随角色授权统一显示<br/>
+        点击任意卡片「进入 ↗」即在右侧/下方内嵌打开该驾驶舱；也可经顶部标签直接切换九屏。
+      </div>
+    </div>
+
+    <!-- ===== 九屏 iframe 容器 ===== -->
+    <div class="framewrap hide">
+      <iframe id="frame" src="" allow="fullscreen" referrerpolicy="no-referrer"></iframe>
+    </div>
+  </div>
+
+  <!-- ===== 对外分享浮层（唯一脱敏出口） ===== -->
+  <div id="shareModal" class="shareModal hide">
+    <div class="shareCard">
+      <div class="sh">
+        <span class="ic">🔗</span>
+        <span>对外分享 · 唯一脱敏出口</span>
+        <span class="closeX" id="shareClose" title="关闭">×</span>
+      </div>
+      <div class="ss">
+        《把律师数字分身系统，当成一辆电车来造和驾驶》—— EV 架构白皮书（对外标准版）v1.1<br/>
+        此链接<strong style="color:var(--teal)">已完成脱敏</strong>，是<strong style="color:var(--teal)">唯一</strong>可安全对外发送的链接。
+      </div>
+      <div class="shareBox">
+        <input type="text" id="shareUrl" readonly value="" />
+        <button id="copyBtn">复制链接</button>
+      </div>
+      <div class="shareMeta">
+        <a class="pri" id="shareOpen" href="#" target="_blank" rel="noopener">打开预览 ↗</a>
+      </div>
+      <div class="safeBox">
+        <b>✅ 已脱敏（可放心外发）</b>
+        内部资产路径 · L1 密文封装明文 · role key · 安全红线细节 · 部署记录原文 —— 全部隐去。<br/>
+        仅保留能力统计量：四层架构就绪 · 推理层 M1 就绪 · 知识资产 3,000+ 文档 · 裁判规则 816 文件 · 质检门禁回归 131/131 · 断链率 0.111% · 六维总评 64.0(C 合格)。
+      </div>
+      <div class="warnBox">
+        <b>⛔ 严禁外发（含真实运维数据）</b>
+        本门户及内部看板 —— 车机驾驶舱、决策思维舱、知识飞轮舱、AI 幻觉监控舱、积分监测中台、知识冲突中台、心智模型中台、权限管理中心、权限调用中台，以及九屏统一作战地图（评分+内部资产路径/安全红线/部署记录）。<br/>
+        这些页面<strong>仅限老强本人访问</strong>。对外演示须另做脱敏剧本单独部署。
+      </div>
+    </div>
+  </div>
+
+  <!-- 作战地图数据改为 fetch scorecard_data.json（由 scan_9655.py 实扫生成；「↻刷新」拉最新） -->
+
+  <script src="rbac.js?v=20260922a"></script>
+  <script src="auth.js?v=20260918a"></script>
+  <script>
+  /* ===== 作战地图渲染（fetch scorecard_data.json + ↻刷新） ===== */
+  window.CockpitMap = (function(){
+    var sixKeys = ['fresh','coverage','health','output','compliance','automation'];
+    var sixColor = {fresh:'#5b9bff',coverage:'#2dd4bf',health:'#ef5350',output:'#f59e0b',compliance:'#a78bfa',automation:'#34d399'};
+    var dotColorMap = {c:"#ef5350",a:"#a78bfa",b:"#2dd4bf",d:"#f59e0b",e:"#5b9bff",f:"#d4af37",g:"#34d399",h:"#f472b6",
+        i:"#38bdf8",k:"#22d3ee",m:"#94a3b8",pc:"#c084fc",d6:"#fb7185",ag:"#f97316",wf:"#06b6d4",sh:"#e879f9",n:"#a3e635"};
+    var CACHE = null;
+    var CACHE_REG = null;
+    function scColor(v){ return v>=80?'#34d399':v>=70?'#d4af37':v>=60?'#f59e0b':'#ef5350'; }
+
+    /* 统一为律师版：全部屏显示（含律所业务屏 C4/C5/C6/C7，按角色授权） */
+    function visibleScreens(D){
+      if(!D || !D.screens) return [];
+      return D.screens;
+    }
+
+    function renderRing(D){
+      /* 环形总评 = 六维部署健康综合（与 dims 一致，全屏统一版通用） */
+      var tot = D.total || 0;
+      document.getElementById('totalSc').textContent = tot.toFixed(1);
+      document.getElementById('gradePill').textContent = D.grade;
+      var circ = 2*Math.PI*56, fg=document.getElementById('ringFg');
+      fg.setAttribute('stroke-dasharray', circ);
+      fg.setAttribute('stroke-dashoffset', circ*(1-tot/100));
+      fg.setAttribute('stroke', scColor(tot));
+    }
+    function renderDims(D){
+      var box=document.getElementById('hexRows'); box.innerHTML='';
+      D.dims.forEach(function(d){
+        var row=document.createElement('div'); row.className='hexRow';
+        row.innerHTML='<div class="lab">'+d.name+'</div><div class="hexBar"><i style="width:'+d.val+'%;background:linear-gradient(90deg,'+d.color+'aa,'+d.color+')"></i></div><div class="val">'+d.val.toFixed(1)+'</div>';
+        box.appendChild(row);
+      });
+    }
+    /* C 编号排序：C1→C9 在前，C0（监控位·不计分）压尾；无编号者次之 */
+    function cnoRank(c){ if(!c) return 98; var s=String(c);
+      if(s[0]==='C'||s[0]==='c'){ if(s.toUpperCase()==='C0') return 99; var n=parseInt(s.slice(1),10); return isNaN(n)?98:n; }
+      if(s[0]==='D'||s[0]==='d'){ var dn=parseInt(s.slice(1),10); return isNaN(dn)?97:50+dn; }
+      return 98; }
+    function ordered(list){ return list.slice().sort(function(a,b){ return cnoRank(a.cno)-cnoRank(b.cno); }); }
+    function renderCards(D, hi){
+      var grid=document.getElementById('cardGrid'); grid.innerHTML='';
+      ordered(visibleScreens(D)).forEach(function(s){
+        var scored = s.scoring!==false;
+        var kpis=s.kpis.map(function(k){ var v=Array.isArray(k[1])?k[1].join(' / '):k[1]; return '<div class="kpi"><span>'+k[0]+'</span><b>'+v+'</b></div>'; }).join('');
+        var mini = scored
+          ? sixKeys.map(function(k){ var v=s.six[k]; return '<div class="col" title="'+k+' '+v+'"><em>'+v+'</em><div class="bar" style="height:'+v+'%;background:'+sixColor[k]+'"></div></div>'; }).join('')
+          : '<div class="noscore">监控位 · 不纳入评分</div>';
+        var riskCls=s.flag?'risk':'risk none', riskTxt=(s.flag||!scored)?s.risk:'低风险 · 运转健康';
+        var dcolor=dotColorMap[s.dot]||'#6b7484';
+        var card=document.createElement('div'); card.className='card'+(scored?'':' monitor')+(hi&&hi===s.key?' flash':'');
+        card.innerHTML='<div class="ctop"><span class="dot" style="background:'+dcolor+'"></span>'+
+          (s.cno?'<span class="cno">'+s.cno+'</span>':'')+
+          '<span class="nm">'+s.name+'</span>'+
+          '<span class="sc" style="color:'+(scored?scColor(s.score):'#6b7484')+'">'+(scored?s.score.toFixed(1):'—')+'</span>'+
+          '<button class="rf" title="刷新本屏最新数据" onclick="CockpitMap.refresh(\''+s.key+'\')">↻</button></div>'+
+          '<div class="meta"><span>权重 <b>'+(scored?(s.weight*100).toFixed(0)+'%':'不计分')+'</b></span><span>更新 <b>'+s.updated+'</b></span></div>'+
+          '<div class="kpis">'+kpis+'</div><div class="mini">'+mini+'</div>'+
+          '<div class="'+riskCls+'">'+riskTxt+'</div>'+
+          '<div class="cbtn"><button class="go" onclick="window.__cockpitLoad(\''+s.key+'\')">进入 ↗</button>'+
+          '<button onclick="window.__cockpitOpenNew(\''+s.key+'\')">新标签 ↗</button></div>';
+        grid.appendChild(card);
+      });
+    }
+    function renderTable(D){
+      var tb=document.querySelector('#scoreTable tbody'); tb.innerHTML=''; var wSum=0,scSum=0;
+      ordered(visibleScreens(D)).forEach(function(s){ var scored=s.scoring!==false;
+        if(scored){ wSum+=s.weight; scSum+=s.score*s.weight; }
+        var tr=document.createElement('tr');
+        tr.innerHTML='<td class="nm"><span class="cnoChip">'+(s.cno||'—')+'</span>'+s.name+'</td>'+
+          '<td>'+(scored?(s.weight*100).toFixed(0)+'%':'不计分')+'</td>'+
+          '<td class="sc" style="color:'+(scored?scColor(s.score):'#6b7484')+'">'+(scored?s.score.toFixed(1):'—')+'</td>'+
+          (scored
+            ? '<td>'+s.six.fresh+'</td><td>'+s.six.coverage+'</td><td>'+s.six.health+'</td><td>'+s.six.output+'</td><td>'+s.six.compliance+'</td><td>'+s.six.automation+'</td>'
+            : '<td colspan="6" style="color:var(--muted)">监控位 · 不纳入评分</td>');
+        tb.appendChild(tr);
+      });
+      var tf=document.querySelector('#scoreTable tfoot');
+      tf.innerHTML='<tr><td class="nm">监控明细加权·参考</td><td>'+(wSum*100).toFixed(0)+'%</td><td class="sc">'+scSum.toFixed(1)+'</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+    }
+    function renderAll(D, hi){ renderRing(D); renderDims(D); renderCards(D, hi); renderTable(D);
+      var g=document.getElementById('generatedAt'); if(g) g.textContent='数据时间 '+D.generated_at; }
+
+    async function load(){ var r=await fetch('scorecard_data.json?t='+Date.now()); if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); }
+    async function refresh(key){
+      var btns=document.querySelectorAll('.card .rf'); btns.forEach(function(b){ b.classList.add('spin'); });
+      try{ var D=await load(); CACHE=D; renderAll(D, key); }
+      catch(e){ console.error(e);
+        if(!CACHE) document.getElementById('cardGrid').innerHTML='<div style="color:#ef5350;padding:20px">数据加载失败：'+e.message+'<br>请确认 scorecard_data.json 已随门户部署。</div>'; }
+      finally{ btns.forEach(function(b){ b.classList.remove('spin'); }); }
+    }
+    async function init(){
+      try{ var D=await load(); CACHE=D; renderAll(D); }
+      catch(e){ console.error(e);
+        document.getElementById('cardGrid').innerHTML='<div style="color:#ef5350;padding:20px">数据加载失败：'+e.message+'<br>请确认 scorecard_data.json 已随门户部署（运行 rescan_scorecard.py 后重部署门户）。</div>'; }
+    }
+    return { init:init, refresh:refresh };
+  })();
+  // 页面加载即拉取最新数据（登录后首页显示即为最新）
+  CockpitMap.init();
+  </script>
+
+  <script>
+  /* ===== 卡片跳转：调用门户的 load，同步高亮标签 ===== */
+  window.__cockpitOpenNew = function(key){
+    var s = window.COCKPIT_CONFIG && window.COCKPIT_CONFIG.sites[key];
+    if(s && s.url){ window.open(s.url, '_blank'); }
+  };
+
+  /* ===== 对外分享浮层（唯一脱敏出口） ===== */
+  (function(){
+    /* 对外白皮书：指向与本门户同源的本地脱敏版（ev-whitepaper.html），不再外链演示地址 */
+    var WHITEPAPER_URL = new URL('ev-whitepaper.html', location.href).href;
+    var btn   = document.getElementById('shareBtn');
+    var modal = document.getElementById('shareModal');
+    var close = document.getElementById('shareClose');
+    var urlIn = document.getElementById('shareUrl');
+    var copyB = document.getElementById('copyBtn');
+    var openA = document.getElementById('shareOpen');
+    if(!btn) return;
+    urlIn.value = WHITEPAPER_URL;
+    openA.href  = WHITEPAPER_URL;
+    function open(){ modal.classList.remove('hide'); btn.classList.add('on'); urlIn.focus(); urlIn.select(); }
+    function shut(){ modal.classList.add('hide'); btn.classList.remove('on'); }
+    btn.addEventListener('click', function(e){ e.stopPropagation(); modal.classList.contains('hide')?open():shut(); });
+    close.addEventListener('click', shut);
+    modal.addEventListener('click', function(e){ if(e.target===modal) shut(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
+    copyB.addEventListener('click', function(){
+      var done = function(){ copyB.textContent='已复制 ✓'; copyB.classList.add('done');
+        setTimeout(function(){ copyB.textContent='复制链接'; copyB.classList.remove('done'); },1800); };
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(WHITEPAPER_URL).then(done, fallback); }
+      else { fallback(); }
+      function fallback(){ urlIn.select(); try{ document.execCommand('copy'); done(); }catch(err){ copyB.textContent='请手动复制'; } }
+    });
+  })();
+  </script>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var d=new Date(document.lastModified);
+    if(isNaN(d.getTime())) return;
+    var s=fmt(d);
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：'+s+'（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+s);}
+  }catch(e){}
+})();
+</script>
+
+<!-- 已移除版本切换脚本：统一为律师版（全屏显示） -->
+
+<script>
+/* O1 运维巡检实时叠加（S1 范式：独立 JSON + fetch overlay；不碰评分环/六维条，视觉层零改动） */
+(function(){
+  var rel = (location.pathname.indexOf('/subapps/') >= 0) ? '../' : './';
+  var url = rel + 'o1_health.json?t=' + Date.now();
+  function fmt(t){ try{ var d=new Date(t); if(isNaN(d.getTime())) return t;
+    var p=function(n){return (n<10?'0':'')+n;};
+    return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes()); }catch(e){ return t; } }
+  function paint(j){
+    var el=document.getElementById('data-update-time'); if(!el) return;
+    var lvl=j.overall||'?';
+    var bad=(j.probes?Object.keys(j.probes).filter(function(k){return j.probes[k].level!=='OK';}):[]).length;
+    var color=(lvl==='OK')?'#9fe6c3':(lvl==='P1'?'#f0c674':'#ff8a87');
+    el.textContent='🛡️ O1 运维巡检：'+lvl+(bad?(' · '+bad+' 项待修'):' · 全部正常')+' · 扫描 '+fmt(j.scanned_at);
+    el.style.color=color;
+    el.style.borderColor=(lvl==='OK')?'rgba(159,230,195,.22)':'rgba(239,83,80,.4)';
+  }
+  function fail(msg){
+    var el=document.getElementById('data-update-time'); if(!el) return;
+    el.textContent='🛡️ O1 运维巡检：源不可达（'+msg+'）';
+    el.style.color='#ff8a87'; el.style.borderColor='rgba(239,83,80,.4)';
+  }
+  fetch(url,{cache:'no-store'}).then(function(r){return r.ok?r.json():Promise.reject('HTTP '+r.status);}).then(paint).catch(function(e){fail(e&&e.message?e.message:e);});
+})();
+</script>
+<script>
+// 缺口技能实时状态 · S1 范式（O2/S2/S3 独立 JSON + no-store overlay；不改 C0 视觉层 / #ring / #ov）
+(function(){
+  var rel = (location.pathname.indexOf('/subapps/') >= 0) ? '../' : './';
+  function mount(nodeId, html){
+    var sels = ['header.topbar','header .meta','.topbar','header','body'];
+    function put(a){var old=document.getElementById(nodeId);if(old)old.parentNode.removeChild(old);var el=document.createElement('div');el.id=nodeId;el.style.marginTop='6px';el.style.fontSize='12px';el.innerHTML=html;a.appendChild(el);}
+    for(var i=0;i<sels.length;i++){var a=document.querySelector(sels[i]);if(a){put(a);return;}}
+    var t=0;function retry(){for(var i=0;i<sels.length;i++){var a=document.querySelector(sels[i]);if(a){put(a);return;}}if(t++<8)setTimeout(retry,400);}retry();
+  }
+  function get(u,cb){fetch(rel+u+'?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():Promise.reject('HTTP '+r.status);}).then(cb).catch(function(){});}
+  get('o2_g6.json', function(j){
+    var c = j.g6_ok ? '#9fe6c3' : '#ff8a87';
+    var ex = j.manifest_is_example ? '（示例manifest·待真实回填）' : '';
+    mount('o2-g6','📌 O2 缺口闭环度(G6)：回填率 <b>'+j.rebate_rate+'%</b> ('+j.filled+'/'+j.total+') · 空项 <b style="color:'+c+'">'+j.blank_count+'</b> '+ex+' · '+j.generated_at.slice(0,16));
+  });
+  get('s3_integrity.json', function(j){
+    var c = j.consistent ? '#9fe6c3' : '#ff8a87';
+    mount('s3-integrity','📐 S3 评分可信：<b style="color:'+c+'">'+(j.consistent?'OK 环==六维均值':'INCONSISTENT 矛盾')+'</b> · 环 '+j.ring_value+' / 均值 '+j.computed_mean+' · '+j.generated_at.slice(0,16));
+  });
+  get('s2_redline.json', function(j){
+    mount('s2-redline','🚧 S2 红线前置：R3/R4 钩子 <b style="color:#9fe6c3">常驻</b>（'+j.r3_patterns+' 令牌规则 + '+j.r4_patterns+' AIGC 标识）· C0 告警旗已前置');
+  });
+})();
+</script>
+</body>
+</html>

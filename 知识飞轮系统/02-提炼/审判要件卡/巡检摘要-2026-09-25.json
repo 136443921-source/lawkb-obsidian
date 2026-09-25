@@ -1,0 +1,55 @@
+{
+  "round": 10,
+  "date": "2026-09-25",
+  "executed_at": "2026-09-25T13:49:30+08:00",
+  "mode": "存量卡质量巡检（原审判要件卡每日补拆改造版）",
+  "skill_version": "v1.41.0 -> v1.42.0",
+  "pending_source": {
+    "frontmatter_true": 0,
+    "inline_dual_scan_keng71": 16,
+    "inline_candidates": [
+      "R-HY-001", "R-HY-003", "R-HG-001", "R-HG-002", "R-PR-001",
+      "R-CS-001", "R-CS-002", "R-PI-435", "R-PI-436", "R-PI-437",
+      "R-PI-438", "R-PI-439", "R-PI-440", "R-PI-441", "R-PI-443", "R-XR-001"
+    ],
+    "note": "16 张均为本地源未收录型描述性标注，标【候选·待人工确认】，未擅自回填"
+  },
+  "deadlinks": {
+    "checker": "_check_deadlinks.py --all (v1.7.0+ 分类口径)",
+    "scanned_files": 5581,
+    "hit_files": 545,
+    "real_deadlinks": 125,
+    "pending_notes": 876,
+    "parse_failures": 0,
+    "exit_code": 0,
+    "old_口径_total": 1001,
+    "fixer": "_fix_deadlinks_v9_20260918.py (严格白名单, import 门禁基名集)",
+    "fixer_dryrun_hits": 0,
+    "fixer_applied": false,
+    "note": "v9 dry-run 幂等 0 命中；125 真死链均为待建笔记软引用/撞号待治理，非本批可修"
+  },
+  "statute_refill": {
+    "filled": 0,
+    "deviation_blocked": 0,
+    "channels": {
+      "pkulaw": {"config": "enabled=true/bound=true", "session_tool_table": "not registered", "probe": "ToolSearch 无匹配", "form": "② not found"},
+      "yuandian_mcp": {"config": "enabled=true/bound=true", "session_tool_table": "not registered", "probe": "ToolSearch 无匹配", "form": "② not found"},
+      "qcc_legal": {"config": "enabled=true/bound=true", "session_tool_table": "not registered", "probe": "真实调用 get_legal_article_detail(民法典,1079) 返 not found in deferred tools index", "form": "② not found"}
+    },
+    "local_fallback": "无可结构性待核项；内联候选本地库无 verbatim 正文，无法消纳",
+    "note": "三通道全部形态②（会话级工具表状态，非服务端故障）；坑43：下轮新会话须重试，勿判死通道"
+  },
+  "safety": {
+    "writes": 0,
+    "backups": 0,
+    "yaml_parse_failures": 0
+  },
+  "streak_no_fixable": 1,
+  "convergence": "连续无修复项第1轮；若第11、12轮仍0可修项则触发R2关闭/改造建议",
+  "todo_human": [
+    "16 张内联待回源标注清零专项（坑71）",
+    "125 真死链（撞号项归 P0-4 编号治理）",
+    "876 待建笔记软引用（非缺陷，不硬修）",
+    "三通道形态② 下轮新会话重试"
+  ]
+}

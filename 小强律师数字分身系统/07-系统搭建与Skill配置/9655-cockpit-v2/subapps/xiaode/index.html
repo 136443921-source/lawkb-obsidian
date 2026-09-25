@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小德 · 合规管理中枢</title>
+<style>
+:root{
+  --bg:#0a0e14; --bg2:#0e131c; --panel:rgba(255,255,255,.035); --panel2:rgba(255,255,255,.055);
+  --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.16);
+  --txt:#e8edf4; --txt2:#9aa6b6; --txt3:#69758532;
+  --txt3c:#aab3c5;
+  --teal:#1fc8b0; --teal-d:#13a892; --cyan:#39b7e8; --green:#28b485;
+  --amber:#f0a52b; --red:#ec5a5a; --yellow:#e8c64a; --purple:#8b82e8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 80% -10%,#122026 0%,var(--bg) 55%) fixed,var(--bg);
+  color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  padding:22px;line-height:1.55;font-size:14px}
+.wrap{max-width:1480px;margin:0 auto}
+header{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px;
+  padding-bottom:16px;border-bottom:1px solid var(--line)}
+h1{font-size:23px;font-weight:700;letter-spacing:.5px}
+h1 .accent{color:var(--teal)}
+.sub{color:var(--txt3c);font-size:12px}
+.badges{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+.badge{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid var(--line2);
+  color:var(--txt2);background:rgba(255,255,255,.03)}
+.badge b{color:var(--teal);font-weight:600}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;
+  background:linear-gradient(135deg,rgba(31,200,176,.07),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-bottom:22px}
+.gauge{position:relative;width:148px;height:148px;flex:none}
+.gauge .score{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge .n{font-size:40px;font-weight:700;line-height:1}
+.gauge .t{font-size:11px;color:var(--txt3c);margin-top:3px;letter-spacing:1px}
+.gauge .lbl{font-size:10px;color:var(--txt3c);margin-top:6px}
+.hero-r{display:flex;flex-direction:column;gap:14px}
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+.stat .n{font-size:22px;font-weight:700}
+.stat .l{font-size:11.5px;color:var(--txt3c);margin-top:1px}
+.stat.alarm .n{color:var(--red)} .stat.warn .n{color:var(--amber)} .stat.ok .n{color:var(--green)}
+.stat.teal .n{color:var(--teal)}
+.hero-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  font-size:12px;color:var(--txt3c)}
+.idx-note{font-size:11px;color:var(--txt3c);font-style:italic}
+.conn{display:flex;gap:6px;flex-wrap:wrap}
+.conn .c{font-size:11px;padding:2px 9px;border-radius:6px;background:rgba(40,180,133,.12);
+  color:#5fd6ad;border:1px solid rgba(40,180,133,.3)}
+
+/* LOOP */
+.loop{display:flex;align-items:stretch;gap:0;margin-bottom:22px;flex-wrap:wrap}
+.band{flex:1;min-width:320px;background:var(--panel);border:1px solid var(--line);border-radius:15px;
+  padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+.arrow{display:flex;align-items:center;justify-content:center;color:var(--teal);
+  font-size:26px;padding:0 6px;flex:none}
+.arrow.hidden{display:none}
+.band-head{display:flex;align-items:center;gap:11px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.band-no{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:700;background:rgba(31,200,176,.13);color:var(--teal);border:1px solid rgba(31,200,176,.32)}
+.band-head .bt{font-size:15px;font-weight:600}
+.band-head .bp{font-size:11.5px;color:var(--txt3c);margin-top:1px}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.card .ct{font-size:12px;color:var(--txt2);margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.card .ct::before{content:"";width:3px;height:12px;background:var(--teal);border-radius:2px}
+
+/* domain bars */
+.dbar{display:flex;flex-direction:column;gap:9px}
+.dbar .row{display:grid;grid-template-columns:64px 1fr 28px;align-items:center;gap:9px;font-size:12.5px}
+.dbar .name{color:var(--txt2)}
+.dbar .track{height:9px;border-radius:5px;background:rgba(255,255,255,.06);overflow:hidden}
+.dbar .track i{display:block;height:100%;background:linear-gradient(90deg,var(--teal-d),var(--teal));border-radius:5px}
+.dbar .v{text-align:right;font-weight:600;color:var(--txt)}
+
+/* gates */
+.gates{display:flex;gap:7px;flex-wrap:wrap}
+.gate{display:flex;align-items:center;gap:6px;font-size:11.5px;padding:5px 10px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+.g-pass .dot{background:var(--green)} .g-normal .dot{background:var(--cyan)}
+.g-warn .dot{background:var(--amber)} .g-fail .dot{background:var(--red)}
+.gate .gn{color:var(--txt2)} .gate .gid{color:var(--txt);font-weight:600}
+
+/* risk matrix */
+.matrix-wrap{display:flex;justify-content:center}
+.matrix text{fill:var(--txt3c);font-size:10px}
+.matrix .axis{fill:var(--txt2);font-size:11px;font-weight:600}
+.matrix .cell{fill:rgba(255,255,255,.025);stroke:rgba(255,255,255,.07)}
+.rdot{font-size:10px;font-weight:700;fill:#0a0e14}
+
+/* attribution */
+.attr-bar{display:flex;height:13px;border-radius:7px;overflow:hidden;border:1px solid var(--line);margin-bottom:9px}
+.attr-bar span{display:block;height:100%}
+.attr-legend{display:flex;gap:14px;font-size:11.5px;color:var(--txt2);flex-wrap:wrap}
+.attr-legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
+.attr-txt{font-size:12px;color:var(--txt2);margin-top:8px;line-height:1.6}
+.attr-txt b{color:var(--amber)}
+
+/* statute baseline */
+.statute{display:flex;flex-direction:column;gap:7px}
+.statute .s{display:flex;align-items:center;gap:9px;font-size:12px;padding:7px 10px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:8px}
+.statute .ok{color:var(--green);font-size:11px;border:1px solid rgba(40,180,133,.35);
+  background:rgba(40,180,133,.1);padding:1px 7px;border-radius:12px;flex:none}
+.statute .sn{color:var(--txt)} .statute .sd{color:var(--txt3c);font-size:11px;margin-left:auto}
+
+/* action list */
+.act{display:flex;flex-direction:column;gap:8px}
+.act .a{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);border-left-width:3px;border-radius:8px}
+.act .a.p0{border-left-color:var(--red)} .act .a.p1{border-left-color:var(--amber)}
+.act .a.p2{border-left-color:var(--cyan)}
+.act .lv{font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;flex:none;margin-top:1px}
+.act .p0 .lv{background:rgba(236,90,90,.18);color:#f59a9a} .act .p1 .lv{background:rgba(240,165,43,.16);color:#f6c074}
+.act .p2 .lv{background:rgba(57,183,232,.16);color:#8fd0f0}
+.act .at{font-size:12.5px} .act .ad{font-size:11px;color:var(--txt3c);margin-top:2px}
+
+/* remediation kanban */
+.kanban{display:flex;flex-direction:column;gap:8px}
+.kb{display:flex;gap:10px;align-items:center;font-size:12px;padding:9px 11px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);border-radius:8px}
+.kb .id{font-weight:700;flex:none;width:26px}
+.kb .body{flex:1} .kb .kt{font-weight:600} .kb .ka{font-size:11px;color:var(--txt3c);margin-top:2px}
+.kb.red .id{color:var(--red)} .kb.orange .id{color:var(--amber)} .kb.yellow .id{color:var(--yellow)}
+
+/* capability */
+.cap{display:flex;flex-direction:column;gap:8px}
+.cap .c{display:grid;grid-template-columns:60px 1fr 30px;gap:8px;align-items:center;font-size:12px}
+.cap .track{height:8px;border-radius:4px;background:rgba(255,255,255,.06);overflow:hidden}
+.cap .track i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),#b3aef0);border-radius:4px}
+.cap .gap{color:var(--amber);font-weight:600}
+
+/* AUDIT RIBBON */
+.audit{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 18px;margin-bottom:18px}
+.audit .ah{font-size:13px;font-weight:600;margin-bottom:13px;display:flex;align-items:center;gap:7px}
+.audit .ah::before{content:"";width:3px;height:13px;background:var(--cyan);border-radius:2px}
+.timeline{display:flex;gap:0;overflow-x:auto;padding-bottom:4px}
+.tl{display:flex;flex-direction:column;align-items:center;min-width:150px;flex:1;position:relative}
+.tl:not(:last-child)::after{content:"";position:absolute;top:7px;left:50%;width:100%;height:2px;
+  background:linear-gradient(90deg,var(--line2),var(--line));z-index:0}
+.tl .dotc{width:15px;height:15px;border-radius:50%;background:var(--teal);border:3px solid var(--bg);z-index:1;
+  box-shadow:0 0 0 1px var(--teal-d)}
+.tl.alt .dotc{background:var(--cyan)}
+.tl .td{font-size:11px;color:var(--txt3c);margin-top:7px;font-family:ui-monospace,monospace}
+.tl .te{font-size:11.5px;color:var(--txt2);text-align:center;padding:0 8px;margin-top:2px}
+.tl .tb{font-size:10.5px;color:var(--txt3c)}
+
+footer{color:var(--txt3c);font-size:11px;text-align:center;padding:10px 0 2px;line-height:1.7}
+@media(max-width:1080px){.arrow{display:none}.band{min-width:100%}.hero{grid-template-columns:1fr}}
+</style>
+<style>
+/* 数据更新时间：紧贴标题（2026-09-16 由右上 fixed 浮块改为标题内联） */
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>小德 · <span class="accent">合规管理中台</span><span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-25 13:43（北京时间·快照）</span></h1>
+      <div class="sub">厚德公益基金会及在管关联主体 · 全合规域统一指挥（慈善 / 合同 / 医疗 / 非诉 / 运输安全 / 社会组织…）</div>
+    </div>
+    <div class="badges">
+      <span class="badge">集中<b>可观测</b></span>
+      <span class="badge">合规<b>优先</b></span>
+      <span class="badge">门禁化<b>变更</b></span>
+      <span class="badge">可追溯<b>审计</b></span>
+    </div>
+  </header>
+
+  <!-- HERO: 综合合规指数 -->
+  <div class="hero">
+    <div class="gauge">
+      <svg viewBox="0 0 148 148" width="148" height="148">
+        <circle cx="74" cy="74" r="60" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="11"/>
+        <circle id="arc" cx="74" cy="74" r="60" fill="none" stroke="var(--amber)" stroke-width="11"
+                stroke-linecap="round" transform="rotate(-90 74 74)" stroke-dasharray="0 377"/>
+        <circle cx="74" cy="74" r="60" fill="none" stroke="var(--amber)" stroke-width="11" stroke-linecap="round"
+                transform="rotate(-90 74 74)" stroke-dasharray="0 377" opacity=".25" id="arcglow"/>
+      </svg>
+      <div class="score"><div class="n" id="scoreN" style="color:var(--amber)">--</div>
+        <div class="t">综合合规指数</div><div class="lbl">COMPLIANCE INDEX</div></div>
+    </div>
+    <div class="hero-r">
+      <div class="hero-stats" id="heroStats"></div>
+      <div class="hero-foot">
+        <span id="idxNote" class="idx-note"></span>
+        <div class="conn" id="conn"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEE · UNDERSTAND · ACT 闭环 -->
+  <div class="loop">
+    <!-- ① SEE -->
+    <div class="band">
+      <div class="band-head"><div class="band-no">①</div>
+        <div><div class="bt">SEE · 态势感知</div><div class="bp">全合规域一屏统揽，现状是什么</div></div></div>
+      <div class="card">
+        <div class="ct">合规域知识覆盖（经验卡沉淀）</div>
+        <div class="dbar" id="dbar"></div>
+      </div>
+      <div class="card">
+        <div class="ct">门禁快照（6 道合规闸门）</div>
+        <div class="gates" id="gates"></div>
+      </div>
+    </div>
+
+    <div class="arrow">▶</div>
+
+    <!-- ② UNDERSTAND -->
+    <div class="band">
+      <div class="band-head"><div class="band-no">②</div>
+        <div><div class="bt">UNDERSTAND · 归因洞察</div><div class="bp">风险在哪、为何失分</div></div></div>
+      <div class="card">
+        <div class="ct">风险热力矩阵（影响 × 可能性）</div>
+        <div class="matrix-wrap"><svg class="matrix" id="matrix" viewBox="0 0 340 250"></svg></div>
+      </div>
+      <div class="card">
+        <div class="ct">短板归因 · 闸门健康分布</div>
+        <div class="attr-bar" id="attrBar"></div>
+        <div class="attr-legend">
+          <span><i style="background:var(--green)"></i>通过 1</span>
+          <span><i style="background:var(--cyan)"></i>正常 2</span>
+          <span><i style="background:var(--amber)"></i>预警 3</span>
+        </div>
+        <div class="attr-txt" id="attrTxt"></div>
+      </div>
+      <div class="card">
+        <div class="ct">法规基线 · 重点监控（已核验）</div>
+        <div class="statute" id="statute"></div>
+      </div>
+    </div>
+
+    <div class="arrow">▶</div>
+
+    <!-- ③ ACT -->
+    <div class="band">
+      <div class="band-head"><div class="band-no">③</div>
+        <div><div class="bt">ACT · 行动推荐</div><div class="bp">今天该推哪几件事</div></div></div>
+      <div class="card">
+        <div class="ct">今日行动清单（按 P0→P2 派发）</div>
+        <div class="act" id="act"></div>
+      </div>
+      <div class="card">
+        <div class="ct">门禁待审（需人工 sign-off）</div>
+        <div class="gates" id="gatesTodo"></div>
+      </div>
+      <div class="card">
+        <div class="ct">整改看板（升级风险）</div>
+        <div class="kanban" id="kanban"></div>
+      </div>
+      <div class="card">
+        <div class="ct">能力建设 · 知识缺口</div>
+        <div class="cap" id="cap"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIT RIBBON -->
+  <div class="audit">
+    <div class="ah">可追溯审计轨迹 · Audit Trail</div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <footer id="ft"></footer>
+</div>
+
+<script>
+const DATA = {
+  "schema": "compliance-state/v1",
+  "org": "贵州省厚德公益基金会（及在管关联主体）",
+  "domains": [
+    "慈法",
+    "合同",
+    "医院",
+    "非诉"
+  ],
+  "kpi": {
+    "managedObjects": 8,
+    "escalatedRisks": 2,
+    "newThisWeek": 1,
+    "gateG8": "pass"
+  },
+  "domainCards": {
+    "慈法": 6,
+    "合同": 7,
+    "医院": 14,
+    "非诉": 7
+  },
+  "gates": {
+    "G8": {
+      "name": "非诉合规门禁",
+      "status": "pass",
+      "note": "周巡检 g8_passed=true"
+    },
+    "D-慈善": {
+      "name": "慈善域门禁",
+      "status": "warn",
+      "note": "R2 审计约定书主体缺失升级"
+    },
+    "D-医院": {
+      "name": "医院域门禁",
+      "status": "normal",
+      "note": "R4/R5 红线转出"
+    },
+    "D-运输": {
+      "name": "运输安全域门禁",
+      "status": "warn",
+      "note": "R6 航合表态稿逾期"
+    },
+    "D-社会组织": {
+      "name": "社会组织域门禁",
+      "status": "warn",
+      "note": "R8 众志救援新增"
+    },
+    "D-非诉文书": {
+      "name": "非诉文书门禁",
+      "status": "normal",
+      "note": "光伏项目留痕观察"
+    }
+  },
+  "deadlines": [
+    {
+      "name": "审计业务约定书乙方主体信息补正",
+      "due": "2026-09-20",
+      "level": "P0",
+      "state": "urgent",
+      "owner": "厚德基金会",
+      "basis": "慈善组织信息公开办法 / 民间非营利组织会计制度"
+    },
+    {
+      "name": "航合物流09-01事故四段式表态稿起草",
+      "due": "2026-09-14",
+      "level": "P0",
+      "state": "overdue",
+      "owner": "航合物流",
+      "basis": "安全生产法第21/41条"
+    },
+    {
+      "name": "众志救援场地收回信赖利益证据固化",
+      "due": null,
+      "level": "P1",
+      "state": "armed",
+      "owner": "众志救援",
+      "basis": "行政协议司法解释第5/23条"
+    },
+    {
+      "name": "娄山华庭租赁用途与章程宗旨匹配佐证",
+      "due": null,
+      "level": "P2",
+      "state": "pending",
+      "owner": "厚德基金会",
+      "basis": "租赁合同 HDGY-2026-0601"
+    }
+  ],
+  "risks": [
+    {
+      "id": "R2",
+      "level": "red",
+      "title": "审计业务约定书乙方主体信息缺失",
+      "note": "死线2026-09-20仅剩6天仍未补正，触发G8硬挡：本年度审计报告不予出具",
+      "action": "本周内联系基金会补正乙方名称/执业许可号/签章页"
+    },
+    {
+      "id": "R6",
+      "level": "orange",
+      "title": "航合09-01致死事故表态稿逾期未落地",
+      "note": "距事故13天，四段式表态稿正文仍未起草",
+      "action": "表态稿列P0，双线整改同步启动，关联交易交叉核查催办"
+    },
+    {
+      "id": "R8",
+      "level": "orange",
+      "title": "众志救援场地收回行政争议（新增）",
+      "note": "有批复无协议，信赖利益证据待固化",
+      "action": "225号收文回执/批复原件/投入票据立即归档，民非资产处置理事会决议留痕"
+    },
+    {
+      "id": "R1",
+      "level": "yellow",
+      "title": "道真百益合同纠纷案",
+      "note": "涉诉红线留痕，二审材料已整合投资决策留痕",
+      "action": "理事会专项回填待办"
+    },
+    {
+      "id": "R3",
+      "level": "yellow",
+      "title": "娄山华庭租赁",
+      "note": "意见书有touch实质未变，租赁用途与章程宗旨匹配性待佐证",
+      "action": "保持观察"
+    },
+    {
+      "id": "R7",
+      "level": "yellow",
+      "title": "面瘫针灸协议",
+      "note": "落地前状态，无新签署证据",
+      "action": "签署后启动知情同意/病历/医保三项巡检"
+    }
+  ],
+  "statuteBaseline": [
+    {
+      "n": "慈善法",
+      "d": "2023 修正"
+    },
+    {
+      "n": "基金会管理条例",
+      "d": "现行"
+    },
+    {
+      "n": "慈善组织信息公开办法",
+      "d": "现行"
+    },
+    {
+      "n": "民间非营利组织会计制度",
+      "d": "现行"
+    },
+    {
+      "n": "安全生产法",
+      "d": "2021 修正"
+    },
+    {
+      "n": "行政协议司法解释",
+      "d": "法释〔2019〕17号"
+    }
+  ],
+  "connectors": {
+    "ima-mcp": "connected",
+    "yuandian-mcp": "connected",
+    "qcc-legal": "connected",
+    "gongyi-open-mcp": "connected",
+    "agent-mail": "connected"
+  },
+  "auditLog": [
+    {
+      "ts": "2026-09-14T11:39",
+      "action": "init_dashboard",
+      "by": "小强"
+    },
+    {
+      "ts": "2026-09-13T09:00",
+      "action": "周合规巡检 G8 留痕",
+      "by": "小德"
+    },
+    {
+      "ts": "2026-09-12T16:20",
+      "action": "合规审查卡调用",
+      "by": "小德"
+    },
+    {
+      "ts": "2026-09-08T10:05",
+      "action": "合规审查卡调用",
+      "by": "小德"
+    }
+  ],
+  "updatedAt": "2026-09-14",
+  "_syncedAt": "2026-09-25 13:43"
+};
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function renderAll(){
+/* ---- 综合合规指数（透明合成，原型演示用，可调权重，不构成法律意见） ---- */
+const gw = {pass:1.0, normal:0.85, warn:0.55, fail:0.0};
+const gVals = Object.values(DATA.gates).map(g=>gw[g.status]||0.5);
+const gateIdx = Math.round(gVals.reduce((a,b)=>a+b,0)/gVals.length*100); // 73
+const rw = {red:20, orange:8, yellow:3};
+const riskIdx = 100 - DATA.risks.reduce((a,r)=>a+(rw[r.level]||0),0);     // 55
+const dw = {overdue:30, urgent:12, armed:4, pending:4, normal:0, done:0};
+const obligIdx = 100 - DATA.deadlines.reduce((a,d)=>a+(dw[d.state]||0),0); // 50
+const SCORE = Math.round(0.4*gateIdx + 0.4*riskIdx + 0.2*obligIdx);        // 61
+const scoreColor = SCORE>=85?"var(--green)":SCORE>=70?"var(--teal)":SCORE>=60?"var(--amber)":"var(--red)";
+
+(function(){
+  const C=2*Math.PI*60; const off=C*(1-SCORE/100);
+  const arc=document.getElementById("arc");
+  arc.setAttribute("stroke-dasharray",(C-off).toFixed(1)+" "+C.toFixed(1));
+  arc.setAttribute("stroke",scoreColor);
+  document.getElementById("scoreN").textContent=SCORE;
+  document.getElementById("scoreN").style.color=scoreColor;
+})();
+
+/* ---- HERO 统计 ---- */
+const k=DATA.kpi;
+document.getElementById("heroStats").innerHTML=[
+  ["在管主体",k.managedObjects,"teal"],
+  ["升级风险",k.escalatedRisks,"alarm"],
+  ["本周新增",k.newThisWeek,"warn"],
+  ["G8 门禁","通过","ok"]
+].map(([l,n,c])=>`<div class="stat ${c}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+
+document.getElementById("idxNote").textContent=
+  `指数=0.4×门禁${gateIdx}+0.4×风险${riskIdx}+0.2×义务${obligIdx}（原型合成指标，权重可调）`;
+
+document.getElementById("conn").innerHTML=Object.keys(DATA.connectors).map(n=>
+  `<span class="c">${esc(n)} · connected</span>`).join("");
+
+/* ---- ① SEE: 域覆盖 ---- */
+const dc=DATA.domainCards, max=Math.max(...Object.values(dc));
+document.getElementById("dbar").innerHTML=Object.entries(dc).map(([n,v])=>
+  `<div class="row"><span class="name">${esc(n)}</span>
+   <span class="track"><i style="width:${Math.round(v/max*100)}%"></i></span>
+   <span class="v">${v}</span></div>`).join("");
+
+/* ---- ① SEE: 门禁快照 ---- */
+const GCLS={pass:"g-pass",normal:"g-normal",warn:"g-warn",fail:"g-fail"};
+const gateHtml=Object.entries(DATA.gates).map(([g,v])=>
+  `<span class="gate ${GCLS[v.status]||""}" title="${esc(v.note||"")}"><span class="dot"></span>
+   <span class="gid">${esc(g)}</span><span class="gn">${esc(v.name)}</span></span>`).join("");
+document.getElementById("gates").innerHTML=gateHtml;
+
+/* ---- ② UNDERSTAND: 风险矩阵 ---- */
+(function(){
+  const m=document.getElementById("matrix");
+  const X0=50,X1=320,Y0=30,Y1=220; // plot box
+  const colX=[110,200,290];        // 低 中 高 (可能性)
+  const rowY=[60,125,190];         // 高 中 低 (影响)
+  let s="";
+  // cells
+  for(let r=0;r<3;r++)for(let c=0;c<3;c++){
+    s+=`<rect class="cell" x="${X0+c*90}" y="${Y0+r*63.3}" width="90" height="63.3"/>`;
+  }
+  // grid border
+  s+=`<rect x="${X0}" y="${Y0}" width="${X1-X0}" height="${Y1-Y0}" fill="none" stroke="rgba(255,255,255,.12)"/>`;
+  // axis labels
+  s+=`<text class="axis" x="${X0-8}" y="${rowY[0]+4}" text-anchor="end">高</text>`;
+  s+=`<text class="axis" x="${X0-8}" y="${rowY[1]+4}" text-anchor="end">中</text>`;
+  s+=`<text class="axis" x="${X0-8}" y="${rowY[2]+4}" text-anchor="end">低</text>`;
+  s+=`<text class="axis" x="${colX[0]}" y="${Y1+18}" text-anchor="middle">低</text>`;
+  s+=`<text class="axis" x="${colX[1]}" y="${Y1+18}" text-anchor="middle">中</text>`;
+  s+=`<text class="axis" x="${colX[2]}" y="${Y1+18}" text-anchor="middle">高</text>`;
+  s+=`<text x="${(X0+X1)/2}" y="${Y1+34}" text-anchor="middle" style="font-size:10px;fill:var(--txt3c)">发生可能性 →</text>`;
+  s+=`<text x="${X0-26}" y="${(Y0+Y1)/2}" text-anchor="middle" transform="rotate(-90 ${X0-26} ${(Y0+Y1)/2})" style="font-size:10px;fill:var(--txt3c)">影响程度 →</text>`;
+  // risk dots: id -> [col,row] (可能性, 影响)
+  const pos={R2:[1,0],R6:[2,0],R8:[1,1],R1:[0,1],R3:[1,2],R7:[0,2]};
+  const col={red:"var(--red)",orange:"var(--amber)",yellow:"var(--yellow)"};
+  DATA.risks.forEach(r=>{
+    const p=pos[r.id]; if(!p)return;
+    const cx=colX[p[0]], cy=rowY[p[1]];
+    s+=`<circle cx="${cx}" cy="${cy}" r="13" fill="${col[r.level]||'var(--txt3c)'}" stroke="rgba(0,0,0,.35)" stroke-width="1.5"><title>${esc(r.id)} ${esc(r.title)}</title></circle>`;
+    s+=`<text class="rdot" x="${cx}" y="${cy+3.5}" text-anchor="middle">${esc(r.id)}</text>`;
+  });
+  m.innerHTML=s;
+})();
+
+/* ---- ② UNDERSTAND: 短板归因 ---- */
+(function(){
+  const g=Object.values(DATA.gates);
+  const pass=g.filter(x=>x.status==="pass").length;
+  const normal=g.filter(x=>x.status==="normal").length;
+  const warn=g.filter(x=>x.status==="warn").length;
+  const total=g.length;
+  document.getElementById("attrBar").innerHTML=
+    `<span style="width:${pass/total*100}%;background:var(--green)"></span>`+
+    `<span style="width:${normal/total*100}%;background:var(--cyan)"></span>`+
+    `<span style="width:${warn/total*100}%;background:var(--amber)"></span>`;
+  const warnNames=g.filter(x=>x.status==="warn").map(x=>x.name.replace("门禁",""));
+  document.getElementById("attrTxt").innerHTML=
+    `6 道闸门中 <b>${warn} 道预警</b>，失分集中在 <b>${warnNames.join("、")}</b> 三域；`+
+    `核心堵点是 <b>R2 审计约定书主体缺失</b>（触发 G8 硬挡，年度审计报告不予出具）与 <b>R6 航合表态稿逾期</b>。`;
+})();
+
+/* ---- ② UNDERSTAND: 法规基线 ---- */
+document.getElementById("statute").innerHTML=DATA.statuteBaseline.map(s=>
+  `<div class="s"><span class="ok">已核验</span><span class="sn">${esc(s.n)}</span>
+   <span class="sd">${esc(s.d)}</span></div>`).join("");
+
+/* ---- ③ ACT: 行动清单 ---- */
+const LV={overdue:"超期",urgent:"紧急",armed:"待触发",pending:"待办"};
+const actOrder={P0:0,P1:1,P2:2};
+const acts=DATA.deadlines.slice().sort((a,b)=>(actOrder[a.level]||9)-(actOrder[b.level]||9));
+document.getElementById("act").innerHTML=acts.map(d=>{
+  const dueTxt=d.due?esc(d.due):"触发型";
+  return `<div class="a ${d.level.toLowerCase()}">
+    <span class="lv">${esc(d.level)}</span>
+    <div><div class="at">${esc(d.name)}</div>
+    <div class="ad">${LV[d.state]||esc(d.state)} · 期限 ${dueTxt} · ${esc(d.owner)} · 依据 ${esc(d.basis)}</div></div></div>`;
+}).join("");
+
+/* ---- ③ ACT: 门禁待审 ---- */
+document.getElementById("gatesTodo").innerHTML=Object.entries(DATA.gates)
+  .filter(([g,v])=>v.status==="warn")
+  .map(([g,v])=>`<span class="gate g-warn" title="${esc(v.note||"")}"><span class="dot"></span>
+    <span class="gid">${esc(g)}</span><span class="gn">${esc(v.name)} · 待 sign-off</span></span>`).join("");
+
+/* ---- ③ ACT: 整改看板 ---- */
+const RK={red:"red",orange:"orange",yellow:"yellow"};
+document.getElementById("kanban").innerHTML=DATA.risks.filter(r=>r.level!=="green").map(r=>
+  `<div class="kb ${RK[r.level]}"><span class="id">${esc(r.id)}</span>
+   <div class="body"><div class="kt">${esc(r.title)}</div>
+   <div class="ka">整改：${esc(r.action)}</div></div></div>`).join("");
+
+/* ---- ③ ACT: 能力建设 ---- */
+(function(){
+  const dc=DATA.domainCards, min=Math.min(...Object.values(dc)), max=Math.max(...Object.values(dc));
+  document.getElementById("cap").innerHTML=Object.entries(dc).map(([n,v])=>{
+    const gap=v===min;
+    return `<div class="c"><span>${esc(n)}</span>
+      <span class="track"><i style="width:${Math.round(v/max*100)}%"></i></span>
+      <span class="${gap?'gap':''}">${v}${gap?' ⚠':''}</span></div>`;
+  }).join("")+
+  `<div style="font-size:11px;color:var(--txt3c);margin-top:4px">慈法域卡片最少（6），建议优先补强慈善合规知识沉淀。</div>`;
+})();
+
+/* ---- AUDIT 轨迹 ---- */
+document.getElementById("timeline").innerHTML=DATA.auditLog.map((e,i)=>
+  `<div class="tl ${i%2?'alt':''}"><div class="dotc"></div>
+   <div class="td">${esc(e.ts)}</div>
+   <div class="te">${esc(e.action)}</div>
+   <div class="tb">by ${esc(e.by)}</div></div>`).join("");
+
+document.getElementById("ft").textContent=
+  "数据源：LawKB/小德合规管理系统 + 周合规巡检简报-2026-09-13 + 合规审查卡调用记录 · 单一事实源合规状态驱动 · 内部全量视图，对外传播前须走脱敏管线 · 更新 "+DATA.updatedAt;
+} /* end renderAll */
+renderAll();
+
+/* 接入孤儿源 compliance-state.json（单一事实源）：fetch 成功后以真源重渲染并刷新标签；失败沿用内联副本 */
+(function(){
+  try{
+    fetch('compliance-state.json',{cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(j){
+        if(j&&j.schema){
+          Object.assign(DATA, j);
+          renderAll();
+          if(typeof updateTimeLabel==='function'){ updateTimeLabel(j.generatedAt||j.updatedAt); }
+        }
+      }).catch(function(e){});
+  }catch(e){}
+})();
+</script>
+<script>
+/* sync-time-injected · 真实数据时间：显示合规状态单一事实源的生成时间（快照），非文件修改时间 */
+function updateTimeLabel(genAt){
+  try{
+    var el=document.getElementById('data-update-time');
+    if(el){ el.textContent='📊 数据更新时间：'+(genAt||'—')+'（北京时间·快照）'; }
+  }catch(e){}
+}
+(function(){
+  /* 默认用内联 DATA 的真实生成时间；fetch 成功后会以真源 generatedAt 覆盖 */
+  var _g=(typeof DATA!=='undefined'&&(DATA.generatedAt||DATA.updatedAt))||null;
+  updateTimeLabel(_g);
+})();
+</script>
+
+</body>
+</html>

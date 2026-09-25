@@ -1,0 +1,225 @@
+{
+  "generated_at": "2026-09-21 09:05:28",
+  "scope": "lawtwin",
+  "customer": "示例客户",
+  "metrics": {
+    "install_rate": 100.0,
+    "version_ok_rate": 75.0,
+    "rebate_complete_rate": 100.0,
+    "maturity_score": 92
+  },
+  "drifts": [
+    {
+      "skill": "审判要件卡拆卡流水线",
+      "baseline": "1.38.0",
+      "live": "1.39.0"
+    },
+    {
+      "skill": "xiaoqiang-cockpit-hub",
+      "baseline": "1.11.13",
+      "live": "1.1.13"
+    }
+  ],
+  "skills": [
+    {
+      "skill": "legal-consult-router",
+      "priority": "P0",
+      "skill_dir": "legal-consult-router",
+      "baseline_version": "1.0.0",
+      "target_version": "1.0.0",
+      "live_version": "1.0.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "lawyer-yourself-skill",
+      "priority": "P0",
+      "skill_dir": "lawyer-yourself-skill",
+      "baseline_version": "1.2.0",
+      "target_version": "1.2.0",
+      "live_version": "1.2.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "LTI 文本监控器",
+      "priority": "P0",
+      "skill_dir": "",
+      "baseline_version": "4.9.1",
+      "target_version": "4.9.1",
+      "live_version": null,
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "legal-base（基座）",
+      "priority": "P0",
+      "skill_dir": "",
+      "baseline_version": "1.3.0",
+      "target_version": "1.3.0",
+      "live_version": null,
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "法律智能体基座",
+      "priority": "P0",
+      "skill_dir": "",
+      "baseline_version": "1.1.0",
+      "target_version": "1.1.0",
+      "live_version": null,
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "诉讼文书红蓝复核工作流",
+      "priority": "P1",
+      "skill_dir": "诉讼文书红蓝复核工作流",
+      "baseline_version": "1.0.0",
+      "target_version": "1.0.0",
+      "live_version": "1.0.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "蓝队出庭律师",
+      "priority": "P1",
+      "skill_dir": "蓝队出庭律师",
+      "baseline_version": "4.6.2",
+      "target_version": "4.6.2",
+      "live_version": "4.6.2",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "红队出庭律师",
+      "priority": "P1",
+      "skill_dir": "红队出庭律师",
+      "baseline_version": "2.6.0",
+      "target_version": "2.6.0",
+      "live_version": "2.6.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "模拟法庭主控协调器",
+      "priority": "P1",
+      "skill_dir": "模拟法庭主控协调器",
+      "baseline_version": "1.6.4",
+      "target_version": "1.6.4",
+      "live_version": "1.6.4",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "模拟法庭书记员",
+      "priority": "P1",
+      "skill_dir": "模拟法庭书记员",
+      "baseline_version": "1.0.2",
+      "target_version": "1.0.2",
+      "live_version": "1.0.2",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "庭审战情室",
+      "priority": "P1",
+      "skill_dir": "庭审战情室",
+      "baseline_version": "2.1.0",
+      "target_version": "2.1.0",
+      "live_version": "2.1.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "审判要件卡拆卡流水线",
+      "priority": "P1",
+      "skill_dir": "审判要件卡拆卡流水线",
+      "baseline_version": "1.38.0",
+      "target_version": "1.38.0",
+      "live_version": "1.39.0",
+      "installed": true,
+      "drift": true
+    },
+    {
+      "skill": "文书范式卡建卡流水线",
+      "priority": "P1",
+      "skill_dir": "文书范式卡建卡流水线",
+      "baseline_version": "1.2.0",
+      "target_version": "1.2.0",
+      "live_version": "1.2.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "知识飞轮卡库接线",
+      "priority": "P2",
+      "skill_dir": "知识飞轮卡库接线",
+      "baseline_version": "1.0.0",
+      "target_version": "1.0.0",
+      "live_version": "1.0.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "lawkb-legal-consistency-audit",
+      "priority": "P2",
+      "skill_dir": "lawkb-legal-consistency-audit",
+      "baseline_version": "1.0.1",
+      "target_version": "1.0.1",
+      "live_version": "1.0.1",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "案件生命周期大屏流水线",
+      "priority": "P2",
+      "skill_dir": "案件生命周期大屏流水线",
+      "baseline_version": "1.1.0",
+      "target_version": "1.1.0",
+      "live_version": "1.1.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "xiaoqiang-cockpit-hub",
+      "priority": "P2",
+      "skill_dir": "xiaoqiang-cockpit-hub",
+      "baseline_version": "1.11.13",
+      "target_version": "1.11.13",
+      "live_version": "1.1.13",
+      "installed": true,
+      "drift": true
+    },
+    {
+      "skill": "静态数据看板生成流水线",
+      "priority": "P2",
+      "skill_dir": "静态数据看板生成流水线",
+      "baseline_version": "1.0.1",
+      "target_version": "1.0.1",
+      "live_version": "1.0.1",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "合规审查卡建卡流水线",
+      "priority": "P2",
+      "skill_dir": "合规审查卡建卡流水线",
+      "baseline_version": "1.5.0",
+      "target_version": "1.5.0",
+      "live_version": "1.5.0",
+      "installed": true,
+      "drift": false
+    },
+    {
+      "skill": "三轮冲击控制器",
+      "priority": "P2",
+      "skill_dir": "三轮冲击控制器",
+      "baseline_version": "1.5.0",
+      "target_version": "1.5.0",
+      "live_version": "1.5.0",
+      "installed": true,
+      "drift": false
+    }
+  ]
+}

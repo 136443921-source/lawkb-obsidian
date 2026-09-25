@@ -1,0 +1,75 @@
+{
+  "package": "裁量尺度规则包",
+  "domain": "裁量尺度",
+  "version": "v1.0",
+  "generated": "2026-09-23",
+  "generator": "gen_rule_package.py（B方案P0-3·参数化·无依赖导出）",
+  "source_of_truth": "数字资产登记册（OPC 一人公司/00-数字资产登记册/asset_registry.json）",
+  "selection": {
+    "mode": "横切标签",
+    "card_dir": null,
+    "card_type": "裁量尺度",
+    "title_contains": [
+      "裁量"
+    ]
+  },
+  "billing": {
+    "model": "subscription_by_domain",
+    "license_type": "internal_commercial_unit",
+    "pricing_owner": "运营部门负责人（定价与定位由运营部门核定，本席只交付规则包质量）",
+    "price": "由运营部门负责人核定（本席不代定商务）",
+    "scope": "单域订阅；跨域需另购对应域包",
+    "redlines": [
+      "个案卷宗/当事人隐私绝不入包",
+      "包内资产须来自登记册实测，禁编造清单",
+      "yuandian_source_pending=true 的条目标'待核验源'，不冒充权威法源"
+    ]
+  },
+  "asset_inventory": {
+    "rules": 49,
+    "laws": 0,
+    "internal_manual_articles": 0,
+    "experience_cards": 0,
+    "checklists": 0
+  },
+  "quality_report": {
+    "source_pending_count": 33,
+    "source_pending_ids": [
+      "R-CF-074",
+      "R-SH-057",
+      "R-SH-059",
+      "R-SH-061",
+      "R-SH-058",
+      "R-SH-056",
+      "R-SH-060",
+      "R-LD-059",
+      "R-LD-062",
+      "R-LD-061",
+      "R-LD-057",
+      "R-LD-060",
+      "R-LD-058",
+      "R-WT-002",
+      "R-WT-001",
+      "R-WT-004",
+      "R-WT-003",
+      "R-TQ-002",
+      "R-HT-270",
+      "R-HT-271",
+      "R-PI-402",
+      "R-PI-409",
+      "R-PI-408",
+      "R-PI-403",
+      "R-PI-405",
+      "R-PI-407",
+      "R-PI-401",
+      "R-PI-411",
+      "R-PI-406",
+      "R-PI-404",
+      "R-PI-410",
+      "R-HY-092",
+      "R-HY-095"
+    ],
+    "missing_summary_count": 2,
+    "missing_keypoints_count": 2
+  }
+}
