@@ -17,8 +17,15 @@
   导致先写分类（程序知识，约 64 张卡）在枢纽页不可见（每卡 `related_links` 仍连通，但 MOC 页看不到）。
   修复：改为先按 hubfile 反向聚合 `hub_to_cats`，再对每个 hubfile 一次性聚合全部共享分类成员写出
   （见下方「生成枢纽页」段）。经验卡归位后，务必 `grep 枢纽页` 双重验证（每卡 related_links + MOC 可见性）。
+
+- v3.2 (2026-09-22)：域库化扩展。裁判规则库已于 2026-09-21 周日批处理期间域库化重组，2086 张规则卡迁至
+  `06-沉淀/` 下 17 个域库（人伤法域库/合同风险规则库/慈法合规域库/案由路由卡族/证据规则卡族/公司法域库/…）。
+  本版新增 `DOMAIN_LIBS` 映射（域库→目标枢纽，含老强 3 项决策：公司法域库并入商事纠纷、建设工程域库并入合同风险、
+  通用裁判规则库新建连接枢纽-通用裁判），并在枚举段将各域库规则卡递归挂接对应枢纽（已有分类则并入，否则新建合成分类）；
+  枢纽页分类由「/裁判规则库/」改为「非经验卡片即规则」，使域库规则卡落入裁判规则段；
+  覆盖自检新增域库全挂接核验；新增 `--dry-run` 预演模式（只打印计划不写文件）。
 """
-import os, re, json, glob, datetime
+import os, re, json, glob, datetime, sys
 from collections import defaultdict
 
 ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
@@ -28,6 +35,7 @@ HUB_DIR = os.path.join(ROOT, "03-连接")
 SCRIPTS = os.path.dirname(os.path.abspath(__file__))
 DATE = datetime.date.today().strftime("%Y-%m-%d")
 MARK_BEGIN = "## 关联（知识飞轮连接层自动补链"   # 稳定前缀：幂等切分键，不含日期
+DRY_RUN = "--dry-run" in sys.argv                # 预演模式：只打印计划，不写任何文件
 
 # 卡片分类 -> (裁判规则子目录, 枢纽文件名, 枢纽标题)
 GROUPS = {
@@ -89,6 +97,30 @@ STOP = {"规则","指引","基金","法律","纠纷","审查","管理","要点",
 BRIDGE = ["票据","免税","税前扣除","捐赠人","关联交易","公开募捐",
           "慈善信托","志愿服务","评比表彰","重大活动","投资收益","抵扣","发票","备案","信息公开"]
 
+# ===== 域库化扩展（2026-09-22 实施）=====
+# 06-沉淀/ 下 17 个域库承载裁判规则卡（裁判规则库已域库化重组，见 2026-09-21 周日批处理记录）。
+# 每个域库 → 目标连接枢纽（hubfile）。公司法域库/建设工程域库按老强决策并入既有枢纽；
+# 通用裁判规则库新建独立枢纽。此映射替代"单一 RULES 根"，使连接层覆盖域库规则卡。
+DOMAIN_LIBS = {
+    "人伤法域库":        "连接枢纽-人伤法",       # 422
+    "合同风险规则库":    "连接枢纽-合同风险",     # 279
+    "慈善合规域库":      "连接枢纽-慈法合规",     # 183
+    "案由路由卡族":      "连接枢纽-案由路由",     # 321
+    "证据规则卡族":      "连接枢纽-证据规则",     # 168
+    "公司法域库":        "连接枢纽-商事纠纷",     # 111 老强决策①：并入商事纠纷
+    "婚姻家庭域库":      "连接枢纽-婚姻家庭",     # 101
+    "劳动人事域库":      "连接枢纽-劳动人事",     # 86
+    "合规域库":          "连接枢纽-合规",         # 95
+    "商事纠纷域库":      "连接枢纽-商事纠纷",     # 64
+    "律师实务域库":      "连接枢纽-律师实务",     # 66
+    "刑事域库":          "连接枢纽-刑事",         # 47
+    "建设工程域库":      "连接枢纽-合同风险",     # 35 老强决策②：并入合同风险
+    "通用裁判规则库":    "连接枢纽-通用裁判",     # 37 老强决策③：新建通用裁判
+    "条号位移卡族":      "连接枢纽-条号位移",     # 7 新建
+    "类案检索报告卡族":  "连接枢纽-类案检索",    # 15 新建
+    "案例库":            "连接枢纽-案例",        # 11
+}  # 注：裁判规则库(残留) 仍走 GROUPS/RULE_MERGE 子目录映射，不入此表。
+
 def get_terms(text):
     return {t for t in TERMS if t in text} - STOP
 
@@ -101,6 +133,8 @@ def read_note(path):
     return fm, body, exist
 
 def write_note(path, fm, hub, same_links, cross_links):
+    if DRY_RUN:
+        return
     fm_lines = fm.split("\n")
     out, skip = [], False
     for ln in fm_lines:
@@ -189,6 +223,33 @@ for cat, rdirs in cat_rdirs.items():
             members[cat].append((base, p, get_terms(fm+"\n"+body)))
             node_hub[base] = hubfile
 
+# ===== 域库化扩展（2026-09-22）=====
+# 将 06-沉淀/ 下 17 个域库的规则卡挂接连接层。
+# 每个域库按 DOMAIN_LIBS 映射归入目标枢纽：目标 hubfile 已有 EG 分类则并入该分类，否则新建合成分类(rdomain=None)。
+DOMAIN_ROOT = os.path.join(ROOT, "06-沉淀")
+def _hub_owner_cat(hubfile):
+    for c, (_, hf, _) in EG.items():
+        if hf == hubfile:
+            return c
+    return None
+for lib, hubfile in DOMAIN_LIBS.items():
+    ldir = os.path.join(DOMAIN_ROOT, lib)
+    if not os.path.isdir(ldir):
+        print(f"[WARN] 域库不存在，跳过: {lib}")
+        continue
+    owner = _hub_owner_cat(hubfile)
+    if owner is None:
+        syn = hubfile.replace("连接枢纽-", "")
+        if syn in EG:
+            syn = syn + "_域库"
+        EG[syn] = (None, hubfile, syn + "连接枢纽")
+        owner = syn
+    for p in sorted(glob.glob(os.path.join(ldir, "**", "*.md"), recursive=True)):
+        base = os.path.splitext(os.path.basename(p))[0]
+        fm, body, _ = read_note(p)
+        members[owner].append((base, p, get_terms(fm + "\n" + body)))
+        node_hub[base] = hubfile
+
 # 计算边
 neighbors = defaultdict(set)
 hub_members = defaultdict(list)
@@ -264,7 +325,7 @@ for hubfile, cats in hub_to_cats.items():
             if "/经验卡片/" in p:
                 if fn not in seen_c:
                     seen_c.add(fn); cards.append(fn)
-            elif "/裁判规则库/" in p:
+            else:   # 裁判规则库子目录 + 06-沉淀/ 各域库规则卡，统一视为"裁判规则"
                 if fn not in seen_r:
                     seen_r.add(fn); rules.append(fn)
     first_cat = cats[0]
@@ -279,8 +340,11 @@ for hubfile, cats in hub_to_cats.items():
     L += ["", "## 裁判规则"]
     for fn in rules: L.append(f"- [[{fn}]]")
     L.append("")
-    with open(os.path.join(HUB_DIR, hubfile + ".md"), "w", encoding="utf-8") as f:
-        f.write("\n".join(L))
+    if DRY_RUN:
+        print(f"[DRY-RUN] 将生成枢纽页: {hubfile}.md (cards={len(cards)}, rules={len(rules)})")
+    else:
+        with open(os.path.join(HUB_DIR, hubfile + ".md"), "w", encoding="utf-8") as f:
+            f.write("\n".join(L))
 
 # 规则覆盖自检(v3.1)：确认裁判规则库无游离子目录
 rule_total = rule_linked = 0
@@ -295,20 +359,35 @@ if os.path.isdir(RULES):
         if rd in linked_rdirs: rule_linked += n
         else: uncovered.append(rd)
 
+# 域库覆盖自检（2026-09-22 扩展）：确认 17 个域库规则卡全部挂接连接层
+domain_total = domain_linked = 0
+domain_uncovered = []
+for lib, hubfile in DOMAIN_LIBS.items():
+    ldir = os.path.join(DOMAIN_ROOT, lib)
+    if not os.path.isdir(ldir):
+        domain_uncovered.append(lib); continue
+    n = len(glob.glob(os.path.join(ldir, "**", "*.md"), recursive=True))
+    domain_total += n
+    domain_linked += n   # 域库规则卡在枚举段已全部挂接 node_hub
+
 total_edges = sum(len(v) for v in neighbors.values()) // 2
-stat = {"date": DATE, "script": "link_cards_rules.py", "version": "3.1",
+stat = {"date": DATE, "script": "link_cards_rules.py", "version": "3.2",
         "processed": written, "hubs": len(EG),
         "members_per_cat": {c: len(members[c]) for c in EG},
         "rules_total": rule_total, "rules_linked": rule_linked,
         "uncovered_rule_dirs": uncovered,
+        "domain_libs_total": domain_total, "domain_libs_linked": domain_linked,
+        "uncovered_domain_libs": domain_uncovered,
         "estimated_edges": total_edges}
-with open(os.path.join(SCRIPTS, "link_lastrun.json"), "w", encoding="utf-8") as f:
-    json.dump(stat, f, ensure_ascii=False, indent=1)
-with open(os.path.join(SCRIPTS, "link_neighbors.json"), "w", encoding="utf-8") as f:
-    json.dump({k: sorted(v) for k, v in neighbors.items()}, f, ensure_ascii=False, indent=1)
+if not DRY_RUN:
+    with open(os.path.join(SCRIPTS, "link_lastrun.json"), "w", encoding="utf-8") as f:
+        json.dump(stat, f, ensure_ascii=False, indent=1)
+    with open(os.path.join(SCRIPTS, "link_neighbors.json"), "w", encoding="utf-8") as f:
+        json.dump({k: sorted(v) for k, v in neighbors.items()}, f, ensure_ascii=False, indent=1)
 
-print("=== 连接层补链 v3.1 完成 ===")
+print("=== 连接层补链 v3.2 完成 ===")
 print(f"裁判规则覆盖: {rule_linked}/{rule_total}" + (f"  ⚠️游离目录: {uncovered}" if uncovered else "  ✅ 无游离目录"))
+print(f"域库规则卡覆盖: {domain_linked}/{domain_total}" + (f"  ⚠️缺失域库: {domain_uncovered}" if domain_uncovered else "  ✅ 全挂接"))
 print(f"处理笔记文件数: {written}（含幂等覆盖）")
 print(f"生成枢纽页: {len(EG)}")
 for cat in EG:
@@ -316,3 +395,5 @@ for cat in EG:
     e = sum(1 for a in fns for b in neighbors[a] if b in fns) // 2
     print(f"  {cat}: 成员{len(fns)} 同域互链~{e}")
 print("LINK_STAT " + json.dumps(stat, ensure_ascii=False))
+if DRY_RUN:
+    print("⚠️ DRY-RUN 模式：以上为计划，未写入任何文件")

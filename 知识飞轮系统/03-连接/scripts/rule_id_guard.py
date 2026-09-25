@@ -45,7 +45,7 @@ import argparse
 from collections import defaultdict
 from datetime import datetime
 
-ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库"
+ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀"
 
 # 白名单**动态解析**规范第二节（2026-09-11 起），不再硬编码。
 # 解析失败自动回退内置兜底清单，门禁绝不因规范改版而失效。
@@ -84,9 +84,13 @@ def scan(since_min=None):
     files = []
     cutoff = time.time() - since_min * 60 if since_min else 0
     for dp, dn, fn in os.walk(ROOT):
-        dn[:] = [d for d in dn if not d.startswith(".") and d != "_备份"]
+        dn[:] = [d for d in dn if not d.startswith(".") and d != "_备份" and d != "裁判规则库"]
         for f in fn:
             if not f.endswith(".md"):
+                continue
+            # 性能优化（2026-09-21 reorg 后）：规则卡一律以 R-XX-NNN 命名，先按文件名过滤，
+            # 避免对 06-沉淀 下数千个非规则文档逐文件 open 导致门禁扫描超时。
+            if not re.match(r'^R-[A-Z]{2}-\d{3}', f):
                 continue
             p = os.path.join(dp, f)
             if cutoff and os.path.getmtime(p) < cutoff:

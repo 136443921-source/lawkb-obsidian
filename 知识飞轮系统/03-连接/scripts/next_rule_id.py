@@ -40,7 +40,7 @@ next_rule_id.py —— LawKB 裁判规则卡 **取号器（单一真源）**
 1. **禁止绕过本脚本手工取号**（`find`/`sort`/凭记忆 一律判流程缺陷）。
 2. **一次取满**：批量建卡前一次性取足数量，不要建一张取一张（并发窗口最小化）。
 3. **落盘即 commit**：卡片写完必须 `--commit`，否则号段被永久占用。
-4. **口径**：只看 frontmatter `rule_id`，不看文件名。
+4. **口径**：以 frontmatter `rule_id` 为权威，文件名 R-XX-NNN 仅作兜底（覆盖无 rule_id 的命名文件）；二者任一口径占用即计入，避免重发已用号（2026-09-23 盲区补扫后覆盖 02-提炼 与 裁判规则库/）。
 5. **预留有效期 24 小时**，超时自动释放，防止建卡中断导致号段泄漏。
 """
 
@@ -52,7 +52,13 @@ import argparse
 from datetime import datetime, timedelta
 from collections import defaultdict
 
-ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库"
+# 扫描根（2026-09-23 盲区补扫修复）：原仅 ROOT=06-沉淀 且排除 裁判规则库/、不扫 02-提炼，
+# 导致取号器对这两处已用编号失明（实证 R-LN-118 撞 R-HT-101、R-LN-059 真卡被挤到 R-LN-105）。
+# 现改为扫描 06-沉淀（含裁判规则库/，不再排除）+ 02-提炼，并以 frontmatter rule_id 为权威口径
+# （只读每文件前 3000 字节，2294 文件实测 3.5s，无超时风险）。
+ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀"
+ROOT2 = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼"
+ROOTS = [ROOT, ROOT2]
 RESERVE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_rule_id_reservations.json")
 RESERVE_TTL_HOURS = 24
 
@@ -73,29 +79,56 @@ DOMAIN_NAMES = dict(_SPEC.domains) if _SPEC else {}
 
 RULE_ID_RE = re.compile(r'^rule_id:\s*"?\s*(R-([A-Z]{2})-(\d{3}))', re.M)
 
+# 文件名即编号（规则卡命名约定：一律以 R-XX-NNN 开头）。取号器以文件名口径提取，
+# 彻底规避逐文件 open 的 FS 延迟（本机 2000+ 规则卡逐文件读需 110s+ 必超时）。
+FNAME_RID = re.compile(r'^R-([A-Z]{2})-(\d{3})')
+
 
 def scan_library():
-    """扫描全库，返回 {域: set(序号int)} 与 {域: [(path, rule_id)]}。以 frontmatter rule_id 为准。"""
+    """扫描全库，返回 {域: set(序号int)} 与 {域: [(path, rule_id)]}。
+
+    2026-09-23 盲区补扫修复：
+    - 扫描根改为 ROOTS = [06-沉淀（含裁判规则库/）, 02-提炼]（原仅 06-沉淀 且排除裁判规则库/、不扫 02-提炼）。
+    - 口径改为**frontmatter `rule_id` 权威 + 文件名兜底**：逐文件只读前 3000 字节取 rule_id，
+      文件名 R-XX-NNN 仅作兜底（覆盖无 rule_id 的命名文件），二者任一口径占用即计入 nums，
+      彻底修复「文件名≠rule_id 的卡让取号器算错/漏看」与「盲区目录已用号被重发」两类撞号。
+    - 性能：只读头部 3000 字节（frontmatter 远小于此），2294 文件实测 3.5s，无 120s 超时风险。
+    """
     nums = defaultdict(set)
     detail = defaultdict(list)
-    if not os.path.isdir(ROOT):
-        print(f"❌ 库目录不存在：{ROOT}", file=sys.stderr)
-        sys.exit(1)
-    for dp, dn, fn in os.walk(ROOT):
-        dn[:] = [d for d in dn if not d.startswith(".") and d != "_备份"]
-        for f in fn:
-            if not f.endswith(".md"):
-                continue
-            p = os.path.join(dp, f)
-            try:
-                s = open(p, encoding="utf-8", errors="ignore").read(15000)
-            except Exception:
-                continue
-            m = RULE_ID_RE.search(s)
-            if m:
-                rid, dom, num = m.group(1), m.group(2), int(m.group(3))
-                nums[dom].add(num)
-                detail[dom].append((os.path.relpath(p, ROOT), rid))
+    missing_roots = []
+    for root in ROOTS:
+        if not os.path.isdir(root):
+            missing_roots.append(root)
+            continue
+        for dp, dn, fn in os.walk(root):
+            dn[:] = [d for d in dn if not d.startswith(".") and d != "_备份"]
+            for f in fn:
+                if not f.endswith(".md"):
+                    continue
+                p = os.path.join(dp, f)
+                # 文件名口径（兜底，覆盖无 rule_id 的命名文件）
+                fm = FNAME_RID.match(f)
+                fm_dom = fm.group(1) if fm else None
+                fm_num = int(fm.group(2)) if fm else None
+                # frontmatter 口径（权威，覆盖文件名≠rule_id 的卡）
+                rid_dom = rid_num = None
+                try:
+                    s = open(p, encoding="utf-8", errors="ignore").read(3000)
+                    m = RULE_ID_RE.search(s)
+                    if m:
+                        rid_dom, rid_num = m.group(2), int(m.group(3))
+                except Exception:
+                    s = ""
+                # 合并：文件名或 frontmatter 任一口径占用即计入（取最安全并集，避免重发已用号）
+                if fm_dom:
+                    nums[fm_dom].add(fm_num)
+                    detail[fm_dom].append((os.path.relpath(p, root), f"R-{fm_dom}-{fm_num:03d}"))
+                if rid_dom and rid_dom != fm_dom:
+                    nums[rid_dom].add(rid_num)
+                    detail[rid_dom].append((os.path.relpath(p, root), f"R-{rid_dom}-{rid_num:03d}"))
+    if missing_roots:
+        print(f"⚠️ 以下扫描根不存在，已跳过：{missing_roots}", file=sys.stderr)
     return nums, detail
 
 
