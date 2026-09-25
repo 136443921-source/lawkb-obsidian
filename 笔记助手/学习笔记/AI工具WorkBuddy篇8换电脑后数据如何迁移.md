@@ -1,8 +1,7 @@
 ---
 created: 2026-08-07T12:48
-updated: 2026-09-18T20:19
+updated: 2026-09-25T20:38
 tags:
-  - 
   - 用户名
   - WorkBuddy
   - 路径
@@ -792,6 +791,7 @@ pip install
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/6uCpMe8C5bl8Bg97rT6VxA)*
 
 ## 相关笔记
+- [[知识库投喂汇总-2026-07-24]] (共现关键词: WorkBuddy, workbuddy)
 - [[红队L2批驳_蓝队D3体检稿_20260914]] (共现关键词: 路径, ###)
 - [[LEARNINGS]] (共现关键词: 路径, 共现)
 - [[LTI文本监控器v4.0迁移与调用规范]] (共现关键词: 迁移, 共现)
