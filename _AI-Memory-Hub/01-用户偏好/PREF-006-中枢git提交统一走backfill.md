@@ -41,8 +41,11 @@ tags:
 - 跨项目记忆 `~/.workbuddy/MEMORY.md` 同步有同款强制节（并已据此纠正「write_back.py 也走安全通道」的错误假设：write_back.py 不含 git push）。
 
 ## 相关笔记
-- [[README]] (共现关键词: py, git, backfill)
+- [[220030回补报告-2026-09-10]] (共现关键词: 重试, ##)
 - [[_索引]] (共现关键词: py, backfill, 中枢)
+- [[DEC-2026-005-中枢提交规范化四层闭环思维轨迹]] (共现关键词: py, backfill, 中枢)
+- [[README]] (共现关键词: py, git, backfill)
+- [[_AI-Memory-Hub/01-用户偏好/_索引]] (共现关键词: py, backfill, 中枢)
 - [[共享记忆协议-v1.0]] (共现关键词: backfill, 中枢)
 - [[DEC-006-蓝队训练记录落位与版本号冻结]] (共现关键词: 中枢, 006)
 - [[DEC-2026-003-确立记忆中枢]] (共现关键词: git, 中枢)

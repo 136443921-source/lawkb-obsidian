@@ -1,4 +1,5 @@
 ---
+version: v1.0
 id: RULE-012
 title: - [[R-PI-161-医院合规审核应审尽审未经审核不得提交决策涉法事项须报告]] (共现关键词: 提交, 2026)
 type: rule
@@ -9,8 +10,6 @@ scope: global
 confidence: medium
 
 tags:
-  - 2026
-  - 012
   - 合同法
   - 关键词
   - 慈善法

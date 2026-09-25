@@ -9,7 +9,6 @@ scope: global
 confidence: medium
 
 tags:
-  - ---
   - skill
   - 慈善法
   - 合同法

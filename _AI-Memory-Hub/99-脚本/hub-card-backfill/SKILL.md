@@ -6,7 +6,6 @@ version: 1.0.0
 
 tags:
   - 民事诉讼
-  - ##
   - 索引
   - md
   - id
@@ -84,6 +83,7 @@ $PY /Users/chenyouqiang/.workbuddy/skills/hub-card-backfill/backfill.py \
 - 中枢元规则：`00-全局规则/共享记忆协议-v1.0.md`、`冲突仲裁规则.md`、`字段-Schema.md`。
 
 ## 相关笔记
+- [[2026-09-12]] (共现关键词: 诉讼, SKILL)
 - [[红队心智模型与训练备忘录-2026-09-14]] (共现关键词: SKILL, 证据)
 - [[红队心智模型复盘-2026-09-14]] (共现关键词: ##, SKILL, 证据)
 - [[WF-028-知识飞轮卡库接线]] (共现关键词: ##, SKILL, 证据)

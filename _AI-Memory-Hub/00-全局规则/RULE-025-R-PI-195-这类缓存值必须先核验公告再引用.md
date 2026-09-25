@@ -1,4 +1,5 @@
 ---
+version: v1.0
 id: RULE-025
 title: R-PI-195 这类"缓存值"必须先核验公告再引用
 type: rule
@@ -11,7 +12,6 @@ confidence: medium
 tags:
   - RULE
   - 关键词
-  - ---
   - 民事诉讼
   - 侵权责任
   - PI

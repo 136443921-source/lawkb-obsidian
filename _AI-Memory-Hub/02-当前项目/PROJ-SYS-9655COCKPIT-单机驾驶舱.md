@@ -3,7 +3,7 @@ id: PROJ-SYS-9655COCKPIT
 title: 9655 单机驾驶舱（单机密文版监控）
 type: project
 status: active
-updated: 2026-09-18
+updated: 2026-09-22
 source_ai: workbuddy
 scope: global
 confidence: high
@@ -43,11 +43,24 @@ tags:
 - 待老强本机 `launchctl load` 保活 plist。
 - 可选：沉淀 cockpit-builder 技能复用本工作流。
 
+## 分屏扩展记录（2026-09-22）
+- 🆕 **C9 OPC治理中台（用户显式指令接入）**：将 `LawKB/_AI-Memory-Hub/09-OPC/09-2部门治理/可视化中台/治理中台屏.html` 接入 9655 驾驶舱，列为 **C9 分屏**。原 rbac C 系列止于 C8、C9 为空位，落位于 C8 与 D1 之间，cnoRank 排序天然正确。
+  - 子屏落地：`subapps/governance/index.html`（自包含单文件 / 零外部依赖 / 暗色主题，与 9655 同美学）。
+  - 角色可见性：owner / lawyer / itops 可见；paralegal 不可见（内部系统治理屏，非客户协作）。
+  - 点色：dot `n` + 石灰绿 `#a3e635`（CSS `.tab .dot.n` 与 `dotColorMap` 两处同步）；`rbac.js?v=` 已击穿至 `20260922a`。
+  - **scorecard 口径**：标 `scoring:false` + `weight:0`（监控位 · 不纳入评分）——治理屏无六维探针源，按红线禁止凭记忆编造分数；作战地图 C9 卡显示「— / 不计分」。
+  - **workbench 编号适配**：workbench 自有编号体系（credits 已占 C9、conflict 占 C10），治理屏在 workbench 落 **C11**（沿用「编号可不同」规则，避免撞车）。
+  - 三处真源对齐：rbac(19 站) == scorecard(19 屏) == workbench(C11)，零缺口。
+  - 注：原「关键决策」所记「9360 无 C9」系 9360 原始设计；本次 C9 为 9655 刻意扩展屏。
+
 ## 红线
 - 数据不出本机；仅 127.0.0.1 绑定，不外暴露网络。
 - 个案卷宗 / 当事人隐私禁止入此监控内容。
 
 ## 相关笔记
+- [[9655驾驶舱屏台账]] (共现关键词: 驾驶舱, 9655, C9)
+- [[R-LN-116-RULE-011三次违反9655拆骨架直接执行的事故教训]] (共现关键词: 9360, 9655, 合同)
+- [[9655 驾驶舱运维手册]] (共现关键词: 9360, 驾驶舱, 9655)
 - [[自动化任务质量监控周报-2026-W31]] (共现关键词: ##, 监控)
 - [[轨迹卡-IT运维员席位设计推理链-20260917]] (共现关键词: PROJ, 9360)
 - [[README]] (共现关键词: ##, 文版, 机密)

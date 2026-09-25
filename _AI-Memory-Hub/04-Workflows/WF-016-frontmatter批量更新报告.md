@@ -9,7 +9,6 @@ scope: global
 confidence: medium
 
 tags:
-  - ---
   - 关键词
   - 批量
   - 合同法

@@ -21,10 +21,13 @@ encrypt() {
   security add-generic-password -a "$(id -un)" -s "$KEYCHAIN_SVC-$name" -w "$pwd_raw" -U
   export PWD_RAW="$pwd_raw"
   local tmpout; tmpout="$(mktemp)"
-  tar czf - -C "$src" . | openssl enc -aes-256-cbc -pbkdf2 -iter 600000 \
+  # 确定性修复：bsdtar 的 `tar czf` 会在 gzip 头写入「当前秒」时间戳，
+  # 大目录加密耗时 >1s 时两次 tar 跨秒 → round-trip sha 不一致而误判失败。
+  # 改用 `tar -cf - | gzip -n`（gzip -n 不写时间戳/文件名）保证跨秒确定。
+  tar -cf - -C "$src" . | gzip -n | openssl enc -aes-256-cbc -pbkdf2 -iter 600000 \
       -out "$tmpout" -pass env:PWD_RAW
   local orig_sha dec_sha
-  orig_sha="$(tar czf - -C "$src" . | sha256sum | awk '{print $1}')"
+  orig_sha="$(tar -cf - -C "$src" . | gzip -n | sha256sum | awk '{print $1}')"
   dec_sha="$(openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 \
       -in "$tmpout" -pass env:PWD_RAW | sha256sum | awk '{print $1}')"
   if [[ "$orig_sha" == "$dec_sha" ]]; then

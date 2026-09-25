@@ -7,12 +7,11 @@ related:
   - 小强律师数字分身系统/00-系统总览与运维中心/LTI文本监控系统运维手册-v2.md
   - WorkBuddy/2026-08-08-15-48-47/lti_gate.py
 scope: lawyer-avatar-only
-updated: 2026-09-18T20:19
+updated: 2026-09-25T20:39
 tags:
   - LTI
   - lti
   - gate
-  - 
   - py
 created: 2026-09-18T20:19
 ---
@@ -99,6 +98,9 @@ python3 lti-gate-client.py --ping
 - 2026-09-17 初建（G2）。解耦封装，airgap 默认开，零修改被封装 LTI 代码。
 
 ## 相关笔记
+- [[决策卡-法律文书格式范式与docx交付铁律-20260905]] (共现关键词: docx, ##)
+- [[MEMORY]] (共现关键词: gate, lti)
+- [[2026-09-21]] (共现关键词: 2026, gate, lti)
 - [[律师27SOP复盘与数字分身借鉴方案-v1.0]] (共现关键词: 分身, gate)
 - [[修复备忘录-20260914-8139工作流测试-越界转交]] (共现关键词: py, LTI, lti)
 - [[2026-09-18-初版部署记录]] (共现关键词: lti, gate, ##)

@@ -1,7 +1,7 @@
 ---
 title: 律师分身系统（单机密文版）· 活文档总入口
 created: 2026-09-17T16:31
-updated: 2026-09-18T20:19
+updated: 2026-09-25T20:41
 status: instantiated
 living_doc: true
 owner: 老强（小强律师 AI 助手）
@@ -15,7 +15,6 @@ related:
   - skill:LTI 文本监控器
   - 推理核心:~/lawtwin-open/core
 tags:
-  - ---
   - 分身
   - 文档
   - 律师
@@ -83,6 +82,8 @@ python3 启动包/desensitize_check.py . --strict   # 退出码 0 才放行
 - **2026-09-17** · 由空模板实例化为活文档：生成 `README.md` + `律师分身（单机密文版）总体方案.md` + `启动包/`（bootstrap.sh / inference.A.yaml / crypto-l1.sh / desensitize_check.py），状态 `instantiated`，消除缺口 G1。范围严格限定律师分身。
 
 ## 相关笔记
+- [[律师数字分身系统EV白皮书-对外标准版-v1.1]] (共现关键词: 文版, ---, 律师)
+- [[DEC-2026-009-红队出庭律师心智训练·思维轨迹]] (共现关键词: 文档, 律师)
 - [[README]] (共现关键词: L1, README, ---)
 - [[协同方案建议]] (共现关键词: 律师, sh, 文版)
 - [[律师分身（单机密文版）总体方案]] (共现关键词: 机密, ---, 分身)

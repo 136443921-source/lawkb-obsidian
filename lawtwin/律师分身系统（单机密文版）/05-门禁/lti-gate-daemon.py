@@ -58,9 +58,19 @@ import time
 from datetime import datetime
 
 # ---------------------------------------------------------------- 默认配置
-DEFAULT_SCRIPT = os.path.expanduser(
-    "~/WorkBuddy/2026-08-08-15-48-47/lti_gate.py"
-)
+# lti_gate.py 路径解析：优先与本守护进程同目录的副本（稳定，不依赖可被删除的旧工作区），
+# 旧工作区路径作为兜底。这样即使 ~/WorkBuddy/2026-08-08-15-48-47 被清理，门禁真校验也不会找不到脚本。
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_DEFAULT_SCRIPT_CANDIDATES = [
+    os.path.join(_HERE, "lti_gate.py"),
+    os.path.expanduser("~/WorkBuddy/2026-08-08-15-48-47/lti_gate.py"),
+]
+def _resolve_default_script():
+    for _p in _DEFAULT_SCRIPT_CANDIDATES:
+        if os.path.isfile(_p):
+            return _p
+    return _DEFAULT_SCRIPT_CANDIDATES[0]
+DEFAULT_SCRIPT = _resolve_default_script()
 DEFAULT_PYTHON = "/usr/bin/python3"
 DEFAULT_SOCKET = "/tmp/lti-gate.sock"
 

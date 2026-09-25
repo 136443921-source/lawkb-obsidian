@@ -43,6 +43,8 @@ tags:
 - 交付准入结论：`REJECT=0` / 阻塞
 
 ## 相关笔记
+- [[试点报告_MCM-DEV]] (共现关键词: ---, REJECT)
+- [[阶段1试点_CLM_试点报告]] (共现关键词: ---, LTI, REJECT)
 - [[_README]] (共现关键词: REJECT, LTI)
 - [[00-总体方案]] (共现关键词: ##, REJECT, LTI)
 - [[01-SOP手册]] (共现关键词: ##, REJECT, LTI)
