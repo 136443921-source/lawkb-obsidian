@@ -1,6 +1,5 @@
 ---
 tags:
-  - 15
   - AI
   - WorkBuddy
   - 法律
@@ -8,7 +7,7 @@ tags:
   - 正确
   - 模板
 created: 2026-05-28T10:51
-updated: 2026-09-18T20:19
+updated: 2026-09-23T15:53
 title: 我用WorkBuddy三个月踩了15个坑才明白
 maturity: 🌱种子
 source: ""
