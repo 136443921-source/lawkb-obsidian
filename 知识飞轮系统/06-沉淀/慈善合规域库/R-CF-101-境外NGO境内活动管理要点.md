@@ -29,7 +29,7 @@ tags:
   - 医疗纠纷
   - CF
   - 活动
-updated: 2026-09-22T08:44
+updated: 2026-09-25T20:43
 conflict_checked: 2026-09-16
 not_conflict_reason: 同一 rule_id「R-CF-101」跨卡型族（02-提炼/慈法 ↔ 06-沉淀/裁判规则库/慈善）共享，属指针链接/
 related_links:
