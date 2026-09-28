@@ -1,0 +1,47 @@
+{
+  "round": 11,
+  "date": "2026-09-26",
+  "mode": "存量裁判规则卡质量巡检",
+  "statute_pending": {
+    "frontmatter_true": 0,
+    "inline_dual_scan": 80,
+    "inline_note": "描述性『本地源未收录→statute_text_pending』标注，有意留痕，标【候选·待人工确认】"
+  },
+  "deadlinks": {
+    "checker": "_check_deadlinks.py v1.7.0 --all",
+    "real_dead_prev": 313,
+    "real_dead_now": 249,
+    "real_dead_delta": -64,
+    "soft_ref": 1618,
+    "parse_failures": 0,
+    "exit_code": 1
+  },
+  "statute_fill": {
+    "filled": 0,
+    "intercepted_deviations": 0
+  },
+  "channels": {
+    "probe_time": "2026-09-26 09:17",
+    "pkulaw": "形态② not found in deferred tools index",
+    "yuandian": "形态② not found in deferred tools index",
+    "qcc_legal": "形态② not found in deferred tools index",
+    "note": "会话级工具表状态，非服务端故障；核填连续 7+ 轮为 0"
+  },
+  "deadlink_fix": {
+    "fixer": "_fix_deadlinks_v9_20260918.py (strict whitelist, import 门禁基名集)",
+    "rejected_fixer": "_fix_deadlinks_v2_20260912.py (子集误修源, 违反坑34/坑70)",
+    "dry_run_hits": 62,
+    "applied_files": 62,
+    "backup_dir": "/tmp/存量卡巡检死链修复_20260926-092056",
+    "idempotent_recheck": "0 命中 (1 skip by 坑62 RECENT_SEC on R-PI-059)"
+  },
+  "r2": {
+    "triggered": false,
+    "reason": "本轮有 62 文件修复，连续零修复计数重置"
+  },
+  "pending_human": [
+    "内联待回源 80 处（描述性，非缺陷）",
+    "真死链 249（撞号/软引用，须 P0-4 编号治理或逐条研判）",
+    "通道恢复后法条二次核填"
+  ]
+}

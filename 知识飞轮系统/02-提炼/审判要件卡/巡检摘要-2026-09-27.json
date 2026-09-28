@@ -1,0 +1,42 @@
+{
+  "round": 12,
+  "date": "2026-09-27",
+  "mode": "存量卡质量巡检",
+  "automation_id": "a5995ba3-d738-4233-8c93-410fd8f3bc39",
+  "timestamp": "2026-09-27T10:15:00+08:00",
+  "channels": {
+    "pkulaw": {"status": "形态② not found", "probe": "DeferExecuteTool get_article(民法典,1079)", "result": "not found in deferred tools index"},
+    "yuandian_mcp": {"status": "形态② not found", "probe": "ToolSearch mcp__yuandian-mcp__*", "result": "not in session tool table"},
+    "qcc_legal": {"status": "形态② not found", "probe": "ToolSearch mcp__qcc-legal__*", "result": "not in session tool table"},
+    "config_layer": {"pkulaw": "bound=true,enabled=true", "yuandian-mcp": "bound=true,enabled=true", "qcc-legal": "bound=true,enabled=true"},
+    "conclusion": "三通道本会话均形态②（会话级工具表未载入，非服务端断线）；不判死、不降级网页源"
+  },
+  "inspection": {
+    "pending_frontmatter": 0,
+    "pending_inline_court_rules_dir": 47,
+    "pending_inline_scope": "06-沉淀/裁判规则库",
+    "pending_inline_note": "均为本地源未收录描述性标注，非缺陷，标【候选·待人工确认】",
+    "deadlinks": {
+      "scanned": 5660,
+      "hit_files": 978,
+      "real_dead": 250,
+      "soft_ref": 1620,
+      "legacy_total": 1870,
+      "parse_fail": 0,
+      "exit_code": 1,
+      "gate_version": "v1.7.0",
+      "note": "真死链249→250(+1)、待建笔记1618→1620(+2)，微涨主因新增R-PI-43x~48x批次软引用（坑72）"
+    }
+  },
+  "statute_fill": {"count": 0, "blocked_bias": 0, "note": "可核填项=0，守坑33宁可少填不可填错"},
+  "deadlink_fix": {"tool": "v9严格白名单(_fix_deadlinks_v9_20260918.py)", "dry_run_hits": 0, "applied": 0, "idempotent": true, "note": "任务字面要求v2，因坑70/坑34改用v9正确口径"},
+  "six_b": {"writes": 0, "backups": 0},
+  "bias_intercepted": {"version_hallucination": 0, "article_shift": 0, "source_mismatch": 0, "draft_as_current": 0},
+  "r2": {"consecutive_no_fix": 1, "trigger": false, "note": "R11修62文件已重置计数；本轮为零修复第1轮"},
+  "skill_version": "1.43.0->1.44.0",
+  "candidate_items": {
+    "real_dead": 250,
+    "inline_pending": 47,
+    "soft_ref": 1620
+  }
+}

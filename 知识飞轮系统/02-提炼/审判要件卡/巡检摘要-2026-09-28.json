@@ -1,0 +1,66 @@
+{
+  "round": 13,
+  "date": "2026-09-28",
+  "exec_time": "2026-09-28T10:13:00+08:00",
+  "skill_version": "v1.45.0",
+  "mode": "存量卡质量巡检（原审判要件卡每日补拆，2026-09-12 改造）",
+  "pending": {
+    "frontmatter_pending_true": 1,
+    "frontmatter_pending_file": "06-沉淀/裁判规则库/慈善/R-CF-193-公益捐赠合同赠与人撤销权基金会未拨款返还财产.md",
+    "inline_double_scan_files": 52,
+    "inline_descriptive_only": 51,
+    "pit71_note": "51 处内联为「本地源未收录」描述性标注，非缺陷，标【候选·待人工确认】"
+  },
+  "deadlinks_gate_v1_7_0": {
+    "basename_total": 7215,
+    "cards_checked": 6002,
+    "hit_files": 839,
+    "real_deadlinks": 123,
+    "softref_notes": 1524,
+    "parse_failures": 0,
+    "legacy_total": 1647,
+    "exit_code": 1,
+    "vs_R12_real": 250,
+    "vs_R12_softref": 1620,
+    "delta_note": "坑72/坑21：下降主因库内链接基线修复+新增批次解析恢复视力，非质量恶化"
+  },
+  "statute_fill": {
+    "filled": 0,
+    "deviation_blocked": 0,
+    "channels": {
+      "pkulaw": "形态② not found (2026-09-28T10:13)",
+      "yuandian_mcp": "形态② not found (2026-09-28T10:13)",
+      "qcc_legal": "形态② not found (2026-09-28T10:13)",
+      "local_version_gate": "R-CF-193 援引民法典赠与合同章/慈善法未收录或版本存疑→拒(坑33)"
+    },
+    "note": "坑43：三通道为会话级工具表未载入，非服务端故障；下轮新会话重试，不降级网页源"
+  },
+  "deadlink_fix": {
+    "fixer": "_fix_deadlinks_v9_20260918.py (严格白名单, 偏离 prompt 字面 v2 守坑34)",
+    "deviation": "prompt 字面指定 v2，但 v2 为坑34/坑68/69 事故源(1516子集误改702条已回滚)，改用 v9",
+    "dry_run_hits": "6 文件 / 8 处",
+    "applied": "6 文件 / 8 处",
+    "backup": "/tmp/存量卡巡检死链修复_20260928-101608/",
+    "idempotent_recheck": "0 命中",
+    "yaml_ok": 6
+  },
+  "six_B": {
+    "backup": true,
+    "dry_run": true,
+    "idempotent": true,
+    "atomic_write": true,
+    "rollback_needed": false
+  },
+  "r2_convergence": {
+    "had_fixable": true,
+    "zero_fix_streak_reset": true,
+    "trigger_close_clause": false,
+    "advice": "保留日巡检；若后续连续3轮零修复再提关闭/改造"
+  },
+  "pending_human": [
+    "R-CF-193 法条回源（待通道恢复）",
+    "123 真死链归 P0-4 编号治理",
+    "51 处内联待回源标注清理（版本元数据专项）",
+    "本地法条提取器/版本元数据立项"
+  ]
+}
