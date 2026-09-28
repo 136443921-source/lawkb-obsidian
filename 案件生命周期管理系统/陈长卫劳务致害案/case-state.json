@@ -1,94 +1,47 @@
 {
   "schema": "case-state/v1",
   "caseId": "陈长卫",
-  "caseNo": "（二审改判·黔东南中院2022）",
+  "caseNo": "（二审改判·遵义中院2023）",
   "title": "陈长卫劳务致害案（高压电击伤）",
   "domain": "提供劳务受害/建设工程",
-  "status": "已结案",
+  "status": "已结案（二审改判）",
+  "court": "一审 (2023)黔0302民初1174号；二审 遵义中院 (2023)黔03民终5221号",
+  "partyRole": "提供劳务者（原审原告/上诉人）",
+  "client": ["陈长卫"],
+  "opposingParty": ["遵义供电局", "遵义光明电力实业有限公司", "润通公司", "王远飞", "陈宗元"],
   "stage": {
-    "current": 0,
-    "code": "calibrated",
-    "name": "DTC-CASE-001 校准生成·待人工回填",
-    "enteredAt": "2026-09-14",
-    "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+    "current": 7,
+    "code": "archive",
+    "name": "⑦风控归档",
+    "enteredAt": "2023-10-31",
+    "note": "已结案（二审改判，遵义中院 (2023)黔03民终5221号，2023-10-31；供电局承担20%责任+自担20%+违法分包链条60%连带）"
   },
   "gates": {
-    "G0": {
-      "name": "门禁G0",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G1": {
-      "name": "门禁G1",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G2": {
-      "name": "门禁G2",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G3": {
-      "name": "门禁G3",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G4": {
-      "name": "门禁G4",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G5": {
-      "name": "门禁G5",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G6": {
-      "name": "门禁G6",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G7": {
-      "name": "门禁G7",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G8": {
-      "name": "门禁G8",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    }
+    "G0": { "name": "收案门禁", "status": "pass", "note": "真实案件分析报告归档" },
+    "G1": { "name": "检索门禁", "status": "pass", "note": "裁判规则提取报告已出" },
+    "G2": { "name": "文书门禁", "status": "pass", "note": "判决书分析/可视化报告已备" },
+    "G3": { "name": "庭审门禁", "status": "pass", "note": "一、二审已毕" },
+    "G4": { "name": "客户门禁", "status": "pass", "note": "已结案" },
+    "G5": { "name": "程序门禁", "status": "pass", "note": "已结案" },
+    "G6": { "name": "风控门禁", "status": "pass", "note": "已复盘（高压电无过错责任/违法分包连带）" },
+    "G7": { "name": "结案回流", "status": "pass", "note": "已归档，经验卡片已生成" }
   },
+  "deadlines": [],
   "calibration": {
     "ticket": "DTC-CASE-001",
     "generatedAt": "2026-09-14",
-    "source": "案件-知识映射索引 + 案件笔记存在性",
-    "verifiedFields": [
-      "caseNo",
-      "title",
-      "domain",
-      "status"
-    ],
-    "pendingFields": [
-      "court",
-      "judge",
-      "client",
-      "deadlines",
-      "meta.agents",
-      "timeline"
-    ],
-    "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+    "backfilledAt": "2026-09-28",
+    "source": "本夹陈长卫劳务致害案-案件笔记.md",
+    "verifiedFields": ["caseNo", "title", "domain", "status", "court", "client", "opposingParty", "stage"],
+    "pendingFields": ["judge", "meta.agents", "timeline"],
+    "note": "2026-09-28 依笔记回填；原占位 caseNo『黔东南中院2022』与笔记『遵义中院 (2023)黔03民终5221号 2023-10-31』冲突，以笔记为准更正"
   },
   "meta": {
     "schema": "case-meta/v1",
     "agents": [
-      {
-        "stage": "校准占位",
-        "role": "DTC-CASE-001",
-        "agent": "待回填",
-        "status": "todo",
-        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
-      }
+      { "stage": "①接案建档", "gate": "G0", "role": "建档", "agent": "CLM case-state 回填校验", "status": "已接入", "note": "2026-09-28 依笔记回填" }
     ]
-  }
+  },
+  "updatedAt": "2026-09-28",
+  "source": "案件生命周期管理系统/陈长卫劳务致害案/陈长卫劳务致害案-案件笔记.md（2026-09-18 updated）"
 }

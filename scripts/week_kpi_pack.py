@@ -37,7 +37,9 @@ DEFAULT_OUT = os.path.expanduser("~/Documents/OPC-考核包")  # 刻意放在 Ob
 NOW = datetime.datetime.now()
 
 # 窗口映射：FREQ -> (天数, 标签)
-WIN = {"DAILY": (7, "日度"), "WEEKLY": (30, "周度"), "MONTHLY": (90, "月度"), "YEARLY": (365, "年度")}
+# 2026-09-26 修正：原表缺 HOURLY，导致 OP-042（FREQ=HOURLY;INTERVAL=6）被误归"默认 90d 低频豁免"。
+WIN = {"HOURLY": (7, "小时度"), "DAILY": (7, "日度"), "WEEKLY": (30, "周度"),
+       "MONTHLY": (90, "月度"), "YEARLY": (365, "年度")}
 # 失败归因分级：只有 RUN_FAILED 与 ENV 属"真问题"，限流不问责（避免误伤调度侧）
 FAULT = {
     "automation-rate-limited": ("限流", False),

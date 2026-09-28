@@ -1,0 +1,14 @@
+{
+  "updated": "2026-09-20",
+  "probed_at": "2026-09-20 17:18",
+  "source": "probe_clm.py · 本机扫描 LawKB/案件生命周期管理系统 case-state.json",
+  "today": "2026-09-20",
+  "kpi": {
+    "caseCount": 13,
+    "p0Count": 1,
+    "overdueCount": 0,
+    "deadlineCount": 8
+  },
+  "note": "实扫口径：caseCount=案件数, deadlineCount=期限总数, p0Count=P0级未办结, overdueCount=已超期未办结。与静态快照差异=真实漂移。",
+  "parse_errors": []
+}

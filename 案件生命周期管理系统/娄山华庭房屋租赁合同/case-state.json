@@ -4,91 +4,44 @@
   "caseNo": "（非诉审查）",
   "title": "娄山华庭房屋租赁合同审查",
   "domain": "房屋租赁合同",
-  "status": "非诉",
+  "status": "非诉（审查完成）",
+  "court": "（非诉·无）",
+  "partyRole": "承租方（乙方）法律顾问",
+  "client": ["贵州省厚德公益基金会"],
+  "opposingParty": ["王开强（出租方，代理人 邹中文）"],
   "stage": {
-    "current": 0,
-    "code": "calibrated",
-    "name": "DTC-CASE-001 校准生成·待人工回填",
-    "enteredAt": "2026-09-14",
-    "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+    "current": 3,
+    "code": "draft",
+    "name": "③文书起草",
+    "enteredAt": "2026-06-30",
+    "note": "非诉合同审查（房屋租赁合同）已完成，审查意见书出具（文书编号 HDGY-2026-0601，2026-06-30）；房屋坐落娄山华庭4-1-12号门面，租期2026-08-01至2029-07-31"
   },
   "gates": {
-    "G0": {
-      "name": "门禁G0",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G1": {
-      "name": "门禁G1",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G2": {
-      "name": "门禁G2",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G3": {
-      "name": "门禁G3",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G4": {
-      "name": "门禁G4",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G5": {
-      "name": "门禁G5",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G6": {
-      "name": "门禁G6",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G7": {
-      "name": "门禁G7",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G8": {
-      "name": "门禁G8",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    }
+    "G0": { "name": "收案门禁", "status": "pass", "note": "非诉委托已受理" },
+    "G1": { "name": "检索门禁", "status": "pass", "note": "非诉审查" },
+    "G2": { "name": "文书门禁", "status": "pass", "note": "审查意见书已出具（HDGY-2026-0601，2026-06-30）" },
+    "G3": { "name": "庭审门禁", "status": "todo", "note": "非诉无庭审" },
+    "G4": { "name": "客户门禁", "status": "pass", "note": "顾问单位" },
+    "G5": { "name": "程序门禁", "status": "todo", "note": "非诉" },
+    "G6": { "name": "风控门禁", "status": "pass", "note": "依合规管理手册+多部法律法规审查" },
+    "G7": { "name": "结案回流", "status": "todo", "note": "待回填" }
   },
+  "deadlines": [],
   "calibration": {
     "ticket": "DTC-CASE-001",
     "generatedAt": "2026-09-14",
-    "source": "案件-知识映射索引 + 案件笔记存在性",
-    "verifiedFields": [
-      "caseNo",
-      "title",
-      "domain",
-      "status"
-    ],
-    "pendingFields": [
-      "court",
-      "judge",
-      "client",
-      "deadlines",
-      "meta.agents",
-      "timeline"
-    ],
-    "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+    "backfilledAt": "2026-09-28",
+    "source": "本夹娄山华庭房屋租赁合同审查-案件笔记.md",
+    "verifiedFields": ["caseNo", "title", "domain", "status", "client", "opposingParty", "stage"],
+    "pendingFields": ["judge", "meta.agents", "timeline", "deadlines"],
+    "note": "2026-09-28 依笔记回填；非诉审查完成，无期限"
   },
   "meta": {
     "schema": "case-meta/v1",
     "agents": [
-      {
-        "stage": "校准占位",
-        "role": "DTC-CASE-001",
-        "agent": "待回填",
-        "status": "todo",
-        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
-      }
+      { "stage": "①接案建档", "gate": "G0", "role": "建档", "agent": "CLM case-state 回填校验", "status": "已接入", "note": "2026-09-28 依笔记回填" }
     ]
-  }
+  },
+  "updatedAt": "2026-09-28",
+  "source": "案件生命周期管理系统/娄山华庭房屋租赁合同/娄山华庭房屋租赁合同审查-案件笔记.md（2026-09-18 updated）"
 }

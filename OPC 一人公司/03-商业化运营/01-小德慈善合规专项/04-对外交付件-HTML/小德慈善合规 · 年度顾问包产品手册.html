@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="SedYjYadP3CJ8n1bhG2ZKi">
+<head data-page-node-id="KIyuoEWk8CC52IOOgUQMKs">
+<meta charset="UTF-8" data-page-node-id="IeuBwebgKxBwUeET4mDhkn">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="pQGl7JWBxECDUiW2uJQ3BR">
+<title>小德慈善合规 · 年度顾问包</title>
+<style>
+  :root {
+    --ink: #1f2933;
+    --muted: #5b6570;
+    --line: #e5e9ee;
+    --brand: #0f6e56;
+    --brand-dark: #085041;
+    --brand-soft: #e1f5ee;
+    --accent: #b8860b;
+    --accent-soft: #fdf3dd;
+    --card: #ffffff;
+    --bg: #f4f6f8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 820px;
+    margin: 24px auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .hero {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+    color: #fff;
+    padding: 34px 40px 28px;
+  }
+  .hero .kicker { font-size: 13px; letter-spacing: 2px; opacity: .85; margin-bottom: 8px; }
+  .hero h1 { font-size: 26px; font-weight: 600; letter-spacing: .5px; }
+  .hero .sub { font-size: 15px; margin-top: 12px; opacity: .94; max-width: 640px; }
+  .hero .sub b { font-weight: 600; }
+  .tags { margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-size: 12px; padding: 4px 12px; border-radius: 999px;
+    background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28);
+  }
+  .body { padding: 30px 40px 36px; }
+  section { margin-bottom: 26px; }
+  h2 {
+    font-size: 16px; font-weight: 600; color: var(--brand-dark);
+    display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+  }
+  h2::before { content: ""; width: 4px; height: 16px; background: var(--brand); border-radius: 2px; }
+  .hooks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .hook { background: var(--brand-soft); border-radius: 10px; padding: 14px 16px; font-size: 13px; }
+  .hook b { color: var(--brand-dark); display: block; font-size: 14px; margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+  th { background: #fafbfc; color: var(--muted); font-weight: 600; font-size: 12px; }
+  td:first-child { font-weight: 500; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .plan {
+    border: 1px solid var(--line); border-radius: 12px; padding: 18px 16px;
+    position: relative; display: flex; flex-direction: column;
+  }
+  .plan.hot { border-color: var(--brand); box-shadow: 0 0 0 1px var(--brand); }
+  .plan .name { font-size: 14px; font-weight: 600; }
+  .plan .price { font-size: 20px; font-weight: 600; color: var(--brand-dark); margin: 8px 0 2px; }
+  .plan .price small { font-size: 12px; font-weight: 400; color: var(--muted); }
+  .plan ul { list-style: none; margin-top: 12px; font-size: 12.5px; color: var(--muted); }
+  .plan ul li { padding: 4px 0 4px 16px; position: relative; }
+  .plan ul li::before { content: ""; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 2px; background: var(--brand); }
+  .badge {
+    position: absolute; top: -10px; right: 12px; background: var(--accent); color: #fff;
+    font-size: 11px; padding: 2px 10px; border-radius: 999px; font-weight: 500;
+  }
+  .domains { display: flex; flex-wrap: wrap; gap: 8px; }
+  .domain {
+    font-size: 12px; padding: 6px 12px; border-radius: 8px;
+    background: #f4f6f8; border: 1px solid var(--line); color: var(--ink);
+  }
+  .redlines { counter-reset: rl; list-style: none; }
+  .redlines li {
+    counter-increment: rl; font-size: 13px; padding: 7px 0 7px 30px; position: relative;
+    border-bottom: 1px dashed var(--line);
+  }
+  .redlines li:last-child { border-bottom: none; }
+  .redlines li::before {
+    content: counter(rl); position: absolute; left: 0; top: 9px;
+    width: 20px; height: 20px; border-radius: 6px; background: #fdeaea; color: #b3261e;
+    font-size: 12px; font-weight: 600; text-align: center; line-height: 20px;
+  }
+  .redlines li b { color: #b3261e; font-weight: 600; }
+  .cred { font-size: 13px; color: var(--muted); }
+  .cred ul { list-style: none; margin-top: 6px; }
+  .cred li { padding: 3px 0 3px 18px; position: relative; }
+  .cred li::before { content: "✓"; position: absolute; left: 0; color: var(--brand); font-weight: 600; }
+  .cta {
+    background: var(--accent-soft); border: 1px solid #f0dfb2; border-radius: 12px;
+    padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .cta .txt { font-size: 14px; }
+  .cta .txt b { color: var(--accent); }
+  .btn {
+    background: var(--brand); color: #fff; border: none; border-radius: 10px;
+    padding: 11px 22px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  }
+  .footer { padding: 16px 40px; background: #fafbfc; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); text-align: center; }
+  @media (max-width: 640px) {
+    .hooks, .plans { grid-template-columns: 1fr; }
+    .body, .hero { padding-left: 20px; padding-right: 20px; }
+    .cta { flex-direction: column; align-items: flex-start; }
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; border: none; border-radius: 0; max-width: none; }
+    .btn { display: none; }
+  }
+</style>
+</head>
+<body data-page-node-id="FgVHryiGIZwKdefrv2AUCz">
+<div class="page" data-page-node-id="l5EkYzrW84k4kzElYnNOjD">
+  <div class="hero" data-page-node-id="444YwU2kzfOOdYhbPNi0y8">
+    <div class="kicker" data-page-node-id="CcCEi5wakMnXvi3KyL0U1U">CHARITY COMPLIANCE · 顾问先导</div>
+    <h1 data-page-node-id="zoljHa9WH82dd7DiZupFqc">小德慈善合规 · 年度顾问包</h1>
+    <div class="sub" data-page-node-id="9qq1b0CFIiPvBJ0CQgqHHA">面向基金会 / 慈善总会 / 社会服务机构的「软件 + 顾问」一体化合规订阅——<b data-page-node-id="91UFAbIJXFV4FiaYoywlm6">不只给一份意见书，更给一套天天能用的合规系统。</b></div>
+    <div class="tags" data-page-node-id="alfVdJf4oEcjHlIOBGH3iM">
+      <span class="tag" data-page-node-id="nMSIoDeaC8nUkCR9nE8HCM">16 领域合规体检</span>
+      <span class="tag" data-page-node-id="otNk9RYjIcCdJJozQCMDHH">年检季驻场</span>
+      <span class="tag" data-page-node-id="Js8OxHjEFBVXWrBbGSD3UK">联合劝募方案</span>
+      <span class="tag" data-page-node-id="67jGK06JKmElR1xirglTuM">数字化执行</span>
+    </div>
+  </div>
+
+  <div class="body" data-page-node-id="9LydM3KtLKRWulYpm7dcPm">
+    <section data-page-node-id="smKGcYbCxsD6yW3BjyHkVH">
+      <h2 data-page-node-id="RtLtDj3dLp9FyohcakUBhN">为什么是现在</h2>
+      <div class="hooks" data-page-node-id="ogcLfs0tcCMB5kIwGrYOXE">
+        <div class="hook" data-page-node-id="petAaYBXXfUfj1ls0cKjdX"><b data-page-node-id="O7Q4nMGdyWf0UCLaWdvcQp">新规密集落地</b>2026 年慈善活动年度支出、募捐成本等规定生效，合规成本刚性上升</div>
+        <div class="hook" data-page-node-id="T6WSFfjquSGe5gh1lF1Yly"><b data-page-node-id="jMyjq8n8BpVdHsO7YLSBBt">合规岗普遍缺位</b>县级慈善组织缺专职法务、缺数字化，年年「裸考」年检</div>
+        <div class="hook" data-page-node-id="MvAP5YRShPRDfPauFdcMeY"><b data-page-node-id="jFRRSSuqTHbNJfpWjxDR3p">责任转嫁是真实付费点</b>年检 / 信息公开 / 专项审计「年年必考」，要的是有人兜底</div>
+      </div>
+    </section>
+
+    <section data-page-node-id="99R9FOnCPx5W71vUrjQtnO">
+      <h2 data-page-node-id="kZnDeKlRBObt4b8rSCFoFF">年度顾问包 · 三档定价</h2>
+      <div class="plans" data-page-node-id="433JxChK8XQPvA0OKUuKUJ">
+        <div class="plan" data-page-node-id="OjCj6Js7wntswSsWvqk6qy">
+          <div class="name" data-page-node-id="mCEB9Q10yj9yKMc2y2CRp2">A · 合规体检包</div>
+          <div class="price" data-page-node-id="GvTSZRjUCjaij7AVj5YEdl">¥2.98万<small data-page-node-id="7VHPhcCMtXV8OXKAAz970I">/年</small></div>
+          <ul data-page-node-id="mIxHIWnZUsB8b8HJ6dH1bx">
+            <li data-page-node-id="Hf0ypuEfhgAeCkaSbDyRib">16 领域年度体检 + 整改清单</li>
+            <li data-page-node-id="z6IakKm7Upb6suZBF5DtHH">季度远程巡检 ×4</li>
+            <li data-page-node-id="ZjQbVrxmmoD8HjUUcbmFCa">工作日电话 / 微信响应</li>
+            <li data-page-node-id="p2OnMQEFJm0XC86Nkrt5m8">《年度合规体检报告》</li>
+          </ul>
+        </div>
+        <div class="plan hot" data-page-node-id="PCbCy2DZn66UJl1row8c4u">
+          <span class="badge" data-page-node-id="CYR8PiuNNAZAywPmwg35kd">推荐</span>
+          <div class="name" data-page-node-id="3MLjv9iE54dEcmTGPAdXsz">B · 常年顾问包</div>
+          <div class="price" data-page-node-id="VjY0Nan5dX9wCdoxRrwZhU">¥5.98万<small data-page-node-id="SzdjtoHwgnM2QA8nQjZAe9">/年</small></div>
+          <ul data-page-node-id="lfnEcaN9puH1a9cssvxq83">
+            <li data-page-node-id="JwvDkUqsOB5lvhDMxjeHfa">含 A 全部</li>
+            <li data-page-node-id="NEDrcHXmO4QBGEEgFaE7PV">年检 / 审计季现场驻场 ×1</li>
+            <li data-page-node-id="tsx8EPH9GCUkN6uUpM5ueP">半年现场巡检 ×2</li>
+            <li data-page-node-id="FzbxP9UkwLBLKP1fgRnBPA">16 领域文书模板库全开放</li>
+            <li data-page-node-id="wbv7jG1IlthY8vKKQidFuh">专项咨询优先响应</li>
+          </ul>
+        </div>
+        <div class="plan" data-page-node-id="CJ8g1rJArVc7zM1sR9vHgF">
+          <div class="name" data-page-node-id="kvdN60EsCRDk3ujkZ9V3g9">C · 全案托管包</div>
+          <div class="price" data-page-node-id="GkuzfBAT7jR45pnYfkf06j">¥12.8万<small data-page-node-id="XM41dQTWPqExMJTv0Fgbe6">/年起</small></div>
+          <ul data-page-node-id="7HcmUUYlBX6wo0owmlewch">
+            <li data-page-node-id="JVYMOdbenYCKe1pu3KvtpE">含 B 全部</li>
+            <li data-page-node-id="VE7pWPbGlx9TIAFopzuKCp">联合劝募方案设计 1 件/年</li>
+            <li data-page-node-id="ScsogPEhVzDVk1LSFggXlK">数字化执行方案</li>
+            <li data-page-node-id="qSZ4qCknaasohSo5lsWspX">全年无限次 + 重大事项陪同</li>
+            <li data-page-node-id="5U92urHUian56vfYFdHQ0o">制度体系搭建</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section data-page-node-id="C8DL22IUsc5KqPqm6lPoOG">
+      <h2 data-page-node-id="ZkKlvHtWQvwXBrCLtEwWBV">年度服务节奏（SOP）</h2>
+      <table data-page-node-id="gEjpOHPIcytsa5wc69znbr">
+        <tr data-page-node-id="oFXfUGblFUhGjBBCB4eH8e"><th data-page-node-id="N2KJtFmlM6lyADkeOs8lfs">季度</th><th data-page-node-id="xgLe7GZAWEMYrOFgnxf2EI">主题</th><th data-page-node-id="FFk9skJqrNmND7bfiGwvAd">动作</th></tr>
+        <tr data-page-node-id="pW9pmQEBI81q2z1SD8nV2H"><td data-page-node-id="rclWoTGKxygf4Px2o3vn2t">Q1</td><td data-page-node-id="C2YKnQukivySeuPgdXt5tG">合规体检</td><td data-page-node-id="l2sPiEeSov2JAKCdVAlm3F">16 领域全面自检 → 整改清单</td></tr>
+        <tr data-page-node-id="I37dg9LLNbFLO6AKhDkkGX"><td data-page-node-id="l96snwNxhrHTpAQ5KaGoZ5">Q2</td><td data-page-node-id="YjvGOyDRBlMG9fQcCD3sOD">信息公开季</td><td data-page-node-id="OiTmmmRzwOcZ81kqZXxvcT">公开募捐备案辅助 + 信息公开合规</td></tr>
+        <tr data-page-node-id="ViecFUm1s82FuyeX3jPlar"><td data-page-node-id="f4YHzjrncGp9ccFJOOCVHf">Q3</td><td data-page-node-id="fGpAawAZ6QpjKSrow7N0Fy">年检季</td><td data-page-node-id="FfDMRLCAG7xnVkmi61SK3T">现场驻场 + 年检报告编制辅助</td></tr>
+        <tr data-page-node-id="NXLXugrhlk19s10i0UfwRB"><td data-page-node-id="6hxHcbQLJcD5TKszIYrMhn">Q4</td><td data-page-node-id="SBI0oCIQvJ7TO0dk5QnlLJ">规划季</td><td data-page-node-id="z3EH8u7oAfxnPtfwfdrGka">来年预算 / 募捐方案 + 制度复盘</td></tr>
+      </table>
+    </section>
+
+    <section data-page-node-id="8tTg4FWns1rOf9uQXFTSbd">
+      <h2 data-page-node-id="1OeEihPucHZlKhFhLoW2mY">覆盖 16 领域</h2>
+      <div class="domains" data-page-node-id="3wIouuzAhFPvFApAHscDi9">
+        <span class="domain" data-page-node-id="0gUIea2tVK4VIALjjx43qh">基本原则</span><span class="domain" data-page-node-id="279hFR8eCYwms9EPEIbgFC">管理体系</span><span class="domain" data-page-node-id="M8RsDBHb5VyLah08UwKUwG">机构架构</span>
+        <span class="domain" data-page-node-id="jF6AU7y4tG6etu8d9mK9TH">党的建设</span><span class="domain" data-page-node-id="oGvMBF5uykfI7ibDPCEytr">劳动人事</span><span class="domain" data-page-node-id="G58cGRqmFcaROwGuCsnmQe">志愿服务</span>
+        <span class="domain" data-page-node-id="tX242Boi7v9vqHCBqbjvlh">预决算管理</span><span class="domain" data-page-node-id="vLg8FCKWAejKd60kk7kM7T">收支管理</span><span class="domain" data-page-node-id="W9RUeQ1sOy0Bg0U27dOxEj">投资活动</span>
+        <span class="domain" data-page-node-id="O9sspegc8i31HTJCglPKD6">捐赠募捐</span><span class="domain" data-page-node-id="Effs9q39iDLJtGdX8uomvw">关联交易</span><span class="domain" data-page-node-id="KRPH8offMOeNEd65KuIckH">涉外活动</span>
+        <span class="domain" data-page-node-id="2AZdArha2e61QIi0OpZ7Ds">重大活动</span><span class="domain" data-page-node-id="XLTqhoPrOlT9cJTAQYahfb">评比达标表彰</span><span class="domain" data-page-node-id="Y3fheC8myMguXV1k8mW8Pz">信息公开</span>
+        <span class="domain" data-page-node-id="dQ3ss3RXgwE1FlRKBQOb9I">监督改进</span>
+      </div>
+    </section>
+
+    <section data-page-node-id="stcOpZPPwAWq66XdYxZQV9">
+      <h2 data-page-node-id="fKDmWBfi50vqn7cZ2yHgnW">边界红线 · 对客户的承诺，也是对自身的约束</h2>
+      <ol class="redlines" data-page-node-id="WTESh2qM4CzF7DXGMdjtjT">
+        <li data-page-node-id="IL36DhJwRsqbnB879AzKpf"><b data-page-node-id="DoLZrUnnOWkjAShXtcE3mX">不承诺结果</b> — 不写「保证通过年检 / 评级 / 审计」，只提供「依据现行有效法规的建议」（《广告法》第 4 条、《反不正当竞争法》第 8 条）</li>
+        <li data-page-node-id="cOAr5GKbolHDuduCVHTKE6"><b data-page-node-id="vyZpwlY7VorF6LDoiXBK7g">公开募捐方案 ≠ 行政审批替代</b> — 备案 / 审批权在民政部门，不承诺募捐数额与效果</li>
+        <li data-page-node-id="dcmGekYHDISpSGGl5inW2e"><b data-page-node-id="lWlvHtUcHhyIxi7RizzS0j">文书身份边界</b> — 以「合规咨询意见」出具，不以「审计报告」名义</li>
+        <li data-page-node-id="LEfstyhT3Zb1ERg4z0d3tA"><b data-page-node-id="WbI99sk06PTeUJgGQMGCE5">数据合规</b> — 最小化采集 + 权限分级，符合《个人信息保护法》《数据安全法》</li>
+        <li data-page-node-id="HztwQZPPhl0eWoGHP92Q2E"><b data-page-node-id="IMyZFJ1LQiMWvBBcDFlHd0">利益冲突披露</b> — 涉联合劝募分账等情形，书面披露利益冲突</li>
+      </ol>
+    </section>
+
+    <section data-page-node-id="KldC23Qcki0g0K8bs4zjx0">
+      <h2 data-page-node-id="ZHbXzoDDPxVqEpixNHDsmp">资质背书</h2>
+      <div class="cred" data-page-node-id="zMQ1tYjKgM6qA6kbZ9BKkh">
+        <ul data-page-node-id="RRldXpRITYoT6RHSOETOpP">
+          <li data-page-node-id="rWoFDWaBCiVLawWjID9pG0">《贵州省厚德公益基金会合规管理手册（试行）（2025 版）》7 章 139 条方法体系</li>
+          <li data-page-node-id="mfh49T8iqcU0PrHoFacFD7">贵州省省级慈善培训资源 + 县级民政 / 慈善从业者普法渠道</li>
+          <li data-page-node-id="DNvBnEJNxQJSBowCTHzVC7">10 年+ 慈善法实务经验</li>
+        </ul>
+      </div>
+    </section>
+
+    <section data-page-node-id="m4q9fgTFpKrAd7gfEBofA8">
+      <div class="cta" data-page-node-id="2JW79s8Z1f80qqRCmpyDHR">
+        <div class="txt" data-page-node-id="C5X7yxGcRgu4zR6MZOG0gq">年费预付 · 支持分期 · 种子客户（前 3 家）首年 <b data-page-node-id="PtqLGbCaOcT8461lnoRN2g">7 折</b> + 免费上线 SaaS 工具</div>
+        <button class="btn" data-page-node-id="9fYHqCAhs0SJq7a4YuRiu1">预约免费合规体检</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="footer" data-page-node-id="Y3pNQbuhUGQMyYoNw1NjSS">小德慈善合规 · 年度顾问包 ｜ 产品手册 v1.0 ｜ 2026-09</div>
+</div>
+</body>
+</html>

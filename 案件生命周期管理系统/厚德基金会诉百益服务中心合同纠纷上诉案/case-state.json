@@ -4,91 +4,44 @@
   "caseNo": "（二审/另案进行中）",
   "title": "厚德基金会诉百益服务中心合同纠纷上诉案",
   "domain": "基金会服务协议",
-  "status": "进行中",
+  "status": "上诉阶段（庭前审核+庭审准备完成）",
+  "court": "（二审上诉法院待确认；同系列一审 道真县法院）",
+  "partyRole": "上诉人（一审原告）",
+  "client": ["贵州省厚德公益基金会"],
+  "opposingParty": ["百益服务中心", "李丽", "李佳豪"],
   "stage": {
-    "current": 0,
-    "code": "calibrated",
-    "name": "DTC-CASE-001 校准生成·待人工回填",
-    "enteredAt": "2026-09-14",
-    "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+    "current": 6,
+    "code": "procedure",
+    "name": "⑥程序执行",
+    "enteredAt": "2026-05-27",
+    "note": "上诉阶段—已完成庭前审核报告、庭审准备报告（蓝队出庭律师 readiness 评分 75/100，修正后可达 90+）；高风险：证据2-1银行流水未获取"
   },
   "gates": {
-    "G0": {
-      "name": "门禁G0",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G1": {
-      "name": "门禁G1",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G2": {
-      "name": "门禁G2",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G3": {
-      "name": "门禁G3",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G4": {
-      "name": "门禁G4",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G5": {
-      "name": "门禁G5",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G6": {
-      "name": "门禁G6",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G7": {
-      "name": "门禁G7",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G8": {
-      "name": "门禁G8",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    }
+    "G0": { "name": "收案门禁", "status": "pass", "note": "真实承办（基金会法律顾问）" },
+    "G1": { "name": "检索门禁", "status": "pass", "note": "庭前检索报告已出" },
+    "G2": { "name": "文书门禁", "status": "pass", "note": "上诉状/代理词/庭前强化稿已备" },
+    "G3": { "name": "庭审门禁", "status": "todo", "note": "二审尚未开庭" },
+    "G4": { "name": "客户门禁", "status": "pass", "note": "顾问单位" },
+    "G5": { "name": "程序门禁", "status": "active", "note": "上诉推进中，待开庭" },
+    "G6": { "name": "风控门禁", "status": "active", "note": "庭前审核发现证据2-1银行流水缺失，建议申请调查令" },
+    "G7": { "name": "结案回流", "status": "todo", "note": "待二审裁判后启动" }
   },
+  "deadlines": [],
   "calibration": {
     "ticket": "DTC-CASE-001",
     "generatedAt": "2026-09-14",
-    "source": "案件-知识映射索引 + 案件笔记存在性",
-    "verifiedFields": [
-      "caseNo",
-      "title",
-      "domain",
-      "status"
-    ],
-    "pendingFields": [
-      "court",
-      "judge",
-      "client",
-      "deadlines",
-      "meta.agents",
-      "timeline"
-    ],
-    "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+    "backfilledAt": "2026-09-28",
+    "source": "本夹厚德基金会诉百益服务中心合同纠纷上诉案-案件笔记.md",
+    "verifiedFields": ["caseNo", "title", "domain", "status", "client", "opposingParty", "stage"],
+    "pendingFields": ["judge", "meta.agents", "timeline", "deadlines"],
+    "note": "2026-09-28 依笔记回填；上诉待开庭，无明确截止日"
   },
   "meta": {
     "schema": "case-meta/v1",
     "agents": [
-      {
-        "stage": "校准占位",
-        "role": "DTC-CASE-001",
-        "agent": "待回填",
-        "status": "todo",
-        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
-      }
+      { "stage": "①接案建档", "gate": "G0", "role": "建档", "agent": "CLM case-state 回填校验", "status": "已接入", "note": "2026-09-28 依笔记回填" }
     ]
-  }
+  },
+  "updatedAt": "2026-09-28",
+  "source": "案件生命周期管理系统/厚德基金会诉百益服务中心合同纠纷上诉案/厚德基金会诉百益服务中心合同纠纷上诉案-案件笔记.md（2026-09-18 updated）"
 }

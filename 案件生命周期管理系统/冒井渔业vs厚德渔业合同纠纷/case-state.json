@@ -1,94 +1,47 @@
 {
   "schema": "case-state/v1",
   "caseId": "冒井",
-  "caseNo": "（二审改判·遵义中院2023）",
+  "caseNo": "（二审改判·黔东南中院2022）",
   "title": "冒井渔业vs厚德渔业合同纠纷（退出补偿协议履行）",
+  "court": "贵州省黔东南苗族侗族自治州中级人民法院（二审，2022）",
+  "partyRole": "代理厚德公司（付款义务方/二审被上诉人）",
+  "client": ["厚德渔业"],
+  "opposingParty": ["冒井公司"],
   "domain": "商事合同/退出补偿",
-  "status": "已结案",
+  "status": "已结案（二审部分改判，2022）",
   "stage": {
-    "current": 0,
-    "code": "calibrated",
-    "name": "DTC-CASE-001 校准生成·待人工回填",
-    "enteredAt": "2026-09-14",
-    "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+    "current": 7,
+    "code": "archive",
+    "name": "⑦风控归档",
+    "enteredAt": "2022",
+    "note": "已结案（二审部分改判：支持第一期12.5万及律师费2万，驳回其余；再审申请期6个月已过，程序救济关闭）"
   },
   "gates": {
-    "G0": {
-      "name": "门禁G0",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G1": {
-      "name": "门禁G1",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G2": {
-      "name": "门禁G2",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G3": {
-      "name": "门禁G3",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G4": {
-      "name": "门禁G4",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G5": {
-      "name": "门禁G5",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G6": {
-      "name": "门禁G6",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G7": {
-      "name": "门禁G7",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G8": {
-      "name": "门禁G8",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    }
+    "G0": { "name": "收案门禁", "status": "pass", "note": "真实承办案件" },
+    "G1": { "name": "检索门禁", "status": "pass", "note": "已结案" },
+    "G2": { "name": "文书门禁", "status": "pass", "note": "代理词/答辩已备" },
+    "G3": { "name": "庭审门禁", "status": "pass", "note": "一、二审已毕" },
+    "G4": { "name": "客户门禁", "status": "pass", "note": "已结案" },
+    "G5": { "name": "程序门禁", "status": "pass", "note": "已结案" },
+    "G6": { "name": "风控门禁", "status": "pass", "note": "已复盘（环评抗辩采信/举证不能）" },
+    "G7": { "name": "结案回流", "status": "pass", "note": "已归档，经验卡片已生成" }
   },
+  "deadlines": [],
   "calibration": {
     "ticket": "DTC-CASE-001",
     "generatedAt": "2026-09-14",
-    "source": "案件-知识映射索引 + 案件笔记存在性",
-    "verifiedFields": [
-      "caseNo",
-      "title",
-      "domain",
-      "status"
-    ],
-    "pendingFields": [
-      "court",
-      "judge",
-      "client",
-      "deadlines",
-      "meta.agents",
-      "timeline"
-    ],
-    "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+    "backfilledAt": "2026-09-28",
+    "source": "本夹案件笔记原文(冒井渔业vs厚德渔业合同纠纷-案件笔记.md)",
+    "verifiedFields": ["caseNo", "title", "court", "partyRole", "domain", "status", "client", "opposingParty", "stage"],
+    "pendingFields": ["judge", "meta.agents", "timeline", "deadlines"],
+    "note": "2026-09-28 依笔记回填；原占位 caseNo『遵义中院2023』与笔记『黔东南中院2022』冲突，以笔记为准更正"
   },
   "meta": {
     "schema": "case-meta/v1",
     "agents": [
-      {
-        "stage": "校准占位",
-        "role": "DTC-CASE-001",
-        "agent": "待回填",
-        "status": "todo",
-        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
-      }
+      { "stage": "①接案建档", "gate": "G0", "role": "建档", "agent": "CLM case-state 回填校验", "status": "已接入", "note": "2026-09-28 依笔记回填" }
     ]
-  }
+  },
+  "updatedAt": "2026-09-28",
+  "source": "案件生命周期管理系统/冒井渔业vs厚德渔业合同纠纷/冒井渔业vs厚德渔业合同纠纷-案件笔记.md（2026-09-18 updated）"
 }

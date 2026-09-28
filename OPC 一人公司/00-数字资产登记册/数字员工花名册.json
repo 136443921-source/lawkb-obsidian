@@ -1,6 +1,6 @@
 {
-  "roster_version": "v1.3",
-  "generated": "2026-09-25",
+  "roster_version": "v1.5",
+  "generated": "2026-09-26",
   "owner_seat": "数字员工管理（操作工 40 + 心智模型席位 14 = 54）",
   "source": "操作工=automation_update list 全量实测 + 老强 2026-09-25 裁撤 C-1/C-2/C-4；心智模型席位=09104 编制方案 §2.1 顺延版（老强 2026-09-25 批准 N-1=SEAT-12/N-2=SEAT-13/N-3=SEAT-14）",
   "classes": [
@@ -13,7 +13,7 @@
   "counts": {
     "操作工总数": 40,
     "操作工_ACTIVE": 35,
-    "操作工_PAUSED": 3,
+    "操作工_PAUSED": 2,
     "操作工_once": 2,
     "心智模型席位总数": 14,
     "席位_active": 11,
@@ -23,7 +23,8 @@
     "资产保管班": 9,
     "业务作业班": 10,
     "模拟法庭班": 2,
-    "可商业化标记": "全部 false（内部治理/执行型，非对外交付物）"
+    "可商业化标记": "全部 false（内部治理/执行型，非对外交付物）",
+    "操作工_REVOKED": 1
   },
   "operators": [
     {
@@ -369,13 +370,15 @@
       "name": "IMA 220030 漏窗回补重试器",
       "automation_id": "b5ffd012",
       "class": "资产保管班",
-      "status": "paused",
+      "status": "revoked",
       "schedule": "FREQ=DAILY;BYHOUR=21;BYMINUTE=0",
       "commercializable": false,
       "owner": "数字员工（操作工）",
       "last_verified": "2026-09-24",
       "source_of_truth": "b5ffd012",
-      "notes": "待用员工，非残次品"
+      "notes": "⛔ 已裁撤 2026-09-27（C-3）·留档不入编制（原「待用员工，非残次品」）",
+      "revoked_date": "2026-09-27",
+      "revocation_reason": "C-3 观察 7 日期满，老强 2026-09-27 裁决「清掉」；automation b5ffd012 本体保留 paused 留档未删除"
     },
     {
       "op_id": "OP-031",
@@ -623,7 +626,16 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1",
       "last_verified": "2026-09-24",
-      "notes": "无独立 persona 卡；蓝队家族四席之一"
+      "notes": "无独立 persona 卡；蓝队家族四席之一",
+      "decision": {
+        "item": "P2-9",
+        "option": "B",
+        "approved_by": "老强（唯一股东·超级管理员）",
+        "approved_on": "2026-09-26",
+        "content": "维持 SEAT-08 蓝队律师助理独立席位现状（status=active、73/100·M3 合格 不变），继续 training；达 M4（≥80 分）后由律所主任提请评估是否并入 SEAT-01 诉讼律师支援链",
+        "revisit_trigger": "maturity ≥ 80（M4 精熟）时由律所主任提评估",
+        "basis": "决策包_P2-9~P2-12 卡 1（2026-09-26 老强裁决）；RULE-BLUE-DISAMBIG 未改，蓝队家族四席维持独立；CLM 设备操作工列仍含 SEAT-08，不裁撤"
+      }
     },
     {
       "seat_id": "SEAT-09",
@@ -716,6 +728,20 @@
     "依据": "中枢 00-全局规则/RULE-EMP-ROSTER-UPDATE + 04-Workflows/WF-数字员工增员减员更新花名册",
     "change_log": [
       {
+        "version": "v1.5",
+        "date": "2026-09-27",
+        "type": "增+减",
+        "摘要": "裁撤 C-3 OP-030「IMA 220030 漏窗回补重试器」（automation b5ffd012）：老强 2026-09-27 裁决「7 日期满，清掉」；status paused→revoked，counts.操作工_PAUSED 3→2、新增 操作工_REVOKED=1；编制口径不变（54）；automation 本体保留 paused 留档未删除",
+        "来源": "老强 2026-09-27 裁决（C-3 清掉）"
+      },
+      {
+        "version": "v1.4",
+        "date": "2026-09-26",
+        "type": "增",
+        "摘要": "新增 wf_owners 追责段：登记 A 档真工作流 7 个的 owner（老强 2026-09-26 逐条批准），与 04-Workflows/A 档对齐；同步回写 09101 公司章程 §2（v1.9）。编制口径不变（操作工 40 + 心智席位 14 = 54）；B/C/D 档 94 个不做 owner 登记，仅存处置建议 （见 09-2部门治理/WF-owner对照表.md）",
+        "来源": "老强 2026-09-26 批准 · AI(小强) 执行"
+      },
+      {
         "version": "v1.0",
         "date": "2026-09-24",
         "type": "新",
@@ -744,5 +770,56 @@
         "来源": "老强 2026-09-25 批准（编号顺延 + 编制按 57，实际按 54 落）"
       }
     ]
-  }
+  },
+  "wf_owners": [
+    {
+      "wf_id": "WF-001",
+      "title": "法律文书 docx 双轨交付流水线",
+      "platform": "法律服务中台",
+      "owner": "SEAT-08 蓝队律师助理（交付物）；LTI 门禁由 SEAT-09 并行",
+      "status": "已确认·老强 2026-09-26"
+    },
+    {
+      "wf_id": "WF-002",
+      "title": "法条 LTI 五维 QC 门禁（R/L/C/T/P）",
+      "platform": "质控（法律服务中台）",
+      "owner": "SEAT-09 QC 审判长双模",
+      "status": "已确认·老强 2026-09-26"
+    },
+    {
+      "wf_id": "WF-023",
+      "title": "冒名诉讼程序战方法论（民法典143条意思表示真实要件）",
+      "platform": "法律服务中台",
+      "owner": "律所主任（老强）·单案专属性（6658 号吊顶案），非通用岗",
+      "status": "已确认·老强 2026-09-26"
+    },
+    {
+      "wf_id": "WF-026",
+      "title": "审判要件卡拆卡流水线（指南 PDF→审判要件卡·六层挂载）",
+      "platform": "数字资产中台",
+      "owner": "SEAT-10 法条银行行长",
+      "status": "已确认·老强 2026-09-26"
+    },
+    {
+      "wf_id": "WF-029",
+      "title": "静态看板改版前端四坑排障流水线",
+      "platform": "可视化中台",
+      "owner": "SEAT-07 可视化监控运维官",
+      "status": "已确认·老强 2026-09-26"
+    },
+    {
+      "wf_id": "WF-030",
+      "title": "静态看板数据管线五道护栏",
+      "platform": "可视化中台",
+      "owner": "SEAT-07 可视化监控运维官",
+      "status": "已确认·老强 2026-09-26"
+    },
+    {
+      "wf_id": "WF-031",
+      "title": "Obsidian 监听文件编辑防竞态·改后必 READ 回验",
+      "platform": "可视化中台",
+      "owner": "SEAT-07 可视化监控运维官",
+      "status": "已确认·老强 2026-09-26"
+    }
+  ]
 }

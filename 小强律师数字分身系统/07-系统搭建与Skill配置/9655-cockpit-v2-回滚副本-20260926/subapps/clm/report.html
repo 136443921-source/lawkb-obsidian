@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>当事人可视化报告 · 小强律师数字分身系统</title>
+<style>
+  :root{
+    --bg:#08090d; --txt:#e9ecf1; --txt2:#9aa3b2; --line:rgba(255,255,255,.10);
+    --blue:#378ADD; --green:#1D9E75;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       padding:18px;line-height:1.6;font-size:14px;min-height:100vh}
+  .topbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:920px;margin:0 auto 14px;
+          padding:12px 16px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;
+          font-size:13px;color:var(--txt2)}
+  .topbar b{color:var(--txt);font-weight:600}
+  .topbar .lock{color:var(--green)}
+  #out{max-width:920px;margin:0 auto}
+  .cr-empty{color:var(--txt2);font-size:14px;padding:30px 10px;text-align:center}
+</style>
+</head>
+<body>
+  <div class="topbar"><span class="lock">🔒</span><b>当事人可视化报告</b> · 小强律师数字分身系统 · 只读脱敏视图（仅向本案当事人开放）</div>
+  <div id="out"></div>
+
+  <script src="data.js?v=20260917a"></script>
+  <script src="report-render.js?v=20260917a"></script>
+  <script>
+  (function(){
+    var out = document.getElementById("out");
+    function showMsg(m){ out.innerHTML = '<div class="cr-empty">' + m + '</div>'; }
+    try {
+      var params = new URLSearchParams(location.search);
+      var cid = params.get("case");
+      if(!cid){ showMsg("链接缺少案件参数，请使用形如 report.html?case=6658 的链接。"); return; }
+      var cases = (window.CLM_DATA && window.CLM_DATA.cases) || [];
+      var c = null;
+      for (var i = 0; i < cases.length; i++) {
+        if (String(cases[i].caseId) === String(cid)) { c = cases[i]; break; }
+      }
+      if(!c){ showMsg("未找到对应案件，请核对链接中的案件编号。"); return; }
+      out.innerHTML = renderClientReport(c, window.CLM_DATA);
+    } catch(e) {
+      showMsg("报告加载失败：" + (e && e.message ? e.message : e));
+    }
+  })();
+  </script>
+</body>
+</html>

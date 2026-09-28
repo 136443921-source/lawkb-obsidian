@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-25 20:01:51",
+  "generated_at": "2026-09-28 09:57:57",
   "source": "count_rules.py (自动统计，非人工记忆)",
   "rule_library": {
     "sub_libs": 35,
-    "rule_cards_R": 69,
+    "rule_cards_R": 84,
     "negative_note_coverage": 1
   },
   "ay_routing_cards": 347,
-  "experience_cards": 477,
+  "experience_cards": 483,
   "trial_elements": {
-    "physical_cards": 81,
+    "physical_cards": 83,
     "judge_persona_declared": 215,
     "note": "physical=实体卡文件数；declared=审判长persona声明的『内联+矩阵』口径(215含3张裁量尺度卡)，二者不冲突"
   },
@@ -19,12 +19,12 @@
   },
   "cardfamily_index_pointers": 17,
   "six_layers_md": {
-    "01-采集": 295,
-    "02-提炼": 1529,
-    "03-连接": 1117,
-    "04-巩固": 95,
-    "05-调用": 166,
-    "06-沉淀": 2213
+    "01-采集": 302,
+    "02-提炼": 1547,
+    "03-连接": 1418,
+    "04-巩固": 98,
+    "05-调用": 171,
+    "06-沉淀": 2231
   },
-  "six_layers_total": 5415
+  "six_layers_total": 5767
 }

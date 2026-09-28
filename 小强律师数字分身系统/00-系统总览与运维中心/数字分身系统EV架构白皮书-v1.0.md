@@ -18,9 +18,11 @@ sensitivity: 对外可发布版（客户名称/真实案号/当事人姓名/内�
 publish_url: https://81a84e0ca20149bf9fd56afe3cd5edf2.app.workbuddy.link
 publish_date: 2026-09-10
 created: 2026-09-10T16:45
-updated: 2026-09-25T20:41
+updated: 2026-09-26T10:53
 ---
 
+
+> 🗄 **status: archive**（归口 2026-09-26 · 归口台账 `_00-目录归档台账.md`）——**只读史料，不再维护**；版本以归口台账「现行受控」段为准。
 # 把律所的知识系统，当成一辆电车来造
 
 ## 小强律师数字分身系统 EV · 架构白皮书 v1.0

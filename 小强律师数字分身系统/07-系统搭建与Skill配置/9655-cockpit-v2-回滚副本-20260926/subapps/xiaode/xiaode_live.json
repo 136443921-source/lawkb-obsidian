@@ -1,0 +1,47 @@
+{
+  "schema": "compliance-state/v1",
+  "org": "贵州省厚德公益基金会（及在管关联主体）",
+  "updatedAt": "2026-09-14",
+  "generatedAt": "2026-09-14",
+  "kpi": {
+    "managedObjects": 8,
+    "escalatedRisks": 2,
+    "newThisWeek": 1,
+    "gateG8": "pass"
+  },
+  "gates": {
+    "G8": {
+      "name": "非诉合规门禁",
+      "status": "pass",
+      "note": "周巡检 g8_passed=true"
+    },
+    "D-慈善": {
+      "name": "慈善域门禁",
+      "status": "warn",
+      "note": "R2 审计约定书主体缺失升级"
+    },
+    "D-医院": {
+      "name": "医院域门禁",
+      "status": "normal",
+      "note": "R4/R5 红线转出"
+    },
+    "D-运输": {
+      "name": "运输安全域门禁",
+      "status": "warn",
+      "note": "R6 航合表态稿逾期"
+    },
+    "D-社会组织": {
+      "name": "社会组织域门禁",
+      "status": "warn",
+      "note": "R8 众志救援新增"
+    },
+    "D-非诉文书": {
+      "name": "非诉文书门禁",
+      "status": "normal",
+      "note": "光伏项目留痕观察"
+    }
+  },
+  "status": "监测中",
+  "source": "LawKB/小德合规管理系统 + 周合规巡检简报-2026-09-13 + 合规审查卡调用记录",
+  "probed_at": "2026-09-21 00:09:43"
+}

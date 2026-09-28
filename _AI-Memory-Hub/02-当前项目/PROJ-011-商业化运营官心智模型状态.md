@@ -9,7 +9,7 @@ scope: 对外经营线五段闭环（获客 → 转化 → 交付 → 复购 →
 status: **DRAFT 起步（2026-09-25 新建，老强批准入编 SEAT-13，归属运营中台）**；persona 卡与训练备忘录本卡即单一事实源；待 WF-046 四判据取证转正
 source_note: 全部字段依据 `律所主任-数字员工裁撤新建建议-报老强批准-2026-09-24` N-2 + 老强 2026-09-25 拍板（归属＝运营中台）+ `09-3 商业运营SOP总册_对外经营线 v0.1`，非凭记忆
 maturity_level: M3·DRAFT
-maturity_score: 60
+maturity_score: 73
 belongs_to: 运营中台
 seat_id: SEAT-13
 fix_done: 0

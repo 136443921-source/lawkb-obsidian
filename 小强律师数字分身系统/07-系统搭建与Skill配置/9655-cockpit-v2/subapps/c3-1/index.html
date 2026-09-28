@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="kfMuSbZBLFRn7s4iNtWYKW">
+<head data-page-node-id="SsEuViJmFGuEN2ozBZAJOQ">
+<meta charset="UTF-8" data-page-node-id="Q4YpQriQYKu2HOF8WGCvyM">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="qNWihGFsgHeLM1Cr8PtNBS">
+<title>C3-1 知识飞轮舱 · S1 试点</title>
+<style>
+:root{
+  --bg:#0f1424; --panel:#171d32; --line:#2a3354; --accent:#4f9dff;
+  --sub:#9fb0d8; --green:#3fd07f; --amber:#ffb547; --red:#ff6b6b;
+  --text:#e6ecff;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;padding:26px 30px 60px;line-height:1.5}
+h1{font-size:23px;margin:0 0 4px}
+.meta{color:var(--sub);font-size:13px;margin-bottom:8px}
+.note{color:var(--sub);font-size:12px;margin-bottom:22px;opacity:.8}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
+.kpi .num{font-size:28px;font-weight:700;color:var(--accent)}
+.kpi .lbl{color:var(--sub);font-size:12.5px;margin-top:4px}
+.kpi.green .num{color:var(--green)} .kpi.amber .num{color:var(--amber)} .kpi.red .num{color:var(--red)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:22px}
+.card h2{font-size:16px;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.card h2 .tag{font-size:11px;font-weight:500;color:var(--sub);background:#243056;padding:2px 9px;border-radius:999px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{color:var(--sub);font-weight:600;font-size:12.5px}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;background:#243056;color:#cfe0ff}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
+.dot.ok{background:var(--green)} .dot.warn{background:var(--amber)} .dot.fail{background:var(--red)} .dot.paused{background:#8b93b0} .dot.none{background:var(--amber)}
+.s-ok{color:var(--green)} .s-warn{color:var(--amber)} .s-fail{color:var(--red)} .s-paused{color:#8b93b0} .s-none{color:var(--amber)}
+.bar-row{display:flex;align-items:center;gap:12px;margin:8px 0;font-size:13.5px}
+.bar-row .name{width:88px;color:var(--sub);flex:none}
+.bar-row .track{flex:1;background:#10162a;border-radius:6px;height:18px;overflow:hidden}
+.bar-row .fill{height:100%;background:linear-gradient(90deg,#4f9dff,#6fb0ff);border-radius:6px}
+.bar-row .val{width:64px;text-align:right;flex:none;color:var(--text)}
+.alerts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.alert{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:10px;padding:13px 15px}
+.alert.red{border-left-color:var(--red)} .alert.amber{border-left-color:var(--amber)} .alert.green{border-left-color:var(--green)}
+.alert .t{font-size:12px;color:var(--sub);margin-bottom:4px}
+.alert .v{font-size:16px;font-weight:600}
+.alert .d{font-size:12px;color:var(--sub);margin-top:3px}
+.muted{color:var(--sub);font-size:12px}
+.kg-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:4px}
+.kg-stats .s{background:#10162a;border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:92px}
+.kg-stats .s .n{font-size:20px;font-weight:700;color:var(--accent)}
+.kg-stats .s .l{font-size:12px;color:var(--sub);margin-top:2px}
+.kg-top{margin:0;padding-left:20px;font-size:13px;line-height:1.95}
+.kg-top li{margin-bottom:2px}
+.kg-top li .r{color:var(--accent);font-weight:600;float:right;margin-left:12px}
+.sec2{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+@media(max-width:880px){.sec2{grid-template-columns:1fr}}
+.rules-prog{display:flex;height:22px;border-radius:8px;overflow:hidden;background:#10162a;margin:8px 0}
+.rules-prog .ok{background:linear-gradient(90deg,#3fd07f,#5fe0a0)}
+.rules-prog .bad{background:linear-gradient(90deg,#ffb547,#ffd089)}
+.rules-pill{cursor:pointer;background:#3a2740}
+.rules-pill:hover{background:#5a3a64}
+.rules-box{max-height:240px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:12.5px;line-height:1.85;color:var(--sub)}
+.rules-box code{color:var(--text);background:#10162a;padding:1px 5px;border-radius:4px}
+</style>
+<style>
+/* 数据更新时间：紧贴标题（2026-09-16 由右上 fixed 浮块改为标题内联） */
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+</style>
+</head>
+<body data-page-node-id="18trsxGVSMMUerag6XNdB2" data-cno="C3">
+<h1 data-page-node-id="cfC1ojEUOk7k2nMLfFesXR">C3 知识飞轮舱<span style="font-size:12px;color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:2px 10px;margin-left:10px;vertical-align:middle">🧪 S1 试点屏 c3-1 · 与 C3 原屏并列对照</span><span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-28 08:24（北京时间）</span></h1>
+<div class="meta" id="updated" data-page-node-id="QpESNcFKTyTdm2LrRQyUY2"></div>
+<div class="note" data-page-node-id="zOVs3W6cr836Q0uMr81qvY">健康仪表盘已并入本中台 · 单一知识源：LawKB/知识飞轮系统 ｜ 运行态取自 WorkBuddy 自动化矩阵（cwds=知识飞轮系统 + 飞轮核心任务）｜ 手动刷新（运行「飞轮中台刷新.py」或点门户刷新按钮重载）</div>
+
+<div class="grid" id="kpis" data-page-node-id="fKKQioCjfVBRyUh2dcUh7B"></div>
+
+<div class="card" data-page-node-id="LjC2EktgxomLip3ojvXVE5">
+  <h2 data-page-node-id="6VPVCpju2LygECVIdMNi86">经验卡片增长曲线 <span class="tag" data-page-node-id="BICKHIuajXgfUq2tMCgOc4">规模健康</span></h2>
+  <svg id="chart" viewBox="0 0 680 240" width="100%" height="240" data-page-node-id="cETy3rKLgZgTi4dgEFPMv6"></svg>
+</div>
+
+<div class="card">
+  <h2>近 7 日真实新增曲线 <span class="tag">飞轮新增（git 入库日）· 已剔除 mtime 假象</span></h2>
+  <div class="muted" style="margin-bottom:8px">数据源：LawKB/知识飞轮系统 git diff-filter=A（按文件首次入库日统计 .md 新增，含卡片与文档）｜ 实扫自 flywheel-data.js · dailyGrowth</div>
+  <svg id="dailyChart" viewBox="0 0 680 240" width="100%" height="240"></svg>
+</div>
+
+<div class="sec2" data-page-node-id="ax5CDlRHXIYEh1OoTBe561">
+  <div class="card" data-page-node-id="WiehApCvPvVeTWIXT4eUcY">
+    <h2 data-page-node-id="l2rRX9SQDnaA1M7R6RAh5S">六层近 7 日活跃（改动文件数） <span class="tag" data-page-node-id="fpbYl3h2ve71G5ogfSLerd">运行态</span></h2>
+    <div id="layerInc" data-page-node-id="5mvMpiac2titA5eCUsPQa0"></div>
+  </div>
+  <div class="card" data-page-node-id="MtvXQkTSFUkoi1UtI5l6z2">
+    <h2 data-page-node-id="9t6nJZnBjGPldqgrSIVmrx">摄入管道 <span class="tag" data-page-node-id="Qhq8j3dIsTekxauUJ3fbzQ">运行态</span></h2>
+    <div id="intake" data-page-node-id="JWaV6FmxczJILB1IWrqQpE"></div>
+  </div>
+</div>
+
+<div class="card" data-page-node-id="A4GVUVvS1bFGE9FVGLZ0jp">
+<div class="card">
+  <h2>知识图谱 <span class="tag" id="kgMeta"></span></h2>
+  <div class="kg-stats" id="kgStats"></div>
+  <div class="sec2" style="margin-top:14px">
+    <div>
+      <div class="muted" style="margin-bottom:8px">各目录节点分布</div>
+      <div id="kgDir"></div>
+    </div>
+    <div>
+      <div class="muted" style="margin-bottom:8px">TOP 枢纽节点（按引用数）</div>
+      <ol class="kg-top" id="kgTop"></ol>
+    </div>
+  </div>
+</div>
+
+  <h2 data-page-node-id="OBCT1sEUD8PDT55zapAkfJ">飞轮自动化运行矩阵 <span class="tag" id="autoCount" data-page-node-id="JQ7M7erozbFaVh9NH6yp9k"></span></h2>
+  <table id="autos" data-page-node-id="0P247ZHq6UN2MQVkWPviYu"><thead data-page-node-id="YL1BQ4zAh4VR6kMoWmRfzS"><tr data-page-node-id="Bkh9bOwYRHSAYwzSZfvRGV"><th data-page-node-id="6RM8oGJsSsGK0043miGWYf">状态</th><th data-page-node-id="Ys4od95sbOVLGthTizA0s1">自动化</th><th data-page-node-id="3tDjaJvGXwhmXH3WevhOfD">最近运行</th><th data-page-node-id="NB9N6yUcJVu0By0EoyzUca">结果</th><th data-page-node-id="pgdwLiRcB8GkHh8hVmBi25">下次运行</th></tr></thead><tbody data-page-node-id="NdyQnyEKNzEAlv2t4tMdsV"></tbody></table>
+</div>
+
+<div class="card">
+  <h2>规则库资产 <span class="tag">资产/结构健康</span></h2>
+  <div class="kg-stats" id="rulesKpi"></div>
+  <div style="margin-top:10px">
+    <div class="muted" style="margin-bottom:4px">命名规范率（规范命名模式 <code>R-领域-序号</code>）｜ 点击右侧标签可展开非规范清单</div>
+    <div id="stdRate" style="font-size:13px;color:var(--text);margin-bottom:2px"></div>
+    <div class="rules-prog" id="stdProg"></div>
+    <div style="text-align:right"><span class="pill rules-pill" id="nonstdToggle">待治理 <span id="nonstdN"></span> 项 ▾</span></div>
+    <div class="rules-box" id="nonstdBox" style="display:none;margin-top:8px"></div>
+  </div>
+  <div class="sec2" style="margin-top:18px">
+    <div>
+      <div class="muted" style="margin-bottom:8px">26 子库文件分布（hover 显示精确值 · 降序）</div>
+      <div id="rulesSub"></div>
+    </div>
+    <div>
+      <div class="muted" style="margin-bottom:8px">结构健康说明</div>
+      <div id="rulesNote" class="muted" style="font-size:12.5px;line-height:1.8"></div>
+    </div>
+  </div>
+</div>
+
+<div class="card" data-page-node-id="381d7TEo4vOBwyA3ZmBNgV">
+  <h2 data-page-node-id="SAki802EQIyUDzdlZPvkpR">告警与门禁 <span class="tag" data-page-node-id="R5e5EYODnX9fSDGarTUu81">断链率&gt;0.5% 标红 · LTI 单列 · 摄入衰减⚠️</span></h2>
+  <div class="alerts" id="alerts" data-page-node-id="iHu8UZVJO30N4mHKLRwVRH"></div>
+</div>
+
+<!-- ===== 卡族下钻融合（系统卡族看板本地化） ===== -->
+<div class="card" data-page-node-id="CF01">
+  <h2>规则库 · 卡族下钻 <span class="tag">系统卡族 · 本地化融合</span></h2>
+  <div class="muted" style="margin-bottom:14px">数据源：LawKB/06-沉淀/裁判规则库（口径独立：此处 <b>1861 篇裁判规则卡</b>；上方「规则库资产」为全规则文件 1516 篇——二者不同统计口径，勿混）。扫描基准 2026-09-12 14:44 ｜ 本地化融合于 2026-09-14。</div>
+  <div class="grid" id="cfKpis"></div>
+  <div class="sec2" style="margin-top:6px">
+    <div>
+      <div class="muted" style="margin-bottom:8px">卡型分布（<span id="cfCtCount"></span> 种）</div>
+      <div id="cfCardTypes"></div>
+    </div>
+    <div>
+      <div class="muted" style="margin-bottom:8px">案由域规则卡 Top15（<span id="cfDmCount"></span> 域）</div>
+      <div id="cfDomains"></div>
+    </div>
+  </div>
+  <div class="alerts" id="cfAlerts" style="margin-top:16px"></div>
+  <div class="card" style="margin-top:16px;background:#10162a">
+    <div class="muted" style="margin-bottom:8px">最近更新 Top 15</div>
+    <ol class="kg-top" id="cfRecent"></ol>
+  </div>
+</div>
+
+<div class="card" data-page-node-id="G8uob1oeGddhRLZ8bvSNQj">
+  <h2 data-page-node-id="oeUSfKxAi8Y942CG66NS6v">关键指标 <span class="tag" data-page-node-id="IA40O8gLGozFnon4EPqKO1">健康仪表盘合并</span></h2>
+  <table id="metrics" data-page-node-id="XDZYdLUeDHbHcYohuhdruO"><tbody data-page-node-id="E4OWU1WHRZg5E33n8X7yTK"></tbody></table>
+</div>
+
+<!-- ⚖️ 冲突仲裁：融合 9360 知识飞轮看板（实时拉取 conflict-arbitration/queue.json） -->
+<div class="card" id="conflictCard">
+  <h2>⚖️ 知识冲突仲裁 <span class="tag">防打架 · 有人管闭环</span></h2>
+  <div class="grid" id="conflictKpis" style="margin-bottom:12px"></div>
+  <div id="conflictTop" style="font-size:12.5px"></div>
+  <div class="muted" style="margin-top:10px">
+    实时拉取 9360 冲突仲裁队列 ｜
+    <a href="./conflict-arbitration/index.html" target="_blank" rel="noopener">打开完整仲裁看板 ↗</a>
+  </div>
+</div>
+
+<script src="/flywheel-data.js"></script>
+<script>
+document.getElementById("updated").textContent = "数据更新：" + DATA.updated + " ｜ 飞轮中台 v1.0";
+
+const kpis = [
+  {n:DATA.kpi.experienceCards, l:"经验卡片（真实/演练/预测）", c:""},
+  {n:DATA.kpi.ruleFiles, l:"裁判规则库文件", c:"green"},
+  {n:DATA.kpi.sixLayerTotal, l:"六层 md 总数", c:""},
+  {n:DATA.kpi.caseNotes, l:"CaseDrop 已归档案件", c:"amber"},
+  {n:DATA.kpi.automations, l:"飞轮自动化（在矩阵）", c:"green"},
+  {n:DATA.kpi.ongoingCases, l:"在办案件（待预判）", c:"red"}
+];
+document.getElementById("kpis").innerHTML = kpis.map(k=>
+  `<div class="kpi ${k.c}"><div class="num">${k.n}</div><div class="lbl">${k.l}</div></div>`).join("");
+
+// 卡片增长曲线
+const svg = document.getElementById("chart");
+const W=680,H=240,pad=40, pts=DATA.cardGrowth;
+const maxV=Math.max(...pts.map(p=>p.cum),1);
+const x=i=>pad+i*((W-2*pad)/(pts.length-1||1));
+const y=v=>H-pad-(v/maxV)*(H-2*pad);
+let path=pts.map((p,i)=>(i?"L":"M")+x(i)+" "+y(p.cum)).join(" ");
+let dots=pts.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.cum)}" r="4" fill="#4f9dff"/>
+  <text x="${x(i)}" y="${y(p.cum)-10}" fill="#e6ecff" font-size="12" text-anchor="middle">${p.cum}</text>
+  <text x="${x(i)}" y="${H-pad+18}" fill="#9fb0d8" font-size="11" text-anchor="middle">${p.date.slice(5)}</text>`).join("");
+svg.innerHTML=`<path d="${path}" fill="none" stroke="#4f9dff" stroke-width="2"/>
+  <line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="#2e3a5e"/>
+  <line x1="${pad}" y1="${pad}" x2="${pad}" y2="${H-pad}" stroke="#2e3a5e"/>${dots}`;
+
+// 近 7 日真实新增曲线（git 真实入库，已剔除 mtime 假象）
+const dsvg = document.getElementById("dailyChart");
+if(dsvg && DATA.dailyGrowth && DATA.dailyGrowth.length){
+  const dg=DATA.dailyGrowth;
+  const dW=680,dH=240,dpad=40;
+  const dmax=Math.max(...dg.map(p=>p.add),1);
+  const dx=i=>dpad+i*((dW-2*dpad)/(dg.length-1||1));
+  const dy=v=>dH-dpad-(v/dmax)*(dH-2*dpad);
+  const dpath=dg.map((p,i)=>(i?"L":"M")+dx(i)+" "+dy(p.add)).join(" ");
+  const ddots=dg.map((p,i)=>`<circle cx="${dx(i)}" cy="${dy(p.add)}" r="4" fill="#3fd07f"/>
+  <text x="${dx(i)}" y="${dy(p.add)-10}" fill="#e6ecff" font-size="12" text-anchor="middle">${p.add}</text>
+  <text x="${dx(i)}" y="${dH-dpad+18}" fill="#9fb0d8" font-size="11" text-anchor="middle">${p.date.slice(5)}</text>`).join("");
+  dsvg.innerHTML=`<path d="${dpath}" fill="none" stroke="#3fd07f" stroke-width="2"/>
+  <line x1="${dpad}" y1="${dH-dpad}" x2="${dW-dpad}" y2="${dH-dpad}" stroke="#2e3a5e"/>
+  <line x1="${dpad}" y1="${dpad}" x2="${dpad}" y2="${dH-dpad}" stroke="#2e3a5e"/>${ddots}`;
+}
+
+// 六层近7日增量
+const maxInc=Math.max(...DATA.layerInc.map(l=>l.inc7d),1);
+document.getElementById("layerInc").innerHTML = DATA.layerInc.map(l=>
+  `<div class="bar-row"><div class="name">${l.layer}</div>
+   <div class="track"><div class="fill" style="width:${Math.round(l.inc7d/maxInc*100)}%"></div></div>
+   <div class="val">+${l.inc7d}</div></div>`).join("");
+
+// 摄入管道
+const iv=DATA.intake;
+const ilevelTxt={ok:"正常",watch:"观察",warn:"⚠️ 衰减"}[iv.level];
+const icls={ok:"green",watch:"amber",warn:"red"}[iv.level];
+document.getElementById("intake").innerHTML =
+  `<div class="bar-row"><div class="name">近7日天数</div><div class="track"><div class="fill" style="width:${Math.round(iv.days7/7*100)}%"></div></div><div class="val">${iv.days7}/7</div></div>
+   <div class="bar-row"><div class="name">采集例数</div><div class="track"><div class="fill" style="width:${Math.min(100,Math.round(iv.cases7/15*100))}%"></div></div><div class="val">${iv.cases7}</div></div>
+   <div class="muted" style="margin-top:8px">最新摄入报告：${iv.latest} ｜ 状态：<span class="s-${icls}">${ilevelTxt}</span></div>`;
+
+// 知识图谱
+const KG=DATA.kg;
+document.getElementById("kgMeta").textContent="03-连接 · 最近快照 "+KG.generated;
+const kstats=[
+  {n:KG.total_notes,l:"节点总数"},{n:KG.total_links,l:"链接总数"},
+  {n:KG.linked,l:"已连接节点"},{n:KG.orphan,l:"孤立节点"},
+  {n:(KG.density*100).toFixed(2)+"%",l:"连接密度"}
+];
+document.getElementById("kgStats").innerHTML=kstats.map(s=>`<div class="s"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`).join("");
+const maxDir=Math.max(...KG.dirs.map(d=>d.n),1);
+document.getElementById("kgDir").innerHTML=KG.dirs.map(d=>
+  `<div class="bar-row"><div class="name">${d.name}</div><div class="track"><div class="fill" style="width:${Math.round(d.n/maxDir*100)}%"></div></div><div class="val">${d.n}</div></div>`).join("");
+document.getElementById("kgTop").innerHTML=KG.top.map(t=>`<li>${t.title}<span class="r">${t.refs}</span></li>`).join("");
+
+// 规则库资产
+const R=DATA.rules;
+document.getElementById("rulesKpi").innerHTML=[
+  {n:R.cards,l:"经验卡片"},
+  {n:R.total,l:"规则库文件"},
+  {n:R.sublibs.length,l:"子库数量"}
+].map(s=>`<div class="s"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`).join("");
+const rate=R.compliance;
+document.getElementById("stdRate").textContent=rate+"% （规范 "+R.std+" / 总 "+R.total+"）";
+document.getElementById("nonstdN").textContent=R.nonstd;
+document.getElementById("stdProg").innerHTML=
+  `<div class="ok" style="width:${rate}%"></div><div class="bad" style="width:${100-rate}%"></div>`;
+// 待治理清单 展开/收起
+const nb=document.getElementById("nonstdBox");
+let nbBuilt=false;
+document.getElementById("nonstdToggle").onclick=()=>{
+  const open=nb.style.display!=="block";
+  nb.style.display=open?"block":"none";
+  document.getElementById("nonstdToggle").innerHTML=(open?"待治理 ":"收起 ")+R.nonstd+(open?" 项 ▴":" 项 ▾");
+  if(open && !nbBuilt){
+    nb.innerHTML='<div class="muted" style="margin-bottom:6px">非规范命名文件（可直接转为治理待办）：</div>'+
+      (R.nonstdList.length?R.nonstdList.map(x=>`${x}`).join("<br>"):"（无）");
+    nbBuilt=true;
+  }
+};
+// 子库分布
+const maxSub=Math.max(...R.sublibs.map(s=>s.n),1);
+document.getElementById("rulesSub").innerHTML=R.sublibs.map(s=>
+  `<div class="bar-row" title="${s.name}：共 ${s.n} 个文件"><div class="name">${s.name}</div><div class="track"><div class="fill" style="width:${Math.round(s.n/maxSub*100)}%"></div></div><div class="val">${s.n}</div></div>`).join("");
+document.getElementById("rulesNote").innerHTML=
+  `规范率 <b style="color:${rate>=95?'var(--green)':'var(--amber)'}">${rate}%</b>${rate>=95?" ✅ 健康":" ⚠️ 需治理"}。<br>`+
+  `非规范文件即未遵循 <code>R-领域-序号</code> 模式的规则卡。<br>`+
+  `点击"待治理 N"展开清单即可作为治理待办直接处理。<br>`+
+  `子库总数 ${R.sublibs.length} 个，最大 ${R.sublibs[0]?R.sublibs[0].name:""}（${R.sublibs[0]?R.sublibs[0].n:0} 文件）。`;
+
+// 自动化矩阵
+document.getElementById("autoCount").textContent = DATA.autos.length + " 条";
+const stxt={ok:"运行正常",warn:"运行偏久",fail:"上次失败",paused:"已暂停",none:"从未运行"};
+document.querySelector("#autos tbody").innerHTML = DATA.autos.map(a=>
+  `<tr><td><span class="dot ${a.state}"></span></td>
+   <td>${a.name}</td><td>${a.lastRun||"—"}</td>
+   <td class="s-${a.state}">${a.result}</td><td>${a.nextRun||"—"}</td></tr>`).join("");
+
+// 告警
+const A=DATA.alerts;
+const linkCls=A.linkOk?"green":"red";
+const linkTxt=A.linkOk?("断链率 "+A.linkRate.toFixed(3)+"% ✅ 低于门禁0.5%"):("断链率 "+A.linkRate.toFixed(3)+"% 🔴 超门禁0.5%");
+const inCls={ok:"green",watch:"amber",warn:"red"}[iv.level];
+const inTxt={ok:"摄入正常 "+iv.days7+"/7天",watch:"摄入偏少 "+iv.days7+"/7天",warn:"⚠️ 摄入衰减 "+iv.days7+"/7天"}[iv.level];
+document.getElementById("alerts").innerHTML =
+  `<div class="alert ${linkCls}"><div class="t">断链率门禁</div><div class="v">${linkTxt}</div><div class="d">link_audit v3 · 全库扫描</div></div>
+   <div class="alert green"><div class="t">LTI 文本监控器（防火墙）</div><div class="v">${A.lti}</div><div class="d">v4.8.1 · 法条真实性 R / 法理逻辑 L / 一致性 C / 溯源 T / 程序 P 五维门禁</div></div>
+   <div class="alert ${inCls}"><div class="t">摄入管道</div><div class="v">${inTxt}</div><div class="d">近7日采集 ${iv.cases7} 例 · 最新 ${iv.latest}</div></div>`;
+
+// 关键指标
+document.querySelector("#metrics tbody").innerHTML = DATA.metrics.map(m=>
+  `<tr><td>${m.name}</td><td><span class="pill">${m.value}</span></td><td>${m.desc}</td></tr>`).join("");
+
+// ===== 卡族下钻（系统卡族看板本地化融合） =====
+const cf = DATA.cardFamily;
+document.getElementById("cfKpis").innerHTML = [
+  {n:cf.total, l:"卡族总量(.md) · frontmatter "+cf.frontmatter_rate+"%", c:""},
+  {n:cf.rule_id_rate+"%", l:"rule_id 标注率 · "+cf.ruleId+" 篇", c:"green"},
+  {n:cf.naming_rate+"%", l:"命名规范率 · "+cf.namingOk+" 篇", c:"green"},
+  {n:cf.pendingYuan, l:"待回源(yuandian_source)", c:"red"}
+].map(k=>`<div class="kpi ${k.c}"><div class="num">${k.n}</div><div class="lbl">${k.l}</div></div>`).join("");
+
+const cfct = Object.entries(cf.cardTypes).sort((a,b)=>b[1]-a[1]);
+const cfctMax = cfct[0][1];
+document.getElementById("cfCtCount").textContent = cf.card_type_count;
+document.getElementById("cfCardTypes").innerHTML = cfct.map(([k,v])=>
+  `<div class="bar-row"><div class="name">${k}</div><div class="track"><div class="fill" style="width:${(v/cfctMax*100).toFixed(1)}%"></div></div><div class="val">${v}</div></div>`).join("");
+
+const cfdm = Object.entries(cf.byDomainRule).sort((a,b)=>b[1]-a[1]).slice(0,15);
+const cfdmMax = cfdm[0][1];
+document.getElementById("cfDmCount").textContent = cf.domain_count;
+document.getElementById("cfDomains").innerHTML = cfdm.map(([k,v])=>
+  `<div class="bar-row"><div class="name">${k}</div><div class="track"><div class="fill" style="width:${(v/cfdmMax*100).toFixed(1)}%;background:linear-gradient(90deg,#4f9dff,#6fb0ff)"></div></div><div class="val">${v}</div></div>`).join("");
+
+document.getElementById("cfAlerts").innerHTML =
+  `<div class="alert amber"><div class="t">statute_text_pending</div><div class="v">${cf.pendingStat}</div><div class="d">法条正文待权威回填</div></div>`+
+  `<div class="alert red"><div class="t">yuandian_source_pending</div><div class="v">${cf.pendingYuan}</div><div class="d">元典源待回填</div></div>`;
+
+document.getElementById("cfRecent").innerHTML = cf.top_recent.map(r=>
+  `<li>${r.f}<span class="r">${r.mtime}</span></li>`).join("");
+
+// ===== 冲突仲裁：融合进知识飞轮看板（实时拉取 9360 冲突仲裁队列） =====
+(function(){
+  const TL={KE:"知识演进",FC:"事实纠正",VC:"版本冲突",CC:"内容矛盾",CR:"上下文相关",MC:"成熟度冲突"};
+  fetch("../conflict-arbitration/queue.json?t="+Date.now()).then(r=>{ if(!r.ok) throw 0; return r.json(); })
+    .then(d=>{
+      const C=d.conflicts||[];
+      const t={}; let pend=0, hi=0;
+      C.forEach(c=>{ t[c.type]=(t[c.type]||0)+1; if(c.status==="pending"||!c.decision)pend++; if(c.confidence>=0.8)hi++; });
+      const order=["CC","VC","MC","CR","KE","FC"];
+      const cls={"CC":"red","VC":"amber","MC":"amber","CR":"","KE":"","FC":"green"};
+      let k=order.map(x=>`<div class="kpi ${cls[x]||''}"><div class="num">${t[x]||0}</div><div class="lbl">${x} ${TL[x]}</div></div>`).join("");
+      k+=`<div class="kpi amber"><div class="num">${pend}</div><div class="lbl">待处理</div></div>`;
+      k+=`<div class="kpi teal"><div class="num">${hi}</div><div class="lbl">高置信(≥0.8)</div></div>`;
+      document.getElementById("conflictKpis").innerHTML=k;
+      // 顶部关注：硬冲突(VC/CC/MC) + 高置信(≥0.8)，按置信度降序，最多 6 条
+      const top=C.filter(c=>(["VC","CC","MC"].includes(c.type)||c.confidence>=0.8))
+        .sort((a,b)=>b.confidence-a.confidence).slice(0,6);
+      const sugL={adopt_a:"采纳A",adopt_b:"采纳B",merge:"融合",no_conflict:"不冲突"};
+      document.getElementById("conflictTop").innerHTML =
+        '<div style="color:var(--sub);margin-bottom:6px">🔥 重点待裁（硬冲突/高置信）：</div>' +
+        (top.length? top.map(c=>{
+          const hard=["VC","CC","MC"].includes(c.type);
+          return `<div style="padding:5px 0;border-bottom:1px solid var(--line)">
+            <span class="badge b-${c.type}" style="margin-right:6px">${c.type}</span>
+            <b>${c.id}</b> <span class="conf" style="color:${c.confidence>=0.8?'var(--green)':'var(--amber)'}">${c.confidence}</span>
+            ${hard?'<span style="color:var(--red)">· 硬冲突</span>':''}
+            <span class="muted"> → ${sugL[c.ai_suggestion]||c.ai_suggestion}</span><br>
+            <span class="rel">${c.side_a.title||""} ⇄ ${c.side_b.title||""}</span></div>`;
+        }).join("") : '<div class="muted">暂无明显硬冲突 ✅</div>');
+    })
+    .catch(()=>{ document.getElementById("conflictTop").innerHTML=
+      '<div style="color:var(--amber)">⚠️ 冲突队列未同步，请运行 refresh_8139.py --screen conflict</div>'; });
+})();
+
+</script>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var d=new Date(document.lastModified);
+    if(isNaN(d.getTime())) return;
+    var s=fmt(d);
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：'+s+'（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+s);}
+  }catch(e){}
+})();
+</script>
+
+<script src="/subapp_score_override.js?v=20260919b"></script>
+<script>
+/* S1 实时重接试点（C3 飞轮）：数据层 fetch 本机飞轮探针，视觉层零改动（禁薄壳 / 不改 DOM / 不改 CSS）
+   探针：lawtwin-open/skills/S1-subapp-reconnect/probe_flywheel.py → flywheel_live.json
+   铁律：cache:no-store + ?t 戳破缓存；断网/源不可达保留静态快照，绝不编假数。 */
+(function(){
+  var LIVE = "../flywheel/flywheel_live.json";
+  fetch(LIVE + "?t=" + Date.now(), { cache: "no-store" })
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      if(!d || !d.kpi) throw 0;
+      var k = d.kpi;
+      var kpis = [
+        { n: k.experienceCards, l: "经验卡片（真实/演练/预测）", c: "" },
+        { n: k.ruleFiles,        l: "裁判规则库文件",            c: "green" },
+        { n: k.sixLayerTotal,    l: "六层 md 总数",              c: "" },
+        { n: k.caseNotes,        l: "CaseDrop 已归档案件",        c: "amber" },
+        { n: k.automations,      l: "飞轮自动化（在矩阵）",       c: "green" },
+        { n: k.ongoingCases,     l: "在办案件（待预判）",          c: "red" }
+      ];
+      var el = document.getElementById("kpis");
+      if(el) el.innerHTML = kpis.map(function(x){
+        return '<div class="kpi ' + x.c + '"><div class="num">' + x.n + '</div><div class="lbl">' + x.l + '</div></div>';
+      }).join("");
+      var t = document.getElementById("data-update-time");
+      if(t) t.textContent = "📊 数据更新时间：" + (d.probed_at || d.updated) + "（实时探针）";
+    })
+    .catch(function(){
+      var t = document.getElementById("data-update-time");
+      if(t) t.textContent = "📊 实时源不可达 · 保留最近一次静态快照";
+    });
+})();
+</script>
+
+<script>
+/* ===== S1 实时重接 · 试点屏 c3-1 =====
+   铁律（获准件 S1-实时重接-单独获准方案 §5，2026-09-20 老强书面批准）：
+   1. 禁改薄壳     —— 本屏沿用 C3 原屏全部富仪表盘 CSS/JS，未引入 subapp_shell.js
+   2. 视觉层零改动 —— 未改布局/配色/交互，仅新增本段与标题徽标
+   3. cache:no-store + ?t 戳破缓存
+   4. 数据零虚构   —— 未探字段显「—」，断网显「实时源不可达」，绝不编数                     */
+(function(){
+  var LIVE = "../flywheel/flywheel_live.json";
+  var stamp = Date.now();
+  var shown = false;
+
+  function fallback(msg){                       // 铁律 4：不编假数
+    var t = document.getElementById("data-update-time");
+    if(t) t.textContent = "📊 " + msg + " · 保留最近一次静态快照";
+    var g = document.querySelectorAll("#kpis .num");
+    for(var i=0;i<g.length;i++) if(g[i].textContent.trim()==="—") g[i].textContent="—";
+  }
+  function paint(d){
+    if(!d || !d.kpi) throw 0;
+    var k = d.kpi;
+    var kpis = [
+      { n: k.experienceCards==null?"—":k.experienceCards, l:"经验卡片（真实/演练/预测）", c:"" },
+      { n: k.ruleFiles==null?"—":k.ruleFiles,             l:"裁判规则库文件",            c:"green" },
+      { n: k.sixLayerTotal==null?"—":k.sixLayerTotal,     l:"六层 md 总数",              c:"" },
+      { n: k.caseNotes==null?"—":k.caseNotes,             l:"CaseDrop 已归档案件",        c:"amber" },
+      { n: k.automations==null?"—":k.automations,         l:"飞轮自动化（在矩阵）",       c:"green" },
+      { n: k.ongoingCases==null?"—":k.ongoingCases,       l:"在办案件（待预判）",         c:"red" }
+    ];
+    var el = document.getElementById("kpis");
+    if(el) el.innerHTML = kpis.map(function(x){
+      return '<div class="kpi '+x.c+'"><div class="num">'+x.n+'</div><div class="lbl">'+x.l+'</div></div>';
+    }).join("");
+    var t = document.getElementById("data-update-time");
+    if(t) t.textContent = "📊 数据更新时间：" + (d.probed_at||d.updated) + "（实时探针 · 拉取于 " + new Date().toLocaleString("zh-CN") + "）";
+    var s = document.getElementById("s1-probe");
+    if(s) s.textContent = "探针时间戳 " + stamp + " ｜ cache:no-store";
+    shown = true;
+  }
+
+  fetch(LIVE + "?t=" + stamp, { cache: "no-store" })
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(paint)
+    .catch(function(){ fallback("实时源不可达"); });
+
+  window.__S1_C3_1__ = {
+    reload: function(){ return fetch(LIVE + "?t=" + Date.now(), { cache:"no-store" })
+                                .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+                                .then(paint).catch(function(){ fallback("实时源不可达"); }); },
+    get shown(){ return shown; }
+  };
+})();
+</script>
+</body>
+</html>

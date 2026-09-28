@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==========================================================
-# cms_change_guard.sh · CMS 变更守卫 v1.0.1
+# cms_change_guard.sh · CMS 变更守卫 v1.0.2
 # ----------------------------------------------------------
 # 职责：把母本备忘录的「系统一变更 → 备忘录必回写」从纸面协议
 #       升级为 **技术强制检测**。
@@ -53,7 +53,11 @@ ledger_n() {
   awk '/^## 十八、变更登记台账/,/^## 附录 A/' "$MASTER" 2>/dev/null \
     | grep -cE '^\|[[:space:]]*\**2026-' | tr -d ' '
 }
-mver() { grep -m1 '^version:' "$MASTER" 2>/dev/null | sed 's/version:[[:space:]]*//'; }
+# ⚠️ v1.0.2 加固：原写法 `^version:` 假定 frontmatter 无缩进；一旦有人按 YAML 风格
+#    给 created/updated/version 加 4 空格缩进，此处会静默返回空 —— 守卫的
+#    「version 未刷新」告警（do_check 尾部）随之失效，属**静默失真**。
+#    现改为容忍行首空白：`^[[:space:]]*version:`。
+mver() { grep -m1 -E '^[[:space:]]*version:' "$MASTER" 2>/dev/null | sed -E 's/^[[:space:]]*version:[[:space:]]*//'; }
 
 make_snap() {
   collect | while read -r f; do

@@ -3,92 +3,56 @@
   "caseId": "1497",
   "caseNo": "(2018)黔0330民初1497号",
   "title": "王德明担保合同签名伪造案",
+  "court": "贵州省习水县人民法院",
+  "partyRole": "被执行人（保证人/原审被告）",
+  "client": ["王德明", "侯天香"],
+  "opposingParty": ["习水县农村信用合作联社（农商行）", "王方利", "陈彬", "宇敏"],
   "domain": "担保合同/执行异议",
-  "status": "进行中",
+  "status": "进行中（执行异议已提交，待裁定）",
   "stage": {
-    "current": 0,
-    "code": "calibrated",
-    "name": "DTC-CASE-001 校准生成·待人工回填",
-    "enteredAt": "2026-09-14",
-    "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+    "current": 6,
+    "code": "procedure",
+    "name": "⑥程序执行",
+    "enteredAt": "2026-05-28",
+    "note": "执行异议已提交（2026-05-28），待裁定；并行推进再审/检察监督/监管投诉/刑事报案"
   },
   "gates": {
-    "G0": {
-      "name": "门禁G0",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G1": {
-      "name": "门禁G1",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G2": {
-      "name": "门禁G2",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G3": {
-      "name": "门禁G3",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G4": {
-      "name": "门禁G4",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G5": {
-      "name": "门禁G5",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G6": {
-      "name": "门禁G6",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G7": {
-      "name": "门禁G7",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G8": {
-      "name": "门禁G8",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    }
+    "G0": { "name": "收案门禁", "status": "pass", "note": "真实承办（经办：陈友强）" },
+    "G1": { "name": "检索门禁", "status": "pass", "note": "案情分析/案例检索已出" },
+    "G2": { "name": "文书门禁", "status": "pass", "note": "执行异议申请书/法律分析与行动建议书已备" },
+    "G3": { "name": "庭审门禁", "status": "todo", "note": "原审2018未到庭；待异议/再审程序" },
+    "G4": { "name": "客户门禁", "status": "pass", "note": "当事人沟通" },
+    "G5": { "name": "程序门禁", "status": "active", "note": "执行异议推进中，待裁定" },
+    "G6": { "name": "风控门禁", "status": "todo", "note": "待回填" },
+    "G7": { "name": "结案回流", "status": "todo", "note": "待程序结果" }
   },
+  "deadlines": [
+    {
+      "id": "d1",
+      "name": "执行异议裁定（已提交2026-05-28，待法院裁定）",
+      "due": null,
+      "type": "触发型",
+      "level": "P2",
+      "state": "armed",
+      "basis": "民诉法232条：法院应审查并作出裁定",
+      "note": "并行推进再审/检察监督/监管投诉/刑事报案，均无明确截止日，故不编造具体日期"
+    }
+  ],
   "calibration": {
     "ticket": "DTC-CASE-001",
     "generatedAt": "2026-09-14",
-    "source": "案件-知识映射索引 + 案件笔记存在性",
-    "verifiedFields": [
-      "caseNo",
-      "title",
-      "domain",
-      "status"
-    ],
-    "pendingFields": [
-      "court",
-      "judge",
-      "client",
-      "deadlines",
-      "meta.agents",
-      "timeline"
-    ],
-    "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+    "backfilledAt": "2026-09-28",
+    "source": "本夹案件笔记原文(王德明担保合同纠纷案-案件笔记.md)",
+    "verifiedFields": ["caseNo", "title", "court", "partyRole", "domain", "status", "client", "opposingParty", "stage"],
+    "pendingFields": ["judge", "meta.agents", "timeline"],
+    "note": "2026-09-28 依笔记回填；d1 为真实待裁定事项，仅标 armed，未编造截止日"
   },
   "meta": {
     "schema": "case-meta/v1",
     "agents": [
-      {
-        "stage": "校准占位",
-        "role": "DTC-CASE-001",
-        "agent": "待回填",
-        "status": "todo",
-        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
-      }
+      { "stage": "①接案建档", "gate": "G0", "role": "建档", "agent": "CLM case-state 回填校验", "status": "已接入", "note": "2026-09-28 依笔记回填" }
     ]
-  }
+  },
+  "updatedAt": "2026-09-28",
+  "source": "案件生命周期管理系统/王德明担保合同纠纷案/王德明担保合同纠纷案-案件笔记.md（2026-09-18 updated）"
 }

@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-09-21 10:30:47",
+  "skill": "D2-egress-audit",
+  "target": "D6 调用审计·数据不出机",
+  "log_available": true,
+  "total_events": 4,
+  "blocked": 1,
+  "allowed": 3,
+  "pii_categories": [
+    "法院案号"
+  ],
+  "last_ts": "2026-09-21 10:30:35",
+  "verdict": "ok",
+  "note": "审计在线：累计 4 次调用，拦截 1 次（数据不出机纪律已观测）"
+}

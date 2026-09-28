@@ -1,5 +1,5 @@
 #!/bin/bash
-# 小德合规管理系统 · 资产指纹自检 v2.1（五模板版）
+# 小德合规管理系统 · 资产指纹自检 v2.2（五模板版）
 # 创建: 2026-09-12 (v1.0)  |  升级: 2026-09-12 (v2.0 五模板)
 # 用法: bash cms_selfcheck.sh
 # 目的: 输出各资产实测值，与《运维手册（五模板版）》【十、资产指纹基线 B1–B24】逐项对比，检测文档漂移
@@ -21,7 +21,7 @@ chk() {
   else echo "  ⚠️  $3: $1  (基线 $2) ← 与基线不符，判『有意变更』还是『漂移』"; fi
 }
 
-echo "══════════ 小德 CMS 资产指纹自检 v2.1（五模板版）══════════"
+echo "══════════ 小德 CMS 资产指纹自检 v2.2（五模板版）══════════"
 echo "检测时间: $(date '+%Y-%m-%d %H:%M:%S')"
 echo
 
@@ -69,7 +69,7 @@ chk "$(find "$CARD/医疗纠纷章卡" -name '*第十六章*' 2>/dev/null | wc -
 # ─────────── 法源 ───────────
 echo "───── 法源 ─────"
 # ⚠️ 统计本地法规一律用 -name：-iname 在中文文件名上会漏匹配（实测漏 8 个）
-chk "$(find "$LAW" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 72 "B15 本地法规总数"
+chk "$(find "$LAW" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 74 "B15 本地法规总数"
 b16=0
 for f in "$LAW/慈善合规类法律法规/中华人民共和国慈善法.md" "$LAW/行政法律规章/基金会管理条例.md" "$LAW/行政法律规章/关于慈善组织开展慈善活动年度支出、管理费用和募捐成本的规定.md" "$LAW/行政法律规章/民间非营利组织会计制度.md" "$LAW/慈善合规类法律法规/境外非政府组织境内活动管理法.md" "$LAW/慈善合规类法律法规/慈善组织信息公开办法（民政部令第81号）.md" "$LAW/慈善合规类法律法规/慈善组织公开募捐管理办法（民政部令第74号）.md" "$LAW/慈善合规类法律法规/慈善组织保值增值投资活动管理暂行办法（民政部令第62号）.md" "$LAW/慈善合规类法律法规/志愿服务条例（国务院令第685号）.md" "$LAW/慈善合规类法律法规/中华人民共和国公益事业捐赠法（主席令第19号）.md" "$LAW/慈善合规类法律法规/社会组织登记管理机关行政处罚程序规定（民政部令第68号）.md"; do [ -f "$f" ] && b16=$((b16+1)); done
 chk "$b16" 11 "B16 ①慈善轨本地法源(11部)"
@@ -80,15 +80,16 @@ echo "  ℹ️  B18 待核验法源: 基线 0 项（②医院轨 H1–H5 + ⑤�
 # ─────────── 版本与文档数 ───────────
 echo "───── 版本与文档数 ─────"
 if [ -f "$SKILL" ]; then
-  SV=$(grep -m1 '^version:' "$SKILL" | awk '{print $2}')
+  # v2.2 加固：容忍 frontmatter 行首缩进（与 cms_change_guard.sh v1.0.2 同步）
+  SV=$(grep -m1 -E '^[[:space:]]*version:' "$SKILL" | awk '{print $2}')
   chk "$SV" "1.8.0" "B19 SKILL 版本"
 else echo "  ⚠️ SKILL.md 缺失"; fi
-chk "$(find "$CMS/01-方案设计" -name '*.md' ! -name '*.bak*' 2>/dev/null | wc -l | tr -d ' ')" 11 "B20 01-方案设计"
-chk "$(find "$CFG" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 20 "B21 05-系统配置"
+chk "$(find "$CMS/01-方案设计" -name '*.md' ! -name '*.bak*' 2>/dev/null | wc -l | tr -d ' ')" 12 "B20 01-方案设计"
+chk "$(find "$CFG" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 25 "B21 05-系统配置"
 chk "$(find "$CMS/06-运维备忘录" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 2 "B22 06-运维备忘录(md)"
 if [ -f "$CMS/06-运维备忘录/cms_change_guard.sh" ]; then
   GN=$(bash "$CMS/06-运维备忘录/cms_change_guard.sh" list 2>/dev/null | tail -1 | grep -oE '[0-9]+' | head -1)
-  chk "$GN" 89 "B23 守卫受控文件数"
+  chk "$GN" 97 "B23 守卫受控文件数"
 else echo "  ⚠️ cms_change_guard.sh 缺失"; fi
 
 echo

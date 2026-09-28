@@ -1,59 +1,59 @@
 {
-  "generated_at": "2026-09-25 20:01:51",
-  "drift_status": "REVIEW",
+  "generated_at": "2026-09-28 09:57:57",
+  "drift_status": "LOCKED",
   "items": [
     {
       "metric": "裁判规则库R卡",
       "path": "rule_library.rule_cards_R",
-      "prev": 2073,
-      "curr": 69,
-      "delta": -2004,
-      "pct": 96.7,
-      "status": "REVIEW"
+      "prev": 79,
+      "curr": 84,
+      "delta": 5,
+      "pct": 6.3,
+      "status": "OK"
     },
     {
       "metric": "子库数",
       "path": "rule_library.sub_libs",
-      "prev": 34,
+      "prev": 35,
       "curr": 35,
-      "delta": 1,
-      "pct": 2.9,
+      "delta": 0,
+      "pct": 0.0,
       "status": "OK"
     },
     {
       "metric": "negative_note覆盖",
       "path": "rule_library.negative_note_coverage",
-      "prev": 602,
+      "prev": 1,
       "curr": 1,
-      "delta": -601,
-      "pct": 99.8,
-      "status": "REVIEW"
+      "delta": 0,
+      "pct": 0.0,
+      "status": "OK"
     },
     {
       "metric": "案由路由卡R-AY",
       "path": "ay_routing_cards",
-      "prev": 319,
+      "prev": 347,
       "curr": 347,
-      "delta": 28,
-      "pct": 8.8,
+      "delta": 0,
+      "pct": 0.0,
       "status": "OK"
     },
     {
       "metric": "经验卡",
       "path": "experience_cards",
-      "prev": 426,
-      "curr": 477,
-      "delta": 51,
-      "pct": 12.0,
+      "prev": 483,
+      "curr": 483,
+      "delta": 0,
+      "pct": 0.0,
       "status": "OK"
     },
     {
       "metric": "审判要件卡物理",
       "path": "trial_elements.physical_cards",
-      "prev": 78,
-      "curr": 81,
-      "delta": 3,
-      "pct": 3.8,
+      "prev": 83,
+      "curr": 83,
+      "delta": 0,
+      "pct": 0.0,
       "status": "OK"
     },
     {
@@ -86,10 +86,10 @@
     {
       "metric": "六层.md总数",
       "path": "six_layers_total",
-      "prev": 5106,
-      "curr": 5415,
-      "delta": 309,
-      "pct": 6.1,
+      "prev": 5762,
+      "curr": 5767,
+      "delta": 5,
+      "pct": 0.1,
       "status": "OK"
     }
   ]

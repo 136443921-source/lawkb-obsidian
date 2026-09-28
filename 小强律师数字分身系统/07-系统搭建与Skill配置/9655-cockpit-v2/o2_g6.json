@@ -1,14 +1,95 @@
 {
-  "generated_at": "2026-09-21 10:26:21",
+  "generated_at": "2026-09-28 21:56:21",
   "skill": "O2-deploy-record",
   "target": "C0/C1 缺口闭环度·G6 版本锁回填",
-  "manifest": "version_lock.manifest.json",
-  "manifest_is_example": false,
+  "manifest": "version_lock.manifest.example.json",
+  "manifest_is_example": true,
   "total": 20,
-  "filled": 20,
-  "blank_count": 0,
-  "rebate_rate": 100.0,
-  "g6_ok": true,
-  "blanks": [],
-  "verdict": "OK"
+  "filled": 0,
+  "blank_count": 20,
+  "rebate_rate": 0.0,
+  "g6_ok": false,
+  "blanks": [
+    {
+      "priority": "P0",
+      "skill": "legal-consult-router"
+    },
+    {
+      "priority": "P0",
+      "skill": "lawyer-yourself-skill"
+    },
+    {
+      "priority": "P0",
+      "skill": "LTI 文本监控器"
+    },
+    {
+      "priority": "P0",
+      "skill": "legal-base（基座）"
+    },
+    {
+      "priority": "P0",
+      "skill": "法律智能体基座"
+    },
+    {
+      "priority": "P1",
+      "skill": "诉讼文书红蓝复核工作流"
+    },
+    {
+      "priority": "P1",
+      "skill": "蓝队出庭律师"
+    },
+    {
+      "priority": "P1",
+      "skill": "红队出庭律师"
+    },
+    {
+      "priority": "P1",
+      "skill": "模拟法庭主控协调器"
+    },
+    {
+      "priority": "P1",
+      "skill": "模拟法庭书记员"
+    },
+    {
+      "priority": "P1",
+      "skill": "庭审战情室"
+    },
+    {
+      "priority": "P1",
+      "skill": "审判要件卡拆卡流水线"
+    },
+    {
+      "priority": "P1",
+      "skill": "文书范式卡建卡流水线"
+    },
+    {
+      "priority": "P2",
+      "skill": "知识飞轮卡库接线"
+    },
+    {
+      "priority": "P2",
+      "skill": "lawkb-legal-consistency-audit"
+    },
+    {
+      "priority": "P2",
+      "skill": "案件生命周期大屏流水线"
+    },
+    {
+      "priority": "P2",
+      "skill": "xiaoqiang-cockpit-hub"
+    },
+    {
+      "priority": "P2",
+      "skill": "静态数据看板生成流水线"
+    },
+    {
+      "priority": "P2",
+      "skill": "合规审查卡建卡流水线"
+    },
+    {
+      "priority": "P2",
+      "skill": "三轮冲击控制器"
+    }
+  ],
+  "verdict": "G6_拦截"
 }

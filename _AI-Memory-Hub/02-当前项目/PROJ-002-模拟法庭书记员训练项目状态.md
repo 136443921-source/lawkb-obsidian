@@ -3,7 +3,7 @@ id: PROJ-002
 title: 模拟法庭书记员训练项目状态
 type: project-fact
 status: active
-updated: 2026-09-21
+updated: 2026-09-28
 source_ai: workbuddy
 scope: 书记员训练
 confidence: high
@@ -50,7 +50,7 @@ related:
 ## 当前状态（脚本自动同步）
 
 <!-- MATURITY_SYNC_START -->
-- 成熟度：**M4 精熟 · 64/100**（2026-09-21 22:45 脚本自动同步）
+- 成熟度：**M4 精熟 · 64/100**（2026-09-28 10:23 脚本自动同步）
 - 显式留痕 7 场｜潜场补录池 0 场｜协同日志书记员相关 0/53
 - D1 训练场次 14.0/20（7 场（模拟对抗 7 场））
 - D2 台账留痕率 7.1/25（2/7 条记录带 knowledge_called / evidence_ledger）

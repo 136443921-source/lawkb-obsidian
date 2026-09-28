@@ -1,0 +1,3299 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小德合规管理系统（CMS）· 运维手册【五模板版】</title>
+<style>
+:root{
+  --bg:#f7f8fa; --panel:#ffffff; --ink:#1f2328; --ink2:#4a5260;
+  --line:#e3e6ea; --accent:#1f6feb; --accent2:#0d419d;
+  --red:#c0392b; --amber:#b7791f; --green:#1e7e34; --code:#f2f4f7;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+.wrap{display:flex; max-width:1500px; margin:0 auto; align-items:flex-start}
+/* 侧栏目录 */
+nav{
+  position:sticky; top:0; width:290px; flex:0 0 290px; height:100vh; overflow-y:auto;
+  background:var(--panel); border-right:1px solid var(--line); padding:20px 14px 60px;
+}
+nav h3{font-size:13px; color:var(--ink2); letter-spacing:1px; margin:0 0 12px 6px; text-transform:uppercase}
+nav a{
+  display:block; color:var(--ink2); text-decoration:none; font-size:13px; line-height:1.5;
+  padding:5px 8px; border-radius:6px; margin-bottom:2px;
+}
+nav a:hover{background:#eef2f7; color:var(--accent2)}
+nav a.lv1{font-weight:600; color:var(--ink); margin-top:8px}
+nav a.lv2{padding-left:20px; font-size:12.5px}
+main{flex:1; min-width:0; padding:36px 48px 100px; background:var(--bg)}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:28px 34px; box-shadow:0 1px 3px rgba(0,0,0,.04)}
+h1{font-size:27px; margin:0 0 6px; line-height:1.35; letter-spacing:-.2px}
+h2{font-size:21px; margin:34px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--accent); color:var(--accent2)}
+h3{font-size:17.5px; margin:24px 0 10px; color:var(--ink)}
+h4{font-size:15.5px; margin:18px 0 8px; color:var(--ink2)}
+p{margin:9px 0}
+ul,ol{padding-left:24px; margin:9px 0}
+li{margin:4px 0}
+strong{color:#0b1320}
+code{
+  background:var(--code); padding:2px 6px; border-radius:4px; font-size:13.5px;
+  font-family:"SF Mono",Menlo,Consolas,monospace; color:#b3275a;
+}
+pre{background:#1f2430; color:#e6e9ef; padding:16px 18px; border-radius:9px; overflow-x:auto; line-height:1.6}
+pre code{background:none; color:inherit; padding:0; font-size:13px}
+blockquote{
+  margin:14px 0; padding:12px 18px; background:#f0f4fa; border-left:4px solid var(--accent);
+  border-radius:0 8px 8px 0; color:var(--ink2);
+}
+blockquote p{margin:5px 0}
+table{border-collapse:collapse; width:100%; margin:14px 0; font-size:14px; display:block; overflow-x:auto}
+th,td{border:1px solid var(--line); padding:8px 11px; text-align:left; vertical-align:top}
+th{background:#eef2f7; font-weight:600; color:var(--ink); white-space:nowrap}
+tr:nth-child(even) td{background:#fafbfc}
+hr{border:0; border-top:1px solid var(--line); margin:26px 0}
+a{color:var(--accent)}
+.meta{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 22px}
+.badge{
+  background:#eef2f7; color:var(--ink2); border-radius:20px; padding:3px 12px;
+  font-size:12.5px; border:1px solid var(--line);
+}
+.badge.ver{background:#e8f0fe; color:var(--accent2); font-weight:600}
+.topbar{
+  position:sticky; top:0; z-index:9; background:rgba(255,255,255,.94); backdrop-filter:blur(8px);
+  border:1px solid var(--line); border-radius:10px; padding:10px 16px; margin-bottom:18px;
+  display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--ink2);
+}
+@media (max-width:960px){
+  nav{display:none} main{padding:20px}
+}
+@media print{
+  nav,.topbar{display:none} main{padding:0} .card{border:0; box-shadow:none}
+}
+</style></head>
+<body>
+<div class="wrap">
+<nav><h3>目录</h3><a class="lv1" href="#h-小德合规管理系统-CMS-运维手册-五模板版">小德合规管理系统（CMS）· 运维手册【五模板版】</a><a class="lv2" href="#h-〇-权威源章程与-30-秒速读-每次动手前先看这段">〇、权威源章程与 30 秒速读（每次动手前先看这段）</a><a class="lv2" href="#h-一-系统总架构">一、系统总架构</a><a class="lv2" href="#h-二-五模板总览-核心对照表">二、五模板总览（核心对照表）</a><a class="lv2" href="#h-三-通用层-五模板共享-不必重建">三、通用层（五模板共享 · 不必重建）</a><a class="lv2" href="#h-四-模板①-慈善合规管理">四、模板① · 慈善合规管理</a><a class="lv2" href="#h-五-模板②-医院合规管理">五、模板② · 医院合规管理</a><a class="lv2" href="#h-六-模板③-合同生命周期管理-新建">六、模板③ · 合同生命周期管理（🆕 新建）</a><a class="lv2" href="#h-七-模板④-非诉业务管理-新建">七、模板④ · 非诉业务管理（🆕 新建）</a><a class="lv2" href="#h-八-模板⑤-医疗纠纷调解-新建">八、模板⑤ · 医疗纠纷调解（🆕 新建）</a><a class="lv2" href="#h-九-跨模板互哺矩阵">九、跨模板互哺矩阵</a><a class="lv2" href="#h-十-资产指纹基线-五模板版">十、资产指纹基线（五模板版）</a><a class="lv2" href="#h-十一-变更联动矩阵-改-A-必同步-B">十一、变更联动矩阵（改 A 必同步 B）</a><a class="lv2" href="#h-十二-运维日历">十二、运维日历</a><a class="lv2" href="#h-十三-红线总表-执业风险-违反立即回滚">十三、红线总表（执业风险 · 违反立即回滚）</a><a class="lv2" href="#h-十四-备份与回滚">十四、备份与回滚</a><a class="lv2" href="#h-十五-一键自检脚本">十五、一键自检脚本</a><a class="lv1" href="#h-五模板卡库快检">五模板卡库快检</a><a class="lv1" href="#h-本地法规总数">本地法规总数</a><a class="lv1" href="#h-三件套状态-非①模板应为-0">三件套状态（非①模板应为 0）</a><a class="lv2" href="#h-十六-健康度看板-2026-09-14-v1-4-7">十六、健康度看板（2026-09-14 · v1.4.7）</a><a class="lv2" href="#h-十七-待办队列">十七、待办队列</a><a class="lv2" href="#h-十八-变更登记台账-append-only">十八、变更登记台账（append-only 🔴）</a><a class="lv2" href="#h-附录-A-五模板法源速查">附录 A · 五模板法源速查</a><a class="lv2" href="#h-附录-B-待回源核验清单-19-项">附录 B · 待回源核验清单（≥19 项）</a><a class="lv2" href="#h-附录-C-五模板-SKU-三件套-变现公式">附录 C · 五模板 SKU 三件套（变现公式）</a><a class="lv2" href="#h-变更日志">变更日志</a></nav>
+<main><div class="card">
+<div class="topbar"><span>📘 LawKB · 小德合规管理系统</span><span>离线阅读版 · 自包含</span></div>
+<h1>小德合规管理系统（CMS）· 运维手册【五模板版】</h1>
+<div class="meta"><span class="badge ver">版本：1.4.8</span><span class="badge">状态：active</span><span class="badge">成熟度：🌱初稿</span><span class="badge">负责人：老强</span><span class="badge">更新：2026-09-14T11:27</span><span class="badge">母本：01-方案设计/小德慈善组织合规管理系统-轨道1改造方案-v2.0-2026-09-12.md（v2.1.0 · 设计母</span></div>
+<h1 id="h-小德合规管理系统-CMS-运维手册-五模板版">小德合规管理系统（CMS）· 运维手册【五模板版】</h1>
+
+<blockquote>
+<h1 id="ssot-single-source-of-truth">🔷 权威源声明（SSOT · Single Source of Truth）</h1>
+<p><strong>本文件是「小德合规管理系统」的系统母本备忘录与唯一权威源</strong>（老强 2026-09-12 拍板）。
+凡涉及 CMS 的<strong>结构、状态、基线、边界、待办、版本、法源、弹药</strong>等问题，<strong>一律以本文件为准</strong>。
+其他任何文件（索引／方案／配置／卡库／SKILL）与本文件冲突时，<strong>以本文件为准</strong>，并须反向修正对方。</p>
+<p><strong>权威层级（冲突自上而下裁决）</strong></p>
+<p><code>L-1  国家法律法规文本（本地权威源 / pkulaw 核验件）   ← 不可违抗
+ L0  本文件 · 系统母本备忘录（SSOT）                  ← ★ 你在这里
+ L1  00-索引（制品清单）／05-系统配置（三件套）／03-经验卡片（弹药）
+ L2  01-方案设计（设计 rationale）／02-落地报告（实施记录）
+ L3  ~/.workbuddy/skills/小德合规管理系统/SKILL.md（执行入口）</code></p>
+<p>🔴 <strong>迭代铁律（最高优先级 · 强制）</strong>：任何一次系统改动完成后，必须回到本文件完成三件事，否则该次迭代视为「<strong>未完成</strong>」：
+1. 在【十八、变更登记台账】追加一行（append-only，禁止删改历史行）
+2. 若触及【十、资产指纹基线】任一指标 → 同步刷新该行
+3. 刷新 frontmatter 的 <code>updated</code> 与 <code>version</code>（patch 级 +0.0.1）</p>
+<p><strong>为什么这么严</strong>：2026-09-12 已实测发现 SKILL.md 声明「慈法合规 52 张 + 慈善 55 张」而真实路径为 0 张——
+文档漂移会让每次调用都"弹空枪"，还制造"我已经检索过了"的假象。<strong>这比没有规则更糟。</strong></p>
+<p>🔴 <strong>制品归档铁律（老强 2026-09-14 确立 · 强制）</strong>：小德合规管理系统产生的<strong>制品文件</strong>按二分法归位，否则视为「散落未完成」：
+1. <strong>可进飞轮的（知识卡型：经验卡／规则卡／合规审查卡／法源指针卡等）一律进飞轮</strong> → 落点 <code>03-经验卡片/</code> 及飞轮卡库，且经验卡／审批流须显式引用挂接（本地源✅标注）。
+2. <strong>不进飞轮的（母本／审批流三件套／索引／HTML 阅读版／运维备忘录／法源资产索引／案件资料等）一律存入 <code>LawKB/小德合规管理系统/</code> 文件夹内</strong>，便于集中查看。
+3. <strong>法源文件（法律法规库 .md）属飞轮源层资产，单点存放于 <code>LawKB/法律法规库/</code> 各子库</strong>（医事／程序法／慈善／通用…），不在小德子文件夹复制；小德文件夹内用「法源资产索引」提供查看入口。
+4. <strong>技能文件（SKILL.md）固定位于 <code>~/.workbuddy/skills/小德合规管理系统/</code>，不计入散落</strong>，属 WorkBuddy 执行层配置。</p>
+<p><strong>为什么</strong>：老强在 Obsidian（LawKB vault）中需对小德系统制品"一文件夹看全"；飞轮卡须可回收复用。散落于 <code>LawKB/</code> 根或其他子系统者，复盘须归位（见十八台账 v1.4.8）。</p>
+</blockquote>
+<hr />
+<h2 id="h-〇-权威源章程与-30-秒速读-每次动手前先看这段">〇、权威源章程与 30 秒速读（每次动手前先看这段）</h2>
+
+<h3 id="h-〇-1-本文件的权威地位">〇.1 本文件的权威地位</h3>
+
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>答案（以本文件为准）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMS 现在有几个模板？</td>
+<td><strong>5 个</strong>（第二章）</td>
+</tr>
+<tr>
+<td>某模板治理主体是谁？</td>
+<td>第二／四~八章</td>
+</tr>
+<tr>
+<td>卡库有多少张、归哪个模板？</td>
+<td><strong>第十章 指纹基线 B1–B22</strong></td>
+</tr>
+<tr>
+<td>改了 A 还要改哪些 B？</td>
+<td><strong>第十一章 变更联动矩阵</strong></td>
+</tr>
+<tr>
+<td>哪些事本系统不能做？</td>
+<td><strong>第十三章 红线总表（10 条）</strong></td>
+</tr>
+<tr>
+<td>当前健康度与待办？</td>
+<td>第十六／十七章</td>
+</tr>
+<tr>
+<td>法条能不能引？</td>
+<td><strong>附录 A 法源速查 + 附录 B 待核验清单</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 <strong>索引（00-索引）是"目录"，本文件是"账本"。</strong> 目录可以简写，账本必须准确；两者冲突一律改索引。</p>
+</blockquote>
+<h3 id="h-〇-2-迭代协议-SOP-系统变更必走五步-强制">〇.2 迭代协议 SOP（系统变更必走五步 · 强制）</h3>
+
+<blockquote>
+<p>本 SOP 是「迭代铁律」的可执行版本。<strong>任一步缺失，该次迭代视为未完成。</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>步</th>
+<th>动作</th>
+<th>验收标准</th>
+<th>跳过后果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td><strong>备份</strong>：改动前把待改文件 <code>cp</code> 到 <code>/tmp/&lt;主题&gt;_backup_&lt;时间戳&gt;/</code></td>
+<td>备份目录存在且文件数正确</td>
+<td>无法回滚</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td><strong>查联动</strong>：查【十一、变更联动矩阵】，列出本次波及的全部文件</td>
+<td>有明确的同步清单</td>
+<td>改一处漏三处 → 新漂移</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td><strong>执行 + dry-run</strong>：批量操作先 dry-run，10 份/轮；改完实跑【十五、自检脚本】</td>
+<td>自检 ✅ 全绿或差异已判为"有意变更"</td>
+<td>静默漂移</td>
+</tr>
+<tr>
+<td><strong>S4</strong></td>
+<td><strong>回写母本</strong>（★核心）：在本文件完成——① 十八章台账 append 一行 ② 若触及基线则刷新第十章对应行 ③ 刷新 frontmatter <code>updated</code>/<code>version</code></td>
+<td>三件事全部完成</td>
+<td><strong>迭代判定为未完成</strong></td>
+</tr>
+<tr>
+<td><strong>S5</strong></td>
+<td><strong>外溢同步</strong>：按 S2 清单同步索引／配置／卡库／SKILL；SKILL 升版则同步 B19</td>
+<td>零残留（<code>grep</code> 复扫旧表述为空）</td>
+<td>母本与执行层不一致</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🔴 <strong>S4 是本文件作为 SSOT 的立足点。</strong> 系统可以暂时不完善，但<strong>母本必须始终反映系统的真实状态</strong>——
+母本失真的危害远大于功能缺失，因为它会让后续所有决策建立在错误前提上。</p>
+</blockquote>
+<h3 id="h-〇-3-什么算-系统迭代-触发-SOP-的清单">〇.3 什么算「系统迭代」（触发 SOP 的清单）</h3>
+
+<p>凡发生下列任一情形，<strong>即触发本 SOP</strong>：</p>
+<ul>
+<li>新增／删除／重命名任一模板、制度、控制节点、字段表、经验卡</li>
+<li>新增／修订任一法源（含 <code>statute_text_pending</code> → 已核验 的状态翻转）</li>
+<li>卡库数量或归属变化（含跨模板互哺卡的归属核定）</li>
+<li>变更任一红线、边界、执业限制条款</li>
+<li>变更档位／定价／SKU 结构</li>
+<li><strong>修复任何一处文档漂移（含自查发现的错误）</strong> ← 最容易漏，务必回填</li>
+<li>SKILL.md 版本升级</li>
+</ul>
+<h3 id="h-〇-4-变更守卫-技术强制-2026-09-13-新增">〇.4 变更守卫（技术强制 · 2026-09-13 新增）🛡️</h3>
+
+<blockquote>
+<p>〇.2 的 SOP 是<strong>人的自律</strong>；本节是<strong>机器的强制</strong>。
+光有协议没有检测，等于没有协议 —— 「回写母本」会在赶进度时被静默跳过。</p>
+</blockquote>
+<p><strong>守卫脚本</strong>：<code>06-运维备忘录/cms_change_guard.sh</code>（v1.0.1 · 已实跑验证三态）</p>
+<pre><code class="language-bash">bash cms_change_guard.sh init              # 建立/重建指纹快照（仅在回写完成后执行）
+bash cms_change_guard.sh check             # 检测（默认）：系统变了但台账没加行 → 红态报错
+bash cms_change_guard.sh mark &quot;变更摘要&quot;    # 回写完成后登记新基线
+bash cms_change_guard.sh list              # 列出受控文件清单
+</code></pre>
+<p><strong>原理</strong>：对 CMS 全部受控文件取 md5 存快照，同时记录「台账行数 + 母本 version」；check 时三态判定 ——</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>判定输出</th>
+<th>退出码</th>
+<th>处置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无文件变动</td>
+<td>✅ 备忘录无需更新</td>
+<td>0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>有变动 <strong>且</strong> 台账行数已增加</td>
+<td>✅ 回写已完成（版本未刷则提示）</td>
+<td>0</td>
+<td>确认后 <code>mark</code></td>
+</tr>
+<tr>
+<td>有变动 <strong>但</strong> 台账行数未变</td>
+<td>🔴 <strong>未回写，本次迭代【未完成】</strong></td>
+<td><strong>2</strong></td>
+<td>补 S4 三件事</td>
+</tr>
+</tbody>
+</table>
+<p><strong>受控范围（53 个文件）</strong>：<code>00-索引</code>／<code>SKILL.md</code>／<code>01-方案设计</code>(11)／<code>02-落地报告</code>(8)／<code>03-经验卡片</code>(27)／<code>05-系统配置</code>(3)／<code>06-运维备忘录</code> 内 md(2)。
+新增系统资产时须同步在脚本 <code>collect()</code> 中追加。</p>
+<p><strong>执行时机</strong>：① 每次系统改完必跑；② 每周运维日跑；③ 母本回写（S4）完成后执行 <code>mark</code> 登记基线。</p>
+<blockquote>
+<p>⚠️ <strong>2026-09-13 事故教训（权威源位置歧义）</strong>：本母本与单模板 md 曾被异常移动至 <code>01-方案设计/</code> 目录，
+导致权威源出现两个物理位置、守卫脚本读台账返回 0（静默失真）。已恢复并核验 md5 一致，副本移出。
+<strong>铁律补充：母本与单模板台账的物理位置唯一 = <code>06-运维备忘录/</code>。</strong>
+若在别处发现同名文件，一律视为副本，须移出，不得就地编辑。</p>
+<p>⚠️ <strong>仅做格式／排版美化、不涉上述实质内容</strong>时，可免 S1–S3，但<strong>仍须在台账 append 一行</strong>说明。</p>
+</blockquote>
+<h3 id="h-〇-4-30-秒速读">〇.4 30 秒速读</h3>
+
+<pre><code>你要改东西？
+    │
+    ├─ 先备份（/tmp 时间戳目录）  ←── 铁律，不可跳过
+    │
+    ├─ 查【十一、变更联动矩阵】→ 确认这次改动会波及哪些文件
+    │
+    ├─ 判边界：涉诉/涉裁/涉刑/涉行政处罚救济？→ 立即转小强律师数字分身系统，本系统不接
+    │
+    ├─ 动手改（批量前先 dry-run，10 份/轮上限）
+    │
+    ├─ 跑【十五、一键自检脚本】→ 确认指纹未意外漂移
+    │
+    ├─ 填【十八、变更登记台账】  ←── 漏了这步 = 迭代未完成
+    │
+    └─ 刷【十、资产指纹基线】+ frontmatter updated/version
+</code></pre>
+<h3 id="h-〇-5-五模板速查卡">〇.5 五模板速查卡</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>模板</th>
+<th>一句话</th>
+<th>治理主体</th>
+<th>弹药</th>
+<th>法源</th>
+<th>成熟度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td><strong>慈善合规管理</strong></td>
+<td>基金会/慈善会的合规操作系统</td>
+<td>理事会／监事会／秘书长</td>
+<td>🔴 2 张</td>
+<td>🟡 2 部</td>
+<td>🟢 三件套齐全</td>
+</tr>
+<tr>
+<td>②</td>
+<td><strong>医院合规管理</strong></td>
+<td>基层医院依法执业体检</td>
+<td>院长／医务科／医疗质量管理委员会</td>
+<td>🟢 23 张</td>
+<td>🟢 约 10 部</td>
+<td>🔴 缺三件套</td>
+</tr>
+<tr>
+<td>③</td>
+<td><strong>合同生命周期管理</strong></td>
+<td>从起草到归档的全周期管控</td>
+<td>法务／合同管理员／分管领导</td>
+<td>🔴 <strong>0 张</strong></td>
+<td>🟢 民法典全文</td>
+<td>🔴 空库新建</td>
+</tr>
+<tr>
+<td>④</td>
+<td><strong>非诉业务管理</strong></td>
+<td>常年顾问的非诉交付流水线</td>
+<td>承办律师／合伙人复核</td>
+<td>🔴 0 张</td>
+<td>🟡 散落</td>
+<td>🔴 新建</td>
+</tr>
+<tr>
+<td>⑤</td>
+<td><strong>医疗纠纷调解</strong></td>
+<td>医患纠纷非诉调解与预防回喂</td>
+<td>调解员／医患双方／医调委</td>
+<td>🟡 章卡 1 章</td>
+<td>🟢 条例 35 条</td>
+<td>🔴 新建</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>弹药 = 该模板专属经验卡数</strong>。③④ 为 0，属"<strong>有路由无弹药</strong>"，调用时须显式告知用户"结论未经卡库校验"，禁静默跳过。</p>
+</blockquote>
+<hr />
+<h2 id="h-一-系统总架构">一、系统总架构</h2>
+
+<pre><code>                        小德合规管理系统（CMS）
+                    L0 父路由 · 六域框架 · 共用门禁
+                                │
+        ┌───────┬───────┬───────┼───────┬───────┐
+        │       │       │       │       │       │
+      ①慈善   ②医院   ③合同   ④非诉   ⑤调解
+      合规    合规    生命    业务    纠纷
+      管理    管理    周期    管理    调解
+        │       │       │       │       │
+        └───────┴───────┴───┬───┴───────┘
+                            │
+                   【EDI 第三层 · 可插拔】
+              突发/未归口场景 → 注册即接入，不动门禁
+        （例：EDI-20260906-001 航合物流致死事故）
+
+    ┌──────────────────────────────────────────┐
+    │  共用通用层（详见第三章）                  │
+    │  六域框架 · 接线三规范 · G8 门禁 · LTI     │
+    │  三件套 SKU · 三层产品 · 执业边界 · 健康分 │
+    └──────────────────────────────────────────┘
+                            │
+                  涉诉/涉裁/涉刑/行政复议诉讼
+                            ↓
+                 🔴 转「小强律师数字分身系统」
+</code></pre>
+<h3 id="h-1-1-三层职责边界-不可越位">1.1 三层职责边界（不可越位）</h3>
+
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>职责</th>
+<th>不可做</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L0 父路由</strong></td>
+<td>分诊派发、六域对齐、门禁调度</td>
+<td>不直接出专业结论</td>
+</tr>
+<tr>
+<td><strong>五子模板</strong></td>
+<td>各领域合规体检/审查/调解</td>
+<td><strong>不碰诉讼策略、代理意见、辩护方案</strong></td>
+</tr>
+<tr>
+<td><strong>EDI 第三层</strong></td>
+<td>突发场景注册接入</td>
+<td>不改双子模板核心字段，仅实例化后反向注入</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🔴 <strong>CMS 不可逾越的红线</strong>：CMS 只做<strong>非诉合规 + 纠纷调解/非诉处置层</strong>。
+<strong>任何涉诉、涉裁、涉刑事、涉行政处罚救济问题，必须转小强律师数字分身系统。</strong>
+历史先例：韩杰案（医疗事故罪·涉刑）正确转出，诉讼经验回人伤法库、运营合规经验回医院合规库，<strong>互不污染</strong>。</p>
+</blockquote>
+<h3 id="h-1-2-与既有技能的关系-不是从零建">1.2 与既有技能的关系（不是从零建）</h3>
+
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>复用的既有技能</th>
+<th>关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 慈善</td>
+<td><code>小德慈善合规中枢</code>、厚德 139 条内规</td>
+<td>本体</td>
+</tr>
+<tr>
+<td>② 医院</td>
+<td><code>医院合规与纠纷处理</code>、医疗纠纷章卡 16 章</td>
+<td>本体</td>
+</tr>
+<tr>
+<td>③ 合同</td>
+<td><code>合同文书管理系统(L0)</code>、<code>合同审查工作流</code>、<code>合同审查门禁</code>、<code>蓝队律师合同审查</code></td>
+<td><strong>L0 当执行引擎，模板做全周期管理</strong></td>
+</tr>
+<tr>
+<td>④ 非诉</td>
+<td><code>非诉文书红蓝复核工作流</code>、数据合规/税务审查等</td>
+<td>复用门禁与复核流</td>
+</tr>
+<tr>
+<td>⑤ 调解</td>
+<td><code>医疗纠纷专项</code>、<code>案件全生命周期·调解和解方案</code></td>
+<td>复用程序与文书</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-二-五模板总览-核心对照表">二、五模板总览（核心对照表）</h2>
+
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>① 慈善合规</th>
+<th>② 医院合规</th>
+<th>③ 合同生命周期</th>
+<th>④ 非诉业务</th>
+<th>⑤ 医疗纠纷调解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>治理主体</strong></td>
+<td>理事会／监事会／秘书长</td>
+<td>院长／医务科／医疗质量管理委员会／药事会</td>
+<td>法务／合同管理员／业务负责人／分管领导</td>
+<td>承办律师／合伙人复核</td>
+<td>调解员／医患双方／医调委</td>
+</tr>
+<tr>
+<td><strong>客群</strong></td>
+<td>基金会·慈善会·社会服务机构</td>
+<td>社区卫生服务中心·乡镇卫生院·一二级医院</td>
+<td>全部前述客群 + 通用商事</td>
+<td>常年法律顾问客户</td>
+<td>医疗机构·患者·医调委</td>
+</tr>
+<tr>
+<td><strong>六域扩展</strong></td>
+<td>+<strong>声誉域</strong></td>
+<td>+<strong>数据合规域</strong></td>
+<td>+<strong>履约域</strong></td>
+<td>+<strong>交付物域</strong></td>
+<td>+<strong>程序域</strong></td>
+</tr>
+<tr>
+<td><strong>核心流程</strong></td>
+<td>募捐／资助／关联交易／信息公开</td>
+<td>依法执业／医保基金／采购／病历</td>
+<td>起草→审查→签署→履约→归档→纠纷触发</td>
+<td>体检→复核→季报→重大活动→年度复盘</td>
+<td>受理→评估→调解→协议→履行→回访</td>
+</tr>
+<tr>
+<td><strong>弹药（卡）</strong></td>
+<td>🔴 <strong>2</strong></td>
+<td>🟢 <strong>23</strong></td>
+<td>🔴 <strong>0</strong></td>
+<td>🔴 <strong>0</strong></td>
+<td>🟡 章卡 1 章</td>
+</tr>
+<tr>
+<td><strong>本地法源</strong></td>
+<td>🟡 2 部</td>
+<td>🟢 约 10 部</td>
+<td>🟢 民法典全文</td>
+<td>🟡 散落</td>
+<td>🟢 条例 35 条</td>
+</tr>
+<tr>
+<td><strong>制度清单</strong></td>
+<td>✅ 30 项</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+</tr>
+<tr>
+<td><strong>审批流</strong></td>
+<td>✅ 15 节点</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+</tr>
+<tr>
+<td><strong>字段表</strong></td>
+<td>✅ 10 张</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+<td>❌ 待建</td>
+</tr>
+<tr>
+<td><strong>档位</strong></td>
+<td>A／B 档</td>
+<td>⚠️ 待裁决（建议 ≥B）</td>
+<td>⚠️ 待裁决</td>
+<td>⚠️ 待裁决</td>
+<td>⚠️ 待裁决</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 <strong>档位统一标 ⚠️ 待裁决</strong>（老强 2026-09-12 拍板：本次不裁决，不影响骨架）。
+已知冲突：产品手册 A¥2.98万/B¥5.98万/C¥12.8万 <strong>vs</strong> 报价单 标准版¥3万/轻量SaaS¥5千/定制专项¥2万起。<strong>裁决前不得对外报价。</strong></p>
+</blockquote>
+<hr />
+<h2 id="h-三-通用层-五模板共享-不必重建">三、通用层（五模板共享 · 不必重建）</h2>
+
+<h3 id="h-3-1-六域框架-扩展域规则">3.1 六域框架 + 扩展域规则</h3>
+
+<p><strong>基础六域</strong>：制度 ／ 流程 ／ 运营 ／ 财务 ／ 人资 ／ 税务 —— 五模板统一坐标系。</p>
+<p><strong>扩展域规则</strong>：每个模板可扩 1 个专属域（已有先例：②扩数据合规域、①扩声誉域）。</p>
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>扩展域</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 慈善</td>
+<td><strong>声誉域</strong></td>
+<td>舆情应对、网络谣言、公信力维护</td>
+</tr>
+<tr>
+<td>② 医院</td>
+<td><strong>数据合规域</strong></td>
+<td>PHI 红线、AI 工具接入、PIA、数据出境</td>
+</tr>
+<tr>
+<td>③ 合同</td>
+<td><strong>履约域</strong></td>
+<td>履约节点、验收、付款、违约、到期续签</td>
+</tr>
+<tr>
+<td>④ 非诉</td>
+<td><strong>交付物域</strong></td>
+<td>意见书、体检报告、复核意见、年度复盘</td>
+</tr>
+<tr>
+<td>⑤ 调解</td>
+<td><strong>程序域</strong></td>
+<td>受理、回避、协议、司法确认、回访</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>六域空域检查</strong>：建任何新模板前，必须检查"六个基础域是否都有源材料"。
+历史教训：医疗合规资产复盘时发现<strong>税务域 17 章无专章 = 真实缺口</strong>，只能做占位卡（confidence 0.60）。</p>
+</blockquote>
+<h3 id="h-3-2-接线层三规范-五模板统一标准">3.2 接线层三规范（五模板统一标准）</h3>
+
+<table>
+<thead>
+<tr>
+<th>资产类型</th>
+<th>必补字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>制度清单</strong></td>
+<td><code>cms_domain</code>（六域）+ <code>source_skill</code> + <code>card_id</code>（无卡填 <code>CARD-TODO</code>）</td>
+</tr>
+<tr>
+<td><strong>审批流节点</strong></td>
+<td>法条依据（本地库缺失标 <code>statute_text_pending</code> + ⚠️）+ 对应制度条款号 + 经验卡 ID</td>
+</tr>
+<tr>
+<td><strong>字段表</strong></td>
+<td><code>合规依据</code> + <code>经验卡ID回写</code> + <code>LTI校验状态</code>（未校验／校验中／通过／REJECT）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong><code>LTI校验状态</code> 是本系统相对普通低代码模板的唯一护城河</strong> —— 别人做不出来，因为别人没有 LTI 文本监控器。<strong>五模板均应内置。</strong></p>
+</blockquote>
+<h3 id="h-3-3-门禁与留痕五件套">3.3 门禁与留痕五件套</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>件</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>G8 非诉合规门禁</strong></td>
+<td>5 步缺一即阻断：①红蓝复核通过 ②至少跑一个合规技能体检出风险点 ③LTI 防火墙（R101/C301 为 REJECT 级）④调用留痕 ⑤产经验卡</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>LTI 文本监控器</strong></td>
+<td>五维 R/L/C/T/P（法条真实性／法理逻辑／一致性／溯源／程序），<strong>REJECT=0 才准交付</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>铁律第 6 条</strong></td>
+<td>非诉调用<strong>必留痕 + 必产卡</strong>，消灭"空调用"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>周巡检自动化</strong></td>
+<td><code>automation-1787843981235</code>（周日 21:00），内置六-B 安全铁律 + 真跑校验 + 连接器离线降级（<strong>不伪造、不污染去重表</strong>）</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>调用记录</strong></td>
+<td><code>05-调用/</code>，<code>knowledge_called</code> 字段<strong>非空为硬要求</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-3-4-三件套-SKU-公式-五模板通用变现公式">3.4 三件套 SKU 公式（五模板通用变现公式）</h3>
+
+<blockquote>
+<p><strong>每领域 3 件</strong>：① 自检项（A 档体检，<strong>免费引流</strong>）② 文书模板（B 档锁客，¥499–999/份）③ 顾问动作（B/C 档变现，¥1–3 万/项）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>领域拆分方式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 慈善</td>
+<td><strong>16 领域 × 三件套</strong></td>
+<td>关联交易／公开募捐／信息公开…</td>
+</tr>
+<tr>
+<td>② 医院</td>
+<td><strong>N 领域 × 三件套</strong></td>
+<td>依法执业／医保基金／病历／采购…</td>
+</tr>
+<tr>
+<td>③ 合同</td>
+<td><strong>合同类型 × 三件套</strong></td>
+<td>审查清单／范本／谈判动作（买卖·租赁·服务·股权转让…）</td>
+</tr>
+<tr>
+<td>④ 非诉</td>
+<td><strong>非诉事项 × 三件套</strong></td>
+<td>股权架构／劳动用工／数据合规／监管应对…</td>
+</tr>
+<tr>
+<td>⑤ 调解</td>
+<td><strong>程序节点 × 三件套</strong></td>
+<td>受理评估／协议文本／回访动作</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 <strong>引流钩子铁律</strong>：免费体检<strong>只给结论 + 风险提示，不给整改方案</strong> —— 方案是付费项。</p>
+</blockquote>
+<h3 id="h-3-5-三层产品-三层杠杆">3.5 三层产品 + 三层杠杆</h3>
+
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>产品</th>
+<th>杠杆</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引流层</td>
+<td>免费／¥99 自检</td>
+<td>知识标准化（章卡 + 139 条内规）</td>
+</tr>
+<tr>
+<td>现金流层</td>
+<td>轻量 SaaS ¥0.5–2 万/年</td>
+<td>流程自动化（周巡检）</td>
+</tr>
+<tr>
+<td>利润层</td>
+<td>年度顾问包三档</td>
+<td>门禁化（G8 + LTI），老强只做"复核签字"</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🚫 <strong>产品化占时 &lt; 30%，诉讼主营 &gt; 70%</strong>（老强双线定位铁律）。</p>
+</blockquote>
+<h3 id="h-3-6-执业边界总纲-五模板通用-执业风险所在">3.6 执业边界总纲（五模板通用 · 执业风险所在）</h3>
+
+<p><strong>不承诺</strong>（任何对外文件均不得出现）：
+- ❌ "保证通过年检／评级／审计"
+- ❌ "绝不受到行政处罚／监管约谈"
+- ❌ "保证募捐效果／投资回报／调解结果"</p>
+<p><strong>不包</strong>（服务协议第九条通用条款）：
+- ❌ 诉讼／仲裁代理
+- ❌ 行政处罚听证与复议诉讼代理
+- ❌ 财务审计、税务申报代理（仅作合规维度提示）
+- ❌ 经营／投资决策的商业判断与担保</p>
+<p><strong>名义铁律</strong>：
+- 文书以「<strong>合规咨询意见</strong>」出具，<strong>不得以「审计报告」名义</strong>
+- 公开募捐方案备案 ≠ 行政审批替代（审批权在民政）
+- 责任上限 = 已付当年服务费总额（故意或重大过失除外）</p>
+<h3 id="h-3-7-合规健康分-通用七维模型">3.7 合规健康分（通用七维模型）</h3>
+
+<blockquote>
+<p>七维：制度完备／流程执行／财务合规／信息公开／风险处置／留痕质量／培训覆盖
+🔴 <strong>红线项优先</strong>：任一红线指标为 0（如财务红线、关联交易合规率），总分再高也直接降「严重」。</p>
+</blockquote>
+<hr />
+<h2 id="h-四-模板①-慈善合规管理">四、模板① · 慈善合规管理</h2>
+
+<h3 id="h-4-1-定位与边界">4.1 定位与边界</h3>
+
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一句话</strong></td>
+<td>基金会／慈善会／社会服务机构的合规操作系统</td>
+</tr>
+<tr>
+<td><strong>做</strong></td>
+<td>合规体检、制度搭建、募捐与资助合规、关联交易审查、信息公开时限管理、年度报告、志愿者管理</td>
+</tr>
+<tr>
+<td><strong>不做</strong></td>
+<td>诉讼仲裁代理；财务审计与税务申报；公开募捐行政审批替代（备案审批权在民政）</td>
+</tr>
+<tr>
+<td><strong>护城河</strong></td>
+<td>16 领域可售卖清单 + 厚德基金会 139 条内规 + LTI 门禁</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-4-2-治理主体与客群">4.2 治理主体与客群</h3>
+
+<ul>
+<li><strong>治理主体</strong>：理事会（决策）／监事会（监督）／秘书长（执行）</li>
+<li><strong>客群分层</strong>：A 基金会 ／ B 慈善总会·社会服务机构 ／ C 筹备设立 ／ G 民政监管方</li>
+</ul>
+<h3 id="h-4-3-六域映射-扩展域">4.3 六域映射 + 扩展域</h3>
+
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>内容</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>制度</td>
+<td>章程、30 项制度、三重一大</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>流程</td>
+<td>募捐、资助、关联交易、信息公开</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>运营</td>
+<td>项目管理、受益人确定、志愿服务</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>财务</td>
+<td>年度支出 ≥70%、管理费用 ≤10%、募捐成本</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>人资</td>
+<td>专职人员、志愿者</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>税务</td>
+<td>免税资格、票据</td>
+<td>🟡 待补</td>
+</tr>
+<tr>
+<td><strong>声誉域</strong>（扩展）</td>
+<td>舆情应对、网络谣言摆拍引流</td>
+<td>✅ 1 张卡</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-4-4-资产地图-指纹基线">4.4 资产地图 + 指纹基线</h3>
+
+<table>
+<thead>
+<tr>
+<th>资产</th>
+<th>路径／内容</th>
+<th>基线值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>制度清单</td>
+<td><code>05-系统配置/…_制度清单（慈善版）.md</code></td>
+<td><strong>30</strong> 项（28 项 CARD-TODO）</td>
+</tr>
+<tr>
+<td>审批流</td>
+<td><code>05-系统配置/…_审批流（慈善版）.md</code></td>
+<td><strong>15</strong> 节点（全 CARD-TODO）</td>
+</tr>
+<tr>
+<td>字段表</td>
+<td><code>05-系统配置/…_字段配置表（慈善版）.md</code></td>
+<td><strong>10</strong> 张</td>
+</tr>
+<tr>
+<td>卡库</td>
+<td><code>03-经验卡片/慈法合规/</code></td>
+<td>🔴 <strong>2</strong> 张</td>
+</tr>
+<tr>
+<td>详细台账</td>
+<td><code>06-运维备忘录/小德慈善组织合规管理系统-运维手册备忘录.md</code> v1.1.0</td>
+<td>保留</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-4-5-核心控制节点-法条已挂载">4.5 核心控制节点（法条已挂载）</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>节点</th>
+<th>法条</th>
+<th>制度条款</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N1</td>
+<td>无公开募捐资格不得开展公开募捐</td>
+<td>慈善法 <strong>22</strong></td>
+<td>制度9 §3.1</td>
+</tr>
+<tr>
+<td>N2</td>
+<td>无募捐方案不得启动募捐</td>
+<td>慈善法 <strong>24</strong></td>
+<td>制度9 §3.2</td>
+</tr>
+<tr>
+<td>N3</td>
+<td>联合劝募三项硬红线</td>
+<td>慈善法 <strong>26</strong></td>
+<td>制度10 §3</td>
+</tr>
+<tr>
+<td>N4</td>
+<td><strong>关联方回避表决</strong></td>
+<td>慈善法 <strong>14</strong></td>
+<td>制度6 §3.2</td>
+</tr>
+<tr>
+<td>N5</td>
+<td>关联交易强制公开</td>
+<td>慈善法 <strong>14</strong></td>
+<td>制度6 §3.4</td>
+</tr>
+<tr>
+<td>N6</td>
+<td>受益人利害关系人禁止</td>
+<td>慈善法 <strong>40、59</strong></td>
+<td>制度17 §3.2</td>
+</tr>
+<tr>
+<td>N7</td>
+<td>捐赠财产用途变更双轨</td>
+<td>慈善法 <strong>56</strong></td>
+<td>制度15 §3.2</td>
+</tr>
+<tr>
+<td>N8</td>
+<td><strong>年度慈善活动支出·分档红线</strong> ✅已改造</td>
+<td>慈善法 <strong>61</strong> + <strong>民发〔2026〕12号 8/9/10/11 条</strong></td>
+<td>制度24 §3.1</td>
+</tr>
+<tr>
+<td>N9</td>
+<td><strong>年度管理费用·分档红线 + 20万豁免</strong> ✅已改造</td>
+<td>慈善法 <strong>61</strong> + <strong>民发〔2026〕12号 8/9/10/13 条</strong></td>
+<td>制度24 §3.2</td>
+</tr>
+<tr>
+<td>N16 🆕</td>
+<td><strong>募捐成本 ≤ 前三年捐赠收入平均数 3%</strong></td>
+<td><strong>民发〔2026〕12号 6/15 条</strong></td>
+<td>制度24 §3.3／制度25</td>
+</tr>
+<tr>
+<td>N17 🆕</td>
+<td><strong>支出确认口径（到达最终受益人才计）</strong></td>
+<td><strong>民发〔2026〕12号 12 条</strong></td>
+<td>制度24 §3.1</td>
+</tr>
+<tr>
+<td>N18 🆕</td>
+<td><strong>例外情形报告义务（三种）</strong></td>
+<td><strong>民发〔2026〕12号 14 条</strong></td>
+<td>制度24 §3.4</td>
+</tr>
+<tr>
+<td>N10</td>
+<td>信息公开时限</td>
+<td>慈善法 <strong>79</strong></td>
+<td>制度29 §3.2</td>
+</tr>
+<tr>
+<td>N11</td>
+<td>捐赠票据开具</td>
+<td>慈善法 <strong>38</strong></td>
+<td>制度13 §3</td>
+</tr>
+<tr>
+<td>N12</td>
+<td>投资收益全部用于慈善目的</td>
+<td>慈善法 <strong>55</strong></td>
+<td>制度26 §3.1</td>
+</tr>
+<tr>
+<td>N13</td>
+<td>投诉举报及时处理</td>
+<td>慈善法 <strong>108</strong></td>
+<td>制度30 §3</td>
+</tr>
+<tr>
+<td>N14</td>
+<td>未归档不得启动履行</td>
+<td>内规</td>
+<td>制度1 §5</td>
+</tr>
+<tr>
+<td>N15</td>
+<td>超期自动预警升级</td>
+<td>内规</td>
+<td>制度1 §5</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>另有 <strong>金额 × 风险等级二维审批矩阵</strong>（P0）：堵住"49 万但风险值 20 走最低审批"漏洞 + <strong>3 条凌驾规则</strong>。</p>
+</blockquote>
+<h3 id="h-4-6-法源与待核验">4.6 法源与待核验</h3>
+
+<blockquote>
+<p>🔄 <strong>2026-09-12 23:25 实地复测修正</strong>：此前用 <code>find -iname</code> 统计漏掉 8 个中文名文件，
+<strong>误判 3 部已落地法规为"缺失"</strong>。改用 <code>find -name</code> 后确认本地已有（详见附录 B-1）。</p>
+</blockquote>
+<ul>
+<li>✅ <strong>本地源（5 部）</strong>：</li>
+<li>《中华人民共和国慈善法》2023-12-29 修正（<strong>现行有效</strong>）<strong>125 条</strong>（民政部官网源）</li>
+<li>《基金会管理条例》（<code>行政法律规章/</code>，18.9KB）🆕 复测发现</li>
+<li><strong>《关于慈善组织开展慈善活动年度支出、管理费用和募捐成本的规定》</strong>（<code>行政法律规章/</code>，<strong>民发〔2026〕12号</strong>，2026-04-27 公布）🆕 复测发现 · <strong>第 61 条核心配套</strong></li>
+<li>《民间非营利组织会计制度》（<code>行政法律规章/</code>，225KB 全文）🆕 复测发现</li>
+<li>《境外非政府组织境内活动管理法》</li>
+<li>✅ <strong>全量已补建（本地法源缺口清零）</strong>：①慈善轨 6 部专门办法（信息公开办法/公募办法/保值增值办法/志愿服务条例/公益事业捐赠法/行政处罚程序规定）已于 2026-09-14（v1.4.4）补建本地源；<strong>②医院轨 H1–H5 5 部 + ⑤调解轨 M2/M3 2 部</strong>已于 2026-09-14（v1.4.6）经 qcc-legal 核验并补建本地源（详见附录 B-1/B-2/B-4）</li>
+<li>📌 <strong>内规源</strong>：《贵州省厚德公益基金会合规管理手册（试行）（2025版）》139 条 7 章 16 领域
+  引用格式：<code>依据《贵州省厚德公益基金会合规管理手册（试行）（2025版）》第X条……</code>
+  🚫 <strong>内规属轨道1 专属，禁止外流至其他模板交付包</strong></li>
+</ul>
+<h3 id="h-4-7-已完成-N8-N9-红线按-民发-2026-12号-分档改造-P0-7-2026-09-12-23-58-闭环">4.7 ✅ 已完成：N8/N9 红线按「民发〔2026〕12号」分档改造（P0-7 · 2026-09-12 23:58 闭环）</h3>
+
+<blockquote>
+<p>✅ <strong>状态：已完成</strong>（原为「重大发现·待改造」）。改造落点：
+《审批流（慈善版）》§2.5 分档矩阵 + N8/N9 改判 + 新增 N16/N17/N18；
+《字段配置表（慈善版）》§0.4 组织主体资格字段组 + §十三 分档判定字段组；
+《制度清单（慈善版）》制度 24 法条与核心内容改判、制度 25 募捐成本规定摘帽。</p>
+<p><strong>原问题</strong>：本模板 N8（年度支出 70%）、N9（管理费用 10%）按《慈善法》第 61 条单一口径设置。
+<strong>但民政部·财政部·税务总局《关于慈善组织开展慈善活动年度支出、管理费用和募捐成本的规定》（民发〔2026〕12号）
+实际是「四主体类型 × 四档净资产」矩阵 —— 现行 N8/N9 仅对「具有公开募捐资格的基金会」成立，其余情形全部错配。</strong></p>
+</blockquote>
+<h4 id="_1">🔴 三个分母，务必分清（本次改造新发现 · 极易出错）</h4>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>分母</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年度慈善活动支出下限</td>
+<td><strong>上年总收入</strong>（有公募资格）<br><strong>上年末净资产</strong>（无公募资格）</td>
+<td>N8</td>
+</tr>
+<tr>
+<td>年度管理费用上限</td>
+<td><strong>当年总支出</strong>（全部主体、全部档位统一）</td>
+<td>N9</td>
+</tr>
+<tr>
+<td>年度募捐成本上限</td>
+<td><strong>前三年捐赠收入平均数</strong></td>
+<td>N16</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ 三者<strong>口径完全不同</strong>，混用即算错。这也是此前"70%/10%"表述的最大隐患——<strong>光写比例不写分母，等于没说</strong>。</p>
+</blockquote>
+<p><strong>年度慈善活动支出 / 管理费用 分档矩阵（本地源实测）</strong></p>
+<table>
+<thead>
+<tr>
+<th>主体类型</th>
+<th>净资产档</th>
+<th>年度支出下限</th>
+<th>管理费用上限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>有公募资格 · 基金会</strong></td>
+<td>—</td>
+<td>≥ 上年总收入 <strong>70%</strong></td>
+<td>≤ 当年总支出 <strong>10%</strong></td>
+</tr>
+<tr>
+<td><strong>有公募资格 · 社会团体/社会服务机构</strong></td>
+<td>—</td>
+<td>≥ 上年总收入 <strong>70%</strong></td>
+<td>≤ 当年总支出 <strong>13%</strong> ⚠️</td>
+</tr>
+<tr>
+<td><strong>无公募资格 · 基金会</strong></td>
+<td>&gt;6000 万</td>
+<td>≥ 上年末净资产 <strong>6%</strong></td>
+<td>≤ <strong>12%</strong></td>
+</tr>
+<tr>
+<td>"</td>
+<td>800 万–6000 万</td>
+<td>≥ <strong>6%</strong></td>
+<td>≤ <strong>13%</strong></td>
+</tr>
+<tr>
+<td>"</td>
+<td>400 万–800 万</td>
+<td>≥ <strong>7%</strong></td>
+<td>≤ <strong>15%</strong></td>
+</tr>
+<tr>
+<td>"</td>
+<td>&lt;400 万</td>
+<td>≥ <strong>8%</strong></td>
+<td>≤ <strong>20%</strong></td>
+</tr>
+<tr>
+<td><strong>无公募资格 · 社会团体/社会服务机构</strong></td>
+<td>&gt;1000 万</td>
+<td>≥ <strong>6%</strong></td>
+<td>≤ <strong>13%</strong></td>
+</tr>
+<tr>
+<td>"</td>
+<td>500 万–1000 万</td>
+<td>≥ <strong>7%</strong></td>
+<td>≤ <strong>14%</strong></td>
+</tr>
+<tr>
+<td>"</td>
+<td>100 万–500 万</td>
+<td>≥ <strong>8%</strong></td>
+<td>≤ <strong>15%</strong></td>
+</tr>
+<tr>
+<td>"</td>
+<td>&lt;100 万</td>
+<td>≥ <strong>8%</strong> 且 ≥ 上年总收入 <strong>50%</strong></td>
+<td>≤ <strong>20%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>其他关键条款</strong></p>
+<table>
+<thead>
+<tr>
+<th>条</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第 11 条</td>
+<td>可用<strong>前三年收入平均数</strong>代替上年总收入；<strong>前三年末净资产平均数</strong>代替上年末净资产</td>
+</tr>
+<tr>
+<td>第 13 条</td>
+<td><strong>年度管理费用低于 20 万元</strong>的，不受上述管理费用比例限制 ⭐ 小额组织豁免</td>
+</tr>
+<tr>
+<td>第 15 条</td>
+<td><strong>年度募捐成本 ≤ 前三年捐赠收入平均数的 3%</strong> ⭐ N 系列未覆盖的新红线</td>
+</tr>
+<tr>
+<td>第 16 条</td>
+<td>捐赠协议有约定从约定，<strong>但不得违反本规定</strong></td>
+</tr>
+<tr>
+<td>第 14 条</td>
+<td>因特定情形难以达标的，须<strong>及时报告民政部门并向社会公开说明</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>✅ <strong>P0-7 改造已完成（2026-09-12 23:58）</strong>：
+1. ✅ N8/N9 由"固定 70%/10%"改为<strong>按主体类型 + 公募资格 + 净资产分档判定</strong>（审批流 §2.5.2 矩阵）
+2. ✅ 新增字段：<strong>主体类型</strong>／<strong>公募资格</strong>／<strong>上年末净资产</strong>／<strong>上年总收入</strong>／<strong>当年总支出</strong>／<strong>前三年捐赠收入平均数</strong>等（字段表 §0.4 + §十三）
+3. ✅ <strong>新增 N16：募捐成本 ≤ 前三年捐赠收入平均数 3%</strong>（第 15 条）
+4. ✅ 新增豁免判定：年度管理费用 &lt; 20 万元 → 管理费比例不设限（第 13 条）
+5. ✅ <strong>额外补入此前完全缺失的两条</strong>：N17 支出确认口径（第 12 条，到达最终受益人才计）、N18 例外报告义务（第 14 条三种情形）
+6. ✅ 补入罚则：违反由民政部门依<strong>慈善法第 110 条第 1 款第 6 项</strong>处罚并通报财政、税务部门（第 18 条）</p>
+</blockquote>
+<p><strong>改造前后对照（为什么会出错）</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>旧规则（错）</th>
+<th>新规则（对）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无公募资格社会服务机构，上年末净资产 300 万</td>
+<td>支出须 ≥ 上年总收入 <strong>70%</strong>；管理费 ≤ <strong>10%</strong></td>
+<td>支出 ≥ 净资产 <strong>8%</strong> 且 ≥ 上年总收入 <strong>50%</strong>；管理费 ≤ <strong>20%</strong></td>
+</tr>
+<tr>
+<td>有公募资格社会团体</td>
+<td>管理费 ≤ <strong>10%</strong></td>
+<td>管理费 ≤ <strong>13%</strong></td>
+</tr>
+<tr>
+<td>小型组织年度管理费 12 万元，占比 25%</td>
+<td>判定<strong>超标违规</strong></td>
+<td>依第 13 条<strong>豁免</strong>（&lt; 20 万元不受限）</td>
+</tr>
+</tbody>
+</table>
+<p>→ 旧规则既会<strong>误报合规组织违规</strong>，也会在反向情形<strong>漏报真实违规</strong>。</p>
+<h3 id="h-4-8-待办与喂卡路线">4.8 待办与喂卡路线</h3>
+
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 P0</td>
+<td><strong>喂卡 2 → 6</strong>：关联交易回避／公开募捐方案 9 要素／联合劝募三红线／信息公开三档时限</td>
+</tr>
+<tr>
+<td>🔴 P0</td>
+<td>制度 CARD-TODO 由 28 推进至 ≤20</td>
+</tr>
+<tr>
+<td>~~🔴 <strong>P0-7</strong>~~</td>
+<td>~~<strong>N8/N9 按民发〔2026〕12号分档改造</strong> + 新增 N16 募捐成本 3% 红线~~ → <strong>✅ 已完成</strong>（2026-09-12 23:58，见 4.7；新增 N16/N17/N18，节点 15→18）</td>
+</tr>
+<tr>
+<td>🟠 P1</td>
+<td>pkulaw 核验剩余 7 项缺失法规（信息公开办法／公开募捐管理办法等）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-五-模板②-医院合规管理">五、模板② · 医院合规管理</h2>
+
+<h3 id="h-5-1-定位与边界">5.1 定位与边界</h3>
+
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一句话</strong></td>
+<td>基层医院依法执业合规体检系统</td>
+</tr>
+<tr>
+<td><strong>做</strong></td>
+<td>依法执业体检、医保基金合规、设备药品采购、病历合规、知情同意、诊疗规范、医疗质量安全、AI 工具 PHI 红线</td>
+</tr>
+<tr>
+<td><strong>不做</strong></td>
+<td>医疗事故罪刑事辩护、医疗损害诉讼代理（→ 转小强系统 + 医疗纠纷专项）；财务审计</td>
+</tr>
+<tr>
+<td><strong>护城河</strong></td>
+<td>医院合规卡 13 张 + 医疗纠纷章卡 10 张 = <strong>23 张</strong>（全系统最强弹药）+ 医事法源约 10 部</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-5-2-治理主体与客群">5.2 治理主体与客群</h3>
+
+<ul>
+<li><strong>治理主体</strong>：院长／医务科／<strong>医疗质量管理委员会</strong>／药事管理与药物治疗学委员会／护理部／院感科</li>
+<li><strong>客群</strong>：社区卫生服务中心／乡镇卫生院／一级医院／二级医院</li>
+<li>⚠️ <strong>口径串味禁止</strong>：医院文档<strong>不得出现</strong>理事会／监事会／秘书长</li>
+</ul>
+<h3 id="h-5-3-六域映射-扩展域">5.3 六域映射 + 扩展域</h3>
+
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>内容</th>
+<th>卡片</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>制度</td>
+<td>医院合规治理框架、AI 工具 PHI 保密红线</td>
+<td>2</td>
+</tr>
+<tr>
+<td>流程</td>
+<td>常年法律顾问与纠纷院内处置</td>
+<td>1</td>
+</tr>
+<tr>
+<td>运营</td>
+<td>诊疗规范与医疗质量安全、病历书写合规与纠纷败诉 10 漏洞、患者知情同意、纠纷院内处置与人民调解</td>
+<td>4</td>
+</tr>
+<tr>
+<td>财务</td>
+<td>医保基金与设备药品采购、医保基金骗保风险防控、设备药品采购反商业贿赂</td>
+<td>3</td>
+</tr>
+<tr>
+<td>人资</td>
+<td>医院人力资源与主体资格合规</td>
+<td>1</td>
+</tr>
+<tr>
+<td>税务</td>
+<td>医疗机构税务合规（<strong>占位卡 confidence 0.60</strong>）</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>数据合规域</strong>（扩展）</td>
+<td>PHI 红线、AI 接入、PIA、出境</td>
+<td>1（AI工具PHI）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-5-4-资产地图-指纹基线">5.4 资产地图 + 指纹基线</h3>
+
+<table>
+<thead>
+<tr>
+<th>资产</th>
+<th>路径／内容</th>
+<th>基线值</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>卡库</td>
+<td><code>03-经验卡片/医院合规/</code></td>
+<td><strong>13</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>章卡（源材料）</td>
+<td><code>03-经验卡片/医疗纠纷章卡/</code></td>
+<td><strong>10</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>制度清单</td>
+<td><code>05-系统配置/小德医院合规管理系统_制度清单（医院版）.md</code></td>
+<td><strong>12</strong> 项</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>审批流</td>
+<td><code>05-系统配置/小德医院合规管理系统_审批流（医院版）.md</code></td>
+<td><strong>8</strong> 节点</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>字段表</td>
+<td><code>05-系统配置/小德医院合规管理系统_字段配置表（医院版）.md</code></td>
+<td><strong>8</strong> 张</td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🟢 <strong>三件套已建成</strong>（12 制度／8 审批／8 字段，B8）："有弹药有枪"，与 23 张卡形成表单→卡库反哺闭环。</p>
+</blockquote>
+<h3 id="h-5-5-法源与待核验">5.5 法源与待核验</h3>
+
+<ul>
+<li>✅ <strong>本地源（约 10 部）</strong>：</li>
+<li><code>医事法律法规库/</code>：医师法、基本医疗卫生与健康促进法、药品管理法、疫苗管理法、精神卫生法</li>
+<li><code>行政法律规章/</code>：医疗纠纷预防和处理条例、医疗保障基金使用监督管理条例实施细则、药品管理法实施条例</li>
+<li><code>司法解释/</code>：关于审理医疗损害责任纠纷案件适用法律若干问题的解释</li>
+<li><code>通用实体法/</code>：刑法（节选·医疗事故罪与非法行医罪）</li>
+<li>⏳ <strong>待核验 5 项</strong>：医疗机构管理条例／医疗质量管理办法／病历书写基本规范／护士条例／医疗事故处理条例（详见附录 B-2）</li>
+</ul>
+<h3 id="h-5-6-待办与喂卡路线">5.6 待办与喂卡路线</h3>
+
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 P0-5</td>
+<td><strong>编制三件套</strong>（制度清单／审批流／字段表），可照搬慈善版骨架，治理主体换院长/医务科</td>
+</tr>
+<tr>
+<td>🟠 P1-6</td>
+<td>核验 5 部医事法规</td>
+</tr>
+<tr>
+<td>🟠 P1</td>
+<td>税务域占位卡（confidence 0.60）补实</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-六-模板③-合同生命周期管理-新建">六、模板③ · 合同生命周期管理（🆕 新建）</h2>
+
+<blockquote>
+<p><strong>边界裁决（老强 2026-09-12）</strong>：<strong>全周期统管，<code>合同文书管理系统(L0)</code> 当执行引擎</strong>。
+本模板管<strong>流转与卡点</strong>（谁在什么节点做什么、卡在哪、留什么痕）；L0 与子模板C 负责<strong>具体起草与审查动作</strong>。
+一句话：<strong>模板做"管理"，L0 做"起草"，C 做"审查"，不重复造能力。</strong></p>
+</blockquote>
+<h3 id="h-6-1-定位与边界">6.1 定位与边界</h3>
+
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一句话</strong></td>
+<td>从起草到归档的合同全周期管控中枢</td>
+</tr>
+<tr>
+<td><strong>做</strong></td>
+<td>合同类型识别、范本调度、<strong>审查路由</strong>（本行业 vs 通用商事）、签署权限、履约监控、到期预警、归档、纠纷触发转派</td>
+</tr>
+<tr>
+<td><strong>不做</strong></td>
+<td>❌ 不自己起草（交 L0）❌ 不碰诉讼（交小强系统）❌ 不替代合同审查工作流/门禁的执行</td>
+</tr>
+<tr>
+<td><strong>弹药</strong></td>
+<td>🔴 <strong>0 张</strong>（<code>03-经验卡片/合同合规/</code> 仅有 README，无卡）—— <strong>有路由无弹药</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-6-2-治理主体与客群">6.2 治理主体与客群</h3>
+
+<ul>
+<li><strong>治理主体</strong>：法务／合同管理员／业务负责人／分管领导（按金额×风险二维矩阵定审批层级）</li>
+<li><strong>客群</strong>：①慈善 ②医院的<strong>本行业合同</strong>（捐赠协议／资助协议／联合劝募／设备药品采购／医护聘用）+ <strong>通用商事合同</strong>（股权转让／货物采购／租赁／服务／技术转让／承揽）</li>
+</ul>
+<h3 id="h-6-3-六阶段-控制节点">6.3 六阶段 × 控制节点</h3>
+
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>节点</th>
+<th>控制规则</th>
+<th>法条依据</th>
+<th>引擎</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C1 起草</strong></td>
+<td>类型识别 + 范本调度</td>
+<td>未识别类型不得进入起草</td>
+<td>—</td>
+<td><code>合同文书管理系统(L0)</code></td>
+</tr>
+<tr>
+<td><strong>C2 审查</strong></td>
+<td>行业分流</td>
+<td><strong>本行业合同</strong>→①/②（先注入行业监管规则）；<strong>通用商事</strong>→子模板C</td>
+<td>民法典 <strong>471</strong>（订立方式）</td>
+<td><code>合同审查工作流</code>＋<code>蓝队律师合同审查</code></td>
+</tr>
+<tr>
+<td><strong>C2b</strong></td>
+<td>格式条款专项</td>
+<td>格式条款须提示说明，未尽提示可主张不成为合同内容</td>
+<td>民法典 <strong>496</strong></td>
+<td><code>合同审查门禁</code></td>
+</tr>
+<tr>
+<td><strong>C3 签署</strong></td>
+<td>权限与用印</td>
+<td>审批未闭环不得用印；超权限签署无效风险</td>
+<td>民法典 <strong>502</strong>（成立生效）</td>
+<td>本模板</td>
+</tr>
+<tr>
+<td><strong>C4 履约</strong></td>
+<td>节点监控</td>
+<td>履约节点/验收/付款/违约金台账；<strong>到期前 30 日预警</strong></td>
+<td>民法典 <strong>509</strong>（全面履行）·<strong>577</strong>（违约责任）·<strong>585</strong>（违约金）</td>
+<td>本模板（<strong>履约域</strong>）</td>
+</tr>
+<tr>
+<td><strong>C5 归档</strong></td>
+<td>归档锁定</td>
+<td><strong>未归档不得启动付款/履行</strong>（移植慈善版 N14）</td>
+<td>内规</td>
+<td>本模板</td>
+</tr>
+<tr>
+<td><strong>C6 纠纷触发</strong></td>
+<td>涉诉转派</td>
+<td>一旦涉诉/涉裁 → <strong>立即转小强律师数字分身系统</strong></td>
+<td>—</td>
+<td>🔴 红线</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 <strong>双不原则</strong>（照抄自合同合规 README，本模板沿用）：<strong>不碰起草</strong>（归 L0）、<strong>不碰诉讼</strong>（归小强系统）。</p>
+</blockquote>
+<h3 id="h-6-4-六域映射-扩展域">6.4 六域映射 + 扩展域</h3>
+
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>制度</td>
+<td>合同管理制度、授权与用印制度、范本库</td>
+</tr>
+<tr>
+<td>流程</td>
+<td>起草→审查→签署→履约→归档→纠纷 六阶段流转</td>
+</tr>
+<tr>
+<td>运营</td>
+<td>相对方台账、履约节点跟踪、到期预警</td>
+</tr>
+<tr>
+<td>财务</td>
+<td>付款条件、违约金、保证金、发票与税务</td>
+</tr>
+<tr>
+<td>人资</td>
+<td>承办人资格、授权层级</td>
+</tr>
+<tr>
+<td>税务</td>
+<td>含税/不含税、税率、发票合规</td>
+</tr>
+<tr>
+<td><strong>履约域</strong>（扩展）</td>
+<td>履约节点、验收单、付款计划、违约记录、续签/终止</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-6-5-资产地图-指纹基线">6.5 资产地图 + 指纹基线</h3>
+
+<table>
+<thead>
+<tr>
+<th>资产</th>
+<th>路径／内容</th>
+<th>基线值</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>卡库</td>
+<td><code>03-经验卡片/合同合规/</code></td>
+<td>🟢 <strong>6</strong></td>
+<td>🟢 六域枢纽卡（B9）</td>
+</tr>
+<tr>
+<td>制度清单</td>
+<td><code>05-系统配置/小德合同生命周期管理系统_制度清单（合同版）.md</code></td>
+<td><strong>8</strong> 项</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>审批流</td>
+<td><code>05-系统配置/小德合同生命周期管理系统_审批流（合同版）.md</code></td>
+<td><strong>10</strong> 节点</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>字段表</td>
+<td><code>05-系统配置/小德合同生命周期管理系统_字段配置表（合同版）.md</code></td>
+<td><strong>10</strong> 张</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>关联技能</td>
+<td>L0／审查工作流／审查门禁／蓝队审查</td>
+<td>4</td>
+<td>✅ 现成</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-6-6-法源与待核验">6.6 法源与待核验</h3>
+
+<ul>
+<li>✅ <strong>本地源</strong>：《中华人民共和国民法典》<strong>全文</strong>（<code>通用实体法/</code>），第三编合同自<strong>第 463 条</strong>起，核心挂载条：<strong>471</strong>（订立）·<strong>496</strong>（格式条款）·<strong>502</strong>（生效）·<strong>509</strong>（履行）·<strong>577</strong>（违约责任）·<strong>585</strong>（违约金）</li>
+<li>✅ 《中华人民共和国公司法》（2023 修订）、《劳动合同法》（2012 修正）</li>
+<li>✅ 《关于审理买卖合同纠纷案件适用法律若干问题的解释》</li>
+<li>⏳ <strong>待核验</strong>：各类合同专门司法解释、行业监管规则（详见附录 B-3）</li>
+</ul>
+<h3 id="h-6-7-待办与喂卡路线">6.7 待办与喂卡路线</h3>
+
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 P0</td>
+<td><strong>冷启动喂卡</strong>：按 Batch 0→4 建 6 张六域枢纽卡（合同域），优先"买卖/服务/租赁"三类高频</td>
+</tr>
+<tr>
+<td>🔴 P0</td>
+<td>编制三件套，字段表可<strong>直接移植慈善版 10 表骨架</strong>（留痕组 + Lookup + 二维矩阵 + 时限）</td>
+</tr>
+<tr>
+<td>🟠 P1</td>
+<td>移植慈善版<strong>金额×风险二维审批矩阵</strong>到合同审批</td>
+</tr>
+<tr>
+<td>🟠 P1</td>
+<td>到期预警规则（30 日/7 日/1 日三级）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-七-模板④-非诉业务管理-新建">七、模板④ · 非诉业务管理（🆕 新建）</h2>
+
+<blockquote>
+<p><strong>范围裁决（老强 2026-09-12）</strong>：<strong>常年顾问非诉交付口径</strong>。
+对应《产品服务模式说明书》：体检 → 复核意见 → 季报 → 重大活动审查 → 年度复盘。
+不是宽口径兜底，也不是纯流程管理 —— 是<strong>能直接卖年包的交付流水线</strong>。</p>
+</blockquote>
+<h3 id="h-7-1-定位与边界">7.1 定位与边界</h3>
+
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一句话</strong></td>
+<td>常年法律顾问客户的非诉交付流水线</td>
+</tr>
+<tr>
+<td><strong>做</strong></td>
+<td>年度合规义务地图、半年度复核意见书、季度体检报告、重大活动审查意见、年度复盘</td>
+</tr>
+<tr>
+<td><strong>不做</strong></td>
+<td>❌ 诉讼/仲裁代理 ❌ 行政处罚听证与复议诉讼代理 ❌ 财务审计、税务申报代理 ❌ 商业判断担保</td>
+</tr>
+<tr>
+<td><strong>弹药</strong></td>
+<td>🟢 <strong>6 张</strong>（六域枢纽卡，P0-6 冷启动，见 7.6）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-7-2-治理主体与客群">7.2 治理主体与客群</h3>
+
+<ul>
+<li><strong>治理主体</strong>：承办律师（产出）→ 合伙人复核（签字）</li>
+<li><strong>客群</strong>：常年法律顾问客户（跨①慈善 ②医院 ③合同的存量客户均可挂此模板交付）</li>
+<li><strong>不绑工时三层杠杆</strong>：知识标准化（章卡+139条）→ 流程自动化（周巡检）→ 门禁化（G8+LTI），<strong>老强只做"复核签字"</strong></li>
+</ul>
+<h3 id="h-7-3-年度交付节拍-五件交付物">7.3 年度交付节拍（五件交付物）</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>交付物</th>
+<th>频次</th>
+<th>SLA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td><strong>年度合规义务地图</strong></td>
+<td>年（Q1）</td>
+<td>年度首月</td>
+</tr>
+<tr>
+<td>D2</td>
+<td><strong>半年度复核意见书</strong></td>
+<td>半年</td>
+<td>15 工作日</td>
+</tr>
+<tr>
+<td>D3</td>
+<td><strong>季度体检报告</strong></td>
+<td>季（×4）</td>
+<td>10 工作日</td>
+</tr>
+<tr>
+<td>D4</td>
+<td><strong>重大活动审查意见</strong></td>
+<td>按需</td>
+<td>提前 5 日提交，<strong>3 个工作日出意见</strong></td>
+</tr>
+<tr>
+<td>D5</td>
+<td><strong>年度复盘</strong></td>
+<td>年（Q4）</td>
+<td>年末</td>
+</tr>
+</tbody>
+</table>
+<p><strong>其他 SLA</strong>：常规咨询 <strong>2 工作日</strong>响应；<strong>紧急</strong>（监管约谈、限期整改）<strong>24 小时</strong>。</p>
+<h3 id="h-7-4-Onboarding-5-步">7.4 Onboarding 5 步</h3>
+
+<p><code>基线问卷 → 定级 → 签约 + 保密协议 → 接入 → 持续留痕</code></p>
+<h3 id="h-7-5-六域映射-扩展域">7.5 六域映射 + 扩展域</h3>
+
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>制度</td>
+<td>客户内部制度完备性</td>
+</tr>
+<tr>
+<td>流程</td>
+<td>非诉事项立项→承办→复核→交付→归档</td>
+</tr>
+<tr>
+<td>运营</td>
+<td>常年顾问日常响应、咨询台账</td>
+</tr>
+<tr>
+<td>财务</td>
+<td>计费、工时、超额工时（0.5万/3万含20h/2万起，⚠️ 档位待裁决）</td>
+</tr>
+<tr>
+<td>人资</td>
+<td>承办团队配置</td>
+</tr>
+<tr>
+<td>税务</td>
+<td>客户税务合规提示（仅提示，不代理申报）</td>
+</tr>
+<tr>
+<td><strong>交付物域</strong>（扩展）</td>
+<td>意见书／体检报告／复核意见／年度复盘的<strong>模板库与留痕</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-7-6-资产地图-指纹基线">7.6 资产地图 + 指纹基线</h3>
+
+<table>
+<thead>
+<tr>
+<th>资产</th>
+<th>路径／内容</th>
+<th>基线值</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>卡库</td>
+<td><code>03-经验卡片/非诉合规/</code></td>
+<td>🟢 <strong>6</strong></td>
+<td>六域枢纽卡（P0-6 冷启动，B11）</td>
+</tr>
+<tr>
+<td>交付物模板库</td>
+<td><code>05-系统配置/非诉交付物模板/</code></td>
+<td>🟢 <strong>5</strong> 件</td>
+<td>🟢 D1–D5（B12）</td>
+</tr>
+<tr>
+<td>制度清单</td>
+<td><code>05-系统配置/小德非诉业务管理系统_制度清单（非诉版）.md</code></td>
+<td><strong>6</strong> 项</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>审批流</td>
+<td><code>05-系统配置/小德非诉业务管理系统_审批流（非诉版）.md</code></td>
+<td><strong>6</strong> 节点</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>字段表</td>
+<td><code>05-系统配置/小德非诉业务管理系统_字段配置表（非诉版）.md</code></td>
+<td><strong>6</strong> 张</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>关联技能</td>
+<td><code>非诉文书红蓝复核工作流</code></td>
+<td>1</td>
+<td>✅ 现成</td>
+</tr>
+<tr>
+<td>既有能力</td>
+<td>数据合规（338行）／税务（337行）／备忘录（919行）技能</td>
+<td>3</td>
+<td>✅ 已就绪（"不是能力缺失，是激活机制缺失"）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-7-7-法源与待核验">7.7 法源与待核验</h3>
+
+<ul>
+<li>✅ <strong>本地源</strong>：民法典全文、公司法（2023修订）、劳动合同法（2012修正）</li>
+<li>✅ <strong>本地源已补建</strong>：个人信息保护法（主席令第91号）／数据安全法（主席令第84号）／著作权法（2020修正）／商标法（2019修正）／专利法（2020修正）／政府采购法（2014修正）／招标投标法（2017修正）共 <strong>7 部</strong>，已于 2026-09-14 经 qcc-legal 核验并补建本地源（<code>法律法规库/通用法律法规/</code>，均现行有效），原 <code>statute_text_pending</code> 摘帽</li>
+<li>📌 <strong>统一处理协议</strong>：需联网核验的域一律 <strong>占位不编造</strong> —— <code>confidence: 0.60</code> + <code>note</code> 字段 + 文末「⚠️ 待核验声明」，<strong>绝不编造文号</strong></li>
+</ul>
+<h3 id="h-7-8-待办与喂卡路线">7.8 待办与喂卡路线</h3>
+
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 P0</td>
+<td><strong>建 5 件交付物模板库</strong>（D1–D5），这是本模板的可交付骨架</td>
+</tr>
+<tr>
+<td>🟢 P0 ✅</td>
+<td>冷启动喂卡：按六域建非诉枢纽卡（6 张，B11，2026-09-13 完成）</td>
+</tr>
+<tr>
+<td>🟠 P1</td>
+<td>核验数据合规/知产类法源（需付费库，连接器未保活则延后）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-八-模板⑤-医疗纠纷调解-新建">八、模板⑤ · 医疗纠纷调解（🆕 新建）</h2>
+
+<blockquote>
+<p><strong>归属裁决（老强 2026-09-12）</strong>：<strong>独立第五模板，与模板②双向互哺</strong>。
+调解中发现的系统性风险 → 回喂②医院合规做整改；②的合规缺陷 → 作为调解预防素材。互哺须标 <code>cross_track_ref</code>。</p>
+</blockquote>
+<h3 id="h-8-1-定位与边界">8.1 定位与边界</h3>
+
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一句话</strong></td>
+<td>医患纠纷的非诉调解与预防回喂</td>
+</tr>
+<tr>
+<td><strong>做</strong></td>
+<td>纠纷受理评估、证据固定指导、病历封存、调解方案设计、协议文本、司法确认指引、履行回访</td>
+</tr>
+<tr>
+<td><strong>不做</strong></td>
+<td>❌ <strong>不是诉讼代理</strong> ❌ 医疗事故罪刑事辩护 ❌ 医疗损害诉讼代理</td>
+</tr>
+<tr>
+<td><strong>护城河</strong></td>
+<td>《医疗纠纷预防和处理条例》本地 35 条源 + 章卡第十六章（人民调解与行政调解）+ 医疗纠纷专项技能</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-8-2-治理主体与客群">8.2 治理主体与客群</h3>
+
+<ul>
+<li><strong>治理主体</strong>：医疗纠纷人民调解委员会（<strong>医调委</strong>）／调解员／医患双方</li>
+<li><strong>客群</strong>：医疗机构（②的存量客户）／患者／医调委／卫生主管部门</li>
+<li>🟢 <strong>公益属性</strong>：医调委调解医疗纠纷<strong>不得收取费用</strong>（条例 32 条）</li>
+</ul>
+<h3 id="h-8-3-六阶段程序-控制节点-法条全部本地源">8.3 六阶段程序 × 控制节点（法条全部本地源 ✅）</h3>
+
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>节点</th>
+<th>控制规则</th>
+<th>法条依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>M1 受理</strong></td>
+<td>途径告知</td>
+<td>医患双方可通过：协商／人民调解／行政调解／诉讼 解决</td>
+<td>条例 <strong>22</strong></td>
+</tr>
+<tr>
+<td><strong>M1b</strong></td>
+<td>申请方式</td>
+<td><strong>双方共同申请</strong>；一方申请的，须征得另一方同意</td>
+<td>条例 <strong>31</strong></td>
+</tr>
+<tr>
+<td><strong>M1c</strong></td>
+<td>🔴 <strong>涉诉终止</strong></td>
+<td>已向法院起诉并被受理，或已申请行政调解并被受理 → <strong>不予受理；已受理的终止调解</strong></td>
+<td>条例 <strong>31</strong> 后段</td>
+</tr>
+<tr>
+<td><strong>M2 评估</strong></td>
+<td>证据固定</td>
+<td>封存/启封病历须<strong>医患双方在场</strong></td>
+<td>条例 <strong>24</strong></td>
+</tr>
+<tr>
+<td><strong>M2b</strong></td>
+<td>实物封存</td>
+<td>疑似输液／输血／注射／用药引起不良后果 → 双方共同封存现场实物</td>
+<td>条例 <strong>25</strong></td>
+</tr>
+<tr>
+<td><strong>M2c</strong></td>
+<td>尸检时限</td>
+<td>死因有异议 → 患者死亡后 <strong>48 小时</strong>内尸检（具备冻存条件可延长）</td>
+<td>条例 <strong>26</strong></td>
+</tr>
+<tr>
+<td><strong>M2d</strong></td>
+<td>重大报告</td>
+<td>发生重大医疗纠纷 → 按规定报告县级以上卫生主管部门</td>
+<td>条例 <strong>28</strong></td>
+</tr>
+<tr>
+<td><strong>M3 调解</strong></td>
+<td>场所要求</td>
+<td>协商解决应在<strong>专门场所</strong>，不得影响正常医疗秩序</td>
+<td>条例 <strong>30</strong></td>
+</tr>
+<tr>
+<td><strong>M3b</strong></td>
+<td>专家咨询</td>
+<td>可咨询专家，从第 35 条专家库选取</td>
+<td>条例 <strong>33</strong></td>
+</tr>
+<tr>
+<td><strong>M3c</strong></td>
+<td>鉴定</td>
+<td>需医疗损害鉴定的，按规定启动</td>
+<td>条例 <strong>34</strong></td>
+</tr>
+<tr>
+<td><strong>M3d</strong></td>
+<td>赔付原则</td>
+<td>协商赔付金额<strong>以事实为依据，防止畸高或畸低</strong>；分歧大/索赔高鼓励人民调解</td>
+<td>条例 <strong>30</strong> 后段</td>
+</tr>
+<tr>
+<td><strong>M4 协议</strong></td>
+<td>协议达成</td>
+<td>调解协议 ≠ 裁判文书；可申请<strong>司法确认</strong></td>
+<td>⏳ 人民调解法待核验</td>
+</tr>
+<tr>
+<td><strong>M5 履行</strong></td>
+<td>履行跟踪</td>
+<td>协议履行情况登记</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>M6 回访</strong></td>
+<td>整改回喂</td>
+<td>发现系统性风险 → <strong>回喂②医院合规</strong>建整改卡</td>
+<td>本手册 8.6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-8-4-六域映射-扩展域">8.4 六域映射 + 扩展域</h3>
+
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>制度</td>
+<td>投诉接待制度、纠纷处置制度</td>
+</tr>
+<tr>
+<td>流程</td>
+<td>受理→评估→调解→协议→履行→回访</td>
+</tr>
+<tr>
+<td>运营</td>
+<td>医患沟通、现场处置、秩序维护</td>
+</tr>
+<tr>
+<td>财务</td>
+<td>赔付金额评估、保险理赔（医疗风险分担机制）</td>
+</tr>
+<tr>
+<td>人资</td>
+<td>调解员资格（医学·法学专业）、回避</td>
+</tr>
+<tr>
+<td>税务</td>
+<td>赔付涉税提示（仅提示）</td>
+</tr>
+<tr>
+<td><strong>程序域</strong>（扩展）</td>
+<td>受理、回避、协议、司法确认、回访</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-8-5-资产地图-指纹基线">8.5 资产地图 + 指纹基线</h3>
+
+<table>
+<thead>
+<tr>
+<th>资产</th>
+<th>路径／内容</th>
+<th>基线值</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>章卡（源材料）</td>
+<td><code>03-经验卡片/医疗纠纷章卡/第十六章_医疗纠纷的人民调解与行政调解.md</code></td>
+<td><strong>1</strong> 章</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>调解经验卡</td>
+<td><code>03-经验卡片/医疗纠纷章卡/经验卡片-运营-医疗纠纷人民调解程序域枢纽.md</code></td>
+<td>🟢 <strong>1</strong></td>
+<td>B13（P0-5 已建）</td>
+</tr>
+<tr>
+<td>制度清单</td>
+<td><code>05-系统配置/小德医疗纠纷调解系统_制度清单（调解版）.md</code></td>
+<td><strong>6</strong> 项</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>审批流</td>
+<td><code>05-系统配置/小德医疗纠纷调解系统_审批流（调解版）.md</code></td>
+<td><strong>10</strong> 节点</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>字段表</td>
+<td><code>05-系统配置/小德医疗纠纷调解系统_字段配置表（调解版）.md</code></td>
+<td><strong>6</strong> 张</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>关联技能</td>
+<td><code>医疗纠纷专项</code>、<code>案件全生命周期·调解和解方案</code></td>
+<td>2</td>
+<td>✅ 现成</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-8-6-法源与待核验">8.6 法源与待核验</h3>
+
+<ul>
+<li>✅ <strong>本地源</strong>：《医疗纠纷预防和处理条例》（<code>行政法律规章/</code>，卫健委官网源）
+  核心挂载条：<strong>22</strong>（途径）·<strong>24</strong>（病历封存）·<strong>25</strong>（实物封存）·<strong>26</strong>（尸检48h）·<strong>28</strong>（重大报告）·<strong>30</strong>（协商场所+赔付原则）·<strong>31</strong>（申请+涉诉终止）·<strong>32</strong>（医调委设立·30工作日备案·<strong>不得收费</strong>）·<strong>33</strong>（专家咨询）·<strong>34</strong>（鉴定）·<strong>35</strong>（专家库）</li>
+<li>✅ <strong>母法已补建</strong>：《中华人民共和国人民调解法》已于 2026-09-13 联网核验并补建本地源（<code>程序法/中华人民共和国人民调解法.md</code>，多源政府网站核验：绥宁县政府／吉林省发改委／荆门长安网／福建高院／东营经开区），本模板最大法源风险消除；条款引用见「医疗纠纷人民调解程序域枢纽卡」。原 <code>statute_text_pending</code> 摘帽。</li>
+<li>✅ <strong>M2/M3 已补建本地源</strong>：《医疗纠纷预防和处理条例》（医疗损害鉴定章·第34–36条，qcc 核验 2026-09-14·现行有效，落点 <code>程序法/</code>）＋《最高人民法院人民调解协议司法确认程序的若干规定》（法释〔2011〕5号，qcc 核验 2026-09-14·现行有效，落点 <code>程序法/</code>），原 <code>statute_text_pending</code> 摘帽；独立"医疗损害鉴定管理办法"系条例第34条授权制定中，未单独立法，故以条例医疗损害鉴定章为权威源</li>
+</ul>
+<h3 id="h-8-7-专属红线-在通用条款之上叠加">8.7 专属红线（在通用条款之上叠加）</h3>
+
+<blockquote>
+<p>🚫 <strong>调解主持 ≠ 诉讼代理</strong>；<strong>调解协议 ≠ 裁判文书</strong>
+🚫 涉诉/涉裁/涉刑<strong>立即终止调解并转小强律师数字分身系统</strong>（韩杰案先例）
+🚫 不得承诺调解结果；不得承诺"必然不进入诉讼"</p>
+</blockquote>
+<h3 id="h-8-8-待办与喂卡路线">8.8 待办与喂卡路线</h3>
+
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ <strong>P0 已完成</strong></td>
+<td><strong>《人民调解法》已于 2026-09-13 补建本地源</strong>（<code>程序法/</code>，多源政府网站核验），本模板最大法源风险消除；条款引用见「医疗纠纷人民调解程序域枢纽卡」</td>
+</tr>
+<tr>
+<td>✅ <strong>P0 已完成</strong></td>
+<td>调解经验卡已建：<code>03-经验卡片/医疗纠纷章卡/经验卡片-运营-医疗纠纷人民调解程序域枢纽.md</code>（章卡第十六章重映射，程序域优先，confidence 0.88，标 <code>cross_track_ref</code> 双向互哺）</td>
+</tr>
+<tr>
+<td>🟠 P1</td>
+<td>建与②医院合规的双向互哺卡（标 <code>cross_track_ref</code>）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-九-跨模板互哺矩阵">九、跨模板互哺矩阵</h2>
+
+<blockquote>
+<p><strong>「不稀释」≠「不互哺」</strong>：稀释（价值拉平）<strong>禁止</strong>；互哺（方法论迁移）<strong>允许</strong>，须标 <code>cross_track_ref</code>。
+<strong>判定口诀：看"主体"不看"方法"</strong> —— 卡里写的是哪个模板的主体的行为，就归哪个模板；只有抽象方法论才是共享的。</p>
+</blockquote>
+<h3 id="h-9-1-五禁止-五模板通用">9.1 五禁止（五模板通用）</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>禁止</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🚫1</td>
+<td><strong>资产白送</strong></td>
+<td>①的 16 领域清单、139 条内规<strong>不得免费塞进</strong>其他模板交付包</td>
+</tr>
+<tr>
+<td>🚫2</td>
+<td><strong>定价拉平</strong></td>
+<td>高价值模板不得被低价模板冲掉（②弹药 23 张 &gt; ① 2 张，<strong>②定低档属自我稀释</strong>）</td>
+</tr>
+<tr>
+<td>🚫3</td>
+<td><strong>口径串味</strong></td>
+<td>①不得出现院长/医务科；②不得出现理事会/监事会；⑤不得出现诉讼代理表述</td>
+</tr>
+<tr>
+<td>🚫4</td>
+<td><strong>法条混引</strong></td>
+<td>①只引慈善法源；②⑤只引医事法源；③只引民法典合同编；交叉须显式标注</td>
+</tr>
+<tr>
+<td>🚫5</td>
+<td><strong>无标注互哺</strong></td>
+<td>任何跨模板迁移必须标 <code>cross_track_ref</code>，否则视为稀释</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-9-2-20-条候选互哺通道-5-4">9.2 20 条候选互哺通道（5×4）</h3>
+
+<table>
+<thead>
+<tr>
+<th>从↓ 到→</th>
+<th>①慈善</th>
+<th>②医院</th>
+<th>③合同</th>
+<th>④非诉</th>
+<th>⑤调解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 慈善</strong></td>
+<td>—</td>
+<td>🟠 志愿者管理→医院劳务派遣边界</td>
+<td>🟢 <strong>捐赠/资助协议范本</strong>（最高价值）</td>
+<td>🟢 16 领域 SKU → 非诉交付包</td>
+<td>🟡 受益人投诉→调解技巧</td>
+</tr>
+<tr>
+<td><strong>② 医院</strong></td>
+<td>🟢 <strong>采购合规→慈善投资活动</strong>（已有卡）</td>
+<td>—</td>
+<td>🟢 设备药品采购合同监管规则注入</td>
+<td>🟢 依法执业体检→非诉季报模板</td>
+<td>🟢 <strong>合规缺陷→调解预防素材</strong></td>
+</tr>
+<tr>
+<td><strong>③ 合同</strong></td>
+<td>🟢 捐赠协议审查（行业规则注入）</td>
+<td>🟢 采购/聘用合同审查</td>
+<td>—</td>
+<td>🟢 合同体检→非诉交付项</td>
+<td>🟡 医疗服务合同→纠纷预防</td>
+</tr>
+<tr>
+<td><strong>④ 非诉</strong></td>
+<td>🟢 常年顾问交付节拍复用</td>
+<td>🟢 同左</td>
+<td>🟢 同左</td>
+<td>—</td>
+<td>🟡 文书复核门禁复用</td>
+</tr>
+<tr>
+<td><strong>⑤ 调解</strong></td>
+<td>🟡 纠纷处置→慈善内耗调解</td>
+<td>🟢 <strong>系统性风险→回喂整改</strong>（已裁决）</td>
+<td>🟡 违约调解经验</td>
+<td>🟡 调解文书复核</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🟢 高价值通道（优先建设）｜🟠 中等｜🟡 观察
+<strong>最高价值两条</strong>：<strong>①↔③</strong>（合同是所有模板的载体）与 <strong>②↔⑤</strong>（老强已裁决双向互哺）。</p>
+</blockquote>
+<h3 id="h-9-3-现存跨模板卡-须核定归属">9.3 现存跨模板卡（须核定归属）</h3>
+
+<table>
+<thead>
+<tr>
+<th>卡片</th>
+<th>现落点</th>
+<th>判定</th>
+<th>处置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>经验卡片-财务-医院采购合规反哺慈善投资活动合规</code></td>
+<td>医院合规/</td>
+<td>✅ 正常互哺</td>
+<td>标 <code>cross_track_ref: ①</code></td>
+</tr>
+<tr>
+<td><code>经验卡片-人资-医院劳务派遣合规反哺慈善志愿者管理</code></td>
+<td>⚠️ <strong>慈法合规/</strong></td>
+<td>🚩 <strong>归属存疑</strong>：本体是医院人资却挂①域</td>
+<td>迁回②或标 <code>dual_track</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-十-资产指纹基线-五模板版">十、资产指纹基线（五模板版）</h2>
+
+<blockquote>
+<p>每次迭代后跑【十五、一键自检脚本】，实测值与本表对比。<strong>不一致 = 漂移</strong>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>指标</th>
+<th>基线值（2026-09-12）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B1</strong></td>
+<td>①制度清单制度数</td>
+<td><strong>30</strong></td>
+</tr>
+<tr>
+<td><strong>B2</strong></td>
+<td>①制度清单 CARD-TODO</td>
+<td><strong>28</strong></td>
+</tr>
+<tr>
+<td><strong>B3</strong></td>
+<td>①审批流控制节点</td>
+<td><strong>18</strong>（N1–N18；P0-7 新增 N16/N17/N18）</td>
+</tr>
+<tr>
+<td><strong>B4</strong></td>
+<td>①字段表业务表数</td>
+<td><strong>10</strong></td>
+</tr>
+<tr>
+<td><strong>B5</strong></td>
+<td>①慈法合规卡数</td>
+<td>🟢 <strong>6</strong>（P0-1 喂卡 2→6：关联交易回避／公募方案九要素／联合劝募三红线／信息公开三档时限）</td>
+</tr>
+<tr>
+<td><strong>B6</strong></td>
+<td>②医院合规卡数</td>
+<td>🟢 <strong>13</strong></td>
+</tr>
+<tr>
+<td><strong>B7</strong></td>
+<td>②医疗纠纷章卡数</td>
+<td>🟢 <strong>11</strong>（P0-5 调解程序域枢纽卡入列 <code>医疗纠纷章卡/</code>；含第十六章章卡 1 + 9 章卡 + 1 调解经验卡）</td>
+</tr>
+<tr>
+<td><strong>B8</strong></td>
+<td>②三件套（制度/审批/字段）</td>
+<td>🟢 <strong>12 / 8 / 8</strong></td>
+</tr>
+<tr>
+<td><strong>B9</strong></td>
+<td>③合同合规卡数</td>
+<td>🟢 <strong>6</strong>（P0-3 冷启动：六域枢纽卡）</td>
+</tr>
+<tr>
+<td><strong>B10</strong></td>
+<td>③三件套</td>
+<td>🟢 <strong>8 / 10 / 10</strong></td>
+</tr>
+<tr>
+<td><strong>B11</strong></td>
+<td>④非诉合规卡数</td>
+<td>🟢 <strong>6</strong></td>
+</tr>
+<tr>
+<td><strong>B12</strong></td>
+<td>④交付物模板数</td>
+<td>🟢 <strong>5</strong>（P0-4 D1–D5，归位 05-系统配置/非诉交付物模板/）</td>
+</tr>
+<tr>
+<td><strong>B13</strong></td>
+<td>⑤调解经验卡数</td>
+<td>🟡 <strong>1</strong>（P0-5 程序域枢纽卡，章卡第十六章重映射）</td>
+</tr>
+<tr>
+<td><strong>B14</strong></td>
+<td>⑤调解章卡</td>
+<td>🟡 <strong>1</strong>（第十六章）</td>
+</tr>
+<tr>
+<td><strong>B15</strong></td>
+<td>本地法规总数</td>
+<td><strong>71</strong> 部（⚠️ 用 <code>find -name</code>，<code>-iname</code> 会漏中文名；2026-09-13 补建 8 部专门办法源（57）→ 2026-09-14 补建 7 部 H 类法源（64）→ 2026-09-14 v1.4.6 补建 7 部②医院轨5+⑤调解轨2（71），实物 71 与基线 71 对齐；LAW 含 1 个非法规文件「案件进展备忘-丁茂祥案-20260820.md」建议移出法规库）</td>
+</tr>
+<tr>
+<td><strong>B16</strong></td>
+<td>①慈善轨本地法源</td>
+<td><strong>11</strong> 部（5 核心：慈善法·基金会管理条例·年度支出规定·民间非营利会计制度·境外NGO法 ＋ 本轮新增 6：信息公开办法/公募办法/保值增值办法/志愿服务条例/公益事业捐赠法/行政处罚程序规定；落点：慈善合规类文件夹 8 + 行政法律规章 3）</td>
+</tr>
+<tr>
+<td><strong>B17</strong></td>
+<td>医院轨本地法源</td>
+<td><strong>10</strong> 部（原 5：医师法/精神卫生法/基本医疗卫生与健康促进法/药品管理法/疫苗管理法 ＋ <strong>v1.4.6 新增 5</strong>：医疗机构管理条例/医疗质量管理办法/病历书写基本规范/医疗事故处理条例/护士条例；落点 <code>医事法律法规库/</code>）</td>
+</tr>
+<tr>
+<td><strong>B18</strong></td>
+<td>待核验法源合计</td>
+<td><strong>0</strong> 项（2026-09-14 v1.4.6 清 ②医院轨 H1–H5 5 部 + ⑤调解轨 M2/M3 2 部后本地法源缺口全部清零；①慈善轨于 v1.4.4 已清零，此前"①慈善轨约 4 项 pending"系 v1.4.5 基线漂移误记，经实地核查附录 B-1 十项全 ✅ 已纠正）</td>
+</tr>
+<tr>
+<td><strong>B19</strong></td>
+<td>SKILL.md 版本</td>
+<td><strong>1.8.0</strong>（变更守卫机制 + 权威源升格 + 位置歧义事故处置）</td>
+</tr>
+<tr>
+<td><strong>B20</strong></td>
+<td>01-方案设计文档数</td>
+<td><strong>11</strong></td>
+</tr>
+<tr>
+<td><strong>B21</strong></td>
+<td>05-系统配置文档数</td>
+<td><strong>20</strong>（🆕 2026-09-13 修正漂移：v1.4.2 加 ②③④⑤ 三件套 12 份 + D1–D5 五份 = 20，原记 8 失真；自检实测 20 与基线对齐）</td>
+</tr>
+<tr>
+<td><strong>B22</strong></td>
+<td>06-运维备忘录 md 文档数</td>
+<td><strong>2</strong> 份（五模板手册 + ①单模板台账；另有 <code>cms_selfcheck.sh</code> 不计入 md）</td>
+</tr>
+<tr>
+<td><strong>B23</strong></td>
+<td>守卫受控文件数</td>
+<td><strong>89</strong></td>
+</tr>
+<tr>
+<td><strong>B24</strong></td>
+<td>CMS治理卡数（新建域）</td>
+<td>🟢 <strong>1</strong></td>
+</tr>
+<tr>
+<td><strong>B25</strong></td>
+<td>④三件套（制度/审批/字段）</td>
+<td>🟢 <strong>6 / 6 / 6</strong></td>
+</tr>
+<tr>
+<td><strong>B26</strong></td>
+<td>⑤三件套（制度/审批/字段）</td>
+<td>🟢 <strong>6 / 10 / 6</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>🎯 下一轮目标基线</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>当前</th>
+<th>目标</th>
+<th>达成标志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①慈法合规卡</td>
+<td>2</td>
+<td><strong>6</strong></td>
+<td>补齐 P0 四张卡</td>
+</tr>
+<tr>
+<td>③合同合规卡</td>
+<td>0</td>
+<td><strong>6</strong></td>
+<td>六域枢纽卡建成</td>
+</tr>
+<tr>
+<td>④交付物模板</td>
+<td>0</td>
+<td><strong>5</strong></td>
+<td>D1–D5 模板库建成</td>
+</tr>
+<tr>
+<td>⑤调解经验卡</td>
+<td>0</td>
+<td><strong>3</strong></td>
+<td>受理/评估/协议三卡</td>
+</tr>
+<tr>
+<td>待核验法源</td>
+<td>≥19</td>
+<td><strong>≤10</strong></td>
+<td>pkulaw 核验推进</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-十一-变更联动矩阵-改-A-必同步-B">十一、变更联动矩阵（改 A 必同步 B）</h2>
+
+<blockquote>
+<p>🔷 <strong>本矩阵是母本（SSOT）的贯彻机制</strong>：每条"必须同步"最终都要回写到本文件（台账 + 基线 + frontmatter）。
+完整执行流程见【〇.2 迭代协议 SOP】。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>你改了这个</th>
+<th>必须同步</th>
+<th>检查要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>★ 任何一项（兜底行）</strong></td>
+<td>☑ <strong>回写本母本</strong>：十八章台账 append + 十章基线（若触及）+ frontmatter <code>updated</code>/<code>version</code></td>
+<td>🔴 <strong>漏此项 = 迭代未完成</strong></td>
+</tr>
+<tr>
+<td><strong>任一模板的制度清单</strong></td>
+<td>☑ 该模板审批流"对应制度条款"列<br>☑ 该模板字段表"合规依据"取值域<br>☑ 基线 B1/B8/B10<br>☑ 台账追加</td>
+<td>制度编号变化会让条款引用失效</td>
+</tr>
+<tr>
+<td><strong>任一模板的审批流</strong></td>
+<td>☑ 字段表时限字段（若涉时限）<br>☑ 预警规则<br>☑ 基线 B3<br>☑ 台账追加</td>
+<td>新增节点须同步编号序列</td>
+</tr>
+<tr>
+<td><strong>任一模板的字段表</strong></td>
+<td>☑ 审计留痕组是否仍全覆盖<br>☑ Lookup 关联是否断链<br>☑ 健康分是否需重算<br>☑ 台账追加</td>
+<td><strong>留痕组 6 项必须全表全有</strong></td>
+</tr>
+<tr>
+<td><strong>新增/删除经验卡</strong></td>
+<td>☑ 对应模板 card_id（CARD-TODO → 实际 ID）<br>☑ 00-索引制品清单<br>☑ 基线 B5/B6/B7/B9/B11/B13<br>☑ 台账追加</td>
+<td>建卡后<strong>必须回写</strong>，否则等于没建</td>
+</tr>
+<tr>
+<td><strong>跨模板迁移方法论</strong></td>
+<td>☑ 标 <code>cross_track_ref</code><br>☑ 检查是否触碰五禁止之一（9.1）</td>
+<td>无标注互哺 = 稀释</td>
+</tr>
+<tr>
+<td><strong>新增本地法规</strong></td>
+<td>☑ 对应模板法源清单<br>☑ 附录 B 状态改 ✅<br>☑ 相关节点 <code>statute_text_pending</code> 摘帽<br>☑ 基线 B16/B17/B18</td>
+<td>摘帽前须确认<strong>现行有效版本</strong></td>
+</tr>
+<tr>
+<td><strong>SKILL.md</strong></td>
+<td>☑ 卡库路径与数量须<strong>实地复测</strong>后写<br>☑ 版本号 +1<br>☑ 基线 B19<br>☑ 台账追加</td>
+<td>🔴 <strong>漂移重灾区，禁止凭记忆写卡数</strong></td>
+</tr>
+<tr>
+<td><strong>新增第六个模板</strong></td>
+<td>☑ 先走 EDI 注册，沉淀 ≥3 张卡才升格为模板<br>☑ 本章全部表格加一列<br>☑ 互哺矩阵扩为 6×5</td>
+<td><strong>防止父路由膨胀</strong>，突发场景一律先走 EDI</td>
+</tr>
+<tr>
+<td><strong>00-索引</strong></td>
+<td>☑ 任何目录结构变化后必更新</td>
+<td>索引滞后 = 找不到资产</td>
+</tr>
+<tr>
+<td><strong>本母本（SSOT）</strong></td>
+<td>☑ 台账 append-only<br>☑ frontmatter <code>updated</code> + <code>version</code><br>☑ 若基线变化须<strong>同步 cms_selfcheck.sh 的期望值</strong><br>☑ HTML 阅读版重新生成（<code>tools/md2html.py</code>）</td>
+<td>🔷 本文件是权威源，<strong>自身变动即最高级别事件</strong>：改基线不改脚本 = 自检立刻报错</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-十二-运维日历">十二、运维日历</h2>
+
+<table>
+<thead>
+<tr>
+<th>频率</th>
+<th>动作</th>
+<th>落点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>每次迭代后</strong></td>
+<td>填台账 → 刷基线 → 跑自检</td>
+<td>第十八章 / 第十章 / 第十五章</td>
+</tr>
+<tr>
+<td><strong>每周</strong>（周日 21:00 自动化）</td>
+<td>周巡检：六域风险扫描 + 简报 + 产卡；连接器离线降级（<strong>不伪造</strong>）</td>
+<td><code>05-调用/周合规巡检/</code></td>
+</tr>
+<tr>
+<td><strong>每月</strong></td>
+<td>① 全库资产盘点（五模板卡数）<br>② 备份制品库到异地<br>③ 检查档位裁决状态</td>
+<td>台账 + <code>/tmp</code> 备份</td>
+</tr>
+<tr>
+<td><strong>每季度</strong></td>
+<td>① 法规时效性复检（各模板法源映射表）<br>② 制度适用性评审<br>③ 健康分参数校准</td>
+<td>各模板章 + 字段表</td>
+</tr>
+<tr>
+<td><strong>每年 / 法规修订时</strong></td>
+<td>① <strong>法条重新提取</strong>（条号会变）<br>② 五模板三维同步：制度→审批→字段</td>
+<td>全线</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>法规修订是最高级别触发事件</strong>：《慈善法》《民法典》《医疗纠纷预防和处理条例》任一修订，
+条号变动会让全部节点法条依据失效 —— 必须走联动矩阵"新增本地法规"行完整流程。</p>
+</blockquote>
+<hr />
+<h2 id="h-十三-红线总表-执业风险-违反立即回滚">十三、红线总表（执业风险 · 违反立即回滚）</h2>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>红线</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🚫1</td>
+<td><strong>不凭记忆灌法条正文</strong></td>
+<td>必须从本地法律法规库回填；缺失标 <code>statute_text_pending</code>，<strong>不得引为文档源</strong></td>
+</tr>
+<tr>
+<td>🚫2</td>
+<td><strong>不删改台账历史行</strong></td>
+<td>台账是 append-only 的变更证据链</td>
+</tr>
+<tr>
+<td>🚫3</td>
+<td><strong>不重命名已索引文件</strong></td>
+<td>全名链接会断（母本文件名保留 v2.0 字样，版本以 frontmatter 为准）</td>
+</tr>
+<tr>
+<td>🚫4</td>
+<td><strong>五模板互不稀释</strong></td>
+<td>五禁止：资产白送／定价拉平／口径串味／法条混引／无标注互哺（9.1）</td>
+</tr>
+<tr>
+<td>🚫5</td>
+<td><strong>写入前必备份</strong>（<code>/tmp</code> 时间戳目录）</td>
+<td>单源文件重建适用 <code>cp -n</code> 防覆盖</td>
+</tr>
+<tr>
+<td>🚫6</td>
+<td><strong>批量前必 dry-run</strong></td>
+<td>批量更新 10 份/轮上限，改后确认幂等</td>
+</tr>
+<tr>
+<td>🚫7</td>
+<td><strong>涉诉/涉裁/涉刑/行政复议诉讼 → 立即转小强系统</strong></td>
+<td>CMS 只做非诉合规与纠纷调解，越位即执业风险</td>
+</tr>
+<tr>
+<td>🚫8</td>
+<td><strong>绝不承诺结果</strong></td>
+<td>不得写"保证过年检/绝不处罚/保证调解成功"</td>
+</tr>
+<tr>
+<td>🚫9</td>
+<td><strong>诉讼类素材不喂 CMS 卡库</strong></td>
+<td>韩杰案 15 份刑事蒸馏笔记仅经跨案识别反哺，不入库</td>
+</tr>
+<tr>
+<td>🚫10</td>
+<td><strong>占位不编造</strong></td>
+<td>需联网核验的域：<code>confidence: 0.60</code> + <code>note</code> + 待核验声明，<strong>绝不编造文号</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-十四-备份与回滚">十四、备份与回滚</h2>
+
+<p><strong>备份位置约定</strong>：<code>/tmp/xiaode_cms_backup_&lt;YYYYMMDD-HHMMSS&gt;/</code></p>
+<p><strong>本系统历次备份</strong>：
+- <code>/tmp/xiaode_cms_backup_20260912-220427/</code>（SKILL + 桌面三份）
+- <code>/tmp/xiaode_index_backup_20260912-224335/</code>（00-索引）
+- <code>/tmp/xiaode_track2_backup_20260912-225121/</code>（换轨：备忘录 + 母本 + 索引 + 制度清单 + 桌面 3 份 + SKILL）</p>
+<p><strong>回滚判定</strong>：自检发现指纹意外漂移 → 对比备份定位差异行逐项回滚；违反红线之一 → 立即回滚重走流程；批量失败 → 停止后续批次，回滚当前批次。
+<strong>回滚后必做</strong>：台账记一行（原因 + 影响范围），<strong>不得静默回滚</strong>。</p>
+<hr />
+<h2 id="h-十五-一键自检脚本">十五、一键自检脚本</h2>
+
+<blockquote>
+<p>现有 <code>cms_selfcheck.sh</code>（v1.0，覆盖 B1–B13 单模板版基线）。
+<strong>待升级 v2.0</strong>：增加五模板卡库（③合同 ④非诉 ⑤调解）、三件套状态、本地法规总数、交付物模板数。
+升级前可用以下片段手工核验新增指标：</p>
+</blockquote>
+<pre><code class="language-bash">&lt;h1 id=&quot;h-五模板卡库快检&quot;&gt;五模板卡库快检&lt;/h1&gt;
+CMS=&quot;/Users/chenyouqiang/Documents/LawKB/小德合规管理系统&quot;
+for d in 慈法合规 医院合规 医疗纠纷章卡 合同合规 非诉合规; do
+  c=$(find &quot;$CMS/03-经验卡片/$d&quot; -name '*.md' ! -name 'README*' 2&gt;/dev/null | wc -l | tr -d ' ')
+  echo &quot;$d: $c&quot;
+done
+&lt;h1 id=&quot;h-本地法规总数&quot;&gt;本地法规总数&lt;/h1&gt;
+echo &quot;本地法规总数: $(find /Users/chenyouqiang/Documents/LawKB/法律法规库 -name '*.md' | wc -l | tr -d ' ')&quot;
+&lt;h1 id=&quot;h-三件套状态-非①模板应为-0&quot;&gt;三件套状态（非①模板应为 0）&lt;/h1&gt;
+ls -1 &quot;$CMS/05-系统配置/&quot;
+</code></pre>
+<hr />
+<h2 id="h-十六-健康度看板-2026-09-14-v1-4-7">十六、健康度看板（2026-09-14 · v1.4.7）</h2>
+
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评分</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🎯 定位清晰度</td>
+<td>🟢 <strong>9/10</strong></td>
+<td>五模板 + 三层架构 + 边界已裁决</td>
+</tr>
+<tr>
+<td>🔌 接线完整度</td>
+<td>🟢 <strong>9/10</strong> ↑</td>
+<td>五模板三件套全部建成（①12/8/8·②12/8/8·③8/10/10·④6/6/6·⑤6/10/6，B8/B10/B25/B26）；④非诉卡库本轮补齐</td>
+</tr>
+<tr>
+<td>📚 弹药充足度</td>
+<td>🟢 <strong>8/10</strong> ↑</td>
+<td>②23 张最强；①6／③6／④6 卡+5 模板／⑤1 调解卡（P0-1/3/4/5/6 已闭环）</td>
+</tr>
+<tr>
+<td>⚖️ 法条可靠度</td>
+<td>🟢 <strong>10/10</strong> ↑</td>
+<td>民法典/慈善法/医疗纠纷条例/个保法/数据安全法/政府采购法/招投标法及②医院轨5部（医疗机构管理条例/医疗质量管理办法/病历书写基本规范/医疗事故处理条例/护士条例）＋⑤调解轨2部（医疗纠纷预防和处理条例/司法确认若干规定）全本地扎实；2026-09-14 v1.4.6 补建 7 部本地源（B15 64→71），本地法源缺口清零；v1.4.7 已将 7 部法源挂接②医院轨/⑤调解轨审批流（H2/H3/H6·M1–M5）与 8 张经验卡引用（本地源✅标注），引用闭环</td>
+</tr>
+<tr>
+<td>🔧 技术完备度</td>
+<td>🟢 <strong>8/10</strong></td>
+<td>留痕组/二维矩阵/Lookup/时限/健康分已成型（①），可平移</td>
+</tr>
+<tr>
+<td>📖 文档一致性</td>
+<td>🟢 <strong>9/10</strong> ↑</td>
+<td>本轮全量基线漂移修正（B15 49→57·B16 5→11·B21 8→20·B23 71→89），母本与自检/守卫三者对齐</td>
+</tr>
+<tr>
+<td><strong>综合</strong></td>
+<td><strong>🟢 9.5/10</strong> ↑</td>
+<td><strong>②医院轨 5 部 + ⑤调解轨 2 部法源核验+补建（B15 64→71／B17 5→10／B18 约4→0）；法条可靠度满 10/10；本地法源缺口清零；v1.4.5「①慈善轨约4项 pending」系基线漂移误记已纠正；v1.4.7 完成 7 部法源对审批流＋经验卡的引用挂接，并正式归档案件备忘至 案件资料/</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 红线项优先：任一模板财务红线或关联交易合规率为 0，总分再高也降「严重」。</p>
+</blockquote>
+<hr />
+<h2 id="h-十七-待办队列">十七、待办队列</h2>
+
+<h3 id="h-P0-阻塞">P0 · 阻塞</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>事项</th>
+<th>判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~~<strong>P0-1</strong>~~ ✅</td>
+<td>~~<strong>①喂卡 2 → 6</strong>~~ ✅ <strong>已完成 2026-09-13（B5 2→6）</strong></td>
+<td>关联交易回避／公募方案 9 要素／联合劝募三红线／信息公开三档时限</td>
+</tr>
+<tr>
+<td>P0-2</td>
+<td><strong>②③④⑤ 三件套编制（制度/审批/字段）</strong></td>
+<td>用户 2026-09-13 确认扩展为四模板：②照搬①骨架换院长/医务科、③移植10表骨架+二维矩阵、④常年顾问口径、⑤以 M1–M6 为母稿；12 文件建于 05-系统配置/，B8/B10/B25/B26 已建</td>
+</tr>
+<tr>
+<td>~~<strong>P0-3</strong>~~ ✅</td>
+<td>~~<strong>③冷启动喂卡</strong>~~ ✅ <strong>已完成 2026-09-13（B9 0→6 六域枢纽卡）</strong>；<strong>三件套部分由 P0-2 收口（同日完成 8 制度/10 审批/10 字段，B10）</strong></td>
+<td>合同卡库 0→6，③是互哺枢纽；三件套原列本项但未建，归 P0-2 统一编制</td>
+</tr>
+<tr>
+<td>~~<strong>P0-4</strong>~~ ✅</td>
+<td>~~<strong>④交付物模板库 D1–D5</strong>~~ ✅ <strong>已完成 2026-09-13（B12 0→5，归位 05-系统配置/非诉交付物模板/）</strong></td>
+<td>非诉模板的可交付骨架</td>
+</tr>
+<tr>
+<td>~~<strong>P0-5</strong>~~ ✅</td>
+<td>~~<strong>⑤核验《人民调解法》</strong>~~ ✅ <strong>已完成 2026-09-13（母法已补建＋调解程序域枢纽卡 B13 0→1）</strong></td>
+<td>调解程序母法缺失，是本模板最大法源风险</td>
+</tr>
+<tr>
+<td>P0-6</td>
+<td>跨模板卡归属核定（2 张）</td>
+<td>见 9.3</td>
+</tr>
+<tr>
+<td>~~<strong>P0-7</strong>~~ ✅</td>
+<td>~~<strong>①N8/N9 按民发〔2026〕12号分档改造</strong> + 新增 N16 募捐成本 3% 红线~~</td>
+<td>✅ <strong>已完成 2026-09-12 23:58</strong>（见 4.7）。N8/N9 改分档判定 + 新增 N16/N17/N18；字段表补 §0.4 + §十三；制度 24 改判、制度 25 摘帽；节点 15→18</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-P1-增强">P1 · 增强</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1-1</td>
+<td>pkulaw 核验①的 4 部高优先级法规</td>
+</tr>
+<tr>
+<td>P1-2</td>
+<td>核验②的 5 部医事法规（医疗机构管理条例等）</td>
+</tr>
+<tr>
+<td>P1-3</td>
+<td><code>cms_selfcheck.sh</code> 升级 v2.0（覆盖五模板）</td>
+</tr>
+<tr>
+<td>P1-4</td>
+<td>00-索引全量复扫，加五模板章节</td>
+</tr>
+<tr>
+<td>P1-5</td>
+<td>①制度 CARD-TODO 由 28 → ≤20</td>
+</tr>
+<tr>
+<td>P1-6</td>
+<td>③移植金额×风险二维审批矩阵 + 到期预警</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-P2-优化">P2 · 优化</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2-1</td>
+<td>EDI 注册表接入五模板突发场景</td>
+</tr>
+<tr>
+<td>P2-2</td>
+<td>五模板各配 standing 实体档案 schema</td>
+</tr>
+<tr>
+<td>P2-3</td>
+<td>健康分参数校准（首年用默认值）</td>
+</tr>
+<tr>
+<td>P2-4</td>
+<td><strong>档位与定价裁决</strong>（老强拍板：本次不裁决，全书标 ⚠️待裁决）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-十八-变更登记台账-append-only">十八、变更登记台账（append-only 🔴）</h2>
+
+<blockquote>
+<p><strong>铁律</strong>：只增不改。写错就在下一行更正，<strong>禁止修改历史行</strong>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>日期时间</th>
+<th>版本</th>
+<th>类型</th>
+<th>变更摘要</th>
+<th>影响文件</th>
+<th>联动完成</th>
+<th>操作人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-09-12 22:05</td>
+<td>v2.0.0</td>
+<td>🆕 新建</td>
+<td>轨道1 改造方案落地：接线层 + P0/P1/P2 + SKILL v1.3.0 漂移修正</td>
+<td>母本 + 三份慈善版 + SKILL</td>
+<td>☑ 台账 ☑ 基线 ☑ 索引</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td>2026-09-12 22:45</td>
+<td>v1.0.0</td>
+<td>🆕 新建</td>
+<td>单模板版运维备忘录建立（现降级为①详细台账）</td>
+<td>备忘录（新建）</td>
+<td>☑ 基线首次取数</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td>2026-09-12 22:47</td>
+<td>v1.0.1</td>
+<td>🐛 修复</td>
+<td>自检脚本 B5 正则误计（9 → 10）</td>
+<td>cms_selfcheck.sh</td>
+<td>☑ 实跑复验</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td>2026-09-12 22:52</td>
+<td>v1.1.0</td>
+<td>🔄 换轨</td>
+<td>轨道2 通用企业 → 基层医院；两轨互不稀释</td>
+<td>备忘录 + 母本 + 索引 + 制度清单 + 桌面3份 + SKILL v1.4.0</td>
+<td>☑ 台账 ☑ 索引 ☑ 备份</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-12 23:10</strong></td>
+<td><strong>v1.0.0</strong></td>
+<td>🆕 <strong>新建</strong></td>
+<td><strong>五模板版运维手册建立</strong>：①慈善 ②医院 ③合同生命周期 ④非诉业务 ⑤医疗纠纷调解。四项边界裁决（③全周期统管 L0 当引擎／⑤独立+双向互哺／④常年顾问非诉交付口径／档位暂不裁决）。通用层：六域+扩展域、接线三规范、G8、三件套SKU、执业边界总纲、健康分。新增互哺矩阵 20 通道 + 五禁止 + 22 项指纹基线</td>
+<td>本文件（新建）</td>
+<td>☑ 基线（B1–B22 首次取数）</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-12 23:25</strong></td>
+<td><strong>v1.0.1</strong></td>
+<td>🔴 <strong>纠错</strong></td>
+<td><strong>实地复测发现 3 部法规被误判缺失</strong>：改用 <code>find -name</code>（<code>find -iname</code> 会漏中文名文件 8 个）后确认本地已有《基金会管理条例》《关于慈善组织开展慈善活动年度支出、管理费用和募捐成本的规定》（<strong>民发〔2026〕12号</strong>）《民间非营利组织会计制度》。<strong>并由此发现①N8/N9 红线缺陷</strong>：现行"70%/10%"仅对公募基金会成立，实际为「四主体类型×四档净资产」矩阵（4.7）。新增 P0-7 + N16 募捐成本 3% 红线</td>
+<td>手册 4.6/4.7/4.8、附录 A/B-1、基线 B15/B16/B18/B22、<code>cms_selfcheck.sh</code></td>
+<td>☑ 台账 ☑ 基线 ☑ 脚本实跑 ⏳ 待同步①单模板台账与 SKILL</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-12 23:58</strong></td>
+<td><strong>v1.2.0</strong></td>
+<td>🔴 <strong>P0-7 闭环</strong></td>
+<td><strong>①N8/N9 分档改造完成（唯一会致客户出错的项）</strong>。法源：《关于慈善组织开展慈善活动年度支出、管理费用和募捐成本的规定》<strong>民发〔2026〕12号</strong>（民政部·财政部·税务总局 2026-03-23 印发、04-27 公布，替代民发〔2016〕189号，本地源已核验）。改造：①N8/N9 由固定 70%/10% 改为<strong>按主体类型+公募资格+上年末净资产分档</strong>（审批流 §2.5.2 十档矩阵 + §2.5.1 四步判定）；②<strong>补入三个分母口径差异</strong>（支出下限：有公募=上年总收入／无公募=上年末净资产；管理费上限=当年总支出；募捐成本上限=前三年捐赠收入平均数）——<strong>此前"70%/10%"光写比例不写分母，等于没说</strong>；③新增 <strong>N16</strong> 募捐成本 ≤3%（第15条）+ 本组织场地/人员费用不得计入（第6条）、<strong>N17</strong> 支出确认口径到达最终受益人才计（第12条）、<strong>N18</strong> 例外报告义务三种情形（第14条）；④补第13条 <strong>20万元管理费豁免</strong>、第11条<strong>前三年平均调节</strong>、第18条<strong>罚则</strong>（慈善法第110条第1款第6项）；⑤字段表新增 <strong>§0.4 组织主体资格字段组</strong> + <strong>§十三 分档判定字段组</strong>（9输入+10计算字段+6条校验规则）；⑥制度24改判、制度25摘帽、喂卡优先级 P1→<strong>P0</strong></td>
+<td>审批流（N8/N9/N16/N17/N18 + §2.5）、字段表（§0.4 + §十三）、制度清单（制度24/25 + 喂卡清单）、本文件 4.7/待办/台账、<strong>B3 15→18</strong>、<code>cms_selfcheck.sh</code></td>
+<td>☑ 台账 ☑ 基线 ☑ 脚本实跑（B3=18 ✅）⏳ 待同步索引/SKILL</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-12 23:47</strong></td>
+<td><strong>v1.1.0</strong></td>
+<td>🔷 <strong>升格</strong></td>
+<td><strong>老强拍板：本文件定为「小德合规管理系统·系统母本备忘录 / 唯一权威源（SSOT）」</strong>，版本自 v1.0.1 起跳至 1.1.0。新增：frontmatter <code>authority:SSOT</code> + <code>ssot_rank:L0</code> + <code>iteration_protocol:mandatory</code> + <code>authoritative_over</code> 五层；头部【权威源声明】含权威层级金字塔（L-1 法规 → L0 本母本 → L1/2/3 从属层）；<strong>〇.1 权威地位问答表</strong>、<strong>〇.2 迭代协议 SOP 五步</strong>（S1备份／S2查联动／S3执行+dry-run+自检／<strong>S4回写母本★</strong>／S5外溢同步）、<strong>〇.3 迭代触发清单</strong>（7 类）；联动矩阵增 ★兜底行 + 本母本自约束行（改基线须同步脚本期望值 + 重生成 HTML 阅读版）；迭代铁律由"两件事"改为"<strong>三件事</strong>"</td>
+<td>本文件 + 00-索引 + ①单模板备忘录 + SKILL v1.6.0</td>
+<td>☑ 台账 ☑ frontmatter ⏳ 待同步索引/SKILL/①单模板</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-13 00:40</strong></td>
+<td><strong>v1.3.0</strong></td>
+<td>🛡️ <strong>机制＋事故</strong></td>
+<td>①新增 <strong>〇.4 变更守卫</strong>（<code>cms_change_guard.sh</code> v1.0.1）：把「系统一变→备忘录必回写」由纸面协议升级为 md5 指纹三态检测（无变更✅／已回写✅／未回写🔴 exit 2），受控 <strong>53</strong> 个文件，已实跑验证三态（含故障注入）。②<strong>处置权威源位置歧义事故</strong>：本母本与①单模板 md 被异常移动至 <code>01-方案设计/</code>，致守卫读台账返回 0（静默失真）；已 cp 恢复并 md5 核验一致，重复副本移出至 /tmp。③新增铁律：<strong>母本物理位置唯一 = <code>06-运维备忘录/</code></strong>。④新增基线 B23</td>
+<td>本文件 〇.4／十(B23)／十八台账 + <code>cms_change_guard.sh</code>(新建) + 00-索引 + SKILL v1.8.0</td>
+<td>☑ 台账 ☑ 基线 ☑ 脚本实跑(三态) ☑ 备份</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-13 04:10</strong></td>
+<td><strong>v1.4.0</strong></td>
+<td>🆕 <strong>沉淀</strong></td>
+<td><strong>事故复盘提炼成卡</strong>：将「2026-09-13 权威源位置歧义事故」复盘沉淀为经验卡 <code>经验卡片-CMS治理-母本位置歧义事故复盘.md</code>（新建域 <code>03-经验卡片/CMS治理/</code>·1 张·confidence 0.95）。顺带修正既有漂移：B19 1.7.0→<strong>1.8.0</strong>（与 SKILL 实际版本对齐，源为上一轮回写笔误）；B23 53→<strong>54</strong>（受控文件+1）；〇.1/〇.4 速读口径扩至 B1–B24；SKILL ssot 字段 v1.3.0→<strong>v1.4.0</strong>。遵循 SOP：S1 备份(依赖既有 /tmp 备份)／S2 联动(新增卡→B24+索引+台账)／S3 自检(待 Bash 恢复后复跑)／S4 回写(本行)／S5 同步(索引+cms_selfcheck.sh B23)</td>
+<td>本文件(〇.1/〇.4/十 B19·B23·B24/十八台账) + 新建卡 + 00-索引 + cms_selfcheck.sh + SKILL ssot</td>
+<td>☑ 台账 ☑ 基线 ☑ 建卡 ⏳ 自检复跑(Bash 暂不可用，S3/S5 守卫 mark 待补)</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-13 10:55</strong></td>
+<td><strong>v1.4.1</strong></td>
+<td>🆕 <strong>弹药填充</strong></td>
+<td><strong>五模板弹药批量填充（消除 P0-1/3/4/5 待办）</strong>：①慈法合规喂卡 2→6（关联交易回避／公募方案九要素／联合劝募三红线／信息公开三档时限）；③合同合规冷启动 0→6（六域枢纽卡）；④非诉交付物模板 D1–D5 新建（归位 <code>05-系统配置/非诉交付物模板/</code>，<code>非诉合规/</code>仅留 README）；⑤补建《人民调解法》本地源（<code>程序法/</code>，多源核验）＋ 建调解程序域枢纽卡 0→1（章卡第十六章重映射），8.6 pending 摘帽。B15/B16 漂移根因修复：B16 脚本 <code>CHARITY</code> 变量指向不存在目录＋口径错（数目录得2 vs 母本5部跨目录清单），改为核对5部法源文件；B15 实物48中差值为规划在库缺位的人民调解法，补建后对齐基线49。受控文件 54→71（＋17）</td>
+<td>本文件(十 B5/B9/B12/B13/B15/B16/B23/8.5/8.6/8.8/十六/十七/附录B-4 + frontmatter 1.4.1) + 新建17文件 + cms_selfcheck.sh(B12/B16/B23) + SKILL ssot + 00-索引 + 程序法/人民调解法</td>
+<td>☑ 台账 ☑ 基线 ☑ 建卡/模板 ☑ 脚本实跑 ⏳ 待 mark/HTML/外溢同步</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-13 11:30</strong></td>
+<td><strong>v1.4.2</strong></td>
+<td>🆕 <strong>三件套</strong></td>
+<td><strong>P0-2 编制 ②③④⑤ 四模板三件套（制度/审批/字段）闭环</strong>：为 ②③④⑤ 各新建三件套文件（共 12 文件）于 <code>05-系统配置/</code>——②医院 12 制度/8 审批/8 字段（照搬①骨架换院长/医务科）、③合同 8 制度/10 审批/10 字段（移植慈善版 10 表骨架＋金额×风险二维矩阵）、④非诉 6 制度/6 审批/6 字段（常年顾问口径）、⑤调解 6 制度/10 审批/6 字段（以 M1–M6 六阶段为母稿，法条全本地源）。同步：母本四章资产地图(5.4/6.5/7.6/8.5)回写、待办 P0-2 扩展为四模板/P0-3 三件套归 P0-2 收口、基线 B8 0/0/0→12/8/8、B10 0/0/0→8/10/10、新增 B25/B26（④6/6/6·⑤6/10/6）、健康度 接线 5/10→9/10·综合 7.0→8.2/10。受控文件 71→83（＋12）。用户 2026-09-13 确认推 P0-2</td>
+<td>本文件(五 5.4/6.5/7.6/8.5 + 十七 P0-2/P0-3 + 十 B8/B10/B25/B26 + 十六 + frontmatter 1.4.2) + 新建12文件 + SKILL ssot + 00-索引 + cms_selfcheck.sh(B21)</td>
+<td>☑ 台账 ☑ 基线 ☑ 建三件套 ☑ 脚本 ⏳ 待 mark/HTML/外溢</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-13 15:21</strong></td>
+<td><strong>v1.4.3</strong></td>
+<td>🆕 <strong>卡库+补正</strong></td>
+<td><strong>P0-6 非诉卡库冷启动（B11 0→6）+ 补正 P0-2 漏写</strong>：①新建 6 张六域枢纽卡（制度/流程/运营/财务/人资/税务）于 <code>03-经验卡片/非诉合规/</code>，财务/税务卡含 statute_text_pending 不编造；②补正 P0-2 漏写：基线 B8 0/0/0→12/8/8、B10 0/0/0→8/10/10、frontmatter 1.4.1→1.4.3（台账已记 1.4.2 但基线与 version 未落账，同文件并行 Edit 复发）；③健康度补正：接线 5/10→9/10、弹药 6/10→8/10、综合 8.2→8.5。受控文件 83→89（＋6）</td>
+<td>本文件(七 7.1/7.6/7.8 + 十 B8/B10/B11 + 十六 + frontmatter 1.4.3 + 十八台账) + 新建6卡 + SKILL ssot + 00-索引 + cms_selfcheck.sh(B11)</td>
+<td>☑ 台账 ☑ 基线 ☑ 建卡 ⏳ 待 mark/HTML/外溢</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-13 16:01</strong></td>
+<td><strong>v1.4.4</strong></td>
+<td>🆕 <strong>法源核验+漂移修正</strong></td>
+<td><strong>8 部专门办法 pkulaw/WebSearch 核验 + 补建本地法源 8 部 + 全量基线漂移修正</strong>：①核验 6 部慈善专门办法（信息公开办法/公募办法/保值增值办法/志愿服务条例/公益事业捐赠法/行政处罚程序规定）+ 2 非诉卡（财务/税务，statute_text_pending 摘帽，confidence 0.65/0.68→0.85）；②补建本地法源 8 文件（慈善合规类 6 + 监管类律师服务收费 1 + 通用税收征管法 1），B15 49→57；③①慈善轨法源 B16 5→11；④B21 8→20（v1.4.2 三件套+模板漂移修正）、B23 71→89（v1.4.2/1.4.3 受控数漂移修正）；⑤健康度法条可靠度 7→9/综合 8.5→9.0；⑥下游镜像反向修正（00-索引/SKILL/单模板备忘录 B-1/轨道1方案附表）</td>
+<td>本文件(十 B15/B16/B18/B21/B23 + 十六 + frontmatter 1.4.4 + 十八台账) + 8 法源文件 + selfcheck.sh(B15/B16) + 00-索引 + SKILL ssot + 单模板备忘录 + 轨道1方案</td>
+<td>☑ 台账 ☑ 基线 ☑ 法源建卡 ☑ 自检(S2) ☑ mark ☑ HTML ☑ 外溢</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-14 08:30</strong></td>
+<td><strong>v1.4.5</strong></td>
+<td>🆕 <strong>H类法源核验+补建</strong></td>
+<td><strong>清 H 类 7 部本地缺口（标签纠错：上轮误标「⑤医院轨」，实为④非诉 7.7）</strong>：①qcc-legal 核验 7 部均现行有效（个保法91号/数据安全法84号/著作权法62号/商标法29号/专利法55号/政府采购法14号/招投标法86号）；②补建本地源 7 文件于 <code>法律法规库/通用法律法规/</code>，B15 57→64；③摘帽母本 685（④非诉 7.7）+ 1088（附录 B-5）+ 非诉制度清单33 + D2 模板53 + 非诉 README59；④3 张经验卡 confidence 0.85→0.90（PHI 卡/采购合规卡/反商业贿赂卡）；⑤B18 ≥11→约 4；⑥健康度法条可靠度 9→10/综合 9.0→9.5</td>
+<td>本文件(七 7.7 + 附录 B-5 + 十 B15/B18 + 十六 + frontmatter 1.4.5 + 十八台账) + 7 法源文件 + 非诉制度清单 + D2 + 非诉README + 3 经验卡</td>
+<td>☑ 台账 ☑ 基线 ☑ 法源建卡 ☑ mark ☑ HTML ☑ 外溢</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-14 15:33</strong></td>
+<td><strong>v1.4.6</strong></td>
+<td>🆕 <strong>医院轨+调解轨法源核验+补建</strong></td>
+<td><strong>清 ②医院轨 H1–H5 5 部 + ⑤调解轨 M2/M3 2 部本地缺口（纠正 v1.4.5「①慈善轨约4项 pending」基线漂移误记）</strong>：①qcc-legal 核验 7 部均现行有效（医疗机构管理条例752号/医疗质量管理办法10号/病历书写基本规范11号/医疗事故处理条例351号/护士条例726号/医疗纠纷预防和处理条例701号/司法确认若干规定法释5号）；②补建本地源 7 文件（医事库5＋程序法2），B15 64→71/B17 5→10/B18 约4→0；③M2 锚定《医疗纠纷预防和处理条例》医疗损害鉴定章（第34–36条），因独立"医疗损害鉴定管理办法"系条例第34条授权制定中、未单独立法；④摘帽母本 407（4.6节点）+765（8.6节点）+1072-1076（B-2）+1085-1086（B-4）；⑤健康度法条可靠度满10/本地法源缺口清零</td>
+<td>本文件(附录B-2/B-4 + 4.6/8.6 + 十 B15/B17/B18 + 十六 + frontmatter 1.4.6 + 十八台账) + 7 法源文件 + selfcheck.sh(B15/B17/B18) + 00-索引 + SKILL ssot + 单模板备忘录</td>
+<td>☑ 台账 ☑ 基线 ☑ 法源建卡 ☑ mark ☑ HTML ☑ 外溢</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-14 10:58</strong></td>
+<td><strong>v1.4.7</strong></td>
+<td>🔗 <strong>法源挂接+归档</strong></td>
+<td><strong>7 部法源挂接②医院轨/⑤调解轨审批流与经验卡引用 + 案件备忘正式归档</strong>：①审批流挂接：医院版 H2（补医疗机构管理条例/医疗质量管理办法/护士条例本地源✅）·H3（病历书写基本规范 ⏳pending 摘帽→✅＋医疗纠纷预防和处理条例/医疗事故处理条例）·H6（医疗纠纷条例本地源✅）；调解版 M1–M5 全文「条例」统一标注《医疗纠纷预防和处理条例》本地源✅＋M4 补《司法确认若干规定》本地源✅；②经验卡挂接：8 张核心卡（医院合规 5＋医疗纠纷章卡 3）法条依据补本地源✅标注（医疗机构管理条例/医疗质量管理办法/病历书写基本规范/医疗事故处理条例/护士条例/医疗纠纷预防和处理条例/司法确认若干规定）；③案件备忘 <code>案件进展备忘-丁茂祥案-20260820.md</code> 正式归档至 <code>LawKB/案件资料/</code>（v1.4.6 已移出法规库，本次建目录并归位，项目内保留）；④基线不变（B15 71/B17 10/B18 0），无新建法规文件</td>
+<td>本文件(frontmatter 1.4.7 + 十六 + 十八台账) + 医院版审批流 + 调解版审批流 + 8 经验卡 + 案件资料/归档</td>
+<td>☑ 台账 ☑ 基线 ☑ 挂接 ☑ mark ☑ HTML ☑ 外溢</td>
+<td>AI 小强</td>
+</tr>
+<tr>
+<td><strong>2026-09-14 11:21</strong></td>
+<td><strong>v1.4.8</strong></td>
+<td>📁 <strong>归档规则落地+复盘更正</strong></td>
+<td><strong>老强确立「制品归档铁律」并复盘 v1.4.6/v1.4.7 制品落点</strong>：①迭代铁律段后固化铁律——可进飞轮的一律进飞轮（经验卡已在 <code>03-经验卡片/</code>）；不进飞轮的存 <code>LawKB/小德合规管理系统/</code>；法源文件单点存 <code>法律法规库/</code> 用小德内「法源资产索引」入口；SKILL.md 固定 ~/.workbuddy 不算散落；②复盘发现 <strong>案件备忘散落 <code>LawKB/案件资料/</code>（LawKB 根，不在小德文件夹）</strong> 不符 → 已归位 <code>小德合规管理系统/案件资料/</code>；③新建 <code>法源资产索引.md</code>（小德文件夹内，列 7 部法源在法规库精确路径＋进飞轮说明）便于查看；④基线不变（B15 71/B17 10/B18 0）；⑤旧位置 0 残留、备份至 /tmp/cms_backup_20260914_review</td>
+<td>本文件(迭代铁律段 + frontmatter 1.4.8 + 十八台账) + 法源资产索引.md(新建) + 案件资料/归位 + 00-索引 + SKILL ssot + 单模板备忘录</td>
+<td>☑ 台账 ☑ 基线 ☑ 归档规则 ☑ mark ☑ HTML ☑ 外溢</td>
+<td>AI 小强</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="h-附录-A-五模板法源速查">附录 A · 五模板法源速查</h2>
+
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>✅ 本地已落地</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 慈善</td>
+<td>慈善法（2023-12-29 修正，<strong>125 条</strong>）、<strong>基金会管理条例</strong>、<strong>关于慈善组织开展慈善活动年度支出·管理费用和募捐成本的规定（民发〔2026〕12号）</strong>、<strong>民间非营利组织会计制度</strong>、境外NGO境内活动管理法 —— <strong>共 5 部</strong>（后 3 部在 <code>行政法律规章/</code>，2026-09-12 复测发现）</td>
+<td><code>慈善组织法律法规库/</code> + <code>行政法律规章/</code></td>
+</tr>
+<tr>
+<td>② 医院</td>
+<td>医师法、基本医疗卫生与健康促进法、药品管理法、疫苗管理法、精神卫生法、医疗纠纷预防和处理条例、医保基金使用监督管理条例实施细则、药品管理法实施条例、医疗损害责任纠纷司法解释、刑法节选（医疗事故罪/非法行医罪）</td>
+<td><code>医事法律法规库/</code>+<code>行政法律规章/</code>+<code>司法解释/</code>+<code>通用实体法/</code></td>
+</tr>
+<tr>
+<td>③ 合同</td>
+<td><strong>民法典全文</strong>（第三编合同自 463 条起；核心 471/496/502/509/577/585）、公司法（2023修订）、劳动合同法（2012修正）、买卖合同司法解释</td>
+<td><code>通用实体法/</code>+<code>法律法规/</code>+<code>司法解释/</code></td>
+</tr>
+<tr>
+<td>④ 非诉</td>
+<td>民法典、公司法、劳动合同法（其余散落，需联网核验）</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>⑤ 调解</td>
+<td><strong>医疗纠纷预防和处理条例</strong>（核心 22/24/25/26/28/30/31/32/33/34/35 条）</td>
+<td><code>行政法律规章/</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>引用格式</strong>：
+- 慈善法律源：《中华人民共和国慈善法》第 X 条
+- 医事法律源：《医疗纠纷预防和处理条例》第 X 条 / 《中华人民共和国医师法》第 X 条
+- 合同法律源：《中华人民共和国民法典》第 X 条
+- 内规源（<strong>①专属，禁止外流</strong>）：依据《贵州省厚德公益基金会合规管理手册（试行）（2025版）》第 X 条……</p>
+<hr />
+<h2 id="h-附录-B-待回源核验清单-19-项">附录 B · 待回源核验清单（≥19 项）</h2>
+
+<blockquote>
+<p>核验方式：<strong>pkulaw（北大法宝）为主源 → 元典兜底</strong>。核验后方可去掉 <code>statute_text_pending</code>。</p>
+</blockquote>
+<h3 id="h-B-1-①慈善轨-10-项-实际仅-7-项缺失-2026-09-12-复测修正">B-1 · ①慈善轨（10 项 → 实际仅 7 项缺失，2026-09-12 复测修正）</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>法规</th>
+<th>优先级</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>《基金会管理条例》</td>
+<td>🔴 高</td>
+<td>✅ <strong>本地已落地</strong>（<code>行政法律规章/</code>）—— 复测摘帽</td>
+</tr>
+<tr>
+<td>2</td>
+<td>《慈善组织信息公开办法》</td>
+<td>🔴 高</td>
+<td>✅ <strong>已核验·现行有效</strong>（民政部令第81号，2026-01-01 施行）—— 本地源已补建，摘帽</td>
+</tr>
+<tr>
+<td>3</td>
+<td>《慈善组织公开募捐管理办法》</td>
+<td>🔴 高</td>
+<td>✅ <strong>已核验·现行有效</strong>（民政部令第74号，2024-09-05 施行）—— 本地源已补建，摘帽</td>
+</tr>
+<tr>
+<td>4</td>
+<td>《关于慈善组织开展慈善活动年度支出、管理费用和募捐成本的规定》</td>
+<td>🔴 高</td>
+<td>✅ <strong>本地已落地</strong>（<strong>民发〔2026〕12号</strong>）—— 复测摘帽，<strong>见 4.7 分档矩阵</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>《民间非营利组织会计制度》</td>
+<td>🟠 中</td>
+<td>✅ <strong>本地已落地</strong>（<code>行政法律规章/</code>，225KB）—— 复测摘帽</td>
+</tr>
+<tr>
+<td>6</td>
+<td>《慈善组织保值增值投资活动管理暂行办法》</td>
+<td>🟠 中</td>
+<td>✅ <strong>已核验·现行有效</strong>（民政部令第62号，2019-01-01 施行）—— 本地源已补建，摘帽</td>
+</tr>
+<tr>
+<td>7</td>
+<td>《志愿服务条例》</td>
+<td>🟠 中</td>
+<td>✅ <strong>已核验·现行有效</strong>（国务院令第685号，2017-12-01 施行）—— 本地源已补建，摘帽</td>
+</tr>
+<tr>
+<td>8</td>
+<td>《中华人民共和国公益事业捐赠法》</td>
+<td>🟠 中</td>
+<td>✅ <strong>已核验·现行有效</strong>（主席令第19号，1999-09-01 施行）—— 本地源已补建，摘帽</td>
+</tr>
+<tr>
+<td>9</td>
+<td>《社会组织登记管理机关行政处罚程序规定》</td>
+<td>🟡 低</td>
+<td>✅ <strong>已核验·现行有效</strong>（民政部令第68号，2021-10-15 施行）—— 本地源已补建，摘帽</td>
+</tr>
+<tr>
+<td>10</td>
+<td>厚德基金会合规手册 139 条</td>
+<td>✅ 可用</td>
+<td>内规源（非法律源）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>复测教训</strong>：<code>find -iname '*.md'</code> 在中文文件名上会漏匹配（实测漏 8 个），
+<strong>统计本地法规一律用 <code>find -name '*.md'</code></strong>。此前"仅 2 部慈善法规"的判断因此失真。</p>
+</blockquote>
+<h3 id="h-B-2-②医院轨-5-项-已全部补建本地源-已挂接医院版审批流-H2-H3-H6-节点引用">B-2 · ②医院轨（5 项 → 已全部补建本地源 ✅ · 已挂接医院版审批流 H2/H3/H6 节点引用）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>法规</th>
+<th>优先级</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>《医疗机构管理条例》</td>
+<td>🔴 高</td>
+<td>✅ <strong>已补建本地源</strong>（<code>医事法律法规库/</code>，2026-09-14 qcc-legal 核验·现行有效·国务院令第752号）— 依法执业母法</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>《医疗质量管理办法》</td>
+<td>🔴 高</td>
+<td>✅ <strong>已补建本地源</strong>（<code>医事法律法规库/</code>，2026-09-14 qcc-legal 核验·现行有效·国家卫计委令第10号）— 核心制度</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>《病历书写基本规范》</td>
+<td>🔴 高</td>
+<td>✅ <strong>已补建本地源</strong>（<code>医事法律法规库/</code>，2026-09-14 qcc-legal 核验·现行有效·卫医政发〔2010〕11号）— 病历质量</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>《医疗事故处理条例》</td>
+<td>🟠 中</td>
+<td>✅ <strong>已补建本地源</strong>（<code>医事法律法规库/</code>，2026-09-14 qcc-legal 核验·现行有效·国务院令第351号）— 事故处理</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>《护士条例》</td>
+<td>🟠 中</td>
+<td>✅ <strong>已补建本地源</strong>（<code>医事法律法规库/</code>，2026-09-14 qcc-legal 核验·现行有效·国务院令第726号）— 护理人力</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-B-3-③合同轨">B-3 · ③合同轨</h3>
+<p>各类合同专门司法解释、行业监管规则（医疗采购／慈善资助等）—— <strong>待逐项列举</strong></p>
+<h3 id="h-B-4-⑤调解轨-M1-M3-已全部补建本地源-已挂接调解版审批流-M1-M5-程序域枢纽卡">B-4 · ⑤调解轨（M1–M3 已全部补建本地源 ✅ · 已挂接调解版审批流 M1–M5 + 程序域枢纽卡）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>法规</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td><strong>《中华人民共和国人民调解法》</strong></td>
+<td>✅ <strong>已补建本地源</strong>（<code>程序法/</code>，2026-09-13 多源政府网站核验）— 调解程序母法，条例 32 条明确要求遵守；原 <code>statute_text_pending</code> 摘帽</td>
+</tr>
+<tr>
+<td>M2</td>
+<td><strong>《医疗纠纷预防和处理条例》（医疗损害鉴定章·第34–36条）</strong></td>
+<td>✅ <strong>已补建本地源</strong>（<code>程序法/</code>，2026-09-14 qcc-legal 核验·现行有效·国务院令第701号）— 医疗损害鉴定委托/专家库/鉴定书内容；独立"医疗损害鉴定管理办法"系条例第34条授权制定中，未单独立法</td>
+</tr>
+<tr>
+<td>M3</td>
+<td><strong>《最高人民法院人民调解协议司法确认程序的若干规定》</strong></td>
+<td>✅ <strong>已补建本地源</strong>（<code>程序法/</code>，2026-09-14 qcc-legal 核验·现行有效·法释〔2011〕5号）— 调解协议司法确认·强制执行力</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-B-5-④非诉轨">B-5 · ④非诉轨</h3>
+<p>个人信息保护法／数据安全法／著作权法／商标法／专利法／政府采购法／招标投标法 —— ✅ <strong>均已补建本地源</strong>（2026-09-14 qcc-legal 核验，落点 <code>法律法规库/通用法律法规/</code>，均现行有效），原 <code>statute_text_pending</code> 摘帽</p>
+<hr />
+<h2 id="h-附录-C-五模板-SKU-三件套-变现公式">附录 C · 五模板 SKU 三件套（变现公式）</h2>
+
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>领域拆分</th>
+<th>自检项（引流）</th>
+<th>文书模板（锁客 ¥499–999）</th>
+<th>顾问动作（变现 ¥1–3万）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 慈善</td>
+<td>16 领域</td>
+<td>领域自检清单</td>
+<td>制度/协议范本</td>
+<td>专项合规会诊</td>
+</tr>
+<tr>
+<td>② 医院</td>
+<td>N 领域（依法执业/医保/病历/采购…）</td>
+<td>依法执业自检</td>
+<td>制度/告知书范本</td>
+<td>专项体检+整改</td>
+</tr>
+<tr>
+<td>③ 合同</td>
+<td>合同类型（买卖/租赁/服务/股权…）</td>
+<td>合同风险自检</td>
+<td>合同范本</td>
+<td>谈判/审查专项</td>
+</tr>
+<tr>
+<td>④ 非诉</td>
+<td>非诉事项（股权/劳动/数据/监管…）</td>
+<td>合规义务地图</td>
+<td>意见书/报告模板</td>
+<td>常年顾问年包</td>
+</tr>
+<tr>
+<td>⑤ 调解</td>
+<td>程序节点（受理/评估/协议…）</td>
+<td>纠纷风险评估</td>
+<td>调解协议/申请书范本</td>
+<td>调解代理（非诉层）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 <strong>引流钩子铁律</strong>：免费体检<strong>只给结论 + 风险提示，不给整改方案</strong>。
+📌 <strong>C 档旗舰专项</strong>限定高价值项（①：捐赠募捐/投资/涉外/重大活动/数字化执行）。</p>
+</blockquote>
+<hr />
+<h2 id="h-变更日志">变更日志</h2>
+
+<ul>
+<li><strong>2026-09-12 v1.0.0</strong>：建立五模板版运维手册（CMS 运维总纲）。
+  融合既有好思路：<strong>六域框架</strong>（搭建方案）、<strong>L0 父路由 + 子模板 + EDI 三层</strong>（搭建方案 + EDI 规范）、
+  <strong>三件套 SKU 公式</strong>（16 领域清单）、<strong>三层产品 + 三层杠杆</strong>（服务模式说明书）、
+  <strong>G8 门禁 + LTI + 铁律第6条 + 周巡检</strong>（落地报告）、<strong>Batch 0→4 喂卡流水线</strong>（医疗合规喂养方案）、
+  <strong>接线三规范 + 二维审批矩阵 + 法定时限 + 健康分</strong>（轨道1 改造方案）、<strong>执业边界不承诺条款</strong>（服务协议第九条）。
+  四项边界裁决已落实：③全周期统管（L0 当引擎）／⑤独立且双向互哺／④常年顾问非诉交付口径／档位全书标 ⚠️待裁决。
+  法条全部本地实测：民法典合同编 6 条、医疗纠纷条例 11 条、慈善法映射 19 条。</li>
+<li><strong>2026-09-12 v1.0.1</strong>：实地复测纠错。3 部法规误判缺失已摘帽（含<strong>民发〔2026〕12号</strong>）；
+  发现并登记①N8/N9 红线分档缺陷（P0-7）。新增铁律：统计本地法规一律用 <code>find -name '*.md'</code>。</li>
+<li><strong>2026-09-12 v1.1.0</strong> 🔷 <strong>升格为系统母本备忘录 / SSOT（唯一权威源）</strong>（老强拍板）。
+  自此 CMS 的<strong>结构、状态、基线、边界、待办、版本、法源、弹药</strong>一律以本文件为准；
+  索引／方案／配置／卡库／SKILL 与之冲突时以本文件为准并须反向修正。
+  新增【权威源声明】（含 L-1→L3 权威层级金字塔）、【〇.1 权威地位问答】、【〇.2 迭代协议 SOP 五步】、
+  【〇.3 迭代触发清单 7 类】；联动矩阵增 ★兜底行与母本自约束行；迭代铁律由"两件事"强化为"<strong>三件事</strong>"。
+  📌 <strong>意义</strong>：母本失真的危害远大于功能缺失——它会让后续所有决策建立在错误前提上。
+  📌 <strong>配套</strong>：<code>tools/md2html.py</code> 可一键生成本母本的离线 HTML 阅读版，母本更新后应重新生成。</li>
+<li><strong>2026-09-13 v1.2.0</strong> 🔴 <strong>P0-7 闭环（唯一会致客户出错的项）</strong>：①N8/N9 由固定「70%/10%」改为
+  <strong>按主体类型 + 公募资格 + 上年末净资产分档</strong>（十档矩阵，法源：民发〔2026〕12号 第 8/9/10 条）。
+  <strong>并补入三个分母口径差异</strong>——支出下限（有公募=上年总收入／无公募=上年末净资产）、管理费上限（=当年总支出）、
+  募捐成本上限（=前三年捐赠收入平均数），<strong>此前光写比例不写分母，等于没说</strong>。
+  新增 <strong>N16</strong> 募捐成本 ≤3%（第15条）、<strong>N17</strong> 支出确认口径（第12条）、<strong>N18</strong> 例外报告义务（第14条）；
+  补第 13 条 20 万元豁免、第 11 条前三年平均调节、第 18 条罚则。
+  字段表新增 §0.4 组织主体资格字段组 + §十三 分档判定字段组；制度 24 改判、制度 25 摘帽；喂卡优先级 P1→P0。
+  基线 <strong>B3 15→18</strong>。
+  📌 <strong>教训</strong>：法条改造必须回到原文逐字读——本次若凭此前"70%/10%"的摘要动手，会漏掉分母口径这个真正的坑。
+  ⚠️ 已知遗留：③④⑤ 三件套仍待编制（弹药已填充：①6／③6／④5 交付物模板／⑤1 调解卡）；《人民调解法》已于 2026-09-13 补建本地源（B-4 M1 摘帽）；档位待裁决（P2-4 老强拍板不裁决）。</li>
+<li><strong>2026-09-13 v1.4.1</strong> 🆕 <strong>五模板弹药填充（消除 P0-1/3/4/5 待办）</strong>：①慈法合规喂卡 2→6（关联交易回避／公募方案九要素／联合劝募三红线／信息公开三档时限，B5）；③合同合规冷启动 0→6（六域枢纽卡，B9）；④非诉交付物模板 D1–D5 新建并归位 <code>05-系统配置/非诉交付物模板/</code>（<code>非诉合规/</code>仅留 README，B12）；⑤补建《人民调解法》本地源（<code>程序法/</code>，多源核验）＋ 建调解程序域枢纽卡 0→1（章卡第十六章重映射，8.6 <code>statute_text_pending</code> 摘帽，B13）。受控文件 54→71（＋17，B23）。B15/B16 漂移根因修复：B16 脚本 <code>CHARITY</code> 变量指向不存在目录＋口径错（数目录得2 vs 母本5部跨目录清单），改为核对5部法源文件；B15 实物48中差值为规划在库缺位的人民调解法，补建后对齐基线49。健康度看板刷新（综合 6.3→7.0/10）。</li>
+<li><strong>2026-09-12 v1.0.1</strong>（🔴 <strong>纠错</strong>）：实地复测发现<strong>3 部法规被误判缺失</strong>——
+  《基金会管理条例》《关于慈善组织开展慈善活动年度支出、管理费用和募捐成本的规定》（<strong>民发〔2026〕12号</strong>）
+  《民间非营利组织会计制度》本地均有，此前因 <code>find -iname</code> 漏匹配中文文件名而误标 <code>statute_text_pending</code>。
+  <strong>由此暴露①N8/N9 实质缺陷</strong>：年度支出 70% ／ 管理费用 10% 仅对「有公募资格的基金会」成立，
+  实为<strong>四主体类型 × 四档净资产</strong>矩阵（社会团体/社会服务机构管理费可达 13%；无公募资格基金会按净资产 6%–8% 分档、
+  管理费 12%–20%）。新增 <strong>4.7 分档矩阵</strong>、<strong>P0-7 改造项</strong>、<strong>N16 募捐成本 ≤ 前三年捐赠收入平均数 3%</strong>。
+  基线修正：B15 41→<strong>49</strong>、B16 2→<strong>5</strong>、B18 ≥19→<strong>≥16</strong>、B22 3→<strong>2</strong>。
+  📌 <strong>教训（新红线）</strong>：统计本地法规<strong>一律用 <code>find -name '*.md'</code></strong>，<code>-iname</code> 在中文文件名上会漏匹配（实测漏 8 个）——
+  这正是本手册要防范的"文档漂移"，且发生在<strong>自检脚本自身</strong>上。</li>
+</ul>
+</div></main>
+</div></body></html>

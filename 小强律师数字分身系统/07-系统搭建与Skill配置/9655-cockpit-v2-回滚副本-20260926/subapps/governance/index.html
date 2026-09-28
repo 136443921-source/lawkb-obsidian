@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPC 治理中台屏 · 9655（C9）</title>
+<style>
+  :root{
+    --bg:#0f1420; --card:#1a2030; --line:#2a3346; --txt:#e6ebf2; --sub:#9aa7bd;
+    --ok:#3fb950; --warn:#f0a020; --block:#ec5972; --blue:#4f9dff; --purple:#a98bff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:20px 24px}
+  h1{font-size:22px;margin:0 0 2px}
+  h2{font-size:16px;margin:26px 0 12px;border-left:4px solid var(--blue);padding-left:10px}
+  .meta{color:var(--sub);font-size:12.5px;margin-bottom:16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .kpi .n{font-size:22px;font-weight:700}
+  .kpi .l{color:var(--sub);font-size:12px;margin-top:3px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card h3{margin:0 0 6px;font-size:15px}
+  .card .st{font-size:12.5px;color:var(--sub)}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .block{color:var(--block)} .blue{color:var(--blue)} .purple{color:var(--purple)}
+  .pill{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11.5px;font-weight:600;margin:2px 3px 2px 0}
+  .p-ok{background:rgba(63,185,80,.15);color:var(--ok)}
+  .p-warn{background:rgba(240,160,32,.15);color:var(--warn)}
+  .p-blue{background:rgba(79,157,255,.15);color:var(--blue)}
+  .p-purple{background:rgba(169,139,255,.15);color:var(--purple)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:#222b3d;color:var(--sub);font-weight:600}
+  .law-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+  .law{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+  .law .t{font-weight:600;font-size:13px}
+  .law .d{color:var(--sub);font-size:12px;margin-top:3px}
+  .bar-row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+  .bar-row .name{width:170px;flex-shrink:0;color:var(--txt)}
+  .bar-row .track{flex:1;background:#222b3d;border-radius:6px;height:14px;overflow:hidden}
+  .bar-row .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--purple));transition:width 1s}
+  .bar-row .val{width:88px;text-align:right;color:var(--sub);font-size:12px;flex-shrink:0}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:10px 0}
+  .flow .step{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:12.5px;min-width:120px;flex:1}
+  .flow .step .s{font-weight:700;color:var(--blue);font-size:13px}
+  .flow .arrow{display:flex;align-items:center;color:var(--sub);font-size:18px}
+  .foot{margin-top:26px;color:var(--sub);font-size:11.5px;border-top:1px solid var(--line);padding-top:12px}
+  .note{font-size:12px;color:var(--sub)}
+  code{background:#222b3d;padding:1px 6px;border-radius:4px;font-size:12px;color:var(--blue)}
+  /* —— 双视图 tab 栏（C1 ↔ C6） —— */
+  .tabs{display:flex;gap:8px;margin:0 0 18px;flex-wrap:wrap}
+  .tabs button{background:var(--card);border:1px solid var(--line);color:var(--txt);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit}
+  .tabs button.active{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+  .view-h{font-size:20px;margin:6px 0 2px}
+</style>
+</head>
+<body>
+<h1>⚖️ OPC 治理中台屏（9655 · C9）</h1>
+<div class="meta">OPC 治理可视化中台 · C9 屏 · 双视图容器：承载「C1 治理中台屏」与「C6 模拟法庭中台屏」· 本屏已由 cockpit-builder 接进 9655 实屏（原两屏独立 HTML 现同屏切换，不新建屏号、不覆盖律所 mock C6）</div>
+
+<div class="tabs">
+  <button id="tab-c1" class="active" onclick="showView('c1')">治理中台屏 · C1</button>
+  <button id="tab-c6" onclick="showView('c6')">模拟法庭中台屏 · C6</button>
+</div>
+
+<!-- ===================== 视图一：C1 治理中台屏 ===================== -->
+<div id="view-c1">
+<h1 class="view-h">⚖️ OPC 治理中台屏（9655 · C1）</h1>
+<div class="meta">建设层首屏 · 数据快照 2026-09-23 · 口径：09-OPC 治理文档层（09101 章程 / 09102 职权 / 09103 nominee / 09105 岗位手册 / 00-总册 / pre-action-guard）· 本屏现已嵌入 9655 实屏 C9 OPC治理中台（与 C6 同屏双视图，顶部切换）</div>
+
+<div class="grid">
+  <div class="kpi"><div class="n ok">✅✅</div><div class="l">Wave A/B 治理接线+决策补全（已完成）</div></div>
+  <div class="kpi"><div class="n blue">🔨 C1</div><div class="l">治理中台屏（本屏已接 9655 · C9）</div></div>
+  <div class="kpi"><div class="n warn">⏳ D/E</div><div class="l">私有部署+合规 / 年审+演练（W4–W5）</div></div>
+  <div class="kpi"><div class="n ok">4/4</div><div class="l">四类 R 门禁已接（pre-action-guard v1.0）</div></div>
+  <div class="kpi"><div class="n ok">C 维持</div><div class="l">治理 nominee（失能即冻结·2026-09-23 决）</div></div>
+  <div class="kpi"><div class="n purple">14 岗</div><div class="l">数字员工编制（心智席位，总编制 54）</div></div>
+</div>
+
+<h2>一、四大中台健康</h2>
+<div class="cards">
+  <div class="card"><h3>法律服务中台 <span class="pill p-ok">P1 已落</span></h3><div class="st">红蓝复核 / docx 交付 / 模拟法庭 SOP（链接式）· 14 岗中 9 岗归属</div></div>
+  <div class="card"><h3>数字资产中台 <span class="pill p-ok">P2 已落</span></h3><div class="st">6 拆卡流水线 + 卡库接线 SOP（链接式）· 卡库规模待运行数据</div></div>
+  <div class="card"><h3>运营中台 <span class="pill p-ok">P3 已落</span></h3><div class="st">IMA 摄入回传 / 周报 / self-improve SOP（链接式）</div></div>
+  <div class="card"><h3>可视化中台 <span class="pill p-ok">P4 已落</span></h3><div class="st">岗位型 IT 运维员 + 驾驶舱运维 / 屏增审批 SOP · <b>本屏即其产出</b></div></div>
+</div>
+<div class="note">⚠️ 中台"健康"当前为<b>制度+SOP 落地态</b>（结构完备）；运行态指标（红蓝通过率/摄入稳定性/驾驶舱可用率）由周五周报 + 周日 self-improve 治理复盘段按周回填。</div>
+
+<h2>二、章程铁律守持（00-总册 · 10 节）</h2>
+<div class="law-grid">
+  <div class="law"><div class="t">§一 四类 R 红线</div><div class="d"><span class="pill p-ok">守持</span> R-1~R-4 仅老强 R · 门禁已接</div></div>
+  <div class="law"><div class="t">§二 LTI 交付门禁</div><div class="d"><span class="pill p-ok">守持</span> REJECT=0 才准交付</div></div>
+  <div class="law"><div class="t">§三 六-B 安全铁律</div><div class="d"><span class="pill p-ok">守持</span> 扩至所有写入型 automation</div></div>
+  <div class="law"><div class="t">§四 静默成功熔断</div><div class="d"><span class="pill p-ok">守持</span> 产出<60% 即中止</div></div>
+  <div class="law"><div class="t">§五 破坏性操作预检</div><div class="d"><span class="pill p-ok">守持</span> 五条（引用/cp/dry-run/扫描/确认）</div></div>
+  <div class="law"><div class="t">§六 法条回源+本地源</div><div class="d"><span class="pill p-ok">守持</span> pkulaw 主源·禁凭记忆</div></div>
+  <div class="law"><div class="t">§七 资产治理+中枢</div><div class="d"><span class="pill p-ok">守持</span> LawKB 隔离已核验（A3）</div></div>
+  <div class="law"><div class="t">§八 商业化收口+格式</div><div class="d"><span class="pill p-ok">守持</span> 最高法 221 号格式铁律</div></div>
+  <div class="law"><div class="t">§九 nominee 永续</div><div class="d"><span class="pill p-ok">资产✅</span> <span class="pill p-ok">治理C✅</span> <span class="pill p-warn">演练⏳</span></div></div>
+  <div class="law"><div class="t">§十 部门引用规范</div><div class="d"><span class="pill p-ok">守持</span> 引总册§X·禁重抄</div></div>
+</div>
+
+<h2>三、四类 R 红线拦截状态（仅老强可决策）</h2>
+<table>
+<tr><th>编号</th><th>R 动作</th><th>触发场景</th><th>决策权</th><th>门禁状态</th></tr>
+<tr><td>R-1</td><td>对外出具法律意见/文书终稿</td><td>任何对外法律文本定稿</td><td>老强终确认</td><td><span class="pill p-ok">门禁已接</span></td></tr>
+<tr><td>R-2</td><td>商业化定价/SKU/规则包发布</td><td>新定价/新SKU/规则包上架</td><td>老强拍板</td><td><span class="pill p-ok">门禁已接</span></td></tr>
+<tr><td>R-3</td><td>删除/批量改写单源文件</td><td>rm/覆盖/批量改写</td><td>老强批·cp -n 防覆盖</td><td><span class="pill p-ok">门禁已接</span></td></tr>
+<tr><td>R-4</td><td>新增/改造子系统</td><td>新建 skill/自动化/管线</td><td>老强批·LTI 回归</td><td><span class="pill p-ok">门禁已接</span></td></tr>
+</table>
+<div class="note">门禁源：<code>pre-action-guard</code> v1.0（2026-09-23 接入章程 §3 四类 R 检测）· 总经理越权即违规（回滚+报告+治理复盘记过）。实际拦截依赖门禁在每次侧效动作前被调用。</div>
+
+<h2>四、LTI 交付门禁</h2>
+<div class="cards">
+  <div class="card"><h3>REJECT=0 才准交付</h3><div class="st">任何文本制品写入/呈现前必过 LTI（R001–R116）</div></div>
+  <div class="card"><h3>五维 QC</h3><div class="st">R 法条真实性 / L 法理逻辑 / C 一致性 / T 溯源 / P 程序</div></div>
+  <div class="card"><h3>六维法理门禁</h3><div class="st">教义路径+要件映射+举证+时效+管辖+效力层级</div></div>
+  <div class="card"><h3>草稿态标示</h3><div class="st">未过 LTI / 草稿态须加粗标红，不得冒权威源对外</div></div>
+</div>
+
+<h2>五、nominee 永续</h2>
+<div class="cards">
+  <div class="card"><h3>资产 nominee <span class="pill p-ok">✅ 固化</span></h3><div class="st">中枢 + LawKB 独立仓库 + 中枢 git + /tmp+COS 备份，触发自动保全，无需指定人</div></div>
+  <div class="card"><h3>治理 nominee <span class="pill p-ok">✅ C 维持</span></h3><div class="st">失能即冻结治理，资产保全；老强保留升级 A（自然人）/ B（智能体）权</div></div>
+  <div class="card"><h3>年度演练 <span class="pill p-warn">⏳ Phase 5</span></h3><div class="st">nominee 接管链路真实验证（E1），待 W5 落地</div></div>
+</div>
+
+<h2>六、14 岗数字员工成熟度</h2>
+<div class="bar-row"><span class="name">AI 模拟法官</span><div class="track"><div class="fill" data-w="98"></div></div><span class="val">98·最高</span></div>
+<div class="bar-row"><span class="name">蓝队诉讼律师</span><div class="track"><div class="fill" data-w="87"></div></div><span class="val">96/110·M5</span></div>
+<div class="bar-row"><span class="name">红队律师</span><div class="track"><div class="fill" data-w="91"></div></div><span class="val">91·M5</span></div>
+<div class="bar-row"><span class="name">小德慈善合规</span><div class="track"><div class="fill" data-w="90"></div></div><span class="val">专家级</span></div>
+<div class="bar-row"><span class="name">IT 运维员</span><div class="track"><div class="fill" data-w="81"></div></div><span class="val">81·M4</span></div>
+<div class="bar-row"><span class="name">QC-Controller 审判长双模</span><div class="track"><div class="fill" data-w="78"></div></div><span class="val">78·M3</span></div>
+<div class="bar-row"><span class="name">蓝队律师助理</span><div class="track"><div class="fill" data-w="73"></div></div><span class="val">73·M3</span></div>
+<div class="bar-row"><span class="name">蓝队非诉律师</span><div class="track"><div class="fill" data-w="80"></div></div><span class="val">80·M4</span></div>
+<div class="bar-row"><span class="name">模拟法庭书记员</span><div class="track"><div class="fill" data-w="64"></div></div><span class="val">64·M4</span></div>
+<div class="bar-row"><span class="name">数字员工·需求拷问官（SEAT-11）</span><div class="track"><div class="fill" data-w="88"></div></div><span class="val">88·M4</span></div>
+<div class="bar-row"><span class="name">数字员工·法条银行行长（SEAT-10）</span><div class="track"><div class="fill" data-w="73" style="background:linear-gradient(90deg,#f0a020,#f0a020)"></div></div><span class="val">73·M3·DRAFT</span></div>
+<div class="bar-row"><span class="name">数字员工·数字资产运维官（SEAT-12）</span><div class="track"><div class="fill" data-w="88"></div></div><span class="val">88·M4</span></div>
+<div class="bar-row"><span class="name">数字员工·商业化运营官（SEAT-13）</span><div class="track"><div class="fill" data-w="60" style="background:linear-gradient(90deg,#f0a020,#f0a020)"></div></div><span class="val">73起步·M3·DRAFT</span></div>
+<div class="bar-row"><span class="name">数字员工·对外交付合规官（SEAT-14）</span><div class="track"><div class="fill" data-w="60" style="background:linear-gradient(90deg,#f0a020,#f0a020)"></div></div><span class="val">73起步·M3·DRAFT</span></div>
+<div class="note">心智状态：11 岗 ACTIVE（含小德·专家级、SEAT-11 需求拷问官·88/100·M4、SEAT-12 数字资产运维官·接管态 M4 新晋），3 岗 DRAFT（SEAT-10 法条银行行长、SEAT-13 商业化运营官、SEAT-14 对外交付合规官）。归责最终归老强（唯一股东）。编制：操作工 40 + 席位 14 = 54（2026-09-25 裁 C-1/C-2/C-4、增 N-1/N-2/N-3，净持平）。来源：数字员工花名册 v1.3 + 09101 公司章程 §2 联动。</div>
+
+<div class="foot">
+数据源（均 09-OPC 现有治理文档，本屏不改任何配置）：09101 公司章程 §3–§8 / 09102 总经理职权 / 09103 nominee v1.2 / 09105 岗位手册 v1.0 / 00-横向铁律执行总册 v1.1 / pre-action-guard v1.0。<br>
+落点：<code>09-OPC/09-2部门治理/可视化中台/治理中台屏.html</code>（C1 单文件交付物）· <b>现已嵌入 9655 实屏 C9 OPC治理中台（与 C6 同屏双视图，顶部切换）</b>。<br>
+说明：本屏为「建设层」首个实体产物，把文档层治理状态可视化；现经 cockpit-builder 接进 9655 实屏（C9 治理中台双视图容器），运行态指标待 Wave D/E 接入实时数据源后补充。
+</div>
+</div>
+<!-- /view-c1 -->
+
+<!-- ===================== 视图二：C6 模拟法庭中台屏 ===================== -->
+<div id="view-c6" style="display:none">
+<h1 class="view-h">⚖️ OPC 模拟法庭中台屏（9655 · C6）</h1>
+<div class="meta">模拟法庭中台屏 · 数据快照 2026-09-24 · 口径：MCM-DEV 试点脱敏运行态 + 驾驶舱复盘方法论 · 本屏=C1 同族治理中台屏（规划内屏位 C6，不新建）；常规屏增=总经理 A/R 已授权，复用设备总线既有数据源，不触发 R④ · <b>现已嵌入 9655 实屏 C9 OPC治理中台（与 C1 同屏双视图）</b></div>
+
+<div class="grid">
+  <div class="kpi"><div class="n blue">1</div><div class="l">在制设备（MCM-DEV）</div></div>
+  <div class="kpi"><div class="n purple">1 份</div><div class="l">产能：推演战报+复盘（草稿态）</div></div>
+  <div class="kpi"><div class="n ok">✅ REJECT=0</div><div class="l">LTI 门禁通过率（双轨）</div></div>
+  <div class="kpi"><div class="n ok">仅闸程序</div><div class="l">RULE-QCJUDGE-DISAMBIG 边界</div></div>
+  <div class="kpi"><div class="n warn">⏳ 试点</div><div class="l">MCM 常驻定型（阶段1三台全过）</div></div>
+  <div class="kpi"><div class="n ok">6658 已跑通</div><div class="l">驾驶舱复盘闭环（红蓝对抗实例）</div></div>
+</div>
+
+<h2>一、监控设置（C6 屏监控什么）</h2>
+<div class="cards">
+  <div class="card"><h3>在制设备 / 在制件</h3><div class="st">当前台数、在跑推演件数、关联案件代号（脱敏）</div></div>
+  <div class="card"><h3>产能指标</h3><div class="st">本周期产出的推演战报+复盘份数、草稿态/终稿态分布</div></div>
+  <div class="card"><h3>门禁通过率</h3><div class="st">LTI 双轨（轨A 本地源 / 轨B 权威源）REJECT=0 占比、UNVERIFIED 计数</div></div>
+  <div class="card"><h3>实体裁判不闸红线</h3><div class="st">QCJUDGE-DISAMBIG 守持：QC 仅闸程序合规，未闸实体裁判（状态灯）</div></div>
+  <div class="card"><h3>三处同步齐套率</h3><div class="st">办案隔离目录 / 中枢 / 回传（git backfill）三处落点一致校验</div></div>
+  <div class="card"><h3>抽检合规</h3><div class="st">老强抽检 6 项（单一入口/frontmatter/LTI/齐套/三处同步/R-1未触发）通过态</div></div>
+</div>
+<div class="note">⚠️ C6 复用设备总线（SOP-BUS-05）既有数据源，不新增数据源、不新建子系统 → 依 SOP-VIS-02 属<b>常规屏增</b>，总经理 A/R 拍板即可（老强 2026-09-24 确认），<b>不触发 R④</b>。大屏只呈脱敏设备指标，个案卷宗（当事人/案号/证据原件）不入屏（隐私铁律）。</div>
+
+<h2>二、数据呈现（脱敏运行态 · MCM-DEV 试点快照）</h2>
+<div class="bar-row"><span class="name">门禁通过率（LTI REJECT=0）</span><div class="track"><div class="fill" data-w="100"></div></div><span class="val">100% · 0 UNVERIFIED</span></div>
+<div class="bar-row"><span class="name">轨A 本地源 PASS（M01/M02）</span><div class="track"><div class="fill" data-w="100"></div></div><span class="val">2/2 PASS</span></div>
+<div class="bar-row"><span class="name">三处同步齐套率</span><div class="track"><div class="fill" data-w="66"></div></div><span class="val">2/3 · 回传⏳</span></div>
+<div class="bar-row"><span class="name">QCJUDGE-DISAMBIG 守持</span><div class="track"><div class="fill" data-w="100"></div></div><span class="val">仅闸程序</span></div>
+
+<table>
+<tr><th>指标</th><th>当前值（脱敏）</th><th>说明</th></tr>
+<tr><td>在制设备</td><td>MCM-DEV（1 台）</td><td>智能体型，复用模拟法庭子科室，不新建智能体</td></tr>
+<tr><td>产能</td><td>推演战报+复盘 1 份（草稿态）</td><td>载体=6658 冒名诉讼程序战（脱敏代号）</td></tr>
+<tr><td>门禁</td><td>REJECT=0（M01/M02 PASS，M03 条号命中 0 UNVERIFIED）</td><td>轨A 民诉法(122/154)+民诉法解释(208)</td></tr>
+<tr><td>QC 边界</td><td>QC 仅闸程序，未闸实体裁判</td><td>RULE-QCJUDGE-DISAMBIG 落地</td></tr>
+<tr><td>载体案件（脱敏）</td><td>6658 程序战</td><td>原告署名与营业执照姓名不一致→起诉主体瑕疵</td></tr>
+</table>
+
+<h2>三、如何通过驾驶舱开展模拟法庭复盘（方法论闭环）</h2>
+<div class="flow">
+  <div class="step"><span class="s">① C6 看异常</span><br>在制件超标/门禁 REJECT≠0/三处不同步 → 标红</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">② 调战报</span><br>经设备总线（SOP-BUS-05）调出 MCM 推演战报+复盘</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">③ 红蓝复盘</span><br>QC（参谋长）程序/态势复盘，不闸实体裁判</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">④ 整改</span><br>程序瑕疵/引用错漏/同步缺失 → 整改清单</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">⑤ 三处回写</span><br>办案目录+中枢+git backfill 齐套</div>
+  <div class="arrow">→</div>
+  <div class="step"><span class="s">⑥ C6 刷新</span><br>指标回填本屏，闭环</div>
+</div>
+<div class="note">📌 <b>6658 实例</b>：C6 标"在制 1 件"→ 调出 6658 红蓝对抗战报 → QC 依 QCJUDGE-DISAMBIG 仅闸程序（门禁/引用规范/流程合规），确认"冒名是否成立"属实体裁量不评 → 复盘得出"原审查混淆驳回起诉与实体胜诉"整改点 → 战报+试点报告三处回写 → C6 门禁通过率刷新为 100%。全流程未触 R-1（推演非对外终稿）。</div>
+
+<h2>四、红线守持</h2>
+<div class="law-grid">
+  <div class="law"><div class="t">RULE-QCJUDGE-DISAMBIG</div><div class="d"><span class="pill p-ok">守持</span> 模拟法官实体裁判 ≠ QC 程序质控；禁互评、禁互套评分卡</div></div>
+  <div class="law"><div class="t">R-1 对外终稿</div><div class="d"><span class="pill p-ok">未触发</span> MCM 推演非对外出具裁判/裁决，不触 R-1</div></div>
+  <div class="law"><div class="t">§二 LTI 双轨门禁</div><div class="d"><span class="pill p-ok">守持</span> REJECT=0 才准交付；轨A 缺失转轨B 不阻断</div></div>
+  <div class="law"><div class="t">设备总线单一入口</div><div class="d"><span class="pill p-ok">守持</span> 四台设备禁绕门禁直连（SOP-BUS-05 红线）</div></div>
+</div>
+
+<h2>五、关联文件</h2>
+<div class="cards">
+  <div class="card"><h3>SOP-BUS-05</h3><div class="st">法律服务中台设备总调度（设备总线单一入口）</div></div>
+  <div class="card"><h3>SOP-BUS-09</h3><div class="st">模拟法庭设备（MCM）接入</div></div>
+  <div class="card"><h3>SOP-BUS-10</h3><div class="st">驾驶舱复盘（模拟法庭）— 本屏配套 SOP</div></div>
+  <div class="card"><h3>模拟法庭设备运行管理制度</h3><div class="st">MCM 常驻运行管理（派工/门禁/三处同步/抽检/C6监控/复盘）</div></div>
+  <div class="card"><h3>SOP-VIS-01/02</h3><div class="st">驾驶舱运维 / 屏增审批（本屏=常规屏增）</div></div>
+  <div class="card"><h3>阶段1试点_MCM-DEV</h3><div class="st">6658 红蓝对抗载体 + 试点报告（脱敏）</div></div>
+</div>
+
+<div class="foot">
+数据源（均 09-OPC 现有治理文档 + MCM-DEV 试点脱敏运行态，本屏不改任何配置）：SOP-BUS-05/09/10 · 模拟法庭设备运行管理制度 · 阶段1试点_MCM-DEV（推演战报/试点报告/运行日志，脱敏）· SOP-VIS-01/02 · 数字员工岗位手册 v1.1（〔设备主机职责段〕）。<br>
+落点：<code>09-OPC/09-2部门治理/可视化中台/C6_模拟法庭中台屏.html</code>（C6 单文件交付物，与 C1 治理中台屏同族）· <b>现已嵌入 9655 实屏 C9 OPC治理中台（与 C1 同屏双视图，顶部切换）</b>。<br>
+说明：本屏为「模拟法庭中台屏」首份实体产物，把 MCM 设备运行态 + 驾驶舱复盘方法论可视化；现已由 cockpit-builder 接进 9655 实屏（C9 治理中台双视图容器），运行态实时数据待 MCM 常驻定型后接入设备总线实时源。
+</div>
+</div>
+<!-- /view-c6 -->
+
+<script>
+  // 进度条填充：仅填充指定视图内 .fill，避免隐藏视图在切换时才跳动
+  function fillBars(view){
+    var root = document.getElementById('view-' + view);
+    if(!root) return;
+    root.querySelectorAll('.fill').forEach(function(el){
+      el.style.width = (el.getAttribute('data-w')||0) + '%';
+    });
+  }
+  function showView(v){
+    document.getElementById('view-c1').style.display = (v==='c1' ? 'block' : 'none');
+    document.getElementById('view-c6').style.display = (v==='c6' ? 'block' : 'none');
+    document.getElementById('tab-c1').classList.toggle('active', v==='c1');
+    document.getElementById('tab-c6').classList.toggle('active', v==='c6');
+    fillBars(v);
+  }
+  window.addEventListener('load', function(){
+    fillBars('c1');   // 默认显示 C1
+    fillBars('c6');   // 预填 C6，切换即正确宽度
+  });
+</script>
+</body>
+</html>

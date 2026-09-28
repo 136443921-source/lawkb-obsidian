@@ -1,19 +1,19 @@
 {
   "schema": "lawtwin-health-v1",
-  "scanned_at": "2026-09-21T07:59:52",
-  "overall": "P0",
+  "scanned_at": "2026-09-28T21:56:22",
+  "overall": "OK",
   "probes": {
     "lti_gate": {
-      "alive": false,
-      "level": "P0",
-      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+      "alive": true,
+      "level": "OK",
+      "detail": "lti-gate 守护进程存活"
     },
     "crypto_perms": {
       "exists": true,
-      "perms": "0o755",
+      "perms": "0o600",
       "expected": "0o600",
-      "level": "P1",
-      "detail": "L1 密钥脚本权限 0o755 非 600（密钥暴露风险）"
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
     },
     "desensitize": {
       "present": true,
@@ -21,17 +21,17 @@
       "detail": "脱敏门禁脚本在位"
     },
     "m1_mode": {
-      "present": false,
-      "level": "P1",
-      "detail": "未找到 /Users/chenyouqiang/lawtwin-open/core/network.mode"
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
     },
     "d3_freshness": {
       "present": true,
-      "latest": "lawtwin-backup-20260920.L1.tar.gz.enc",
-      "age_hours": 17.0,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 13.2,
       "threshold_hours": 25,
       "level": "OK",
-      "detail": "最新备份 lawtwin-backup-20260920.L1.tar.gz.enc 距今 17.0h（新鲜）"
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 13.2h（新鲜）"
     }
   },
   "pii_safe": true

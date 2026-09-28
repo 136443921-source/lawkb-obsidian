@@ -3,101 +3,45 @@
   "caseId": "凤仪村",
   "caseNo": "（无案号·预测阶段尚未起诉）",
   "title": "凤仪村与赤水月亮湖合作合同纠纷案",
-  "partyRole": "代理被告/被上诉人（凤仪村委）",
-  "opposingParty": [
-    "赤水月亮湖"
-  ],
   "domain": "合作合同纠纷",
   "status": "准备/预测阶段（尚未起诉）",
-  "client": [
-    "凤仪村委"
-  ],
+  "court": "（尚未起诉·假设管辖待定）",
+  "partyRole": "代理被告/被上诉人（凤仪村委）",
+  "client": ["凤仪村委"],
+  "opposingParty": ["赤水月亮湖"],
   "stage": {
-    "current": 0,
-    "code": "calibrated",
-    "name": "DTC-CASE-001 收窄·待人工回填",
-    "enteredAt": "2026-09-14",
-    "note": "由合作合同夹双案描述收窄为凤仪村案（道真百益已独立成案）；要素取自凤仪村笔记原文"
+    "current": 1,
+    "code": "research",
+    "name": "②检索研究",
+    "enteredAt": "2026-07-02",
+    "note": "准备/预测阶段（尚未实际起诉）；已出起诉与庭审预测报告（假设场景A：对方起诉我方），三步应对法+三大抗辩方向已成型"
   },
   "gates": {
-    "G0": {
-      "name": "门禁G0",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    },
-    "G1": {
-      "name": "门禁G1",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    },
-    "G2": {
-      "name": "门禁G2",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    },
-    "G3": {
-      "name": "门禁G3",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    },
-    "G4": {
-      "name": "门禁G4",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    },
-    "G5": {
-      "name": "门禁G5",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    },
-    "G6": {
-      "name": "门禁G6",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    },
-    "G7": {
-      "name": "门禁G7",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    },
-    "G8": {
-      "name": "门禁G8",
-      "status": "todo",
-      "note": "DTC-CASE-001 补建/收窄·待人工从案件笔记实地回填"
-    }
+    "G0": { "name": "收案门禁", "status": "pass", "note": "已受理，预测报告撰写（2026-07-02）" },
+    "G1": { "name": "检索门禁", "status": "active", "note": "起诉与庭审预测报告已出，方法论可复用" },
+    "G2": { "name": "文书门禁", "status": "todo", "note": "尚未实际起诉，无正式文书" },
+    "G3": { "name": "庭审门禁", "status": "todo", "note": "尚未进入诉讼" },
+    "G4": { "name": "客户门禁", "status": "todo", "note": "待回填" },
+    "G5": { "name": "程序门禁", "status": "todo", "note": "尚未进入程序执行" },
+    "G6": { "name": "风控门禁", "status": "todo", "note": "待回填" },
+    "G7": { "name": "结案回流", "status": "todo", "note": "待回填" }
   },
+  "deadlines": [],
   "calibration": {
     "ticket": "DTC-CASE-001",
     "generatedAt": "2026-09-14",
+    "backfilledAt": "2026-09-28",
     "source": "本夹凤仪村与赤水月亮湖合作合同纠纷案-案件笔记.md",
-    "verifiedFields": [
-      "caseNo",
-      "title",
-      "partyRole",
-      "domain",
-      "status",
-      "client",
-      "opposingParty"
-    ],
-    "pendingFields": [
-      "court",
-      "judge",
-      "deadlines",
-      "meta.agents",
-      "timeline"
-    ],
-    "note": "要素取自笔记原文；court/judge/deadlines/agents/timeline 须人工回填。"
+    "verifiedFields": ["caseNo", "title", "partyRole", "domain", "status", "client", "opposingParty", "stage"],
+    "pendingFields": ["judge", "meta.agents", "timeline", "deadlines"],
+    "note": "2026-09-28 依笔记回填；尚未起诉，无期限"
   },
   "meta": {
     "schema": "case-meta/v1",
     "agents": [
-      {
-        "stage": "校准占位",
-        "role": "DTC-CASE-001",
-        "agent": "待回填",
-        "status": "todo",
-        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
-      }
+      { "stage": "①接案建档", "gate": "G0", "role": "建档", "agent": "CLM case-state 回填校验", "status": "已接入", "note": "2026-09-28 依笔记回填" }
     ]
-  }
+  },
+  "updatedAt": "2026-09-28",
+  "source": "案件生命周期管理系统/合作合同/凤仪村与赤水月亮湖合作合同纠纷案-案件笔记.md（2026-09-18 updated）"
 }

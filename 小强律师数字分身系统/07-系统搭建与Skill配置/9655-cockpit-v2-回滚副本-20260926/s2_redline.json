@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-09-21 09:05:32",
+  "skill": "S2-redline-prehook",
+  "target": "C0 R3/R4 告警旗",
+  "gate_armed": true,
+  "r3_patterns": 4,
+  "r4_patterns": 1,
+  "r3_active": true,
+  "r4_active": true,
+  "verdict": "ok",
+  "note": "红线前置钩子常驻（触发前/交付前拦截 R3 令牌与 R4 AIGC 标识）；非被动监听，无连续事件流，待人工触发核验"
+}

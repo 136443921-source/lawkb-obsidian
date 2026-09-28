@@ -1,94 +1,47 @@
 {
   "schema": "case-state/v1",
   "caseId": "韩杰",
-  "caseNo": "（刑事申诉·再审辩护）",
+  "caseNo": "（医疗事故罪·江西抚州刑事申诉）",
   "title": "韩杰医生医疗事故罪申诉/再审辩护",
   "domain": "医疗事故罪/刑事",
-  "status": "进行中",
+  "status": "进行中（刑事申诉/再审辩护）",
+  "court": "一审 江西省抚州市临川区人民法院；二审 江西省抚州市中级人民法院（终审）",
+  "partyRole": "申诉人（原审被告人）",
+  "client": ["韩杰"],
+  "opposingParty": ["原公诉机关（检察院）"],
   "stage": {
-    "current": 0,
-    "code": "calibrated",
-    "name": "DTC-CASE-001 校准生成·待人工回填",
-    "enteredAt": "2026-09-14",
-    "note": "状态字段取自飞轮索引；stage 具体进度待人工回填"
+    "current": 6,
+    "code": "procedure",
+    "name": "⑥程序执行",
+    "enteredAt": "2026-08-14",
+    "note": "刑事申诉/再审辩护—已撰写法院刑事申诉书、检察院抗诉申请书（2026-08-14）；主张撤销原判、改判无罪（死因未尸检/首诊负责制边界/案例库规则未适用）"
   },
   "gates": {
-    "G0": {
-      "name": "门禁G0",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G1": {
-      "name": "门禁G1",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G2": {
-      "name": "门禁G2",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G3": {
-      "name": "门禁G3",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G4": {
-      "name": "门禁G4",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G5": {
-      "name": "门禁G5",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G6": {
-      "name": "门禁G6",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G7": {
-      "name": "门禁G7",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    },
-    "G8": {
-      "name": "门禁G8",
-      "status": "todo",
-      "note": "DTC-CASE-001 校准自动生成·待人工从案件笔记/桌面真卷实地回填核实"
-    }
+    "G0": { "name": "收案门禁", "status": "pass", "note": "真实承办（韩杰医生再审辩护）" },
+    "G1": { "name": "检索门禁", "status": "pass", "note": "致命漏洞战报/案例库规则已检索" },
+    "G2": { "name": "文书门禁", "status": "pass", "note": "刑事申诉书/抗诉申请书已拟稿" },
+    "G3": { "name": "庭审门禁", "status": "todo", "note": "原审已决；再审待立案" },
+    "G4": { "name": "客户门禁", "status": "pass", "note": "当事人沟通" },
+    "G5": { "name": "程序门禁", "status": "active", "note": "申诉/抗诉材料推进中" },
+    "G6": { "name": "风控门禁", "status": "todo", "note": "待回填" },
+    "G7": { "name": "结案回流", "status": "todo", "note": "待再审结果" }
   },
+  "deadlines": [],
   "calibration": {
     "ticket": "DTC-CASE-001",
     "generatedAt": "2026-09-14",
-    "source": "案件-知识映射索引 + 案件笔记存在性",
-    "verifiedFields": [
-      "caseNo",
-      "title",
-      "domain",
-      "status"
-    ],
-    "pendingFields": [
-      "court",
-      "judge",
-      "client",
-      "deadlines",
-      "meta.agents",
-      "timeline"
-    ],
-    "note": "本文件由校准脚本自动生成，仅含索引可证事实；court/judge/client/deadlines/agents 须人工从案件笔记与桌面真卷实地回填，禁止凭记忆完善。"
+    "backfilledAt": "2026-09-28",
+    "source": "本夹：韩杰医疗事故案法院刑事申诉书.md、致命漏洞战报_韩杰医疗事故罪申诉书_20260814、庭审报告_韩杰医疗事故罪申诉案_20260814、检察院抗诉申请书.md",
+    "verifiedFields": ["caseNo", "title", "domain", "status", "court", "client", "opposingParty", "stage"],
+    "pendingFields": ["judge", "meta.agents", "timeline", "deadlines"],
+    "note": "2026-09-28 依文书回填；无原案号（文书留空），申诉待法院立案，无明确截止日"
   },
   "meta": {
     "schema": "case-meta/v1",
     "agents": [
-      {
-        "stage": "校准占位",
-        "role": "DTC-CASE-001",
-        "agent": "待回填",
-        "status": "todo",
-        "note": "meta.agents 待人工按运维手册§3.2 补齐11条路由"
-      }
+      { "stage": "①接案建档", "gate": "G0", "role": "建档", "agent": "CLM case-state 回填校验", "status": "已接入", "note": "2026-09-28 依文书回填" }
     ]
-  }
+  },
+  "updatedAt": "2026-09-28",
+  "source": "案件生命周期管理系统/韩杰医生医疗事故罪申诉案/韩杰医疗事故案法院刑事申诉书.md 等（2026-08-14 系列文书）"
 }

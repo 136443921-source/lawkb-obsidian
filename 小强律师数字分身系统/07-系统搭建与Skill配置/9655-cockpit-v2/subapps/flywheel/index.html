@@ -70,7 +70,7 @@ h1 .updTag b{color:#d6ffe9;font-weight:700}
 </style>
 </head>
 <body data-page-node-id="18trsxGVSMMUerag6XNdB2" data-cno="C3">
-<h1 data-page-node-id="cfC1ojEUOk7k2nMLfFesXR">C3 知识飞轮舱<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-25 13:43（北京时间）</span></h1>
+<h1 data-page-node-id="cfC1ojEUOk7k2nMLfFesXR">C3 知识飞轮舱<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-28 08:24（北京时间）</span></h1>
 <div class="meta" id="updated" data-page-node-id="QpESNcFKTyTdm2LrRQyUY2"></div>
 <div class="note" data-page-node-id="zOVs3W6cr836Q0uMr81qvY">健康仪表盘已并入本中台 · 单一知识源：LawKB/知识飞轮系统 ｜ 运行态取自 WorkBuddy 自动化矩阵（cwds=知识飞轮系统 + 飞轮核心任务）｜ 手动刷新（运行「飞轮中台刷新.py」或点门户刷新按钮重载）</div>
 
@@ -398,35 +398,58 @@ document.getElementById("cfRecent").innerHTML = cf.top_recent.map(r=>
 
 <script src="/subapp_score_override.js?v=20260919b"></script>
 <script>
-/* S1 实时重接试点（C3 飞轮）：数据层 fetch 本机飞轮探针，视觉层零改动（禁薄壳 / 不改 DOM / 不改 CSS）
+/* ===== S1 实时重接（C3 飞轮 · 2026-09-27 并入试点后定稿） =====
+   来源：lawtwin-open/skills/S1-subapp-reconnect；试点屏 c3-1 的已验收实现合并进本屏。
    探针：lawtwin-open/skills/S1-subapp-reconnect/probe_flywheel.py → flywheel_live.json
-   铁律：cache:no-store + ?t 戳破缓存；断网/源不可达保留静态快照，绝不编假数。 */
+   ⚠️ 探针 DEFAULT_OUT 原指向错误路径（~/.WorkBuddy/2026-09-17-16-22-53/outputs/...），
+      须 --out 指向本目录，否则本屏长期吃 09-20 陈旧快照（S1 挂了 7 天的真因）。
+   铁律：
+   1. 禁改薄壳     —— 沿用本屏全部富仪表盘 CSS/JS，不引 subapp_shell.js
+   2. 视觉层零改动 —— 不布局/不配色/不改 DOM 结构
+   3. cache:no-store + ?t 戳破缓存
+   4. 数据零虚构   —— 缺字段显「—」，断网显「实时源不可达」，绝不编数          */
 (function(){
   var LIVE = "flywheel_live.json";
-  fetch(LIVE + "?t=" + Date.now(), { cache: "no-store" })
+  var stamp = Date.now();
+  var shown = false;
+
+  function fallback(msg){                       // 铁律 4：不编假数
+    var t = document.getElementById("data-update-time");
+    if(t) t.textContent = "📊 " + msg + " · 保留最近一次静态快照";
+    var g = document.querySelectorAll("#kpis .num");
+    for(var i=0;i<g.length;i++) if(g[i].textContent.trim()==="—") g[i].textContent="—";
+  }
+  function paint(d){
+    if(!d || !d.kpi) throw 0;
+    var k = d.kpi;
+    var kpis = [
+      { n: k.experienceCards==null?"—":k.experienceCards, l:"经验卡片（真实/演练/预测）", c:"" },
+      { n: k.ruleFiles==null?"—":k.ruleFiles,             l:"裁判规则库文件",            c:"green" },
+      { n: k.sixLayerTotal==null?"—":k.sixLayerTotal,     l:"六层 md 总数",              c:"" },
+      { n: k.caseNotes==null?"—":k.caseNotes,             l:"CaseDrop 已归档案件",        c:"amber" },
+      { n: k.automations==null?"—":k.automations,         l:"飞轮自动化（在矩阵）",       c:"green" },
+      { n: k.ongoingCases==null?"—":k.ongoingCases,       l:"在办案件（待预判）",         c:"red" }
+    ];
+    var el = document.getElementById("kpis");
+    if(el) el.innerHTML = kpis.map(function(x){
+      return '<div class="kpi '+x.c+'"><div class="num">'+x.n+'</div><div class="lbl">'+x.l+'</div></div>';
+    }).join("");
+    var t = document.getElementById("data-update-time");
+    if(t) t.textContent = "📊 数据更新时间：" + (d.probed_at||d.updated) + "（实时探针 · 拉取于 " + new Date().toLocaleString("zh-CN") + "）";
+    shown = true;
+  }
+
+  fetch(LIVE + "?t=" + stamp, { cache: "no-store" })
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(d){
-      if(!d || !d.kpi) throw 0;
-      var k = d.kpi;
-      var kpis = [
-        { n: k.experienceCards, l: "经验卡片（真实/演练/预测）", c: "" },
-        { n: k.ruleFiles,        l: "裁判规则库文件",            c: "green" },
-        { n: k.sixLayerTotal,    l: "六层 md 总数",              c: "" },
-        { n: k.caseNotes,        l: "CaseDrop 已归档案件",        c: "amber" },
-        { n: k.automations,      l: "飞轮自动化（在矩阵）",       c: "green" },
-        { n: k.ongoingCases,     l: "在办案件（待预判）",          c: "red" }
-      ];
-      var el = document.getElementById("kpis");
-      if(el) el.innerHTML = kpis.map(function(x){
-        return '<div class="kpi ' + x.c + '"><div class="num">' + x.n + '</div><div class="lbl">' + x.l + '</div></div>';
-      }).join("");
-      var t = document.getElementById("data-update-time");
-      if(t) t.textContent = "📊 数据更新时间：" + (d.probed_at || d.updated) + "（实时探针）";
-    })
-    .catch(function(){
-      var t = document.getElementById("data-update-time");
-      if(t) t.textContent = "📊 实时源不可达 · 保留最近一次静态快照";
-    });
+    .then(paint)
+    .catch(function(){ fallback("实时源不可达"); });
+
+  window.__S1_FLYWHEEL__ = {
+    reload: function(){ return fetch(LIVE + "?t=" + Date.now(), { cache:"no-store" })
+                                .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+                                .then(paint).catch(function(){ fallback("实时源不可达"); }); },
+    get shown(){ return shown; }
+  };
 })();
 </script>
 </body>

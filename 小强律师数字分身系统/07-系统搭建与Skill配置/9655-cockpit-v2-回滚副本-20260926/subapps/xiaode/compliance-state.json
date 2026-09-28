@@ -1,0 +1,55 @@
+{
+  "schema": "compliance-state/v1",
+  "org": "贵州省厚德公益基金会（及在管关联主体）",
+  "dashboard": "C5 小德合规中台",
+  "domains": ["慈法", "合同", "医院", "非诉"],
+  "status": "监测中",
+  "generatedAt": "2026-09-14",
+  "kpi": {
+    "managedObjects": 8,
+    "escalatedRisks": 2,
+    "newThisWeek": 1,
+    "gateG8": "pass"
+  },
+  "domainCards": { "慈法": 6, "合同": 7, "医院": 14, "非诉": 7 },
+  "gates": {
+    "G8": { "name": "非诉合规门禁", "status": "pass", "note": "周巡检 g8_passed=true" },
+    "D-慈善": { "name": "慈善域门禁", "status": "warn", "note": "R2 审计约定书主体缺失升级" },
+    "D-医院": { "name": "医院域门禁", "status": "normal", "note": "R4/R5 红线转出" },
+    "D-运输": { "name": "运输安全域门禁", "status": "warn", "note": "R6 航合表态稿逾期" },
+    "D-社会组织": { "name": "社会组织域门禁", "status": "warn", "note": "R8 众志救援新增" },
+    "D-非诉文书": { "name": "非诉文书门禁", "status": "normal", "note": "光伏项目留痕观察" }
+  },
+  "deadlines": [
+    { "name": "审计业务约定书乙方主体信息补正", "due": "2026-09-20", "level": "P0", "state": "urgent", "owner": "厚德基金会", "basis": "慈善组织信息公开办法 / 民间非营利组织会计制度" },
+    { "name": "航合物流09-01事故四段式表态稿起草", "due": "2026-09-14", "level": "P0", "state": "overdue", "owner": "航合物流", "basis": "安全生产法第21/41条" },
+    { "name": "众志救援场地收回信赖利益证据固化", "due": null, "level": "P1", "state": "armed", "owner": "众志救援", "basis": "行政协议司法解释第5/23条" },
+    { "name": "娄山华庭租赁用途与章程宗旨匹配佐证", "due": null, "level": "P2", "state": "pending", "owner": "厚德基金会", "basis": "租赁合同 HDGY-2026-0601" }
+  ],
+  "reviewFlow": [
+    { "date": "2026-09-13", "event": "合规审查卡调用（周巡检 G8 留痕）", "by": "小德" },
+    { "date": "2026-09-12", "event": "合规审查卡调用", "by": "小德" },
+    { "date": "2026-09-08", "event": "合规审查卡调用", "by": "小德" }
+  ],
+  "risks": [
+    { "id": "R2", "level": "red", "title": "审计业务约定书乙方主体信息缺失", "note": "死线2026-09-20仅剩6天仍未补正，触发G8硬挡：本年度审计报告不予出具", "action": "本周内联系基金会补正乙方名称/执业许可号/签章页" },
+    { "id": "R6", "level": "orange", "title": "航合09-01致死事故表态稿逾期未落地", "note": "距事故13天，四段式表态稿正文仍未起草", "action": "表态稿列P0，双线整改同步启动，关联交易交叉核查催办" },
+    { "id": "R8", "level": "orange", "title": "众志救援场地收回行政争议（新增）", "note": "有批复无协议，信赖利益证据待固化", "action": "225号收文回执/批复原件/投入票据立即归档，民非资产处置理事会决议留痕" },
+    { "id": "R1", "level": "yellow", "title": "道真百益合同纠纷案", "note": "涉诉红线留痕，二审材料已整合投资决策留痕", "action": "理事会专项回填待办" },
+    { "id": "R3", "level": "yellow", "title": "娄山华庭租赁", "note": "意见书有touch实质未变，租赁用途与章程宗旨匹配性待佐证", "action": "保持观察" },
+    { "id": "R7", "level": "yellow", "title": "面瘫针灸协议", "note": "落地前状态，无新签署证据", "action": "签署后启动知情同意/病历/医保三项巡检" }
+  ],
+  "connectors": {
+    "ima-mcp": "connected",
+    "yuandian-mcp": "connected",
+    "qcc-legal": "connected",
+    "gongyi-open-mcp": "connected",
+    "agent-mail": "connected"
+  },
+  "cardsTotal": 34,
+  "auditLog": [
+    { "ts": "2026-09-14T11:39", "action": "init_dashboard", "by": "小强" }
+  ],
+  "source": "LawKB/小德合规管理系统 + 周合规巡检简报-2026-09-13 + 合规审查卡调用记录",
+  "updatedAt": "2026-09-14"
+}

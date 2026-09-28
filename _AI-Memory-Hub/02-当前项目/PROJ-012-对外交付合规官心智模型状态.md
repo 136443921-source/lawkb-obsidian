@@ -9,7 +9,7 @@ scope: 一切对外出件（法律意见、文书终稿、对外规则包、对�
 status: **DRAFT 起步（2026-09-25 新建，老强批准入编 SEAT-14）**；待 WF-046 四判据取证转正
 source_note: 依据 `律所主任-数字员工裁撤新建建议-报老强批准-2026-09-24` N-3 + `09-4 对外交付合规前置/管理制度登记册.md`，非凭记忆
 maturity_level: M3·DRAFT
-maturity_score: 60
+maturity_score: 73
 belongs_to: 对外交付合规前置层
 seat_id: SEAT-14
 fix_done: 0

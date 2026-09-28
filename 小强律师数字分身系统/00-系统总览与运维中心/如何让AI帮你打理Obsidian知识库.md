@@ -5,7 +5,7 @@ tags:
   - AI
   - 知识库
 created: 2026-05-28T10:51
-updated: 2026-09-25T20:41
+updated: 2026-09-26T10:53
 title: 如何让AI帮你打理Obsidian知识库
 maturity: 🌱种子
 source: ""
@@ -17,6 +17,8 @@ importance: 3
 status: draft
 ---
 
+
+> 🗄 **status: archive**（归口 2026-09-26 · 归口台账 `_00-目录归档台账.md`）——**只读史料，不再维护**；版本以归口台账「现行受控」段为准。
 
 https://mp.weixin.qq.com/s/KknwudobwPxPoLVJ1jTPxQ
 

@@ -1,0 +1,178 @@
+{
+  "schema": "lawtwin-pillars-v1",
+  "generated_at": "2026-09-21 19:49:42",
+  "source": "8 缺口探针 JSON（o1/o2/o3/h2/c8/d2/s2/s3）+ 缺口方案 §0/§6 已验证事实",
+  "four_pillars": [
+    {
+      "key": "data-not-leaving",
+      "icon": "🔒",
+      "name": "数据不出机",
+      "skills": [
+        "D1",
+        "H1",
+        "D3",
+        "D2"
+      ],
+      "status": "OK",
+      "note": "D1/H1 法规快照 + D3 加密备份 round-trip 已验证；D2 出网审计在线：累计 4 事件 / 拦截 1 案号"
+    },
+    {
+      "key": "experience-accum",
+      "icon": "📚",
+      "name": "经验可沉淀",
+      "skills": [
+        "E1",
+        "E2",
+        "E3",
+        "H3"
+      ],
+      "status": "OK",
+      "note": "E1 结案复盘卡 + E2 沉淀质量门禁 + E3 经验卡模板库 + H3 待回源清零，均已建且真跑验证"
+    },
+    {
+      "key": "ops-auditable",
+      "icon": "🔍",
+      "name": "运维可审计",
+      "skills": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "status": "WARN",
+      "note": "O1/O2/O3 探针常驻；O1 overall=P0（lti-gate 守护未在本会话拉起，运行时态·非建设缺）"
+    },
+    {
+      "key": "anti-halluc",
+      "icon": "🚫",
+      "name": "制品防幻觉",
+      "skills": [
+        "H2",
+        "H4",
+        "S2",
+        "S3"
+      ],
+      "status": "WARN",
+      "note": "H2 三源核验(库 74 篇 / pending=9) + H4 幻觉看板(lti_gate.alive=False) + S2 红线前置(R3=True/R4=True) + S3 评分完整性(一致=True)"
+    }
+  ],
+  "four_supporting": [
+    {
+      "key": "diagnosable",
+      "icon": "🪞",
+      "name": "可诊断·可定责",
+      "skills": [
+        "O1",
+        "D2",
+        "S1"
+      ],
+      "status": "OK",
+      "note": "O1 巡检留痕 + D2 出网审计在线 + S1 16 屏实时重接；源可溯 / 变可察 / 责可定"
+    },
+    {
+      "key": "redline-front",
+      "icon": "🚧",
+      "name": "红线前置",
+      "skills": [
+        "S2"
+      ],
+      "status": "OK",
+      "note": "S2 红线前置常驻（R3 令牌 / R4 AIGC 标识触发前拦截，gate_armed=True）"
+    },
+    {
+      "key": "score-trust",
+      "icon": "📐",
+      "name": "评分可信",
+      "skills": [
+        "S3",
+        "S1"
+      ],
+      "status": "OK",
+      "note": "S3 评分环==六维均值(一致=True) + S1 评分实时对齐；零虚构，禁假自洽"
+    },
+    {
+      "key": "single-conf",
+      "icon": "🔐",
+      "name": "单机密文版定位",
+      "skills": [
+        "S4"
+      ],
+      "status": "OK",
+      "note": "S4 引用边界固化：全部 gap-skill SKILL.md 加 lawyer-avatar-only 标签，9655 为单机密文版唯一实时镜像"
+    }
+  ],
+  "glossary": {
+    "D1": {
+      "name": "法规快照",
+      "detail": "外部法规库离线拉取为本地密文快照（74 文件 / 1915 KiB），检索核验不出机"
+    },
+    "H1": {
+      "name": "法规快照",
+      "detail": "同 D1 法规快照链路（合规侧），离线密文、数据不出机"
+    },
+    "D3": {
+      "name": "加密备份",
+      "detail": "关键产物加密备份（10.6 MB .enc），解密恢复成功、留本机不外传"
+    },
+    "D2": {
+      "name": "出网审计",
+      "detail": "出网调用审计（4 事件 / 拦截 1 案号），敏感内容命中即 BLOCK"
+    },
+    "E1": {
+      "name": "结案复盘卡",
+      "detail": "案件结案自动产出复盘卡，经验可沉淀"
+    },
+    "E2": {
+      "name": "沉淀质量门禁",
+      "detail": "经验沉淀前过三联质量门禁，防脏数据入库"
+    },
+    "E3": {
+      "name": "经验卡模板库",
+      "detail": "5 类经验卡模板，结构化复用"
+    },
+    "H3": {
+      "name": "待回源清零",
+      "detail": "扫描本地法规库待回源残留并清零，防幻觉"
+    },
+    "O1": {
+      "name": "运维巡检",
+      "detail": "常驻运维巡检探针（overall 实时），可审计"
+    },
+    "O2": {
+      "name": "缺口闭环度(G6)",
+      "detail": "缺口技能部署记录 G6 闭环度（20/20 回填）"
+    },
+    "O3": {
+      "name": "成熟度追踪",
+      "detail": "技能成熟度追踪（92/100 · 2 漂移可见）"
+    },
+    "H2": {
+      "name": "三源核验",
+      "detail": "法条三源核验（库 74 篇），pending 诚实标"
+    },
+    "H4": {
+      "name": "幻觉看板",
+      "detail": "AI 幻觉监控看板（c8_metrics 实时），防幻觉"
+    },
+    "S2": {
+      "name": "红线前置",
+      "detail": "红线前置（R3 令牌 / R4 AIGC 标识）触发前拦截"
+    },
+    "S3": {
+      "name": "评分完整性",
+      "detail": "评分环 == 六维均值一致性校验，禁假自洽"
+    },
+    "S4": {
+      "name": "引用边界",
+      "detail": "单机密文版引用边界（lawyer-avatar-only 标签），定位清晰"
+    },
+    "S1": {
+      "name": "实时重接",
+      "detail": "9655 S1 范式 16 屏实时重接，评分实时对齐"
+    }
+  },
+  "summary": {
+    "ok": 6,
+    "warn": 2,
+    "total": 8
+  }
+}
