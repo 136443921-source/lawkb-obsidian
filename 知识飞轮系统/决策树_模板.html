@@ -246,6 +246,7 @@ function stats(){
   const html=[
     [String(cards.length),'在册决策卡','var(--blue)'],
     [overdue?String(overdue):'0',overdue?'逾期未复盘 ⚠️':'逾期未复盘',overdue?'var(--red)':'var(--txt3)'],
+    [String(cards.length-judged.length),'待复盘','var(--orange)'],
     [rate,'命中率',judged.length?'var(--green)':'var(--txt3)'],
     [String(cnt('card')),'决策卡分区','var(--purple)'],
     [String(cnt('flow')),'建卡流程步骤','var(--purple)'],

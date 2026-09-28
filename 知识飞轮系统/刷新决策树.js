@@ -24,8 +24,8 @@ const BASE = '/Users/chenyouqiang/Documents/LawKB/知识飞轮系统';
 const LOG_DIR = path.join(BASE, '04-LOG', '决策日志');
 const TPL = path.join(BASE, '决策树_模板.html');
 const STATIC = path.join(BASE, '决策树_静态结构.json');
-// 【2026-09-18 路线B】思维轨迹卡仍以 03-决策档案/ 为 SSOT（常驻规则 RULE-TRAINING-WRITEBACK 约定），
-// 本脚本在扫 LOG_DIR 之余额外收纳 03-决策档案 中文件名含「思维轨迹」的卡，使其与 04-LOG 普通决策卡并列上树。
+// 【路线B·2026-09-28 复核】思维轨迹卡（DEC-2026-005~016 等）已于 2026-09-28 确认实际居 04-LOG/决策日志/，
+// 主扫（LOG_DIR）已完整覆盖；03-决策档案 现零命中。分支保留以待回归，不重定向到 04-LOG（会与主扫重复计数）。
 const EXTRA_DIR = '/Users/chenyouqiang/Documents/LawKB/_AI-Memory-Hub/03-决策档案';
 const isExtra = d => d === EXTRA_DIR;
 // 文件名刻意用「决策树总览」——Spotlight 搜这四个字可精确命中，

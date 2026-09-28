@@ -171,13 +171,25 @@
     },
     {
       "date": "2026-09-25",
-      "layers": 5432,
-      "rules": 26,
+      "layers": 5502,
+      "rules": 68,
       "cards": 456,
       "traces": 22,
       "calls": 70,
       "cross": 4,
       "decisions": 33,
+      "hitFilled": 8,
+      "hitTotal": 8
+    },
+    {
+      "date": "2026-09-28",
+      "layers": 5849,
+      "rules": 78,
+      "cards": 462,
+      "traces": 22,
+      "calls": 70,
+      "cross": 4,
+      "decisions": 34,
       "hitFilled": 8,
       "hitTotal": 8
     }
