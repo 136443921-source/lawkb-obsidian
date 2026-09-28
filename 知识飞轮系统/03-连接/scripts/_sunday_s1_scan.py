@@ -5,7 +5,7 @@ import os, re, sys, json, datetime
 VAULT = "/Users/chenyouqiang/Documents/LawKB"
 CASE_DIR = os.path.join(VAULT, "知识飞轮系统/05-调用/案件管理")
 OUT_DIR = os.path.join(VAULT, "知识飞轮系统/06-沉淀/知识盲区扫描日志")
-TODAY = datetime.date(2026, 9, 6)
+TODAY = datetime.date.today()
 WIN_START = TODAY - datetime.timedelta(days=90)
 os.makedirs(OUT_DIR, exist_ok=True)
 
