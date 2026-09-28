@@ -121,3 +121,6 @@ c8_metrics.json → /Users/chenyouqiang/Documents/LawKB/小强律师数字分身
 [HEALTHY] lti-gate=alive | 审计日志=未接入
 c8_metrics.json → /Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/c8_metrics.json
   ℹ️ 未提供 LTI 审计日志，R/L/C/T/P 拦截率与 REJECT 趋势为空（不编造，待审计日志接入）。
+[HEALTHY] lti-gate=alive | 审计日志=未接入
+c8_metrics.json → /Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/c8_metrics.json
+  ℹ️ 未提供 LTI 审计日志，R/L/C/T/P 拦截率与 REJECT 趋势为空（不编造，待审计日志接入）。
