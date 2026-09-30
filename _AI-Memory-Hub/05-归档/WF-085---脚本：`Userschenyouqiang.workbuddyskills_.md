@@ -2,8 +2,9 @@
 id: WF-085
 title: - 脚本：`/Users/chenyouqiang/.workbuddy/skills/_common/scripts/
 type: workflow
-status: active
-updated: 2026-09-26
+status: archived
+archived: 2026-09-30
+updated: 2026-09-30
 source_ai: workbuddy
 scope: global
 confidence: medium
