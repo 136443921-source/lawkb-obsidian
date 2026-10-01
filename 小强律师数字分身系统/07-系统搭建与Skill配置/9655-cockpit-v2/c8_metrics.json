@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-28 22:06:22",
+  "generated_at": "2026-10-01 22:02:00",
   "screen": "C8 AI幻觉监控舱",
   "lti_gate": {
-    "alive": true,
-    "pid": 36710,
-    "level": "OK"
+    "alive": false,
+    "pid": null,
+    "level": "P0"
   },
   "audit_available": false,
   "audit_source": null,
@@ -37,6 +37,6 @@
   },
   "reject_trend_7d": [],
   "false_positive_top": [],
-  "verdict": "healthy",
-  "note": " LTI 审计日志未接入 → R/L/C/T/P 拦截率/REJECT 趋势待审计日志落盘后可见（不编造）。"
+  "verdict": "alert",
+  "note": "lti-gate 未运行 → P0 告警（须拉起守护进程）。 LTI 审计日志未接入 → R/L/C/T/P 拦截率/REJECT 趋势待审计日志落盘后可见（不编造）。"
 }

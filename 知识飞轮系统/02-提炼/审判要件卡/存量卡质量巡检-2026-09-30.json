@@ -1,0 +1,41 @@
+{
+  "round": 15,
+  "date": "2026-09-30",
+  "mode": "quality_inspection",
+  "verdict": "zero_fix_round",
+  "statute_fill": {
+    "frontmatter_pending_true": 0,
+    "inline_pending_true": 0,
+    "inline_false": 10,
+    "inline_note_substring": 31,
+    "filled_this_round": 0,
+    "deviation_blocked": 0,
+    "note": "double-tool verified (Grep anchored + bash anchored + inline :true), not a false negative"
+  },
+  "deadlinks": {
+    "reporter_script": "v1.7.2",
+    "files_scanned": 6207,
+    "files_hit": 952,
+    "true_deadlinks": 207,
+    "pending_notes": 1590,
+    "old_caliber_total": 1797,
+    "gate_script": "v9_strict_whitelist",
+    "gate_fixable": 0,
+    "note": "reporter 207 vs gate 0 are different calibers; 207 contains long-filename cards/syntax fragments/cross-lib false positives, NOT gate-fixable"
+  },
+  "channel_status": {
+    "pkulaw": "not_connected_this_round",
+    "yuandian": "connected_probe200_balance0_search_unavailable",
+    "qcc_legal": "connected_stable",
+    "local_source": "available_fallback",
+    "probe_timestamp": "2026-09-30T10:01:18CST",
+    "probe_raw_ts": 1790733678698
+  },
+  "r2": {
+    "consecutive_zero_count": 2,
+    "threshold": 3,
+    "triggered": false,
+    "sequence": "R13=0(reset) -> R14=1 -> R15=2",
+    "note": "R16 zero-fix would reach threshold 3 and trigger R2"
+  }
+}

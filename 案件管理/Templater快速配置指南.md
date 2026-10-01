@@ -10,7 +10,7 @@ tags:
   - 文件夹
   - 模板
 created: 2026-05-28T10:51
-updated: 2026-09-25T20:41
+updated: 2026-10-01T21:54
 title: Templater快速配置指南
 maturity: 🌳核心
 source: ""

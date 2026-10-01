@@ -20,3 +20,27 @@
 - 复核：重新跑注入校验 → **13/13 ALL_OK**（body_OK + ovr_refs=1 全部满足）。
 - 注：scan_9655.py / gen_subapps.py 均无 override 注入例程，故走精准注入而非重跑脚本；若后续有夜间重新生成，需关注这 3 块是否再次被覆盖。
 - 遗留待老强确认："9360 字节副本"描述与实际 subapps/<name>/index.html（40KB~400KB）不符，疑机制变更——注入校验对象以实际 index.html 为准。
+
+## 2026-09-29 09:08 (GMT+8) 定时自动化触发，无人值守
+- 注入完整性 ⚠️ 10/13：clm(C4)/xiaode(C5)/lti(C8) 再次变为裸 `<body>`、0 处 override 引用（09-28 已注入，疑夜间 gen_subapps 重生覆盖）。根部 override.js 存在且 node --check PASS ✅。
+- 漂移守护 drift_count=0、exit 0 ✅
+- 真源新鲜度 ✅ generated_at 2026-09-29 09:08:31（age≈0.03h）；C1=100.0 / C8=60.0 / D1=64.5；total=69.0 grade=C 合格
+- 门禁守护 ⚠️ lti-gate-daemon 未运行（pgrep 无结果）
+- 服务可达 ✅ 127.0.0.1:9655/subapp_score_override.js → HTTP 200
+- 全程只读校验，未修改任何文件。建议：① C4/C5/C8 重新精准注入 + 排查重生覆盖根因；② 本机真实 Terminal 执行 launchctl load 门禁 plist。
+
+## 2026-09-30 09:19 (GMT+8) 定时自动化触发，无人值守
+- 注入完整性 ⚠️ 10/13：clm(C4)/xiaode(C5)/lti(C8) 再次裸 `<body>`、0 处 override 引用（覆写复发，连续第 3 日）。根部 override.js 存在 + node --check PASS ✅。
+- 漂移守护 ✅ drift_count=0、exit 0。
+- 真源新鲜度 ✅ generated_at 2026-09-30 09:17:30（age≈0.04h）；C1=100.0 / C8=60.0 / D1=64.5；total=69.0 grade=C 合格。
+- 门禁守护 ⚠️ lti-gate-daemon 未运行。
+- 服务可达 ✅ HTTP 200。
+- 全程只读，未改文件。建议同前：① 根治→将注入固化进 gen_subapps.py 或持久模板，避免夜间重生覆盖；② 真实 Terminal 执行 launchctl load 门禁 plist。
+
+## 2026-10-01 11:15 (GMT+8) 定时自动化触发，无人值守
+- 注入完整性 ⚠️ 10/13：clm(C4)/xiaode(C5)/lti(C8) 再次裸 `<body>`、0 处 override 引用（覆写复发，连续第 4 日）。根部 override.js 存在 + node --check PASS ✅。
+- 漂移守护 ✅ drift_count=0、exit 0。
+- 真源新鲜度 ✅ generated_at 2026-10-01 11:12:12（age≈0.06h）；C1=100.0 / C8=60.0 / D1=64.4；total=69.0 grade=C 合格。
+- 门禁守护 ⚠️ lti-gate-daemon 未运行（连续第 3 日）。
+- 服务可达 ✅ HTTP 200。
+- 全程只读，未改文件。建议同前：① 根治→将注入固化进 gen_subapps.py 或持久模板，避免夜间重生覆盖；② 真实 Terminal 执行 launchctl load 门禁 plist。

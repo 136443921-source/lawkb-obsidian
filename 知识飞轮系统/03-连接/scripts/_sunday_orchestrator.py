@@ -114,6 +114,35 @@ if "S3_relink_graph" in run.plan:
             lr.get("processed"), lr.get("hubs"),
             len(kg.get("nodes", [])) if isinstance(kg.get("nodes"), list) else kg.get("nodes"),
             len(kg.get("edges", [])) if isinstance(kg.get("edges"), list) else kg.get("edges"))
+        # ===== 模拟法庭治理小圈层连接层（独立步骤，与 link_cards_rules 完全隔离）=====
+        # 隔离保证：gen_mocktrial_links.py 用自身白名单 scan root + 独立 lastrun，不读主脚本数据、不碰法律图谱。
+        try:
+            MT_DIR = os.path.join(VAULT, "_AI-Memory-Hub/09-OPC/09-2部门治理/法律服务中台")
+            MT_LINKER = os.path.join(MT_DIR, "连接层/gen_mocktrial_links.py")
+            if os.path.exists(MT_LINKER):
+                # 六-B 前置：仅备份将被改写的 7 个白名单文件（不备份整个治理目录，避免无关业务试点入备份）
+                mt_bk = os.path.join("/Users/chenyouqiang/WorkBuddy/Claw/backups", "周日批_模拟法庭治理连接层_%s" % TS)
+                os.makedirs(mt_bk, exist_ok=True)
+                mt_members = ["PROJ-模拟法庭科室.md", "模拟法庭管理系统备忘录.md",
+                              "SOP/SOP-BUS-03_模拟法庭红蓝对抗推演.md", "SOP/SOP-BUS-04_模拟法庭科室治理.md",
+                              "SOP/SOP-BUS-09_模拟法庭设备接入.md", "SOP/SOP-BUS-10_驾驶舱复盘_模拟法庭.md",
+                              "模拟法庭设备运行管理制度.md"]
+                for m in mt_members:
+                    s = os.path.join(MT_DIR, m)
+                    if os.path.exists(s):
+                        d = os.path.join(mt_bk, m)
+                        os.makedirs(os.path.dirname(d), exist_ok=True)
+                        shutil.copy2(s, d)
+                print("  [六-B] 备份模拟法庭治理白名单(7) -> %s" % mt_bk)
+                rc2, out2 = call([PY, MT_LINKER, "--apply"])
+                if rc2 != 0:
+                    print("⚠️ 模拟法庭治理连接层失败(独立步骤，不阻断主流程): %s" % out2[-800:])
+                else:
+                    print("[S3 子步] 模拟法庭治理连接层完成（枢纽页+7成员互链已刷新）")
+            else:
+                print("  [S3 子步] 跳过：模拟法庭治理连接器不存在 %s" % MT_LINKER)
+        except Exception as e:
+            print("⚠️ 模拟法庭治理连接层异常(独立步骤，不影响主流程): %s" % e)
         run.stage_done("S3_relink_graph")
         print("[S3 完成] %s" % S3_STAT)
     except Exception as e:

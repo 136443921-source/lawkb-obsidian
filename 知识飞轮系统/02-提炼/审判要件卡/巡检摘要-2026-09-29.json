@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-29",
+  "round": 14,
+  "mode": "存量卡质量巡检",
+  "skill_version": "1.45.0",
+  "channel_probe": {
+    "ts": "2026-09-29T09:1X",
+    "pkulaw": "form2_not_found",
+    "yuandian": "form2_not_found",
+    "qcc_legal": "form2_not_found",
+    "note": "ToolSearch tool_names 精确查三者均不在本会话 deferred tools index；连续第8+轮会话级不可达，依坑43不判死通道、不降级网页源"
+  },
+  "pending_statute": {
+    "frontmatter_true": 1,
+    "inline_dual_scan": 27,
+    "total_files": 28,
+    "frontmatter_card": "R-CF-193-公益捐赠合同赠与人撤销权基金会未拨款返还财产.md"
+  },
+  "deadlink_gate_v170": {
+    "files_hit": 950,
+    "files_scanned": 6180,
+    "real_dead": 203,
+    "soft_note": 1586,
+    "legacy_total": 1789,
+    "parse_fail": 0,
+    "exit_code": 1,
+    "note": "真死链环比+80主因新增批次编号引用(R-GZ/R-LN等)+跨库软引用误判(坑22/34)，非质量恶化"
+  },
+  "statute_fill": {
+    "applied": 0,
+    "candidate_R_CF_193": "民法典663/665本地可核填(版本门禁通过:企查查核填2026-09-13,sxx现行有效);慈善法版本门禁不通过(版本存疑禁止据以回填)",
+    "card_note_overturned": "R-CF-193注『本地民法典未收录赠与合同章』与实测不符,属2026-09-27建卡时陈旧快照(坑73)",
+    "deviation_blocked": 0
+  },
+  "deadlink_fix": {
+    "tool": "v9_strict_whitelist",
+    "dryrun_hits": 0,
+    "applied": 0,
+    "note": "13条白名单映射此前已全应用,本轮幂等0命中;真死链203全为跨库误报+撞号待治理+非白名单"
+  },
+  "six_B": {
+    "writes": 0,
+    "backups": 0,
+    "yaml_parse_fail": 0
+  },
+  "zero_fix_streak": 1,
+  "r2_triggered": false,
+  "new_pit": "坑73:卡内待回源/无源注记是写卡时快照,库态演进(如补版本元数据/新增全文)后可能失准;核填前须用门禁/索引或全库grep查当前库态,勿盲信卡注/旧索引"
+}

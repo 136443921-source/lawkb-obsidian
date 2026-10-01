@@ -632,6 +632,50 @@ def probe_lawkb_count():
     return n, "实扫 {0} 个 md".format(n)
 
 
+def probe_flywheel_sixlayer_count():
+    """知识体规模（卡库文件数）· 实扫 LawKB 飞轮系统 01-采集~06-沉淀 六层（剔除 .workbuddy/_outputs/驾驶舱_backup/运维）。
+
+    与旧 probe_lawkb_count（仅 06-沉淀 单层）区分：本函数反映「六层全量卡库规模」，
+    为驾驶舱「卡库规模」KPI 的固化口径（2026-09-28 起）。"""
+    base = os.path.expanduser("~/Documents/LawKB/知识飞轮系统")
+    layers = ["01-采集", "02-提炼", "03-连接", "04-巩固", "05-调用", "06-沉淀"]
+    if not os.path.exists(base):
+        return 0, "需人工确认"
+    n = 0
+    for ly in layers:
+        n += len(glob.glob(os.path.join(base, ly, "**", "*.md"), recursive=True))
+    return n, "六层实扫 {0} 个 md".format(n)
+
+
+def probe_flywheel_git_new_7d():
+    """近 7 日飞轮真实新增（git 入库日口径，剔除 mtime 假象）。
+
+    实现：git log --diff-filter=A 解析 知识飞轮系统/ 首次入库(A) 文件，去重计数。
+    滚动窗口：today-6d ~ 今（每次重扫自动滚动）。零虚构、只读本机仓库。"""
+    import subprocess as _sp, datetime as _dt
+    try:
+        since = (_dt.date.today() - _dt.timedelta(days=6)).isoformat()
+        repo = os.path.expanduser("~/Documents/LawKB")
+        out = _sp.check_output(
+            ["git", "-C", repo, "log", "--since={0} 00:00".format(since),
+             "--diff-filter=A", "--name-status", "--", "知识飞轮系统/"],
+            stderr=_sp.DEVNULL).decode("utf-8", "ignore")
+        files = md = 0
+        seen = set()
+        for line in out.splitlines():
+            if line.startswith("A\t"):
+                f = line[2:]
+                if f in seen:
+                    continue
+                seen.add(f)
+                files += 1
+                if f.endswith(".md"):
+                    md += 1
+        return files, md, "git 入库日 {0}~今".format(since)
+    except Exception as e:
+        return 0, 0, "git 探测异常: {0}".format(e)
+
+
 def probe_disk_usage(path):
     try:
         st = os.statvfs(path)
@@ -1070,7 +1114,9 @@ def build_screens(probes, registry=None):
     infer_ok = four["inference"]["status"].startswith("✅")
     deploy_done = sum(1 for x in phases if x["status"].startswith("✅")) / len(phases) * 100 if phases else 0
     gap_closed = sum(1 for x in gaps["items"] if x["status"].startswith("✅")) / len(gaps["items"]) * 100 if gaps["items"] else 0
-    kb_n, kb_ev = probe_lawkb_count()
+    kb_n, kb_ev = probe_lawkb_count()                       # 06-沉淀 单层（保留旧口径，供面板分布）
+    kb_n_six, kb_six_ev = probe_flywheel_sixlayer_count()  # 六层全量口径（2026-09-28 固化）
+    git_f, git_m, git_ev = probe_flywheel_git_new_7d()     # 近7日 git 入库真实新增
     disk_pct = probe_disk_usage(SRC)
     port9655 = probe_http_up("http://127.0.0.1:9655/", 2)
     deploy_n = len(deploylog["records"])
@@ -1087,6 +1133,7 @@ def build_screens(probes, registry=None):
 
     ctx = dict(four=four, vl=vl, gaps=gaps, sec=sec, gate=gate, deploylog=deploylog,
                disk_pct=disk_pct, port9655=port9655, kb_n=kb_n, kb_bd=kb_bd,
+               kb_n_six=kb_n_six, git_new_f=git_f, git_new_m=git_m,
                host=host, credits=credits, mcp_act=mcp_act, fly_today=fly_today, skills_center=skills_center,
                sharedhub=sharedhub, metacog=metacog, cardfam=cardfam, cardref=cardref)
 
@@ -1104,12 +1151,13 @@ def build_screens(probes, registry=None):
             continue
         # 监控屏：按实源派生
         sc, over, kpis, flag, risk = _screen_metric(key, dict(
-            daemon=daemon, vl_filled=vl_filled, drift_n=drift_n, l1_enc=l1_enc,
-            infer_ok=infer_ok, deploy_done=deploy_done, gap_closed=gap_closed,
-            kb_n=kb_n, kb_ev=kb_ev, disk_pct=disk_pct, port9655=port9655,
-            host=host, credits=credits,
-            deploy_n=deploy_n, vl_total=len(vl_items), vl_filled_n=sum(1 for it in vl_items if it["target_ver"]),
-            gaps_items=gaps["items"], skills_center=skills_center, sharedhub=sharedhub,
+        daemon=daemon, vl_filled=vl_filled, drift_n=drift_n, l1_enc=l1_enc,
+        infer_ok=infer_ok, deploy_done=deploy_done, gap_closed=gap_closed,
+        kb_n=kb_n, kb_ev=kb_ev, kb_n_six=kb_n_six, git_new_f=git_f, git_new_m=git_m,
+        disk_pct=disk_pct, port9655=port9655,
+        host=host, credits=credits,
+        deploy_n=deploy_n, vl_total=len(vl_items), vl_filled_n=sum(1 for it in vl_items if it["target_ver"]),
+        gaps_items=gaps["items"], skills_center=skills_center, sharedhub=sharedhub,
         ))
         # D7/D8：用真实 6 维标签驱动评分环六维条（覆盖通用 six 的泛化标签）
         six_dims = None
@@ -1184,11 +1232,14 @@ def _screen_metric(key, m):
                          ["实测漂移", "{0} 项⚠️".format(m["drift_n"]) if m["drift_n"] else "0 项✅"]], \
                m["drift_n"] > 0, "版本锁实地探测 vs 总体方案快照"
     if key == "flywheel":  # 知识飞轮舱
-        cov = min(100.0, m["kb_n"] / 8.0) if m["kb_n"] else 0.0  # 800+ 卡为满
+        kn = m.get("kb_n_six") or m["kb_n"]   # 六层口径固化（2026-09-28 起）
+        cov = min(100.0, kn / 8.0) if kn else 0.0  # 800+ 卡为满
         sc = cov
-        return sc, {"coverage": cov}, [["卡库规模", "{0} 个 md".format(m["kb_n"])],
+        gf, gm = m.get("git_new_f", 0), m.get("git_new_m", 0)
+        return sc, {"coverage": cov}, [["卡库规模", "{0} 个 md（六层口径）".format(kn)],
+                                       ["近7日新增(git入库)", "{0} 文件 / {1} md".format(gf, gm)],
                                        ["覆盖", "{0:.0f}%".format(cov)]], \
-               m["kb_n"] == 0, "知识飞轮卡库规模与覆盖"
+               kn == 0, "知识飞轮卡库规模与覆盖"
     if key == "lti":  # 门禁运行
         sc = 60.0 if m["daemon"] else 30.0
         return sc, {"compliance": 45.0 if m["daemon"] else 30.0}, \
@@ -1369,8 +1420,9 @@ def panels_for(key, ctx):
                 for sub, n in kb_bd.items()]
         P.append({"title": "知识体分布（06-沉淀 实扫）", "kind": "modules", "mods": mods})
         P.append({"title": "卡库规模", "kind": "kpis", "rows": [
-            ["文档总数", "{0} 个 md".format(kb_n)],
-            ["覆盖度", "{0:.0f}%".format(min(100.0, kb_n / 8.0))],
+            ["六层文档总数", "{0} 个 md".format(ctx.get("kb_n_six", kb_n))],
+            ["覆盖度", "{0:.0f}%".format(min(100.0, ctx.get("kb_n_six", kb_n) / 8.0))],
+            ["近7日新增(git)", "{0} 文件 / {1} md".format(ctx.get("git_new_f", 0), ctx.get("git_new_m", 0))],
             ["今日变更", "{0} 个".format(ctx.get("fly_today", 0))]]})
 
     elif key == "lti":

@@ -46,8 +46,31 @@
   同批次 08:24:51 改 `scorecard_data.json` 与根 `index.html`。⇒ 是**并行自动化顺带刷新**制造的新鲜度，与 `.scan` 缺口无关。只报事实，未认定违规。
 - 监控盲区补记：`curl 127.0.0.1:9655` = HTTP 200 且进程在，但**服务在 ≠ 数据会自己更新**；端口探活不可作为健康凭据。
 - 周一卡漂移率：`count_rules.py` 已跑（写入型，写前备份 `/tmp/count_rules_backup_20260928_082949/`），`drift_status=LOCKED`、10/10 OK；同时产出 `card_scale_drift_report.json`（该报告此前容易被忽略，漂移率要看它，不看 stdout）。
+
+### 2026-09-29（周二）·判绿（②③④ 各 0，无新增卡）
+
+- `drift_check_9655.py`：退出码 `0`，`v1.5`，`drift_count=0`，`aligned=true`，`health_count=0`，19/19 屏 ⇒ 校齐率 100%。
+- 心跳：`generated_at=2026-09-29 08:28:15`，`fresh_h=0.01h` ≤26h ⇒ 绿。终态复跑与首跑一致。
+- **判据反转（本轮核心，已回写 `CRT-20260927-01`）**：守 400s 做自动重复实证，`scorecard_data.json` mtime **08:18:13 → 08:23:15 → 08:28:16**，间隔 **5分02秒 ≈ StartInterval=300**，无干预 ⇒ **`.scan` 调度确实在跑**，`CRT-20260927-01`/`CRT-20260928-01` 核销**持续有效**，不 reopen。
+  - 同期 `.9655_scan.log` **0 字节**、mtime 停在 `09-28 11:25:32` ⇒ 该文件由 launchd 建重定向时创建，此后从未落字节。
+  - ⇒ **判据三项排序**（此后复用）：① ✅ `scorecard_data.json` mtime 周期性自跳 ≈StartInterval（唯一可靠）；② ❌ `.9655_scan.log` 存在/mtime 在动（会误报断流）；③ ❌ 「log 不存在⇒没跑」（脆弱，09-27 碰巧成立）。
+- **只读性对照实验**：T0 mtime → 跑 drift_check → T1 mtime 不变 ⇒ **确证 drift_check 只读**，可每日放心跑。（真源位 scorecard 08:18:13 那跳来源最终未定位，只报事实。）
+- 晋级：无断流 ⇒ **不升 P1**，周报无红区。周二不跑 `count_rules.py`（卡漂移率本周不列）。
+- 本次写入 2 处（CRT 卡判据补记 + 工作日志），均先备份 `/tmp/crt_backup_20260929_082855/`；未跑 scan、未改展示层、未动 plist、未 launchctl。
+- **下轮复用**：① 直接看 `scorecard_data.json` mtime 是否在 ≈5min 周期自跳，这比看 launchctl/log 都准；② 「全绿」判定维持四要件（校齐率≥95% + drift_count=0 + fresh_h≤26 + **数据侧循环实证**）；③ 若某日 mtime 停止自跳 ⇒ 断流成立，先按 §四 四条件核销，勿单凭 fresh_h 关闭。
 - 建卡：`CRT-20260928-01`（③，责任席位 SEAT-07，处置中），接续 [[CRT-20260927-01]]。
 - 晋级：断流**中断日**；下一轮再破 26h ⇒ 断流第 2 日，连续 3 日 ⇒ 升 P1。
 - 本次零写入（未跑 scan、未改展示层、未动 plist、未 launchctl）。
 - watch：下一轮先看 `.9655_scan.log` 是否出现。若仍无 ⇒ 断流第 2 日。
 - **下轮复用**：核销只看 `CRT-20260927-01` §四 四条全满足，**禁止单条 `fresh_h` 触发关闭**——单条 fresh_h 只证明"文件被写新了"。
+
+### 2026-09-30（周三）·判绿（②③④ 各 0，无新增卡）
+
+- `drift_check_9655.py`：退出码 `0`，`v1.5`，`drift_count=0`，`aligned=true`，`health_count=0`，19/19 屏 ⇒ 校齐率 100%。
+- 心跳：`generated_at=2026-09-30 08:22:04`，`fresh_h=0.01h` ≤26h ⇒ 绿。
+- **心跳实证（守 320s 双采样）**：scorecard_data.json mtime `08:22:05 → 08:27:06`，delta = **301.2s ≈ StartInterval=300**，无干预 ⇒ `.scan` 调度确在跑，排除 09-28 假绿陷阱（并行自动化刷新 scorecard 致 fresh_h 回落但 scan 未跑）。
+- launchctl 双任务已加载：`com.xiaoqiang.cockpit9655`（PID 1334，服务）+ `com.xiaoqiang.cockpit9655.scan`（周期调度）。
+- 闭环：`CRT-20260927-01` / `CRT-20260928-01` 核销**持续有效**，不 reopen、不计时。
+- 周三：未跑 `count_rules.py`（卡漂移率仅周一，写入型红线）；未跑 `scan_9655.py`；未改展示层；零建卡。
+- 本次写入 2 处（工作日志 `2026-09-30.md` + 本记忆），automation memory 改前已备份 `/tmp/cockpit9655_automem_backup_20260930_082800/`。
+- **下轮复用**：① 全绿四要件已连续多日成立（校齐率100% + drift=0 + fresh≤26 + mtime 周期自跳≈300s）；② 任何一天 mtime 停止自跳 ⇒ 断流成立，先按 §四 四条件核销；③ 红线不变：禁跑 scan_9655.py、禁改展示层、卡漂移率仅周一。

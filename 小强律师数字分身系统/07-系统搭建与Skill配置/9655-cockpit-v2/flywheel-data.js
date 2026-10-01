@@ -1,11 +1,11 @@
 const DATA = {
-  updated: "2026-09-28",
+  updated: "2026-10-01",
   kpi: {
-    experienceCards: 483,
-    ruleFiles: 146,
-    sixLayerTotal: 5772,
+    experienceCards: 484,
+    ruleFiles: 201,
+    sixLayerTotal: 6022,
     caseNotes: 15,
-    automations: 24,
+    automations: 25,
     ongoingCases: 0
   },
   cardGrowth: [
@@ -96,21 +96,21 @@ const DATA = {
     {
       date: "2026-09-28",
       cum: 483
+    },
+    {
+      date: "2026-09-29",
+      cum: 483
+    },
+    {
+      date: "2026-09-30",
+      cum: 483
+    },
+    {
+      date: "2026-10-01",
+      cum: 484
     }
   ],
   dailyGrowth: [
-    {
-      date: "2026-09-22",
-      add: 56
-    },
-    {
-      date: "2026-09-23",
-      add: 0
-    },
-    {
-      date: "2026-09-24",
-      add: 33
-    },
     {
       date: "2026-09-25",
       add: 0
@@ -125,6 +125,18 @@ const DATA = {
     },
     {
       date: "2026-09-28",
+      add: 7
+    },
+    {
+      date: "2026-09-29",
+      add: 1
+    },
+    {
+      date: "2026-09-30",
+      add: 1
+    },
+    {
+      date: "2026-10-01",
       add: 0
     }
   ],
@@ -136,18 +148,18 @@ const DATA = {
     },
     {
       name: "经验卡片（真实/演练）",
-      value: "483/483",
-      desc: "2026-08-28 实测：真实 483 张 / 演练 0 张"
+      value: "484/484",
+      desc: "2026-08-28 实测：真实 484 张 / 演练 0 张"
     },
     {
       name: "裁判规则库规模",
       value: "🌳成长中",
-      desc: "2026-09-05 实测：146 文件 / 26 子库，编号体系 R-领域-序号，规范率详见「规则库资产」卡"
+      desc: "2026-09-05 实测：201 文件 / 26 子库，编号体系 R-领域-序号，规范率详见「规则库资产」卡"
     },
     {
       name: "案件-卡片-规则三维索引",
       value: "已建",
-      desc: "15 归档案件 / 483 经验卡 / 146 规则文件 三维互联"
+      desc: "15 归档案件 / 484 经验卡 / 201 规则文件 三维互联"
     },
     {
       name: "思维轨迹卡",
@@ -163,75 +175,75 @@ const DATA = {
   layerInc: [
     {
       layer: "01-采集",
-      total: 302,
-      inc7d: 302
+      total: 305,
+      inc7d: 305
     },
     {
       layer: "02-提炼",
-      total: 1547,
-      inc7d: 1547
+      total: 1586,
+      inc7d: 1586
     },
     {
       layer: "03-连接",
-      total: 1429,
-      inc7d: 1429
+      total: 1428,
+      inc7d: 1428
     },
     {
       layer: "04-巩固",
-      total: 98,
-      inc7d: 45
+      total: 102,
+      inc7d: 33
     },
     {
       layer: "05-调用",
-      total: 170,
-      inc7d: 170
+      total: 186,
+      inc7d: 186
     },
     {
       layer: "06-沉淀",
-      total: 2226,
-      inc7d: 2224
+      total: 2415,
+      inc7d: 2411
     }
   ],
   kg: {
-    month: "2026-09",
-    generated: "2026-09-28 08:24",
-    total_notes: 10540,
-    total_links: 191832,
-    orphan: 3423,
-    linked: 7117,
-    density: 0.6752,
+    month: "2026-10",
+    generated: "2026-10-01 10:25",
+    total_notes: 10793,
+    total_links: 194489,
+    orphan: 3320,
+    linked: 7473,
+    density: 0.6924,
     dirs: [
       {
         name: "06-沉淀",
-        n: 2226
+        n: 2415
       },
       {
         name: "02-提炼",
-        n: 1547
+        n: 1586
       },
       {
         name: "03-连接",
-        n: 1429
+        n: 1428
       },
       {
         name: "01-采集",
-        n: 302
+        n: 305
       },
       {
         name: "05-调用",
-        n: 170
+        n: 185
       },
       {
         name: "04-LOG",
-        n: 104
+        n: 107
       },
       {
         name: "04-巩固",
-        n: 98
+        n: 102
       },
       {
         name: "运维",
-        n: 53
+        n: 54
       },
       {
         name: "IMA-Inbox",
@@ -253,15 +265,15 @@ const DATA = {
     top: [
       {
         title: "连接枢纽-人伤法",
-        refs: 1688
+        refs: 1697
       },
       {
         title: "连接枢纽-慈法合规",
-        refs: 1307
+        refs: 1308
       },
       {
         title: "连接枢纽-合同风险",
-        refs: 1175
+        refs: 1176
       },
       {
         title: "R-HT-087-贵州商品房买卖预约转本约与逾期违约金不重合计算及消费者优先顺位",
@@ -269,7 +281,7 @@ const DATA = {
       },
       {
         title: "最高人民法院《关于审理道路交通事故损害赔偿案件适用法律若干问题的解释（二）》法释〔2026〕9号",
-        refs: 717
+        refs: 718
       },
       {
         title: "R-PI-129-未尸检不影响鉴定意见效力法院在原因力范围内酌定责任比例",
@@ -281,11 +293,11 @@ const DATA = {
       },
       {
         title: "R-PI-247-人身损害赔偿项目计算总表",
-        refs: 554
+        refs: 556
       },
       {
         title: "基金会违规使用捐赠财产案",
-        refs: 490
+        refs: 491
       },
       {
         title: "LTI防幻觉能力实测评估-2026-08-30.bak_20260830-191940",
@@ -294,27 +306,47 @@ const DATA = {
     ]
   },
   rules: {
-    cards: 483,
-    total: 146,
-    std: 104,
+    cards: 484,
+    total: 201,
+    std: 159,
     nonstd: 42,
-    compliance: 71.2,
+    compliance: 79.1,
     sublibs: [
       {
         name: "医疗损害责任纠纷",
-        n: 56
+        n: 71
       },
       {
         name: "合同风险",
-        n: 27
+        n: 32
       },
       {
         name: "人伤法",
-        n: 8
+        n: 13
       },
       {
         name: "机动车交通事故责任纠纷",
+        n: 10
+      },
+      {
+        name: "侵权责任",
+        n: 10
+      },
+      {
+        name: "合规监管",
         n: 7
+      },
+      {
+        name: "慈善",
+        n: 6
+      },
+      {
+        name: "证据规则",
+        n: 6
+      },
+      {
+        name: "劳动人事",
+        n: 5
       },
       {
         name: "生命权健康权身体权纠纷",
@@ -325,27 +357,19 @@ const DATA = {
         n: 4
       },
       {
-        name: "侵权责任",
-        n: 4
-      },
-      {
         name: "婚姻家庭",
         n: 3
       },
       {
-        name: "慈善",
+        name: "刑事",
         n: 3
-      },
-      {
-        name: "劳动人事",
-        n: 2
       },
       {
         name: "商事纠纷",
         n: 2
       },
       {
-        name: "合规监管",
+        name: "律师实务",
         n: 2
       },
       {
@@ -354,10 +378,6 @@ const DATA = {
       },
       {
         name: ".trash_a",
-        n: 1
-      },
-      {
-        name: "证据规则",
         n: 1
       },
       {
@@ -401,10 +421,6 @@ const DATA = {
         n: 0
       },
       {
-        name: "律师实务",
-        n: 0
-      },
-      {
         name: "通用",
         n: 0
       },
@@ -426,10 +442,6 @@ const DATA = {
       },
       {
         name: "物权",
-        n: 0
-      },
-      {
-        name: "刑事",
         n: 0
       },
       {
@@ -497,16 +509,16 @@ const DATA = {
     {
       name: "知识图谱月度自动更新",
       state: "fail",
-      lastRun: "2026-08-28",
+      lastRun: "2026-09-28",
       result: "失败",
-      nextRun: "2026-09-28"
+      nextRun: "2026-10-28"
     },
     {
       name: "人伤裁判规则定向补强",
       state: "fail",
-      lastRun: "2026-09-23",
+      lastRun: "2026-09-30",
       result: "失败",
-      nextRun: "2026-09-30"
+      nextRun: "2026-10-07"
     },
     {
       name: "多知识库统一索引更新",
@@ -518,16 +530,16 @@ const DATA = {
     {
       name: "每日知识摄入（v1.28版·5槽位靶向采集+法条唯一主源铁律）",
       state: "fail",
-      lastRun: "2026-09-27",
+      lastRun: "2026-10-01",
       result: "失败",
-      nextRun: "2026-09-28"
+      nextRun: "2026-10-01"
     },
     {
-      name: "经验卡片→数字分身人格蒸馏（v1.3.1·含轨迹卡健康检查+口径统计）",
-      state: "warn",
-      lastRun: "2026-08-28",
-      result: "成功",
-      nextRun: "2026-09-28"
+      name: "经验卡片→数字分身人格蒸馏（v1.3.2·含轨迹卡健康检查+口径统计+进化追踪表自动追加）",
+      state: "fail",
+      lastRun: "2026-09-28",
+      result: "失败",
+      nextRun: "2026-10-28"
     },
     {
       name: "裁判规则对账（法随案例库）",
@@ -559,10 +571,10 @@ const DATA = {
     },
     {
       name: "协同效果月报（飞轮命中率汇总）",
-      state: "fail",
-      lastRun: "2026-08-29",
-      result: "失败",
-      nextRun: "2026-09-28"
+      state: "ok",
+      lastRun: "2026-09-28",
+      result: "成功",
+      nextRun: "2026-10-28"
     },
     {
       name: "飞轮健康周五周报(Link E)",
@@ -574,16 +586,16 @@ const DATA = {
     {
       name: "月度回灌-经验索引区自动更新（v2.1版）",
       state: "fail",
-      lastRun: "2026-08-29",
+      lastRun: "2026-09-28",
       result: "失败",
-      nextRun: "2026-09-28"
+      nextRun: "2026-10-28"
     },
     {
       name: "知识飞轮月度链接体检",
-      state: "fail",
+      state: "ok",
       lastRun: "2026-09-28",
-      result: "失败",
-      nextRun: "2026-09-28"
+      result: "成功",
+      nextRun: "2026-10-28"
     },
     {
       name: "决策思维月报",
@@ -594,10 +606,10 @@ const DATA = {
     },
     {
       name: "存量卡质量巡检（法条待回源 + 死链）",
-      state: "ok",
-      lastRun: "2026-09-27",
-      result: "成功",
-      nextRun: "2026-09-28"
+      state: "fail",
+      lastRun: "2026-09-30",
+      result: "失败",
+      nextRun: "2026-10-01"
     },
     {
       name: "分身系统驾驶舱·适时刷新（每 4 小时）",
@@ -608,10 +620,10 @@ const DATA = {
     },
     {
       name: "LawKB 法条与法理一致性月度巡检",
-      state: "none",
-      lastRun: "—",
-      result: "无记录",
-      nextRun: "2026-09-28"
+      state: "fail",
+      lastRun: "2026-09-28",
+      result: "失败",
+      nextRun: "2026-10-28"
     },
     {
       name: "IMA漏窗回补续跑-合规慈善18篇",
@@ -623,48 +635,55 @@ const DATA = {
     {
       name: "案由路由卡每日一拆",
       state: "fail",
-      lastRun: "2026-09-27",
+      lastRun: "2026-10-01",
       result: "失败",
-      nextRun: "2026-09-28"
+      nextRun: "2026-10-01"
     },
     {
       name: "知识飞轮中台(C3)·每周一实时回采重部署",
-      state: "fail",
+      state: "ok",
       lastRun: "2026-09-28",
-      result: "失败",
-      nextRun: "2026-09-28"
+      result: "成功",
+      nextRun: "2026-10-05"
     },
     {
       name: "知识飞轮卡库规模·季度复核锁数",
-      state: "none",
-      lastRun: "—",
-      result: "无记录",
-      nextRun: "2026-09-28"
+      state: "fail",
+      lastRun: "2026-09-28",
+      result: "失败",
+      nextRun: "2026-12-28"
     },
     {
       name: "知识飞轮卡型复盘·活文档同步巡检",
       state: "ok",
-      lastRun: "2026-09-27",
+      lastRun: "2026-10-01",
       result: "成功",
-      nextRun: "2026-09-28"
+      nextRun: "2026-10-01"
     },
     {
       name: "C3飞轮数据每日同步（9655驾驶舱）",
       state: "fail",
-      lastRun: "2026-09-28",
+      lastRun: "2026-10-01",
       result: "失败",
-      nextRun: "2026-09-28"
+      nextRun: "2026-10-01"
+    },
+    {
+      name: "律所主任月报·月末快照（v3 §十五机制）",
+      state: "ok",
+      lastRun: "2026-10-01",
+      result: "成功",
+      nextRun: "2026-10-28"
     }
   ],
   intake: {
-    days7: 5,
-    cases7: 3485,
+    days7: 4,
+    cases7: 3551,
     level: "ok",
-    latest: "2026-09-26"
+    latest: "2026-09-30"
   },
   alerts: {
-    linkRate: 0.496,
-    linkOk: true,
+    linkRate: 0.591,
+    linkOk: false,
     lti: "在线 · 缓存 100 条高频法条 · 三轮终评检出 80.6% / 误报 0%",
     ltiCache: 100
   },

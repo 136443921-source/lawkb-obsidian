@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-28",
-  "probed_at": "2026-09-28 10:57",
+  "updated": "2026-10-01",
+  "probed_at": "2026-10-01 10:24",
   "source": "probe_clm.py · 本机扫描 LawKB/案件生命周期管理系统 case-state.json",
-  "today": "2026-09-28",
+  "today": "2026-10-01",
   "kpi": {
     "caseCount": 13,
     "p0Count": 1,
