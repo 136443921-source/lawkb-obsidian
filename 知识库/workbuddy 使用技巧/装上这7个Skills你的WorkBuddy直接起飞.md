@@ -7,7 +7,7 @@ tags:
   - 技能
   - 必装
 created: 2026-05-28T10:51
-updated: 2026-09-18T20:19
+updated: 2026-10-02T22:11
 title: 装上这7个Skills你的WorkBuddy直接起飞
 maturity: 🌱种子
 source: ""
@@ -189,6 +189,7 @@ https://mp.weixin.qq.com/s/MF5fBEm3EBhxVHzl42C2qg
 
 
 ## 相关笔记
+- [[WF-080---现象：本会话初按-summary「向台账追加-10-行」直接动手，脚本断言计]] (共现关键词: 关键词, 直接)
 - [[法律SOP蒸馏器]] (共现关键词: 合同, 律师, Agent)
 - [[工具之外法律人研究AI和Skill研究的是自己的新位置]] (共现关键词: 合同, Agent, 关键词)
 - [[一定要尽早用这个AI工具workbuddy的100条实操攻略]] (共现关键词: 合同, 技能, 医疗)

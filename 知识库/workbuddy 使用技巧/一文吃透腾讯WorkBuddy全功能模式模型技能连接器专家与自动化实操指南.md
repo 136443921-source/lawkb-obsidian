@@ -1,6 +1,6 @@
 ---
 created: 2026-06-17T17:09
-updated: 2026-09-18T20:19
+updated: 2026-10-02T22:11
 title: 一文吃透腾讯WorkBuddy全功能模式模型技能连接器专家与自动化实操指南
 tags:
   - 合同
@@ -181,6 +181,9 @@ https://mp.weixin.qq.com/s/GGyF1bkhdN6i3ncPDnwT7A?from=singlemessage&scene=1&sub
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/GGyF1bkhdN6i3ncPDnwT7A?from=singlemessage&scene=1&subscene=10000&sessionid=1781677060&clicktime=1781687310&enterid=1781687310&ascene=1&realreporttime=1781687310509&forceh5=1)*
 
 ## 相关笔记
+- [[WF-039---前置：2106-修复-IMA-双开关-+-用户再重启-→-连接器状态-`im]] (共现关键词: 关键词, 连接器, 合同)
+- [[RULE-013---点火条件仍依赖用户在连接器页对-ima-mcp-重新信任授权+重启（不代点U]] (共现关键词: 关键词, 劳动, 连接器)
+- [[更新基金会值得收藏的133部常用法律法规政策速查汇编目录]] (共现关键词: wechat, 合同)
 - [[R-CF-157-腾讯公益平台公募方运营操作指引卡]] (共现关键词: 腾讯, 慈善)
 - [[R-CF-167-腾讯数字化执行工具箱操作卡]] (共现关键词: 腾讯, 证据, 慈善)
 - [[律师搞懂AI必知的42个术语]] (共现关键词: 基金会, 公司, 模型)

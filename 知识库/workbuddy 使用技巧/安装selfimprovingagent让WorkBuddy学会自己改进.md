@@ -1,6 +1,6 @@
 ---
 created: 2026-06-25T15:22
-updated: 2026-09-18T20:19
+updated: 2026-10-02T22:11
 title: 安装selfimprovingagent让WorkBuddy学会自己改进
 tags: []
 maturity: 🌱种子
@@ -99,6 +99,10 @@ WorkBuddy就可以学会自我改进啦！
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/VaJ1j4pbwYo1J8g2SJQGcg)*
 
 ## 相关笔记
+- [[legacy-scan-2026-09-27]] (共现关键词: WorkBuddy, 合同)
+- [[换电脑后WorkBuddy如何迁移]] (共现关键词: 关键词, WorkBuddy)
+- [[00-总体方案]] (共现关键词: 证据, 安装)
+- [[02-skills-manifest]] (共现关键词: 关键词, 证据, 安装)
 - [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 医疗, WorkBuddy, 关键词)
 - [[DEC-2026-001-技能黑名单自动启用]] (共现关键词: 2026, ##, 自动)
 - [[2026-09-14-价值复盘]] (共现关键词: 2026, ##, 自动)
