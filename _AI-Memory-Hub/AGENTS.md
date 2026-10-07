@@ -80,6 +80,8 @@ python3 99-脚本/write_back.py --type preference --title "..." --body "..."    
 - 近期决策：`_AI-Memory-Hub/03-决策档案/_近期决策.md`
 
 ## 相关笔记
+- [[PROJ-SYS-LAWKB-知识飞轮运维]] (共现关键词: 关键词, ---, LawKB)
+- [[2026-09-17]] (共现关键词: LawKB, 证据, md)
 - [[PREF-008-写新东西请去：`LawKB_AI-Memory-Hub`（01-用户偏好-02-]] (共现关键词: ---, LawKB, Memory)
 - [[PREF-009-有事故必沉淀成卡]] (共现关键词: ---, Memory, ##)
 - [[RULE-006-若本目录某个条目与-`_AI-Memory-Hub`-冲突-→-一律以-`_AI]] (共现关键词: ---, 合同, Memory)

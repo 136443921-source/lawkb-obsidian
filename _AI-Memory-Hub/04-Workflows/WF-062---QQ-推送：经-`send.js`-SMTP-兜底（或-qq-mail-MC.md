@@ -14,6 +14,7 @@ confidence: medium
 - QQ 推送：经 `send.js` SMTP 兜底（或 qq-mail MCP）推送摘要
 
 ## 相关笔记
+- [[WF-087-QQ-经-`send.js`-SMTP-兜底发送成功（主题前缀-`【⚠元典余额告]] (共现关键词: send, ---, WF)
 - [[WF-075---qq-mail-`enabled=False`-→-`send.js`-SM]] (共现关键词: qq, SMTP, ---)
 - [[WF-052-QQ-摘要已发送（SMTP-兜底，主题标注撤销外部消耗误报）]] (共现关键词: SMTP, QQ, WF)
 - [[WF-042-8.-QQ-推送：qq-mail-MCP-不可用-→-走-`send.js`-S]] (共现关键词: qq, SMTP, QQ)

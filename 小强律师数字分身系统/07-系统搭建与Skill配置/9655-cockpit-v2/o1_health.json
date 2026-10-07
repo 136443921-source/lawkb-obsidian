@@ -1,6 +1,6 @@
 {
   "schema": "lawtwin-health-v1",
-  "scanned_at": "2026-10-01T22:02:01",
+  "scanned_at": "2026-10-07T22:31:53",
   "overall": "P0",
   "probes": {
     "lti_gate": {
@@ -28,10 +28,10 @@
     "d3_freshness": {
       "present": true,
       "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
-      "age_hours": 85.3,
+      "age_hours": 229.8,
       "threshold_hours": 25,
       "level": "P0",
-      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 85.3h（超阈值，备份可能失败）"
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 229.8h（超阈值，备份可能失败）"
     }
   },
   "pii_safe": true

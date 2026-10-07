@@ -24,6 +24,9 @@ tags:
 Submission Gate 1. Scope Check   是否披露了审查范围、立场、材料限制？ 2. Source Check   每个重大风险是否绑定原条款、事实来源或外部核查来源？ 3. Reverse Challenge Check   是否生成过反向质疑清单？ 4. Specialist Check   是否识别过需要专项插件处理的条款？ 5. Human Review Check   哪些结论必须由人复核？是否单独列出？ 6. Output Form Check   批注、概要、综合意见、流程图是否各司其职？ 7. Disclosure Check   是否说明 A
 
 ## 相关笔记
+- [[00-总体方案]] (共现关键词: Skill, ---)
+- [[每日学习笔记-2026-07-07]] (共现关键词: Skill, 合同, 关键词)
+- [[小哲AI 学伴智能体搭建方案]] (共现关键词: Skill, 关键词, 合同)
 - [[WF-039---前置：2106-修复-IMA-双开关-+-用户再重启-→-连接器状态-`im]] (共现关键词: WF, ---)
 - [[WF-043---关键修复：①-markdown-类型-media_id-构造-bug-根治（]] (共现关键词: WF, ---)
 - [[WF-022-法律文书审查助手（非合同类）skill-配置说明书]] (共现关键词: WF, 审查, 合同)

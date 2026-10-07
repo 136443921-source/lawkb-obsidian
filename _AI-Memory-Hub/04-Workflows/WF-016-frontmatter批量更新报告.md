@@ -23,6 +23,10 @@ tags:
 - **文件路径**：/Users/chenyouqiang/Documents/LawKB/知识库/数字分身系统搭建/法律类skill 配置迭代-九阳神功/[[AI模拟法庭法官skill 配置说明书|AI模拟法庭法官skill 配置说明书]].md
 
 ## 相关笔记
+- [[RULE-038---T1-落-`法条银行_Schema规范_v1.0.md`（两型统一-fron]] (共现关键词: ---, frontmatter, 共现)
+- [[原材料仓污染排查报告（scripts专项）-20260927]] (共现关键词: ---, frontmatter, 报告)
+- [[WF-数字员工增员减员更新花名册]] (共现关键词: 更新, WF)
+- [[RULE-EMP-ROSTER-UPDATE-数字员工增员减员必同步更新花名册]] (共现关键词: 更新, ---, 合同)
 - [[RULE-016-凡引用法条必须核对-`sxx`-时效性与发布年份，检索历史判例须新旧条号双检索]] (共现关键词: 016, ---)
 - [[WF-022-法律文书审查助手（非合同类）skill-配置说明书]] (共现关键词: WF, skill, ---)
 - [[LawKB笔记frontmatter标准模板]] (共现关键词: frontmatter, ---)

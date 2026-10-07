@@ -200,3 +200,12 @@
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/7858bece-dc53-4619-93a2-f75f694bda1a.jsonl` — tighten to Chinese-only for accuracy). 2. **Last week's numbers were lenient** — e.g., it likely matched `创建人` (creator)
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/d05e90cd-bd4d-4383-b373-3431b2343189.jsonl` — 任务通过，3个关键发现需要关注**：  ## 📊 核心数据  / 指标 / 数值 / 评价 / /------/------/------/ / 日志总记录 / 6365 条 / +19（vs 上期 6346） / / 监控技能 / 3/1
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/d1269700-4e4d-4633-b729-0e5bcadb03f3.jsonl` — 24113802/周报/工作周报-2026-33.md`（**2,201 字符**，覆盖 16:55 数据） / / 每周复盘生成 / ✅ / `/Users/chenyouqiang/WorkBuddy/Claw/小强律师数字分身3.0/
+
+## 相关笔记
+- [[安装selfimprovingagent让WorkBuddy学会自己改进]] (共现关键词: WorkBuddy, 合同)
+- [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: WorkBuddy, 合同)
+- [[WorkBuddy提示词速查手册50个可复制的指令模板]] (共现关键词: 捐赠, WorkBuddy, 民法)
+- [[cockpit_monitor_2026-10-02]] (共现关键词: 合同, 2026, 裁定)
+- [[memory]] (共现关键词: 09, 2026, chenyouqiang)
+- [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: 09, 2026, chenyouqiang)
+- [[frontmatter批量更新报告]] (共现关键词: 质证, 捐赠, 民法)

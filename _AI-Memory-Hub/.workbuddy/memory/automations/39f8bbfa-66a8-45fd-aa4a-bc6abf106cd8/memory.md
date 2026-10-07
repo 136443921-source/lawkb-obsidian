@@ -28,6 +28,9 @@ tags:
 - project-fact 候选按"宁缺毋滥"默认跳过，避免污染中枢；如需放宽可在 user_query 显式要求入库。
 
 ## 相关笔记
+- [[cockpit_monitor_2026-10-02]] (共现关键词: Users, 2026, chenyouqiang)
+- [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: Users, 09, 2026)
+- [[legacy-scan-2026-09-27]] (共现关键词: 09, 2026, chenyouqiang)
 - [[2026-07-20]] (共现关键词: 2026, memory)
 - [[自动化任务质量监控周报-2026-W34]] (共现关键词: 2026, automation)
 - [[cockpit_monitor_2026-09-17]] (共现关键词: 2026, 09, chenyouqiang)

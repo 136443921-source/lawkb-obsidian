@@ -41,6 +41,8 @@ tags:
 - 跨项目记忆 `~/.workbuddy/MEMORY.md` 同步有同款强制节（并已据此纠正「write_back.py 也走安全通道」的错误假设：write_back.py 不含 git push）。
 
 ## 相关笔记
+- [[LEARNINGS]] (共现关键词: git, 2026, 共现)
+- [[换电脑后WorkBuddy如何迁移]] (共现关键词: git, 共现)
 - [[220030回补报告-2026-09-10]] (共现关键词: 重试, ##)
 - [[_索引]] (共现关键词: py, backfill, 中枢)
 - [[DEC-2026-005-中枢提交规范化四层闭环思维轨迹]] (共现关键词: py, backfill, 中枢)

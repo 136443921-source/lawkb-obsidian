@@ -74,3 +74,19 @@
 - 周三：未跑 `count_rules.py`（卡漂移率仅周一，写入型红线）；未跑 `scan_9655.py`；未改展示层；零建卡。
 - 本次写入 2 处（工作日志 `2026-09-30.md` + 本记忆），automation memory 改前已备份 `/tmp/cockpit9655_automem_backup_20260930_082800/`。
 - **下轮复用**：① 全绿四要件已连续多日成立（校齐率100% + drift=0 + fresh≤26 + mtime 周期自跳≈300s）；② 任何一天 mtime 停止自跳 ⇒ 断流成立，先按 §四 四条件核销；③ 红线不变：禁跑 scan_9655.py、禁改展示层、卡漂移率仅周一。
+
+### 2026-10-06（周二）·判绿（②③④ 各 0，无新增卡，**补跑**）
+
+- **补跑背景**：距上次（09-30 周三）缺 6 天（10-01~10-05 无记忆记录）。按 fresh_h 实测判活，**不按日历天数判断流**。
+- `drift_check_9655.py`：退出码 `0`，`v1.5`，`drift_count=0`，`drift=[]`，`health_count=0`，`aligned=true`；基线 19 屏 ↔ 实车 19 屏 ⇒ **校齐率 100%**。
+- 心跳：`generated_at=2026-10-06 11:42:32`，`fresh_h=0.01h` ≤26h ⇒ 绿。
+- **数据侧实证（守 400s）**：mtime 无干预自跳 `11:42:35 → 11:47:17`，间隔 **282s ≈ StartInterval=300** ⇒ `.scan` 在跑。复跑 drift_check 结果一致 ⇒ 只读性再复证。
+- launchctl 现状：`com.xiaoqiang.cockpit9655`(PID 1334)、`.scan`(已 load，09-27 时为 0 匹配)、`com.xiaoqiang.cockpit.watch`(PID 1333，**已 load**)、`com.xiaoqiang.cockpit.server`(PID 1310)。
+- **本轮两条新发现（只报事实，未建卡）**：
+  ① `cockpit.watch` 现已 load（09-28 记录其未 load、日志停更 09-16）——属**修复恢复**，不建 ④ 卡。
+  ② 采样出现 **23s 双跳**（11:47:17 → 11:47:40），除 `.scan` 周期外另有写源动 `scorecard_data.json`，与今日 00:17/11:48 飞轮同步记录中"9655 并发 job 11:47 刷新"吻合。多写源并发，**不属 ②③④ 任一档 ⇒ 不建卡**，列观察项。
+- **迁移收口**：旧 `WorkBuddy/2026-09-17-16-22-53/outputs/9655-cockpit-v2/scorecard_data.json` 停于 **09-26 06:50:45，已停止自刷** ⇒ 真源位迁移彻底完成，旧目录抢写风险消除。
+- 闭环：`CRT-20260927-01` / `CRT-20260928-01` 核销**持续有效**，不 reopen、不计时。无断流 ⇒ 不升 P1，周报无红区。
+- 周二：未跑 `count_rules.py`（卡漂移率仅周一）；未跑 `scan_9655.py`；未改展示层；未动 plist；未 launchctl。
+- 本次写入 2 处（工作日志 `2026-10-06.md` + 本记忆），写前备份 `/tmp/cockpit9655_backup_20261006_115005/`。
+- **下轮复用**：① 判绿四要件（校齐率≥95% + drift=0 + fresh≤26 + 400s 自跳实证）继续照做；② `cockpit.watch` 已上岗，若后续 watch 再写 scorecard，**要分清是 watch 造的新鲜度还是 `.scan` 的自跳**——判据仍是 mtime 周期（≈300s）而非单次 fresh_h；③ 红线不变。

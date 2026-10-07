@@ -1,18 +1,23 @@
 {
-  "generated_at": "2026-10-01 22:01:51",
+  "generated_at": "2026-10-07 22:31:24",
   "scope": "lawtwin",
   "customer": "示例客户",
   "metrics": {
     "install_rate": 100.0,
-    "version_ok_rate": 75.0,
+    "version_ok_rate": 70.0,
     "rebate_complete_rate": 100.0,
-    "maturity_score": 92
+    "maturity_score": 91
   },
   "drifts": [
     {
+      "skill": "模拟法庭主控协调器",
+      "baseline": "1.6.4",
+      "live": "1.7.0"
+    },
+    {
       "skill": "审判要件卡拆卡流水线",
       "baseline": "1.38.0",
-      "live": "1.47.0"
+      "live": "1.52.0"
     },
     {
       "skill": "xiaoqiang-cockpit-hub",
@@ -107,9 +112,9 @@
       "skill_dir": "模拟法庭主控协调器",
       "baseline_version": "1.6.4",
       "target_version": "1.6.4",
-      "live_version": "1.6.4",
+      "live_version": "1.7.0",
       "installed": true,
-      "drift": false
+      "drift": true
     },
     {
       "skill": "模拟法庭书记员",
@@ -137,7 +142,7 @@
       "skill_dir": "审判要件卡拆卡流水线",
       "baseline_version": "1.38.0",
       "target_version": "1.38.0",
-      "live_version": "1.47.0",
+      "live_version": "1.52.0",
       "installed": true,
       "drift": true
     },

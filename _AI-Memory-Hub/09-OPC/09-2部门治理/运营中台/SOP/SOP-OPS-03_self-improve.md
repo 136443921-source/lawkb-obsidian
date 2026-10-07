@@ -74,5 +74,9 @@
 | v1.0 | 2026-09-23 | 新 | 周日 self-improve SOP（链接式，引 automation-1782372885336 v2.4 + 治理复盘模板） | AI(小强) · OPC Wave B3 |
 
 ## 相关笔记
+- [[部门规章制度]] (共现关键词: self, 公司, improve)
+- [[README-冗余目录说明]] (共现关键词: ---, md, self)
+- [[月度回灌日志]] (共现关键词: md, self)
+- [[.md]] (共现关键词: md, self)
 - [[SOP-OPS-01_IMA摄入回传]] (共现关键词: SOP, 总册, ---)
 - [[SOP-OPS-02_周报]] (共现关键词: SOP, automation, ---)

@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-01 22:01:59",
+  "generated_at": "2026-10-07 22:31:47",
   "skill": "H2-statute-verify",
   "target": "C8/D2 双源核验",
   "local_source_available": true,
-  "statute_lib_count": 76,
+  "statute_lib_count": 77,
   "pending_residual": 10,
   "verdict": "warn",
   "note": "本地法规库已接入，仍有 10 篇 statute_text_pending 待回源核填"

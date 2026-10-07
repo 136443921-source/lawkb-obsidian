@@ -1,6 +1,6 @@
 /* 由 gen_mind_panels.py 自动生成 · 勿手改（改席位配置 JSON 后重跑脚本） */
 window.MIND_PANELS={
- "generated": "2026-10-01 10:25",
+ "generated": "2026-10-07 10:26",
  "source": "/Users/chenyouqiang/Documents/LawKB/模拟法庭管理系统/模拟法庭席位绑定配置.json",
  "configVersion": "1.4.5",
  "roles": [

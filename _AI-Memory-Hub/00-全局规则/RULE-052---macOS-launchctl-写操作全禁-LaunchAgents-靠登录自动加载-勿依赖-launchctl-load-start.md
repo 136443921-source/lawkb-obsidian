@@ -36,3 +36,7 @@ tags: [macOS, launchd, LaunchAgents, 运维铁律, OPC, 一人公司]
 
 ## 来源
 - 2026-09-28 实测（老强真实终端 I/O error 5 + WorkBuddy 直跑兜底复活 lti-gate，O1 探针 overall=OK）。AI 落卡防复发。
+
+## 相关笔记
+- [[医疗纠纷诉讼实务全流程操作指引]] (共现关键词: 操作, 公司)
+- [[PREF-003-安全操作铁律]] (共现关键词: ---, 操作)
