@@ -1,0 +1,48 @@
+{
+  "round": "R16",
+  "date": "2026-10-01",
+  "mode": "质量巡检（原每日拆卡，2026-09-12 改造）",
+  "consecutive_zero_repair_count": 0,
+  "r2_triggered": false,
+  "pending_backfill_frontmatter": 0,
+  "pending_backfill_inline": 0,
+  "backfill_filled": 0,
+  "backfill_deviations_blocked": 0,
+  "deadlink_gate": {
+    "script": "_check_deadlinks.py v1.7.2 --all",
+    "basename_total": 7690,
+    "cards_scanned": 6267,
+    "real_dead_before": 247,
+    "real_dead_after": 229,
+    "real_dead_fixed_unique": 18,
+    "pending_notes_before": 1602,
+    "pending_notes_after": 1604,
+    "parse_errors": 0,
+    "exit_code": 1
+  },
+  "deadlink_fix": {
+    "script": "_fix_deadlinks_v2_20260912.py",
+    "basename_set": 6242,
+    "files_touched": 176,
+    "links_fixed": 347,
+    "backup_dir": "/tmp/存量卡死链修复_20261001-221204",
+    "idempotent_recheck": true,
+    "regression": false
+  },
+  "channels": [
+    {"priority": 1, "name": "华宇元典 yuandian-mcp", "status": "unauthorized", "ts": "2026-10-01T23:0x", "note": "服务端令牌失效，历史多次自愈，非永久"},
+    {"priority": 2, "name": "企查查法律数据 qcc-legal", "status": "ok", "ts": "2026-10-01T23:0x", "probe": "民法典第143条逐字原文·现行有效"},
+    {"priority": 3, "name": "本地源法条银行", "status": "idle", "ts": "2026-10-01T23:0x", "note": "常驻可用，本轮无待回源未触发"}
+  ],
+  "channel_priority_override": "老强 2026-10-01 拍板：①华宇元典→②企查查法律数据→③本地源法条银行兜底（北大法宝退出优先序列）",
+  "candidate_items_for_human": [
+    "元典 unauthorized → 待老强重新授权（非AI可修）",
+    "剩 229 真死链（歧义多候选/裸related_links/其它NUM_REF）→ 建议另写裸引用补全器或人工消歧，不硬修",
+    "1604 待建笔记（主题名软引用）→ 知识库常态，非缺陷"
+  ],
+  "artifacts": [
+    "02-提炼/审判要件卡/存量卡质量巡检报告-2026-10-01.md",
+    "04-LOG/2026-10-01.md",
+    "SKILL v1.48.0 变更日志"
+  ]
+}

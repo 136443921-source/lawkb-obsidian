@@ -1,0 +1,58 @@
+{
+  "round": 17,
+  "date": "2026-10-02",
+  "exec_time_cst": "2026-10-02 22:28:00",
+  "mode": "存量卡质量巡检（原审判要件卡每日补拆，2026-09-12 改造）",
+  "scope": "06-沉淀/裁判规则库 + 全库交叉核验",
+  "statute_pending": {
+    "frontmatter_true_caogui_lib": 0,
+    "inline_contains_phrase_caogui_lib": 35,
+    "inline_true_full_lib": 10,
+    "deferred_marker_caogui_lib": 13,
+    "inline_full_lib": 465,
+    "fillable_items": 0,
+    "note": "内联 35 文件均为描述性标注，非 frontmatter 键（坑71 残留），守坑33 不填"
+  },
+  "deadlink_gate": {
+    "script": "_check_deadlinks.py v1.7.0 --all",
+    "basename_total": 7749,
+    "targets": 6293,
+    "real_dead": 246,
+    "pending_notes": 1855,
+    "parse_failures": 0,
+    "exit_code": 1,
+    "vs_R16_real_dead": {"r16": 229, "delta": 17, "reason": "坑72 新增批次软引用，非质量恶化"}
+  },
+  "statute_fill": {
+    "filled": 0,
+    "deviation_blocked": 0,
+    "note": "待回源可核填项=0，守坑33/73"
+  },
+  "channels": {
+    "probe_time_cst": "2026-10-02 22:28:00",
+    "probe_method": "ToolSearch 精确查 mcp__pkulaw__* / mcp__yuandian-mcp__* / mcp__qcc-legal__*",
+    "priority": "①华宇元典 → ②企查查(qcc-legal) → ③本地源法条银行兜底（北大法宝退出，R16拍板）",
+    "yuandian_mcp": "形态② not found（本会话工具表未载入；R16曾 unauthorized）",
+    "qcc_legal": "形态② not found（本会话工具表未载入；R16曾实测可用）",
+    "local_bank": "常驻空闲，但无可核填",
+    "pkulaw": "已退出优先序列",
+    "conclusion": "三通道均形态②（会话级，非服务端，不判死），坑43 再实证"
+  },
+  "deadlink_fix": {
+    "script": "_fix_deadlinks_v2_20260912.py（门禁同款基名集 6260，正确口径）",
+    "dry_run_hits": 0,
+    "applied": false,
+    "fixed": 0,
+    "note": "幂等，未 --apply，六-B 零写盘"
+  },
+  "yaml_fix": 0,
+  "zero_fix_streak": 1,
+  "r2_closure_triggered": false,
+  "remaining_human_items": [
+    "真死链246：歧义多候选/裸R编号引用/NUM_REF → P0-4 编号治理",
+    "内联 statute_text_pending 35文件(裁规库)+全库465：描述性标注，非缺陷",
+    "通道三断(形态②)：待新会话重试/重连；元典 unauthorized 待重新授权",
+    "待权威源回填 13文件(裁规库)+全库内联:true 10：待本地库扩容回流"
+  ],
+  "candidate_flag": "【候选·待人工确认】"
+}

@@ -1,0 +1,48 @@
+{
+  "round": 18,
+  "date": "2026-10-04",
+  "exec_time_cst": "2026-10-04 11:30",
+  "report_time_cst": "2026-10-04 11:55",
+  "supersedes": "00:41 初稿（彼时会话工具表未载入元典/企查查误判三断，本版以11:30真调用修正）",
+  "mode": "存量卡质量巡检（原审判要件卡每日补拆，2026-09-12 改造）",
+  "pending_statute": {
+    "frontmatter_true": 0,
+    "frontmatter_probe_tools": ["bash anchored grep", "Grep tool"],
+    "inline_dual_scan_files_court_rules_lib": 35,
+    "inline_false_resolved_approx": 18,
+    "inline_bare_candidate": 17,
+    "descriptive_only": true,
+    "fillable": 0
+  },
+  "deadlinks": {
+    "basename_total": 7755,
+    "cards_checked": 6299,
+    "files_hit": 1098,
+    "true_deadlinks": 246,
+    "todo_notes_softref": 1857,
+    "parse_failures": 0,
+    "exit_code": 1,
+    "vs_last_round": {"true_deadlinks": 0, "todo_notes": 2}
+  },
+  "statute_backfill": {
+    "items_filled": 0,
+    "deviations_intercepted": 0
+  },
+  "deadlink_fix": {
+    "tool": "_fix_deadlinks_v9_20260918.py (严格白名单, 坑34口径, 偏离prompt字面v2事故源)",
+    "dry_run_hits": 0,
+    "applied": false,
+    "fixed": 0
+  },
+  "channels": {
+    "priority": "①华宇元典→②企查查→③本地源(北大法宝已退出)",
+    "yuandian": {"status": "restored", "balance": 2845, "code": 200, "search_ok": true},
+    "qcc_legal": {"status": "ok", "sample": "民法典1079 现行有效 逐字原文"},
+    "pkulaw": {"status": "not_connected", "note": "已退出优先序列(R16拍板)"},
+    "note": "R13起连续11+轮断链态势本轮因会话重载工具表自愈终结"
+  },
+  "consecutive_zero_fix_count": 2,
+  "r2_triggered": false,
+  "r2_next_round_if_zero": "count=3 => 触发R2建议关闭/改造",
+  "recommendation": "保留日巡检；推进内联待回源清零专项(元典已恢复可核填)+P0-4编号治理"
+}

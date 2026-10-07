@@ -5,7 +5,7 @@ created: 2026-09-06
 tags:
   - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.2
-updated: 2026-09-25T20:41
+updated: 2026-10-02T22:11
 ---
 
 # 02_HOW-I-THINK
@@ -33,6 +33,7 @@ updated: 2026-09-25T20:41
 
 
 ## 相关笔记
+- [[memory]] (共现关键词: 09, HOW, THINK)
 - [[AI 行为规则]] (共现关键词: ---, HOW, THINK)
 - [[决策月报-2026-09]] (共现关键词: 02, HOW, ---)
 - [[HOW-I-THINK]] (共现关键词: 民法, THINK, HOW)
