@@ -1,11 +1,11 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-09-30T08:37:23.830152",
+  "updated": "2026-10-06T13:04",
   "ima_connector": "ima-mcp",
-  "ima_status": "down_2026-09-27_config_disabled",
-  "note": "2026-08-27 A1/B 漏窗回补完成：15/15 全量摄入（A1 合同3 + B 四库12）。HT 含 老年人意定监护协议（backlog 唯一未摄入）；CF 从第2页50条未摄入中选 3（备案指引解读/贵州三指引/关联关系雷区）。经验卡片15+规则卡15（R-HT-106~108/R-LN-030~032/R-PI-171~173/R-HG-052~054/R-CF-086~088）。ingested 269→284，pending_windows 清零。",
-  "last_run_ts_ms": 1790728643830,
+  "ima_status": "up_2026-10-06_real_run",
+  "note": "2026-10-06 真实模式运行（IMA上线+元典2840）：A1(HT 3)+B(LN3+PI1+HG2+CF3=9) 共12篇IMA摄入；D 5例三通道回源；3篇220030失败(R-PI-520/521,R-HG-105)。",
+  "last_run_ts_ms": 1791263081558,
   "b_pending_backfill": {
     "reason": "RESOLVED 2026-08-19 —— 原候选 3 篇（善款挪作他用/谁捐的/到底什么是公益）经标题级去重核对均已在 ingested（含蒸馏笔记别名），未重复摄入；改选 3 篇确证 NEW 候选（八项罪名/60家取消资格/互捐合规）并完成摄入。",
     "candidates_selected": 3,
@@ -1329,6 +1329,14 @@
           "ingested_at": "2026-09-13T15:45",
           "value": 8,
           "rule_id": "R-LN-112"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c70dde9ab327d6c6b18f5aea06035d7e7312042960642489",
+          "title": "律师被判赔600万！青年律师应避免的17大执业事故",
+          "create_time": 1789363928294,
+          "ingested_at": "2026-10-06T13:04",
+          "value": 8,
+          "rule_id": "R-LN-122"
         }
       ],
       "last_run_ts_ms": 1787887050765
@@ -3220,6 +3228,14 @@
           "ingested_at": "2026-09-13T15:45",
           "value": 8,
           "rule_id": "R-CF-155"
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_86b5223d4b36b4eaaa6534eb171d951b73116443046338",
+          "title": "基金会互拨资金≠捐赠收入？受托代理、服务类业务合规误区全解",
+          "create_time": 1789098380326,
+          "ingested_at": "2026-10-06T13:04",
+          "value": 8,
+          "rule_id": "R-CF-201"
         }
       ],
       "last_run_ts_ms": 1787887050765
@@ -4147,7 +4163,79 @@
       "status": "open",
       "created_ts_ms": 1790728643830,
       "note": "IMA config-state fault enabled=false; no MCP injected this session; A1/B skipped per 不代点UI red line"
-    }
+    },
+    {
+      "window_id": "w_2026-10-02_A1B_channel_down",
+      "date": "2026-10-02",
+      "type": "A1B_channel_down",
+      "target": 15,
+      "done": 0,
+      "total_target": 15,
+      "total_done": 0,
+      "status": "open",
+      "opened_at": "2026-10-02T21:56",
+      "reason": "ima-mcp 不在 enabled 且会话工具索引 absent（配置态+运行态双故障，A0.0）；依「不代点UI」红线未 --apply；A1/B 跳过"
+    },
+    {
+      "window_id": "w_2026-10-05_A1B_yuandian_channel_down",
+      "start": "2026-10-05T08:30",
+      "end": "2026-10-05T23:48",
+      "reason": "ima-mcp 未绑定(not in connectors{}) + yuandian-mcp 未启用（均不在本会话工具索引）；A0.0 诊断须老强 UI 重新信任/启用；A1/B 摄入与 A0.4 余额查询本运行不可执行",
+      "selfhealed": false,
+      "registered_at": "2026-10-05T23:48",
+      "targets": [
+        {
+          "stage": "A1",
+          "lib": "合同文书AI助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "律师AI助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "人伤法律实务助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "合规与政府监管AI助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "慈善组织合规AI助手",
+          "target": 3,
+          "done": 0
+        },
+        {
+          "stage": "A0.4",
+          "lib": "yuandian-mcp余额",
+          "target": 1,
+          "done": 0
+        }
+      ],
+      "total_target": 16,
+      "total_done": 0,
+      "backfill_log": []
+    },
+    {
+      "window_id": "w_2026-10-06_A1B_channel_down",
+      "date": "2026-10-06",
+      "stage": "A1B",
+      "channel": "ima",
+      "target": 15,
+      "done": 0,
+      "status": "open",
+      "note": "IMA配置态故障(ima-mcp enabled=false)·本会话工具索引absent·降级闭环跳过A1/B"
+    },
+    "RESOLVED 2026-10-06: w_2026-10-05_A1B_yuandian_channel_down 关闭——元典余额2840+IMA上线，A1/B 真实摄入 12 篇执行"
   ],
   "totals": {
     "ingested_total": 411,
@@ -4582,6 +4670,30 @@
       "first_seen": "2026-09-11",
       "auto_retry": "b5ffd012-ac60-4df1-b91a-5f87e8050051",
       "code": "220030"
+    },
+    {
+      "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_e05cb343514d1ed75535453e77c8aad9731203532282509",
+      "title": "微信里问诊出了事，谁负责？医生和患者都在踩的坑",
+      "rule_id": "R-PI-520",
+      "reason": "220030 内容侧损坏（IMA侧不可达）",
+      "date": "2026-10-06",
+      "status": "retry"
+    },
+    {
+      "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_a9efa1f03e1cc20acec7bb4c178b2130731203532282509",
+      "title": "医疗事故鉴定与医疗损害鉴定的区别",
+      "rule_id": "R-PI-521",
+      "reason": "220030 内容侧损坏（IMA侧不可达）",
+      "date": "2026-10-06",
+      "status": "retry"
+    },
+    {
+      "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_6ac02ead03eacf661f43c71d8c974d4077333014572917409",
+      "title": "合规最难解决的，是明知有风险仍要做",
+      "rule_id": "R-HG-105",
+      "reason": "220030 内容侧损坏（IMA侧不可达）",
+      "date": "2026-10-06",
+      "status": "retry"
     }
   ],
   "checkpoint": {
@@ -4662,6 +4774,6 @@
       "abandon_note": "用户于 2026-09-09T22:55 (GMT+8) 明确决策：不回补、清除未回补内容。对应 failed_220030 队列（16 条）已清空，故本窗标记 abandoned——done 维持 0，未伪造 backfilled/ingested。"
     }
   ],
-  "ingested_total": 411,
-  "last_run": "2026-09-30"
+  "ingested_total": 413,
+  "last_run": "2026-10-06T13:04"
 }

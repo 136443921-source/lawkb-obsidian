@@ -1,10 +1,11 @@
 ---
+card_type: 治理文档
 tags:
   - 商事
   - 卡片
   - SH
 created: 2026-09-04T16:43
-updated: 2026-09-27T21:52
+updated: 2026-10-06T20:36
 related_links:
   - 连接枢纽-商事
 ---
