@@ -1,0 +1,67 @@
+# 技能角色注册表 · 卡库路由统计边界 SSOT（元技能注水阻断机制）
+# ---------------------------------------------------------------------------
+# 机制目的：根治「元技能注水」——路由挂载率 / 冲突统计只针对显式声明的 consumption
+#           技能；任何未在此声明的技能一律视为 meta，引用全量卡属系统级行为，
+#           不计入路由冲突 / 挂载 / 错挂统计。
+#
+# 事故背景（详见 R-FW-402 + 卡库统一调度复盘 v1.0）：
+#   旧版把 ~/.workbuddy/skills 下「全部」技能的 SKILL.md 引用都纳入路由冲突计算，
+#   导致模拟法庭主控协调器 / 拆卡流水线 / 编排器等系统级元技能引用全量卡被算成
+#   「402 个冲突」，并把挂载率虚推到 99.92%。实测真值为 91.4%（2289/2503）。
+#
+# 治理铁律（写进机制、不可靠记忆）：
+#   1. 路由统计边界 = consumption_skills 列表（本文件唯一真源）。
+#   2. 新技能默认 role: meta（排除出路由统计）；须主动声明 consumption 才计入。
+#   3. 漏声明 → 欠计（安全方向，永不虚高）；不静默回退到硬编码。
+#   4. 脚本不得硬编码消费技能边界；缺失注册表即硬失败（SystemExit）。
+#   5. 每次路由重算前人工复核 consumption_skills 是否需增列（见 review_cadence）。
+# ---------------------------------------------------------------------------
+version: 1
+generated: 2026-10-08
+default_role: meta          # 未声明技能一律按 meta 处理，排除出路由统计边界
+
+# —— 路由统计边界（唯一真源）——
+# 与卡库路由注册表 card_route_registry.yaml 的「消费技能集合」保持一致。
+consumption_skills:
+  - 人损纠纷专项
+  - 非诉文书红蓝复核工作流
+  - blue-team-contract-review-standard-v1.0
+  - company-due-diligence
+  - 判决书分析助手
+  - 类案检索助手
+  - 诉讼文书红蓝复核工作流
+  - legal-base
+  - 法律检索助手
+  - 家事纠纷专项
+  - 劳动用工专项
+  - 刑事辩护专项
+  - 案由路由专项
+  - 建设工程专项
+  - 商事纠纷专项
+
+# —— 已审计确认的 meta / system 技能（系统级，引用全量卡不计入路由）——
+# 仅列关键系统级技能作为排除依据存档；其余 100+ 技能默认 meta，无需逐一声明。
+# 一致性校验脚本会对「全部技能」做膨胀自检，命中卡片 rid 的 meta 技能会进 drift 报告，
+# 证明边界被强制、且暴露未来新增注水风险。
+meta_excluded_audit:
+  - mock-trial-control-center        # 模拟法庭主控协调器
+  - trial-prep-pipeline             # 拆卡流水线
+  - seat-orchestrator               # 律所主任编排引擎
+  - 资产运维官
+  - 可视化监控运维官
+  - lawkb-bulk-rename
+  - lawkb-evidence-card-build
+  - lawkb-moc-desktop-linkage
+  - fatiao-schema-governance
+  - 卡族MOC重生成
+  - 互联网募捐平台合规
+  - 公募资格专项
+  - 募捐备案与台账
+  - 募捐成本测算
+
+governance:
+  injection_guard: "路由归属仅由 consumption_skills 推导；禁止在脚本硬编码技能边界"
+  new_skill_default: "meta（排除出路由统计）"
+  safety_direction: "漏声明→欠计，不虚高"
+  fallback_policy: "注册表缺失即硬失败 SystemExit，不静默回退"
+  review_cadence: "每次路由重算前人工复核 consumption_skills 是否需增列"

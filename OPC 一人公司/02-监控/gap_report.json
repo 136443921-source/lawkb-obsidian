@@ -1,0 +1,424 @@
+{
+  "report_date": "2026-10-08",
+  "target": 200,
+  "zero_domains": [
+    "再审程序域库",
+    "名誉权人格权域库",
+    "审判要件卡族",
+    "执行程序域库",
+    "条号位移卡族",
+    "知识产权域库",
+    "类案检索报告卡族"
+  ],
+  "coverage_gap": [
+    {
+      "domain": "元典核验规则",
+      "actual": 1,
+      "target": 200,
+      "gap": 199,
+      "coverage": 0.005
+    },
+    {
+      "domain": "案例库",
+      "actual": 17,
+      "target": 200,
+      "gap": 183,
+      "coverage": 0.085
+    },
+    {
+      "domain": "建设工程域库",
+      "actual": 35,
+      "target": 200,
+      "gap": 165,
+      "coverage": 0.175
+    },
+    {
+      "domain": "通用裁判规则库",
+      "actual": 39,
+      "target": 200,
+      "gap": 161,
+      "coverage": 0.195
+    },
+    {
+      "domain": "刑事域库",
+      "actual": 48,
+      "target": 200,
+      "gap": 152,
+      "coverage": 0.24
+    },
+    {
+      "domain": "商事纠纷域库",
+      "actual": 64,
+      "target": 200,
+      "gap": 136,
+      "coverage": 0.32
+    },
+    {
+      "domain": "律师实务域库",
+      "actual": 70,
+      "target": 200,
+      "gap": 130,
+      "coverage": 0.35
+    },
+    {
+      "domain": "劳动人事域库",
+      "actual": 88,
+      "target": 200,
+      "gap": 112,
+      "coverage": 0.44
+    }
+  ],
+  "pending_backlog": [
+    {
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "pending_count": 174,
+      "pending_ids_sample": [
+        "R-PI-057",
+        "R-PI-117",
+        "R-PI-032",
+        "R-PI-090",
+        "R-PI-402",
+        "R-PI-067",
+        "R-PI-140",
+        "R-PI-138",
+        "R-PI-398",
+        "R-PI-095",
+        "R-PI-396",
+        "R-PI-116",
+        "R-PI-135",
+        "R-PI-091",
+        "R-PI-393",
+        "R-PI-069",
+        "R-PI-208",
+        "R-PI-409",
+        "R-PI-408",
+        "R-PI-403"
+      ],
+      "pending_total_ids": 174
+    },
+    {
+      "package": "rule_package_医疗_v1.0",
+      "domain": "医疗",
+      "pending_count": 108,
+      "pending_ids_sample": [
+        "R-PI-006",
+        "R-PI-132",
+        "R-PI-123",
+        "R-PI-080",
+        "R-PI-022",
+        "R-PI-156",
+        "R-PI-016",
+        "R-PI-177",
+        "R-PI-179",
+        "R-PI-036",
+        "R-PI-127",
+        "R-PI-113",
+        "R-PI-146",
+        "R-PI-012",
+        "R-PI-084",
+        "R-PI-077",
+        "R-PI-026",
+        "R-PI-161",
+        "R-PI-174",
+        "R-PI-066"
+      ],
+      "pending_total_ids": 108
+    },
+    {
+      "package": "rule_package_合同_v1.0",
+      "domain": "合同",
+      "pending_count": 101,
+      "pending_ids_sample": [
+        "R-HT-066",
+        "R-HT-037",
+        "R-HT-003",
+        "R-HT-052",
+        "R-HT-042",
+        "R-HT-102",
+        "R-HT-013",
+        "R-HT-096",
+        "R-HT-056",
+        "R-HT-007",
+        "R-HT-033",
+        "R-HT-062",
+        "R-HT-072",
+        "R-HT-017",
+        "R-HT-046",
+        "R-HT-106",
+        "R-HT-092",
+        "R-HT-057",
+        "R-HT-006",
+        "R-HT-032"
+      ],
+      "pending_total_ids": 101
+    },
+    {
+      "package": "rule_package_慈善合规_v1.0",
+      "domain": "慈善合规",
+      "pending_count": 95,
+      "pending_ids_sample": [
+        "R-CF-085",
+        "R-CF-057",
+        "R-CF-006",
+        "R-CF-050",
+        "R-CF-032",
+        "R-CF-063",
+        "R-CF-073",
+        "R-CF-022",
+        "R-CF-116",
+        "R-CF-016",
+        "R-CF-047",
+        "R-CF-067",
+        "R-CF-036",
+        "R-CF-002",
+        "R-CF-077",
+        "R-CF-053",
+        "R-CF-043",
+        "R-CF-012",
+        "R-CF-026",
+        "R-CF-076"
+      ],
+      "pending_total_ids": 95
+    },
+    {
+      "package": "rule_package_合规_v1.0",
+      "domain": "合规",
+      "pending_count": 73,
+      "pending_ids_sample": [
+        "R-HG-015",
+        "R-HG-021",
+        "R-HG-043",
+        "R-HG-033",
+        "R-HG-086",
+        "R-HG-084",
+        "R-HG-005",
+        "R-HG-025",
+        "R-HG-044",
+        "R-HG-011",
+        "R-HG-077",
+        "R-HG-001",
+        "R-HG-038",
+        "R-HG-049",
+        "R-HG-024",
+        "R-HG-041",
+        "R-HG-010",
+        "R-HG-039",
+        "R-HG-052",
+        "R-HG-030"
+      ],
+      "pending_total_ids": 73
+    },
+    {
+      "package": "rule_package_证据规则_v1.0",
+      "domain": "证据规则",
+      "pending_count": 36,
+      "pending_ids_sample": [
+        "R-PR-005",
+        "R-PR-031",
+        "R-PR-015",
+        "R-PR-035",
+        "R-PR-001",
+        "R-PR-011",
+        "R-PR-025",
+        "R-PR-034",
+        "R-PR-010",
+        "R-PR-084",
+        "R-PR-004",
+        "R-PR-030",
+        "R-PR-020",
+        "R-PR-014",
+        "R-PR-037",
+        "R-PR-003",
+        "R-PR-013",
+        "R-PR-027",
+        "R-PR-007",
+        "R-PR-033"
+      ],
+      "pending_total_ids": 36
+    },
+    {
+      "package": "rule_package_裁量尺度_v1.0",
+      "domain": "裁量尺度",
+      "pending_count": 33,
+      "pending_ids_sample": [
+        "R-CF-074",
+        "R-SH-057",
+        "R-SH-059",
+        "R-SH-061",
+        "R-SH-058",
+        "R-SH-056",
+        "R-SH-060",
+        "R-LD-059",
+        "R-LD-062",
+        "R-LD-061",
+        "R-LD-057",
+        "R-LD-060",
+        "R-LD-058",
+        "R-WT-002",
+        "R-WT-001",
+        "R-WT-004",
+        "R-WT-003",
+        "R-TQ-002",
+        "R-HT-270",
+        "R-HT-271"
+      ],
+      "pending_total_ids": 33
+    },
+    {
+      "package": "rule_package_审判要件_v1.0",
+      "domain": "审判要件",
+      "pending_count": 25,
+      "pending_ids_sample": [
+        "R-JG-035",
+        "R-JG-034",
+        "R-HG-086",
+        "R-HG-084",
+        "R-HG-091",
+        "R-HG-098",
+        "R-HG-087",
+        "R-HG-095",
+        "R-HG-089",
+        "R-HG-085",
+        "R-HG-090",
+        "R-HG-093",
+        "R-HG-094",
+        "R-HG-096",
+        "R-HG-088",
+        "R-HG-092",
+        "R-HG-097",
+        "R-PR-031",
+        "R-PR-030",
+        "R-PR-033"
+      ],
+      "pending_total_ids": 25
+    },
+    {
+      "package": "rule_package_商事纠纷_v1.0",
+      "domain": "商事纠纷",
+      "pending_count": 24,
+      "pending_ids_sample": [
+        "R-SH-063",
+        "R-SH-020",
+        "R-SH-004",
+        "R-SH-021",
+        "R-SH-001",
+        "R-SH-057",
+        "R-SH-064",
+        "R-SH-059",
+        "R-SH-061",
+        "R-SH-019",
+        "R-SH-025",
+        "R-SH-009",
+        "R-SH-029",
+        "R-SH-030",
+        "R-SH-058",
+        "R-SH-022",
+        "R-SH-006",
+        "R-SH-056",
+        "R-SH-013",
+        "R-SH-003"
+      ],
+      "pending_total_ids": 24
+    },
+    {
+      "package": "rule_package_劳动人事_v1.0",
+      "domain": "劳动人事",
+      "pending_count": 11,
+      "pending_ids_sample": [
+        "R-LD-059",
+        "R-GZ-046",
+        "R-LD-062",
+        "R-GZ-048",
+        "R-LD-001",
+        "R-LD-061",
+        "R-LD-057",
+        "R-LD-060",
+        "R-LD-002",
+        "R-GZ-047",
+        "R-LD-058"
+      ],
+      "pending_total_ids": 11
+    },
+    {
+      "package": "rule_package_建设工程_v1.0",
+      "domain": "建设工程",
+      "pending_count": 7,
+      "pending_ids_sample": [
+        "R-JG-004",
+        "R-JG-005",
+        "R-JG-001",
+        "R-JG-035",
+        "R-JG-002",
+        "R-JG-003",
+        "R-JG-034"
+      ],
+      "pending_total_ids": 7
+    },
+    {
+      "package": "rule_package_通用裁判_v1.0",
+      "domain": "通用裁判",
+      "pending_count": 6,
+      "pending_ids_sample": [
+        "R-WT-002",
+        "R-WT-001",
+        "R-HJ-001",
+        "R-WT-004",
+        "R-WT-003",
+        "R-TQ-002"
+      ],
+      "pending_total_ids": 6
+    },
+    {
+      "package": "rule_package_婚姻家庭_v1.0",
+      "domain": "婚姻家庭",
+      "pending_count": 5,
+      "pending_ids_sample": [
+        "R-HY-001",
+        "R-HY-092",
+        "R-HY-095",
+        "R-HY-003",
+        "R-HY-002"
+      ],
+      "pending_total_ids": 5
+    },
+    {
+      "package": "rule_package_公司法_v1.0",
+      "domain": "公司法",
+      "pending_count": 3,
+      "pending_ids_sample": [
+        "R-GS-002",
+        "R-GS-003",
+        "R-GS-001"
+      ],
+      "pending_total_ids": 3
+    },
+    {
+      "package": "rule_package_案例库_v1.0",
+      "domain": "案例库",
+      "pending_count": 3,
+      "pending_ids_sample": [
+        "R-CS-005",
+        "R-CS-006",
+        "R-CS-003"
+      ],
+      "pending_total_ids": 3
+    },
+    {
+      "package": "rule_package_律师实务_v1.0",
+      "domain": "律师实务",
+      "pending_count": 1,
+      "pending_ids_sample": [
+        "R-LN-041"
+      ],
+      "pending_total_ids": 1
+    }
+  ],
+  "drift": "skipped(--drift off)",
+  "p0_alerts": [
+    "零覆盖域库 7 个：再审程序域库, 名誉权人格权域库, 审判要件卡族, 执行程序域库, 条号位移卡族, 知识产权域库, 类案检索报告卡族（最高优先级补强目标）",
+    "包 rule_package_人伤法_v1.0 待回源 174 条 > 阈值 100（回源 SLA 触发）",
+    "包 rule_package_医疗_v1.0 待回源 108 条 > 阈值 100（回源 SLA 触发）",
+    "包 rule_package_合同_v1.0 待回源 101 条 > 阈值 100（回源 SLA 触发）"
+  ]
+}

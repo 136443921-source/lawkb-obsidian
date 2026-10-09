@@ -85,3 +85,11 @@
 - 门禁守护 ⚠️ pgrep 无 lti-gate-daemon（连续多日未跑）；scorecard 面板标"运行中/plist已装"为假阳性。
 - 服务可达 ✅ HTTP 200。
 - 全程只读，未改文件。未找到"9360 字节副本"文件，按实际 subapps/<name>/index.html 校验。建议同前：① C4/C5/C8 重新精准注入 + 固化进 gen_subapps.py 防重生覆盖；② 真实 Terminal launchctl load 门禁 plist。
+
+## 2026-10-09 09:04 (GMT+8) 定时自动化触发，无人值守
+- 注入完整性 ⚠️ 10/13（功能/字面同判）：根部 override.js 存在 + node --check PASS ✅；clm(C4)/xiaode(C5)/lti(C8) 仍裸 `<body>`、无 data-cno、0 处 override 引用（覆写复发，连续多日）。C2/C3/C6 本次字面 `<body data-cno>` 已精确匹配（此前为属性顺序不符，现已一致）。
+- 漂移守护 ✅ drift_count=0、exit 0。
+- 真源新鲜度 ✅ generated_at 2026-10-09 08:21:44（age≈0.74h<24h）；C1=100.0 / C8=60.0 / D1=64.1；total=69.0 grade=C 合格。
+- 门禁守护 ⚠️ pgrep 无 lti-gate-daemon（连续多日未跑）；面板标"运行中"为假阳性。
+- 服务可达 ✅ HTTP 200。
+- 全程只读，未改文件。未找到"9360 字节副本"文件，按实际 subapps/<name>/index.html 校验。建议同前：① C4/C5/C8 重新精准注入 + 固化进 gen_subapps.py 持久模板防覆盖；② 真实 Terminal launchctl load 门禁 plist。

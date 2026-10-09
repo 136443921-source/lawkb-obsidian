@@ -1,0 +1,59 @@
+{
+  "round": 22,
+  "date": "2026-10-08",
+  "mode": "质量巡检（审判要件卡每日补拆改造）",
+  "channel_status": {
+    "pkulaw": "形态② not found in deferred tools index（会话级，2026-10-08 实测）",
+    "yuandian": "形态② not found（会话级）",
+    "qcc_legal": "形态② not found（会话级）",
+    "fallback": "本地源法条银行兜底（R16 拍板优先级③）"
+  },
+  "pending_statute": {
+    "found": 22,
+    "note": "R17~R20 报 0 系快照；坑 29 再实证先查库",
+    "backfilled_cards": 11,
+    "backfilled_clauses": 40,
+    "backfilled_list": ["R-LD-087","R-HT-314","R-HT-315","R-HT-316","R-HT-319","R-PI-519","R-PI-522","R-PI-523","R-PI-524","R-PI-527","R-PI-528"],
+    "library_missing_kept_pending": ["R-PI-528(交强险第8条)"],
+    "candidate_blocked": 11,
+    "candidate_reasons": {
+      "慈善法2016原版禁止回填": ["R-CF-200","R-CF-201","R-CF-202","R-CF-203","R-CF-206"],
+      "卡内禁编法条全文": ["R-LN-122","R-LN-123","R-LN-124"],
+      "库缺法(央企合规/医保条例/劳动合同法82/交强险8)": ["R-HG-104","R-HG-106","R-HT-313"]
+    }
+  },
+  "deadlink_gate": {
+    "basename": 7896,
+    "targets": 6443,
+    "hit_files": 1147,
+    "real_dead": 245,
+    "pending_notes": 1917,
+    "parse_errors": 0,
+    "exit": 1
+  },
+  "deadlink_fix": {
+    "tool": "_fix_deadlinks_v9_20260918.py（门禁同款口径，禁回退 v2）",
+    "dry_run": "命中 0 文件 / 0 替换 → 幂等",
+    "applied": false,
+    "fixable": 0
+  },
+  "version_drift_blocked": [
+    "慈善法2016原版(version_note禁止回填)",
+    "劳动合同法(2012修正)节选仅含第7/10条(缺14/82)",
+    "交强险条例节选不含第8条",
+    "律师法(2026修正)缺版本戳"
+  ],
+  "safety": {
+    "backup": "/tmp/存量卡巡检法条回填_20261008/",
+    "atomic_writes": 11,
+    "yaml_verify": "11/11 合法",
+    "rollback": "无"
+  },
+  "r2_status": "本轮有可修项→连续零修复计数重置为0，未触发关闭/改造建议",
+  "human_pending": [
+    "慈善法5张待2023修正版回填确认",
+    "R-LN-122/123/124禁编约束待解除或另立规范",
+    "R-HG-104/106/R-HT-313/R-PI-528(交强险8)库缺法待扩容或通道恢复",
+    "死链245归P0-4编号治理"
+  ]
+}

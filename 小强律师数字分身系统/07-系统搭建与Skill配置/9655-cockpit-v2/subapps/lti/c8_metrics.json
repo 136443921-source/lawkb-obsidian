@@ -6,8 +6,8 @@
     "pid": null,
     "level": "P0"
   },
-  "audit_available": false,
-  "audit_source": null,
+  "audit_available": true,
+  "audit_source": "subapps/lti/audit/lti_qc9_audit.jsonl",
   "dimensions": {
     "R": {
       "reject_rate": null,
@@ -33,10 +33,34 @@
       "reject_rate": null,
       "reject": 0,
       "total": 0
+    },
+    "S": {
+      "reject_rate": null,
+      "reject": 0,
+      "total": 0,
+      "ext": "策略契合度（扩）"
+    },
+    "V": {
+      "reject_rate": null,
+      "reject": 0,
+      "total": 0,
+      "ext": "风险预判（扩）"
+    },
+    "W": {
+      "reject_rate": null,
+      "reject": 0,
+      "total": 0,
+      "ext": "表达规范（扩）"
+    },
+    "E": {
+      "reject_rate": null,
+      "reject": 0,
+      "total": 0,
+      "ext": "证据闭环（扩）"
     }
   },
   "reject_trend_7d": [],
   "false_positive_top": [],
   "verdict": "alert",
-  "note": "lti-gate 未运行 → P0 告警（须拉起守护进程）。 LTI 审计日志未接入 → R/L/C/T/P 拦截率/REJECT 趋势待审计日志落盘后可见（不编造）。"
+  "note": "lti-gate 未运行 → P0 告警（须拉起守护进程）。 LTI 审计日志已接入（v4.9.0）：S/V/W/E 命中趋势真实落盘 → subapps/lti/audit/lti_qc9_audit.jsonl（jsonl 累计，不编造）。 九维规范见 lti_dimensions_v9.json（v4.9.0，S/V/W/E 为升级扩展维）。"
 }

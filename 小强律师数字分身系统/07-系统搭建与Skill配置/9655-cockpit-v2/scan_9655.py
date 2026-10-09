@@ -1245,7 +1245,7 @@ def _screen_metric(key, m):
         return sc, {"compliance": 45.0 if m["daemon"] else 30.0}, \
                [["门禁守护进程", "✅ 运行中" if m["daemon"] else "🔄 未启动"],
                 ["REJECT 闭环", "⚠️ 待试点回填"]], \
-               not m["daemon"], "LTI 五维 QC 门禁真探活"
+               not m["daemon"], "LTI 九维 QC 门禁真探活"
     if key == "credits":  # 积分监测中台 —— 评分环用 WorkBuddy 积分余额率（真值），不再用磁盘分冒充
         cr = m.get("credits", {}) or {}
         bal = cr.get("balance", -1); size = cr.get("size", -1)
@@ -1434,8 +1434,9 @@ def panels_for(key, ctx):
                        ["守护进程", "运行中" if gate["daemon_running"] else "未启动"],
                        ["plist", "已装" if gate["plist_installed"] else "缺"],
                        ["REJECT", "待回填"]]},
-            {"name": "五维 QC 门禁", "status": "active",
-             "detail": "R 法条真实 / L 法理逻辑 / C 一致性 / T 溯源 / P 程序；REJECT=0 才准交付。",
+            {"name": "九维 QC 门禁", "status": "active" if qc else "silent",
+             "detail": (" / ".join(qc) + "；REJECT=0 才准交付（S/V/W/E 为 v4.9.0 扩展维）。"
+                        if qc else gate.get("gate_detail", "九维 QC 未配置")),
              "stats": [[d, "✓"] for d in qc]},
         ]})
 

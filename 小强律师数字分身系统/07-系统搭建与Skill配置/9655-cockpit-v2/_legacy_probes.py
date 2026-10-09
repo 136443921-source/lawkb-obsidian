@@ -389,8 +389,8 @@ def scan_gate():
         "plist_installed": plist,
         "daemon_status": "✅ 运行中" if daemon else "🔄 未启动（待 launchctl load）",
         "reject": "待试点闭环回填",
-        "qc_dimensions": ["R 法条真实", "L 法理逻辑", "C 一致性", "T 溯源", "P 程序"],
-        "gate_detail": "五维 QC，REJECT=0 才准交付；v4.9.1 已交付为独立门禁进程（消除 G2）。",
+        "qc_dimensions": ["R 法条真实", "L 法理逻辑", "C 一致性", "T 溯源", "P 程序", "S 策略契合", "V 风险预判", "W 表达规范", "E 证据闭环"],
+        "gate_detail": "九维 QC（R/L/C/T/P + S/V/W/E），REJECT=0 才准交付；v4.9.1 已交付为独立门禁进程（消除 G2），S/V/W/E 为 v4.9.0 按《LTI文书质检清单扩展版》升级的扩展维。",
     }
 
 

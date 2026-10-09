@@ -1,0 +1,580 @@
+{
+  "report_date": "2026-10-08",
+  "sla_days": 30,
+  "summary": {
+    "total_pending": 702,
+    "total_breach": 0,
+    "packages_breached": [],
+    "rules_indexed": 2353
+  },
+  "packages": [
+    {
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "pending_total": 171,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-PI-402",
+        "R-PI-067",
+        "R-PI-140",
+        "R-PI-138",
+        "R-PI-398"
+      ]
+    },
+    {
+      "package": "rule_package_公司法_v1.0",
+      "domain": "公司法",
+      "pending_total": 3,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-GS-002",
+        "R-GS-003",
+        "R-GS-001"
+      ]
+    },
+    {
+      "package": "rule_package_劳动人事_v1.0",
+      "domain": "劳动人事",
+      "pending_total": 11,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-LD-059",
+        "R-GZ-048",
+        "R-LD-001",
+        "R-LD-002",
+        "R-GZ-047"
+      ]
+    },
+    {
+      "package": "rule_package_医疗_v1.0",
+      "domain": "医疗",
+      "pending_total": 108,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-PI-006",
+        "R-PI-132",
+        "R-PI-123",
+        "R-PI-080",
+        "R-PI-022"
+      ]
+    },
+    {
+      "package": "rule_package_合同_v1.0",
+      "domain": "合同",
+      "pending_total": 101,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-HT-066",
+        "R-HT-037",
+        "R-HT-003",
+        "R-HT-052",
+        "R-HT-042"
+      ]
+    },
+    {
+      "package": "rule_package_合规_v1.0",
+      "domain": "合规",
+      "pending_total": 73,
+      "breach_count": 0,
+      "missing_count": 1,
+      "oldest_ids": [
+        "R-HG-015",
+        "R-HG-021",
+        "R-HG-043",
+        "R-HG-033",
+        "R-HG-005"
+      ]
+    },
+    {
+      "package": "rule_package_商事纠纷_v1.0",
+      "domain": "商事纠纷",
+      "pending_total": 24,
+      "breach_count": 0,
+      "missing_count": 3,
+      "oldest_ids": [
+        "R-SH-020",
+        "R-SH-004",
+        "R-SH-021",
+        "R-SH-001",
+        "R-SH-019"
+      ]
+    },
+    {
+      "package": "rule_package_婚姻家庭_v1.0",
+      "domain": "婚姻家庭",
+      "pending_total": 5,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-HY-001",
+        "R-HY-092",
+        "R-HY-095",
+        "R-HY-003",
+        "R-HY-002"
+      ]
+    },
+    {
+      "package": "rule_package_审判要件_v1.0",
+      "domain": "审判要件",
+      "pending_total": 25,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-JG-035",
+        "R-JG-034",
+        "R-HG-091",
+        "R-HG-095",
+        "R-HG-089"
+      ]
+    },
+    {
+      "package": "rule_package_建设工程_v1.0",
+      "domain": "建设工程",
+      "pending_total": 7,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-JG-004",
+        "R-JG-005",
+        "R-JG-001",
+        "R-JG-035",
+        "R-JG-002"
+      ]
+    },
+    {
+      "package": "rule_package_律师实务_v1.0",
+      "domain": "律师实务",
+      "pending_total": 1,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-LN-041"
+      ]
+    },
+    {
+      "package": "rule_package_慈善合规_v1.0",
+      "domain": "慈善合规",
+      "pending_total": 95,
+      "breach_count": 0,
+      "missing_count": 1,
+      "oldest_ids": [
+        "R-CF-116",
+        "R-CF-115",
+        "R-CF-085",
+        "R-CF-006",
+        "R-CF-032"
+      ]
+    },
+    {
+      "package": "rule_package_案例库_v1.0",
+      "domain": "案例库",
+      "pending_total": 3,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-CS-005",
+        "R-CS-006",
+        "R-CS-003"
+      ]
+    },
+    {
+      "package": "rule_package_裁量尺度_v1.0",
+      "domain": "裁量尺度",
+      "pending_total": 33,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-CF-074",
+        "R-LD-059",
+        "R-WT-002",
+        "R-WT-001",
+        "R-WT-004"
+      ]
+    },
+    {
+      "package": "rule_package_证据规则_v1.0",
+      "domain": "证据规则",
+      "pending_total": 36,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-PR-005",
+        "R-PR-031",
+        "R-PR-015",
+        "R-PR-035",
+        "R-PR-001"
+      ]
+    },
+    {
+      "package": "rule_package_通用裁判_v1.0",
+      "domain": "通用裁判",
+      "pending_total": 6,
+      "breach_count": 0,
+      "missing_count": 0,
+      "oldest_ids": [
+        "R-WT-002",
+        "R-WT-001",
+        "R-HJ-001",
+        "R-WT-004",
+        "R-WT-003"
+      ]
+    }
+  ],
+  "global_backfill_queue": [
+    {
+      "rule_id": "R-CF-116",
+      "package": "rule_package_慈善合规_v1.0",
+      "domain": "慈善合规",
+      "age_days": 30,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-CF-115",
+      "package": "rule_package_慈善合规_v1.0",
+      "domain": "慈善合规",
+      "age_days": 30,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-402",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-067",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-140",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-138",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-398",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-095",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-116",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-135",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-091",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-393",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-069",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-208",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-409",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-408",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-403",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-137",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-394",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-397",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-133",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-391",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-136",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-089",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-407",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-142",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-207",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-134",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-401",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-096",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-092",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-139",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-093",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-070",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-044",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-395",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-141",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-006",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-132",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-123",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-080",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-022",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-156",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-016",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-177",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-036",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-127",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-113",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-146",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    },
+    {
+      "rule_id": "R-PI-012",
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "age_days": 11,
+      "status": "ok"
+    }
+  ]
+}

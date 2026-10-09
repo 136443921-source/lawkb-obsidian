@@ -1,5 +1,5 @@
 {
-  "roster_version": "v1.5",
+  "roster_version": "v1.7",
   "generated": "2026-09-26",
   "owner_seat": "数字员工管理（操作工 40 + 心智模型席位 14 = 54）",
   "source": "操作工=automation_update list 全量实测 + 老强 2026-09-25 裁撤 C-1/C-2/C-4；心智模型席位=09104 编制方案 §2.1 顺延版（老强 2026-09-25 批准 N-1=SEAT-12/N-2=SEAT-13/N-3=SEAT-14）",
@@ -528,7 +528,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1",
       "last_verified": "2026-09-24",
-      "notes": "蓝队家族四席之一，独立 persona 卡；禁与蓝队非诉/助理/红队互套评分（RULE-BLUE-DISAMBIG）"
+      "notes": "蓝队家族四席之一，独立 persona 卡；禁与蓝队非诉/助理/红队互套评分（RULE-BLUE-DISAMBIG）",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-02",
@@ -542,7 +543,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1",
       "last_verified": "2026-09-24",
-      "notes": "PROJ-007 活文档；CMS 域运维主导（转得动/查得出/改得掉）；禁与诉讼/助理/红队互套（RULE-BLUE-DISAMBIG）"
+      "notes": "PROJ-007 活文档；CMS 域运维主导（转得动/查得出/改得掉）；禁与诉讼/助理/红队互套（RULE-BLUE-DISAMBIG）",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-03",
@@ -556,7 +558,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1",
       "last_verified": "2026-09-24",
-      "notes": "对抗方，独立 persona 卡；禁与蓝队家族互套评分"
+      "notes": "对抗方，独立 persona 卡；禁与蓝队家族互套评分",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-04",
@@ -570,7 +573,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1",
       "last_verified": "2026-09-24",
-      "notes": "成熟度最高；≠ QC 审判长，禁互套评分卡/互计战绩（RULE-QCJUDGE-DISAMBIG）"
+      "notes": "成熟度最高；≠ QC 审判长，禁互套评分卡/互计战绩（RULE-QCJUDGE-DISAMBIG）",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-05",
@@ -584,7 +588,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1",
       "last_verified": "2026-09-24",
-      "notes": "中立记录；L0 身份层曾污染，已修正"
+      "notes": "中立记录；L0 身份层曾污染，已修正",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-06",
@@ -598,7 +603,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1",
       "last_verified": "2026-09-24",
-      "notes": "用户 memory + 中枢笔记；专家级合规身份"
+      "notes": "用户 memory + 中枢笔记；专家级合规身份",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-07",
@@ -612,7 +618,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1 + 可视化监控运维官 v2.0",
       "last_verified": "2026-09-24",
-      "notes": "由分身系统IT运维员 v1.0.0 升级为可视化监控运维官；归属可视化中台（9655 驾驶舱+连接器诊断+事故取证）"
+      "notes": "由分身系统IT运维员 v1.0.0 升级为可视化监控运维官；归属可视化中台（9655 驾驶舱+连接器诊断+事故取证）",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-08",
@@ -635,7 +642,8 @@
         "content": "维持 SEAT-08 蓝队律师助理独立席位现状（status=active、73/100·M3 合格 不变），继续 training；达 M4（≥80 分）后由律所主任提请评估是否并入 SEAT-01 诉讼律师支援链",
         "revisit_trigger": "maturity ≥ 80（M4 精熟）时由律所主任提评估",
         "basis": "决策包_P2-9~P2-12 卡 1（2026-09-26 老强裁决）；RULE-BLUE-DISAMBIG 未改，蓝队家族四席维持独立；CLM 设备操作工列仍含 SEAT-08，不裁撤"
-      }
+      },
+      "dispatch_status": "仅训练卡"
     },
     {
       "seat_id": "SEAT-09",
@@ -649,7 +657,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1",
       "last_verified": "2026-09-24",
-      "notes": "WF-046 四判据取证转正（4/4）；双模质量总闸；≠ AI 模拟法官（RULE-QCJUDGE-DISAMBIG）"
+      "notes": "WF-046 四判据取证转正（4/4）；双模质量总闸；≠ AI 模拟法官（RULE-QCJUDGE-DISAMBIG）",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-10",
@@ -663,7 +672,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.0 §2.1（扩编·2026-09-23 裁决）",
       "last_verified": "2026-09-24",
-      "notes": "治理新设·数字资产中台首个岗位型；授权 增/查/改/核填=A，删/批量改写=R-3；WF-046 转正待取证"
+      "notes": "治理新设·数字资产中台首个岗位型；授权 增/查/改/核填=A，删/批量改写=R-3；WF-046 转正待取证",
+      "dispatch_status": "仅训练卡"
     },
     {
       "seat_id": "SEAT-11",
@@ -677,7 +687,8 @@
       "commercializable": false,
       "governance_source": "09104 数字员工编制方案 v1.2 §2.1（扩编·2026-09-24 裁决）",
       "last_verified": "2026-09-24",
-      "notes": "grill-me-legal-preprocessor 技能落册为心智模型席位；守统一接待分诊台入口（生产前意图澄清），与 QC 交付后质量闸同台不同阶段；方法论 v1.0.1 + hook 已生产验证，ACTIVE·M4 高成熟"
+      "notes": "grill-me-legal-preprocessor 技能落册为心智模型席位；守统一接待分诊台入口（生产前意图澄清），与 QC 交付后质量闸同台不同阶段；方法论 v1.0.1 + hook 已生产验证，ACTIVE·M4 高成熟",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-12",
@@ -691,7 +702,8 @@
       "commercializable": false,
       "governance_source": "09101 公司章程 §2 联动 + 律所主任裁撤新建建议 2026-09-24 N-1",
       "last_verified": "2026-09-25",
-      "notes": "建议书原写补入 SEAT-11（与需求拷问官撞号），经老强批准顺延为 SEAT-12；已实际接管 43 操作工，名分补落后问责链闭合"
+      "notes": "建议书原写补入 SEAT-11（与需求拷问官撞号），经老强批准顺延为 SEAT-12；已实际接管 43 操作工，名分补落后问责链闭合",
+      "dispatch_status": "已可接活"
     },
     {
       "seat_id": "SEAT-13",
@@ -705,7 +717,8 @@
       "commercializable": false,
       "governance_source": "律所主任裁撤新建建议 2026-09-24 N-2（老强 2026-09-25 定归属=运营中台）",
       "last_verified": "2026-09-25",
-      "notes": "归运营中台不入独立中台。待建 persona 卡 + 训练备忘录，经 WF-046 四判据取证转正后再转 active"
+      "notes": "归运营中台不入独立中台。待建 persona 卡 + 训练备忘录，经 WF-046 四判据取证转正后再转 active",
+      "dispatch_status": "仅训练卡"
     },
     {
       "seat_id": "SEAT-14",
@@ -719,7 +732,8 @@
       "commercializable": false,
       "governance_source": "律所主任裁撤新建建议 2026-09-24 N-3",
       "last_verified": "2026-09-25",
-      "notes": "09-4 脱敏管线 + 免责模板已建但仅流程型无 owner；待 persona 卡 + WF-046 转正"
+      "notes": "09-4 脱敏管线 + 免责模板已建但仅流程型无 owner；待 persona 卡 + WF-046 转正",
+      "dispatch_status": "仅训练卡"
     }
   ],
   "maintenance_discipline": {
@@ -727,6 +741,20 @@
     "归口": "数字资产运维官（操作工侧）/ 律所主任（席位侧）发起 → 老强（唯一股东·超级管理员）批准 → 数字资产运维官执行登记",
     "依据": "中枢 00-全局规则/RULE-EMP-ROSTER-UPDATE + 04-Workflows/WF-数字员工增员减员更新花名册",
     "change_log": [
+      {
+        "version": "v1.7",
+        "date": "2026-10-09",
+        "type": "增(字段)",
+        "摘要": "新增「可派遣状态(dispatch_status)」字段（依 RULE-054 前台编排铁律·老强 2026-10-09 裁决）：14 席位标注——SEAT-01~07/09/11/12＝已可接活；SEAT-08/10/13/14＝仅训练卡（SEAT-08 维持老强 2026-09-26 P2-9 裁决·继续 training）；编制口径不变（操作工 40 + 席位 14 = 54）",
+        "来源": "老强 2026-10-09 裁决 · AI(小强) 执行"
+      },
+      {
+        "version": "v1.7",
+        "date": "2026-10-09",
+        "type": "增(字段)",
+        "摘要": "新增「可派遣状态(dispatch_status)」字段（依 RULE-054 前台编排铁律·老强 2026-10-09 裁决）：14 席位标注——SEAT-01~07/09/11/12＝已可接活；SEAT-08/10/13/14＝仅训练卡（SEAT-08 维持老强 2026-09-26 P2-9 裁决·继续 training）；编制口径不变（操作工 40 + 席位 14 = 54）",
+        "来源": "老强 2026-10-09 裁决 · AI(小强) 执行"
+      },
       {
         "version": "v1.5",
         "date": "2026-09-27",

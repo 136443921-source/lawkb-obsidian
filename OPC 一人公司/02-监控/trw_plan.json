@@ -1,0 +1,68 @@
+{
+  "plan_date": "2026-10-08",
+  "mode": "dry（默认不写知识库，待主任拍板 --apply）",
+  "target": 200,
+  "selected_domains": [
+    "再审程序域库",
+    "名誉权人格权域库",
+    "审判要件卡族"
+  ],
+  "per_domain_quota": {
+    "subtopics_max": 3,
+    "cards": 8
+  },
+  "zero_coverage_domains": [
+    "再审程序域库",
+    "名誉权人格权域库",
+    "审判要件卡族",
+    "执行程序域库",
+    "条号位移卡族",
+    "知识产权域库",
+    "类案检索报告卡族"
+  ],
+  "coverage_gap_top": [
+    {
+      "domain": "元典核验规则",
+      "actual": 1,
+      "target": 200,
+      "gap": 199,
+      "coverage": 0.005
+    },
+    {
+      "domain": "案例库",
+      "actual": 17,
+      "target": 200,
+      "gap": 183,
+      "coverage": 0.085
+    },
+    {
+      "domain": "建设工程域库",
+      "actual": 35,
+      "target": 200,
+      "gap": 165,
+      "coverage": 0.175
+    }
+  ],
+  "backfill_queue_pending": [
+    {
+      "package": "rule_package_人伤法_v1.0",
+      "domain": "人伤法",
+      "pending_count": 174
+    },
+    {
+      "package": "rule_package_医疗_v1.0",
+      "domain": "医疗",
+      "pending_count": 108
+    },
+    {
+      "package": "rule_package_合同_v1.0",
+      "domain": "合同",
+      "pending_count": 101
+    }
+  ],
+  "package_refresh_candidates": [
+    "人伤法",
+    "医疗",
+    "合同"
+  ]
+}
