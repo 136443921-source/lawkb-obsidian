@@ -62,9 +62,10 @@ DIMS = [
     ("W", "表达规范", "中性·精准·得当", "partial",
      "用词失真 / 重大歧义",
      ["法言法语中性、无主观溢美词", "用词精准、无冗余(如『第一款』)", "繁简得当、层次清晰"]),
-    ("E", "证据闭环", "主张逐条有证据", "manual",
+    ("E", "证据闭环", "主张逐条有证据", "partial",
      "核心主张飘空无佐证",
-     ["每项事实主张能指到具体证据", "证据册与文书主张逐条闭环", "无『主张飘空』(说了无佐证)"]),
+     ["每项事实主张能指到具体证据", "证据册与文书主张逐条闭环", "无『主张飘空』(说了无佐证)",
+      "当事人意思表示/授权/主观状态类事实须建陈述时间轴并扫描全案矛盾陈述，单点证据不得定论(E1004)"]),
 ]
 MANUAL = {"L", "S", "V", "E"}
 AUTO_OK = {"C", "P"}
@@ -164,7 +165,21 @@ def check_T(text):
     return f
 
 
-AUTO_FN = {"R": check_R, "C": check_C, "P": check_P, "W": check_W, "T": check_T}
+def check_E(text):
+    f = []
+    # E1004 矛盾陈述扫描（部分自动·仅 WARN 不阻断）：当事人意思表示/授权类肯定表述
+    # 须先建陈述时间轴+矛盾扫描，防止「单点证据定论」（6658 制裁评估误判根因）。
+    intent_markers = ["获本人承认", "已追认", "真实意思为", "授权真实", "本人确认", "自认真实"]
+    scan_markers = ["陈述时间轴", "矛盾陈述", "矛盾即悬置", "悬而未决", "争议中",
+                   "前后矛盾", "多处不一致", "未予查明", "未认定授权有效"]
+    if any(m in text for m in intent_markers) and not any(s in text for s in scan_markers):
+        f.append(("WARN", "E1004",
+                  "检测到当事人意思/授权类肯定表述，请确认已完成『矛盾陈述扫描』"
+                  "（建陈述时间轴+矛盾即悬置）；单点证据不得定论，详见经验卡-当事人陈述矛盾扫描"))
+    return f
+
+
+AUTO_FN = {"R": check_R, "C": check_C, "P": check_P, "W": check_W, "T": check_T, "E": check_E}
 
 
 # ---------------------------------------------------------------------------
@@ -288,7 +303,21 @@ def main():
             st = manual_status[code]
             mark = {"pass": "✅", "warn": "⚠️", "reject": "❌"}.get(st, "⚠️")
             note = {"pass": "人工确认通过", "warn": "人工待确认/补强", "reject": "人工判 REJECT"}.get(st, "")
-            lines.append(f"| {code} | {name} | {mark} | {note}（硬错：{hard}）|")
+            # 合并自动启发式（check_E 等）：auto WARN/REJECT 优先，确保 E1004 不被人工 pass 压制
+            auto_reasons = []
+            auto_lvl = None
+            for l, r, rs in findings[code]:
+                if l == "REJECT":
+                    auto_lvl = "❌"
+                elif l == "WARN" and auto_lvl != "❌":
+                    auto_lvl = "⚠️"
+                auto_reasons.append(f"[{l}] {rs}")
+            if auto_lvl == "❌":
+                mark, note = "❌", "自动 REJECT（启发式）"
+            elif auto_lvl == "⚠️":
+                mark, note = "⚠️", f"自动⚠️(启发式)+{note}"
+            detail = f"{note}（硬错：{hard}）" + ("；" + "；".join(auto_reasons) if auto_reasons else "")
+            lines.append(f"| {code} | {name} | {mark} | {detail} |")
         else:
             lvl = "✅"
             reasons = []

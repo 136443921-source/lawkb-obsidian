@@ -3,7 +3,7 @@
   "configVersion": "1.4.5",
   "updated": "2026-09-15",
   "版本锚定": {
-    "蓝队": "蓝队出庭律师 v4.6.2",
+    "蓝队": "蓝队诉讼律师 v4.6.2",
     "红队": "红队出庭律师 v2.6.0",
     "审判长": "ai-mock-court-judge v3.1.0",
     "审判长推演裁决内核": "judge_mind.js v2.0.0",
@@ -22,8 +22,8 @@
       "camp": "blue",
       "emoji": "🔵",
       "label": "蓝队（防御方）",
-      "skill": "蓝队出庭律师",
-      "skillPath": "/Users/chenyouqiang/.workbuddy/skills/蓝队出庭律师/SKILL.md",
+      "skill": "蓝队诉讼律师",
+      "skillPath": "/Users/chenyouqiang/.workbuddy/skills/蓝队诉讼律师/SKILL.md",
       "version": "4.6.2",
       "centerSide": "blue",
       "defaultOperator": "老强本人",
@@ -265,7 +265,7 @@
   "campSwitchRules": [
     "默认：老强坐🔵蓝队位（我方代理人），🔴红队由系统扮演",
     "老强切入红队席 → 红队出庭律师降级为攻击参谋，不代发言",
-    "老强切入审判长席 → 蓝队席交还系统代打，蓝队出庭律师接管",
+    "老强切入审判长席 → 蓝队席交还系统代打，蓝队诉讼律师接管",
     "老强说『你来打/系统代打』 → 蓝队全权接管，进入全自动对抗",
     "禁止同席双占：任一席位同一时刻只允许一个操控者，阶段1定向时一次性锁定",
     "中台『视角』切换仅改观看视角，不改阵营归属"
@@ -301,7 +301,7 @@
     "required": "on",
     "skills": [
       "红队出庭律师",
-      "蓝队出庭律师",
+      "蓝队诉讼律师",
       "模拟法庭书记员",
       "ai-mock-court-judge",
       "QC-Controller",
@@ -316,7 +316,7 @@
     "status": "全部已置为 on（v1.4.0 补齐 模拟法庭书记员 / ai-mock-court-judge / QC-Controller 三项）"
   },
   "preflightChecklist": [
-    "蓝队出庭律师 / 红队出庭律师 / 模拟法庭书记员 / ai-mock-court-judge / QC-Controller 在 settings.json → skillOverrides 为 on",
+    "蓝队诉讼律师 / 红队出庭律师 / 模拟法庭书记员 / ai-mock-court-judge / QC-Controller 在 settings.json → skillOverrides 为 on",
     "五技能 frontmatter 版本号与本文件『版本锚定』一致（跑 seat_config_verify.py 自动校验）",
     "定向卡已明确 我方角色=蓝队 / 对方角色=红队",
     "两方每轮产出均过 LTI 且 caller 已透传",
@@ -365,7 +365,7 @@
       {
         "role": "防",
         "emoji": "🔵",
-        "file": "/Users/chenyouqiang/.workbuddy/skills/蓝队出庭律师/blue_persona_v1.md",
+        "file": "/Users/chenyouqiang/.workbuddy/skills/蓝队诉讼律师/blue_persona_v1.md",
         "status": "ACTIVE",
         "activated": "2026-09-14",
         "activation": "实战校验第1场：6658号 31号庭后补充代理意见 v4 · 蓝队 D3 × 红队 L2 对抗（四项判据全达成）",
@@ -432,10 +432,10 @@
       },
       {
         "席位": "我方代理人",
-        "技能": "蓝队出庭律师 v4.6.2",
+        "技能": "蓝队诉讼律师 v4.6.2",
         "成熟度": "88/100",
         "等级": "M5 教练级",
-        "数据源": "LawKB/_AI-Memory-Hub/02-当前项目/PROJ-001-蓝队出庭律师训练项目状态.md",
+        "数据源": "LawKB/_AI-Memory-Hub/02-当前项目/PROJ-001-蓝队诉讼律师训练项目状态.md",
         "训练轨迹": "66(M4)→75→77→81→86→88（2026-09-14 单日演进）",
         "最新训练": "心智卡实战转正 + 输出模板补齐（九类产物 + 法官三问）",
         "成熟度脚本": "/Users/chenyouqiang/.workbuddy/skills/_common/scripts/blue_team_maturity.py",
@@ -459,7 +459,7 @@
     ],
     "manuals": [
       "/Users/chenyouqiang/WorkBuddy/2026-09-08-00-59-48/模拟法庭书记员-心智模型解剖与训练手册-v1.0.md",
-      "/Users/chenyouqiang/WorkBuddy/2026-09-08-00-59-48/蓝队出庭律师-心智模型解剖与训练手册-v1.0.md",
+      "/Users/chenyouqiang/WorkBuddy/2026-09-08-00-59-48/蓝队诉讼律师-心智模型解剖与训练手册-v1.0.md",
       "/Users/chenyouqiang/WorkBuddy/2026-09-08-00-59-48/红队出庭律师-心智模型解剖与训练手册-v1.0.md"
     ],
     "回写铁律": "RULE-TRAINING-WRITEBACK + PREF-007：每次训练后须回写 LawKB 共享记忆中枢（02-当前项目 / 04-每日日志）",

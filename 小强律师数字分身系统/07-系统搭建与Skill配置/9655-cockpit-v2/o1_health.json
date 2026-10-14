@@ -1,12 +1,12 @@
 {
   "schema": "lawtwin-health-v1",
-  "scanned_at": "2026-10-09T19:22:23",
+  "scanned_at": "2026-10-14T14:52:46",
   "overall": "P0",
   "probes": {
     "lti_gate": {
-      "alive": false,
-      "level": "P0",
-      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+      "alive": true,
+      "level": "OK",
+      "detail": "lti-gate 守护进程存活"
     },
     "crypto_perms": {
       "exists": true,
@@ -28,10 +28,10 @@
     "d3_freshness": {
       "present": true,
       "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
-      "age_hours": 274.6,
+      "age_hours": 390.1,
       "threshold_hours": 25,
       "level": "P0",
-      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 274.6h（超阈值，备份可能失败）"
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 390.1h（超阈值，备份可能失败）"
     }
   },
   "pii_safe": true

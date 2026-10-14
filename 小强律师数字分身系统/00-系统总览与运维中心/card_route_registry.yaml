@@ -1,9 +1,9 @@
 # 卡库路由注册表 · 全量调度 SSOT（卡库 DNS）
-# 生成: 2026-10-08 | 覆盖: 知识飞轮系统全量活跃卡 2504 张 | WF-028
+# 生成: 2026-10-08（2026-10-09 并入 12 条 LTI 九维 QC 扩展规则码，total_cards 2504→2516）| 覆盖: 知识飞轮系统全量活跃卡 2504 张 + LTI 九维 QC 扩展规则码 12 条 = 2516 | WF-028
 version: 1
 generated: 2026-10-08
-total_cards: 2504
-mounted: 2504
+total_cards: 2516
+mounted: 2516
 unmounted: 0
 policy:
   sleep_threshold_days: 30      # 沉睡卡阈值
@@ -25052,112 +25052,158 @@ rules:
     usage_count: 0
     last_used: None
 
+  - rule_id: S701
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: S
+    qc_check_item: 服务本案核心争点与诉讼目标
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: S702
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: S
+    qc_check_item: 与整体诉讼策略/防守主线一致
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: S703
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: S
+    qc_check_item: 不节外生枝、不暴露己方弱点
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: V801
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: V
+    qc_check_item: 已识别被驳回/不予准许风险点
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: V802
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: V
+    qc_check_item: 已预判对方反击位并写应对
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: V803
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: V
+    qc_check_item: 证据持有人/程序路径是否最优
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: W901
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: W
+    qc_check_item: 法言法语中性、无主观溢美词（lti_qc9.py 已用 W901 标术语不规范）
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: W902
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: W
+    qc_check_item: 用词精准、无冗余(如『第一款』)（lti_qc9.py 已用 W902 标冗余）
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: W903
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: W
+    qc_check_item: 繁简得当、层次清晰
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: E1001
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: E
+    qc_check_item: 每项事实主张能指到具体证据
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: E1002
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: E
+    qc_check_item: 证据册与文书主张逐条闭环
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
+  - rule_id: E1003
+    domain: 07-系统搭建与Skill配置/LTI文本监控器-QC规则
+    skill: LTI文本监控器
+    intended_skill: LTI文本监控器
+    card_file: lti_dimensions_v9.json
+    qc_dimension: E
+    qc_check_item: 无『主张飘空』(说了无佐证)
+    mounted: true
+    mounted_at: 2026-10-09
+    status: active
+    usage_count: 0
+    last_used: None
 # ============================================================================
-# LTI 九维 QC 扩展规则码注册表（v4.9.0 升级 · 同台调度）
-# 生成: 2026-10-09 | 绑定调度器: WF-028（与卡库 rules 同台，统一监控）
-# 说明: 以下 12 条为《LTI文书质检清单扩展版》升级新增的 S/V/W/E 扩展维规则码；
-#       非知识飞轮 KB 卡，故单独建块登记，不计入 total_cards(2504)，避免虚增卡库规模。
-#       调度/监控与卡库 rules 同台（同 WF-028 控制台），实现统一调度。
+# LTI 九维 QC 扩展规则码（S701–S703/V801–V803/W901–W903/E1001–E1003 共 12 条）
+# 已于 2026-10-09 并入上方 rules: 主列表，同 WF-028 统一调度。
+# 非知识飞轮 KB 卡（card_file 指向 lti_dimensions_v9.json 规范源），仅借 rules: 同台调度。
 # ============================================================================
 lti_qc_rules:
+  merged_into: rules
   registered: 2026-10-09
   scheduler: WF-028
-  co_dispatched_with: rules
-  note: "九维 QC 扩展维规则码（S/V/W/E 四族）；规范源 lti_dimensions_v9.json（v4.9.0）。"
-  codes:
-    - rule_id: S701
-      dimension: S
-      dimension_name: 策略契合度
-      check_item: 服务本案核心争点与诉讼目标
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#S
-      manual_confirm: true
-      status: active
-    - rule_id: S702
-      dimension: S
-      dimension_name: 策略契合度
-      check_item: 与整体诉讼策略/防守主线一致
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#S
-      manual_confirm: true
-      status: active
-    - rule_id: S703
-      dimension: S
-      dimension_name: 策略契合度
-      check_item: 不节外生枝、不暴露己方弱点
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#S
-      manual_confirm: true
-      status: active
-    - rule_id: V801
-      dimension: V
-      dimension_name: 风险预判
-      check_item: 已识别被驳回/不予准许风险点
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#V
-      manual_confirm: true
-      status: active
-    - rule_id: V802
-      dimension: V
-      dimension_name: 风险预判
-      check_item: 已预判对方反击位并写应对
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#V
-      manual_confirm: true
-      status: active
-    - rule_id: V803
-      dimension: V
-      dimension_name: 风险预判
-      check_item: 证据持有人/程序路径是否最优
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#V
-      manual_confirm: true
-      status: active
-    - rule_id: W901
-      dimension: W
-      dimension_name: 表达规范
-      check_item: 法言法语中性、无主观溢美词（lti_qc9.py 已用 W901 标术语不规范）
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#W
-      manual_confirm: false
-      status: active
-    - rule_id: W902
-      dimension: W
-      dimension_name: 表达规范
-      check_item: 用词精准、无冗余(如『第一款』)（lti_qc9.py 已用 W902 标冗余）
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#W
-      manual_confirm: false
-      status: active
-    - rule_id: W903
-      dimension: W
-      dimension_name: 表达规范
-      check_item: 繁简得当、层次清晰
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#W
-      manual_confirm: false
-      status: active
-    - rule_id: E1001
-      dimension: E
-      dimension_name: 证据闭环
-      check_item: 每项事实主张能指到具体证据
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#E
-      manual_confirm: true
-      status: active
-    - rule_id: E1002
-      dimension: E
-      dimension_name: 证据闭环
-      check_item: 证据册与文书主张逐条闭环
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#E
-      manual_confirm: true
-      status: active
-    - rule_id: E1003
-      dimension: E
-      dimension_name: 证据闭环
-      check_item: 无『主张飘空』(说了无佐证)
-      skill: LTI文本监控器
-      source: lti_dimensions_v9.json#E
-      manual_confirm: true
-      status: active
+  rule_ids: [S701, S702, S703, V801, V802, V803, W901, W902, W903, E1001, E1002, E1003]
+  note: "九维 QC 扩展维规则码，已并入 rules: 主列表统一调度；非 KB 卡，card_file 指向 lti_dimensions_v9.json 规范源。"

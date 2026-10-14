@@ -519,7 +519,7 @@
     {
       "seat_id": "SEAT-01",
       "name": "数字员工·蓝队诉讼律师",
-      "persona_source": "蓝队出庭律师-心智模型解剖与训练手册-v1.0",
+      "persona_source": "蓝队诉讼律师-心智模型解剖与训练手册-v1.0",
       "mind_stack": "L0–L5",
       "role": "防御方·庭审准备",
       "maturity": "96/110·M5 教练级",

@@ -42,20 +42,20 @@
       {
         "id": 5,
         "name": "质量闸门·战情室",
-        "status": "todo",
-        "artifact": ""
+        "status": "done",
+        "artifact": "战情室分析报告_20261013（QC 六闸全过）"
       },
       {
         "id": 6,
         "name": "交付",
-        "status": "todo",
-        "artifact": ""
+        "status": "done",
+        "artifact": "模拟庭审笔录_20261013 + 模拟庭审判决书_20261013 + 模拟庭审推演报告_20261013"
       },
       {
         "id": 7,
         "name": "飞轮回写",
-        "status": "todo",
-        "artifact": ""
+        "status": "done",
+        "artifact": "协同效果日志 + 蓝队调用记录 + case-state 已补做"
       }
     ]
   },
@@ -240,6 +240,12 @@
       "side": "blue",
       "value": 60,
       "note": "LC-005/007/008/009 但书限缩自认收口"
+    },
+    {
+      "t": 360,
+      "side": "blue",
+      "value": 75,
+      "note": "2026-10-13 补做：四要件卡（R-JG-006/007/015/016）全挂载，二被告脱责概率固化 75%"
     }
   ],
   "warroom": {

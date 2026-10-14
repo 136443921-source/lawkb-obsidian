@@ -139,25 +139,26 @@
       "code": "E",
       "name": "证据闭环",
       "one_liner": "主张逐条有证据",
-      "auto": "manual",
+      "auto": "partial",
       "reject_hard_error": "核心主张飘空无佐证",
-      "rule_codes": ["E1001-E1003"],
+      "rule_codes": ["E1001-E1004"],
       "is_extension": true,
       "check_items": [
         "每项事实主张能指到具体证据",
         "证据册与文书主张逐条闭环",
-        "无「主张飘空」（说了无佐证）"
+        "无「主张飘空」（说了无佐证）",
+        "当事人意思表示/授权/主观状态类事实（授权真实/已追认/真实意思为X）须建陈述时间轴并扫描全案矛盾陈述，单点证据不得定论（E1004·矛盾陈述扫描）"
       ]
     }
   ],
   "auto_dimensions": ["C", "P"],
-  "partial_auto_dimensions": ["R", "T", "W"],
-  "manual_dimensions": ["L", "S", "V", "E"],
+  "partial_auto_dimensions": ["R", "T", "W", "E"],
+  "manual_dimensions": ["L", "S", "V"],
   "new_rule_code_families": {
     "S": "S701-S703 策略契合",
     "V": "V801-V803 风险预判",
     "W": "W901-W903 表达规范",
-    "E": "E1001-E1003 证据闭环"
+    "E": "E1001-E1004 证据闭环"
   },
   "legacy_rule_code_families": {
     "R": "R001/R016/R101-R116 法条真实性",
