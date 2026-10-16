@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-14 22:00:52",
+  "generated_at": "2026-10-16 23:03:18",
   "screen": "C8 AI幻觉监控舱",
   "lti_gate": {
     "alive": true,
-    "pid": 11545,
+    "pid": 89337,
     "level": "OK"
   },
   "audit_available": false,

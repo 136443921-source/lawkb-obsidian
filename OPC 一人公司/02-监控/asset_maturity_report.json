@@ -1,12 +1,12 @@
 {
-  "report_date": "2026-09-24",
-  "maturity_index": 96.4,
+  "report_date": "2026-10-16",
+  "maturity_index": 87.3,
   "components": {
     "coverage": 100.0,
     "billing": 100.0,
     "consistency": 100.0,
-    "reuse": 100.0,
-    "verify": 75.7
+    "reuse": 39.5,
+    "verify": 75.9
   },
   "dimensions": {
     "M1": {
@@ -23,41 +23,41 @@
       "bad": []
     },
     "M3": {
-      "total_rules_indexed": 2053,
+      "total_rules_indexed": 2059,
       "reused_rule_count": 814,
+      "reuse_pct": 39.5,
       "cross_package_reuse_hits": 628,
       "sample": [
         {
-          "rule_id": "R-PI-174",
+          "rule_id": "R-PI-243",
           "packages": [
             "人伤法",
             "医疗"
           ]
         },
         {
-          "rule_id": "R-PI-006",
+          "rule_id": "R-PI-299",
           "packages": [
             "人伤法",
-            "医疗"
-          ]
-        },
-        {
-          "rule_id": "R-PI-415",
-          "packages": [
-            "人伤法",
-            "医疗"
-          ]
-        },
-        {
-          "rule_id": "R-PI-334",
-          "packages": [
-            "人伤法",
-            "医疗",
             "审判要件"
           ]
         },
         {
-          "rule_id": "R-PI-175",
+          "rule_id": "R-PI-098",
+          "packages": [
+            "人伤法",
+            "医疗"
+          ]
+        },
+        {
+          "rule_id": "R-PI-229",
+          "packages": [
+            "人伤法",
+            "审判要件"
+          ]
+        },
+        {
+          "rule_id": "R-PI-059",
           "packages": [
             "人伤法",
             "医疗"
@@ -66,9 +66,9 @@
       ]
     },
     "M4": {
-      "total_rules": 2901,
-      "total_source_pending": 705,
-      "pending_ratio_pct": 24.3,
+      "total_rules": 2907,
+      "total_source_pending": 702,
+      "pending_ratio_pct": 24.1,
       "leak": []
     },
     "M5": {
@@ -81,7 +81,7 @@
       "变体": 730,
       "维度": 71,
       "重复ID": 0,
-      "口径": "2026-09-15 归库实测"
+      "口径": "2026-10-16 复测：rules=835 / variants=730 / dimensions=71，与 2026-09-15 归库值完全一致（零漂移）"
     }
   },
   "p0": [],

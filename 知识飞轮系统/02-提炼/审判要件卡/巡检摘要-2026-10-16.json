@@ -1,0 +1,24 @@
+{
+  "round": 25,
+  "date": "2026-10-16",
+  "channel_check": {
+    "timestamp_cst": "2026-10-16 10:40:26",
+    "yuandian": {"status": "available", "pointBalance": 1519, "probe": "民法典1222条逐字原文·现行有效"},
+    "qcc_legal": {"status": "unavailable", "error": "MCP error 300008 当前积分余额不足"},
+    "pkulaw": {"status": "not_connected"},
+    "local_bank": {"status": "standby"}
+  },
+  "pending_statute": {"before": 15, "after": 9, "converted": 6, "blocked": 1, "no_target": 8},
+  "statute_backfill": {"cards": 6, "articles": 22, "all_validity": "现行有效"},
+  "deviations_intercepted": [
+    {"type": "条号位移", "card": "R-PI-554", "detail": "首诊限制真条号=第16条；第15条=家庭医生签约、第23条=三级医院帮扶，均为邻接误命中"},
+    {"type": "版本未标", "card": "R-PI-551/R-PI-552", "detail": "刑法须标2023修正(2024-03-01)；人损解释须标2022修正(2022-05-01)"},
+    {"type": "表述出入", "card": "R-LN-125", "detail": "民诉法解释96条第1项为「国家利益、社会公共利益、身份关系」，卡内「公益诉讼」不属该列举"},
+    {"type": "位阶不适配", "card": "R-PI-555", "detail": "三项均为政策文件/行业规范，元典未收录，维持 pending"},
+    {"type": "地方细则", "card": "R-LN-125", "detail": "15工作日/5日/5万-100万/15日拘留出自地方法院细则，不冒充全国依据"}
+  ],
+  "deadlinks": {"files": 1183, "items": 2287, "before_files": 1183, "before_items": 2287, "regression": 0, "fix_applied": 0, "fix_dryrun_hits": 0, "script": "_fix_deadlinks_v9_20260918.py"},
+  "six_b": {"backup": "/tmp/存量卡巡检_法条回填_20261016-104416/", "files": 7, "dry_run": "7/7命中0异常", "yaml": "7/7通过", "fingerprint_verify": "全绿(新版28/28命中, 旧版全不命中)", "idempotent": true},
+  "r2_count": 0,
+  "new_pits": [77, 78, 79]
+}

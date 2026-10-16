@@ -1,10 +1,10 @@
 {
-  "version": "4.9.0",
+  "version": "4.9.2",
   "name": "LTI 九维文本质检维度规范",
   "source": "LTI文书质检清单扩展版.docx（2026-10-09）",
-  "upgraded_from": "v4.8.1（五维 R / L / C / T / P）",
-  "generated_at": "2026-10-09",
-  "gate": "逐维勾选；任一 ❌ 即阻断交付，须归零后方可交付；⚠️ 属提交前补强，补完即归零；REJECT = 0 才准交付。",
+  "upgraded_from": "v4.9.0（九维 R/L/C/T/P/S/V/W/E）+ v4.9.1 新增 R 维度法条银行回查",
+  "generated_at": "2026-10-15",
+  "gate": "逐维勾选；任一 ❌ 即阻断交付，须归零后方可交付；⚠️ 属提交前补强，补完即归零；REJECT = 0 才准交付。 （v4.9.2：R 维度法条银行回查默认升为 REJECT 硬闸门；--lenient-fatiao 可回退为 WARN）",
   "verdict_levels": {
     "pass": "✅ 通过",
     "warn": "⚠️ 待补强（提交前补完即归零，不阻断）",
@@ -15,10 +15,16 @@
     {
       "code": "R",
       "name": "法条真实性",
-      "one_liner": "真实·现行有效·配对",
+      "one_liner": "真实·现行有效·配对·本地库可引",
       "auto": "partial",
       "reject_hard_error": "法条编造 / 失效 / 错引",
-      "rule_codes": ["R001", "R016", "R101-R116"],
+      "rule_codes": [
+        "R001",
+        "R016",
+        "R101-R116",
+        "R-fb001",
+        "R-fb002"
+      ],
       "check_items": [
         "三渠道一致性核验（华宇元典 / qcc-legal / 法条银行）：≥2 渠道回源一致方放行，仅 1 渠道一致不通过",
         "「一致」判定须含条号 + 正文 + 时效性三项一致，非仅条号相同",
@@ -28,8 +34,23 @@
         "条号、款项、项号标注精确（无「第一款」等冗余）",
         "引用条文与本案事实 / 主张配对正确",
         "已查但书与例外条款",
-        "无新法优于旧法 / 特别法冲突"
-      ]
+        "无新法优于旧法 / 特别法冲突",
+        "法条银行回查：文书引用的《法名》须能匹配到本地 statute 卡，命中 cite_ready=false 即不可条号级引用（R-fb001）"
+      ],
+      "fatiao_bank_integration": {
+        "added": "2026-10-15",
+        "purpose": "把法条银行 cite_ready 字段从「标记」接成「闸门」",
+        "default_mode": "REJECT 硬闸门（v4.9.2 翻转：命中 cite_ready=false 即阻断交付，杜绝起草流程靠人记得看 gate）",
+        "lenient_mode": "--lenient-fatiao 时 cite_ready=false 降级为 WARN 不阻断（回退阀；用于文书确引外部权威源/本地库滞后须人工判断的场景）",
+        "strict_mode": "--strict-fatiao 保留为兼容旧调用（现即为默认行为，等效 no-op）",
+        "no_prompt_mode": "本地无对应卡不提示（本地库非全量，无卡≠无法可引）",
+        "matching": "三层：归一化精确 → 机关前缀剥离 → 骨架匹配(LCS≥8)+实义字符无冲突",
+        "multi_card": "同名多卡优先保留 cite_ready=true 的现行主卡",
+        "rule_codes": {
+          "R-fb001": "命中 cite_ready=false，本地卡不可条号级引用",
+          "R-fb002": "命中卡缺 cite_ready 字段，须先补标"
+        }
+      }
     },
     {
       "code": "L",
@@ -37,7 +58,9 @@
       "one_liner": "论证自洽·教义锚定",
       "auto": "manual",
       "reject_hard_error": "逻辑断裂 / 教义错锚",
-      "rule_codes": ["L201-L205"],
+      "rule_codes": [
+        "L201-L205"
+      ],
       "check_items": [
         "论证链完整自洽（事实→法律依据→请求）",
         "事实主张与请求事项一一对应",
@@ -52,7 +75,11 @@
       "one_liner": "案号名称金额不打架",
       "auto": "auto",
       "reject_hard_error": "案号 / 名称 / 金额矛盾",
-      "rule_codes": ["C301", "C302", "C304"],
+      "rule_codes": [
+        "C301",
+        "C302",
+        "C304"
+      ],
       "check_items": [
         "案号（304）全文一致",
         "当事人名称（302）全称 / 简称一致、诉讼地位不串",
@@ -68,7 +95,11 @@
       "one_liner": "事实法条有出处",
       "auto": "partial",
       "reject_hard_error": "关键事实无出处支撑",
-      "rule_codes": ["T501", "T502", "T503"],
+      "rule_codes": [
+        "T501",
+        "T502",
+        "T503"
+      ],
       "check_items": [
         "每条法条标法名 + 条号，可回查",
         "每项事实主张有出处（证据册 / 在案文书 / 附件）",
@@ -83,7 +114,9 @@
       "one_liner": "格式·期限·签署合规",
       "auto": "auto",
       "reject_hard_error": "期限超期 / 签署授权缺失",
-      "rule_codes": ["P401-P404"],
+      "rule_codes": [
+        "P401-P404"
+      ],
       "check_items": [
         "文书格式齐全（标题 / 当事人 / 请求 / 理由 / 落款）",
         "申请形式合规（书面 / 份数）",
@@ -99,7 +132,9 @@
       "one_liner": "服务核心争点目标",
       "auto": "manual",
       "reject_hard_error": "偏离主线 / 暴露弱点",
-      "rule_codes": ["S701-S703"],
+      "rule_codes": [
+        "S701-S703"
+      ],
       "is_extension": true,
       "check_items": [
         "服务本案核心争点与诉讼目标",
@@ -113,7 +148,9 @@
       "one_liner": "识别驳回 / 反击风险",
       "auto": "manual",
       "reject_hard_error": "重大风险未识别",
-      "rule_codes": ["V801-V803"],
+      "rule_codes": [
+        "V801-V803"
+      ],
       "is_extension": true,
       "check_items": [
         "已识别被驳回 / 不予准许风险点",
@@ -127,7 +164,9 @@
       "one_liner": "中性·精准·得当",
       "auto": "partial",
       "reject_hard_error": "用词失真 / 重大歧义",
-      "rule_codes": ["W901-W903"],
+      "rule_codes": [
+        "W901-W903"
+      ],
       "is_extension": true,
       "check_items": [
         "法言法语中性、无主观溢美词",
@@ -141,7 +180,9 @@
       "one_liner": "主张逐条有证据",
       "auto": "partial",
       "reject_hard_error": "核心主张飘空无佐证",
-      "rule_codes": ["E1001-E1004"],
+      "rule_codes": [
+        "E1001-E1004"
+      ],
       "is_extension": true,
       "check_items": [
         "每项事实主张能指到具体证据",
@@ -151,9 +192,21 @@
       ]
     }
   ],
-  "auto_dimensions": ["C", "P"],
-  "partial_auto_dimensions": ["R", "T", "W", "E"],
-  "manual_dimensions": ["L", "S", "V"],
+  "auto_dimensions": [
+    "C",
+    "P"
+  ],
+  "partial_auto_dimensions": [
+    "R",
+    "T",
+    "W",
+    "E"
+  ],
+  "manual_dimensions": [
+    "L",
+    "S",
+    "V"
+  ],
   "new_rule_code_families": {
     "S": "S701-S703 策略契合",
     "V": "V801-V803 风险预判",

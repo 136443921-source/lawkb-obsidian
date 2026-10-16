@@ -3,9 +3,9 @@ id: WF-002
 title: 法条 LTI 九维 QC 门禁（R/L/C/T/P/S/V/W/E）
 type: workflow
 status: active
-updated: 2026-10-09T22:43
-version: 4.9.0
-source: 升级自 v4.8.1（五维 R/L/C/T/P）；真源 lti_dimensions_v9.json（v4.9.0）
+updated: 2026-10-16T09:12
+version: 4.9.2
+source: 升级自 v4.9.0（九维）；v4.9.1 新增 R 维度法条银行回查（cite_ready 接入门禁）；v4.9.2 翻转 R-fb001 默认行为（默认 REJECT 硬闸门）
 source_ai: workbuddy
 scope: global
 confidence: high
@@ -15,12 +15,36 @@ tags:
   - 质量门禁
   - 工作流
   - 九维
+  - cite_ready
+  - 法条银行
 ---
 
 # WF-002 · 法条 LTI 九维 QC 门禁
 
 > 每份法律文书交付前必须通过的文本监控器门禁。任一维度 REJECT 即不得交付；`REJECT=0` 才准交付。
-> **真源定义**：`lti_dimensions_v9.json`（v4.9.0，upgraded_from v4.8.1 五维）。本工作流须与该真源保持一致——修改维度/阈值/版本前**先读真源**，不得凭记忆或旧版本（如 v4.8.1 五维）填写。
+> **真源定义**：`lti_dimensions_v9.json`（**v4.9.2**，v4.9.0 + R 维度法条银行回查）。本工作流须与该真源保持一致——修改维度/阈值/版本前**先读真源**，不得凭记忆或旧版本填写。
+
+## R 维度 · 法条银行回查门禁（R-fb001 / R-fb002 · v4.9.1 新增）
+
+> **背景**：法条银行 106+ 张 statute 卡自 2026-10-15 起带 `cite_ready` 字段（true=可安全条号级引用），但该字段此前只是**标记**、未接门禁。v4.9.1 把它接进 R 维度初筛——**从「标记」升级为「闸门」**。
+
+**机制**：文书引用的 `《法名》` → 回查本地法条银行对应 statute 卡的 `cite_ready`：
+
+| 情形 | 判定 | 说明 |
+|---|---|---|
+| 命中 `cite_ready: false` | **❌ R-fb001**（默认即 REJECT；`--lenient-fatiao` 时降级 ⚠️ WARN） | 本地卡不可条号级引用（版本漂移 / 空壳 / 重定向桩） |
+| 命中卡缺 `cite_ready` 字段 | ⚠️ R-fb002 | 须先跑 `fatiao_g4_upgrade.py` 补标 |
+| 本地无对应卡 | **不提示** | 本地库非全量，无卡 ≠ 无法可引 |
+| 命中 `cite_ready: true` | 静默 | 现行主卡，可放心引用 |
+
+**匹配三层**（防误配）：归一化精确 → 机关前缀剥离 → 骨架匹配（LCS≥8）+ **实义字符无冲突**。
+> 后者专防「买卖合同 ↔ 技术合同」这类**共享长骨架**的误配（实测 LCS=23，靠『买卖』/『技术』实义字差异判异）。
+
+**同名多卡**：优先保留 `cite_ready: true` 的**现行主卡**（如技术合同解释同时有 2004 旧版桩卡 false 与 2020 现行主卡 true，引规范法名应命中后者）。
+
+**纪律（守 LTI「宁漏勿误·零误报」底线）**：**v4.9.2 起默认升为 REJECT 硬闸门**——命中 `cite_ready: false` 即阻断交付，杜绝「起草流程靠人记得看 gate」的疏漏。仍保留 `--lenient-fatiao` 回退阀（降级 ⚠️ WARN 不阻断），用于文书确引外部权威源且本地库滞后等须人工判断的场景；`--strict-fatiao` 保留为兼容旧调用（现即为默认行为）。本地库无卡 / 该卡不可引，**不等于文书一定错**，故 `lenient` 模式下交人工判断。
+
+> 🔴 **配套铁律 RULE-055**：判疑本**禁读 `sxx`，必读 `source_verify` + `statute_text_pending` + `cite_ready`**。`sxx` 记「法本身时效」，`source_verify`/`statute_text_pending` 记「本地卡版本时效」，两者维度不同。
 
 ## 九维定义
 | 维度 | 含义 | 类型 | 校验要点 |
@@ -73,6 +97,9 @@ tags:
 - v4.9.0（九维）：在五维基座上扩展 S/V/W/E，真源 `lti_dimensions_v9.json`（2026-10-09 generated_at）。
 - ⚠️ 维护提示：本工作流 `status: active`，任何维度调整须同步真源文件并回填本"版本演进"段，避免文档漂移再次误导引用方（已发生一次"active 却写五维"事故）。
 - 2026-10-10 维护补充（仍在 v4.9.0 维度集内，未升版）：E 维度新增 **E1004「矛盾陈述扫描」** 人工门禁项，E 由纯手动调为**部分自动**（同 T/W）；真源 `lti_dimensions_v9.json` 同步（`partial_auto_dimensions` 增 E、`manual_dimensions` 减 E、`rule_codes` E1001–E1004）。触发：6658 司法制裁评估"单点证据定论"误判根因沉淀。
+- **2026-10-15 v4.9.1**：R 维度新增**法条银行回查门禁**（`R-fb001`/`R-fb002`）。把法条银行 `cite_ready` 字段从「标记」接成「闸门」——文书引用的《法名》回查本地 statute 卡，命中 `cite_ready=false` 即标 ⚠️（`--strict-fatiao` 时可升 ❌ REJECT）。真源 `lti_dimensions_v9.json` 同步升级至 v4.9.1（R 维度 `check_items` 增项、`rule_codes` 增 R-fb001/R-fb002、新增 `fatiao_bank_integration` 配置块）。触发：RULE-055「判疑本禁读 sxx，必读 cite_ready」铁律落地。
+  - ⚠️ 本项是**文档/真源/脚本三处同步**改动的先例：曾因只改文档不改真源导致「active 却写五维」事故，故本次三处同改并互相锚定。
+  - **2026-10-16 v4.9.2**：翻转 R-fb001 默认行为——由「默认 WARN（--strict-fatiao 才 REJECT）」改为「默认 REJECT 硬闸门（--lenient-fatiao 回退为 WARN）」。触发：2026-10-15 法条银行收官复盘，空壳清零后确认 5 张 cite_ready=false 均为版本取代/已废止的正确设计，但「靠人记得开 strict」仍有漏看风险，故将硬闸门设为默认。真源 `lti_dimensions_v9.json` 升 v4.9.2（default_mode→REJECT、新增 lenient_mode、strict_mode 改兼容说明）；脚本 `lti_qc9.py` 同步（check_R_fatiao_bank 默认 strict=True、新增 --lenient-fatiao、保留 --strict-fatiao 兼容、版本号升 v4.9.2）。文档/真源/脚本三处同改。并修复 `_norm_name` 对「·版本/标记后缀」（如 ·2025修正 / ·关键条文回填版）不剥离导致旧版/桩卡永远匹配不上的缺陷——该缺陷会使 R-fb001 对真实引用形同虚设，修复后闸门能真正命中孤儿旧版卡（实测：引技术合同解释 2004 桩卡默认即 REJECT）。
 
 ## 相关笔记
 - [[lti_dimensions_v9]] (共现关键词: 九维, 真源, v4.9.0)

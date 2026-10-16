@@ -1,0 +1,71 @@
+{
+  "round": 23,
+  "date": "2026-10-15",
+  "mode": "存量卡质量巡检（改造自审判要件卡每日补拆，全书已饱和）",
+  "automation_id": "a5995ba3-d738-4233-8c93-410fd8f3bc39",
+  "channel_check_ts": "2026-10-15 11:29 CST",
+  "inspection": {
+    "pending_statute_text": {
+      "count": 10,
+      "method": "grep -rl '^statute_text_pending: true' 06-沉淀/裁判规则库 (Grep工具 + bash 双工具复核一致)",
+      "cards": [
+        "R-LD-091", "R-PI-538", "R-PI-539", "R-LD-092", "R-PI-548",
+        "R-HT-324", "R-HT-325", "R-PI-549", "R-CF-211", "R-CF-212"
+      ],
+      "profile": "全部 verified_by: WebSearch、created 2026-10-14/15、卡内标注「缓存已回填·待三通道回源」——典型摄入流水线委托核填卡",
+      "snapshot_note": "R22 遗留 11 张已不在 pending 状态（坑 29 快照再实证）"
+    },
+    "deadlinks": {
+      "script": "_check_deadlinks.py --all (v1.7.0 分类口径)",
+      "base_names": 8018,
+      "cards_checked": 6561,
+      "hard_deadlinks": 289,
+      "soft_pending_notes": 1933,
+      "no_frontmatter_skipped": 42,
+      "exit_code": 0,
+      "vs_R22": {"hard_R22": 245, "soft_R22": 1917, "hard_delta": 44, "soft_delta": 16}
+    }
+  },
+  "statute_backfill": {
+    "filled_count": 0,
+    "blocked_reason": "双阻断：权威三通道本会话形态②不可用 + 本地源版本门禁阻断",
+    "channel_probe": {
+      "yuandian_get_user_balance": "DeferExecuteTool 返 'not found in deferred tools index' (形态②·会话级)",
+      "toolsearch": "仅回 domain_search；元典/企查查/法宝均未载入本会话工具表",
+      "fallback_priority_R16": "①元典→②企查查→③本地源；①②不可用→③本地源"
+    },
+    "local_version_gate": {
+      "sampled_file": "01-采集/法律法规/行政法律规章/工伤保险条例.md",
+      "verdict": "version_mismatch: true / sxx: ⚠️版本存疑·待核验 / version_note: …禁止据以回填 → 坑33/75 阻断，不得回填"
+    },
+    "deviation_intercepted": "未发现条号位移；因版本门禁阻断未做权威条号核验，依坑33保留 pending",
+    "candidates": "10 张全留 pending，标【候选·待人工确认】"
+  },
+  "deadlink_fix": {
+    "script": "_fix_deadlinks_v9_20260918.py (禁回退 v2 事故源，基名集与门禁一致)",
+    "dry_run": "命中 0 文件 / 0 替换 → 幂等",
+    "applied": false,
+    "note": "289 真死链归 P0-4 编号治理；不为降数字硬修（坑34同源，历史曾误修702条）"
+  },
+  "six_B": {
+    "writes_this_round": 0,
+    "skill_backup": "/tmp/存量卡巡检_20261015/SKILL.md.bak",
+    "atomic_write": "同文件多处修改一次性原子写入，未对同一文件发多个 Edit"
+  },
+  "r2_status": {
+    "consecutive_zero_repair_count": 1,
+    "note": "R22 有可修项重置为 0 → R23=1，未达阈值 3，未触发关闭/改造建议",
+    "trigger_if": "若 R24/R25 仍零修复达 3 → 触发建议关闭或再次改造本自动化"
+  },
+  "deliverables": [
+    "02-提炼/审判要件卡/存量卡质量巡检报告-2026-10-15.md",
+    "02-提炼/审判要件卡/巡检摘要-2026-10-15.json",
+    "04-LOG/2026-10-15.md (append)",
+    "02-提炼/审判要件卡/SKILL.md → v1.54.0 (补坑76 + 变更日志)"
+  ],
+  "pending_human": [
+    "10 张 pending 卡待权威通道恢复（坑43自愈）后回源转正",
+    "本地源版本门禁待补戳（工伤保险条例等 version_mismatch）",
+    "真死链 289 归 P0-4 编号治理"
+  ]
+}

@@ -79,24 +79,46 @@ def count_r_cards_in_subdir(sub):
 
 
 def count_skills():
+    """技能数：只数含 SKILL.md 的顶层技能目录。
+
+    2026-10-16 修：旧实现 `sum(1 for n in listdir if not n.startswith('.'))`
+    误把 __pycache__/_archive/_backup/_common/cockpit-scripts/二次复盘前置护栏
+    共 6 个非技能目录计入（双下划线开头不被 '.' 过滤），实测虚报 191 vs 真值 184。
+    权威口径＝含 SKILL.md 的顶层技能，与登记册 SK-001 一致。
+    """
     if not os.path.isdir(SKILLS):
         return 0
-    return sum(1 for n in os.listdir(SKILLS) if not n.startswith('.'))
+    n = 0
+    for d in os.listdir(SKILLS):
+        sub = os.path.join(SKILLS, d)
+        if os.path.isdir(sub) and os.path.isfile(os.path.join(sub, "SKILL.md")):
+            n += 1
+    return n
 
 
 def count_automations():
-    if not os.path.isdir(AUTOMATIONS):
+    """自动化数：官方注册表口径 ~/.workbuddy/automations。
+
+    2026-10-16 修：旧实现指向 `WORK/.workbuddy/memory/automations`（旧 workspace
+    遗留路径），实测仅 13，而官方注册表实际 90 个（automation_update list）。
+    """
+    d = os.path.expanduser("~/.workbuddy/automations")
+    if not os.path.isdir(d):
         return 0
-    return sum(1 for n in os.listdir(AUTOMATIONS) if not n.startswith('.'))
+    return sum(1 for n in os.listdir(d) if not n.startswith('.'))
 
 
 def count_handbooks():
-    c = 0
-    for f in glob.glob(os.path.join(WORK, "*.md")):
-        b = os.path.basename(f)
-        if any(k in b for k in ["心智", "手册", "方案"]):
-            c += 1
-    return c
+    """席位心智模型手册数：共享记忆中枢 02-当前项目 下 PROJ-0*.md。
+
+    2026-10-16 修：旧实现扫旧 workspace 根目录文件名含「心智/手册/方案」的 md，
+    该路径已失效且口径与 PROJ 卡不一致。权威口径＝席位心智模型备忘录
+    （PROJ-001~014）；PROJ-LAW/ORG/SYS/模拟法官 等非席位卡不计入。
+    """
+    d = os.path.join(ROOT, "_AI-Memory-Hub/02-当前项目")
+    if not os.path.isdir(d):
+        return 0
+    return len(glob.glob(os.path.join(d, "PROJ-0*.md")))
 
 
 def load_json(p):

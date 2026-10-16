@@ -113,6 +113,7 @@ def compute_maturity(pkgs, registry):
             hit = sum(1 for rid in ids if len(rule_map.get(rid, [])) >= 2)
             cross_reuse += hit
     m3 = {"total_rules_indexed": len(rule_map), "reused_rule_count": len(reused),
+          "reuse_pct": round(len(reused) / len(rule_map) * 100, 1) if rule_map else 0.0,
           "cross_package_reuse_hits": cross_reuse,
           "sample": [{"rule_id": k, "packages": v} for k, v in list(reused.items())[:5]]}
 
@@ -176,10 +177,14 @@ def compute_maturity(pkgs, registry):
     m6 = rl.get("metrics", {}) if rl else {}
 
     # ── 成熟度指数（加权 0-100）──
+    # M3 打分口径：按「跨域复用率」计分（2026-10-16 改，老强拍板）
+    #   旧公式 min(100, reused/50*100) 为饱和式——复用 50 张即满分，无区分度，
+    #   已致 2026-10-15 首轮复盘把"复用814张"与"复用50张"同等计为100分。
+    #   新公式直接采用复用率 = reused / total_rules_indexed × 100（无主观阈值，可解释）。
     score_coverage  = m1["coverage_pct"]                                  # 30%
     score_billing   = 100.0 if m2["consistent"] else 40.0                  # 20%
     score_consist   = 100.0 if m5["consistent"] else 30.0                  # 20%
-    score_reuse     = min(100.0, m3["reused_rule_count"] / 50.0 * 100)     # 15%（50 张复用=满分）
+    score_reuse     = m3["reuse_pct"]                                      # 15%（复用率计分，非饱和）
     score_verify    = max(0.0, 100.0 - m4["pending_ratio_pct"])            # 15%（待核验源占比越低越好）
     maturity = (score_coverage*0.30 + score_billing*0.20 + score_consist*0.20
                 + score_reuse*0.15 + score_verify*0.15)
@@ -206,7 +211,7 @@ def main():
     if not quiet:
         print(f"== 数字资产成熟度 + 商业化闭环（{TODAY.isoformat()}）==")
         print(f"规则包 {dims['M1']['total_packages']} 个（域库包 {dims['M1']['domain_packages']} / 横切包 {dims['M1']['cross_packages']}）")
-        print(f"采用率 {dims['M1']['coverage_pct']}% ｜ 跨域复用 {dims['M3']['reused_rule_count']} 张 ｜ 待核验源泄漏 {dims['M4']['total_source_pending']} 张（占比 {dims['M4']['pending_ratio_pct']}%）")
+        print(f"采用率 {dims['M1']['coverage_pct']}% ｜ 跨域复用 {dims['M3']['reused_rule_count']} 张（复用率 {dims['M3']['reuse_pct']}%） ｜ 待核验源泄漏 {dims['M4']['total_source_pending']} 张（占比 {dims['M4']['pending_ratio_pct']}%）")
         print(f"计费口径一致：{dims['M2']['consistent']} ｜ 包内一致：{dims['M5']['consistent']}")
         print(f"成熟度指数 = {maturity}/100  （覆盖{comp['coverage']} 计费{comp['billing']} 一致{comp['consistency']} 复用{comp['reuse']} 核验{comp['verify']}）")
         for f in findings:
@@ -228,7 +233,7 @@ def main():
     md.append(f"| 覆盖(M1) | {comp['coverage']} | 域库封装采用率 {dims['M1']['coverage_pct']}%（{dims['M1']['domain_packages']}/{dims['M1']['n_domain_libs']}） |")
     md.append(f"| 计费口径(M2) | {comp['billing']} | 统一 {EXPECT_BILLING_MODEL} / {EXPECT_LICENSE_TYPE} |")
     md.append(f"| 包内一致(M5) | {comp['consistency']} | 交付质量 |")
-    md.append(f"| 跨域复用(M3) | {comp['reuse']} | 复用 {dims['M3']['reused_rule_count']} 张（横切包命中 {dims['M3']['cross_package_reuse_hits']}） |")
+    md.append(f"| 跨域复用(M3) | {comp['reuse']} | 复用率 {dims['M3']['reuse_pct']}%（复用 {dims['M3']['reused_rule_count']} 张 / 去重 {dims['M3']['total_rules_indexed']} 张；横切包命中 {dims['M3']['cross_package_reuse_hits']}） |")
     md.append(f"| 法源核验(M4) | {comp['verify']} | 待核验源占比 {dims['M4']['pending_ratio_pct']}% |")
     md.append(f"\n## 采用率与包清单\n")
     md.append(f"- 可商业化域库：**{dims['M1']['n_domain_libs']}** 个；已封装域库包：**{dims['M1']['domain_packages']}**（采用率 {dims['M1']['coverage_pct']}%）")

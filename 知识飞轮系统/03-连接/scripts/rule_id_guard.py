@@ -84,7 +84,11 @@ def scan(since_min=None):
     files = []
     cutoff = time.time() - since_min * 60 if since_min else 0
     for dp, dn, fn in os.walk(ROOT):
-        dn[:] = [d for d in dn if not d.startswith(".") and d != "_备份" and d != "裁判规则库"]
+        # 🔧 2026-10-15 修复「门禁假阴性」：原逻辑额外排除了 `裁判规则库/` 目录，
+        # 而新建规则卡正落在该目录下（实测 284 个 md / 68 张 R-XX-NNN 卡，含当日 31 张），
+        # 导致 `rule_id_guard.py` 长期「扫描 0 张 → ✅ 通过」，v1.25「建卡后必跑守卫」形同虚设。
+        # 文件名级过滤（下方 `^R-[A-Z]{2}-\d{3}`）已足够保证性能，无需按目录名排除。
+        dn[:] = [d for d in dn if not d.startswith(".") and d != "_备份"]
         for f in fn:
             if not f.endswith(".md"):
                 continue
