@@ -12,6 +12,7 @@ updated: 2026-09-25T20:41
 本页为「last_run_report」概念枢纽，聚合知识飞轮系统内相关笔记，用于消解双向链接断链。
 
 ## 相关笔记
+- [[asset_maturity_report]] (共现关键词: ---, asset, report)
 - [[asset_health_report]] (共现关键词: ---, 2026, report)
 - [[registry_consistency_report]] (共现关键词: ---, 2026, report)
 - [[RULE-002---动作（铁律）：依约束「通道不可用即中止，不伪造」→-未触碰-state-文件]] (共现关键词: ---, last)

@@ -1,0 +1,68 @@
+{
+  "round": 26,
+  "date": "2026-10-17",
+  "mode": "质量巡检（原「每日补拆」已改造，第二卷 2026-09-12 判定饱和）",
+  "skill_version": "1.55.0 -> 1.56.0",
+  "pending_statute": {
+    "scope_caigui_lib_R_md": 0,
+    "full_lib_R_md": 14,
+    "full_lib_breakdown": {
+      "quarantine_duplicates": 6,
+      "intake_delegated_02_tilian": 8
+    },
+    "note": "裁规库范围 0 张；全库 14 张均非裁规库裁判规则卡。6 张为去重隔离副本（禁碰），8 张为摄入委托卡（见坑78判定）。"
+  },
+  "backfill": {
+    "count": 0,
+    "intercepted_deviation": "无（裁规库 pending=0，无需核填）",
+    "keng78_recheck": "全库 14 张 pending 中 8 张 02-提炼 摄入委托卡均带 verified_by:ima / ima_true:true，法条引用计数 7 张=0、R-PI-555=2，判「无核填对象」不强填，维持 pending【候选·待人工确认】"
+  },
+  "deadlink_gate": {
+    "tool": "_check_deadlinks.py v1.7.0 分类口径",
+    "basename_total": 8126,
+    "cards_checked": 6662,
+    "pre_fix": {
+      "hit_files": 1438,
+      "true_deadlinks": 314,
+      "pending_notes": 2520,
+      "legacy_total": 2834,
+      "parse_errors": 0,
+      "exit_code": 1
+    },
+    "post_fix": {
+      "hit_files": 1436,
+      "true_deadlinks": 308,
+      "pending_notes": 2520,
+      "legacy_total": 2828,
+      "parse_errors": 0,
+      "exit_code": 1
+    },
+    "fix": {
+      "tool": "_fix_deadlinks_v9_20260918.py（严格白名单 13 条，守坑34，禁回退 v2 事故源）",
+      "applied": 6,
+      "dry_run_post_apply": 0,
+      "regression": "零回归（待建 2520 不变，无新增死链）",
+      "backup": ["/tmp/存量卡巡检死链修复_20261017-091607", "/tmp/存量卡巡检死链修复_20261017-091619"]
+    },
+    "note": "v9 前几轮恒 dry-run 0（幂等）；本轮因 2026-10-16 23:16 下游流水线重新引入 6 处旧名死链，重新出现命中→已修复（坑29 动态性再实证）。"
+  },
+  "channel_status": {
+    "timestamp": "2026-10-17 09:11 CST",
+    "method": "ToolSearch 精确查 mcp__yuandian-mcp__* / mcp__pkulaw__* / mcp__qcc-legal__*",
+    "result": "三通道均 not found in deferred tools index = 形态②（enabled=true 会话级未载入工具表，非死通道）",
+    "local_source": "待机",
+    "action": "无核填需求，未降级网页源/本地源"
+  },
+  "residual_human_items": [
+    "真死链 308 条（v9 白名单外，守坑34 宁漏勿错，归 P0-4 编号治理/稳定挂起）",
+    "待建笔记 2520 条（软引用非缺陷，不计退出码）",
+    "全库 14 张 pending（6 隔离副本禁碰 + 8 摄入委托卡 IMA 镜像无核填对象）维持 pending【候选·待人工确认】",
+    "三通道会话级不可用 → 核填委托挂起，等通道恢复或本地源补版本戳"
+  ],
+  "r2_status": {
+    "fixable_this_round": 6,
+    "consecutive_zero_fix_count": 0,
+    "trigger_close_suggest": false,
+    "note": "本轮有可修项（死链修复 6）→ 连续零修复计数重置为 0，未触发 R2 关闭/改造建议。"
+  }
+}

@@ -30,9 +30,14 @@ tags:
 - 撞号防护机制详见经验卡 `EXP-2026-001`
 
 ## 相关笔记
+- [[README]] (共现关键词: README, hub)
+- [[R-LN-022]] (共现关键词: card, 2026)
+- [[R-LN-025-法庭辩论8句金话术]] (共现关键词: card, 2026)
+- [[R-LN-021]] (共现关键词: card, 2026)
+- [[memory]] (共现关键词: 2026, workbuddy)
 - [[DEC-2026-003-确立记忆中枢]] (共现关键词: 关键词, git, 共现)
 - [[LEARNINGS]] (共现关键词: 关键词, git, 共现)
-- [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: 关键词, workbuddy, 医疗)
+- [[笔记助手/其它笔记/AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: 关键词, workbuddy, 医疗)
 - [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: workbuddy, skills)
 - [[换电脑后WorkBuddy如何迁移]] (共现关键词: 关键词, git, 共现)
 - [[02-skills-manifest]] (共现关键词: skills, 共现)

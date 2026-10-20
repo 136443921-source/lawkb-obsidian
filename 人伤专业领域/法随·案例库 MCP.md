@@ -317,6 +317,10 @@ uv run python server.py --transport http --port 8765
 - [[标签索引]]
 
 ## 相关笔记
+- [[WF-074---yuandian-mcp-=-运行态掉线（enabled=true-但工具缺]] (共现关键词: ---, 共现, mcp)
+- [[WF-039---前置：2106-修复-IMA-双开关-+-用户再重启-→-连接器状态-`im]] (共现关键词: 合同, ---, mcp)
+- [[RULE-013---点火条件仍依赖用户在连接器页对-ima-mcp-重新信任授权+重启（不代点U]] (共现关键词: 合同, ---, mcp)
+- [[RULE-033---ToolSearch-实查-`mcp__ima-mcp__`-`mcp__y]] (共现关键词: ---, 共现, mcp)
 - [[WF-038---当前阻塞：运行会话-MCP-工具索引为启动快照，配置修复后须再重启一次方加载]] (共现关键词: 关键词, MCP, 共现)
 - [[WF-042-8.-QQ-推送：qq-mail-MCP-不可用-→-走-`send.js`-S]] (共现关键词: 关键词, MCP, 共现)
 - [[WF-066---QQ-推送：`send.js`-SMTP-兜底成功（qq-mail-MCP-]] (共现关键词: 关键词, MCP, 共现)

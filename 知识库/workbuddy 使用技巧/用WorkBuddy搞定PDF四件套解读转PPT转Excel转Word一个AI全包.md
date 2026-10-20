@@ -1,6 +1,6 @@
 ---
 created: 2026-06-23T18:31
-updated: 2026-10-02T22:11
+updated: 2026-10-20T14:19
 title: 用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包
 tags: []
 maturity: 🌳核心
@@ -342,6 +342,8 @@ markitdown / pptx-generator / minimax-xlsx / minimax-docx
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/zmrIPFHKnOj-rVWR6va_7Q)*
 
 ## 相关笔记
+- [[审判要件卡-入库索引-机动车立案审查与抗辩-2026-09-10]] (共现关键词: PDF, 慈善)
+- [[用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包]] (共现关键词: 搞定, 公司, Excel)
 - [[贵州类案指南第一卷-第一部分-敲诈勒索罪-提取文本]] (共现关键词: PDF, 合同)
 - [[WF-007-怎么设计一个能交付的合同审查-Skill]] (共现关键词: 一个, 合同)
 - [[患者复制病程记录权-医疗纠纷条例解读-2026-08-05]] (共现关键词: 解读, 慈善, 关键词)
@@ -360,7 +362,7 @@ markitdown / pptx-generator / minimax-xlsx / minimax-docx
 - [[重磅逐条解读｜2026版《民营企业劳动用工管理制度》]] (共现关键词: 公司, 解读)
 - [[案件生命周期管理系统/陈长卫劳务致害案/裁判规则提取报告_陈长卫劳务致害案_20250607 1]] (共现关键词: 提取, 合同, 公司)
 - [[2026版民营企业劳动用工管理制度12章解读-2026-08-07]] (共现关键词: 合同, 公司, 解读)
-- [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: PPT, AI)
+- [[笔记助手/其它笔记/Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: PPT, AI)
 - [[知识库/workbuddy 使用技巧/WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 一个, WorkBuddy, AI)
 - [[知识库/workbuddy 使用技巧/我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: 一个, WorkBuddy, AI)
 - [[智能体技能库/蓝队律师合同审查/怎么设计一个能交付的合同审查 Skill]] (共现关键词: 一个, AI)

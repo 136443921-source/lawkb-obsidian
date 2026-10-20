@@ -1,3 +1,12 @@
+---
+tags:
+  - 运维
+  - override
+  - 9655
+  - lti
+  - gate
+---
+
 # 9655  cockpit-v2 项目长期记忆
 
 ## 运维铁律 / 已知坑
@@ -9,3 +18,10 @@
 - 9655 运维手册：LawKB/小强律师数字分身系统/00-系统总览与运维中心/9655 驾驶舱运维手册.md（v1.4，只读运维层）
 - 基线快照：同目录 9655_驾驶舱基线快照.json（drift_check 比对真源）
 - 门禁 plist：~/Library/LaunchAgents/com.xiaoqiang.lti-gate.plist
+
+## 相关笔记
+- [[2026-09-29]] (共现关键词: check, 9655)
+- [[2026-10-02]] (共现关键词: override, lti)
+- [[memory]] (共现关键词: js, override, 9655)
+- [[2026-09-21]] (共现关键词: gate, 9655, lti)
+- [[README]] (共现关键词: gate, lti)

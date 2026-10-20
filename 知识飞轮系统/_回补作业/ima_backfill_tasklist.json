@@ -2,7 +2,7 @@
   "schema": "ima_backfill_tasklist/v1.1",
   "generated": "2026-10-16",
   "generated_by": "WorkBuddy 知识飞轮系统（老强指令：校正数据完整性后跑第1批）",
-  "revision_note": "v1.1：完成 ingested_total 口径统一 + A类冗余清理 + status=None 窗口补齐后重算基线 | 10:48 第1批部分完成：人伤库3张卡产出（R-PI-559/560/561）",
+  "revision_note": "v1.1：完成 ingested_total 口径统一 + A类冗余清理 + status=None 窗口补齐后重算基线 | 10:48 第1批部分完成：人伤库3张卡产出（R-PI-559/560/561） | v1.2(2026-10-20)：qcc-legal 充值 98 分转正，channel_status.qcc_legal 由 DOWN 改 UP，D 阶段三通道回源（本地法条银行+元典+qcc-legal）已全部转正",
   "measured_baseline": {
     "note": "2026-10-16 数据完整性校正后实测值，优先于任何历史/口述数字",
     "open_windows": 21,
@@ -30,9 +30,9 @@
       "evidence": "逐字法条回填成功"
     },
     "qcc_legal": {
-      "state": "DOWN",
-      "reason": "积分余额不足（MCP error 300008）",
-      "impact": "走元典+本地法条银行双通道，卡片脚注声明 qcc 缺位"
+      "state": "UP",
+      "evidence": "2026-10-20 实调 get_legal_article_detail(民法典143) 成功返回逐字原文+溯源链接 https://www.qcclegal.com/regulation/... ；账户余额 98 分（用户充值后 MCP 余额缓存已刷新）",
+      "impact": "三通道回源（本地法条银行 + 元典 + qcc-legal）已全部转正，D 阶段不再降级双通道；历史卡片脚注「qcc 缺位」声明已失效，待批量清理"
     }
   },
   "ingested_baseline": {
@@ -76,7 +76,7 @@
       "IMA 通道实调探活（get_knowledge_list access_status=3）",
       "三重去重（跨批次/标题级/同库）",
       "rule_id 由 next_rule_id.py 分配",
-      "三通道回源（本地法条银行优先；缺位走元典并声明）"
+      "三通道回源（本地法条银行优先；元典 + qcc-legal 双法律库补强，qcc 已转正 2026-10-20）"
     ],
     "must_not": [
       "未取到全文一律不写 ingested",

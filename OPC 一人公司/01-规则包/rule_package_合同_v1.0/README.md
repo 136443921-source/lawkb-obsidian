@@ -1,11 +1,11 @@
 ---
-created: 2026-09-23T23:17
-updated: 2026-09-24T00:01
+created: 2026-10-16T23:15
+updated: 2026-10-19T09:56
 ---
 # 合同风险规则包 · 使用说明（v1.0）
 
 > 适用域：合同起草/审查/履约/争议全周期风险识别与处置
-> 生成日期：2026-09-24 ｜ 计费模式：subscription_by_domain ｜ 许可：internal_commercial_unit
+> 生成日期：2026-10-19 ｜ 计费模式：subscription_by_domain ｜ 许可：internal_commercial_unit
 > 采集模式：目录（目录 知识飞轮系统/06-沉淀/合同风险规则库）
 
 ## 一、这个包是什么
@@ -15,7 +15,7 @@ updated: 2026-09-24T00:01
 ## 二、交付物清单
 | 资产 | 数量 | 位置 |
 |---|---|---|
-| 合同风险规则卡 | 282 张 | `assets/rules/contract_rules.json` |
+| 合同风险规则卡 | 286 张 | `assets/rules/contract_rules.json` |
 | 法律法规 | 2 部 | `assets/laws/laws_index.json` |
 | 内规手册 | 0 条（章节索引） | `assets/internal/internal_index.json` |
 | 经验卡 | 7 张 | `assets/cards/` |

@@ -1,3 +1,16 @@
+---
+tags:
+  - LawKB
+  - chenyouqiang
+  - 慈善法
+  - 行政诉讼
+  - Users
+  - C4
+  - 事项
+  - 合同法
+  - 民事诉讼
+---
+
 # 🏛️ 驾驶舱每日整改清单 · 2026-09-27 09:46
 
 > 生成者：律所主任·驾驶舱全量巡检引擎（L1 只读）｜**本清单仅建议，所有整改动作由老强核实处理后执行**
@@ -147,3 +160,9 @@
 - **屏上整改项来源**：LTI=`health_rows[].actions`/事故卡/零命中规则；CLM=`gates[status≠pass]`/`deadlines[level]`/`nextActions`/`risks`；评分卡=`screens[].flag/score/six`；卡族=frontmatter 实扫；HTML 屏=关键词启发式。
 - **只读护栏**：本引擎不触发任何站点重发、不改配置；线上刷新由各自既有自动化负责。
 - **敏感隔离**：CLM 含真实案号/当事人姓名，本报告不展开当事人姓名，仅老强本人可见。
+
+## 相关笔记
+- [[cockpit_monitor_2026-09-28]] (共现关键词: LawKB, 裁定, 上诉)
+- [[cockpit_monitor_2026-09-26]] (共现关键词: LawKB, 裁定, 上诉)
+- [[WF-016-frontmatter批量更新报告]] (共现关键词: chenyouqiang, 合同, Documents)
+- [[_双链完整性报告_2026-10-16]] (共现关键词: LawKB, Documents, chenyouqiang)

@@ -1,3 +1,12 @@
+---
+tags:
+  - ##
+  - hub
+  - html
+  - cockpit
+  - index
+---
+
 # 小强总驾驶舱 · 内部操作版（公网原版 1:1 还原）
 
 > 本目录 = 公网 `xiaoqiang-cockpit-hub.app.workbuddy.host`（wbapp_8oxQaImtlGQF5gmODMx19W）的 **1:1 本地还原**。  
@@ -47,3 +56,8 @@ python3 -m http.server 9360
 ## 本地预览（保活一键启动）
 
 `./start_cockpit_hub_ops.sh` 启动并保活本地服务（采用 `os.setsid()` 脱离进程组，命令结束不被回收）；`--restart` 杀旧进程并重启为受管进程（pidfile `.cockpit_ops.pid` + 日志 `.cockpit_ops.log`）。访问 `http://127.0.0.1:9360/`（令牌登录，账号见上「运行方式」）。
+
+## 相关笔记
+- [[2026-09-17-慈法合规hub补索引]] (共现关键词: ##, hub)
+- [[2026-09-19]] (共现关键词: ##, hub)
+- [[README]] (共现关键词: README, hub)

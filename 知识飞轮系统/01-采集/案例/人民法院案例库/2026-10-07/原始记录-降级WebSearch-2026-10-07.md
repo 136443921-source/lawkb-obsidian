@@ -4,6 +4,18 @@ type: 原始记录
 source: WebSearch降级（IMA/元典/pkulaw/qcc 通道本会话未注入）
 source_verified: false
 note: D阶段5槽位靶向采集·来源降级·未编造案号
+
+tags:
+  - 劳动争议
+  - 刑事诉讼
+  - ##
+  - 慈善法
+  - 医疗纠纷
+  - PI
+  - source
+  - 捐赠
+  - 降级
+  - 合同法
 ---
 
 # 原始记录 · 人民法院案例库 2026-10-07（降级 WebSearch）

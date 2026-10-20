@@ -1,7 +1,11 @@
+---
+created: 2026-10-16T23:15
+updated: 2026-10-19T09:55
+---
 # 医疗人伤规则包 · 使用说明（v1.0）
 
 > 适用域：医疗事故/医疗损害责任纠纷的过错认定、参与度、赔偿规则
-> 生成日期：2026-09-23 ｜ 计费模式：subscription_by_domain ｜ 许可：internal_commercial_unit
+> 生成日期：2026-10-19 ｜ 计费模式：subscription_by_domain ｜ 许可：internal_commercial_unit
 > 采集模式：目录（目录 知识飞轮系统/06-沉淀/人伤法域库/医疗人损）
 
 ## 一、这个包是什么
@@ -12,7 +16,7 @@
 | 资产 | 数量 | 位置 |
 |---|---|---|
 | 医疗人伤规则卡 | 220 张 | `assets/rules/medical_rules.json` |
-| 法律法规 | 11 部 | `assets/laws/laws_index.json` |
+| 法律法规 | 19 部 | `assets/laws/laws_index.json` |
 | 内规手册 | 0 条（章节索引） | `assets/internal/internal_index.json` |
 | 经验卡 | 25 张 | `assets/cards/` |
 | 自查清单 | 2 份 | `assets/checklists/checklists_index.json` |

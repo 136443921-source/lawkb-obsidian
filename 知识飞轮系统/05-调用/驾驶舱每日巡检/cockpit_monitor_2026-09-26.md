@@ -1,6 +1,17 @@
 ---
 created: 2026-09-26T09:00
 updated: 2026-09-26T09:11
+
+tags:
+  - LawKB
+  - Documents
+  - chenyouqiang
+  - 慈善法
+  - 行政诉讼
+  - Users
+  - C4
+  - 合同法
+  - 民事诉讼
 ---
 # 🏛️ 驾驶舱每日整改清单 · 2026-09-26 09:11
 
@@ -142,3 +153,16 @@ updated: 2026-09-26T09:11
 - **屏上整改项来源**：LTI=`health_rows[].actions`/事故卡/零命中规则；CLM=`gates[status≠pass]`/`deadlines[level]`/`nextActions`/`risks`；评分卡=`screens[].flag/score/six`；卡族=frontmatter 实扫；HTML 屏=关键词启发式。
 - **只读护栏**：本引擎不触发任何站点重发、不改配置；线上刷新由各自既有自动化负责。
 - **敏感隔离**：CLM 含真实案号/当事人姓名，本报告不展开当事人姓名，仅老强本人可见。
+
+## 相关笔记
+- [[cockpit_monitor_2026-09-16]] (共现关键词: 裁定, 上诉, 合同)
+- [[_2026-09-16-D6-驾驶舱监控技能建设]] (共现关键词: cockpit, 09, 2026)
+- [[DEC-2026-016-9655单机驾驶舱1比1复原9360框架]] (共现关键词: cockpit, 2026)
+- [[cockpit_monitor_2026-09-22]] (共现关键词: LawKB, 裁定, 上诉)
+- [[cockpit_monitor_2026-10-16]] (共现关键词: LawKB, 裁定, 上诉)
+- [[cockpit_monitor_2026-10-02]] (共现关键词: LawKB, 裁定, 上诉)
+- [[2026-09-17]] (共现关键词: LawKB, 证据, 合同)
+- [[cockpit_monitor_2026-09-28]] (共现关键词: LawKB, 裁定, 上诉)
+- [[cockpit_monitor_2026-09-27]] (共现关键词: LawKB, 裁定, 上诉)
+- [[WF-016-frontmatter批量更新报告]] (共现关键词: chenyouqiang, 合同, Documents)
+- [[_双链完整性报告_2026-10-16]] (共现关键词: LawKB, Documents, chenyouqiang)

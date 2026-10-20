@@ -1,6 +1,6 @@
 {
-  "plan_date": "2026-10-08",
-  "mode": "dry（默认不写知识库，待主任拍板 --apply）",
+  "plan_date": "2026-10-19",
+  "mode": "apply（已授权刷新包 manifest）",
   "target": 200,
   "selected_domains": [
     "再审程序域库",
@@ -47,7 +47,7 @@
     {
       "package": "rule_package_人伤法_v1.0",
       "domain": "人伤法",
-      "pending_count": 174
+      "pending_count": 168
     },
     {
       "package": "rule_package_医疗_v1.0",
@@ -64,5 +64,19 @@
     "人伤法",
     "医疗",
     "合同"
-  ]
+  ],
+  "package_refresh": {
+    "attempted": [
+      "人伤法",
+      "医疗",
+      "合同"
+    ],
+    "ok": [
+      "人伤法",
+      "医疗",
+      "合同"
+    ],
+    "failed": [],
+    "mode": "apply"
+  }
 }

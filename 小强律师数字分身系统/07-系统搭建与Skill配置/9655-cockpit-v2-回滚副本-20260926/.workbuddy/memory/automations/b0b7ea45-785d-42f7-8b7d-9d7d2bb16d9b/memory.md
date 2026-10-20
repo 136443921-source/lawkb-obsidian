@@ -1,3 +1,12 @@
+---
+tags:
+  - override
+  - 2026
+  - C8
+  - js
+  - 09
+---
+
 # 9655 每日评分对齐校验 · 执行记忆
 
 - 首次运行：2026-09-21 09:02（无历史记忆文件）
@@ -25,3 +34,8 @@
   4. 门禁守护 ⚠️：lti-gate-daemon 未跑（pgrep 退出码1）。
   5. 服务可达 ✅：override.js HTTP 200。
   - 处置建议：重跑 scan_9655.py 重注入 C4/C5/C8（并排查生成脚本覆盖）；本机真实 Terminal launchctl load 门禁。未改任何文件。
+
+## 相关笔记
+- [[MEMORY]] (共现关键词: js, override, 9655)
+- [[2026-10-02]] (共现关键词: override, 2026, C4)
+- [[PROJ-SYS-9360COCKPIT-运维备忘录]] (共现关键词: js, 2026, C5)

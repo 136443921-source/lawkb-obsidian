@@ -83,6 +83,8 @@ $PY /Users/chenyouqiang/.workbuddy/skills/hub-card-backfill/backfill.py \
 - 中枢元规则：`00-全局规则/共享记忆协议-v1.0.md`、`冲突仲裁规则.md`、`字段-Schema.md`。
 
 ## 相关笔记
+- [[SKILL]] (共现关键词: 仲裁, SKILL)
+- [[CHANGELOG]] (共现关键词: ##, updated)
 - [[2026-09-12]] (共现关键词: 诉讼, SKILL)
 - [[红队心智模型与训练备忘录-2026-09-14]] (共现关键词: SKILL, 证据)
 - [[红队心智模型复盘-2026-09-14]] (共现关键词: ##, SKILL, 证据)

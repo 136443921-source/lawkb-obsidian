@@ -1,0 +1,46 @@
+{
+  "round": "R29",
+  "date": "2026-10-20",
+  "mode": "存量卡质量巡检（原审判要件卡补拆，2026-09-12 改）",
+  "r2_consecutive_zero_fix": 2,
+  "r2_triggered": false,
+  "pending_statute": {
+    "tool": "grep -rl '^statute_text_pending: true' --include='R-*.md' 06-沉淀/裁判规则库",
+    "double_tool_consistent": true,
+    "count": 4,
+    "cards": ["R-HG-110", "R-CF-220", "R-LN-136", "R-HT-342"],
+    "note": "与 R28 完全相同，稳定挂起态；三通道形态② + 本地版本门禁双阻断"
+  },
+  "deadlinks": {
+    "scanner": "R27 沙箱适配版 _check_deadlinks_r27.py (safe_read, 非阻塞)",
+    "basename_set": 6670,
+    "scanned_cards": 316,
+    "files_hit": 76,
+    "naive_real_dead": 54,
+    "alias_or_title_variant": 53,
+    "genuine_real_dead": 1,
+    "genuine_detail": ["09102总经理职权明文化（本地制品未建引用，归 P0-4/F 类）"],
+    "pending_notes": 69,
+    "sandbox_blocked": 2
+  },
+  "statute_backfill": {
+    "count": 0,
+    "channel_status": "形态② (pkulaw/yuandian/qcc-legal 均未载入本会话工具表，时间戳 2026-10-20 18:16 CST)",
+    "local_version_gate": "阻断（坑33/75：概念枢纽非真源 / version_mismatch）",
+    "deviation_blocked": 0
+  },
+  "deadlink_fix": {
+    "tool": "_fix_deadlinks_v9_20260918.py (严格13条白名单)",
+    "dry_run_hits": 0,
+    "idempotent": true,
+    "fixed": 0
+  },
+  "deviation_intercepted": 0,
+  "backup_rollback": "无写盘",
+  "carried_over": [
+    "4 张 pending 待三通道恢复回源",
+    "真实死链 1 条归 P0-4/F 类人工路由",
+    "本地源版本门禁待补戳",
+    "主脚本 _check_deadlinks.py 阻塞读（坑77/78 残余）未修"
+  ]
+}

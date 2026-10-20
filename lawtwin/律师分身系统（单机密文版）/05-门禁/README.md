@@ -98,6 +98,12 @@ python3 lti-gate-client.py --ping
 - 2026-09-17 初建（G2）。解耦封装，airgap 默认开，零修改被封装 LTI 代码。
 
 ## 相关笔记
+- [[20260828-厚德基金会诉百益上诉状审查]] (共现关键词: 2026, docx)
+- [[SOP-BUS-02_法律文书docx交付]] (共现关键词: ##, docx)
+- [[lti_element_cards.json]] (共现关键词: 2026, lti)
+- [[2026-09-20]] (共现关键词: py, 共现, 2026)
+- [[RULE-052---macOS-launchctl-写操作全禁-LaunchAgents-靠登录自动加载-勿依赖-launchctl-load-start]] (共现关键词: ##, lti)
+- [[RULE-050---不动-gate-config.md，符合非破坏性扩展铁律]] (共现关键词: 共现, 2026, gate)
 - [[决策卡-法律文书格式范式与docx交付铁律-20260905]] (共现关键词: docx, ##)
 - [[MEMORY]] (共现关键词: gate, lti)
 - [[2026-09-21]] (共现关键词: 2026, gate, lti)

@@ -47,3 +47,7 @@ updated: 2026-10-06T23:00
 ## 适用范围
 - 法条银行 / 任何用华宇元典 MCP 回填 `yuandian_*` 字段的场景。
 - 反向也成立：若某卡 `yuandian_doc_no` 有值，应来自元典主条目或关联子条目的 `document_number`，而非卡体 doc_no 的照抄。
+
+## 相关笔记
+- [[卡型定义与总索引]] (共现关键词: 2026, YD, 条目)
+- [[registry_consistency_report]] (共现关键词: 2026, 条目)

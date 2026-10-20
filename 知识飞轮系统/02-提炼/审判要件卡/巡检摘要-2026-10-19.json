@@ -1,0 +1,74 @@
+{
+  "round": "R28",
+  "date": "2026-10-19",
+  "mode": "存量卡质量巡检",
+  "note": "自动化记忆漏记R27(2026-10-18)，今日实为R28；结论均标【候选·待人工确认】",
+  "r2_consecutive_zero_count": 1,
+  "r2_triggered": false,
+  "channel_verification": {
+    "timestamp": "2026-10-19T09:5x:00+08:00",
+    "method": "DeferExecuteTool真调用 + ToolSearch精确查",
+    "yuandian": "not found in deferred tools index -> 形态②(会话级未载入)",
+    "qcc_legal": "ToolSearch未命中 -> 形态②",
+    "pkulaw": "ToolSearch未命中 -> 形态②(已退优先序列)",
+    "conclusion": "三通道均形态②(非死通道)；降级本地源兜底(R16优先级③)"
+  },
+  "pending_frontmatter": {
+    "scope": "06-沉淀/裁判规则库",
+    "count": 4,
+    "files": ["R-HG-110", "R-CF-220", "R-LN-136", "R-HT-342"],
+    "created": "2026-10-18(22:28 A1/B回补卡，R27扫描窗口之后→坑29漏检)",
+    "backfill_count": 0,
+    "blocked_reasons": {
+      "R-HG-110": "劳动争议解释一§43: 本地为断链消解器生成的概念枢纽页(无版本元数据/无法条正文)，非真源(坑69/73)",
+      "R-CF-220": "红十字会法§21/红十字会捐赠工作管理办法§23: 本地无独立法条文件",
+      "R-LN-136": "变更追加当事人规定/财产调查规定/终本规定: 本地无独立法条文件; 刑法§313落点=坑33雷区(人大网2019挂1997原版)禁填",
+      "R-HT-342": "经济犯罪嫌疑规定§5.1: 本地无独立法条文件(合同法§49已被§172吸收不填)"
+    }
+  },
+  "inline_double_scan_pit71": {
+    "scope": "06-沉淀/裁判规则库",
+    "files_containing_string": 155,
+    "frontmatter_true": 4,
+    "descriptive_annotations": 151,
+    "note": "151为statute_text_pending_note注解+待权威源回填描述性标注，非缺陷，标【候选·待人工确认】"
+  },
+  "statute_backfill": {
+    "filled": 0,
+    "deviation_blocked": 0,
+    "double_block": "三通道形态② + 本地源版本门禁/概念枢纽非真源/雷区"
+  },
+  "deadlink_gate": {
+    "tool": "/tmp/_check_deadlinks_r27.py (沙箱适配版·safe_read+alarm；主脚本--all本沙箱挂起=坑77残余)",
+    "basename_set_cross_library": 6667,
+    "targets_scanned": 316,
+    "hit_files": "77-78/316",
+    "naive_real_dead": 54,
+    "old_caliber_total": "122-123",
+    "sandbox_blocked": 1,
+    "parse_errors": 0,
+    "real_dead_after_review": 0,
+    "review_note": "54条=R27验证集一致: 53条长文件名别名可消解(坑64) + 1条数字误判主题名(09102总经理职权明文化, R21 F类本地制品引用)"
+  },
+  "deadlink_fix": {
+    "tool": "_fix_deadlinks_v9_20260918.py (严格白名单, 守坑34/70, 禁回退v2事故源)",
+    "dry_run_hits": 0,
+    "applied": 0,
+    "note": "真实死链0 → 幂等; v9含阻塞读隐患本轮未重跑, 依据R27验证0+今日复扫确认"
+  },
+  "six_b": {
+    "backups": "无(零写盘)",
+    "writes": 0,
+    "rollbacks": 0
+  },
+  "critical_findings": [
+    "主脚本_check_deadlinks.py --all/--dir 本沙箱必挂起(io.open().read()阻塞读, 坑77 safe_read未落主脚本); 全库死链巡检不可用, 须合并补丁版safe_read或固化沙箱适配版",
+    "自动化记忆memory.md漏记R27(2026-10-18), 本轮已补记"
+  ],
+  "pending_human": [
+    "修复主脚本阻塞读(坑77残余)",
+    "4张待回源卡待三通道恢复后回源",
+    "本地源版本门禁补戳(刑法雷区)",
+    "53条别名软引用+1条本地制品引用归P0-4/R21 F类"
+  ]
+}

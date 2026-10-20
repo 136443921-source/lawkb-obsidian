@@ -23,3 +23,8 @@ tags:
 - 配套：元心智模型解剖手册、活文档 `知识飞轮系统/05-调用/小强律师元心智模型备忘录活文档-2026-09-17.md`、PROJ-009、跨席聚合脚本 `_common/scripts/xiaoqiang_meta_maturity.py`
 
 > 改动请到中枢权威卡，勿在本指针文件存放内容。
+
+## 相关笔记
+- [[A线-指针同步报告-20260921_173412]] (共现关键词: 指针, md)
+- [[小强律师-元人格卡_xiaoqiang_meta_persona_v1]] (共现关键词: xiaoqiang, 心智, meta)
+- [[法条银行行长_persona_v1]] (共现关键词: v1, persona)

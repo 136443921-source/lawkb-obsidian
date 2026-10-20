@@ -23,6 +23,18 @@ tags:
 - **文件路径**：/Users/chenyouqiang/Documents/LawKB/知识库/数字分身系统搭建/法律类skill 配置迭代-九阳神功/[[AI模拟法庭法官skill 配置说明书|AI模拟法庭法官skill 配置说明书]].md
 
 ## 相关笔记
+- [[R-SH-016]] (共现关键词: 合同, 关键词, 016)
+- [[R-LN-016]] (共现关键词: 合同, ---, 016)
+- [[DEC-2026-016-9655单机驾驶舱1比1复原9360框架]] (共现关键词: 共现, 关键词, 016)
+- [[WF-021-法律文书写作助手skill-配置说明书v2.0]] (共现关键词: WF, 合同, 关键词)
+- [[DEC-2026-002-法律咨询路由纠偏]] (共现关键词: 合同, 关键词, skill)
+- [[合同审查的五个层次]] (共现关键词: 合同, skill, 关键词)
+- [[worklog]] (共现关键词: chenyouqiang, 合同)
+- [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: WF, chenyouqiang, 关键词)
+- [[cockpit_monitor_2026-09-28]] (共现关键词: chenyouqiang, 合同, Documents)
+- [[cockpit_monitor_2026-09-27]] (共现关键词: chenyouqiang, 合同, Documents)
+- [[cockpit_monitor_2026-09-26]] (共现关键词: chenyouqiang, 合同, Documents)
+- [[_双链完整性报告_2026-10-16]] (共现关键词: chenyouqiang, 报告, Documents)
 - [[RULE-038---T1-落-`法条银行_Schema规范_v1.0.md`（两型统一-fron]] (共现关键词: ---, frontmatter, 共现)
 - [[原材料仓污染排查报告（scripts专项）-20260927]] (共现关键词: ---, frontmatter, 报告)
 - [[WF-数字员工增员减员更新花名册]] (共现关键词: 更新, WF)

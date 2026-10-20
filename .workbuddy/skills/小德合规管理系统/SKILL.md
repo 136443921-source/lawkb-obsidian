@@ -7,6 +7,18 @@ version: 1.8.0
 category: 合规管理 > 父路由
 ssot: ~/Documents/LawKB/小德合规管理系统/06-运维备忘录/小德合规管理系统-运维手册（五模板版）.md（v1.4.9 · 系统母本备忘录 · L0 唯一权威源）
 change_guard: ~/Documents/LawKB/小德合规管理系统/06-运维备忘录/cms_change_guard.sh（变更守卫 · 系统改而备忘录未回写 → 红态 exit 2）
+
+tags:
+  - 模板
+  - 劳动争议
+  - 刑事诉讼
+  - 合规
+  - 行政诉讼
+  - 慈善法
+  - 医疗纠纷
+  - 2026
+  - 合同
+  - 合同法
 ---
 
 ## 第零步 · 需求拷问前置门禁（grill-me-legal-preprocessor）
@@ -349,3 +361,10 @@ change_guard: ~/Documents/LawKB/小德合规管理系统/06-运维备忘录/cms_
 `python3 ~/.workbuddy/metrics/emit_card_consumption.py "<卡basename去.md>"`
 （family 参数可省；发射器按 basename 在库存内自动归类，重复消费同一卡仅计一次。
 该 jsonl 存在且非空时 D9 自动采用为真值；删除即回退 backlink 代理口径，零代码改动。禁止预填虚构数据。）
+
+## 相关笔记
+- [[红队心智模型复盘-2026-09-14]] (共现关键词: 合同, 基金会, 2026)
+- [[SKILL]] (共现关键词: 仲裁, SKILL)
+- [[WF-028-知识飞轮卡库接线]] (共现关键词: 合同, 2026, SKILL)
+- [[DEC-006-蓝队训练记录落位与版本号冻结]] (共现关键词: 合同, SKILL)
+- [[经验卡片-CMS治理-母本位置歧义事故复盘]] (共现关键词: 运维, 2026, 母本)

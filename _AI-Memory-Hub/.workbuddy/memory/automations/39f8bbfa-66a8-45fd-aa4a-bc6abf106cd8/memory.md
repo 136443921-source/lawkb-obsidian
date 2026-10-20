@@ -28,6 +28,9 @@ tags:
 - project-fact 候选按"宁缺毋滥"默认跳过，避免污染中枢；如需放宽可在 user_query 显式要求入库。
 
 ## 相关笔记
+- [[RULE-035-回补时一律实地查库取号，memory-预留号仅供参考、不作依据]] (共现关键词: memory, ---, 关键词)
+- [[AI工具WorkBuddy篇8换电脑后数据如何迁移]] (共现关键词: 关键词, Users)
+- [[_双链完整性报告_2026-10-16]] (共现关键词: chenyouqiang, Users, 2026)
 - [[cockpit_monitor_2026-10-02]] (共现关键词: Users, 2026, chenyouqiang)
 - [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: Users, 09, 2026)
 - [[legacy-scan-2026-09-27]] (共现关键词: 09, 2026, chenyouqiang)

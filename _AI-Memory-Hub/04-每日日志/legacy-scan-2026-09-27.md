@@ -1,3 +1,17 @@
+---
+tags:
+  - jsonl
+  - 劳动争议
+  - 刑事诉讼
+  - chenyouqiang
+  - 慈善法
+  - 医疗纠纷
+  - Users
+  - 公司法
+  - 知识产权
+  - 合同法
+---
+
 # 遗留资产盘点报告 2026-09-27
 
 - 扫描源：`/Users/chenyouqiang/Documents/xiaoqianglawkb` (md 224) + `/Users/chenyouqiang/.workbuddy/projects` (jsonl 含)
@@ -202,6 +216,9 @@
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/d1269700-4e4d-4633-b729-0e5bcadb03f3.jsonl` — 24113802/周报/工作周报-2026-33.md`（**2,201 字符**，覆盖 16:55 数据） / / 每周复盘生成 / ✅ / `/Users/chenyouqiang/WorkBuddy/Claw/小强律师数字分身3.0/
 
 ## 相关笔记
+- [[dangling_scan_2026-09-04]] (共现关键词: 合同, 2026, 赔偿)
+- [[2026-09-26]] (共现关键词: 09, 2026, scan)
+- [[legacy-scan-2026-09-14]] (共现关键词: 裁定, 合同, 2026)
 - [[安装selfimprovingagent让WorkBuddy学会自己改进]] (共现关键词: WorkBuddy, 合同)
 - [[一句话让AI替你打工WorkBuddy128个通用指令全解析]] (共现关键词: WorkBuddy, 合同)
 - [[WorkBuddy提示词速查手册50个可复制的指令模板]] (共现关键词: 捐赠, WorkBuddy, 民法)

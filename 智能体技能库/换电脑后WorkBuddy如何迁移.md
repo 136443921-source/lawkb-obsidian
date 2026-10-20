@@ -309,6 +309,8 @@ WorkBuddy 的迁移本质上就是搬一个目录：```
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/UfcoG5_TZHM45yIJQzZJjw)*
 
 ## 相关笔记
+- [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: 共现, 关键词, workbuddy)
+- [[换电脑后WorkBuddy如何迁移]] (共现关键词: 同步, 如何, 公司)
 - [[WF-057-连接器故障四亚型分层诊断与处置流水线]] (共现关键词: 连接器, 共现)
 - [[WF-039---前置：2106-修复-IMA-双开关-+-用户再重启-→-连接器状态-`im]] (共现关键词: 关键词, 连接器, 共现)
 - [[RULE-013---点火条件仍依赖用户在连接器页对-ima-mcp-重新信任授权+重启（不代点U]] (共现关键词: 关键词, 连接器)

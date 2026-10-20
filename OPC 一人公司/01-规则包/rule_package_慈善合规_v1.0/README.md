@@ -1,11 +1,11 @@
 ---
-created: 2026-09-23T22:34
-updated: 2026-09-24T00:01
+created: 2026-10-16T23:15
+updated: 2026-10-19T09:48
 ---
 # 慈善合规规则包 · 使用说明（v1.0）
 
 > 适用域：慈善组织（基金会、慈善总会、社会服务机构）合规运营
-> 生成日期：2026-09-24 ｜ 计费模式：subscription_by_domain ｜ 许可：internal_commercial_unit
+> 生成日期：2026-10-19 ｜ 计费模式：subscription_by_domain ｜ 许可：internal_commercial_unit
 > 采集模式：目录（目录 知识飞轮系统/06-沉淀/慈善合规域库）
 
 ## 一、这个包是什么
@@ -15,11 +15,11 @@ updated: 2026-09-24T00:01
 ## 二、交付物清单
 | 资产 | 数量 | 位置 |
 |---|---|---|
-| 慈善合规规则卡 | 188 张 | `assets/rules/charity_rules.json` |
+| 慈善合规规则卡 | 194 张 | `assets/rules/charity_rules.json` |
 | 法律法规 | 11 部 | `assets/laws/laws_index.json` |
 | 内规手册 | 135 条（章节索引） | `assets/internal/internal_index.json` |
 | 经验卡 | 6 张 | `assets/cards/` |
-| 自查清单 | 2 份 | `assets/checklists/checklists_index.json` |
+| 自查清单 | 3 份 | `assets/checklists/checklists_index.json` |
 
 ## 三、使用限制
 - 仅限内部虚构商业化单元订阅使用，**非对外公开售卖**。
