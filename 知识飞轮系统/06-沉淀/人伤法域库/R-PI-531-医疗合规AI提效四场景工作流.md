@@ -1,5 +1,5 @@
 ---
-rule_id: R-PI-531
+rule_id: R-PI-589
 card_type: 实务规则卡
 geo_scope: 全国
 library: 小强律师数字分身系统
@@ -19,6 +19,8 @@ tags:
   - PI
   - 场景
   - 民事诉讼
+aliases:
+  - R-PI-531
 ---
 
 # R-PI-531 医疗合规AI提效四场景工作流（实务规则卡）
