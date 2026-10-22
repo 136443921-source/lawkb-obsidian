@@ -3,7 +3,7 @@ id: PROJ-004
 title: 红队对抗律师训练项目状态
 type: project
 status: active
-updated: 2026-09-15
+updated: 2026-10-21T11:44
 source_ai: workbuddy
 scope: global
 confidence: high
@@ -14,6 +14,8 @@ tags:
   - 心智卡
   - 训练
   - 四方同构
+related:
+  - 红队心智模型与训练备忘录-2026-09-14
 ---
 
 # 🔴 PROJ-004 · 红队对抗律师训练项目状态

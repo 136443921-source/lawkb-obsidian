@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-通用死链自检器 v1.7.2（2026-09-16）
+通用死链自检器 v1.8.0（2026-10-21）
 --------------------------------
 用途：检查任意规则卡 / 审判要件卡 / 工程事故卡 / 案由路由卡的
       frontmatter.related_links 与正文 [[...]] 是否为真实存在的笔记基名。
@@ -78,6 +78,7 @@
           FileNotFoundError，被 `except` 静默吞掉 → **别名从未入集**，aliases
           消解死链的功能形同虚设。改 `rt→r`（walk 当前目录）。回归验证：R-CF-115
           / R-PI-182 的别名现正确入集。教训：门禁「改了但没生效」= 静默失败，
+  v1.8.0  🔴 修复「沙箱阻塞读」（坑77/78）：check_one()/build_basename_set() 的 io.open().read() 对大量文件永久挂起（自动化 --all 全库巡检跑不完），改为 safe_read()（二进制 + signal.alarm 5s 兜底，阻塞即返回空串不误判），口径与 R27 沙箱适配版一致；另补 import signal。
           须用成员测试（目标别名 in 集合）验证而非只看 exit code。
 """
 import io
@@ -85,6 +86,7 @@ import json
 import os
 import re
 import sys
+import signal
 
 # 搜索根：整个知识飞轮系统（不只用裁判规则库）
 # 教训（2026-09-07）：首版只扫 06-沉淀/裁判规则库，把真实存在的
@@ -122,6 +124,31 @@ LAWKB = "/Users/chenyouqiang/Documents/LawKB"
 EXTRA_ROOTS = [os.path.join(LAWKB, "法律法规库"),
                os.path.join(LAWKB, "智能体技能库"),
                os.path.join(LAWKB, "知识库")]
+
+
+def _alarm_handler(signum, frame):
+    raise TimeoutError("read blocked")
+
+
+def safe_read(path, tmo=5):
+    """二进制读取 + alarm 兜底；阻塞即返回 ''（不误判）。修复坑77/78 沙箱阻塞读。"""
+    try:
+        old = signal.signal(signal.SIGALRM, _alarm_handler)
+    except ValueError:
+        old = None
+    signal.alarm(tmo)
+    try:
+        with io.open(path, "rb") as fh:
+            b = fh.read()
+        return b.decode("utf-8", "replace")
+    except (TimeoutError, OSError):
+        return ""
+    except Exception:
+        return ""
+    finally:
+        signal.alarm(0)
+        if old is not None:
+            signal.signal(signal.SIGALRM, old)
 
 
 def extract_aliases(txt):
@@ -181,8 +208,7 @@ def build_basename_set(root=ROOT, extra=True):
                     # ⚠️ 必须用 walk 当前目录 r 拼路径，rt 是 root 只首层巧合匹配，
                     # 子目录卡会 FileNotFoundError 被 except 吞掉 → 别名永不入集（已修 2026-09-16）
                     try:
-                        with io.open(os.path.join(r, f), encoding="utf-8") as _fh:
-                            _t = _fh.read(8192)
+                        _t = safe_read(os.path.join(r, f))
                         for _al in extract_aliases(_t):
                             names.add(_al)
                     except Exception:
@@ -313,7 +339,7 @@ def is_external(name):
 
 def check_one(path, allmd):
     """检查单张卡，返回 (死链列表, 链接总数)"""
-    txt = io.open(path, encoding="utf-8").read()
+    txt = safe_read(path)
     if not txt.startswith("---"):
         return [], 0, NO_FM
 

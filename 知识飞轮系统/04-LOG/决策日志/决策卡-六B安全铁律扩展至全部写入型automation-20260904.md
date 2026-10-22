@@ -7,8 +7,10 @@ tags:
 created: 2026-09-04
 decision_id: DEC-20260904-002
 status: 已执行（P0-1 闭环）
+domain: 个人成长
 关联HIR: P0-1
-updated: 2026-09-25T20:41
+updated: 2026-10-20T22:31
+domain_backfilled: 2026-10-20T22:32
 ---
 
 # 决策卡 · 六-B 安全铁律覆盖范围

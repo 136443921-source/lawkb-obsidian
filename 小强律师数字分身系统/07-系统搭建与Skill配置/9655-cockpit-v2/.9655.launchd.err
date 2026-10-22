@@ -1,0 +1,759 @@
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65319)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65320)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65338)
+Exception occurred during processing of request from ('127.0.0.1', 65341)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65348)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65349)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65393)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65394)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65441)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65458)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65470)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65492)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65516)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65518)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65519)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65526)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65527)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 49162)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 49174)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 49180)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 49184)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 49185)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 49197)
+Traceback (most recent call last):
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/serve_nocache.py", line 29, in __init__
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 683, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 690, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/http/server.py", line 892, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyouqiang/.workbuddy/binaries/python/versions/3.13.12/lib/python3.13/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ~~~~~~~~~^^^^^^^^
+OSError: [Errno 11] Resource deadlock avoided
+----------------------------------------

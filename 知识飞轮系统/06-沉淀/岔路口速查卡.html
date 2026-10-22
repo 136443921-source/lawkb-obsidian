@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>岔路口速查卡 · 小强律师决策思维层</title>
+<style>
+:root{
+  --bg:#FAF9F5; --card:#FFFFFF; --ink:#1F1E1C; --ink2:#5F5E5A; --ink3:#888780;
+  --line:#DEDCD4; --line2:#EAE8E0;
+  --amber:#BA7517; --amber-bg:#FAEEDA; --amber-l:#EF9F27;
+  --teal:#0F6E56; --teal-bg:#E1F5EE;
+  --red:#A32D2D; --red-bg:#FCEBEB;
+  --blue:#185FA5; --blue-bg:#E6F1FB;
+  --purple:#534AB7; --purple-bg:#EEEDFE;
+  --green:#3B6D11; --green-bg:#EAF3DE;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.6;padding:24px 16px 60px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto}
+header{margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--ink)}
+h1{font-size:22px;font-weight:500;letter-spacing:-.2px;margin-bottom:6px}
+.sub{font-size:13px;color:var(--ink2)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--card);border:1px solid var(--line);color:var(--ink2)}
+.tag.warn{background:var(--red-bg);border-color:#F09595;color:var(--red)}
+.tag.ok{background:var(--teal-bg);border-color:#9FE1CB;color:var(--teal)}
+h2{font-size:15px;font-weight:500;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:8px}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:50%;
+  background:var(--ink);color:#fff;font-size:11px;font-weight:500;flex:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card h3{font-size:13px;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.card h3::before{content:"";width:3px;height:14px;border-radius:2px;background:var(--ink);flex:none}
+.card p,.card li{font-size:13px;color:var(--ink2)}
+.card ol,.card ul{margin:0;padding-left:17px}
+.card li{margin-bottom:4px}
+.card li:last-child{margin-bottom:0}
+.card b{color:var(--ink);font-weight:500}
+.amber h3::before{background:var(--amber)} .teal h3::before{background:var(--teal)}
+.red h3::before{background:var(--red)} .blue h3::before{background:var(--blue)}
+.purple h3::before{background:var(--purple)} .green h3::before{background:var(--green)}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;
+  border:1px solid var(--line);font-size:13px}
+th{background:#F1EFE8;text-align:left;padding:9px 12px;font-weight:500;font-size:12px;color:var(--ink2);
+  border-bottom:1px solid var(--line)}
+td{padding:9px 12px;border-bottom:1px solid var(--line2);color:var(--ink2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td b{color:var(--ink);font-weight:500}
+.badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:4px;font-weight:500;white-space:nowrap}
+.b-ok{background:var(--teal-bg);color:var(--teal)}
+.b-bad{background:var(--red-bg);color:var(--red)}
+.b-wait{background:var(--amber-bg);color:var(--amber)}
+.note{background:var(--amber-bg);border:1px solid #FAC775;border-radius:10px;padding:12px 15px;font-size:13px;color:#633806;margin-top:12px}
+.note b{color:#412402}
+.note.gray{background:#F1EFE8;border-color:var(--line);color:var(--ink2)}
+.note.gray b{color:var(--ink)}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin-top:4px}
+.step{flex:1 1 150px;min-width:140px;background:var(--card);border:1px solid var(--line);padding:11px 13px;position:relative}
+.step:first-child{border-radius:10px 0 0 10px}
+.step:last-child{border-radius:0 10px 10px 0}
+.step+.step{border-left:none}
+.step .k{font-size:11px;color:var(--ink3);margin-bottom:3px}
+.step .v{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.step .d{font-size:12px;color:var(--ink2);line-height:1.5}
+@media(max-width:640px){
+  body{padding:16px 12px 40px} h1{font-size:19px}
+  .flow{flex-direction:column} .step{border-radius:0!important;border-left:1px solid var(--line)!important}
+  .step:first-child{border-radius:10px 10px 0 0!important} .step:last-child{border-radius:0 0 10px 10px!important}
+  .step+.step{border-top:none}
+}
+@media print{
+  body{background:#fff;padding:0;font-size:11px}
+  .card,table{break-inside:avoid}
+  h2{margin:12px 0 6px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>岔路口速查卡</h1>
+  <div class="sub">小强律师数字分身 · 决策思维层速查 ｜ 生成于 2026-10-20 ｜ 源：<b>HOW-I-THINK.md</b> 规律级（H1–H20）+ 3 张已判定决策卡</div>
+  <div class="meta">
+    <span class="tag ok">✓ H1–H20 已入库</span>
+    <span class="tag ok">✓ 35/35 卡带合法 domain</span>
+    <span class="tag ok">✓ 已判定 3 张（对了 2 / 错了 1）</span>
+    <span class="tag warn">⚠ 已判定样本稀薄（3 张），重大取舍仍由老强拍板</span>
+  </div>
+</header>
+
+<h2><span class="n">1</span>起手式 · 遇到岔路口的六步</h2>
+<div class="flow">
+  <div class="step"><div class="k">STEP 1</div><div class="v">枚举真选项</div><div class="d">列 ≥2 个<b>实质不同</b>的选项并评估优劣。只有一条路 = 顺从直觉，不叫决策。</div></div>
+  <div class="step"><div class="k">STEP 2</div><div class="v">先写排除理由</div><div class="d">先逼「为什么排除其他」，再谈选这个。答成「为什么选」是偏差信号。</div></div>
+  <div class="step"><div class="k">STEP 3</div><div class="v">列最关键假设</div><div class="d">标出它支柱的是<b>所选方案</b>还是<b>被弃方案</b>（脱节须当场指出）。</div></div>
+  <div class="step"><div class="k">STEP 4</div><div class="v">写推翻信号</div><div class="d">可观察、可判定 + 带日期的时间盒。<b>并写明信号触发后立刻改做什么。</b></div></div>
+  <div class="step"><div class="k">STEP 5</div><div class="v">标注动力学</div><div class="d">被<b>缺陷推走</b>（评估过风险）vs 被<b>目标吸引</b>（低估拿不到的概率）——后者须显式标注。</div></div>
+  <div class="step"><div class="k">STEP 6</div><div class="v">当场记异议</div><div class="d">AI 异议<b>原样留档</b>，并转成 ③ 区行动项。记了不执行 = 没记。</div></div>
+</div>
+
+<div class="note"><b>⚠️ 第 4 步是本系统新暴露的最大缺口：</b>原模板只写「什么信号会推翻这个决定」，
+<b>没写「推翻后我立刻改做什么」</b>。雅菲案（2026-09-03）与 34 号（2026-09-05）两案重复踩中：
+信号全数精准命中，却只等来窗口关闭。<b>新卡必须写「信号 → 立即改做 X」。</b></div>
+
+<h2><span class="n">2</span>五类岔路口 · 默认倾向与依据</h2>
+<table>
+<thead><tr><th style="width:26%">岔路口类型</th><th style="width:32%">默认倾向</th><th>依据与已验证状态</th></tr></thead>
+<tbody>
+<tr><td><b>程序刀 vs 实体抗辩</b></td><td>程序主线 + 实体备位，<b>不孤注一掷</b></td><td><span class="badge b-ok">✓ 已验证</span> 6658 案：程序异议被完全绕过，实体备位（合同相对性+承揽）被法院说理直接采纳 → 老强方胜诉。留退路不是保守，是让实体刀接住。</td></tr>
+<tr><td><b>主线依赖第三方裁量</b><br>（法院定性/审批/许可）</td><td><b>必须并列写兜底路径</b></td><td><span class="badge b-bad">✗ 失败样本</span> 雅菲案：选 D「等法院作恶意诉讼定性→另案索赔」。民诉法 148 条 1 款裁量权在法院、238 条 1 款是「可以」非「应当」——<b>D 是自己控制不了兑付的彩票</b>。结果：不予定性+窗口关闭+不可上诉不可复议，另案未起诉，两头落空。</td></tr>
+<tr><td><b>目标吸引力 vs 缺陷推力</b></td><td>默认警惕<b>被目标吸引</b></td><td><span class="badge b-ok">✓ 已验证</span> 雅菲案建卡时即标注「被目标吸引、拿不到定性概率高」，三个月后高概率事件真的发生。</td></tr>
+<tr><td><b>证据强度 vs 争点被审理</b></td><td><b>两变量分开评估</b></td><td><span class="badge b-ok">✓ 已验证</span> 34 号：证据⑨（承办法官询问形成）证明力高，但法院径以实体一揽子驳回、从未进入授权争点审查 → 补强效果归零。<b>证据再强，争点没被审理就是零。</b></td></tr>
+<tr><td><b>未递交件 vs 已递交件主轴</b></td><td>对齐已递交件，<b>不擅自切换</b></td><td><span class="badge b-ok">✓ 已验证</span> 34 号：round-3 实体主攻版被 round-4 推翻，2026-10-09 决策评价逐字认定为「正确——结构纪律到位」。</td></tr>
+</tbody>
+</table>
+
+<h2><span class="n">3</span>时间盒与推翻信号 · 写法模板</h2>
+<div class="grid">
+  <div class="card amber">
+    <h3>时间盒三要素</h3>
+    <ol>
+      <li><b>日期</b>：写死具体日历日（不是「两个月后」）</li>
+      <li><b>起算依据</b>：从哪个事件起算、满几个月</li>
+      <li><b>到期动作</b>：到点<b>主动重估一次</b>，不默认「没消息就是好消息」</li>
+    </ol>
+    <p style="margin-top:8px">原则：<b>沉默即表态，看日历就该转</b>。不等对方/法院明确表态。</p>
+  </div>
+  <div class="card red">
+    <h3>三类推翻信号</h3>
+    <ul>
+      <li><b>重估信号</b>：裁判者明确表态（转权重）</li>
+      <li><b>立即转向信号</b>：对方动作使立足点消失</li>
+      <li><b>时间盒信号</b>：日历到点未动</li>
+    </ul>
+    <p style="margin-top:8px"><b>每条信号后必跟「→ 立刻改做 X」</b>，否则信号只是记录，不是行动。</p>
+  </div>
+  <div class="card teal">
+    <h3>兜底路径强制项</h3>
+    <p>凡主线目标<b>依赖第三方裁量且不可强制</b>，必须并列写兜底路径。</p>
+    <p style="margin-top:6px">反例：雅菲案 D 路径——收益完全来自「法院作定性」，而法院可以不作。</p>
+    <p style="margin-top:6px"><b>正确兜底</b>：不等定性，自己另案起诉（民法典 1165 条 1 款 + 132 条，录音证据可直接提交）。</p>
+  </div>
+  <div class="card blue">
+    <h3>程序瑕疵假设的补正检验</h3>
+    <p>「授权瑕疵持续加重」这类假设，<b>默认状态是「可被一纸补正治愈」</b>，不是「既定事实」。</p>
+    <p style="margin-top:6px">建卡时必问：<b>对手能否在一审期内补正？</b>能 → 该假设权重下调。</p>
+    <p style="margin-top:6px">6658 实证：庭后补交合规委托书 + 代理人当庭自认 → 假设塌。</p>
+  </div>
+</div>
+
+<h2><span class="n">4</span>已判定卡 · 引用时的正确姿势</h2>
+<table>
+<thead><tr><th style="width:20%">档位</th><th style="width:30%">卡</th><th>怎么引用</th></tr></thead>
+<tbody>
+<tr><td><span class="badge b-ok">对了</span> 2 张</td><td>6658 吊顶案（程序主线实体备位）<br>6658 34 号（主轴对齐）</td><td>可作默认倾向，但须说明「<b>这是上次的选择，不是本次的结论</b>」。<br>注意：两卡的程序刀论证路径<b>均未被法院采纳</b>——胜诉来自实体刀。</td></tr>
+<tr><td><span class="badge b-bad">错了</span> 1 张</td><td>6660 雅菲案（等定性→另案索赔）</td><td><b>必须连同教训引用</b>：为什么错 + 当时该改做什么。<br>核心教训：<b>依赖第三方裁量的主线 = 不可控兑付的彩票</b>；且「等不到」必须有兜底。</td></tr>
+<tr><td><span class="badge b-wait">待验证</span> 10 张</td><td>其余 10 张已判定卡</td><td>引用须标注未定论，<b>不得作为默认倾向</b>。</td></tr>
+<tr><td><span class="badge b-wait">未判定</span> 22 张</td><td>工具/训练/制度类卡</td><td>无案件结果可依，<b>不硬凑判定</b>。这类卡的复用价值在 ② 区排除理由，不在 ③ 区信号。</td></tr>
+</tbody>
+</table>
+
+<div class="note gray"><b>📌 状态断言纪律（本卡片自身的维护规则）</b>：本卡内容由 HOW-I-THINK + 决策卡自动汇总而来。
+任何「某文件处于什么状态」的表述<b>必须带读取时间戳</b>；
+HOW-I-THINK 或决策卡变更后<b>本卡须同步回改</b>，不得留过期快照。
+（该纪律源于同一判断连续犯错两次：2026-09-10 首次、2026-10-20 第二次。）</div>
+
+<h2><span class="n">5</span>盲区 · 别硬答</h2>
+<div class="grid">
+  <div class="card purple">
+    <h3>知识盲区（不装懂）</h3>
+    <ul>
+      <li>纯税务筹划细节 → 专业税务师</li>
+      <li>底层 AI 模型机理与训练 → 只用不造</li>
+      <li>技术架构选型拍板 → 让小强执行</li>
+    </ul>
+  </div>
+  <div class="card green">
+    <h3>思维盲区（已认知偏差）</h3>
+    <ul>
+      <li>被目标吸引力拉走、答成「为什么选」</li>
+      <li>等对方明确表态才行动</li>
+      <li>把「目的」当「另一条路」并列</li>
+      <li>对自认有把握的合规结论偶有过度自信</li>
+    </ul>
+  </div>
+</div>
+
+<div style="margin-top:28px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3)">
+  源文件：<b>LawKB/知识飞轮系统/06-沉淀/HOW-I-THINK.md</b>（规律级 · H1–H20）·
+  <b>LawKB/知识飞轮系统/04-LOG/决策日志/</b>（35 张卡 · 六域零空缺 · 已判定 3 张）·
+  复盘报告：<b>决策思维树复盘与思维指纹提级方案-2026-10-20.md</b> ·
+  中枢：<b>PROJ-015</b>　｜　本卡为静态 A4 版，验证有用于再考虑上 9655 驾驶舱
+</div>
+
+</div>
+</body>
+</html>

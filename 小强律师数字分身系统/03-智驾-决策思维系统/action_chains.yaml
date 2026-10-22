@@ -1,0 +1,103 @@
+# 动作链与意图预判 · 机器可读唯一事实源（SSOT）
+# ---------------------------------------------------------------
+# 本文件是「意图预判自动化」的权威数据源；引擎 intent_predict.py 加载本文件。
+# 叙述视图见同目录「动作链与意图预判骨架.md」（draft），二者以本文件为准，禁双源分叉。
+# 授权铁律：预判【只提议不自动执行】，除非老强明说"直接做"（PREF-010 / 决策权留用户）。
+version: 1
+updated: "2026-10-21"
+source_ai: workbuddy
+chains:
+  - id: A
+    name: 法律文书交付链
+    hits: [PREF-002, PREF-004, PREF-005]
+    trigger_keywords: [起草, 写文书, 文书, 代理词, 答辩状, 起诉状, 法律意见, 出具, 合同文书, 法律文档]
+    nodes:
+      - 起草
+      - 读本地源核对一致性
+      - LTI五维QC
+      - docx导出双轨
+      - 双目录同步
+      - IMA回传
+      - 工作日志
+      - 飞轮LOG追加
+      - 零残留验证
+      - 主动提议沉淀
+    anticipation:
+      - node: 起草
+        suggest: 是否过 LTI 五维 QC（REJECT=0）并导出 docx 双轨（修订标记+干净签字版）？
+      - node: docx导出双轨
+        suggest: 是否双目录同步（案件目录+桌面归档）并 IMA/WorkBuddy 回传？
+      - node: 飞轮LOG追加
+        suggest: 是否做零残留验证 + 主动提议把本次经验沉淀成卡？
+    terminal: 主动提议沉淀
+    links: [USER-PROFILE §四, HOW-I-THINK]
+
+  - id: B
+    name: 批量处置链
+    hits: [PREF-003, PREF-005]
+    trigger_keywords: [批量, 批量改, 挂载, 重编号, 批量更新, 批量处置, 一起办, 四项一起]
+    nodes:
+      - 读源确认现状
+      - dry-run出拟变更清单
+      - 分批执行(≤10)
+      - 确认幂等
+      - 双目录同步
+      - 日志
+    anticipation:
+      - node: dry-run出拟变更清单
+        suggest: 是否执行第一批（≤10）？已出 dry-run 清单供确认。
+      - node: 分批执行(≤10)
+        suggest: 每批执行完要不要我立即报告幂等结果再继续下一批？
+    terminal: 日志
+    links: [USER-PROFILE §五, 六-B铁律]
+
+  - id: C
+    name: 系统升级回写链
+    hits: [复盘实录-2026-10-20]
+    trigger_keywords: [升级, 改系统, 回写, 改造, 重构, 迁移, 固化]
+    nodes:
+      - 侦查(读DB/文件)
+      - 出方案
+      - 老强批准
+      - 执行
+      - 回写四系统(运维手册/LTI/模拟法庭/CLM)
+      - 日志
+      - 轨迹卡
+    anticipation:
+      - node: 执行
+        suggest: 是否回写其余三系统（运维手册/LTI/模拟法庭/CLM）+ 写日志 + 落轨迹卡？
+      - node: 老强批准
+        suggest: 批准后要不要我直接执行并接回写四系统？
+    terminal: 轨迹卡
+    links: [USER-PROFILE §三, decision-capture]
+
+  - id: D
+    name: 复盘迭代链
+    hits: [PREF-005]
+    trigger_keywords: [请继续, 迭代, 下一轮, 复盘, 诊断, 补丁]
+    nodes:
+      - 诊断
+      - 批准补丁
+      - 执行补丁
+      - 下一轮
+    anticipation:
+      - node: 执行补丁
+        suggest: 补丁交付后，是否进入下一轮迭代，还是收尾六件套（同步+回传+日志+LOG+记忆）？
+    terminal: 下一轮
+    links: [USER-PROFILE §五]
+
+  - id: E
+    name: 事故排障收尾链
+    hits: [PREF-005, PREF-009]
+    trigger_keywords: [修复, bug, 隐患, 排障, 事故, 报错, 崩溃, 坑]
+    nodes:
+      - 修复
+      - 主动提议沉淀成卡
+      - HIR/中枢/LTI分流
+      - 日志
+    anticipation:
+      - node: 修复
+        suggest: 修复完成——按 PREF-005 必须主动问：要不要把这次事故/坑沉淀成卡（HIR/中枢/LTI 分流）？
+    terminal: 日志
+    links: [USER-PROFILE §五, 系统事故卡隔离规则]
+    force_ask: true   # 纯查询类除外；凡修复/隐患挖掘必问沉淀

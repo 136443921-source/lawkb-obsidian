@@ -6,7 +6,7 @@ status: active
 feedback_automated: true
 maturity_level: M3 合格
 maturity_score: 73
-updated: 2026-10-19T10:57
+updated: 2026-10-21T11:44
 source_ai: workbuddy
 scope: domain:legal
 confidence: high
@@ -23,6 +23,7 @@ related:
   - RULE-TRAINING-WRITEBACK
   - PREF-004
   - PREF-002
+  - 蓝队律师助理心智模型与训练备忘录-2026-09-17
 ---
 
 # 🔵-A 蓝队律师助理 · 心智训练备忘录（活文档）
@@ -59,7 +60,7 @@ related:
 
 <!-- ASSIST_MATURITY_START -->
 > _本区块由 `assistant_maturity.py` v1.0.0 自动刷新，手工修改会被覆盖。_
-> 最近刷新：2026-10-19 10:57　｜　数据源：庭审准备助手 SKILL.md 结构标记 + 庭审准备调用记录
+> 最近刷新：2026-10-20 23:44　｜　数据源：庭审准备助手 SKILL.md 结构标记 + 庭审准备调用记录
 
 ### 当前成熟度（七维量表/100 制）：**M3 合格** · **73 / 100**
 

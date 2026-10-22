@@ -151,6 +151,61 @@
   .rule{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:12.5px}
   .rule .rb{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;color:var(--gold)}
   .rule .bar{height:7px;border-radius:4px;background:var(--gold);opacity:.8}
+
+  /* ===== 速查卡视图（2026-10-20 新增） ===== */
+  .qcard-wrap{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .qcard-lead{font-size:15px;font-weight:600;color:var(--txt);margin-bottom:4px;display:flex;
+    align-items:baseline;gap:12px;flex-wrap:wrap}
+  .qcard-lead b{color:var(--gold)}
+  .qc-meta{font-size:12px;font-weight:400;color:var(--txt3)}
+  .qsteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:0;margin-top:14px;
+    border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .qstep{background:var(--panel2);padding:12px 14px;border-right:1px solid var(--line)}
+  .qstep:last-child{border-right:none}
+  .qstep .qk{font-size:10px;color:var(--txt3);letter-spacing:.6px;margin-bottom:3px}
+  .qstep .qv{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:5px}
+  .qstep .qd{font-size:12px;color:var(--txt2);line-height:1.55}
+  .qstep .qd b{color:var(--txt)}
+  .qstep .qd b.warn{color:var(--orange)}
+  .qnote{margin-top:14px;padding:12px 15px;border-radius:10px;font-size:13px;line-height:1.6;
+    background:rgba(251,146,60,.09);border:1px solid rgba(251,146,60,.28);color:#fdba74}
+  .qnote b{color:#fed7aa}
+  .qnote.gray{background:var(--panel2);border-color:var(--line);color:var(--txt2)}
+  .qnote.gray b{color:var(--txt)}
+  .qh{font-size:14px;font-weight:600;margin:22px 0 9px;color:var(--txt);
+    padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .qt{width:100%;border-collapse:collapse;background:var(--panel2);border:1px solid var(--line);
+    border-radius:10px;overflow:hidden;font-size:13px}
+  .qt th{background:var(--panel);text-align:left;padding:9px 12px;font-weight:600;font-size:12px;
+    color:var(--txt3);border-bottom:1px solid var(--line)}
+  .qt td{padding:9px 12px;border-bottom:1px solid rgba(42,47,58,.6);color:var(--txt2);vertical-align:top}
+  .qt tr:last-child td{border-bottom:none}
+  .qt td b{color:var(--txt);font-weight:600}
+  .qb{font-size:11px;padding:1px 8px;border-radius:4px;font-weight:600;white-space:nowrap;display:inline-block}
+  .qb.ok{background:rgba(74,222,128,.14);color:#86efac}
+  .qb.bad{background:rgba(248,113,113,.14);color:#fca5a5}
+  .qb.wait{background:rgba(251,146,60,.14);color:#fdba74}
+  .qb.info{background:rgba(96,165,250,.14);color:#93c5fd}
+  .qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:4px}
+  .qbox{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .qbox h4{font-size:13px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:7px}
+  .qbox h4::before{content:"";width:3px;height:13px;border-radius:2px;background:var(--gold);flex:none}
+  .qbox.amber h4::before{background:var(--orange)} .qbox.red h4::before{background:var(--red)}
+  .qbox.teal h4::before{background:var(--teal)} .qbox.blue h4::before{background:var(--blue)}
+  .qbox p,.qbox li{font-size:12px;color:var(--txt2);line-height:1.6}
+  .qbox ol,.qbox ul{margin:0;padding-left:17px}
+  .qbox li{margin-bottom:4px}
+  .qbox b{color:var(--txt);font-weight:600}
+  .qbox .qsub{margin-top:7px;font-size:12px;color:var(--txt3)}
+  .qfoot{margin-top:18px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--txt3)}
+  .qfoot b{color:var(--txt2)}
+  .qfoot a{color:var(--blue);text-decoration:none;border-bottom:1px dotted rgba(96,165,250,.5)}
+  .qfoot a:hover{color:#93c5fd}
+  @media(max-width:860px){
+    .qsteps{grid-template-columns:1fr}
+    .qstep{border-right:none;border-bottom:1px solid var(--line)}
+    .qstep:last-child{border-bottom:none}
+  }
 </style>
 <style>
 /* 数据更新时间：紧贴标题（2026-09-16 由右上 fixed 浮块改为标题内联） */
@@ -180,6 +235,7 @@ h1 .updTag b{color:#d6ffe9;font-weight:700}
   <div class="seg">
     <button class="on" id="segTree" onclick="showView('tree')">🌳 决策树</button>
     <button id="segMind" onclick="showView('mind')">🧠 思维导图</button>
+    <button id="segQuick" onclick="showView('quick')">🧭 速查卡</button>
   </div>
 
   <div id="treeView">
@@ -298,6 +354,89 @@ h1 .updTag b{color:#d6ffe9;font-weight:700}
     <div class="mvpane on" id="mv-chain"></div>
     <div class="mvpane" id="mv-graph"></div>
   </div><!-- /mindView -->
+
+  <div id="quickView" style="display:none">
+    <div class="stats" id="quickStats"></div>
+    <div class="qcard-wrap">
+      <div class="qcard-lead">
+        <b>🧭 岔路口速查卡</b> · 决策思维层一页速查
+        <span class="qc-meta">源：HOW-I-THINK 规律级（H1–H20）+ 35 张决策卡（已判定 3 张：对了 2 / 错了 1）</span>
+      </div>
+
+      <div class="qsteps">
+        <div class="qstep"><div class="qk">STEP 1</div><div class="qv">枚举真选项</div><div class="qd">列 ≥2 个<b>实质不同</b>的选项并评估优劣。只有一条路 = 顺从直觉，不叫决策。</div></div>
+        <div class="qstep"><div class="qk">STEP 2</div><div class="qv">先写排除理由</div><div class="qd">先逼「为什么排除其他」，再谈选这个。答成「为什么选」是偏差信号。</div></div>
+        <div class="qstep"><div class="qk">STEP 3</div><div class="qv">列最关键假设</div><div class="qd">标出它支柱的是<b>所选方案</b>还是<b>被弃方案</b>（脱节须当场指出）。</div></div>
+        <div class="qstep"><div class="qk">STEP 4</div><div class="qv">写推翻信号 + 立即动作</div><div class="qd">可观察、可判定 + 带日期的时间盒。<b class="warn">并写明信号触发后立刻改做什么。</b></div></div>
+        <div class="qstep"><div class="qk">STEP 5</div><div class="qv">标注动力学</div><div class="qd">被<b>缺陷推走</b> vs 被<b>目标吸引</b>——后者须显式标注。</div></div>
+        <div class="qstep"><div class="qk">STEP 6</div><div class="qv">当场记异议</div><div class="qd">AI 异议<b>原样留档</b>，并转成 ③-B 区行动项。记了不执行 = 没记。</div></div>
+      </div>
+
+      <div class="qnote"><b>⚠️ STEP 4 是本系统最大缺口：</b>原模板只写「什么信号会推翻这个决定」，没写「推翻后我立刻改做什么」。雅菲案与 34 号两案重复踩中：信号全数精准命中，却只等来窗口关闭。<b>新卡必须写「信号 → 立即改做 X」（③-B 必填子栏，2026-10-20 起强制）。</b></div>
+
+      <h3 class="qh">五类岔路口 · 默认倾向与依据</h3>
+      <table class="qt">
+        <thead><tr><th style="width:20%">岔路口类型</th><th style="width:26%">默认倾向</th><th>依据与已验证状态</th></tr></thead>
+        <tbody>
+          <tr><td><b>程序刀 vs 实体抗辩</b></td><td>程序主线 + 实体备位，<b>不孤注一掷</b></td><td><span class="qb ok">✓ 已验证</span> 6658 案：程序异议被完全绕过，实体备位（合同相对性+承揽）被法院说理直接采纳 → 胜诉。留退路不是保守，是让实体刀接住。</td></tr>
+          <tr><td><b>主线依赖第三方裁量</b></td><td><b>必须并列写兜底路径</b></td><td><span class="qb bad">✗ 失败样本</span> 雅菲案：选 D「等法院作恶意诉讼定性→另案索赔」。民诉法 148 条 1 款裁量权在法院、238 条 1 款是「可以」非「应当」——<b>D 是自己控制不了兑付的彩票</b>。结果：不予定性+窗口关闭+不可上诉不可复议，两头落空。</td></tr>
+          <tr><td><b>目标吸引力 vs 缺陷推力</b></td><td>默认警惕<b>被目标吸引</b></td><td><span class="qb ok">✓ 已验证</span> 雅菲案建卡时即标注「被目标吸引、拿不到定性概率高」，三个月后高概率事件真的发生。</td></tr>
+          <tr><td><b>证据强度 vs 争点被审理</b></td><td><b>两变量分开评估</b></td><td><span class="qb ok">✓ 已验证</span> 34 号：证据⑨证明力高，但法院径以实体一揽子驳回、从未进入授权争点审查 → 补强效果归零。<b>证据再强，争点没被审理就是零。</b></td></tr>
+          <tr><td><b>未递交件 vs 已递交件主轴</b></td><td>对齐已递交件，<b>不擅自切换</b></td><td><span class="qb ok">✓ 已验证</span> 34 号：round-3 实体主攻版被 round-4 推翻，2026-10-09 决策评价逐字认定为「正确——结构纪律到位」。</td></tr>
+        </tbody>
+      </table>
+
+      <div class="qgrid">
+        <div class="qbox amber">
+          <h4>时间盒三要素</h4>
+          <ol>
+            <li><b>日期</b>：写死具体日历日</li>
+            <li><b>起算依据</b>：从哪个事件起算、满几个月</li>
+            <li><b>到期动作</b>：到点<b>主动重估一次</b>，不默认「没消息就是好消息」</li>
+          </ol>
+          <p class="qsub">原则：<b>沉默即表态，看日历就该转</b>。</p>
+        </div>
+        <div class="qbox red">
+          <h4>三类推翻信号</h4>
+          <ul>
+            <li><b>重估信号</b>：裁判者明确表态</li>
+            <li><b>立即转向信号</b>：对方动作使立足点消失</li>
+            <li><b>时间盒信号</b>：日历到点未动</li>
+          </ul>
+          <p class="qsub"><b>每条信号后必跟「→ 立刻改做 X」</b>。</p>
+        </div>
+        <div class="qbox teal">
+          <h4>兜底路径强制项</h4>
+          <p>凡主线目标<b>依赖第三方裁量且不可强制</b>，必须并列写兜底路径。</p>
+          <p class="qsub"><b>正确兜底</b>：不等定性，自己另案起诉（民法典 1165 条 1 款 + 132 条，录音证据可直接提交）。</p>
+        </div>
+        <div class="qbox blue">
+          <h4>程序瑕疵假设的补正检验</h4>
+          <p>「授权瑕疵持续加重」这类假设，<b>默认状态是「可被一纸补正治愈」</b>。</p>
+          <p class="qsub">建卡时必问：<b>对手能否在一审期内补正？</b>能 → 该假设权重下调。6658 实证：庭后补交合规委托书 → 假设塌。</p>
+        </div>
+      </div>
+
+      <h3 class="qh">已判定卡 · 引用时的正确姿势</h3>
+      <table class="qt">
+        <thead><tr><th style="width:14%">档位</th><th style="width:28%">卡</th><th>怎么引用</th></tr></thead>
+        <tbody>
+          <tr><td><span class="qb ok">对了</span> 2 张</td><td>6658 吊顶案（程序主线实体备位）<br>6658 34 号（主轴对齐）</td><td>可作默认倾向，但须说明「<b>这是上次的选择，不是本次的结论</b>」。注意：两卡的程序刀论证路径<b>均未被法院采纳</b>——胜诉来自实体刀。</td></tr>
+          <tr><td><span class="qb bad">错了</span> 1 张</td><td>6660 雅菲案（等定性→另案索赔）</td><td><b>必须连同教训引用</b>：为什么错 + 当时该改做什么。核心教训：<b>依赖第三方裁量的主线 = 不可控兑付的彩票</b>；且「等不到」必须有兜底。</td></tr>
+          <tr><td><span class="qb wait">待验证</span> 10 张</td><td>其余 10 张已判定卡</td><td>引用须标注未定论，<b>不得作为默认倾向</b>。</td></tr>
+          <tr><td><span class="qb info">未判定</span> 22 张</td><td>工具/训练/制度类卡</td><td>无案件结果可依，<b>不硬凑判定</b>。复用价值在 ② 区排除理由，不在 ③ 区信号。</td></tr>
+        </tbody>
+      </table>
+
+      <div class="qnote gray"><b>📌 状态断言纪律：</b>任何「某文件处于什么状态」的表述必须带读取时间戳；HOW-I-THINK 或决策卡变更后本页须同步回改，不得留过期快照。（源于同一判断连续犯错两次：2026-09-10、2026-10-20。）</div>
+
+      <div class="qfoot">
+        源：<b>HOW-I-THINK.md</b>（规律级 H1–H20）· <b>04-LOG/决策日志/</b>（35 卡 · 六域零空缺 · 已判定 3）·
+        月报：<b>2026-10_决策思维月报.md</b> · 中枢：<b>PROJ-015</b> ·
+        完整版：<a href="/subapps/quickcard/index.html" target="_blank">打开独立速查卡页 ↗</a>
+      </div>
+    </div>
+  </div><!-- /quickView -->
 
   <footer data-page-node-id="ro42AifHFj6mcmlYLjjOga">点击节点查看详情 · 点击箭头展开折叠　|　生成于 2026-09-03</footer>
 </div>
@@ -422,8 +561,10 @@ select(tree);
 function showView(v){
   document.getElementById('treeView').style.display = v==='tree' ? '' : 'none';
   document.getElementById('mindView').style.display = v==='mind' ? '' : 'none';
+  document.getElementById('quickView').style.display = v==='quick' ? '' : 'none';
   document.getElementById('segTree').classList.toggle('on', v==='tree');
   document.getElementById('segMind').classList.toggle('on', v==='mind');
+  document.getElementById('segQuick').classList.toggle('on', v==='quick');
   if (v==='mind' && !window.__mindBuilt) { window.__buildMind(); window.__mindBuilt = true; }
 }
 

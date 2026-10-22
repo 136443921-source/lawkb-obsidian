@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-LTI 九维文本质检运行器 (lti_qc9.py)  v4.9.2
+LTI 九维文本质检运行器 (lti_qc9.py)  v4.9.3
 =====================================================================
 依据《LTI文书质检清单扩展版》把 LTI 文本监控系统从五维升级到九维：
     R 法条真实性 / L 法理逻辑 / C 一致性 / T 溯源 / P 程序
   + S 策略契合 / V 风险预判 / W 表达规范 / E 证据闭环
+
+【v4.9.3 新增·人工确认项（不进入自动判定，守零误报）】
+  L206 对方立场还原校验：宣告「对方自相矛盾/立场相反」须指向对方文书原文出处，
+       指不出即属虚构对方立场。
+  S704 引用反噬扫描：引用对方/第三人陈述处须过「落点自伤测试」——
+       该陈述被对方摘抄后能否反证我方不利，痛则禁用。
+  触发：6658 案二审答辩状 40 号第五条其一事故（2026-10-21）——
+       机械维 R/C/T/P/W 全 PASS、REJECT=0 仍放行，靠 L/S/E 人工审查挖出。
 
 设计纪律（与既有 LTI 一致）：
   * 门禁：REJECT = 0 才准交付；任一 ❌ 阻断；⚠️ 为提交前补强，不阻断。
@@ -41,7 +49,8 @@ DIMS = [
       "法条银行回查：引用法名须匹配本地 statute 卡，cite_ready=false 不可条号级引用"]),
     ("L", "法理逻辑", "论证自洽·教义锚定", "manual",
      "逻辑断裂 / 教义错锚",
-     ["论证链完整自洽（事实→依据→请求）", "事实主张与请求一一对应", "教义锚定清晰", "已做反向证伪", "无逻辑跳步/循环论证"]),
+     ["论证链完整自洽（事实→依据→请求）", "事实主张与请求一一对应", "教义锚定清晰", "已做反向证伪", "无逻辑跳步/循环论证",
+      "辩论中宣告「对方自相矛盾/对方立场相反」处须能指向对方文书原文出处，指不出即属虚构对方立场(L206)"]),
     ("C", "一致性", "案号名称金额不打架", "auto",
      "案号 / 名称 / 金额矛盾",
      ["案号(304)全文一致", "当事人名称(302)一致、诉讼地位不串", "金额(301)数字单位一致、大小写无冲突",
@@ -56,7 +65,8 @@ DIMS = [
       "期限精确计算", "签署/授权完备", "送达请求与副本份数明确"]),
     ("S", "策略契合度", "服务核心争点目标", "manual",
      "偏离主线 / 暴露弱点",
-     ["服务本案核心争点与诉讼目标", "与整体诉讼策略/防守主线一致", "不节外生枝、不暴露己方弱点"]),
+     ["服务本案核心争点与诉讼目标", "与整体诉讼策略/防守主线一致", "不节外生枝、不暴露己方弱点",
+      "引用对方/第三人陈述作素材的每处须过「落点自伤测试」：被对方摘抄后是否反证我方不利，痛则禁用(S704)"]),
     ("V", "风险预判", "识别驳回 / 反击风险", "manual",
      "重大风险未识别",
      ["已识别被驳回/不予准许风险点", "已预判对方反击位并写应对", "证据持有人/程序路径是否最优"]),
@@ -422,7 +432,7 @@ def write_audit(doc, verdict, findings, manual_status):
         "verdict": verdict,
         "dims": dims_status,
         "svwe_trend": {k: dims_status[k]["hit_count"] for k in ("S", "V", "W", "E")},
-        "version": "4.9.2",
+        "version": "4.9.3",
     }
     try:
         with open(audit_path, "a", encoding="utf-8") as f:
@@ -436,7 +446,7 @@ def write_audit(doc, verdict, findings, manual_status):
 # 主流程
 # ---------------------------------------------------------------------------
 def main():
-    ap = argparse.ArgumentParser(description="LTI 九维文本质检运行器 v4.9.2")
+    ap = argparse.ArgumentParser(description="LTI 九维文本质检运行器 v4.9.3")
     ap.add_argument("doc", help="待质检文书 .docx/.md/.txt")
     ap.add_argument("--report", help="输出 markdown 报告路径")
     ap.add_argument("--manual", default="",
@@ -457,7 +467,7 @@ def main():
         print(f"❌ 文件不存在: {args.doc}")
         return 2
 
-    print(f"======== LTI 九维质检 (v4.9.2) ========")
+    print(f"======== LTI 九维质检 (v4.9.3) ========")
     print(f"文书: {args.doc}\n")
 
     text = extract_text(args.doc)
@@ -519,7 +529,7 @@ def main():
     verdict = "REJECT" if reject_count > 0 else "PASS"
 
     # 输出报告
-    lines = [f"# LTI 九维质检报告（v4.9.2）", "", f"- 文书：`{os.path.basename(args.doc)}`",
+    lines = [f"# LTI 九维质检报告（v4.9.3）", "", f"- 文书：`{os.path.basename(args.doc)}`",
              f"- 门禁：**{'❌ REJECT（须修后重跑）' if verdict=='REJECT' else '✅ PASS（可交付）'}**",
              f"- ❌ REJECT 计数：{reject_count}　⚠️ 待补强：{warn_count}（补完即归零）", ""]
     lines.append("| 维 | 名称 | 结论 | 关键发现 |")

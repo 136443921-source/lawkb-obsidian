@@ -1,6 +1,6 @@
 {
   "schema": "lawtwin-pillars-v1",
-  "generated_at": "2026-10-20 22:14:49",
+  "generated_at": "2026-10-22 07:50:51",
   "source": "8 缺口探针 JSON（o1/o2/o3/h2/c8/d2/s2/s3）+ 缺口方案 §0/§6 已验证事实",
   "four_pillars": [
     {
@@ -39,7 +39,7 @@
         "O3"
       ],
       "status": "WARN",
-      "note": "O1/O2/O3 探针常驻；O1 overall=P0（lti-gate 守护未在本会话拉起，运行时态·非建设缺）"
+      "note": "O1/O2/O3 探针常驻；O1 overall=?（lti-gate 守护未在本会话拉起，运行时态·非建设缺）"
     },
     {
       "key": "anti-halluc",
@@ -52,7 +52,7 @@
         "S3"
       ],
       "status": "WARN",
-      "note": "H2 三源核验(库 80 篇 / pending=11) + H4 幻觉看板(lti_gate.alive=False) + S2 红线前置(R3=True/R4=True) + S3 评分完整性(一致=True)"
+      "note": "H2 三源核验(库 0 篇 / pending=0) + H4 幻觉看板(lti_gate.alive=False) + S2 红线前置(R3=True/R4=True) + S3 评分完整性(一致=True)"
     }
   ],
   "four_supporting": [

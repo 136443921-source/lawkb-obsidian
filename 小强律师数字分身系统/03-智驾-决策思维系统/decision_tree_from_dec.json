@@ -1,0 +1,122 @@
+{
+  "generated": true,
+  "source": "DEC 决策档案（_AI-Memory-Hub/03-决策档案 + 04-LOG/决策日志）",
+  "node_count": 5,
+  "nodes": [
+    {
+      "id": "DEC-2026-023",
+      "title": "一人公司中台分层 · 独立「法律服务中台」收口\"咨询+文书\"两条营收线（数字资产中台专职供给）",
+      "file": "DEC-2026-023-一人公司中台分层-独立法律服务中台收口咨询文书业务线.md",
+      "options": [
+        {
+          "letter": "A",
+          "desc": "新建法律服务中台",
+          "chosen": true
+        },
+        {
+          "letter": "B",
+          "desc": "不新建，挂进数字分身系统\"业务层\"**，与数字资产中台并列",
+          "chosen": false
+        },
+        {
+          "letter": "C",
+          "desc": "入口归前台",
+          "chosen": false
+        }
+      ],
+      "chosen_letters": [
+        "A"
+      ]
+    },
+    {
+      "id": "DEC-2026-024",
+      "title": "医院法律顾问卡族拆卡 · 卡型按内容性质五型分流，不硬套审判要件卡八段格式",
+      "file": "DEC-2026-024-医院法律顾问卡族拆卡卡型按内容性质分流不硬套审判要件卡八段.md",
+      "options": [
+        {
+          "letter": "A",
+          "desc": "严格按 WF-026 八段格式，统一建「审判要件卡」",
+          "chosen": false
+        },
+        {
+          "letter": "B",
+          "desc": "一律建「实务规则卡」，不细分卡型",
+          "chosen": false
+        },
+        {
+          "letter": "C",
+          "desc": "按内容性质分流卡型** ← 拍板",
+          "chosen": true
+        }
+      ],
+      "chosen_letters": [
+        "C"
+      ]
+    },
+    {
+      "id": "DEC-2026-025",
+      "title": "不设「业务运营官」· 数字员工考核统一归口律所主任（总经理）",
+      "file": "DEC-2026-025-不设业务运营官_数字员工考核统一归口律所主任.md",
+      "options": [
+        {
+          "letter": "A",
+          "desc": "设「业务运营官」作编排层",
+          "chosen": false
+        },
+        {
+          "letter": "B",
+          "desc": "不设该岗，考核归总经理** ← **拍板",
+          "chosen": true
+        },
+        {
+          "letter": "C",
+          "desc": "设但降级为纯记录岗",
+          "chosen": false
+        }
+      ],
+      "chosen_letters": [
+        "B"
+      ]
+    },
+    {
+      "id": "DEC-2026-028-小强律师前台编排方案落地裁决.md",
+      "title": "DEC-2026-028-小强律师前台编排方案落地裁决",
+      "file": "DEC-2026-028-小强律师前台编排方案落地裁决.md",
+      "options": [
+        {
+          "letter": "A",
+          "desc": "软入口",
+          "chosen": true
+        },
+        {
+          "letter": "B",
+          "desc": "硬钩子",
+          "chosen": false
+        }
+      ],
+      "chosen_letters": [
+        "A"
+      ]
+    },
+    {
+      "id": "DEC-2026-029",
+      "title": "决策思维树三断点修复 · 提前判定与思维指纹提级落地",
+      "file": "DEC-2026-029-决策思维树三断点修复·提前判定与思维指纹提级落地.md",
+      "options": [
+        {
+          "letter": "A",
+          "desc": "判决",
+          "chosen": true
+        },
+        {
+          "letter": "B",
+          "desc": "校验，新建卡硬门禁",
+          "chosen": false
+        }
+      ],
+      "chosen_letters": [
+        "A"
+      ]
+    }
+  ]
+}
