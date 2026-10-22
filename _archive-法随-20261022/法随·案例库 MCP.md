@@ -5,7 +5,7 @@ created: 2026-08-17
 tags:
   - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.0
-updated: 2026-09-25T20:41
+updated: 2026-10-16T23:16
 ---
 
 # 法随·案例库 MCP

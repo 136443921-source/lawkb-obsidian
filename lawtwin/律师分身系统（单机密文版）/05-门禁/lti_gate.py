@@ -39,9 +39,13 @@ try:
 except Exception:
     CASE_VERIFY = {}
 
+# 交付档位（2026-10-22 新增）：internal=内部稿 / external=对外交付稿
+# T504（案例要旨一致性）按此双档处置：internal→WARNING，external→CRITICAL→REJECT
+DELIVERY = "internal"
+
 # 全文粒度下仍然可信的规则（跨段一致性 / 条号区间等，与上下文无关）
 FULLTEXT_TRUSTED = {"C301", "C302", "C304", "R101", "R103", "R104",
-                    "R105", "R106", "R108"}
+                    "R105", "R106", "R108", "T504"}
 
 RULE_ID_RE = re.compile(r"\[([A-Z]\d{3})\]")
 
@@ -163,6 +167,7 @@ def run(path):
                 text,
                 ai_participation=["法条检索与效力校验", "文书草拟"],
                 case_verify=CASE_VERIFY,
+                delivery=DELIVERY,
             )
             for h in _parse_hints(out):
                 hits.append(f"{label} {h}")
@@ -176,6 +181,7 @@ def run(path):
             full,
             ai_participation=["法条检索与效力校验", "文书草拟", "法理逻辑审查", "一致性校验"],
             case_verify=CASE_VERIFY,
+            delivery=DELIVERY,
         )
         for h in _parse_hints(out):
             ids = _rule_ids(h)
@@ -198,11 +204,37 @@ def run(path):
 
 
 def main():
-    global CASE_VERIFY
-    files = sys.argv[1:]
+    global CASE_VERIFY, DELIVERY
+    argv = sys.argv[1:]
+    files = []
+    i = 0
+    while i < len(argv):
+        a = argv[i]
+        if a == "--delivery":
+            i += 1
+            if i >= len(argv):
+                print("❌ --delivery 需要取值：internal | external")
+                sys.exit(2)
+            DELIVERY = argv[i].strip().lower()
+            if DELIVERY not in ("internal", "external"):
+                print(f"❌ --delivery 取值非法：{DELIVERY}（应为 internal | external）")
+                sys.exit(2)
+        elif a.startswith("--delivery="):
+            DELIVERY = a.split("=", 1)[1].strip().lower()
+            if DELIVERY not in ("internal", "external"):
+                print(f"❌ --delivery 取值非法：{DELIVERY}（应为 internal | external）")
+                sys.exit(2)
+        elif a in ("-h", "--help"):
+            print("用法: python3 lti_gate.py [--delivery internal|external] <docx路径...>")
+            sys.exit(0)
+        else:
+            files.append(a)
+        i += 1
     if not files:
-        print("用法: python3 lti_gate.py <docx路径...>")
+        print("用法: python3 lti_gate.py [--delivery internal|external] <docx路径...>")
         sys.exit(2)
+    print(f"交付档位：{DELIVERY}"
+          + ("（对外交付稿：T504 将 REJECT）" if DELIVERY == "external" else "（内部稿：T504 仅 WARNING）"))
     rejected = []
     print("=" * 72)
     for f in files:

@@ -1,7 +1,7 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-10-21T10:25:56+08:00",
+  "updated": "2026-10-22T08:57:37.009521+08:00",
   "ima_connector": "ima-mcp",
   "ima_status": "restored_2026-10-20_channels_up",
   "note": "2026-10-06 真实模式运行（IMA上线+元典2840）：A1(HT 3)+B(LN3+PI1+HG2+CF3=9) 共12篇IMA摄入；D 5例三通道回源；3篇220030失败(R-PI-520/521,R-HG-105)。",
@@ -4775,6 +4775,16 @@
           "note": "IMA恢复后回补2篇；元典三通道回源同步转正"
         }
       ]
+    },
+    {
+      "window_id": "w_2026-10-22_A1B_channel_down",
+      "date": "2026-10-22",
+      "type": "A1B_channel_down",
+      "target": 5,
+      "done": 0,
+      "status": "open",
+      "reason": "本会话 ima-mcp/yuandian-mcp/qcc-legal/fasui-caselibrary 工具均不在会话索引（运行态掉线）；connector-states 启用列表亦不含 ima-mcp（A0.0 条件A）。A1/B 5库定点摄入跳过。依『不代点UI』红线未 --apply 连接器修复，待人工 UI 重授权+重启。",
+      "registered_at": "2026-10-22T08:57:37.009497+08:00"
     }
   ],
   "totals": {

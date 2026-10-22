@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-21 11:16:58",
-  "ring_value": 66.2,
-  "computed_mean": 66.17,
+  "generated_at": "2026-10-22 21:57:27",
+  "ring_value": 61.2,
+  "computed_mean": 61.17,
   "six_dims": [
     {
       "name": "部署就绪度",
@@ -17,7 +17,7 @@
     },
     {
       "name": "门禁运行度",
-      "val": 60
+      "val": 30
     },
     {
       "name": "版本锁回填",
