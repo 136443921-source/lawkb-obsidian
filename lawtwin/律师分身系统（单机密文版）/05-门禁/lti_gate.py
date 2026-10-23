@@ -41,7 +41,23 @@ except Exception:
 
 # 交付档位（2026-10-22 新增）：internal=内部稿 / external=对外交付稿
 # T504（案例要旨一致性）按此双档处置：internal→WARNING，external→CRITICAL→REJECT
+# 交付档位（2026-10-22 新增）：internal=内部稿 / external=对外交付稿
+# T504（案例要旨一致性）按此双档处置：internal→WARNING，external→CRITICAL→REJECT
 DELIVERY = "internal"
+
+# T501 溯源登记（2026-10-22 接线 · 此前 registry 从未传入，T501 实为死机制）
+# 从已核验缓存（case_verify_cache.json，exists=True）构建 CitationRegistry 白名单：
+#   - 库内案号 → 视为"有出处" → T501 静默
+#   - 库外案号 → 提示"无溯源登记，请先核验"（T501 WARNING；T501_BLOCKING=False 不阻断）
+# 设计约束：登记来源只能是权威检索结果或本地案卷核验结论，**不得由模型自行声明**。
+try:
+    from trace import CitationRegistry as _CitReg
+    REGISTRY = _CitReg()
+    for _ref, _v in CASE_VERIFY.items():
+        if isinstance(_v, dict) and _v.get("exists") is True:
+            REGISTRY.register(_ref)
+except Exception:
+    REGISTRY = None
 
 # 全文粒度下仍然可信的规则（跨段一致性 / 条号区间等，与上下文无关）
 FULLTEXT_TRUSTED = {"C301", "C302", "C304", "R101", "R103", "R104",
@@ -168,6 +184,7 @@ def run(path):
                 ai_participation=["法条检索与效力校验", "文书草拟"],
                 case_verify=CASE_VERIFY,
                 delivery=DELIVERY,
+                registry=REGISTRY,
             )
             for h in _parse_hints(out):
                 hits.append(f"{label} {h}")
@@ -182,6 +199,7 @@ def run(path):
             ai_participation=["法条检索与效力校验", "文书草拟", "法理逻辑审查", "一致性校验"],
             case_verify=CASE_VERIFY,
             delivery=DELIVERY,
+            registry=REGISTRY,
         )
         for h in _parse_hints(out):
             ids = _rule_ids(h)
@@ -272,8 +290,17 @@ def main():
             print(f"\n🔴 REJECT  {name}\n{detail}")
         else:
             print(f"\n✅ PASS  {name}（提示 {len(hints)} 条）")
-            for h in hints[:12]:
-                print(f"   · {h[:120]}")
+            # 2026-10-22 修：重要规则优先显示。
+            # 原实现直接 hints[:12]，导致 T501/T502/T504 等关键提示被大量 INFO 淹没而不显示
+            # （实测：T501 命中却因排在 12 条之后完全不可见）。
+            _PRIO = ("T501", "T502", "T504")
+            _prio = [h for h in hints if any(p in h for p in _PRIO)]
+            _rest = [h for h in hints if h not in _prio]
+            for h in (_prio + _rest)[:12]:
+                _mark = "🔴" if h in _prio else "·"
+                print(f"   {_mark} {h[:120]}")
+            if len(hints) > 12:
+                print(f"   … 其余 {len(hints)-12} 条略（含重要规则 {len(_prio)} 条已优先展示）")
     print("\n" + "=" * 72)
     if rejected:
         print(f"❌ 门禁阻断: {len(rejected)} 份未过 LTI → {rejected}")
