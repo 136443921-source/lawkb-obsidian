@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23 22:31:34",
+  "generated_at": "2026-10-23 22:41:35",
   "scope": "lawtwin",
   "customer": "示例客户",
   "metrics": {
@@ -17,7 +17,7 @@
     {
       "skill": "审判要件卡拆卡流水线",
       "baseline": "1.38.0",
-      "live": "1.59.0"
+      "live": "1.60.0"
     },
     {
       "skill": "xiaoqiang-cockpit-hub",
@@ -142,7 +142,7 @@
       "skill_dir": "审判要件卡拆卡流水线",
       "baseline_version": "1.38.0",
       "target_version": "1.38.0",
-      "live_version": "1.59.0",
+      "live_version": "1.60.0",
       "installed": true,
       "drift": true
     },

@@ -1,7 +1,7 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-10-22T08:57:37.009521+08:00",
+  "updated": "2026-10-23T22:48",
   "ima_connector": "ima-mcp",
   "ima_status": "restored_2026-10-20_channels_up",
   "note": "2026-10-06 真实模式运行（IMA上线+元典2840）：A1(HT 3)+B(LN3+PI1+HG2+CF3=9) 共12篇IMA摄入；D 5例三通道回源；3篇220030失败(R-PI-520/521,R-HG-105)。",
@@ -4785,18 +4785,31 @@
       "status": "open",
       "reason": "本会话 ima-mcp/yuandian-mcp/qcc-legal/fasui-caselibrary 工具均不在会话索引（运行态掉线）；connector-states 启用列表亦不含 ima-mcp（A0.0 条件A）。A1/B 5库定点摄入跳过。依『不代点UI』红线未 --apply 连接器修复，待人工 UI 重授权+重启。",
       "registered_at": "2026-10-22T08:57:37.009497+08:00"
+    },
+    {
+      "window_id": "w_2026-10-23_A1B_channel_down",
+      "target": 5,
+      "done": 0,
+      "status": "open",
+      "reason": "本会话 ima-mcp 工具 absent（ToolSearch 实查不在工具表），A1/B 5库各1篇定点摄入无法执行；依红线未 --apply 自愈。",
+      "opened_at": "2026-10-23T22:33",
+      "backfill_log": [
+        {
+          "date": "2026-10-23",
+          "note": "ima-mcp 本会话工具表 absent；A1/B 5篇跳过，登记漏窗待 UI 重授权+重启后回补。"
+        }
+      ]
     }
   ],
   "totals": {
-    "ingested_total": 429,
+    "ingested_total": 431,
     "libraries": {
-      "7312048136419112": 86,
+      "7312048136419112": 87,
       "7312042960642489": 91,
-      "7312035322822509": 90,
+      "7312035322822509": 91,
       "7333014572917409": 79,
       "7311644304633438": 83
-    },
-    "_note": "口径：ingested_total = Σ各库 ingested 列表条目数（runner._recompute_totals 单一真源重算，len 口径）。其中人伤库含 1 个 B 类真重复（同一 media_id 产出 R-PI-383/R-PI-555 两卡，见 duplicate_media_id_review），故真唯一文章数=428。2026-10-19 统一：此前 totals.ingested_unique_media_id=433 为历史直接写 totals 残留（自 10-16 的 425 被错误 +8 膨胀），与各库 ingested 列表合计 429 不一致，已按唯一真源重算对齐。"
+    }
   },
   "resolved_in_continuation": {
     "dns_fault_diagnosed_2026-08-16": "04-LOG 静默 8 天（08-08~08-15）根因确诊：本机路由器 DNS 192.168.1.1 间歇无法解析 copilot.tencent.com（WorkBuddy AI 模型端点）→ runtime_state 最后错误 502 ENOTFOUND，automation_runs 08-06~08-15 逐日 result_success=0（502/499/429 交替）。非 IMA/cron/调度器问题。每日报告照常产出、仅末步写 04-LOG 掉线。修复：固定公共 DNS（阿里 223.5.5.5 + 腾讯 119.29.29.29），命令需用户终端 sudo 手动执行。",
@@ -5280,7 +5293,7 @@
   "checkpoint": {
     "session_id": "run-1790642828104",
     "stage": "D",
-    "status": "done",
+    "status": "in_progress",
     "started_at": "2026-09-29T08:47",
     "done": [
       "A0",
