@@ -231,6 +231,10 @@ https://mp.weixin.qq.com/s/iUXa1N0v2pPDkLVlMEhoMQ
 
 
 ## 相关笔记
+- [[工具之外法律人研究AI和Skill研究的是自己的新位置]] (共现关键词: 合同, AI, 共现)
+- [[WF-007-怎么设计一个能交付的合同审查-Skill]] (共现关键词: 合同, 审查, 共现)
+- [[2026-10-17]] (共现关键词: 审查, WorkBuddy)
+- [[换电脑后WorkBuddy如何迁移]] (共现关键词: WorkBuddy, 共现)
 - [[我用WorkBuddy三个月踩了15个坑才明白]] (共现关键词: 法律文书, 我用, 罗江)
 - [[我花了两小时用WorkBuddyObsidian搭了一个会自己进化的个人知识库wiki]] (共现关键词: WorkBuddy, 合同, 关键词)
 - [[WorkBuddy这15个功能一个比一个香建议收藏]] (共现关键词: 合同, Skill, 关键词)

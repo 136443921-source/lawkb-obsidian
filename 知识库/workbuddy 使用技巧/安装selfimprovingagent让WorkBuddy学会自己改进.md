@@ -99,6 +99,10 @@ WorkBuddy就可以学会自我改进啦！
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/VaJ1j4pbwYo1J8g2SJQGcg)*
 
 ## 相关笔记
+- [[2026-09-21-小强律师数字分身系统（单机密文版）]] (共现关键词: 共现, 2026, 自动)
+- [[RULE-052---macOS-launchctl-写操作全禁-LaunchAgents-靠登录自动加载-勿依赖-launchctl-load-start]] (共现关键词: 医疗, 自动, 合同)
+- [[技术转让技术秘密合同范本-蓝红双视角审查要点-2026-08-23]] (共现关键词: 改进, ##, 合同)
+- [[R-PI-465-医疗设备采购合同质量标准交付验收安装调试]] (共现关键词: 合同, 证据, 共现)
 - [[legacy-scan-2026-09-27]] (共现关键词: WorkBuddy, 合同)
 - [[换电脑后WorkBuddy如何迁移]] (共现关键词: 关键词, WorkBuddy)
 - [[00-总体方案]] (共现关键词: 证据, 安装)

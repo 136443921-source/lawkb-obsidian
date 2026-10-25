@@ -342,6 +342,11 @@ markitdown / pptx-generator / minimax-xlsx / minimax-docx
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/zmrIPFHKnOj-rVWR6va_7Q)*
 
 ## 相关笔记
+- [[慈善最新政策解读及警示教育]] (共现关键词: 医疗, 解读, 公司)
+- [[2026-07-02]] (共现关键词: 提取, 医疗, 共现)
+- [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: 公司, 合同, AI)
+- [[审判要件卡-入库索引-知产惩罚性赔偿-2026-09-14]] (共现关键词: 合同, PDF, 共现)
+- [[审判要件卡-入库索引-执破融合-2026-09-14]] (共现关键词: 公司, PDF, 共现)
 - [[审判要件卡-入库索引-机动车立案审查与抗辩-2026-09-10]] (共现关键词: PDF, 慈善)
 - [[用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包]] (共现关键词: 搞定, 公司, Excel)
 - [[贵州类案指南第一卷-第一部分-敲诈勒索罪-提取文本]] (共现关键词: PDF, 合同)

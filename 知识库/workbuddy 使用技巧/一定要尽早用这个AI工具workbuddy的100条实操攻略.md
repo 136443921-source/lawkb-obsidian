@@ -293,6 +293,7 @@ https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ)*
 
 ## 相关笔记
+- [[R-SH-050-惩罚性赔偿基数的三种计算模式]] (共现关键词: 合同, 模式)
 - [[README]] (共现关键词: 关键词, workbuddy, 医疗)
 - [[_活跃项目]] (共现关键词: 合同, 100)
 - [[PROJ-SYS-LAWKB-知识飞轮运维]] (共现关键词: AI, 工具)
