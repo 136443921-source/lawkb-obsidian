@@ -1,0 +1,76 @@
+{
+  "schema": "case-state.v1",
+  "case_id": "(2026)遵仲裁字第83号",
+  "case_name": "贵州壹鑫典当有限责任公司 诉 杨永茂 典当纠纷案",
+  "case_type": "仲裁-典当合同纠纷",
+  "arbitration": {
+    "tribunal": "遵义仲裁委员会",
+    "award_date": "2026-05-17",
+    "is_final": true,
+    "final_effective_date": "2026-05-17",
+    "has_second_instance": false,
+    "appeal_period": null,
+    "revoke_window_note": "撤销裁决申请自收到裁决书起6个月，约2026-11中下旬(送达日待核定)"
+  },
+  "stage": "裁决后双线作战期",
+  "lines": {
+    "X": {
+      "name": "保房/执行对抗",
+      "target": "房子不被拍、债务在可控范围清偿",
+      "actions": ["执行和解", "唯一住房保障", "代偿走法院账户", "董洪平助攻(离婚协议2024-01-25使其无份额无债务)"],
+      "defense": "主文四：优先受偿仅限18万当金，利息费用为普通债权",
+      "gates": ["G4"]
+    },
+    "Y": {
+      "name": "追多付/权利追索",
+      "target": "追回多付18056.82 + 穿透股东追责",
+      "actions": ["不当得利985", "代位清偿524", "债权人撤销权538-541", "股东穿透公司法2023第23条", "出资加速到期54条", "诉前保全"],
+      "anchor": "壹鑫负债率91.9%、净资产仅95万，股权零冻结零出质=当前唯一优先顺位窗口",
+      "gates": ["G2", "G3", "G5"]
+    }
+  },
+  "gates": {
+    "G0": {"status": "passed", "name": "开案基线"},
+    "G1": {"status": "pending_review", "name": "双线计划确认", "owner": "老强"},
+    "G2": {"status": "pending_p0", "name": "代偿主体补正"},
+    "G3": {"status": "pending_p1", "name": "保全+穿透成文"},
+    "G4": {"status": "pending_p1", "name": "执行应对落定"},
+    "G5": {"status": "pending_p0_p2b", "name": "穿透补证完成"},
+    "G6": {"status": "not_started", "name": "文书LTI"},
+    "G7": {"status": "not_passed", "name": "结案闸"}
+  },
+  "key_numbers": {
+    "award_payable": 251943.18,
+    "settlement_note": 274797.00,
+    "actual_paid": 270000.00,
+    "overpaid": 18056.82,
+    "note_receipt_diff": 4797.00,
+    "principal": 180000.00,
+    "legal_fee": 11000.00,
+    "travel_fee": 200.00,
+    "arbitration_fee": 7457.00,
+    "yixin_debt_ratio": 0.919,
+    "yixin_net_asset": 950000.00
+  },
+  "parties": {
+    "applicant": "贵州壹鑫典当有限责任公司",
+    "respondent": "杨永茂",
+    "payer": "杨高朝(杨永茂之父)",
+    "ex_spouse": "董洪平"
+  },
+  "pending_variables": [
+    "裁决书送达日期(迟延利息民诉法264起算，未核定)",
+    "收据现金3万凭证齐备性"
+  ],
+  "deadlines": {
+    "equity_freeze_window": "开放中(股权零冻结零出质，对方质押/转移前)",
+    "revoke_award_deadline": "约2026-11中下旬(待精确核)",
+    "execution_apply_window": "裁决生效后2年申请执行期(未启动)"
+  },
+  "mirror_metadata": {
+    "created_by": "小强律师AI作战室副驾",
+    "created_at": "2026-10-24T17:05:00+08:00",
+    "source": "桌面00_案卷索引.md + 案件作战室_83号/",
+    "note": "83号专属case-state，仲裁终局适配，非诉讼CLM七阶段(G9二审门禁不适用)"
+  }
+}

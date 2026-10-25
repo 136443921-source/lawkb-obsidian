@@ -113,3 +113,7 @@ bash ../启动包/crypto-l1.sh encrypt . m2-index   # 在含 m2_index.db 的目�
 - 2026-09-17 初建（G3）。sqlite-vec 向量 + FTS5 trigram 混合，离线确定性嵌入。
 - 2026-09-17 扩展：多源语料（`build()` 支持列表 + `--manifest`）+ `m2_secure.sh` 闭环工具 +
   `m2_corpus_manifest.txt`（律师分身语料，排除律所分身）；完成「检索+密文」闭环并实测。
+
+## 相关笔记
+- [[9655驾驶舱屏台账]] (共现关键词: 诉讼, index)
+- [[README]] (共现关键词: index, README)

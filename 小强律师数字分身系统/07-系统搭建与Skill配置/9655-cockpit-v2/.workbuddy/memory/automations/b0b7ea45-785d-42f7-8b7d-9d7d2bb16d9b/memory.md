@@ -118,3 +118,7 @@ tags:
 - 门禁守护 ⚠️ pgrep 无 lti-gate-daemon（连续多日未跑）；面板标"运行中"为假阳性。
 - 服务可达 ✅ HTTP 200。
 - 全程只读，未改任何文件。未找到"9360 字节副本"文件，按实际 subapps/<name>/index.html 校验。建议同前（C4/C5/C8 重新精准注入 + C2/C3/C6 校正属性顺序 + 固化进 gen_subapps.py；真实 Terminal launchctl load 门禁 plist）。
+
+## 相关笔记
+- [[2026-10-02]] (共现关键词: lti, override, 2026)
+- [[MEMORY]] (共现关键词: 2026, override, lti)

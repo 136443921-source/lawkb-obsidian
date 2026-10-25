@@ -20,6 +20,11 @@ tags:
 - 门禁 plist：~/Library/LaunchAgents/com.xiaoqiang.lti-gate.plist
 
 ## 相关笔记
+- [[经验卡-9655心跳断流-fresh_h38h-扫描任务launchd未加载-20260927]] (共现关键词: 9655, launchctl, ---)
+- [[经验卡-9655真源位迁移未完成-launchd仍指旧会话目录-20260926]] (共现关键词: 9655, 共现, launchctl)
+- [[MEMORY]] (共现关键词: 共现, MEMORY)
+- [[RULE-052---macOS-launchctl-写操作全禁-LaunchAgents-靠登录自动加载-勿依赖-launchctl-load-start]] (共现关键词: 共现, gate, lti)
+- [[RULE-050---不动-gate-config.md，符合非破坏性扩展铁律]] (共现关键词: 共现, gate)
 - [[2026-09-29]] (共现关键词: check, 9655)
 - [[2026-10-02]] (共现关键词: override, lti)
 - [[memory]] (共现关键词: js, override, 9655)

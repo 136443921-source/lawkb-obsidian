@@ -967,6 +967,10 @@ python3 lti_qc9.py 文书.docx --manual L=pass S=pass V=warn E=pass   # 律师�
 ---
 
 ## 相关笔记
+- [[R-DRFT-20261012-08]] (共现关键词: 共现, text, 刑法)
+- [[2026-09-20]] (共现关键词: 违约, text, 合同)
+- [[RULE-037---跨对话原则复盘（来自-memory-固化）：本地源引证铁律（statute_]] (共现关键词: 共现, text, 合同)
+- [[RULE-055-判疑本禁读-sxx-必读-source_verify-+-statute_text_pending-+-cite_ready——三字段维度不可互相代表]] (共现关键词: text, 法条, 合同)
 - [[律师工作的全流程SOP汇总实务经验]] (共现关键词: 行政, 判决, 诉讼)
 - [[法律检索skill 设置说明书]] (共现关键词: 判决, 诉讼, 共现)
 - [[IMA可开采清单-2026-08-30]] (共现关键词: AI, 共现)
