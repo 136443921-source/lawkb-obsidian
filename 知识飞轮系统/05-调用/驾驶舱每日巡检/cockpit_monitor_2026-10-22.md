@@ -1,3 +1,17 @@
+---
+tags:
+  - chenyouqiang
+  - 慈善法
+  - 纠纷案
+  - 行政诉讼
+  - 民事诉讼
+  - 门禁
+  - 合同法
+  - Users
+  - 侵权责任
+  - C4
+---
+
 # 🏛️ 驾驶舱每日整改清单 · 2026-10-22 08:29
 
 > 生成者：律所主任·驾驶舱全量巡检引擎（L1 只读）｜**本清单仅建议，所有整改动作由老强核实处理后执行**
@@ -153,3 +167,10 @@
 - **屏上整改项来源**：LTI=`health_rows[].actions`/事故卡/零命中规则；CLM=`gates[status≠pass]`/`deadlines[level]`/`nextActions`/`risks`；评分卡=`screens[].flag/score/six`；卡族=frontmatter 实扫；HTML 屏=关键词启发式。
 - **只读护栏**：本引擎不触发任何站点重发、不改配置；线上刷新由各自既有自动化负责。
 - **敏感隔离**：CLM 含真实案号/当事人姓名，本报告不展开当事人姓名，仅老强本人可见。
+
+## 相关笔记
+- [[cockpit_monitor_2026-09-22]] (共现关键词: C4, chenyouqiang, 证据)
+- [[cockpit_monitor_2026-10-16]] (共现关键词: 门禁, C4, chenyouqiang)
+- [[cockpit_monitor_2026-10-02]] (共现关键词: 门禁, C4, chenyouqiang)
+- [[cockpit_monitor_2026-09-26]] (共现关键词: C4, chenyouqiang, 证据)
+- [[_2026-09-16-D6-驾驶舱监控技能建设]] (共现关键词: cockpit, 2026, monitor)

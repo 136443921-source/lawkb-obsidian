@@ -1,0 +1,355 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+预判式跨案件模式识别与经验推送 v2 (2026-10-25 修正)
+- 修复：① do/dont 提取剔除 相关笔记/关联 链接段（不把共现关键词当禁忌）
+- 修复：② 领域门控（无领域关键词重合的泛化卡降权，避免 R-LN-018 等霸屏）
+- 修复：③ 经验卡加载放宽（仅剔除噪声桩/模板，保留数百张）
+- 修复：④ DRY_RUN 路径不再引用 bak
+"""
+import os, re, glob, datetime, shutil
+
+BASE = "/Users/chenyouqiang/Documents/LawKB"
+CASE_DIR = os.path.join(BASE, "知识飞轮系统/05-调用/案件管理")
+CASEDROP = "/Users/chenyouqiang/Documents/CaseDrop/processed"
+EXP_DIR = os.path.join(BASE, "知识飞轮系统/02-提炼/经验卡片")
+LOG_DIR = os.path.join(BASE, "知识飞轮系统/05-调用")
+TODAY = datetime.date(2026, 10, 25)
+TS = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+DRY = bool(os.environ.get("DRY_RUN"))
+
+# ---------- CJK bigram ----------
+def bigrams(text):
+    text = re.sub(r"\s+", "", text or "")
+    cjk = "".join(re.findall(r"[\u4e00-\u9fff]", text))
+    grams = set()
+    for i in range(len(cjk) - 1):
+        grams.add(cjk[i:i+2])
+    for t in re.findall(r"[a-zA-Z0-9]{2,}", text):
+        grams.add(t.lower())
+    return grams
+
+def sim(a, b):
+    A, B = bigrams(a), bigrams(b)
+    if not A or not B:
+        return 0.0
+    inter = A & B
+    return len(inter) / ((len(A) * len(B)) ** 0.5)
+
+# ---------- parse frontmatter ----------
+def parse_fm(path):
+    txt = open(path, encoding="utf-8").read()
+    m = re.match(r"^---\s*\n(.*?)\n---\s*\n", txt, re.S)
+    fm = {}
+    if m:
+        for line in m.group(1).splitlines():
+            if ":" in line:
+                k, v = line.split(":", 1)
+                fm[k.strip()] = v.strip()
+    return fm, txt
+
+# ---------- case loading ----------
+CASE_STOP = {"案件-知识映射索引.md"}
+
+def is_active(fm, name):
+    blob = " ".join(fm.values())
+    if re.search(r"已结案|已结\b", blob):
+        return False
+    return True
+
+def case_query(fm, body):
+    case_type = fm.get("case_type", "")
+    m = re.search(r"##\s*案件概况\s*\n(.*?)(?:\n##\s|\Z)", body, re.S)
+    brief = m.group(1) if m else ""
+    # 正文前 500 字补充（去掉 frontmatter 与链接段）
+    body_head = re.sub(r"^---.*?---", "", body, flags=re.S)
+    body_head = re.sub(r"##\s*(相关笔记|关联).*", "", body_head, flags=re.S)
+    body_head = body_head[:500]
+    tags = " ".join(re.findall(r"-\s*([\u4e00-\u9fffA-Za-z0-9]+)", fm.get("tags", "")))
+    return {"case_type": case_type, "brief": brief, "tags": tags, "extra": body_head}
+
+# ---------- experience card loading ----------
+NOISE_RE = re.compile(r"模板|模板卡|评比|清单|checklist|桩页|断链消解|概念枢纽", re.I)
+
+def load_cards():
+    cards = []
+    for fp in glob.glob(os.path.join(EXP_DIR, "**", "*.md"), recursive=True):
+        name = os.path.basename(fp)
+        if NOISE_RE.search(name):
+            continue
+        try:
+            fm, body = parse_fm(fp)
+        except Exception:
+            continue
+        body_clean = re.sub(r"^---.*?---", "", body, flags=re.S).strip()
+        # 仅剔除纯链接桩（正文极短）
+        if len(body_clean) < 100:
+            continue
+        is_sim = str(fm.get("is_simulation", "")).lower() in ("true", "1", "yes")
+        anyou = fm.get("案由", "") or fm.get("case_type", "")
+        rel = fm.get("关联在办案件", "") or fm.get("source_case", "") or fm.get("derived_from_rule", "")
+        cards.append({
+            "file": fp, "name": name,
+            "title": fm.get("title", name),
+            "fm": fm, "body": body, "body_clean": body_clean,
+            "is_sim": is_sim, "anyou": anyou, "rel": rel,
+            "tags": " ".join(re.findall(r"-\s*([\u4e00-\u9fffA-Za-z0-9]+)", fm.get("tags", ""))),
+        })
+    return cards
+
+# ---------- domain gating ----------
+DOMAIN_KW = ["买卖", "合同", "担保", "租赁", "股权", "股东", "离婚", "婚姻",
+             "医疗", "劳务", "工程", "承揽", "侵权", "人身", "刑事", "再审", "申诉",
+             "合作", "捐赠", "慈善", "借款", "买卖", "知产", "商标", "著作权"]
+
+def domain_overlap(case_type, card_text):
+    for kw in DOMAIN_KW:
+        if kw in case_type and kw in card_text:
+            return True
+    return False
+
+# ---------- same-case detection ----------
+def case_core(name):
+    s = re.sub(r"-(知识调用映射|案件笔记|摘要|预测报告).*$", "", name)
+    s = re.sub(r"(诉|买卖合同纠纷|纠纷案|案|知识调用映射|\.md|合同纠纷)$", "", s)
+    return s
+
+def same_case(case_name, card_title):
+    core = case_core(case_name)
+    # 修复(2026-10-25)：2 字当事人名（如"赵某"）被 >=3 过滤 → 同案卡漏链。
+    # 放宽到 >=2，并剔除通用领域词（离婚/合同等）避免误判同案。
+    toks = [t for t in re.split(r"[诉与和及]", core) if len(t) >= 2 and t not in DOMAIN_KW]
+    toks.append(core.replace("医生", ""))  # 韩杰案卡片常省略"医生"
+    hit = sum(1 for t in toks if t and t in card_title)
+    if "厚德" in case_name and "厚德" in card_title:
+        return True
+    if "雅菲" in case_name and "雅菲" in card_title:
+        return True
+    if "罗江辉" in case_name and "罗江辉" in card_title:
+        return True
+    return hit >= 1
+
+# ---------- do/dont/裁判规则 提取（剔除链接段） ----------
+LINKSEC = re.compile(r"##\s*(相关笔记|关联)\b.*?(?=\n##\s|\Z)", re.S)
+
+def strip_links(body):
+    return LINKSEC.sub("", body)
+
+def extract_section(body, headers):
+    b = strip_links(body)
+    for h in headers:
+        m = re.search(r"##\s*" + h + r"\s*\n(.*?)(?:\n##\s|\Z)", b, re.S)
+        if m:
+            return m.group(1).strip()
+    return ""
+
+def snippet(text, n=150):
+    text = re.sub(r"\s+", " ", text).strip()
+    return text[:n] + ("…" if len(text) > n else "")
+
+FIELD_LABEL = re.compile(r"^(标的|争议焦点|法律关系|focus|案由|来源|标签|引用|关联|相关|备注|说明)\s*[:：]")
+
+def _clean(s):
+    s = re.sub(r"^[*\-#>\s]+", "", s).strip()
+    s = re.sub(r"\*+", "", s)  # 去加粗标记
+    s = re.sub(r"^(do|dont|禁忌|推荐|应当|做法)\s*[:：]", "", s, flags=re.I).strip()
+    return s
+
+TABLE_LINE = re.compile(r"^\s*\|?[\s:\-\|]+\|?\s*$")
+
+def _valid_line(s):
+    s = s.strip()
+    if not s or len(s) > 300:
+        return False
+    if s.startswith("|") or TABLE_LINE.match(s):
+        return False
+    if "R-LN" in s or "[[[" in s:
+        return False
+    return True
+
+def _good(items):
+    out = []
+    for x in items:
+        x = _clean(x)
+        if x and x != "|" and not TABLE_LINE.match(x) and len(x) <= 600 and "R-LN" not in x and "[[[" not in x:
+            out.append(x)
+    return out
+
+def extract_card_dodont(card):
+    b = strip_links(card["body"])
+    rule = extract_section(b, [r"裁判规则", r"规则表述", r"规则摘要", r"规则要旨", r"裁判要旨"])
+    do_lines, dont_lines = [], []
+    # 1) 显式 do:/dont: 字段
+    for ln in b.splitlines():
+        m = re.match(r"^\**\s*(do|dont)\s*[:：]\s*(.*)$", ln.strip(), re.I)
+        if m:
+            (do_lines if m.group(1).lower() == "do" else dont_lines).append(m.group(2))
+    # 2) 章节提取
+    sec_do = extract_section(b, [r"推荐做法", r"正确做法", r"适用要点", r"操作要点", r"实务要点", r"适用场景"])
+    sec_dont = extract_section(b, [r"禁忌", r"常见错误", r"反例", r"错误做法"])
+    if sec_do:
+        do_lines += [l for l in sec_do.splitlines() if _valid_line(l)]
+    if sec_dont:
+        dont_lines += [l for l in sec_dont.splitlines() if _valid_line(l)]
+    # 3) 兜底行扫描
+    if not do_lines or not dont_lines:
+        for ln in b.splitlines():
+            s = ln.strip().lstrip("#- ").strip()
+            if not _valid_line(s) or FIELD_LABEL.match(s):
+                continue
+            if not do_lines and re.search(r"(推荐|应当|正确做法|适用要点|操作要点|实务要点|建议|宜|可采)", s):
+                do_lines.append(s)
+            elif not dont_lines and re.search(r"(禁忌|不要|避免|不得|切忌|慎勿|审慎)", s):
+                dont_lines.append(s)
+            if do_lines and dont_lines:
+                break
+    do_lines, dont_lines = _good(do_lines)[:2], _good(dont_lines)[:2]
+    return {
+        "rule": snippet(rule, 150) if rule else "",
+        "do": "；".join(do_lines),
+        "dont": "；".join(dont_lines),
+    }
+
+# ---------- match ----------
+def match(case_q, case_name, cards):
+    q_case = case_q["case_type"]
+    q_brief = case_q["brief"]
+    q_all = q_case + " " + q_brief + " " + case_q["tags"] + " " + case_q["extra"]
+    scored = []
+    for c in cards:
+        w = 0.5 if c["is_sim"] else 1.0
+        s = sim(q_case, c["title"] + " " + c["tags"]) * 0.45
+        s += sim(q_brief, c["body_clean"]) * 0.30
+        s += sim(q_all, c["title"] + " " + c["tags"] + " " + c["body_clean"][:400]) * 0.25
+        s *= w
+        if same_case(case_name, c["title"]):
+            s = max(s, 0.95)
+        elif not domain_overlap(q_case, c["title"] + c["tags"] + c["body_clean"][:400]):
+            s *= 0.25  # 无领域重合的泛化卡降权
+        # 结构化案由匹配（卡片 frontmatter 案由 与 案件 case_type 共享真实领域关键词或精确包含）：强信号
+        if c["anyou"] and q_case:
+            if c["anyou"] in q_case or q_case in c["anyou"]:
+                s = max(s, 0.60)
+            elif any(dom in c["anyou"] and dom in q_case for dom in DOMAIN_KW):
+                s = max(s, 0.50)
+        # 卡片显式关联本案（关联在办案件/来源案）：近乎同案
+        if c["rel"] and case_core(case_name)[:3] in c["rel"]:
+            s = max(s, 0.92)
+        scored.append((s, c))
+    scored.sort(key=lambda x: -x[0])
+    top, seen = [], set()
+    for s, c in scored:
+        if s < 0.12:
+            continue
+        if c["name"] in seen:
+            continue
+        seen.add(c["name"])
+        ex = extract_card_dodont(c)
+        if not (ex["rule"] or ex["do"] or ex["dont"]):
+            continue
+        top.append((s, c, ex))
+        if len(top) >= 3:
+            break
+    return top
+
+# ---------- append to note (六-B) ----------
+def append_note(path, case_name, date_str, top):
+    txt0 = open(path, encoding="utf-8").read()
+    # 幂等：同日预判推送块已存在则跳过（避免重复追加）
+    if f"### {date_str} 预判推送" in txt0:
+        return None, os.path.getsize(path), os.path.getsize(path)
+    bak = path + f".bak-{TS}"
+    shutil.copy2(path, bak)
+    old_size = os.path.getsize(path)
+    txt = txt0
+    if "## 关联历史经验" not in txt:
+        txt += "\n\n## 关联历史经验\n"
+    block = f"\n### {date_str} 预判推送\n"
+    block += f"> 来源：预判式跨案件模式识别自动化（每周日 20:00）\n"
+    for i, (sc, c, ex) in enumerate(top, 1):
+        block += f"\n**{i}. [[{c['name'].replace('.md','')}]]** （相似度 {sc:.2f}）\n"
+        if ex["rule"]:
+            block += f"- 裁判规则：{ex['rule']}\n"
+        if ex["do"]:
+            block += f"- 推荐做法：{ex['do']}\n"
+        if ex["dont"]:
+            block += f"- 禁忌：{ex['dont']}\n"
+    block += "\n"
+    txt += block
+    open(path, "w", encoding="utf-8").write(txt)
+    new_size = os.path.getsize(path)
+    assert old_size == os.path.getsize(bak), "BACKUP SIZE MISMATCH"
+    assert new_size > old_size, "APPEND FAILED"
+    return bak, old_size, new_size
+
+# ---------- build case list ----------
+def main():
+    cases = []
+    for fp in glob.glob(os.path.join(CASE_DIR, "*.md")):
+        name = os.path.basename(fp)
+        if name in CASE_STOP:
+            continue
+        fm, body = parse_fm(fp)
+        if not is_active(fm, name):
+            print(f"[SKIP-已结案] {name}")
+            continue
+        cases.append((name, fp, fm, body))
+    fy = os.path.join(CASEDROP, "起诉与庭审预测报告（凤仪村委视角）.md")
+    if os.path.exists(fy):
+        fm, body = parse_fm(fy)
+        if is_active(fm, "凤仪村与赤水月亮湖合作合同纠纷案"):
+            cases.append(("凤仪村与赤水月亮湖合作合同纠纷案（CaseDrop）", fy, fm, body))
+
+    print(f"[扫描] 在办案件 {len(cases)} 件")
+    cards = load_cards()
+    print(f"[加载] 经验卡 {len(cards)} 张（已剔除噪声桩/模板）")
+
+    report_lines = []
+    hit_cases = []
+    for name, fp, fm, body in cases:
+        q = case_query(fm, body)
+        top = match(q, name, cards)
+        if top:
+            hit_cases.append(name)
+            report_lines.append(f"\n【预判式经验提醒 - {TODAY.isoformat()}】")
+            report_lines.append(f"在办案件：{name}（{q['case_type']}）")
+            report_lines.append("相似历史经验：")
+            dont_items = []
+            for i, (sc, c, ex) in enumerate(top, 1):
+                report_lines.append(f"  {i}. {c['title']} — 相似度 {sc:.2f}")
+                if ex["rule"]:
+                    report_lines.append(f"     裁判规则：{ex['rule']}")
+                if ex["do"]:
+                    report_lines.append(f"     推荐：{ex['do']}")
+                if ex["dont"]:
+                    report_lines.append(f"     禁忌：{ex['dont']}")
+                    dont_items += [x for x in ex["dont"].split("；") if x]
+            dedup = list(dict.fromkeys([d.strip() for d in dont_items if d.strip()]))[:3]
+            report_lines.append(f"建议：本案可复用上述经验，重点规避 {'；'.join(dedup) or '相关程序/证据风险'}")
+            try:
+                if DRY:
+                    report_lines.append(f"[DRY_RUN 未写入] {name}")
+                else:
+                    res = append_note(fp, name, TODAY.isoformat(), top)
+                    if res[0] is None:
+                        report_lines.append(f"[SKIP-DUP] {name} 今日预判块已存在，跳过")
+                    else:
+                        bak, o, n = res
+                        report_lines.append(f"[已追加笔记] {name} 备份={os.path.basename(bak)} ({o}→{n}B)")
+            except Exception as e:
+                report_lines.append(f"[⚠ 追加失败] {name}: {e}")
+
+    # ---------- 运行留痕 ----------
+    log_path = os.path.join(LOG_DIR, f"知识推送日志-{TODAY.strftime('%Y-%m')}.md")
+    line = f"- [{TODAY.isoformat()}] 扫描在办案件 {len(cases)} 件；命中推送 {len(hit_cases)} 件 → 案件：{(' / '.join(hit_cases)) or '无'}\n"
+    if not os.path.exists(log_path):
+        open(log_path, "w", encoding="utf-8").write("# 知识推送日志\n\n" + line)
+    elif TODAY.isoformat() not in open(log_path, encoding="utf-8").read():
+        open(log_path, "a", encoding="utf-8").write(line)
+
+    print("\n".join(report_lines))
+    print(f"\n[留痕] {log_path}")
+    print(f"[汇总] 在办 {len(cases)} / 命中 {len(hit_cases)}")
+
+if __name__ == "__main__":
+    main()

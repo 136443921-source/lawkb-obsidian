@@ -153,6 +153,7 @@ tags:
 - **敏感隔离**：CLM 含真实案号/当事人姓名，本报告不展开当事人姓名，仅老强本人可见。
 
 ## 相关笔记
+- [[cockpit_monitor_2026-10-22]] (共现关键词: C4, chenyouqiang, 证据)
 - [[cockpit_monitor_2026-10-16]] (共现关键词: LawKB, cockpit, 裁定)
 - [[cockpit_monitor_2026-10-02]] (共现关键词: LawKB, cockpit, 裁定)
 - [[cockpit_monitor_2026-09-26]] (共现关键词: LawKB, 裁定, 上诉)
