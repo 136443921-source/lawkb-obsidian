@@ -1,0 +1,68 @@
+{
+  "round": "R32",
+  "date": "2026-10-25",
+  "skill_version": "1.62.0",
+  "pending_backfill": {
+    "frontmatter_true": 0,
+    "inline_string_files": 175,
+    "filled_count": 0,
+    "version_hallucination_blocked": 0,
+    "note": "【候选·待人工确认】"
+  },
+  "deadlinks": {
+    "script_version": "v1.8.0",
+    "target_files": 6880,
+    "hit_files": 2395,
+    "real_dead": 597,
+    "real_dead_diff_vs_R31": -8,
+    "to_build": 4701,
+    "parse_failed": 5,
+    "skipped": 17
+  },
+  "deadlink_fix": {
+    "caliber": "v9 strict whitelist (full ROOT)",
+    "dryrun_before": {"files": 8, "links": 8},
+    "applied_files": 8,
+    "applied_links": 8,
+    "rescan_after": 0,
+    "idempotent": true,
+    "backup": "/tmp/存量卡巡检死链修复_20261025-095300",
+    "v2_dryrun": {
+      "files": 1,
+      "links": 1,
+      "genuine_fix": 0,
+      "note": "spurious: report doc example string in 存量卡质量巡检报告-2026-10-24.md line 66, excluded"
+    }
+  },
+  "channels": {
+    "timestamp": "2026-10-25T09:46:48",
+    "local_statute_bank": "available_offline (156 cards)",
+    "yuandian_mcp": "connected (tool-table not verified, form-2 risk)",
+    "qcc_legal": "connected (tool-table not verified, form-2 risk)",
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "fill_triggered": false
+  },
+  "metrics_watchdog": {
+    "window_days": 3,
+    "card_consumption": "stale (last 2026-10-13 14:58, silent 11d)",
+    "frontdesk_events": "ok (last 2026-10-25 09:45)",
+    "grill_events": "stale (last 2026-10-13 14:44, silent 11d)",
+    "synergy_log": "stale (last 2026-10-13 14:50, silent 11d)",
+    "summary": "3 stale / 1 ok -> NOT all ok"
+  },
+  "connector_inventory": {
+    "installed": 10,
+    "session_connected": 4,
+    "written_back_to": "驾驶舱_人工核验.json",
+    "backup": "驾驶舱_人工核验.json.bak-20261025-094648"
+  },
+  "r2_status": {
+    "repairable_this_round": 8,
+    "consecutive_zero_repair_count": 0,
+    "metrics_all_ok": false,
+    "close_condition_met": false,
+    "recommendation": "keep and repurpose as metrics-watchdog + backfill-clearance + deadlink-residue specialist"
+  },
+  "new_pitfall": "坑80: idempotency check must use repair-tool same full-ROOT caliber, not classification report script or partial rescan"
+}

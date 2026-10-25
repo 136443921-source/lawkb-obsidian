@@ -1,0 +1,67 @@
+{
+  "round": "R31",
+  "date": "2026-10-24",
+  "mode": "质量巡检（原审判要件卡每日补拆改造版）",
+  "skill_version": "v2.1",
+  "pending_frontmatter_true": 0,
+  "pending_inline_string_files": 175,
+  "statute_refill_count": 0,
+  "version_hallucination_blocked": 0,
+  "deadlink_v170": {
+    "scanner": "_check_deadlinks.py --all (v1.7.0 分类口径)",
+    "matched_files": 2396,
+    "base_names_total": 6841,
+    "true_deadlinks": 604,
+    "to_build_softrefs": 4701,
+    "legacy_total": 5305,
+    "skip_no_frontmatter": 2,
+    "yaml_parse_fail": 5
+  },
+  "deadlink_fix_v9": {
+    "basename_set": 6799,
+    "dryrun_files_reported": 20,
+    "dryrun_links": 125,
+    "actual_files_modified": 15,
+    "applied": true,
+    "idempotent_rescan": "0 files / 0 links",
+    "backup_dir": "/tmp/deadlink_fix_20261024_095506"
+  },
+  "channels": {
+    "local_statute_bank": "available_offline (156 cards)",
+    "yuandian_mcp": "session_connected_tooltable_not_registered",
+    "qcc_legal": "session_connected_tooltable_not_registered",
+    "pkulaw": "disabled",
+    "probe_timestamp": "2026-10-24T09:51"
+  },
+  "metrics_watchdog": {
+    "window_days": 3,
+    "card_consumption": "stale (last 2026-10-13 14:58, silent 10d)",
+    "frontdesk_events": "ok (last 2026-10-24 09:51)",
+    "grill_events": "stale (last 2026-10-13 14:44, silent 10d)",
+    "collab_effect_log": "stale (last 2026-10-13 14:50, silent 10d)",
+    "verdict": "3 stale / 1 ok -> NOT all ok"
+  },
+  "connectors_probe": {
+    "installed": 10,
+    "session_connected": 4,
+    "connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "disabled": ["pkulaw", "gongyi-open-mcp", "qq-mail", "kdocs", "tencent-weiyun", "github"],
+    "not_listed": ["ima-mcp"],
+    "written_back": "驾驶舱_人工核验.json (.bak-20261024-095153)"
+  },
+  "six_b": {
+    "backup_done": true,
+    "backup_targets": 15,
+    "dryrun_before_apply": true,
+    "idempotent_verified": true
+  },
+  "r2_close_condition_met": false,
+  "r2_reason": "本轮有 125 条可修项已 apply + 埋点 3 stale 非全 ok",
+  "human_pending": [
+    "604 真死链 -> P0-4 编号治理",
+    "5 个超范围 YAML 解析失败 memo -> 加引号修复",
+    "3 项埋点 stale -> 查上游发射点",
+    "175 处内联 statute_text_pending 字符串 -> 内联标记清零立项",
+    "死链口径差异 v1.7.0(604/4701) vs R30记忆 v1.8.0(339/2674) -> 统一脚本版本"
+  ]
+}
