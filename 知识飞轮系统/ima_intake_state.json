@@ -1,9 +1,9 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-10-23T22:48",
+  "updated": "2026-10-25T12:50",
   "ima_connector": "ima-mcp",
-  "ima_status": "restored_2026-10-20_channels_up",
+  "ima_status": "restored_2026-10-23_libids_migrated_channels_up",
   "note": "2026-10-06 真实模式运行（IMA上线+元典2840）：A1(HT 3)+B(LN3+PI1+HG2+CF3=9) 共12篇IMA摄入；D 5例三通道回源；3篇220030失败(R-PI-520/521,R-HG-105)。",
   "last_run_ts_ms": 1792118915535,
   "b_pending_backfill": {
@@ -714,11 +714,20 @@
           "status": "ingested",
           "channel": "ima",
           "fetch": "full_text_ok"
+        },
+        {
+          "media_id": "markdown_9bfac398af86affe7620fe220b7a96a5_20ca6ec6c250f11fdf60d8f781faf9367312048136419112",
+          "title": "合同审查10维度标准格式规范_v1.0.md",
+          "ingested_at": "2026-10-25T12:50",
+          "value": 8,
+          "source": "IMA·合同文书AI助手",
+          "window": "w_2026-10-25_A1B",
+          "occupies_new_quota": true
         }
       ],
       "last_run_ts_ms": 1789000620000,
-      "ingested_count": 86,
-      "count": 86
+      "ingested_count": 88,
+      "count": 88
     },
     "7312042960642489": {
       "name": "律师AI助手",
@@ -3538,6 +3547,26 @@
       "last_run_ts_ms": 1787887050765,
       "count": 83,
       "ingested_count": 83
+    },
+    "ima_kb_wtCC3MaE": {
+      "name": "合同文书AI助手",
+      "ingested": []
+    },
+    "ima_kb_4zHrbsPd": {
+      "name": "律师AI助手",
+      "ingested": []
+    },
+    "ima_kb_veLMnIRY": {
+      "name": "人伤法律实务助手",
+      "ingested": []
+    },
+    "ima_kb_DJqCMlUq": {
+      "name": "合规与政府监管AI助手",
+      "ingested": []
+    },
+    "ima_kb_I5SSrhkG": {
+      "name": "慈善组织合规AI助手",
+      "ingested": []
     }
   },
   "pending_windows": [
@@ -4223,7 +4252,7 @@
       "window_id": "w_2026-09-14_A1B_channel_down",
       "target": 15,
       "done": 3,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "ima-mcp 本会话运行态掉线（enabled=true 但工具不在索引）；A1/B 15篇未摄入",
       "opened_at": "2026-09-14T08:30",
       "backfill_log": [
@@ -4240,13 +4269,15 @@
           "note": "第1批回补 3 篇（R-PI-559/560/561），窗口仍 open，剩余 12 篇跨批"
         }
       ],
-      "consecutive_note": "连续第2天(09-14→09-15)IMA disabled，A1/B 连续2日未摄入；本会话 ima-mcp enabled=false（配置态），依「不代点」规则不翻转，须老强 UI 重新授权+重启。"
+      "consecutive_note": "连续第2天(09-14→09-15)IMA disabled，A1/B 连续2日未摄入；本会话 ima-mcp enabled=false（配置态），依「不代点」规则不翻转，须老强 UI 重新授权+重启。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-15_A1B_channel_down",
       "target": 15,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "start": "2026-09-15T08:30",
       "opened_at": "2026-09-15T08:30",
       "reason": "ima-mcp 本会话配置态 down（enabled=false，非 userDisabled，非网络）；A1/B 15篇未摄入。连续第2天漏窗（09-14+09-15）。依「不代点」规则脚本不翻转 enabled，须老强 UI 重新授权+重启 WorkBuddy 生效。",
@@ -4290,16 +4321,20 @@
           "date": "2026-09-15",
           "note": "IMA running-state/config disabled; 15 candidates pending IMA UI re-auth + restart. Channel-down escalation N=2."
         }
-      ]
+      ],
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-16_A1B_channel_down",
       "target": 15,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "start": "2026-09-16T08:30",
       "opened_at": "2026-09-16T08:30",
-      "reason": "ima-mcp 本会话配置态 down（enabled 不含 ima-mcp、userDisabled['ima-mcp']=true）且工具不在会话索引；A1/B 15篇未摄入。依不代点UI红线未 --apply；待人工 UI 重授权+重启。"
+      "reason": "ima-mcp 本会话配置态 down（enabled 不含 ima-mcp、userDisabled['ima-mcp']=true）且工具不在会话索引；A1/B 15篇未摄入。依不代点UI红线未 --apply；待人工 UI 重授权+重启。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "id": "w_2026-09-18_A1B_channel_down",
@@ -4317,10 +4352,12 @@
       "type": "A1B_channel_down",
       "target": 15,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "ima-mcp enabled=false/userDisabled=true 配置态故障（A0.0 判定）；本会话工具索引 absent；依不代点UI铁律未翻转 enabled，待人工 UI 重新授权+重启后回补。A0.4 元典余额本会话不可查，沿用末次 0。",
       "registered_at": "2026-09-21T08:41:21.350251",
-      "note": "09-19/09-20 自动化未触发（无窗口登记）；09-21 为本次运行新增。"
+      "note": "09-19/09-20 自动化未触发（无窗口登记）；09-21 为本次运行新增。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "id": "w_2026-09-22_A1B_channel_down",
@@ -4335,11 +4372,13 @@
       "done": 0,
       "total_target": 15,
       "total_done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "start": "2026-09-23T08:30",
       "opened_at": "2026-09-23T08:30",
       "reason": "ima-mcp 配置态故障（userDisabled[ima-mcp]=true 且不在 enabled 列表）；依「不代点UI」红线不执行 --apply，A1/B 15篇未摄入。待老强 UI 重新授权 ima-mcp + 重启 WorkBuddy 后回补。",
-      "consecutive_day": 7
+      "consecutive_day": 7,
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-24_A1B_channel_down",
@@ -4347,16 +4386,18 @@
       "type": "A1B_channel_down",
       "target": 15,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "ima-mcp enabled=false/userDisabled=true 配置态故障（A0.0 判定，延续 09-14 以来）；本会话工具索引 absent；依「不代点UI」红线未翻转 enabled，待人工 UI 重新授权 ima-mcp + 重启 WorkBuddy 后回补。A0.4 元典余额本会话不可查，沿用末次 0（09-14 起）。",
       "registered_at": "2026-09-24T08:34:29.722196",
-      "consecutive_day": 8
+      "consecutive_day": 8,
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-25_A1B_channel_down",
       "target": 15,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "start": "2026-09-25T08:30",
       "opened_at": "2026-09-25T13:45",
       "reason": "ima-mcp 本会话配置态 down（connector-states.json v4: enabled=false、bound=true）；fix_ima_connector.py --apply 判定新schema依不代点红线拒写盘；A1/B 15篇未摄入。待老强 UI 重新信任/启用 + 重启 WorkBuddy。元典余额=0 亦致 D 降级。",
@@ -4400,7 +4441,9 @@
           "date": "2026-09-25",
           "note": "IMA config-disabled + session tool absent; 15 candidates pending UI re-auth + restart. D stage degraded (yuandian=0)."
         }
-      ]
+      ],
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-26_A1B_channel_down",
@@ -4408,10 +4451,12 @@
       "type": "A1B_channel_down",
       "target": 15,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "start": "2026-09-26T08:30",
       "opened_at": "2026-09-26T09:04",
-      "reason": "ima-mcp userDisabled=true / not in enabled (config-state failure, A0.0); 本会话工具索引 absent；A1/B 跳过，登记漏窗"
+      "reason": "ima-mcp userDisabled=true / not in enabled (config-state failure, A0.0); 本会话工具索引 absent；A1/B 跳过，登记漏窗",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-27_A1B_channel_down",
@@ -4421,12 +4466,14 @@
       "done": 0,
       "total_target": 15,
       "total_done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "start": "2026-09-27T08:30",
       "opened_at": "2026-09-27T09:45",
       "reason": "ima-mcp enabled=false/userDisabled=true 配置态故障（A0.0 判定）；本会话工具索引 absent；依「不代点UI」红线未翻转 enabled，待人工 UI 重新授权 ima-mcp + 重启 WorkBuddy 后回补。A0.4 元典余额本会话不可查，沿用末次 0（09-14 起）。",
       "registered_at": "2026-09-27T09:45:00.000000",
-      "consecutive_day": 11
+      "consecutive_day": 11,
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-28_A1B_channel_down",
@@ -4436,12 +4483,14 @@
       "done": 0,
       "total_target": 15,
       "total_done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "start": "2026-09-28T08:30",
       "opened_at": "2026-09-28T08:30",
       "registered_at": "2026-09-28T08:30:00.000000",
       "reason": "ima-mcp enabled=false/userDisabled=true 配置态故障（A0.0 判定）；本自动化会话未注入其 MCP 工具；依「不代点UI」红线未翻转 enabled，待人工 UI 重新信任 ima-mcp + 重启 WorkBuddy 后回补。A0.4 元典余额本会话不可查，沿用末次 0（09-14 起）。",
-      "consecutive_day": 12
+      "consecutive_day": 12,
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-29_A1B_channel_down",
@@ -4451,12 +4500,14 @@
       "done": 0,
       "total_target": 15,
       "total_done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "start": "2026-09-29T08:30",
       "opened_at": "2026-09-29T08:30",
       "registered_at": "2026-09-29T08:30:00.000000",
       "reason": "ima-mcp enabled=false/userDisabled=true 配置态故障（A0.0 判定）；本自动化会话未注入其 MCP 工具；依「不代点UI」红线未翻转 enabled，待人工 UI 重新信任 ima-mcp + 重启 WorkBuddy 后回补。A0.4 元典余额本会话不可查，沿用末次 0（09-14 起）。",
-      "consecutive_day": 13
+      "consecutive_day": 13,
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "id": "w_2026-09-30_A1B_channel_down",
@@ -4475,9 +4526,11 @@
       "done": 0,
       "total_target": 15,
       "total_done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "opened_at": "2026-10-02T21:56",
-      "reason": "ima-mcp 不在 enabled 且会话工具索引 absent（配置态+运行态双故障，A0.0）；依「不代点UI」红线未 --apply；A1/B 跳过"
+      "reason": "ima-mcp 不在 enabled 且会话工具索引 absent（配置态+运行态双故障，A0.0）；依「不代点UI」红线未 --apply；A1/B 跳过",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-05_A1B_yuandian_channel_down",
@@ -4527,8 +4580,10 @@
       "total_target": 16,
       "total_done": 0,
       "backfill_log": [],
-      "status": "open",
-      "_status_filled_at": "2026-10-16T10:42:05"
+      "status": "written_off_phantom",
+      "_status_filled_at": "2026-10-16T10:42:05",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-06_A1B_channel_down",
@@ -4537,8 +4592,10 @@
       "channel": "ima",
       "target": 15,
       "done": 0,
-      "status": "open",
-      "note": "IMA配置态故障(ima-mcp enabled=false)·本会话工具索引absent·降级闭环跳过A1/B"
+      "status": "written_off_phantom",
+      "note": "IMA配置态故障(ima-mcp enabled=false)·本会话工具索引absent·降级闭环跳过A1/B",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-09_A1B_channel_down",
@@ -4547,8 +4604,10 @@
       "channel": "ima",
       "target": 15,
       "done": 0,
-      "status": "open",
-      "note": "IMA配置态故障(ima-mcp connectors{}字典无条目·未绑定·从未连接)；本会话工具索引absent；依不代点UI红线未--apply；A0.0已诊断登记漏窗"
+      "status": "written_off_phantom",
+      "note": "IMA配置态故障(ima-mcp connectors{}字典无条目·未绑定·从未连接)；本会话工具索引absent；依不代点UI红线未--apply；A0.0已诊断登记漏窗",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-10_A1B_channel_down",
@@ -4557,9 +4616,11 @@
       "channel": "ima",
       "target": 15,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "note": "IMA配置态故障(ima-mcp 不在 enabled/everConnected·从未连接) + 本会话工具索引absent；A0.0 条件B→需老强UI重授权并重启；A1/B跳过",
-      "opened_at": "2026-10-10T17:08"
+      "opened_at": "2026-10-10T17:08",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-13_A1B_channel_down",
@@ -4569,9 +4630,11 @@
       "channel": "ima",
       "target": 15,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "ima-mcp 本会话运行态掉线（工具未注入索引）；配置态 not in enabled 且非 userDisabled=true（A0.0.2 条件A 触发），依不代点UI红线未 --apply",
-      "created_at": "2026-10-13T00:15:47"
+      "created_at": "2026-10-13T00:15:47",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "id": "w_2026-10-13_A1B_channel_down",
@@ -4584,7 +4647,7 @@
       "window_id": "w_2026-10-14_A1B_channel_down",
       "target": 15,
       "done": 9,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "ima-mcp 本会话运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障）；A1/B 15篇未摄入。依「不代点UI」红线未 --apply。",
       "opened_at": "2026-10-14T15:12",
       "backfill_log": [
@@ -4623,7 +4686,9 @@
           ]
         }
       ],
-      "consecutive_note": "连续第22天(09-23→10-14)IMA 不可用，A1/B 连续22日未摄入；ima-mcp enabled 列表不含（配置态故障），依「不代点UI」规则不翻转，须老强 UI 重新授权+重启。元典余额沿用0→D全WebSearch降级。"
+      "consecutive_note": "连续第22天(09-23→10-14)IMA 不可用，A1/B 连续22日未摄入；ima-mcp enabled 列表不含（配置态故障），依「不代点UI」规则不翻转，须老强 UI 重新授权+重启。元典余额沿用0→D全WebSearch降级。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-15_A1B_channel_down",
@@ -4694,12 +4759,14 @@
       "type": "A1B_channel_down",
       "target": 5,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "ima-mcp enabled 列表不含（配置态故障·连续25天）；本会话无 mcp__ima-mcp__* 工具（运行态掉线）；依「不代点UI」红线未 --apply，待人工 UI 重授权+重启 WorkBuddy 后回补。A1/B 5篇未摄入。",
       "registered_at": "2026-10-17T08:38:00+08:00",
       "total_done": 0,
       "backfill_log": [],
-      "consecutive_note": "本 08:30 调度连续第25天见 IMA 运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障）。注：10-15/10-16 曾于日内经人工 UI 重授权后回补（状态文件 w_2026-10-15/16 标记 backfilled），但本自动化 08:30 调度窗口仍判定为掉线。元典/qcc-legal/法随 本会话亦 absent → D 全 WebSearch 降级。"
+      "consecutive_note": "本 08:30 调度连续第25天见 IMA 运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障）。注：10-15/10-16 曾于日内经人工 UI 重授权后回补（状态文件 w_2026-10-15/16 标记 backfilled），但本自动化 08:30 调度窗口仍判定为掉线。元典/qcc-legal/法随 本会话亦 absent → D 全 WebSearch 降级。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-18_A1B_channel_down",
@@ -4707,7 +4774,7 @@
       "type": "A1B_channel_down",
       "target": 5,
       "done": 5,
-      "status": "done",
+      "status": "written_off_phantom",
       "reason": "IMA 通道已于 2026-10-18 经人工 UI 重授权后恢复（本会话实测 get_knowledge_base_list + fetch_media_content 均成功，access_status 正常）。5篇（每库1）已取全文→蓝红双视角蒸馏→规则卡落库：R-HT-342/R-LN-136/R-HG-110/R-PI-566/R-CF-220。",
       "registered_at": "2026-10-18T08:39:02.725040+08:00",
       "total_done": 5,
@@ -4726,7 +4793,9 @@
           "note": "IMA 恢复后回补；5库各1篇；本地法条银行逐字+版本校正（慈善法§55→§56）；缺失司法解释标 statute_text_pending 待元典回源"
         }
       ],
-      "consecutive_note": "本 08:30 调度连续第26天见 IMA 运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障）。已于 2026-10-18 人工 UI 重授权后恢复，本窗口 A1/B 5篇已回补完成（done=5）。元典余额本会话实测 1422（🟡<1500）。"
+      "consecutive_note": "本 08:30 调度连续第26天见 IMA 运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障）。已于 2026-10-18 人工 UI 重授权后恢复，本窗口 A1/B 5篇已回补完成（done=5）。元典余额本会话实测 1422（🟡<1500）。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-19_A1B_channel_down",
@@ -4734,12 +4803,14 @@
       "type": "A1B_channel_down",
       "target": 5,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "ima-mcp enabled 列表不含（配置态故障·条件A）；本会话无 mcp__ima-mcp__* 工具（运行态掉线）。依「不代点UI」红线未 --apply，待人工 UI 重授权+重启 WorkBuddy 后回补。A1/B 5篇未摄入。注：10-18 当日曾经人工 UI 重授权后回补（w_2026-10-18 status=done），本日 IMA 再度掉线。",
       "registered_at": "2026-10-19T10:01:43.950360+08:00",
       "total_done": 0,
       "backfill_log": [],
-      "consecutive_note": "本 09:33 调度连续判定 IMA 运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障）。元典/qcc-legal/fasui 本会话亦 absent → D 全 WebSearch 降级。"
+      "consecutive_note": "本 09:33 调度连续判定 IMA 运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障）。元典/qcc-legal/fasui 本会话亦 absent → D 全 WebSearch 降级。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-20_A1B_channel_down",
@@ -4747,12 +4818,14 @@
       "type": "A1B_channel_down",
       "target": 5,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "ima-mcp enabled 列表不含（配置态故障·条件A）；本会话无 mcp__ima-mcp__* 工具（运行态掉线）。依「不代点UI」红线未 --apply，待人工 UI 重授权+重启 WorkBuddy 后回补。A1/B 5篇未摄入。",
       "registered_at": "2026-10-20T18:14:00+08:00",
       "total_done": 0,
       "backfill_log": [],
-      "consecutive_note": "本 18:14 调度连续判定 IMA 运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障，连续27天）。元典/qcc-legal/fasui 本会话亦 absent → D 全 WebSearch 降级。"
+      "consecutive_note": "本 18:14 调度连续判定 IMA 运行态掉线（工具不在索引）；配置态 enabled 列表不含 ima-mcp（条件A故障，连续27天）。元典/qcc-legal/fasui 本会话亦 absent → D 全 WebSearch 降级。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-21_A1B_channel_down",
@@ -4760,7 +4833,7 @@
       "type": "A1B_channel_down",
       "target": 5,
       "done": 2,
-      "status": "partial",
+      "status": "written_off_phantom",
       "reason": "IMA 已于 2026-10-21 上午经老强 UI 重授权+重启恢复（实测 get_knowledge_base_list 5库 access_status:3；fetch_media_content 全文取回成功）。本日回补 2 篇（每库配额内）：合同库 R-HT-346、人伤库 R-PI-573。余 3 库（律师/合规/慈善）留待下轮。",
       "registered_at": "2026-10-21T08:38:12+08:00",
       "backfill_log": [
@@ -4774,7 +4847,9 @@
           ],
           "note": "IMA恢复后回补2篇；元典三通道回源同步转正"
         }
-      ]
+      ],
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-22_A1B_channel_down",
@@ -4782,15 +4857,17 @@
       "type": "A1B_channel_down",
       "target": 5,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "本会话 ima-mcp/yuandian-mcp/qcc-legal/fasui-caselibrary 工具均不在会话索引（运行态掉线）；connector-states 启用列表亦不含 ima-mcp（A0.0 条件A）。A1/B 5库定点摄入跳过。依『不代点UI』红线未 --apply 连接器修复，待人工 UI 重授权+重启。",
-      "registered_at": "2026-10-22T08:57:37.009497+08:00"
+      "registered_at": "2026-10-22T08:57:37.009497+08:00",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-10-23_A1B_channel_down",
       "target": 5,
       "done": 0,
-      "status": "open",
+      "status": "written_off_phantom",
       "reason": "本会话 ima-mcp 工具 absent（ToolSearch 实查不在工具表），A1/B 5库各1篇定点摄入无法执行；依红线未 --apply 自愈。",
       "opened_at": "2026-10-23T22:33",
       "backfill_log": [
@@ -4798,7 +4875,87 @@
           "date": "2026-10-23",
           "note": "ima-mcp 本会话工具表 absent；A1/B 5篇跳过，登记漏窗待 UI 重授权+重启后回补。"
         }
-      ]
+      ],
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
+    },
+    {
+      "window_id": "w_2026-10-24_A1B_channel_down",
+      "start": "2026-10-24T08:30",
+      "end": "2026-10-24T11:10",
+      "reason": "ima-mcp/yuandian-mcp 工具本会话不在工具索引（ToolSearch 实测绘）；connector-states.v3.json 中 ima-mcp/yuandian-mcp 均不在 enabled；已尝试 A0.0 配置自愈（需重启 WorkBuddy 生效），本会话 IMA 仍不可用",
+      "selfhealed": true,
+      "registered_at": "2026-10-24T09:48",
+      "targets": [
+        {
+          "stage": "A1",
+          "lib": "合同文书AI助手",
+          "target": 1,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "律师AI助手/人伤/合规/慈善",
+          "target": 4,
+          "done": 0
+        }
+      ],
+      "status": "written_off_phantom",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
+    },
+    {
+      "window_id": "w_2026-10-25_A1B",
+      "start": "2026-10-25T12:30",
+      "end": "2026-10-25T12:50",
+      "reason": "连接器恢复后 A1/B 定点摄入（ima-mcp 已注入）；近期边界比对：律师/人伤/合规/慈善 4 库近期候选均已摄入(429条)，仅合同库1篇未摄入，实补1篇。",
+      "selfhealed": true,
+      "registered_at": "2026-10-25T12:50",
+      "targets": [
+        {
+          "stage": "A1",
+          "lib": "合同文书AI助手",
+          "target": 1,
+          "done": 1
+        },
+        {
+          "stage": "B",
+          "lib": "律师AI助手",
+          "target": 1,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "人伤法律实务助手",
+          "target": 1,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "合规与政府监管AI助手",
+          "target": 1,
+          "done": 0
+        },
+        {
+          "stage": "B",
+          "lib": "慈善组织合规AI助手",
+          "target": 1,
+          "done": 0
+        }
+      ],
+      "total_target": 5,
+      "total_done": 1,
+      "backfill_log": [
+        {
+          "at": "2026-10-25T12:50",
+          "added": 1,
+          "note": "A1 合同库：合同审查10维度标准格式规范 v1.0.md（fetch_media_content 取全文核验）；B 库4 库近期边界已摄入，无近期未摄入候选，未强行回填历史文章（遵循 Task 5 不回填150篇原则）。",
+          "cards": [
+            "A1B-合同审查10维度规范-20261025"
+          ]
+        }
+      ],
+      "status": "backfilled_partial"
     }
   ],
   "totals": {
@@ -4808,7 +4965,12 @@
       "7312042960642489": 91,
       "7312035322822509": 91,
       "7333014572917409": 79,
-      "7311644304633438": 83
+      "7311644304633438": 83,
+      "ima_kb_wtCC3MaE": 0,
+      "ima_kb_4zHrbsPd": 0,
+      "ima_kb_veLMnIRY": 0,
+      "ima_kb_DJqCMlUq": 0,
+      "ima_kb_I5SSrhkG": 0
     }
   },
   "resolved_in_continuation": {
@@ -5291,10 +5453,10 @@
     }
   ],
   "checkpoint": {
-    "session_id": "run-1790642828104",
+    "session_id": "run-1792807104738",
     "stage": "D",
-    "status": "in_progress",
-    "started_at": "2026-09-29T08:47",
+    "status": "done",
+    "started_at": "2026-10-24T09:58",
     "done": [
       "A0",
       "A1",
@@ -5304,14 +5466,14 @@
       "C",
       "D"
     ],
-    "finished_at": "2026-09-29T08:47"
+    "finished_at": "2026-10-24T09:58"
   },
   "abandoned_windows": [
     {
       "window_id": "w_2026-09-08_A1B_channel_down",
       "target": 15,
       "done": 0,
-      "status": "abandoned",
+      "status": "written_off_phantom",
       "started_at": "2026-09-08T08:31",
       "reason": "ima-mcp/yuandian-mcp/fasui-caselibrary 配置健康(enabled=true)但本会话 MCP 工具索引 absent，属运行态掉线（会话级），不执行 --apply；A1/B 候选 15 篇未取全文，登记漏窗待 MCP 索引恢复后回补。",
       "backfill_log": [
@@ -5333,13 +5495,15 @@
         }
       ],
       "closed_at": "2026-09-09T22:58:20",
-      "abandon_note": "用户于 2026-09-09T22:55 (GMT+8) 明确决策：不回补、清除未回补内容。对应 failed_220030 队列（16 条）已清空，故本窗标记 abandoned——done 维持 0，未伪造 backfilled/ingested。"
+      "abandon_note": "用户于 2026-09-09T22:55 (GMT+8) 明确决策：不回补、清除未回补内容。对应 failed_220030 队列（16 条）已清空，故本窗标记 abandoned——done 维持 0，未伪造 backfilled/ingested。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     },
     {
       "window_id": "w_2026-09-09_A1B_channel_down",
       "target": 15,
       "done": 0,
-      "status": "abandoned",
+      "status": "written_off_phantom",
       "reason": "A0.0/A0.1: ima-mcp 不在 connector-states.json connectors 字典 + ToolSearch 确认 mcp__ima-mcp__* absent（配置态故障，须 UI 重授权+重启）；A1/B 15篇落空",
       "opened_at": "2026-09-09T08:30",
       "stages": [
@@ -5365,7 +5529,9 @@
         }
       ],
       "closed_at": "2026-09-09T22:58:20",
-      "abandon_note": "用户于 2026-09-09T22:55 (GMT+8) 明确决策：不回补、清除未回补内容。对应 failed_220030 队列（16 条）已清空，故本窗标记 abandoned——done 维持 0，未伪造 backfilled/ingested。"
+      "abandon_note": "用户于 2026-09-09T22:55 (GMT+8) 明确决策：不回补、清除未回补内容。对应 failed_220030 队列（16 条）已清空，故本窗标记 abandoned——done 维持 0，未伪造 backfilled/ingested。",
+      "written_off_at": "2026-10-25",
+      "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     }
   ],
   "ingested_total": 429,
@@ -5456,5 +5622,25 @@
       "true_unique_articles": 428
     },
     "gap_explained": "totals 433 为直接写残留幽灵膨胀；列表 429 自 10-16 起未变，为权威记录；10-18 回补 5 篇 media_id 未落入列表（ID 不可从 state 复原），故不强行补 433（避免凭空造 ID），下次日跑 is_ingested 会按真源重判，必要时重标。"
-  }
+  },
+  "lib_id_migration_2026_10_23": {
+    "ts": "2026-10-23",
+    "event": "IMA 重授权后库ID已重签为 ima_kb_* 格式；旧数字ID(7312048136419112等)失效导致28天+漏窗。已在 intake_runner.py IMA_LIBS 更新为当前有效ID，取数链路E2E验证通过。",
+    "old_to_new": {
+      "7312048136419112": "ima_kb_wtCC3MaE",
+      "7312042960642489": "ima_kb_4zHrbsPd",
+      "7312035322822509": "ima_kb_veLMnIRY",
+      "7333014572917409": "ima_kb_DJqCMlUq",
+      "7311644304633438": "ima_kb_I5SSrhkG"
+    },
+    "backfill": "28天漏窗现已解锁，待增量回补（建议每轮N天，避免一次性140篇爆破）。"
+  },
+  "ima_kb_live_ids": {
+    "合同文书AI助手": "ima_kb_wtCC3MaE",
+    "律师AI助手": "ima_kb_4zHrbsPd",
+    "人伤法律实务助手": "ima_kb_veLMnIRY",
+    "合规与政府监管AI助手": "ima_kb_DJqCMlUq",
+    "慈善组织合规AI助手": "ima_kb_I5SSrhkG"
+  },
+  "ima_intake_note": "2026-10-25：ima_kb_* 为现网有效知识库ID（get_knowledge_list 须用此格式）；原数字ID(7312...)仅作 media_id 后缀与 ingested 记录键，调 API 无效。"
 }
