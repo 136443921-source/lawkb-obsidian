@@ -35,3 +35,6 @@ tags:
 ## 四、更新与订阅
 - 本包随源资产迭代；版本号与 `CHANGELOG.md` 同步。
 - 计费与订阅档位由运营部门负责人核定（见 `manifest.json › billing`）。
+
+## 相关笔记
+- [[LICENSE_COMMERCIAL]] (共现关键词: ---, 本包)

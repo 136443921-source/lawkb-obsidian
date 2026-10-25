@@ -68,6 +68,7 @@ tags:
 *数据源：登记册 SSOT + 各规则包 manifest。本器只读不写，冲突以最新实测为准。*
 
 ## 相关笔记
+- [[backfill_plan]] (共现关键词: 公司, package, rule)
 - [[last_run_report]] (共现关键词: 合同, ---, 2026)
 - [[asset_maturity_report]] (共现关键词: ---, 域库, report)
 - [[asset_health_report]] (共现关键词: ---, 2026, report)

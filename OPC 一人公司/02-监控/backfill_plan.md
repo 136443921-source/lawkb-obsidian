@@ -100,6 +100,10 @@ tags:
 *数据源：各包 manifest + 规则卡 frontmatter。本器只读不写；元典有额度时按队列回源，回源后跑 `gen_rule_package.py --domain <域>` 刷新包。*
 
 ## 相关笔记
+- [[README]] (共现关键词: 医疗, backfill)
+- [[gap_report]] (共现关键词: 公司, package, rule)
+- [[2026-10-20-resume-backfill]] (共现关键词: backfill, PI)
+- [[PREF-006-中枢git提交统一走backfill]] (共现关键词: 合同, backfill)
 - [[trw_health_monthly]] (共现关键词: ok, 合同)
 - [[DEC-2026-005-中枢提交规范化四层闭环思维轨迹]] (共现关键词: 合同, backfill)
 - [[_索引]] (共现关键词: ---, backfill)

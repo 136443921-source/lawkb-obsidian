@@ -41,6 +41,10 @@ tags:
 - [ ] **P0-4**：待定号方案表 v1.0 —— 300+ 卡 / 6 组同号冲突（**只改 frontmatter，绝不重命名文件**）
 
 ## 相关笔记
+- [[PROJ-SYS-XIAOZHE-小哲AI学伴系统]] (共现关键词: SYS, ---, AI)
+- [[PREF-008-写新东西请去：`LawKB_AI-Memory-Hub`（01-用户偏好-02-]] (共现关键词: LawKB, AI, 共现)
+- [[2026-09-17]] (共现关键词: LawKB, 共现)
+- [[_双链完整性报告_2026-10-16]] (共现关键词: LawKB, 共现)
 - [[PROJ-SYS-DIGITALAVATAR-数字分身系统使用指导手册]] (共现关键词: PROJ, ---, SYS)
 - [[MEMO-SYS-BENCH-飞轮LTI复盘与元宝豆包对标-2026-09-28]] (共现关键词: ---, 飞轮, SYS)
 - [[WF-074---yuandian-mcp-=-运行态掉线（enabled=true-但工具缺]] (共现关键词: ---, 共现, 工具)
