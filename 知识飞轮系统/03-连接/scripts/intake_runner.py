@@ -29,13 +29,14 @@ ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统"
 DEFAULT_STATE_PATH = os.path.join(ROOT, "ima_intake_state.json")
 SCHEMA_VERSION = "ima_intake_state/v2.0"   # v1.13 → v2.0：新增 checkpoint + 规范化 failed_220030
 
-# IMA 5 库固定清单（以 get_knowledge_base_list 返回为准，此处作默认值）
+# IMA 5 库固定清单（2026-10-23 IMA 重授权后库 ID 已重签为 ima_kb_* 格式，旧数字 ID 失效）
+# 旧值（已失效，勿复用）：7312048136419112 / 7312042960642489 / 7312035322822509 / 7333014572917409 / 7311644304633438
 IMA_LIBS = OrderedDict([
-    ("7312048136419112", "合同文书AI助手"),
-    ("7312042960642489", "律师AI助手"),
-    ("7312035322822509", "人伤法律实务助手"),
-    ("7333014572917409", "合规与政府监管AI助手"),
-    ("7311644304633438", "慈善组织合规AI助手"),
+    ("ima_kb_wtCC3MaE", "合同文书AI助手"),
+    ("ima_kb_4zHrbsPd", "律师AI助手"),
+    ("ima_kb_veLMnIRY", "人伤法律实务助手"),
+    ("ima_kb_DJqCMlUq", "合规与政府监管AI助手"),
+    ("ima_kb_I5SSrhkG", "慈善组织合规AI助手"),
 ])
 IMA_MEDIA_PREFIX = "wechatarticle_62fe55a7567bc291dfbbee29900b27c3"
 

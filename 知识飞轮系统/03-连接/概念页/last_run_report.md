@@ -12,6 +12,7 @@ updated: 2026-09-25T20:41
 本页为「last_run_report」概念枢纽，聚合知识飞轮系统内相关笔记，用于消解双向链接断链。
 
 ## 相关笔记
+- [[轨迹卡-自动化真跑与回写双层判别推理链-20261020]] (共现关键词: run, last, 共现)
 - [[asset_maturity_report]] (共现关键词: ---, asset, report)
 - [[asset_health_report]] (共现关键词: ---, 2026, report)
 - [[registry_consistency_report]] (共现关键词: ---, 2026, report)

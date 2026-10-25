@@ -40,6 +40,8 @@ updated: 2026-09-25T20:41
 
 
 ## 相关笔记
+- [[RULE-052---macOS-launchctl-写操作全禁-LaunchAgents-靠登录自动加载-勿依赖-launchctl-load-start]] (共现关键词: 共现, lti)
+- [[工作流卡-连接层维护SOP]] (共现关键词: 合同, 共现, cards)
 - [[README]] (共现关键词: 2026, lti)
 - [[2026-09-20]] (共现关键词: 合同, 2026, lti)
 - [[memory]] (共现关键词: 2026, lti)
