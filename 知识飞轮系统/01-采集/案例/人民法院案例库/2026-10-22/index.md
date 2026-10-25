@@ -4,6 +4,17 @@ date: 2026-10-22
 mode: WebSearch降级（元典/qcc-legal/法随/IMA 本会话均 absent）
 slots: 5
 source_verified: false
+
+tags:
+  - 22
+  - 医疗纠纷
+  - 慈善法
+  - 10
+  - ---
+  - 劳动争议
+  - 2026
+  - 合同法
+  - PI
 ---
 
 # 人民法院案例库采集索引 · 2026-10-22
