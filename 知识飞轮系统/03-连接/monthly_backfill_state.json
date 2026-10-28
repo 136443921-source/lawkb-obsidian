@@ -1,11 +1,12 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-28T08:38",
-  "updated": "2026-08-28T11:54",
+  "updated": "2026-10-28T23:26",
   "checkpoint": {
+    "session_id": "run-1793201198958",
     "stage": "FINAL",
     "status": "done",
-    "started_at": "2026-08-28T11:54",
+    "started_at": "2026-10-28T23:26",
     "done": [
       "M0_backup",
       "M1_scan",
@@ -13,7 +14,7 @@
       "M3_log",
       "FINAL"
     ],
-    "finished_at": "2026-08-28T11:54"
+    "finished_at": "2026-10-28T23:26"
   },
   "ima_connector": "ima-mcp",
   "ima_status": "init",
@@ -29,7 +30,7 @@
     "libraries": {}
   },
   "last_backup": {
-    "path": "/Users/chenyouqiang/WorkBuddy/automation-2026-08-10-22-03-01/.workbuddy/backups/xiaoqiang_self/self_backup_20260828-115402/self.md.bak",
+    "path": "/Users/chenyouqiang/WorkBuddy/Claw/backups/xiaoqiang_self/self_backup_20261028-231553/self.md.bak",
     "date": "2026-08-28T11:54"
   },
   "failed_stages": []

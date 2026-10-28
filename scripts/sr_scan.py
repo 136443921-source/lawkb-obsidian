@@ -1,4 +1,8 @@
 import os, re, json, datetime
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import _guard_frmain
+_guard_frmain.install()
 
 today = '2026-07-23'
 base = '/Users/chenyouqiang/Documents/LawKB/知识飞轮系统'

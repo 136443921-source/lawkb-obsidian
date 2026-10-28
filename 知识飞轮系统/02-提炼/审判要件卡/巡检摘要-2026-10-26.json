@@ -1,0 +1,67 @@
+{
+  "round": "R33",
+  "date": "2026-10-26",
+  "skill_version": "1.63.0",
+  "rule": "R2",
+  "candidate_note": "所有结论为候选推理，未经人工确认不得作为定论",
+  "step1_pending": {
+    "grep_target": "06-沉淀/裁判规则库 R-*.md ^statute_text_pending: true",
+    "pending_count": 0,
+    "verified": "双工具 grep 复核"
+  },
+  "step1_deadlinks": {
+    "script": "_check_deadlinks.py --all v1.7.0 分类口径",
+    "scope": "全库 7122 文件",
+    "hit_files": 1765,
+    "real_dead": 98,
+    "todo_notes": 3923,
+    "skipped_legal": 21,
+    "parse_fail": 1,
+    "parse_fail_file": "R-PI-607-上下班途中合理路线合理时间综合认定工伤工伤保险条例14条6项.md (06-沉淀/裁判规则库/人伤法)",
+    "scope_correction": "裁判规则库内死链文件=0；98真死链全部在库外(02-提炼/05-调用等)"
+  },
+  "step2_statute_refill": {
+    "refill_count": 0,
+    "intercepted_bias": 0,
+    "reason": "无 pending，未触发核填"
+  },
+  "step2_channels": {
+    "timestamp": "2026-10-26T09:59",
+    "probe_tool": "probe_connectors.py",
+    "session_connected": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "local_statute_bank": {"status": "offline_available", "md_count": 157},
+    "rule057": "0 pending 未触发核填，不降级不判死"
+  },
+  "step3_deadlink_fix": {
+    "fixer": "_fix_deadlinks_v9_20260918.py 严格白名单",
+    "dry_run_hits": 0,
+    "dry_run_links": 0,
+    "applied": 0,
+    "idempotent": true,
+    "note": "14条WL全已消解，幂等"
+  },
+  "step3_5_metrics": {
+    "watchdog_timestamp": "2026-10-26T09:59",
+    "card_consumption": {"status": "stale", "last": "2026-10-13T14:58", "silent_days": 12},
+    "frontdesk_events": {"status": "ok", "last": "2026-10-26T09:58", "silent_days": 0},
+    "grill_events": {"status": "stale", "last": "2026-10-13T14:44", "silent_days": 12},
+    "协同效果日志": {"status": "stale", "last": "2026-10-13T14:50", "silent_days": 12},
+    "summary": "3 stale / 1 ok (非全 ok)",
+    "fake_record_injected": false
+  },
+  "step4_sixB": {"writes": 0, "backups": 0, "note": "零写盘"},
+  "r2_closing": {
+    "consecutive_zero_fix_count": 1,
+    "metrics_all_ok": false,
+    "triggered": false,
+    "decision": "生成报告，保留自动化，维持埋点看门狗+待回源清零专项"
+  },
+  "pending_human_items": [
+    "R-PI-607 YAML 解析失败→修 frontmatter 块标量(坑41类)",
+    "98 真死链(全库库外)→P0-4 编号治理",
+    "3 项埋点 stale(静默12天)→查上游发射点",
+    "死链口径随脚本版本漂移→纵向比较锁版本号"
+  ]
+}

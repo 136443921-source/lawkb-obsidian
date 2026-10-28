@@ -15,6 +15,9 @@ import re
 import sys
 from difflib import SequenceMatcher
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from audit_exempt import is_exempt  # 豁免前置（测试夹具/工具元数据/历史法条）
+
 IDX = "/Users/chenyouqiang/.workbuddy/skills/LTI文本监控器/references/provision_index"
 SRC = "/tmp/lawkb_audit/conflicts_ABC.json"
 OUT = "/tmp/lawkb_audit/verified_findings.json"
@@ -72,6 +75,12 @@ def is_test_fixture(path):
     return ("LTI防幻觉" in path) or ("防幻觉能力" in path)
 
 
+def is_exempt_cite(x):
+    """对 conflicts_ABC 单条记录做豁免判定（A/B/C 通用）"""
+    return is_exempt(x.get("law") or x.get("law_raw"), x.get("art"),
+                     x.get("file", ""), x.get("ctx", ""), x.get("quote", ""))
+
+
 def main():
     laws = load_laws()
     data = json.load(open(SRC, encoding="utf-8"))
@@ -84,8 +93,11 @@ def main():
         item = {"law": x["law_raw"], "art": x["art"], "max": x["max"],
                 "version": x["version"], "file": x["file"], "line": x["line"],
                 "ctx": x.get("ctx", "")[:150]}
-        (findings["A_test_fixture"] if is_test_fixture(x["file"])
-         else findings["A_confirmed"]).append(item)
+        # 豁免前置：测试夹具 / 工具元数据 / 历史法条正确引用 → 不计入真实越界
+        if is_exempt_cite(x):
+            findings["A_test_fixture"].append(item)
+        else:
+            findings["A_confirmed"].append(item)
 
     # —— B 同条异文：逐个变体做反向定位，看谁对谁错 ——
     for grp in data["B_same_art_diff"]:
@@ -95,6 +107,10 @@ def main():
         nb = laws[law]["nb"]
         verdicts = []
         for it in grp["items"]:
+            # 豁免前置：变体若属测试夹具/工具元数据/历史法条 → 跳过
+            if is_exempt_cite({"law": law, "art": art, "file": it["file"],
+                               "quote": it["quote"]}):
+                continue
             q = norm(it["quote"])
             own = best_containment(q, nb.get(str(art), ""))
             best_k, best_s = None, 0.0
@@ -115,6 +131,9 @@ def main():
 
     # —— C 引文不符权威 ——
     for x in data["C_quote_mismatch"]:
+        # 豁免前置：测试夹具 / 工具元数据 / 历史法条正确引用 → 跳过
+        if is_exempt_cite(x):
+            continue
         law, art, q = x["law"], x["art"], norm(x["quote"])
         if law not in laws:
             continue

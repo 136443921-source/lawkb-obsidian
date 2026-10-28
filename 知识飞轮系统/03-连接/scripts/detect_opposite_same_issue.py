@@ -45,6 +45,13 @@ def real_title(txt, fn):
 
 STOP = re.compile(r"[^\u4e00-\u9fa5A-Za-z0-9]")
 
+# 标题通用套话（非具体议题词），用于判断两卡是否真·同议题
+TITLE_BOILERPLATE = set(
+    "律师 办理 业务 操作 指引 要点 提炼 2026 2025 试行 版 的 与 和 及 关于 对 之 "
+    "相关 实务 法律 分析 解读 案例 研究 规则 卡 单 案由 路由 合同 纠纷 公司 "
+    "担保 责任 权利 义务 条款 规定 制度".split()
+)
+
 
 def bigrams(s):
     s = STOP.sub("", s)
@@ -55,6 +62,14 @@ def jaccard(a, b):
     if not a or not b:
         return 0.0
     return len(a & b) / len(a | b)
+
+
+def shares_specific_topic(a_title, b_title):
+    """两标题是否共享「非套话」的具体议题词（2-gram）。
+    仅共享通用套话（如「律师办理…要点提炼」）→ 非同议题，判为噪声。"""
+    ta, tb = bigrams(a_title), bigrams(b_title)
+    common = ta & tb
+    return any(t not in TITLE_BOILERPLATE for t in common)
 
 
 def polarity_of(text):
@@ -107,7 +122,10 @@ def main():
     pairs = []
     for a, b in combinations(cards, 2):
         sim = jaccard(a["bg"], b["bg"])
-        if sim < 0.34:                      # 不同议题，跳过
+        if sim < 0.50:                      # 议题相似度门槛提高（0.34 过松，跨法域泛"有效/无效"误报）
+            continue
+        # 仅共享通用套话（无具体议题词）→ 非同议题，判为噪声跳过
+        if not shares_specific_topic(a["title"], b["title"]):
             continue
         for concept in set(a["pol"]) & set(b["pol"]):
             pa, pb = set(a["pol"][concept]), set(b["pol"][concept])

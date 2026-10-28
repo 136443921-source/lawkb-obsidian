@@ -54110,3 +54110,7869 @@
   },
   "pii_safe": true
 }
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T22:22:47",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 661.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 661.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T22:32:47",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 661.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 661.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T22:42:47",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 661.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 661.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T22:52:47",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 662.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 662.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T23:02:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 662.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 662.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T23:12:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 662.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 662.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T23:22:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 662.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 662.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T23:32:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 662.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 662.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T23:42:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 662.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 662.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-25T23:52:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 663.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 663.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T00:02:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 663.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 663.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T00:12:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 663.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 663.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T00:22:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 663.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 663.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T00:32:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 663.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 663.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T00:42:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 663.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 663.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T00:52:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 664.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 664.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T01:02:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 664.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 664.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T01:12:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 664.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 664.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T01:22:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 664.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 664.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T01:32:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 664.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 664.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T01:42:51",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 664.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 664.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T01:52:51",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 665.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 665.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T02:02:51",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 665.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 665.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T02:12:51",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 665.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 665.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T02:22:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 665.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 665.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T02:32:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 665.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 665.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T02:42:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 666.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 666.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T02:52:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 666.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 666.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T03:02:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 666.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 666.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T03:12:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 666.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 666.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T03:22:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 666.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 666.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T03:32:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 666.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 666.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T03:42:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 667.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 667.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T03:52:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 667.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 667.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T04:02:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 667.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 667.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T04:12:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 667.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 667.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T04:22:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 667.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 667.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T04:32:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 667.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 667.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T04:42:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 668.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 668.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T04:52:55",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 668.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 668.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T05:02:55",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 668.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 668.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T05:12:55",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 668.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 668.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T05:22:55",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 668.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 668.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T05:32:55",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 668.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 668.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T05:42:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 669.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 669.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T05:52:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 669.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 669.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T06:02:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 669.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 669.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T06:12:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 669.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 669.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T06:22:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 669.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 669.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T06:32:57",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 669.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 669.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T06:42:57",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 670.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 670.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T06:52:57",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 670.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 670.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T07:02:57",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 670.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 670.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T07:12:57",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 670.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 670.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T07:22:58",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 670.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 670.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T07:32:58",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 670.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 670.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T07:42:58",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 671.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 671.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T07:52:58",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 671.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 671.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T08:02:58",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 671.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 671.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T08:12:59",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 671.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 671.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T08:22:59",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 671.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 671.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T08:32:59",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 671.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 671.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T08:42:59",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 672.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 672.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T08:52:59",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 672.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 672.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T09:03:00",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 672.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 672.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T09:13:00",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 672.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 672.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T10:03:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 673.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 673.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T10:13:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 673.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 673.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T10:23:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 673.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 673.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T10:33:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 673.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 673.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T10:43:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 674.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 674.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T10:53:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": true,
+      "level": "OK",
+      "detail": "lti-gate 守护进程存活"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 674.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 674.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T11:03:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 674.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 674.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T16:10:03",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 679.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 679.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T16:20:03",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 679.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 679.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T17:08:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 680.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 680.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T17:18:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 680.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 680.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T17:28:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 680.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 680.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T17:38:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 680.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 680.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T17:48:48",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 681.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 681.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T17:58:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 681.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 681.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T18:08:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 681.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 681.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T18:18:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 681.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 681.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T18:28:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 681.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 681.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T18:38:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 681.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 681.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T18:48:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 682.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 682.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T18:58:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 682.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 682.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T19:08:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 682.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 682.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T19:18:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 682.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 682.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T23:04:05",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 686.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 686.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T23:14:05",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 686.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 686.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T23:24:05",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 686.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 686.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T23:34:05",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 686.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 686.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T23:44:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 687.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 687.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-26T23:54:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 687.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 687.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T00:04:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 687.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 687.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T00:14:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 687.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 687.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T00:24:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 687.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 687.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T00:34:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 687.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 687.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T03:02:47",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 690.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 690.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T03:12:47",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 690.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 690.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T10:25:55",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 697.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 697.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T11:31:37",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 698.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 698.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T11:41:37",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 698.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 698.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T11:54:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 699.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 699.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T12:04:50",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 699.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 699.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T12:15:14",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 699.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 699.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T14:49:16",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 702.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 702.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T16:19:40",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 703.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 703.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T16:29:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 703.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 703.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T16:39:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 703.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 703.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T16:50:18",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 704.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 704.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T17:00:19",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 704.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 704.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T17:12:25",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 704.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 704.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T17:24:23",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 704.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 704.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T19:08:17",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 706.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 706.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T20:15:23",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 707.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 707.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T20:25:23",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 707.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 707.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T21:36:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 708.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 708.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T21:46:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 709.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 709.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T22:05:24",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 709.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 709.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T22:15:24",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 709.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 709.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T22:31:22",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 709.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 709.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T22:41:22",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 709.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 709.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T22:51:22",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 710.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 710.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T23:01:22",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 710.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 710.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T23:11:22",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 710.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 710.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T23:21:23",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 710.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 710.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T23:36:38",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 710.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 710.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-27T23:51:36",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 711.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 711.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T01:01:28",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 712.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 712.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T02:58:29",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 714.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 714.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T03:08:29",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 714.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 714.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T03:18:29",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 714.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 714.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T03:28:29",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 714.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 714.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T03:38:29",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": true,
+      "level": "OK",
+      "detail": "lti-gate 守护进程存活"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 714.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 714.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T03:48:29",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 715.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 715.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T04:27:11",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 715.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 715.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T04:37:11",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 715.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 715.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T04:47:11",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 716.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 716.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T04:57:11",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 716.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 716.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T05:07:12",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 716.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 716.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T05:17:12",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 716.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 716.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T05:27:12",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 716.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 716.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T06:23:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 717.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 717.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T06:33:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 717.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 717.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T06:43:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 718.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 718.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T06:53:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 718.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 718.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T07:03:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 718.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 718.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T07:13:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 718.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 718.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T07:23:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 718.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 718.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T07:49:33",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 719.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 719.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T07:59:33",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 719.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 719.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T08:09:33",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": true,
+      "level": "OK",
+      "detail": "lti-gate 守护进程存活"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 719.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 719.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T08:19:34",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 719.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 719.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T08:29:34",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 719.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 719.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T08:39:34",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 719.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 719.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T08:49:34",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 720.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 720.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T08:59:34",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 720.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 720.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T09:55:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 721.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 721.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T10:05:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 721.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 721.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T10:15:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 721.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 721.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T10:25:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 721.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 721.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T10:35:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 721.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 721.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T10:45:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 722.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 722.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T10:57:18",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 722.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 722.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T11:07:18",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 722.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 722.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T11:17:19",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 722.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 722.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T11:27:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 722.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 722.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T11:37:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 722.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 722.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T11:47:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 723.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 723.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T11:57:56",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 723.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 723.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T12:09:37",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 723.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 723.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T12:19:37",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 723.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 723.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T12:29:37",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 723.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 723.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T12:40:40",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 723.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 723.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T12:50:40",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 724.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 724.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T13:00:40",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 724.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 724.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T13:10:40",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 724.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 724.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T13:20:40",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 724.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 724.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T13:30:41",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 724.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 724.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T13:40:41",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 724.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 724.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T14:19:26",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 725.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 725.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T14:45:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 726.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 726.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T14:55:49",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 726.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 726.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T15:58:41",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 727.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 727.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T17:48:09",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 729.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 729.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T17:58:09",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 729.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 729.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T18:13:59",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 729.5,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 729.5h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T18:23:59",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 729.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 729.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T18:34:00",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 729.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 729.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T18:44:00",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 730.0,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 730.0h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T19:00:05",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 730.2,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 730.2h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T19:10:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 730.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 730.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T19:20:06",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 730.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 730.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T19:30:41",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 730.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 730.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T21:28:26",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 732.7,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 732.7h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T22:21:52",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 733.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 733.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T22:31:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 733.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 733.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T22:41:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 733.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 733.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T22:51:53",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 734.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 734.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T23:01:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 734.3,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 734.3h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T23:11:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 734.4,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 734.4h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T23:21:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 734.6,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 734.6h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T23:31:54",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 734.8,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 734.8h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T23:41:55",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 734.9,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 734.9h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}
+{
+  "schema": "lawtwin-health-v1",
+  "scanned_at": "2026-10-28T23:51:55",
+  "overall": "P0",
+  "probes": {
+    "lti_gate": {
+      "alive": false,
+      "level": "P0",
+      "detail": "lti-gate 守护进程未探活（门禁可能未启动）"
+    },
+    "crypto_perms": {
+      "exists": true,
+      "perms": "0o600",
+      "expected": "0o600",
+      "level": "OK",
+      "detail": "L1 密钥脚本权限合规"
+    },
+    "desensitize": {
+      "present": true,
+      "level": "OK",
+      "detail": "脱敏门禁脚本在位"
+    },
+    "m1_mode": {
+      "mode": "local-only",
+      "level": "OK",
+      "detail": "M1 网络模式=local-only（whitelist 更严，allow_external 为默认）"
+    },
+    "d3_freshness": {
+      "present": true,
+      "latest": "lawtwin-backup-20260928.L1.tar.gz.enc",
+      "age_hours": 735.1,
+      "threshold_hours": 25,
+      "level": "P0",
+      "detail": "最新备份 lawtwin-backup-20260928.L1.tar.gz.enc 距今 735.1h（超阈值，备份可能失败）"
+    }
+  },
+  "pii_safe": true
+}

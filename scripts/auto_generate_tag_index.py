@@ -10,6 +10,11 @@ import yaml
 from collections import defaultdict
 from datetime import datetime
 
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import _guard_frmain
+_guard_frmain.install()
+
 # 配置
 SCAN_DIR = "/Users/chenyouqiang/Documents/LawKB"
 OUTPUT_FILE = "/Users/chenyouqiang/Documents/LawKB/03-连接/标签体系/标签索引.md"

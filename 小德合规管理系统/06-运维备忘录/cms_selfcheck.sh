@@ -62,14 +62,14 @@ chk "$(find "$CARD/合同合规" -name '*.md' ! -name 'README*' 2>/dev/null | wc
 echo "  ℹ️  B10 ③三件套: 基线 3（已建，8制度/10审批/10字段，移植①10表骨架+二维矩阵）"
 chk "$(find "$CARD/非诉合规" -name '*.md' ! -name 'README*' 2>/dev/null | wc -l | tr -d ' ')" 6 "B11 ④非诉合规卡"
 b12=$(find "$CMS/05-系统配置/非诉交付物模板" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
-chk "$b12" 5 "B12 ④交付物模板数"
+chk "$b12" 10 "B12 ④交付物模板数"
 echo "  ℹ️  B13 ⑤调解经验卡: 基线 1（已建，章卡第十六章重映射）"
 chk "$(find "$CARD/医疗纠纷章卡" -name '*第十六章*' 2>/dev/null | wc -l | tr -d ' ')" 1 "B14 ⑤调解章卡(第十六章)"
 
 # ─────────── 法源 ───────────
 echo "───── 法源 ─────"
 # ⚠️ 统计本地法规一律用 -name：-iname 在中文文件名上会漏匹配（实测漏 8 个）
-chk "$(find "$LAW" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 74 "B15 本地法规总数"
+chk "$(find "$LAW" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 81 "B15 本地法规总数"
 b16=0
 for f in "$LAW/慈善合规类法律法规/中华人民共和国慈善法.md" "$LAW/行政法律规章/基金会管理条例.md" "$LAW/行政法律规章/关于慈善组织开展慈善活动年度支出、管理费用和募捐成本的规定.md" "$LAW/行政法律规章/民间非营利组织会计制度.md" "$LAW/慈善合规类法律法规/境外非政府组织境内活动管理法.md" "$LAW/慈善合规类法律法规/慈善组织信息公开办法（民政部令第81号）.md" "$LAW/慈善合规类法律法规/慈善组织公开募捐管理办法（民政部令第74号）.md" "$LAW/慈善合规类法律法规/慈善组织保值增值投资活动管理暂行办法（民政部令第62号）.md" "$LAW/慈善合规类法律法规/志愿服务条例（国务院令第685号）.md" "$LAW/慈善合规类法律法规/中华人民共和国公益事业捐赠法（主席令第19号）.md" "$LAW/慈善合规类法律法规/社会组织登记管理机关行政处罚程序规定（民政部令第68号）.md"; do [ -f "$f" ] && b16=$((b16+1)); done
 chk "$b16" 11 "B16 ①慈善轨本地法源(11部)"
@@ -86,10 +86,10 @@ if [ -f "$SKILL" ]; then
 else echo "  ⚠️ SKILL.md 缺失"; fi
 chk "$(find "$CMS/01-方案设计" -name '*.md' ! -name '*.bak*' 2>/dev/null | wc -l | tr -d ' ')" 12 "B20 01-方案设计"
 chk "$(find "$CFG" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 25 "B21 05-系统配置"
-chk "$(find "$CMS/06-运维备忘录" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 2 "B22 06-运维备忘录(md)"
+chk "$(find "$CMS/06-运维备忘录" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')" 6 "B22 06-运维备忘录(md)"
 if [ -f "$CMS/06-运维备忘录/cms_change_guard.sh" ]; then
   GN=$(bash "$CMS/06-运维备忘录/cms_change_guard.sh" list 2>/dev/null | tail -1 | grep -oE '[0-9]+' | head -1)
-  chk "$GN" 97 "B23 守卫受控文件数"
+  chk "$GN" 101 "B23 守卫受控文件数"
 else echo "  ⚠️ cms_change_guard.sh 缺失"; fi
 
 echo

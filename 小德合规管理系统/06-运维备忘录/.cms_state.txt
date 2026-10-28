@@ -1,4 +1,4 @@
-LEDGER_N=23
-VERSION=1.4.13
-MARKED_AT="2026-09-27 17:05:57"
-NOTE="manual-mark"
+LEDGER_N=25
+VERSION=1.4.15
+MARKED_AT="2026-10-28 23:22:47"
+NOTE="re-baseline：审计清单记录更新后重拍快照（v1.4.15 基线刷新已记台账，本次仅快照同步）"

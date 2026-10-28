@@ -9,8 +9,9 @@ created: 2026-09-05
 decision_id: DEC-20260905-006
 status: 已执行（方案确定）
 domain: 个人成长
-updated: 2026-10-20T22:31
+updated: 2026-10-28T18:27
 domain_backfilled: 2026-10-20T22:32
+verdict: 不适用（制度/工具类已执行）
 ---
 
 # 决策卡 · 平台化路径：挂 Skill vs 挂 Expert vs 都不挂

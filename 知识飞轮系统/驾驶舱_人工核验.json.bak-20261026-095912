@@ -1,0 +1,240 @@
+{
+ "_说明": "人工核验项数据源。脚本无法自动计算的指标（连接器连通性、LTI 回归结果、成熟度定级、子系统运行状态）集中在此，由小强律师每次对话时实地核验后更新 checked 字段。严禁脚本伪造这些值。",
+ "_警告": "本文件的 note 是人工快照，会漂移（2026-09-03 实测：17:25 写的 P5『蒸馏侧仍骨架』，18:06 就已被蒸馏填充四节）。每次对话涉及相关子系统时，必须实地复核后更新 checked_at 与对应 note，不可沿用旧值。",
+ "_手册权威源": {
+  "路径": "/Users/chenyouqiang/Documents/LawKB/小强律师数字分身系统/00-系统总览与运维中心/数字分身系统运维手册-EV版-2026-09-04.md",
+  "说明": "车辆铭牌 / 充电桩 / OTA / 保养周期 / DTC / 健康指标 / 安全红线 / 口诀 一律由脚本直接解析该文件，不在此 JSON 里抄录——手册改了驾驶舱跟着变。本 JSON 只放手册里也没有、且会随时间漂移的实测项。"
+ },
+ "checked_at": "2026-09-04 16:22",
+ "checked_by": "小强律师·实地探针核验",
+ "connectors": [
+  {
+   "name": "agent-mail",
+   "static": "absent",
+   "installed": false,
+   "mcp_configured": false,
+   "session_status": "connected",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "未安装、未在 mcp.json 配置"
+  },
+  {
+   "name": "qcc-legal",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "connected",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "tencent-docs",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "connected",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "yuandian-mcp",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "connected",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "pkulaw",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "disabled",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "ima-mcp",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "not_listed",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "gongyi-open-mcp",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "disabled",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "kdocs",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "disabled",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "qq-mail",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "disabled",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "tencent-weiyun",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "disabled",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  },
+  {
+   "name": "github",
+   "static": "installed",
+   "installed": true,
+   "mcp_configured": false,
+   "session_status": "disabled",
+   "session_status_at": "2026-10-22 23:54",
+   "probe_level": "L1+L2 (static); L3 from runtime truth only",
+   "note": "插件包已安装（**不代表已连接**，须看 session_status 或实测调用）"
+  }
+ ],
+ "lti": {
+  "version": "v4.8.6",
+  "regression": "131/131",
+  "note": "五维 R/L/C/T/P + T502 案例存在性核验（编造案号直接 REJECT）",
+  "checked": "2026-09-03"
+ },
+ "maturity": {
+  "P1": {
+   "grade": "B",
+   "note": "资产规模持续增长；IMA 断连致摄入源收窄"
+  },
+  "P2": {
+   "grade": "A",
+   "note": "v4.8.6，T502 新增，机检能力最强一环"
+  },
+  "P3": {
+   "grade": "A",
+   "note": "双通道回流固化，经验卡持续积累"
+  },
+  "P4": {
+   "grade": "B",
+   "note": "09-01 首次激活，尚未固化为入案第一动作"
+  },
+  "P5": {
+   "grade": "B",
+   "note": "捕获侧已活跃（09-03 当日 2 卡）。蒸馏侧已于 09-03 18:06 完成首轮：①分析框架/②决策启发式/③价值观排序/⑤反模式库 四节已填且每条挂证据卡链接，均为观察级（样本<10）；④表达DNA 与 ⑥知识域地图 仍为模板占位。判定：出口半通，非『未通』。"
+  }
+ },
+ "system_level": {
+  "grade": "L3",
+  "text": "执业助理级全面支撑",
+  "note": "放大器 + 保险丝 + 陪练 + 灵魂 四位一体",
+  "checked": "2026-09-03"
+ },
+ "ev": {
+  "_说明": "EV 运维手册之外、脚本扫不到且会漂移的实测项。手册里已有的（断链率 0.111%、错引率 22%/75%、六-B 已扩至 34 个自动化）由脚本直接解析手册，不在此重复。",
+  "hall_detect": {
+   "status": "403",
+   "value": "不可用",
+   "note": "元典 hall_detect 为 VIP 专属，当前账号非 VIP → 403。降级路径：rh_ft_search 的 sxx 时效字段 + 官方渠道交叉印证，不中断流程。若后续充值 VIP 需改此值。",
+   "checked": "2026-09-03"
+  },
+  "subsystems": {
+   "motor": {
+    "status": "warn",
+    "note": "SR 召回引擎须与飞轮索引保持同步；飞轮案件库/ 壳 vs 案件管理/ 真卷 双轨待双向索引校准，否则召回漏案（DTC-CASE-001）"
+   },
+   "cockpit": {
+    "status": "active",
+    "note": "小强律师自我画像 v1.1（四子架构 + 六步论证框架）；对外版人格蒸馏方案 v1.1 + 20 条 QA 知识包已备，待规模启用"
+   },
+   "shadow": {
+    "status": "active",
+    "note": "丁茂祥/焦联鹏/6658号/雅菲案多份推演在跑；09-03 新增审判要件卡-卡组可用性登记，正补正向裁判规则喂养 judge_reviewer"
+   },
+   "edr": {
+    "status": "warn",
+    "note": "决策日志 2 卡 + 模板；飞轮 LOG 在跑；决策月报 0 文件待启动（黑匣子闭环未闭合）"
+   },
+   "vehicle_code": {
+    "status": "active",
+    "note": "AGENTS.md 真跑纪律；六-B 铁律 P0-1 写入型 automation 全覆盖"
+   }
+  }
+ },
+ "connector_probe": {
+  "static_probed_at": "2026-10-26 09:14",
+  "script": "probe_connectors.py",
+  "counts": {
+   "installed": 10,
+   "configured_only": 0,
+   "absent": 1,
+   "session_connected": 4,
+   "session_absent": 7,
+   "session_unknown": 0
+  },
+  "judgement_policy": "L1 已安装/L2 已配置=可静态判定；L3 会话连接状态只取运行时真值（本脚本不猜）；L4 实测可用不判定。**禁止用 enabledPlugins 判定可用性**——2026-10-22 实测该字段与实际连接状态脱钩（全 False 而实有 3 个 connected）。",
+  "note": "connectors 段由 probe_connectors.py 自动生成，人工勿手改；判据改脚本。"
+ },
+ "connector_checked_at": "2026-10-26 09:14",
+ "_freshness": {
+  "connectors": {
+   "at": "2026-10-26 09:14",
+   "mode": "auto+runtime_truth",
+   "stale": false,
+   "by": "probe_connectors.py"
+  },
+  "lti": {
+   "at": "2026-09-04 16:22",
+   "mode": "manual",
+   "stale": true,
+   "by": "小强律师·实地探针核验",
+   "todo": "本次未重跑，须实地复核后更新（见 _freshness_todo）"
+  },
+  "maturity": {
+   "at": "2026-09-04 16:22",
+   "mode": "manual",
+   "stale": true,
+   "by": "小强律师·实地探针核验",
+   "todo": "本次未重跑，须实地复核后更新（见 _freshness_todo）"
+  },
+  "system_level": {
+   "at": "2026-09-04 16:22",
+   "mode": "manual",
+   "stale": true,
+   "by": "小强律师·实地探针核验",
+   "todo": "本次未重跑，须实地复核后更新（见 _freshness_todo）"
+  },
+  "ev": {
+   "at": "2026-09-04 16:22",
+   "mode": "manual",
+   "stale": true,
+   "by": "小强律师·实地探针核验",
+   "todo": "本次未重跑，须实地复核后更新（见 _freshness_todo）"
+  }
+ },
+ "_freshness_todo": "lti：跑一次 LTI 五维回归（REJECT 数须为 0）后再改 lti.at；maturity：按花名册 v1.7 复核席位成熟度；system_level / ev：按运维手册 EV 版实地探针。**未重跑就不许把 stale 改成 false**——那正是 09-04 漂移 48 天的成因。",
+ "checked_at_note": "全量人工核验时间仍为 2026-09-04 16:22（含 lti/maturity/system_level/ev 四段，均已标 stale）；connectors 段已于 2026-10-26 09:14 由脚本+运行时真值接管。二者不可混为一谈。"
+}

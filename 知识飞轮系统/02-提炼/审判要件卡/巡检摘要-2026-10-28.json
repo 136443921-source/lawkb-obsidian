@@ -1,0 +1,53 @@
+{
+  "round": "R34",
+  "date": "2026-10-28",
+  "mode": "质量巡检（原每日补拆改造版）",
+  "path_correction": {
+    "task_spec_path": "06-沉淀/裁判规则库（本环境不存在 → 假零来源）",
+    "real_path": "02-提炼/06-沉淀/裁判规则库（341 张）+ 02-提炼/06-沉淀/通用裁判规则库（42 张）",
+    "prior_rounds_false_zero": "R30-R33 的 '待回源=0/库内死链=0' 均为假零（路径不存在 + 过滤永不命中）"
+  },
+  "step1_pending": {
+    "statute_text_pending_true_frontmatter": {"裁判规则库": 0, "通用裁判规则库": 0, "合计": 0},
+    "inline_statute_text_pending_string": {"裁判规则库": 182, "通用裁判规则库": 0},
+    "核填条数": 0,
+    "拦截偏差_版本幻觉_条号位移": 0
+  },
+  "step2_channel": {
+    "probe_time": "2026-10-28 10:15",
+    "session_connected": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "本地法条银行": "156 卡离线可用（RULE-057 首顺位）"
+  },
+  "step3_deadlink": {
+    "裁判规则库": {"R_md": 341, "含死链文件": 77, "真死链": 13, "待建_非缺陷": 111, "解析失败": 2},
+    "通用裁判规则库": {"R_md": 42, "真死链": 0, "待建_非缺陷": 24, "解析失败": 0},
+    "全库_all口径_参考": {"扫描链接": 57668, "死链链接": 4032, "解析失败": 2},
+    "v9_严格白名单_dryrun": "命中 0 文件/0 处 → 幂等，未 apply",
+    "13真死链目标": ["R-PI-583","R-PI-605","R-PI-566","R-PI-603","R-PI-600","R-PI-608","R-HT-353","R-HT-354","R-CF-229","R-CF-230","2026-09-14-价值复盘"],
+    "2解析失败根因": "title 字段内嵌双引号提前闭合 YAML 标量（R-LD-102 为今日摄入新建卡，疑摄入模板缺陷）"
+  },
+  "step3_5_metrics": {
+    "watchdog_exit": 1,
+    "card_consumption": "stale（静默14天，最后2026-10-13 14:58）",
+    "grill_events": "stale（静默14天，最后2026-10-13 14:44）",
+    "协同效果日志": "stale（静默14天，最后2026-10-13 14:50）",
+    "frontdesk_events": "ok（2026-10-28 10:12）",
+    "connector_probe": "installed10/session_connected4/pkulaw disabled/ima-mcp not_listed，已写回驾驶舱_人工核验.json"
+  },
+  "step4_sixB": "无文件写盘（v9未apply，YAML两卡未擅改）；SKILL编辑前已cp -n备份",
+  "R2_close_eval": {
+    "连续零修复计数": 2,
+    "埋点全ok": false,
+    "关闭条件触发": false,
+    "处置": "保留本自动化"
+  },
+  "待人工处置": [
+    "修复R-PI-607/R-LD-102的title YAML（内嵌双引号）；R-LD-102疑摄入模板缺陷",
+    "13真死链（裁判规则库）需建新白名单或人工修",
+    "3项埋点stale查上游发射点",
+    "182处内联statute_text_pending清零立项",
+    "巡检路径锚定02-提炼/06-沉淀/裁判规则库（坑82）"
+  ]
+}

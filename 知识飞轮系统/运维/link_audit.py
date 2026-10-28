@@ -137,6 +137,7 @@ _PLACEHOLDER_PATS = [
     r"^示例.*$",
     r"^待填.*$",
     r"^[Aa]aa$",
+    r"^[a-zA-Z]$",
 ]
 PLACEHOLDER_RE = re.compile("|".join(_PLACEHOLDER_PATS))
 
@@ -171,6 +172,8 @@ for p in V.rglob("*.md"):
         raw = m.group(1)
         tgt = raw.split('|')[0].split('#')[0].strip()
         total += 1
+        if '\\' in tgt:        # 转义 ] 非真链接
+            continue
         if DATE.match(tgt):
             datetag += 1
             continue

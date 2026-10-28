@@ -45,7 +45,12 @@ import argparse
 from collections import defaultdict
 from datetime import datetime
 
-ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/06-沉淀"
+# 🔧 2026-10-28 修复 ROOT 指针：原指向顶层 `06-沉淀`（目录 reorg 后该处已无 R-XX-NNN 卡，
+# 导致守卫长期「扫描 0 张 → ✅ 通过」的假阴性，与 2026-10-15 门禁假阴性教训同型）。
+# 规则卡实际全部位于 `02-提炼/06-沉淀/` 下的各域库（人伤法域库 / 合同风险规则库 / 裁判规则库 /
+# 案由路由卡族 / 证据规则卡族 等，全量约 2575 张）。修正后守卫恢复对全部规则卡的覆盖。
+# 注意：勿改回 `06-沉淀`（顶层）或收窄为单一 `裁判规则库/` 子目录——会再次漏扫数千张卡。
+ROOT = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/06-沉淀"
 
 # 白名单**动态解析**规范第二节（2026-09-11 起），不再硬编码。
 # 解析失败自动回退内置兜底清单，门禁绝不因规范改版而失效。

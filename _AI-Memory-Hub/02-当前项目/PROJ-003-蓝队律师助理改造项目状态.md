@@ -6,7 +6,7 @@ status: active
 feedback_automated: true
 maturity_level: M3 合格
 maturity_score: 73
-updated: 2026-10-23T23:42
+updated: 2026-10-26T09:59
 source_ai: workbuddy
 scope: domain:legal
 confidence: high
@@ -60,7 +60,7 @@ related:
 
 <!-- ASSIST_MATURITY_START -->
 > _本区块由 `assistant_maturity.py` v1.0.0 自动刷新，手工修改会被覆盖。_
-> 最近刷新：2026-10-23 23:42　｜　数据源：庭审准备助手 SKILL.md 结构标记 + 庭审准备调用记录
+> 最近刷新：2026-10-26 09:59　｜　数据源：庭审准备助手 SKILL.md 结构标记 + 庭审准备调用记录
 
 ### 当前成熟度（七维量表/100 制）：**M3 合格** · **73 / 100**
 

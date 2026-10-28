@@ -1,21 +1,7 @@
----
-created: 2026-10-16T23:15
-updated: 2026-10-19T09:52
-
-tags:
-  - json
-  - ##
-  - assets
-  - 2026
-  - 医疗纠纷
-  - 侵权责任
-  - ---
-  - 劳动争议
----
 # 人伤法规则包 · 使用说明（v1.0）
 
 > 适用域：人身损害（医疗/工伤/交通/其他）纠纷：过错认定、参与度、赔偿规则
-> 生成日期：2026-10-19 ｜ 计费模式：subscription_by_domain ｜ 许可：internal_commercial_unit
+> 生成日期：2026-10-25 ｜ 计费模式：subscription_by_domain ｜ 许可：internal_commercial_unit
 > 采集模式：目录（目录 知识飞轮系统/06-沉淀/人伤法域库）
 
 ## 一、这个包是什么

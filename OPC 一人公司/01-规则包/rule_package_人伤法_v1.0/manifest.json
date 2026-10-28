@@ -2,7 +2,7 @@
   "package": "人伤法规则包",
   "domain": "人伤法",
   "version": "v1.0",
-  "generated": "2026-10-19",
+  "generated": "2026-10-25",
   "generator": "gen_rule_package.py（B方案P0-3·参数化·无依赖导出）",
   "source_of_truth": "数字资产登记册（OPC 一人公司/00-数字资产登记册/asset_registry.json）",
   "selection": {
@@ -202,7 +202,7 @@
       "R-PI-045",
       "R-PI-050"
     ],
-    "missing_summary_count": 91,
-    "missing_keypoints_count": 91
+    "missing_summary_count": 92,
+    "missing_keypoints_count": 92
   }
 }

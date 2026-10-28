@@ -2,7 +2,7 @@
   "package": "医疗人伤规则包",
   "domain": "医疗",
   "version": "v1.0",
-  "generated": "2026-10-19",
+  "generated": "2026-10-25",
   "generator": "gen_rule_package.py（B方案P0-3·参数化·无依赖导出）",
   "source_of_truth": "数字资产登记册（OPC 一人公司/00-数字资产登记册/asset_registry.json）",
   "selection": {

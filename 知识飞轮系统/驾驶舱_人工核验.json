@@ -185,7 +185,7 @@
   }
  },
  "connector_probe": {
-  "static_probed_at": "2026-10-25 09:46",
+  "static_probed_at": "2026-10-28 10:15",
   "script": "probe_connectors.py",
   "counts": {
    "installed": 10,
@@ -198,10 +198,10 @@
   "judgement_policy": "L1 已安装/L2 已配置=可静态判定；L3 会话连接状态只取运行时真值（本脚本不猜）；L4 实测可用不判定。**禁止用 enabledPlugins 判定可用性**——2026-10-22 实测该字段与实际连接状态脱钩（全 False 而实有 3 个 connected）。",
   "note": "connectors 段由 probe_connectors.py 自动生成，人工勿手改；判据改脚本。"
  },
- "connector_checked_at": "2026-10-25 09:46",
+ "connector_checked_at": "2026-10-28 10:15",
  "_freshness": {
   "connectors": {
-   "at": "2026-10-25 09:46",
+   "at": "2026-10-28 10:15",
    "mode": "auto+runtime_truth",
    "stale": false,
    "by": "probe_connectors.py"
@@ -236,5 +236,5 @@
   }
  },
  "_freshness_todo": "lti：跑一次 LTI 五维回归（REJECT 数须为 0）后再改 lti.at；maturity：按花名册 v1.7 复核席位成熟度；system_level / ev：按运维手册 EV 版实地探针。**未重跑就不许把 stale 改成 false**——那正是 09-04 漂移 48 天的成因。",
- "checked_at_note": "全量人工核验时间仍为 2026-09-04 16:22（含 lti/maturity/system_level/ev 四段，均已标 stale）；connectors 段已于 2026-10-25 09:46 由脚本+运行时真值接管。二者不可混为一谈。"
+ "checked_at_note": "全量人工核验时间仍为 2026-09-04 16:22（含 lti/maturity/system_level/ev 四段，均已标 stale）；connectors 段已于 2026-10-28 10:15 由脚本+运行时真值接管。二者不可混为一谈。"
 }
