@@ -1,7 +1,7 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-28T08:38",
-  "updated": "2026-10-28T23:26",
+  "updated": "2026-10-29T09:04",
   "checkpoint": {
     "session_id": "run-1793201198958",
     "stage": "FINAL",
@@ -30,8 +30,22 @@
     "libraries": {}
   },
   "last_backup": {
-    "path": "/Users/chenyouqiang/WorkBuddy/Claw/backups/xiaoqiang_self/self_backup_20261028-231553/self.md.bak",
-    "date": "2026-08-28T11:54"
+    "path": "/Users/chenyouqiang/.workbuddy/skills/xiaoqianglvshi/backups/self_backup_prebackfill_20261029",
+    "date": "2026-10-29T09:03",
+    "note": "写入前回滚锚点（专项补索引 228 条之前态，187485B）"
   },
-  "failed_stages": []
+  "failed_stages": [],
+  "special_backfill_20261029": {
+    "status": "done",
+    "root_cause": "2026-10-28 首轮回灌 find ... 2>/dev/null 返回0(沙箱拒绝被吞) 误判裁判规则库为空，漏扫~218张本月规则卡",
+    "fix": "BackfillScanner.safe_walk 二次源复核 + 过滤口径改为(created或updated)在窗口 + 批戳防护 + 分5轮补索引",
+    "added_total": 228,
+    "rule_cards": 227,
+    "exp_cards": 1,
+    "rounds": 5,
+    "pre_anchor": "/Users/chenyouqiang/.workbuddy/skills/xiaoqianglvshi/backups/self_backup_prebackfill_20261029",
+    "post_backup": "/Users/chenyouqiang/.workbuddy/skills/xiaoqianglvshi/backups/self_backup_backfill_20261029-090109",
+    "lti_blocked": 0,
+    "index_lines_after": 992
+  }
 }

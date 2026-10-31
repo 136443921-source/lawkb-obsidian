@@ -25,9 +25,24 @@ OUT = "/tmp/lawkb_audit/conflicts_ABC.json"
 
 PUNCT = re.compile(r"[\s，。；：、？！“”‘’（）()《》〈〉\"'.,;:?!\-—_·　]+")
 
+# 虚词集合（去虚词后做「软子串」判定，消除「仅差一个『的/了』」的伪异文/伪错配）
+STOP = set("的了和与及等之其该本项前此款上述以下以上或者并且、，。；：、（）()")
+
 
 def norm(s: str) -> str:
     return PUNCT.sub("", s or "")
+
+
+def soft_norm(s: str) -> str:
+    """去标点+虚词，用于模糊子串匹配"""
+    return "".join(ch for ch in (s or "") if ch not in STOP)
+
+
+def soft_in(a: str, b: str) -> bool:
+    """a（去虚词）是否为 b（去虚词）的子串——容忍个别虚词差异"""
+    if not a or not b:
+        return False
+    return soft_norm(a) in soft_norm(b)
 
 
 def ratio(a: str, b: str) -> float:

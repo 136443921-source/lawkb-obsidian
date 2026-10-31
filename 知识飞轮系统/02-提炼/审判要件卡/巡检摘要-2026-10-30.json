@@ -1,0 +1,89 @@
+{
+  "round": "R36",
+  "date": "2026-10-30",
+  "automation_id": "a5995ba3-d738-4233-8c93-410fd8f3bc39",
+  "skill_version": "1.66.0",
+  "deadlink_scanner_version": "1.8.0",
+  "candidate": true,
+  "note": "【候选·待人工确认】巡检输出为候选推理，非终局结论",
+  "path_verification": {
+    "坑83_runtime_dual_candidate": true,
+    "active_path": "06-沉淀/裁判规则库",
+    "active_card_count": 359,
+    "stale_path": "02-提炼/06-沉淀/裁判规则库",
+    "stale_path_exists": false
+  },
+  "pending_statute_backfill": {
+    "frontmatter_statute_text_pending_true": {
+      "裁判规则库": 0,
+      "通用裁判规则库": 0,
+      "total": 0
+    },
+    "inline_statute_text_pending_string_files": 195,
+    "inline_prev_round": 182,
+    "backfill_count": 0,
+    "intercepted_deviations": 0
+  },
+  "deadlinks_all_library": {
+    "scanner": "_check_deadlinks.py --all v1.8.0",
+    "files_scanned": 7165,
+    "files_hit": 1791,
+    "true_deadlinks": 124,
+    "pending_notes_softref": 3954,
+    "skipped_no_frontmatter": 31,
+    "prev_round_true_deadlinks": 123,
+    "prev_round_files_scanned": 7199
+  },
+  "deadlink_fix": {
+    "v2_dryrun_hits": 0,
+    "v2_basename_set_size": 7135,
+    "v9_dryrun_hits": 0,
+    "applied": false,
+    "idempotent": true
+  },
+  "metrics_watchdog": {
+    "exit_code": 1,
+    "timestamp": "2026-10-30T09:43:02",
+    "card_consumption": {"status": "stale", "last": "2026-10-13 14:58", "silent_days": 16},
+    "frontdesk_events": {"status": "ok", "last": "2026-10-30 09:41", "silent_days": 0},
+    "grill_events": {"status": "stale", "last": "2026-10-13 14:44", "silent_days": 16},
+    "协同效果日志": {"status": "stale", "last": "2026-10-13 14:50", "silent_days": 16},
+    "stale_count": 3,
+    "ok_count": 1,
+    "all_ok": false
+  },
+  "connectors": {
+    "timestamp": "2026-10-30T09:43:02",
+    "installed": 10,
+    "session_connected": 4,
+    "session_absent": 7,
+    "static_absent": 1,
+    "connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "disabled_list": ["gongyi-open-mcp", "kdocs", "qq-mail", "tencent-weiyun", "github"],
+    "wrote_back": "驾驶舱_人工核验.json",
+    "backup": "驾驶舱_人工核验.json.bak-20261030-094302"
+  },
+  "rule057_channel": {
+    "triggered_backfill": false,
+    "reason": "待回源=0，按RULE-057不降级不判死",
+    "local_statute_bank_cards": 156,
+    "pkulaw_state": "disabled"
+  },
+  "resolved_items": {
+    "R-PI-607_R-LD-102_parse_failure": "已随人伤域库拆分重命名为全名，frontmatter PARSE OK（单引号包裹title），原R35待处置项消解"
+  },
+  "r2_close_condition": {
+    "consecutive_zero_fix_count": 1,
+    "metrics_all_ok": false,
+    "triggered": false,
+    "recommendation": "保留并维持埋点看门狗+待回源清零专项，不关闭不重复改造"
+  },
+  "pending_human_actions": [
+    "124 真死链→P0-4 编号治理（库外为主）",
+    "3 项埋点 stale 连续4轮16天→查上游发射点（emit_card_consumption/grill_gate_hook/交付流水线第8步②），禁补假记录",
+    "195 处内联 statute_text_pending 字符串→立项清零",
+    "死链口径纵向比较须锁版本+--all 全库口径"
+  ]
+}

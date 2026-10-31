@@ -1,0 +1,40 @@
+{
+  "snapshot_month": "2026-10",
+  "generated_at": "2026-10-31",
+  "source_report": null,
+  "report_found": false,
+  "status": "N/A - 本月月报未生成",
+  "parse_notes": [
+    "月报缺失：律所主任月度工作报告-2026-10.md 不存在",
+    "月报缺失：律所主任月度工作报告-2026-10-v3.md 不存在",
+    "按 step 4 规则不编造数值，全部标量置 null",
+    "需先跑当月 v3 月报后重跑本自动化以补全"
+  ],
+  "scalars": {
+    "total_notes": null,
+    "unique_links": null,
+    "density": null,
+    "rules_cum": null,
+    "rules_add": null,
+    "exp_cards_cum": null,
+    "exp_cards_add": null,
+    "tags_unique": null,
+    "meta_maturity_score": null,
+    "meta_maturity_level": null,
+    "seats": null,
+    "d5d_repair": null,
+    "weakest_seat": null,
+    "health_score": null,
+    "automations_total": null,
+    "automations_active": null,
+    "automations_paused": null,
+    "maturity_p1": null,
+    "maturity_p2": null,
+    "maturity_p3": null,
+    "maturity_p4": null,
+    "maturity_p5": null,
+    "lesions_closed": null,
+    "lesions_total": null,
+    "one_line_conclusion": null
+  }
+}

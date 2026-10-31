@@ -1,0 +1,64 @@
+{
+  "round": "R35",
+  "date": "2026-10-29",
+  "skill_version": "1.66.0",
+  "automation_version": "v2.1",
+  "r2_mark": "所有结论均为候选推理，待人工确认",
+  "path_correction": {
+    "r34_claim": "06-沉淀/裁判规则库 不存在，真实路径 02-提炼/06-沉淀/裁判规则库",
+    "r35_reality": "06-沉淀/裁判规则库 存在(354张嵌套子目录)，06-沉淀/通用裁判规则库 存在(42张)，02-提炼/06-沉淀 不存在",
+    "verdict": "R34路径断言已过期（24h内翻转回原处），新增坑83运行时双候选核验"
+  },
+  "pending_statute": {
+    "frontmatter_true_裁判规则库": 0,
+    "frontmatter_true_通用裁判规则库": 0,
+    "inline_strings_non_defect": 182,
+    "fill_count": 0,
+    "intercepted_bias": 0
+  },
+  "deadlinks_all_library": {
+    "scanner": "_check_deadlinks.py v1.8.0 --all",
+    "files_total": 7199,
+    "files_hit": 1801,
+    "true_dead": 123,
+    "to_build": 3971,
+    "skipped_no_frontmatter": 29,
+    "note": "全库口径，与R33的98不可纵向直比"
+  },
+  "deadlink_fix_v9": {
+    "basename_set": 7155,
+    "dry_run_links": 5,
+    "dry_run_files": 2,
+    "applied": true,
+    "post_scan_hits": 0,
+    "idemponent": true,
+    "targets": [
+      "02-提炼/知识笔记/A1B回补-2026-10-28/KN-B-保险合同纠纷47裁判要旨-20261028.md",
+      "02-提炼/人伤法/索引/人伤法索引.md"
+    ],
+    "backup": "/tmp/存量卡巡检死链修复_20261029-111534"
+  },
+  "channels": {
+    "probe_time": "2026-10-29 11:12",
+    "pkulaw": "disabled",
+    "session_connected": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "ima_mcp": "not_listed",
+    "local_bank": "156卡离线可用(未重测,0pending不触发核填)",
+    "note": "0 pending未触发实际核填，按RULE-057不降级不判死"
+  },
+  "metrics_watchdog": {
+    "time": "2026-10-29 11:12",
+    "exit_code": 1,
+    "card_consumption": "stale(静默15天)",
+    "grill_events": "stale(静默15天)",
+    "协同效果日志": "stale(静默15天)",
+    "frontdesk_events": "ok",
+    "summary": "3 stale/1 ok 非全ok"
+  },
+  "r2": {
+    "fixable_this_round": 5,
+    "consecutive_zero_count": 0,
+    "closure_triggered": false,
+    "reason": "有可修项5且埋点非全ok"
+  }
+}
