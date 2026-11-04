@@ -95,10 +95,15 @@ def main():
     if os.path.exists(vf):
         try:
             d = json.load(open(vf, encoding="utf-8"))
-            pending = len(d) if isinstance(d, list) else len(d.get("findings", []))
+            if isinstance(d, dict):
+                # 汇总各「未豁免」候选桶（修正旧版误查 findings 键导致恒显 0 的 bug）
+                pending = (len(d.get("A_confirmed", [])) + len(d.get("B_confirmed", []))
+                           + len(d.get("C_confirmed", [])) + len(d.get("C_uncertain", [])))
+            elif isinstance(d, list):
+                pending = len(d)
         except Exception:
             pass
-    print("\n  待人工核验疑点：%s 项" % pending)
+    print("\n  待人工核验疑点：%s 项（A确认+B确认+C确认+C待定；已剔除测试夹具/旧法豁免）" % pending)
     print("  ⚠️ 上述均为**候选疑点**，写入库文件前必须逐条查权威源复核（首轮误报率约 58%）")
 
     if failed:

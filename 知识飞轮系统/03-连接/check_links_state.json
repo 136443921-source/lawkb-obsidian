@@ -1,12 +1,12 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-30T21:13",
-  "updated": "2026-10-25T21:04",
+  "updated": "2026-11-01T21:04",
   "checkpoint": {
-    "session_id": "run-1792933493993",
+    "session_id": "run-1793538274864",
     "stage": "FINAL",
     "status": "done",
-    "started_at": "2026-10-25T21:04",
+    "started_at": "2026-11-01T21:04",
     "done": [
       "S1_scan",
       "S2_check_links",
@@ -14,7 +14,7 @@
       "S3_relink_graph",
       "FINAL"
     ],
-    "finished_at": "2026-10-25T21:04"
+    "finished_at": "2026-11-01T21:04"
   },
   "ima_connector": "ima-mcp",
   "ima_status": "init",

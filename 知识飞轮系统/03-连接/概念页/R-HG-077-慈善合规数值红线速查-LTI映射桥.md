@@ -3,9 +3,10 @@ title: R-HG-077-慈善合规数值红线速查-LTI映射桥
 type: concept
 created: 2026-10-25
 tags:
-  - 概念页 概念-慈善
+  - 概念页
+  - 概念-慈善
 generated_by: 断链消解器resolve_broken_links v1.2
-updated: 2026-10-29T17:13
+updated: 2026-11-01T23:19
 ---
 
 # R-HG-077-慈善合规数值红线速查-LTI映射桥
