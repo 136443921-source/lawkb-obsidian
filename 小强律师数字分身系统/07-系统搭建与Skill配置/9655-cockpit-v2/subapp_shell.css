@@ -8,7 +8,7 @@
    ============================================================ */
 :root{
   --bg:#0f1115; --card:#171a21; --card2:#1d212a; --line:#2a2f3a;
-  --tx:#e8eaed; --tx2:#9aa3b2; --tx3:#6b7280;
+  --tx:#e8eaed; --tx2:#9aa3b2; --tx3:#7d8794; /* tx3 2026-10-31 由 #6b7280(3.91:1) 提亮至 #7d8794(5.19:1)，过 WCAG AA */
   --purple:#7F77DD; --teal:#1D9E75; --amber:#EF9F27; --red:#E24B4A; --blue:#378ADD; --green:#34d399;
 }
 *{box-sizing:border-box;margin:0;padding:0}

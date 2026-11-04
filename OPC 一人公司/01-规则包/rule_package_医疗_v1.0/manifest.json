@@ -2,7 +2,7 @@
   "package": "医疗人伤规则包",
   "domain": "医疗",
   "version": "v1.0",
-  "generated": "2026-10-25",
+  "generated": "2026-11-01",
   "generator": "gen_rule_package.py（B方案P0-3·参数化·无依赖导出）",
   "source_of_truth": "数字资产登记册（OPC 一人公司/00-数字资产登记册/asset_registry.json）",
   "selection": {
@@ -24,14 +24,14 @@
     ]
   },
   "asset_inventory": {
-    "rules": 220,
+    "rules": 219,
     "laws": 19,
     "internal_manual_articles": 0,
     "experience_cards": 25,
     "checklists": 2
   },
   "quality_report": {
-    "source_pending_count": 108,
+    "source_pending_count": 107,
     "source_pending_ids": [
       "R-PI-006",
       "R-PI-132",
@@ -85,7 +85,6 @@
       "R-PI-109",
       "R-PI-049",
       "R-PI-183",
-      "R-PI-430",
       "R-PI-150",
       "R-PI-009",
       "R-PI-158",

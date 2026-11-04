@@ -9,9 +9,22 @@ tags:
 
 # 自动化执行记忆 · PROJ-006 QC-Controller·审判长双模训练备忘录 周一兜底刷新
 
-## 最近执行：2026-10-19T10:12（周一）
+## 最近执行：2026-11-02T15:31（周一）
 
-**结论：无新训练 → 仅刷新 frontmatter `updated` 为 2026-10-19T10:12，保留原 maturity_score=78 / M3 合格 / fix_done=9，未改动🛤️训练日志、📊仪表盘、🎯路线图、_活跃项目.md 索引。**
+**结论：无新训练 → 仅刷新 frontmatter `updated` 为 2026-11-02T15:31，保留原 maturity_score=78 / M3 合格 / fix_done=9 / fix_total=9，未改动🛤️训练日志、📊仪表盘、🎯路线图、_活跃项目.md 索引。**
+
+### 扫描范围与结果（实地复测，非凭记忆）
+- 来源③ `~/.workbuddy/skills/QC-Controller/`：`ls -laT` 实测 `SKILL.md` mtime **Oct 23 00:20:42**（其余文件均 Sep 22：compliance-rules.md 23:11 / lti_qc.py 23:04 / qc-verdict-template.md 23:13 / qc_persona_v1.md 23:23 / transcript-template.md 09-14）。实读 SKILL.md：版本仍 `1.2.0`、变更日志末条 `v1.0.2 (2026-09-22)`，**无** Oct 23 双模训练变更；Oct 23 mtime 经 10-23 日志第 66 行「P1-2 name 统一：11 个 name≠目录名，其中 QC-Controller 与 ai-mock-court-judge」核实为技能注册表名称对齐（消解 override 键 off/on 双条互斥），属目录卫生，**非**双模心智训练，未改 compliance-rules.md / procType / 心智模型。
+- 来源② 中枢 `04-每日日志/` 10-22→11-02：grep 关键词命中均为「📄 新增训练备忘录（第三节待补登）: QC审判长双模心智模型与训练备忘录-2026-10-21.md」+「status 漂移：无；已登记 persona 行 8/8」= 对 2026-10-21 生成批次的索引补登提醒与状态零漂移复核；无 09-22 之后的实际双模训练（解剖/调优/实战评分/席位改动/重写规则文件）。
+- 来源① 工作区 `/Users/chenyouqiang/WorkBuddy/` *.md（mtime > 10-21T11:44 且含 QC 关键词）：`find`+grep **零命中**。
+
+### 判定依据
+备忘录「🛤️ 训练日志」末条仍为 2026-09-22（P1-2 →78/M3）；`maturity_score` 自 09-22 起未变（78），佐证 10-21 仅生成孪生备忘文档（已反映于 `updated: 2026-10-21T11:44`，未改分）、10-23 仅 name 字段对齐，均非训练。故触发步骤 4（无新训练分支）。
+
+### 下次关注信号
+若后续出现以下任一，应追加🛤️训练日志并重算：P1-3 建 qc_maturity.py / P1-5 真笔录多轮校准升满 L2/L4 / P0-2/P0-3b 规则文件写入 / 中台 procType 或审判长席渲染变更 / compliance-rules.md 重写 / SKILL.md 心智内容实质改造（非 name 字段对齐）。
+
+## 上次执行：2026-10-19T10:12（周一）
 
 ### 扫描范围与结果（实地复测，非凭记忆）
 - 来源③ `~/.workbuddy/skills/QC-Controller/`：BSD `ls -laT` 实测全部文件 mtime **Sep 22 23:04–23:23**（SKILL.md 23:10 / compliance-rules.md 23:11 / lti_qc.py 23:04 / qc-verdict-template.md 23:13 / qc_persona_v1.md 23:23 / transcript-template.md 09-14）。**无任何** compliance-rules.md 重写 / procType 改动 / lti_qc 更新 → 自 09-22 P1-2 收尾后无技能层训练。
