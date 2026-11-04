@@ -1,4 +1,7 @@
 ---
+tags:
+  - 人伤
+  - 采集
 rule_id: R-PI-602
 source_verified: false
 source_channel: WebSearch降级（yuandian-mcp未连通，待回源补正）
@@ -7,9 +10,18 @@ source_channel: WebSearch降级（yuandian-mcp未连通，待回源补正）
 裁判法院: 最高人民法院（2024-12-02 发布5个典型案例）
 审理程序: 典型案例
 案由: 机动车交通事故责任纠纷
-关键词: [交通事故, 交强险, 投保义务人, 误工费, 好意同乘, 开门杀, 减责]
+关键词:
+  - 交通事故
+  - 交强险
+  - 投保义务人
+  - 误工费
+  - 好意同乘
+  - 开门杀
+  - 减责
 案例类型: 最高人民法院典型案例（2024-12-02）
 来源URL: https://www.court.gov.cn/zixun/xiangqing/449031.html ; https://www.thepaper.cn/newsDetail_forward_30746922 ; https://www.sd.chinanews.com.cn/2/2025/1104/97692.html
+created: 2026-10-24T09:57
+updated: 2026-11-01T23:16
 ---
 
 # 最高人民法院交通事故责任纠纷典型案例（2024-12-02）

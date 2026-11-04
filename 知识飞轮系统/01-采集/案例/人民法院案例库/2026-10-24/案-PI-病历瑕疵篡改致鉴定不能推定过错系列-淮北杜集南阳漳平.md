@@ -1,4 +1,7 @@
 ---
+tags:
+  - 人伤
+  - 采集
 rule_id: R-PI-600
 source_verified: false
 source_channel: WebSearch降级（yuandian-mcp未连通，待回源补正）
@@ -7,9 +10,17 @@ source_channel: WebSearch降级（yuandian-mcp未连通，待回源补正）
 裁判法院: 安徽淮北杜集区法院 / 河南南阳中院 / 福建漳平法院（多案）
 审理程序: 一审 / 二审
 案由: 医疗损害责任纠纷
-关键词: [医疗损害, 病历瑕疵, 篡改病历, 过错推定, 民法典1222, 鉴定不能]
+关键词:
+  - 医疗损害
+  - 病历瑕疵
+  - 篡改病历
+  - 过错推定
+  - 民法典1222
+  - 鉴定不能
 案例类型: 人民法院公开裁判案例（多源）
 来源URL: https://www.chinacourt.cn/article/detail/2025/12/id/9107665.shtml ; https://www.zw517.com/case/detail/case_2024_henan_13_minzhong_4277.html ; http://www1.pafj.net/caw/f/2/view-39-791290.html
+created: 2026-10-24T09:57
+updated: 2026-11-01T23:16
 ---
 
 # 病历瑕疵/篡改致鉴定不能推定过错系列案
