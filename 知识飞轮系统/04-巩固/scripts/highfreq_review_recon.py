@@ -131,7 +131,9 @@ def scan_cards(dataless):
                 head = safe_read_bytes(pstr, FM_TIMEOUT)
             except Exception:
                 head = None
-            head = (head or b"").decode("utf-8", errors="ignore")[:4096]
+            # 窗口 16KB（2026-11-01 修复）：R-HT 族 frontmatter 可达 5KB+，
+            # 旧 4096 窗口截断导致后置字段（review_date 等）漏读、卡片被误判 🔴
+            head = (head or b"").decode("utf-8", errors="ignore")[:16384]
             m = FM_PATTERN.match(head)
             rd = imp = rep = None
             if m:

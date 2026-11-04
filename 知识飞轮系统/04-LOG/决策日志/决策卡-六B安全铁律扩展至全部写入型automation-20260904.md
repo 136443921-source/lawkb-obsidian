@@ -9,9 +9,9 @@ decision_id: DEC-20260904-002
 status: 已执行（P0-1 闭环）
 domain: 个人成长
 关联HIR: P0-1
-updated: 2026-10-28T18:27
+updated: 2026-11-02T15:33
 domain_backfilled: 2026-10-20T22:32
-verdict: 不适用（制度/工具类已执行）
+verdict: 待验证
 ---
 
 # 决策卡 · 六-B 安全铁律覆盖范围

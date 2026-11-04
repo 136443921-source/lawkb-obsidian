@@ -1,11 +1,13 @@
 ---
-title: "lti_dimensions_v9"
+title: lti_dimensions_v9
 type: concept
 created: 2026-10-25
-tags: [概念页 概念-通用]
+tags:
+  - 概念页
+  - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.2
+updated: 2026-11-01T23:30
 ---
-
 # lti_dimensions_v9
 
 本页为「lti_dimensions_v9」概念枢纽，聚合知识飞轮系统内相关笔记，用于消解双向链接断链。
