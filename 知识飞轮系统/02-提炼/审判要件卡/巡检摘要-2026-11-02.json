@@ -1,0 +1,82 @@
+{
+  "round": "R39",
+  "date": "2026-11-02",
+  "mode": "存量裁判规则卡质量巡检（原审判要件卡每日补拆改造版）",
+  "target_lib": {
+    "裁判规则库": {"path": "06-沉淀/裁判规则库", "r_cards": 379},
+    "通用裁判规则库": {"path": "06-沉淀/通用裁判规则库", "r_cards": 42},
+    "total_r_cards": 421
+  },
+  "step1_pending": {
+    "frontmatter_statute_text_pending_true": 0,
+    "inline_statute_text_pending_true": 0,
+    "inline_statute_text_pending_total_files": 215,
+    "note": "R38 carryover 2 张(R-CF-234/R-PI-626)经复检已于2026-11-01元典核填结项"
+  },
+  "step1_deadlinks": {
+    "script": "_check_deadlinks.py v1.7.0 分类口径 --all",
+    "repo_files_scanned": 7280,
+    "hit_files": 1756,
+    "true_deadlinks": 94,
+    "pending_notes": 3915,
+    "old_caliber_total": 4009,
+    "skipped_legal": 2,
+    "in_rules_cards_repairable": 0,
+    "note": "扫描列出的5个含死链文件均为索引/迁移报告文档，非R-*.md卡片"
+  },
+  "step2_fill": {
+    "filled": 0,
+    "deviation_blocked": 0,
+    "channel_truth": {
+      "local_statute_bank": "available_offline",
+      "yuandian_mcp": "connected_but_not_in_tool_table(form2)",
+      "qcc_legal": "connected_but_not_in_tool_table(form2)",
+      "pkulaw": "disabled",
+      "rule057_applied": true
+    }
+  },
+  "step3_fix": {
+    "fixer_v2_dryrun_hits": 0,
+    "fixer_v9_dryrun_hits": 0,
+    "concurrency_guard_skip": "R-PI-517.md (454s前写入)",
+    "applied": false,
+    "idempotent": true,
+    "repairable_links": 0
+  },
+  "step3_5_metrics_watchdog": {
+    "exit_code": 1,
+    "card_consumption": "stale(19d, last 2026-10-13 14:58)",
+    "frontdesk_events": "ok(last 2026-11-02 09:46)",
+    "grill_events": "stale(19d, last 2026-10-13 14:44)",
+    "synergy_log": "stale(19d, last 2026-10-13 14:50)",
+    "stale_count": 3,
+    "ok_count": 1,
+    "all_ok": false,
+    "forbid_fake_records": true
+  },
+  "step3_5_connectors": {
+    "installed": 10,
+    "session_connected": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "written_back": "驾驶舱_人工核验.json (bak-20261102-094927)"
+  },
+  "safety_6B": {
+    "backup": "/tmp/SKILL_备份_20261102-095344/SKILL.md",
+    "dryrun_before_write": true,
+    "atomic_writes": true
+  },
+  "deliverables": {
+    "report": "02-提炼/审判要件卡/存量卡质量巡检报告-2026-11-02.md",
+    "summary_json": "02-提炼/审判要件卡/巡检摘要-2026-11-02.json",
+    "log_append": "04-LOG/2026-11-02.md",
+    "skill_version": "v1.69.0 -> v1.70.0 (坑87 + 变更日志)"
+  },
+  "r2_closure": {
+    "zero_fix_rounds_counter": 1,
+    "metrics_all_ok": false,
+    "closure_triggered": false,
+    "recommendation": "保留并维持「埋点看门狗+待回源清零」专项，不关闭、不新增自动化"
+  },
+  "candidate_disclaimer": "【候选·待人工确认】全部巡检输出均为候选推理"
+}

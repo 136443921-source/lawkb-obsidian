@@ -1,0 +1,98 @@
+{
+  "round": "R38",
+  "date": "2026-11-01",
+  "skill_version": "1.69.0",
+  "automation_id": "a5995ba3-d738-4233-8c93-410fd8f3bc39",
+  "target_path": {
+    "anchored": "06-沉淀/裁判规则库",
+    "exists": true,
+    "card_count": 368,
+    "generic_lib_count": 42,
+    "alt_path_02_提炼_06-沉淀": "absent"
+  },
+  "pending_frontmatter_statute_text_true": {
+    "count": 2,
+    "cards": [
+      {"rule_id": "R-CF-234", "domain": "慈善", "needed": "慈善法§14/53/109/112", "disposition": "保持pending", "reason": "坑85 redirect桩 + 坑75 2016版被取代"},
+      {"rule_id": "R-PI-626", "domain": "人伤法", "needed": "最高法工伤保险行政案件规定§8③", "disposition": "保持pending", "reason": "本地法条银行未收录(坑73复核确认)"}
+    ]
+  },
+  "statute_backfill": {
+    "filled": 0,
+    "intercepted_bias": 2,
+    "note": "两卡均按坑33/75/85正确保留pending，宁少勿错"
+  },
+  "inline_statute_text_pending_string": {
+    "files_with_string": 210,
+    "true_lines": 2,
+    "note": "多为:false/描述性，非缺陷，待清零立项"
+  },
+  "deadlinks": {
+    "script": "_check_deadlinks.py --all (v1.7.0 分类口径)",
+    "scope": "全库",
+    "files_scanned": 7218,
+    "files_hit": 1800,
+    "real_deadlinks": 131,
+    "real_deadlinks_prev_R37": 124,
+    "pending_notes": 3956,
+    "old_caliber_total": 4087,
+    "exit_code": 1
+  },
+  "deadlink_fix": {
+    "repair_tool": "_fix_deadlinks_v9_20260918.py (坑34 门禁同款口径)",
+    "dry_run_hits": "1 文件 / 4 处 (R-CF-236: R-CF-230 裸ID→唯一全名)",
+    "concurrent_protect_skipped": ["R-PI-631", "R-HT-361"],
+    "applied": true,
+    "post_scan_idempotent": "0 命中 (幂等✅)",
+    "backup": ["/tmp/存量卡巡检死链修复_20261101", "/tmp/存量卡巡检死链修复_20261101-102940"]
+  },
+  "metrics_watchdog": {
+    "timestamp": "2026-11-01T10:24:42",
+    "exit_code": 1,
+    "card_consumption": "stale (静默18天, 最后2026-10-13)",
+    "frontdesk_events": "ok (0天)",
+    "grill_events": "stale (静默18天)",
+    "协同效果日志": "stale (静默18天)",
+    "summary": "3 stale / 1 ok → 非全ok",
+    "note": "禁止补假记录修绿"
+  },
+  "connectors": {
+    "timestamp": "2026-11-01T10:24:42",
+    "installed": 10,
+    "session_connected": 4,
+    "session_connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima-mcp": "not_listed",
+    "wrote_back": "驾驶舱_人工核验.json (bak-20261101-102442)"
+  },
+  "channels_rule057": {
+    "local_statute_bank": "①离线权威可用，本轮回源未触发",
+    "yuandian_qcc": "会话connected但形态②工具表未注册，不可调用",
+    "pkulaw": "disabled",
+    "note": "依RULE-057优先级①落袋，未降级网页源、未判死"
+  },
+  "six_B": {
+    "backup_done": true,
+    "atomic_write": true,
+    "repeat_edit": false
+  },
+  "R2_convergence": {
+    "fixable_items": 4,
+    "consecutive_zero_fix_count": 0,
+    "close_condition_met": false,
+    "note": "可修>0→归零；埋点非全ok→保留专项"
+  },
+  "pending_human_items": [
+    "R-CF-234 慈善法2023修正§14/53/109/112 回源(redirect桩/被取代)",
+    "R-PI-626 工伤保险行政案件规定§8③ 回源(本地未收录)",
+    "131真死链(全库,库外为主)→P0-4编号治理",
+    "3项埋点stale(18天)查上游发射点,禁补假记录",
+    "210处内联statute_text_pending清零立项"
+  ],
+  "deliverables": {
+    "report": "02-提炼/审判要件卡/存量卡质量巡检报告-2026-11-01.md",
+    "json": "02-提炼/审判要件卡/巡检摘要-2026-11-01.json",
+    "log": "04-LOG/2026-11-01.md (巡检段追加)",
+    "skill": "审判要件卡拆卡流水线 SKILL.md → v1.69.0 (坑86 + 变更日志)"
+  }
+}
