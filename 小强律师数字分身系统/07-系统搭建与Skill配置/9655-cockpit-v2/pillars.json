@@ -1,6 +1,6 @@
 {
   "schema": "lawtwin-pillars-v1",
-  "generated_at": "2026-11-04 11:35:00",
+  "generated_at": "2026-11-05 08:07:24",
   "source": "8 缺口探针 JSON（o1/o2/o3/h2/c8/d2/s2/s3）+ 缺口方案 §0/§6 已验证事实",
   "four_pillars": [
     {
@@ -13,8 +13,8 @@
         "D3",
         "D2"
       ],
-      "status": "WARN",
-      "note": "D1/H1 法规快照 + D3 加密备份 round-trip 已验证；D2 出网审计日志暂缺"
+      "status": "OK",
+      "note": "D1/H1 法规快照 + D3 加密备份 round-trip 已验证；D2 出网审计在线：累计 4 事件 / 拦截 1 案号"
     },
     {
       "key": "experience-accum",
@@ -52,7 +52,7 @@
         "S3"
       ],
       "status": "WARN",
-      "note": "H2 三源核验(库 82 篇 / pending=13) + H4 幻觉看板(lti_gate.alive=False) + S2 红线前置(R3=False/R4=False) + S3 评分完整性(一致=True)"
+      "note": "H2 三源核验(库 82 篇 / pending=13) + H4 幻觉看板(lti_gate.alive=False) + S2 红线前置(R3=True/R4=True) + S3 评分完整性(一致=True)"
     }
   ],
   "four_supporting": [
@@ -65,8 +65,8 @@
         "D2",
         "S1"
       ],
-      "status": "WARN",
-      "note": "O1 巡检留痕 + D2 出网审计在线 + S1 16 屏实时重接；源可溯 / 变可察 / 责可定（D2 日志暂缺）"
+      "status": "OK",
+      "note": "O1 巡检留痕 + D2 出网审计在线 + S1 16 屏实时重接；源可溯 / 变可察 / 责可定"
     },
     {
       "key": "redline-front",
@@ -75,8 +75,8 @@
       "skills": [
         "S2"
       ],
-      "status": "WARN",
-      "note": "S2 红线前置常驻（R3 令牌 / R4 AIGC 标识触发前拦截，gate_armed=False）"
+      "status": "OK",
+      "note": "S2 红线前置常驻（R3 令牌 / R4 AIGC 标识触发前拦截，gate_armed=True）"
     },
     {
       "key": "score-trust",
@@ -171,8 +171,8 @@
     }
   },
   "summary": {
-    "ok": 3,
-    "warn": 5,
+    "ok": 6,
+    "warn": 2,
     "total": 8
   }
 }
