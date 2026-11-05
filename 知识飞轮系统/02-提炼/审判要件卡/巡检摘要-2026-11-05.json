@@ -1,0 +1,80 @@
+{
+  "round": "R40",
+  "date": "2026-11-05",
+  "schema": "质量巡检·候选推理",
+  "path_anchor": {
+    "active": "06-沉淀/裁判规则库",
+    "count_R": 406,
+    "generic_count_R": 42,
+    "obsolete_02_06": "NOT FOUND (坑83 锚定顶层06-沉淀)"
+  },
+  "pending": {
+    "frontmatter_true": 10,
+    "generic_true": 0,
+    "inline_false": 187,
+    "cards": [
+      "R-PI-639","R-HT-366","R-PI-636","R-PI-640","R-HT-365",
+      "R-CF-241","R-PI-638","R-LD-105","R-PI-637","R-CF-240"
+    ]
+  },
+  "statute_fill": {
+    "filled": 0,
+    "blocked": 10,
+    "block_reasons": [
+      "matcher_format_mismatch (frontmatter statute_refs vs inline ⚠️待回源)",
+      "坑33 FR-MAIN 民法典/慈善法 frontmatter empty",
+      "坑85 慈善法2023 redirect桩风险",
+      "真无源: 社保法/工伤保险行政案件规定/道交损害赔偿解释二/买卖合同解释等本地库未收录",
+      "yuandian/qcc 形态②不可调用, pkulaw disabled"
+    ]
+  },
+  "deadlinks": {
+    "script_version": "v1.7.0 分类口径 --all",
+    "total_basenames": 8842,
+    "hit_files": 1788,
+    "true_dead": 138,
+    "pending_notes": 3931,
+    "old_caliber_total": 4069,
+    "skipped": 8
+  },
+  "deadlink_fix": {
+    "script": "_fix_deadlinks_v2_20260912.py",
+    "basename_set": 7301,
+    "dry_run_files": 6,
+    "dry_run_links": 13,
+    "applied": true,
+    "rescan_after_apply": 0,
+    "idempotent": true,
+    "residual_bare_refs": 2,
+    "residual_note": "[[R-PI-640]] 指向精确同名 R-PI-640.md (机动车交通事故dir,空frontmatter桩) → v2正确不动 → 归P0-4撞号治理"
+  },
+  "metrics_watchdog": {
+    "exit_code_anomaly": 126,
+    "card_consumption": "stale(22d)",
+    "grill_events": "stale(22d)",
+    "协同效果日志": "stale(22d)",
+    "frontdesk_events": "ok(0d)",
+    "all_ok": false
+  },
+  "connectors": {
+    "installed": 10,
+    "session_connected": 4,
+    "connected_list": ["agent-mail","qcc-legal","tencent-docs","yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed"
+  },
+  "channels_rule057": {
+    "local_bank": "离线可用但FR-MAIN民法典/慈善法frontmatter空→坑33禁自动回填",
+    "yuandian": "connected但形态②不可调用",
+    "qcc": "connected但形态②不可调用",
+    "pkulaw": "disabled"
+  },
+  "r2_close_condition": {
+    "repairable_items": 13,
+    "consecutive_zero_reset": true,
+    "metrics_all_ok": false,
+    "close_triggered": false,
+    "recommendation": "保留专项(埋点看门狗+待回源清零)，不关闭不新增"
+  },
+  "backup_dir": "/tmp/存量卡巡检死链修复_20261105"
+}
