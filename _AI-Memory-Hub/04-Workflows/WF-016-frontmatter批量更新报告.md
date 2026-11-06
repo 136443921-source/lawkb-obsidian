@@ -23,6 +23,9 @@ tags:
 - **文件路径**：/Users/chenyouqiang/Documents/LawKB/知识库/数字分身系统搭建/法律类skill 配置迭代-九阳神功/[[AI模拟法庭法官skill 配置说明书|AI模拟法庭法官skill 配置说明书]].md
 
 ## 相关笔记
+- [[cockpit_monitor_2026-10-26]] (共现关键词: Documents, 基金会, chenyouqiang)
+- [[legacy-scan-2026-10-25]] (共现关键词: 工伤, Documents, chenyouqiang)
+- [[legacy-scan-2026-10-18]] (共现关键词: 工伤, Documents, chenyouqiang)
 - [[20261023_bak清理清单]] (共现关键词: ---, Documents, 合同)
 - [[R-CF-016]] (共现关键词: 016, 2026)
 - [[更新基金会值得收藏的133部常用法律法规政策速查汇编目录]] (共现关键词: 更新, 合同)

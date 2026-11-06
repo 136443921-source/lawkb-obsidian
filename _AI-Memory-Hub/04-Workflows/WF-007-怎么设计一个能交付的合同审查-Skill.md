@@ -24,6 +24,7 @@ tags:
 Submission Gate 1. Scope Check   是否披露了审查范围、立场、材料限制？ 2. Source Check   每个重大风险是否绑定原条款、事实来源或外部核查来源？ 3. Reverse Challenge Check   是否生成过反向质疑清单？ 4. Specialist Check   是否识别过需要专项插件处理的条款？ 5. Human Review Check   哪些结论必须由人复核？是否单独列出？ 6. Output Form Check   批注、概要、综合意见、流程图是否各司其职？ 7. Disclosure Check   是否说明 A
 
 ## 相关笔记
+- [[关系台账与三条流自动化设计稿_v0.1]] (共现关键词: 慈善, 设计)
 - [[R-PI-288-电子病历怎么封存-采集笔记-2026-09-11]] (共现关键词: 怎么, 医疗, 合同)
 - [[工具之外法律人研究AI和Skill研究的是自己的新位置]] (共现关键词: 合同, 起诉, 共现)
 - [[我用WorkBuddy三个月踩了15个坑才明白]] (共现关键词: 合同, 审查, 共现)

@@ -163,6 +163,7 @@ tags:
 - 方法论源：`LawKB/小哲AI 学伴系统/初中生AI学伴系统搭建方法论-借鉴小强律师分身系统.md`
 
 ## 相关笔记
+- [[换电脑后WorkBuddy如何迁移]] (共现关键词: 共现, workbuddy)
 - [[2026-09-30]] (共现关键词: md, 2026, workbuddy)
 - [[PROJ-SYS-9655COCKPIT-单机驾驶舱]] (共现关键词: SYS, ##, PROJ)
 - [[PROJ-SYS-9360COCKPIT-运维备忘录]] (共现关键词: SYS, PROJ)

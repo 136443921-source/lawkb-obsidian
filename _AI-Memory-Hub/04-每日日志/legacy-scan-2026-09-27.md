@@ -216,6 +216,8 @@ tags:
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/d1269700-4e4d-4633-b729-0e5bcadb03f3.jsonl` — 24113802/周报/工作周报-2026-33.md`（**2,201 字符**，覆盖 16:55 数据） / / 每周复盘生成 / ✅ / `/Users/chenyouqiang/WorkBuddy/Claw/小强律师数字分身3.0/
 
 ## 相关笔记
+- [[legacy-scan-2026-10-25]] (共现关键词: 工伤, scan, 股东)
+- [[legacy-scan-2026-11-01]] (共现关键词: 工伤, 上诉, scan)
 - [[WF-104-17af9310-6b37-4277-9094-d48217308228]] (共现关键词: chenyouqiang, 2026)
 - [[_双链完整性报告_2026-10-16]] (共现关键词: 知识产权, chenyouqiang, 公司)
 - [[换电脑后WorkBuddy如何迁移]] (共现关键词: WorkBuddy, 公司)

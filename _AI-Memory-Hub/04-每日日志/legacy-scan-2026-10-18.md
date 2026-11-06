@@ -229,6 +229,10 @@ tags:
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/d3b3901e-732f-4227-a9c0-5c71ac0c2a55.jsonl` — ## 完成情况  / 环节 / 状态 / 备注 / /------/------/------/ / 工作周报 / ✅ 已生成 / `20260424113802/周报/工作周报-2026-32.md` / / 每周复盘 / ✅ 已生成 /
 
 ## 相关笔记
+- [[legacy-scan-2026-11-01]] (共现关键词: 工伤, 公司, scan)
+- [[cockpit_monitor_2026-10-26]] (共现关键词: 仲裁, 10, Documents)
+- [[WF-016-frontmatter批量更新报告]] (共现关键词: 工伤, Documents, chenyouqiang)
+- [[legacy-scan-2026-10-25]] (共现关键词: 工伤, 公司, scan)
 - [[2026-09-26]] (共现关键词: 2026, scan, 公司)
 - [[WF-104-17af9310-6b37-4277-9094-d48217308228]] (共现关键词: chenyouqiang, 2026)
 - [[_双链完整性报告_2026-10-16]] (共现关键词: chenyouqiang, 10, 公司)

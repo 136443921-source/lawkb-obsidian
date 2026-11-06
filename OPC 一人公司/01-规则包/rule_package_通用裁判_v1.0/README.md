@@ -37,4 +37,7 @@ tags:
 - 计费与订阅档位由运营部门负责人核定（见 `manifest.json › billing`）。
 
 ## 相关笔记
+- [[README]] (共现关键词: README, index, assets)
+- [[WF-037---修复（备份+翻转，未点UI未碰令牌）：备份-`mcp.json.bak-20]] (共现关键词: json, ---, 诉讼)
+- [[经验卡片-运维-多源规则库归库四原则-撞号绝不覆盖-20260915]] (共现关键词: json, ---, rules)
 - [[LICENSE_COMMERCIAL]] (共现关键词: ---, 本包)

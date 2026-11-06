@@ -1,3 +1,17 @@
+---
+tags:
+  - 民事诉讼
+  - 刑事诉讼
+  - 侵权责任
+  - 婚姻家庭
+  - 公司法
+  - 慈善法
+  - 医疗纠纷
+  - Documents
+  - chenyouqiang
+  - 劳动争议
+---
+
 # 遗留资产盘点报告 2026-10-25
 
 - 扫描源：`/Users/chenyouqiang/Documents/xiaoqianglawkb` (md 0) + `/Users/chenyouqiang/.workbuddy/projects` (jsonl 含)
@@ -265,3 +279,12 @@
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/d7d8dac1-5c63-4431-8ec3-557de91d36c9.jsonl` — 动化任务已执行完成！以下是本次执行的摘要：  ---  ## 📊 执行结果总览  / 任务 / 状态 / 说明 / /------/------/------/ / 工作周报 / ✅ 已生成 / 保存至 `工作周报-2026-28.md` 
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/166c00cc-1bc8-474d-9bd9-6bd408ef02e7.jsonl` — **联动智能体学习：** 根据文件类型，自动触发相应的智能体联动学习 5. **医疗法律专业能力提升：** 《药品管理法》和《疫苗管理法》是医疗法律领域的重要法律法规  #### （二）实务建议  1. **立即学习《药品管理法》和《疫苗管
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/eb3d7212-9078-4cab-ba34-c637211bca22.jsonl` — 83s 真实耗时** / 非零日志 / ✅ /  ## 每项修复的关键点  **① CPU 恒为 0** — 根因是 psutil 没装，且日志函数压根没传 CPU 参数。改用标准库 `time.process_time()` 差值方案（C
+
+## 相关笔记
+- [[legacy-scan-2026-09-14]] (共现关键词: scan, 公司, 仲裁)
+- [[legacy-scan-2026-11-01]] (共现关键词: 工伤, 公司, scan)
+- [[legacy-scan-2026-09-27]] (共现关键词: 工伤, scan, 股东)
+- [[cockpit_monitor_2026-10-26]] (共现关键词: 仲裁, 10, Documents)
+- [[WF-016-frontmatter批量更新报告]] (共现关键词: 工伤, Documents, chenyouqiang)
+- [[legacy-scan-2026-10-18]] (共现关键词: 工伤, 公司, scan)
+- [[frontmatter批量更新报告]] (共现关键词: 工伤, 公司, 仲裁)
