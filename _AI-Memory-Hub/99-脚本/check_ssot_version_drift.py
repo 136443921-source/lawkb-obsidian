@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-check_ssot_version_drift.py —— 中枢 SSOT 版本口径漂移巡检器  v1.1
+check_ssot_version_drift.py —— 中枢 SSOT 版本口径漂移巡检器  v1.2
+
+v1.1 → v1.2（2026-11-06）：把 L0 用户级注入层 MEMORY.md 纳入 STALE_FILES
+    ——它是每轮注入、最容易带偏的位置，不扫等于防线留洞；相应豁免
+    「禁称 / 禁写死」类禁令措辞，避免把禁令本身误报成漂移。
 
 v1.0 → v1.1（2026-11-06 首跑实测 6 条全为历史沿革误报，已核）：
     - 加结构性豁免 is_history_line()：版本演进表行 / 变更日志标题不算当前状态声明
@@ -34,6 +38,7 @@ import argparse
 LAWKB = "/Users/chenyouqiang/Documents/LawKB"
 HUB = os.path.join(LAWKB, "_AI-Memory-Hub")
 SKILLS = "/Users/chenyouqiang/.workbuddy/skills/LTI文本监控器"
+USER_MEMORY = "/Users/chenyouqiang/.workbuddy/user-75c7265a-5f11-4420-9e71-be28329d68fd-personal/MEMORY.md"
 COCKPIT = os.path.join(LAWKB, "小强律师数字分身系统/07-系统搭建与Skill配置/9655-cockpit-v2/subapps/lti")
 
 SSOT_CARD = os.path.join(HUB, "00-全局规则/RULE-060-中枢唯一事实源SSOT与单向派发铁律-版本规则口径以中枢为准.md")
@@ -55,6 +60,7 @@ VALUE_SOURCES = [
 
 # 下游「声明当前状态」的文档；中枢自身卡（RULE-060 / WF-002）不扫，避免把禁令文字误报成漂移
 STALE_FILES = [
+    USER_MEMORY,  # L0 每轮注入层（v1.2 增）
     os.path.join(LAWKB, "小强律师数字分身系统/00-系统总览与运维中心/小强律师数字分身系统-用户使用手册-v4.0.0.md"),
     os.path.join(SKILLS, "运维/LTI文本监控系统运维手册.md"),
     P_SKILL,
@@ -81,6 +87,8 @@ EXEMPT_WORDS = [
     # v1.1 增：变更日志/版本演进/事故回放的合法历史陈述
     "修复", "升级", "演进", "沿革", "变更记录", "纠正", "回放", "新增", "上线",
     "当时", "首修", "收口", "实测", "回归", "已闭环", "早期", "此前", "初版",
+    # v1.2 增：L0 禁令措辞（「禁称」「禁写死」本身不是旧口径声明）
+    "禁称", "禁写死",
 ]
 
 DISCLAIMER_MARK = "SSOT-DISCLAIMER"
