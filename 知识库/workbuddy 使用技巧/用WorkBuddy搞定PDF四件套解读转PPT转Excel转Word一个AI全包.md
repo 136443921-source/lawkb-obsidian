@@ -342,6 +342,7 @@ markitdown / pptx-generator / minimax-xlsx / minimax-docx
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/zmrIPFHKnOj-rVWR6va_7Q)*
 
 ## 相关笔记
+- [[民商事律师庭审技巧100 问]] (共现关键词: 慈善, 关键词, 解读)
 - [[慈善最新政策解读及警示教育]] (共现关键词: 医疗, 解读, 公司)
 - [[2026-07-02]] (共现关键词: 提取, 医疗, 共现)
 - [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: 公司, 合同, AI)

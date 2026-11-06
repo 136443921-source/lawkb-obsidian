@@ -89,3 +89,6 @@ tags:
     - `subapps/lti/` 无 `lti_live.json`（沿用历史口径：该屏复用 H4，输出落到 `subapps/lti/c8_metrics.json` 11:56:14 ✅）
 - 命名口径提醒：任务字面要求的 `subapps/{...}/live.json` 实际不存在；真实产物为 `clm_live.json`/`xiaode_live.json`/`flywheel_live.json`，lti 屏为 `c8_metrics.json`。本次已用 glob 实地排查，确认无「live.json」字面文件，属命名口径差异而非刷新失败。
 - 结论：本次所有探针产物均成功更新到运行时间；**无未更新项、无退出码异常**。
+
+## 相关笔记
+- [[9655_全系统映射与实时架构方案]] (共现关键词: 探针, json)

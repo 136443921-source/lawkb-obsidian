@@ -181,6 +181,7 @@ https://mp.weixin.qq.com/s/GGyF1bkhdN6i3ncPDnwT7A?from=singlemessage&scene=1&sub
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/GGyF1bkhdN6i3ncPDnwT7A?from=singlemessage&scene=1&subscene=10000&sessionid=1781677060&clicktime=1781687310&enterid=1781687310&ascene=1&realreporttime=1781687310509&forceh5=1)*
 
 ## 相关笔记
+- [[R-PI-186-医疗损害二元鉴定模式选择与赔偿标准双轨]] (共现关键词: ##, 模式, 医疗)
 - [[医疗事故技术鉴定暂行办法（卫生部令第30号）]] (共现关键词: 共现, 专家, 关键词)
 - [[专家辅助人定义法律地位证据属性-2026-08-31]] (共现关键词: 证据, 共现, 专家)
 - [[R-PI-192-专家辅助人有专门知识的人申请与证据属性]] (共现关键词: ##, 证据, 共现)

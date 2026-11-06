@@ -1,3 +1,15 @@
+---
+tags:
+  - 民事诉讼
+  - 案由
+  - 公司法
+  - md
+  - 争点
+  - ---
+  - 合同法
+  - Phase
+---
+
 # case-file-review · Phase 2 路由实测验证报告
 
 - **验证日期**：2026-10-30
@@ -104,3 +116,6 @@ PY
 ---
 
 *存入：`Documents/LawKB/小强律师数字分身系统/07-系统搭建与Skill配置/20261030_case-file-review_Phase2路由验证_6658判决书.md`*
+
+## 相关笔记
+- [[case-file-review挂载与证据能力去重建议_呈老强批准_v0.1]] (共现关键词: review, file, 诉讼)

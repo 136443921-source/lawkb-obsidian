@@ -271,6 +271,7 @@ WorkBuddy不是万能的，它不能帮你做决策、不能替你思考策略�
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/0Sraq0ahIMz7zZlku2HhnQ)*
 
 ## 相关笔记
+- [[系统指令可粘贴版_83号_v1.0]] (共现关键词: 公司, 指令)
 - [[Workbuddy做PPT进阶版之宝藏工具pptmaster]] (共现关键词: PPT, 共现, 公司)
 - [[legacy-scan-2026-10-18]] (共现关键词: WorkBuddy, 合同, 公司)
 - [[买卖合同详细版模板解析-蓝红双视角-2026-08-29]] (共现关键词: 解析, 共现)

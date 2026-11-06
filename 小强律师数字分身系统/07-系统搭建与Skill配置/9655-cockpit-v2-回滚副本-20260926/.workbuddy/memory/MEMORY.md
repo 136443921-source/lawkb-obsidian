@@ -20,6 +20,8 @@ tags:
 - 门禁 plist：~/Library/LaunchAgents/com.xiaoqiang.lti-gate.plist
 
 ## 相关笔记
+- [[CRT-20260927-01]] (共现关键词: 9655, launchctl, ---)
+- [[gate-config]] (共现关键词: ---, gate)
 - [[经验卡-9655心跳断流-fresh_h38h-扫描任务launchd未加载-20260927]] (共现关键词: 9655, launchctl, ---)
 - [[经验卡-9655真源位迁移未完成-launchd仍指旧会话目录-20260926]] (共现关键词: 9655, 共现, launchctl)
 - [[MEMORY]] (共现关键词: 共现, MEMORY)
