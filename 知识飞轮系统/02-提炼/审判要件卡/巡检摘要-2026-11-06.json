@@ -1,0 +1,70 @@
+{
+  "round": "R41",
+  "date": "2026-11-06",
+  "mode": "质量巡检（原每日补拆改造）",
+  "target_path": "06-沉淀/裁判规则库 (412 R-*.md active) + 06-沉淀/通用裁判规则库 (42)",
+  "candidate_note": "【候选·待人工确认】",
+  "pending_frontmatter_start": 10,
+  "backfill_cards": 5,
+  "backfill_refs": 26,
+  "backfill_cards_list": ["R-CF-240", "R-PI-638", "R-PI-647", "R-HT-365", "R-HT-368"],
+  "deviation_blocked": 1,
+  "deviation_detail": "R-PI-648 道交赔偿解释(一)第16条 已被取代(勿再援引)→版本位移拦截",
+  "pending_remaining": 5,
+  "pending_remaining_list": ["R-LD-106", "R-CF-242", "R-PI-636", "R-PI-637", "R-PI-648"],
+  "pending_missing_sources": {
+    "R-LD-106": ["实施社保法若干规定11"],
+    "R-CF-242": ["民政部规范基金会行为若干规定"],
+    "R-PI-636": ["医疗纠纷预防和处理条例(无版本元数据/redirect桩)"],
+    "R-PI-637": ["工伤保险行政案件规定6", "人社部意见三7"],
+    "R-PI-648": ["道交赔偿解释(一)16(被取代)"]
+  },
+  "deadlink": {
+    "script_version": "v1.7.0 --all 全库7358",
+    "hit_files": 1792,
+    "true_dead": 138,
+    "pending_notes": 3935,
+    "skipped": 12,
+    "exit": 1
+  },
+  "deadlink_repair": {
+    "tool": "_fix_deadlinks_v2_20260912.py 门禁集7318",
+    "dry_hit_files": 0,
+    "dry_hit_links": 0,
+    "applied": false,
+    "note": "幂等0，R40修13后已稳定"
+  },
+  "channels": {
+    "FR_MAIN": "✅ 离线权威可用，本轮回源已实拉回填26条",
+    "yuandian": "会话connected但工具索引absent(形态②)不可调用",
+    "qcc_legal": "会话connected但工具索引absent(形态②)不可调用",
+    "pkulaw": "disabled(停用期不阻塞)",
+    "verified_at": "2026-11-06T09:36"
+  },
+  "metrics_watchdog": {
+    "card_consumption": "stale(静默23天, 2026-10-13)",
+    "frontdesk_events": "ok(2026-11-06)",
+    "grill_events": "stale(静默23天, 2026-10-13)",
+    "协同效果日志": "stale(静默23天, 2026-10-13)",
+    "summary": "3 stale / 1 ok，非全ok"
+  },
+  "connectors": {
+    "installed": 10,
+    "session_connected": 4,
+    "session_connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed"
+  },
+  "r2": {
+    "repairable_items": 26,
+    "continuous_zero_reset": true,
+    "metrics_all_ok": false,
+    "close_condition_triggered": false,
+    "decision": "保留专项(埋点看门狗+待回源清零)，不关闭不新增"
+  },
+  "backup": {
+    "backfill_originals": "/tmp/存量卡巡检法条回填_20261106/",
+    "deadlink_output": "/tmp/deadlink_all_20261106.txt",
+    "cockpit_json_bak": "驾驶舱_人工核验.json.bak-20261106-093643"
+  }
+}
