@@ -147,3 +147,15 @@ updated: 2026-11-01T23:16
 - **屏上整改项来源**：LTI=`health_rows[].actions`/事故卡/零命中规则；CLM=`gates[status≠pass]`/`deadlines[level]`/`nextActions`/`risks`；评分卡=`screens[].flag/score/six`；卡族=frontmatter 实扫；HTML 屏=关键词启发式。
 - **只读护栏**：本引擎不触发任何站点重发、不改配置；线上刷新由各自既有自动化负责。
 - **敏感隔离**：CLM 含真实案号/当事人姓名，本报告不展开当事人姓名，仅老强本人可见。
+
+## 相关笔记
+- [[cockpit_monitor_2026-10-16]] (共现关键词: 上诉, 门禁, cockpit)
+- [[cockpit_monitor_2026-10-02]] (共现关键词: 上诉, 门禁, 基金会)
+- [[cockpit_monitor_2026-09-26]] (共现关键词: 上诉, 基金会, cockpit)
+- [[_2026-09-16-D6-驾驶舱监控技能建设]] (共现关键词: 上诉, monitor, 2026)
+- [[DEC-2026-016-9655单机驾驶舱1比1复原9360框架]] (共现关键词: 2026, cockpit)
+- [[PROJ-SYS-9360COCKPIT-运维备忘录]] (共现关键词: 仲裁, cockpit)
+- [[WF-016-frontmatter批量更新报告]] (共现关键词: Documents, 基金会, chenyouqiang)
+- [[legacy-scan-2026-10-25]] (共现关键词: 仲裁, 10, Documents)
+- [[legacy-scan-2026-10-18]] (共现关键词: 仲裁, 10, Documents)
+- [[frontmatter批量更新报告]] (共现关键词: 上诉, Documents, 仲裁)

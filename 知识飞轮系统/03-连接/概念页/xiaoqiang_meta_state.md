@@ -31,3 +31,8 @@ updated: 2026-11-01T23:30
 - [[知识飞轮系统-索引.bak_20260830-192353]]
 - [[IMA候选池开采规程-v1.18.bak_20260830-191940]]
 
+
+## 相关笔记
+- [[小强律师元心智模型备忘录活文档-2026-09-17]] (共现关键词: 2026, meta)
+- [[xiaoqiang_meta_persona_v1]] (共现关键词: xiaoqiang, meta)
+- [[小强律师-元人格卡_xiaoqiang_meta_persona_v1]] (共现关键词: xiaoqiang, ---, meta)
