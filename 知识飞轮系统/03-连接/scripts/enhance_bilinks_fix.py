@@ -88,6 +88,7 @@ for note in new_notes:
     if not new_entries:
         continue
 
+    new_entries = [e for e in new_entries if e[0] != "RULE-038-Schema规范"]  # 2026-11-09 语义 B 归一
     new_entries.sort(key=lambda x: -len(x[1]))
     new_entries = new_entries[:5]
 

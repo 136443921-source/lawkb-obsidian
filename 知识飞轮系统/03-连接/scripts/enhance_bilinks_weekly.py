@@ -83,6 +83,8 @@ def add_related_links(filepath, related_notes):
 
     lines = ["", "## 相关笔记"]
     for name, keywords in related_notes:
+        if name == "RULE-038-Schema规范":   # 2026-11-09 语义 B 归一：不再补挂历史伪编号
+            continue
         kw_str = ", ".join(keywords[:3])
         lines.append(f"- [[{name}]] (共现关键词: {kw_str})")
 

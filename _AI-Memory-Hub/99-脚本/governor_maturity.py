@@ -12,10 +12,10 @@ governor_maturity.py — 法条银行行长成熟度客观追踪（对标 blue_t
 
 计分（权重合计 100）：
   D1 治理场次      20  (真实取证场次数，每场 4 分封顶 20；目标 5 场满)
-  D2 弹药可溯率    15  (RULE-038 规范 / SOP-AST-08 / 覆盖台账 三源齐备)
+  D2 弹药可溯率    15  (`_Schema规范_v1.0.md` / SOP-AST-08 / 覆盖台账 三源齐备)
   D3 身份留痕率    15  (persona+PROJ 双建 10 + 有真实 TRAINLOG 留痕 5)
   D4 域覆盖        20  (11 域架构 5 + 合规域数/11×15)
-  D5 病灶修复率    20  (schema 合规率 = 符合 RULE-038 两型卡数/总卡数 × 20，直接对应 F1)
+  D5 病灶修复率    20  (schema 合规率 = 符合 `_Schema规范_v1.0.md` 两型卡数/总卡数 × 20，直接对应 F1)
   D6 接驳闭环      10  (SOP-AST-07 存在 5 + 库内已有合规卡 5)
 """
 import os, re, io, sys, datetime, argparse, shutil
@@ -25,7 +25,7 @@ BANK = os.path.join(HUB, "法条银行")
 PROJ = os.path.join(BANK, "银行治理层", "法条银行行长心智模型与训练备忘录.md")
 ARCHIVE = os.path.join(BANK, "_archive")
 WEEKLY = os.path.join(BANK, "法律资讯周报")
-RULE038_SPEC = os.path.join(BANK, "银行治理层", "_Schema规范_v1.0.md")
+SCHEMA_SPEC = os.path.join(BANK, "银行治理层", "_Schema规范_v1.0.md")
 SOP_AST_08 = os.path.join(HUB, "_AI-Memory-Hub/09-OPC/09-2部门治理/数字资产中台/SOP",
                           "SOP-AST-08_法条银行科室CRUD治理.md")
 COVER = os.path.join(BANK, "银行治理层", "_本地法条银行_覆盖台账.md")
@@ -114,7 +114,7 @@ def main():
     # D1 治理场次
     d1 = min(20.0, train * 4.0)
     # D2 弹药可溯
-    d2 = 15.0 if (os.path.exists(RULE038_SPEC) and os.path.exists(SOP_AST_08)
+    d2 = 15.0 if (os.path.exists(SCHEMA_SPEC) and os.path.exists(SOP_AST_08)
                   and os.path.exists(COVER)) else 0.0
     # D3 身份留痕
     d3 = (10.0 if (os.path.exists(PERSONA) and os.path.exists(PROJ)) else 0.0) \
@@ -133,9 +133,9 @@ def main():
     pct = score
     bar = "▓" * (score // 5) + "░" * (20 - score // 5)
 
-    # WF-046 四判据：职能可辨识/边界可追溯(persona+PROJ) + Schema可落(RULE-038) + 与起草方接口(SOP-AST-07) + 真实取证(>=1)
+    # WF-046 四判据：职能可辨识/边界可追溯(persona+PROJ) + Schema可落(`_Schema规范_v1.0.md`) + 与起草方接口(SOP-AST-07) + 真实取证(>=1)
     wf046 = (os.path.exists(PERSONA) and os.path.exists(PROJ)
-             and os.path.exists(RULE038_SPEC) and os.path.exists(SOP_AST_07)
+             and os.path.exists(SCHEMA_SPEC) and os.path.exists(SOP_AST_07)
              and train >= 1)
     suggest = "ACTIVE（WF-046 四判据满足，建议转正）" if wf046 else "DRAFT（维持）"
 
@@ -153,7 +153,7 @@ def main():
 | 维度 | 得分 | 实测 |
 |---|---|---|
 | D1 治理场次 | **{d1:.1f}** / 20 | {train} 场真实取证（每场 4 分，目标 5 场满） |
-| D2 弹药可溯率 | **{d2:.1f}** / 15 | RULE-038/SOP-AST-08/覆盖台账 三源{'齐备' if d2 else '缺'} |
+| D2 弹药可溯率 | **{d2:.1f}** / 15 | `_Schema规范_v1.0.md`/SOP-AST-08/覆盖台账 三源{'齐备' if d2 else '缺'} |
 | D3 身份留痕率 | **{d3:.1f}** / 15 | persona+PROJ 双建 {10 if os.path.exists(PERSONA) and os.path.exists(PROJ) else 0} + 留痕 {5 if train>=1 else 0} |
 | D4 域覆盖 | **{d4:.1f}** / 20 | 11 域架构 + 合规域 {len(domains)}/11 |
 | D5 病灶修复率 | **{d5:.1f}** / 20 | schema 合规率 {rate*100:.1f}%（F1 客观进度） |

@@ -7,7 +7,7 @@ fix_fatiao_schema.py — 法条银行 schema 治理双模式脚本
 模式 A：G2 schema 整治（对标 fix_updated_format.py 范式）
 ------------------------------------------------------------------------
 把法条银行旧 schema（version_* 系列 + Obsidian 渲染字段）收敛为
-RULE-038 两型 A 型权威法规卡。
+`_Schema规范_v1.0.md` 两型 A 型权威法规卡。
 策略：「重建干净 A 型 frontmatter」——丢弃 Obsidian 渲染字段，保留
 title / superseded_by / comments / aliases / source 原值，补齐必需字段。
 --dry-run 列出计划；--apply 执行（改前自动备份 /tmp，幂等可反复跑）；
@@ -27,7 +27,7 @@ source_verify 非「双证一致」），由 agent 先用官方源（qcc-legal/W
 
 ⚠️ 架构边界（不降级到记忆、不越权）：
   - 脚本本身不联网；联网核填由 agent 经官方源完成，结果经 --g1-data JSON 传入。
-  - RULE-038 字段契约未变（retrieved_date 本就是 A 型字段），故本脚本
+  - `_Schema规范_v1.0.md` 字段契约未变（retrieved_date 本就是 A 型字段），故本脚本
     不触发「字段调整须经老强确认后版本号+1」；若日后改契约须走确认流程。
 
 范围（守 R-3 边界）：

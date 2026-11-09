@@ -172,6 +172,9 @@ for t, c in unresolved.items():
             if t in broken_by_file[f]:
                 source_fixes[f].append((t, n))
     else:
+        # 2026-11-09 语义 B 归一：历史伪编号别名不再新建概念页（旧页保留供双链解析）
+        if t == "RULE-038-Schema规范":
+            continue
         concept_targets.append((t, c))
 
 # ---------- 概念页内容生成 ----------
