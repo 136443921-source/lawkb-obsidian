@@ -1,7 +1,7 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-11-09T10:27",
+  "updated": "2026-11-10T14:00",
   "ima_connector": "ima-mcp",
   "ima_status": "restored_2026-10-23_libids_migrated_channels_up",
   "note": "2026-10-06 真实模式运行（IMA上线+元典2840）：A1(HT 3)+B(LN3+PI1+HG2+CF3=9) 共12篇IMA摄入；D 5例三通道回源；3篇220030失败(R-PI-520/521,R-HG-105)。",
@@ -4242,6 +4242,13 @@
           "source": "IMA·合同文书AI助手",
           "window": "w_2026-10-25_A1B",
           "occupies_new_quota": true
+        },
+        {
+          "media_id": "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_1014e1b2445ed411951b7ea4c0719fce7312048136419112",
+          "title": "01-买卖合同质量瑕疵检验期间与隐蔽瑕疵合理通知",
+          "create_time": 1794290377303,
+          "ingested_at": "2026-11-10",
+          "value": 8
         }
       ]
     },
@@ -4995,6 +5002,13 @@
             "法条银行"
           ],
           "batch": "2026-10-26-A1B-回补（通道恢复后补齐10-26漏跑）"
+        },
+        {
+          "media_id": "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_1c97986488045bc7f18c70945a46749d7312042960642489",
+          "title": "02-逾期付款违约金计至实际清偿之日",
+          "create_time": 1794290377303,
+          "ingested_at": "2026-11-10",
+          "value": 8
         }
       ]
     },
@@ -5734,6 +5748,13 @@
             "法条银行"
           ],
           "batch": "2026-10-26-A1B-回补（通道恢复后补齐10-26漏跑）"
+        },
+        {
+          "media_id": "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_384162ea4c267ac3ed9a9d13db5fd00a7312035322822509",
+          "title": "03-医疗损害过错参与度鉴定不等同于民法过错与原因力",
+          "create_time": 1794290377303,
+          "ingested_at": "2026-11-10",
+          "value": 8
         }
       ]
     },
@@ -6390,6 +6411,13 @@
             "法条银行"
           ],
           "batch": "2026-10-26-A1B-回补（通道恢复后补齐10-26漏跑）"
+        },
+        {
+          "media_id": "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_5dd01a58b3567c63faff5d4a2886d15e7333014572917409",
+          "title": "04-慈善组织违规借款与关联交易监管红线",
+          "create_time": 1794290377303,
+          "ingested_at": "2026-11-10",
+          "value": 8
         }
       ]
     },
@@ -7084,31 +7112,31 @@
             "法条银行"
           ],
           "batch": "2026-10-26-A1B-回补（通道恢复后补齐10-26漏跑）"
+        },
+        {
+          "media_id": "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_d859484130c48c9d9c98484dc2a56faf7311644304633438",
+          "title": "05-慈善组织未依法履行信息公开义务可警告并列入活动异常名录",
+          "create_time": 1794290377303,
+          "ingested_at": "2026-11-10",
+          "value": 8
         }
       ]
     }
   },
-  "pending_windows": [
-    {
-      "id": "w_2026-11-02_A1B_channel_down",
-      "target": 5,
-      "done": 0,
-      "note": "ima-mcp/yuandian-mcp/qcc-legal 三通道未进本次会话索引，A1B 跳过，待重启/重授权后回补"
-    }
-  ],
+  "pending_windows": [],
   "totals": {
-    "ingested_total": 855,
+    "ingested_total": 860,
     "libraries": {
       "7312048136419112": 88,
       "7312042960642489": 91,
       "7312035322822509": 91,
       "7333014572917409": 79,
       "7311644304633438": 83,
-      "ima_kb_wtCC3MaE": 85,
-      "ima_kb_4zHrbsPd": 89,
-      "ima_kb_veLMnIRY": 88,
-      "ima_kb_DJqCMlUq": 78,
-      "ima_kb_I5SSrhkG": 83
+      "ima_kb_wtCC3MaE": 86,
+      "ima_kb_4zHrbsPd": 90,
+      "ima_kb_veLMnIRY": 89,
+      "ima_kb_DJqCMlUq": 79,
+      "ima_kb_I5SSrhkG": 84
     }
   },
   "resolved_in_continuation": {
@@ -7490,6 +7518,30 @@
         "R-PI-630",
         "R-PI-631"
       ]
+    },
+    {
+      "window_id": "w_2026-11-02_A1B_channel_down",
+      "target": 5,
+      "done": 5,
+      "status": "resolved_2026-11-10",
+      "resolved_at": "2026-11-10T14:00",
+      "reason": "A0.2 IMA 5库回补：通道恢复后 create_media→COS PUT(upload_mode=1)→add_knowledge 入库，5库各1篇（合计5篇）已确认落库。",
+      "backfill_log": [
+        {
+          "at": "2026-11-10T14:00",
+          "channel": "ima-mcp live",
+          "candidates_selected": 5,
+          "candidates_ingested": 5,
+          "result": "OK",
+          "media_ids": [
+            "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_1014e1b2445ed411951b7ea4c0719fce7312048136419112",
+            "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_1c97986488045bc7f18c70945a46749d7312042960642489",
+            "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_384162ea4c267ac3ed9a9d13db5fd00a7312035322822509",
+            "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_5dd01a58b3567c63faff5d4a2886d15e7333014572917409",
+            "markdown_cls1_9bfac398af86affe7620fe220b7a96a5_d859484130c48c9d9c98484dc2a56faf7311644304633438"
+          ]
+        }
+      ]
     }
   ],
   "failed_220030": [
@@ -7724,7 +7776,7 @@
     }
   ],
   "ingested_total": 434,
-  "last_run": "2026-11-02",
+  "last_run": "2026-11-10",
   "ingested": [],
   "duplicate_media_id_review": {
     "_reviewed_at": "2026-10-16T10:42:05",

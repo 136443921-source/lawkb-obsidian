@@ -19,6 +19,14 @@ tags:
 - **交付**：对话呈现（不发邮件）。
 - **备注**：本轮为首次记录（原 memory.md 不存在）。事件仅含成熟度刷新上报，无具体派活指令，未臆造派活内容。
 
+## 2026-11-10 10:31
+- **状态**：✅ 成功（无异常）
+- **peek**：pending 8 条，全部 `maturity_refresh`（ts 均 2026-11-09T09:43:19），PROJ-001~008 全席位。
+- **落账**：`--ingest-events --apply` 成功，`error:null`，`consumed_count:8`；备份 `/tmp/seat_event_bus_20261110-103126`。
+- **复核幂等**：stats 复跑 pending 8→0、total 46→54（恒等 +8，无重复）；台账 `total_ingested=39`，`last_ingest_ts=2026-11-10T10:31:26`。
+- **铁律确认**：`mode=propose_only`、`auto_execute=false` 不变；PROJ-008 事件含 score 94/M5 卓越上报，未执行任何派活动作。
+- **交付**：对话呈现（不发邮件）。
+
 ## 相关笔记
 - [[意图预判巡检-2026-10-29]] (共现关键词: 派活, 2026)
 - [[IMA漏窗回补任务清单-20261016]] (共现关键词: pending, 2026)

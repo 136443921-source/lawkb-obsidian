@@ -1,0 +1,87 @@
+{
+  "automation_id": "a5995ba3-d738-4233-8c93-410fd8f3bc39",
+  "round": "R44",
+  "date": "2026-11-10",
+  "skill_version_before": "1.74.0",
+  "skill_version_after": "1.75.0",
+  "inspection_scope": {
+    "rule_lib": "06-沉淀/裁判规则库",
+    "rule_lib_count": 454,
+    "generic_lib": "06-沉淀/通用裁判规则库",
+    "generic_lib_count": 42,
+    "note": "02-提炼/06-沉淀 不存在（坑83），锚定 06-沉淀/裁判规则库"
+  },
+  "pending_backfill": {
+    "grep_statute_text_pending_true": 22,
+    "generic_lib_pending": 0,
+    "genuine_pending": 1,
+    "genuine_pending_card": "R-PI-637",
+    "placeholder_flag_false_positive": 21,
+    "note": "22 = 1 真待回源 + 21 占位旗误报（仅法规名引用，无 statute_refs/内联标记）"
+  },
+  "backfill_this_round": {
+    "cards_filled": 1,
+    "card": "R-PI-637",
+    "statutes_filled": ["工伤保险条例第十四条（全文，operative 第(六)项）"],
+    "source": "本地法条银行FR-MAIN(RULE-057①)",
+    "deviation_intercepted": 2,
+    "intercepted_refs": ["工伤保险行政案件规定§6", "人社部意见三§7"],
+    "intercept_reason": "本地法条银行未收录（源缺失，坑33）；yuandian/qcc 形态②不可调用；pkulaw disabled"
+  },
+  "deadlinks": {
+    "script": "_check_deadlinks.py --all (v1.7.0 分类口径)",
+    "true_dead": 147,
+    "to_build_soft_ref": 4397,
+    "skip_no_frontmatter": 23,
+    "parse_fail_full_lib_out_of_scope": 1,
+    "rule_lib_yaml_parse_fail": 0,
+    "repair_dry_run": {"tool": "_fix_deadlinks_v2_20260912.py", "gate_basename_set": 7432, "hits_files": 0, "hits_links": 0, "idempotent": true, "applied": false}
+  },
+  "channels_rule_057": {
+    "ts": "2026-11-10T10:37",
+    "local_statute_bank": "available_authoritative",
+    "yuandian_mcp": "connected_but_tooltable_not_registered (形态②, 不可调用)",
+    "qcc_legal": "connected_but_tooltable_not_registered (形态②, 不可调用)",
+    "pkulaw": "disabled (停用期不阻塞)",
+    "official_source": "online_available_not_triggered"
+  },
+  "metrics_watchdog": {
+    "ts": "2026-11-10T10:37",
+    "card_consumption": "stale (静默27天, 连续12轮 R33-R44)",
+    "frontdesk_events": "ok (静默0天)",
+    "grill_events": "stale (静默27天)",
+    "collab_effect_log": "stale (静默27天)",
+    "verdict": "3 stale / 1 ok → 非全 ok",
+    "no_fake_records": true
+  },
+  "connectors_probe": {
+    "ts": "2026-11-10T10:37",
+    "installed": 10,
+    "session_connected": 4,
+    "session_connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "written_back": "驾驶舱_人工核验.json (bak-20261110-103748)"
+  },
+  "six_b": {
+    "backup": "/tmp/存量卡巡检法条回填_20261110/R-PI-637.md",
+    "atomic_write": "Edit 工具落盘（python open 中文目录沙箱失败，改用 Edit）",
+    "dry_run_before_write": true
+  },
+  "r2_closure": {
+    "repairable_count_this_round": 1,
+    "consecutive_zero_repair_counter": 0,
+    "metrics_all_ok": false,
+    "closure_condition_met": false,
+    "recommendation": "保留「埋点看门狗+待回源清零」专项，不关闭、不新增自动化"
+  },
+  "manual_pending": [
+    "21 张占位旗误报裁定（清空 flag 或保留 pending）",
+    "R-PI-637 剩余 2 引回源（工伤保险行政案件规定§6 / 人社部意见三§7）",
+    "147 全库真死链 → P0-4 编号治理",
+    "3 项埋点 stale（27天）查上游发射点",
+    "内联 statute_text_pending 字符串清零立项",
+    "死链口径纵向锁版本+--all"
+  ],
+  "new_pitfall": "坑94：摄入流程批量打 statute_text_pending:true 占位旗，但仅法规名引用、无待填条文 → 22 挂账中 21 假阳性；巡检须区分真待回源与占位旗误报"
+}
