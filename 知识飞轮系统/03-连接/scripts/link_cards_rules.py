@@ -6,7 +6,11 @@
 - 策略：每个领域创建「连接枢纽」页(MOC)，成员卡片/规则 ↔ 枢纽 双向链接；
         同域按法律主题词做卡片↔规则语义互链(top-5 限幅)；
         跨域仅用高特异性桥接词做少量高价值桥接(每节点≤3)。
-- 幂等：自动补链段以稳定前缀 `## 关联（知识飞轮连接层自动补链` 写入，重跑整体替换（按前缀切分，不受日期变化影响），不破坏既有手工链接。
+- 幂等：自动补链段以稳定前缀 `## 关联（知识飞轮连接层自动补链` 写入，重跑整体替换（按前缀切分），不破坏既有手工链接。
+  v3.3 (2026-11-09)：输出亦幂等——标题不含日期、关联列表按名称稳定排序、枢纽页日期固定；
+  运行日期仅记入 link_lastrun.json#date（独立日志），不再写入 3000+ 张卡片。
+  v3.4 (2026-11-09)：两次全库重跑实测 1390 文件 md5 漂移，查明 get_terms 把上一轮自动段
+  与 related_links 当输入形成反馈循环；新增 terms_source() 只取人工正文计算术语，切断循环。
 - 兜底：经验卡片下出现 GROUPS 未登记的新分类时，自动建独立枢纽并做同域互链（无规则桥接）。
 - 统计：运行后写 link_lastrun.json（机器可读），并打印 `LINK_STAT {...}` 单行供自动化捕获。
 
@@ -35,6 +39,7 @@ HUB_DIR = os.path.join(ROOT, "03-连接")
 SCRIPTS = os.path.dirname(os.path.abspath(__file__))
 DATE = datetime.date.today().strftime("%Y-%m-%d")
 MARK_BEGIN = "## 关联（知识飞轮连接层自动补链"   # 稳定前缀：幂等切分键，不含日期
+HUB_ANCHOR = "2026-09-22"                    # v3.2 版本日：枢纽页 created 固定值，禁止用当天日期
 DRY_RUN = "--dry-run" in sys.argv                # 预演模式：只打印计划，不写任何文件
 
 # 卡片分类 -> (裁判规则子目录, 枢纽文件名, 枢纽标题)
@@ -132,6 +137,27 @@ def read_note(path):
     exist = {x.strip() for x in re.findall(r"\[\[([^\]\|#]+)", body)}
     return fm, body, exist
 
+# v3.4 (2026-11-09)：切断「上次输出 → 本次输入」反馈循环。
+# 原实现把上一轮写入的自动补链段 + frontmatter related_links 也喂给 get_terms，
+# 术语集合随上次输出漂移 → 相似度 → 边集合 → 再次输出，形成闭环，两次重跑 md5 不一致。
+# 术语计算只应基于人工正文；切分键与 write_note() 完全一致（MARK_BEGIN 稳定前缀），
+# 既命中旧版带日期的自动标题，也不误伤人工正文中的同名标题。
+def terms_source(fm, body):
+    """返回不含 related_links 与自动补链段的干净文本，供 get_terms 使用。"""
+    out, skip = [], False
+    for ln in fm.split("\n"):
+        if ln.strip().startswith("related_links:"):
+            skip = True
+            continue
+        if skip:
+            if re.match(r"^\s*-\s", ln):
+                continue
+            skip = False
+        out.append(ln)
+    idx = body.find(MARK_BEGIN)
+    clean_body = body[:idx] if idx != -1 else body
+    return "\n".join(out) + "\n" + clean_body
+
 def write_note(path, fm, hub, same_links, cross_links):
     if DRY_RUN:
         return
@@ -152,7 +178,7 @@ def write_note(path, fm, hub, same_links, cross_links):
     idx = body.find(MARK_BEGIN)
     if idx != -1:
         body = body[:idx].rstrip() + "\n"
-    lines = [f"{MARK_BEGIN} · {DATE})"]
+    lines = [f"{MARK_BEGIN})"]                 # v3.3：去日期戳，标题恒定
     if hub: lines.append(f"- 领域枢纽：[[{hub}]]")
     if same_links:
         lines.append("- 同域语义关联：")
@@ -199,7 +225,7 @@ for cat, (rdomain, hubfile, hubtitle) in EG.items():
         for p in sorted(glob.glob(os.path.join(cdir, "*.md"))):
             base = os.path.splitext(os.path.basename(p))[0]
             fm, body, _ = read_note(p)
-            members[cat].append((base, p, get_terms(fm+"\n"+body)))
+            members[cat].append((base, p, get_terms(terms_source(fm, body))))
             node_hub[base] = hubfile
 
 # 规则枚举(v3.1)：以 cat 为驱动，聚合「主规则目录 + RULE_MERGE 归并目录」
@@ -220,7 +246,7 @@ for cat, rdirs in cat_rdirs.items():
         for p in sorted(glob.glob(os.path.join(rdir, "*.md"))):
             base = os.path.splitext(os.path.basename(p))[0]
             fm, body, _ = read_note(p)
-            members[cat].append((base, p, get_terms(fm+"\n"+body)))
+            members[cat].append((base, p, get_terms(terms_source(fm, body))))
             node_hub[base] = hubfile
 
 # ===== 域库化扩展（2026-09-22）=====
@@ -247,7 +273,7 @@ for lib, hubfile in DOMAIN_LIBS.items():
     for p in sorted(glob.glob(os.path.join(ldir, "**", "*.md"), recursive=True)):
         base = os.path.splitext(os.path.basename(p))[0]
         fm, body, _ = read_note(p)
-        members[owner].append((base, p, get_terms(fm + "\n" + body)))
+        members[owner].append((base, p, get_terms(terms_source(fm, body))))
         node_hub[base] = hubfile
 
 # 计算边
@@ -297,7 +323,7 @@ for cat, (rdomain, hubfile, hubtitle) in EG.items():
     for base, p, ts in members[cat]:
         my_hub = node_hub.get(base)
         same, cross = [], []
-        for l in neighbors[base]:
+        for l in sorted(neighbors[base]):      # v3.3：set 迭代序随机，必须稳定排序
             if l == base or l == my_hub: continue
             if node_hub.get(l) == my_hub:
                 same.append(l)
@@ -331,9 +357,9 @@ for hubfile, cats in hub_to_cats.items():
     first_cat = cats[0]
     hubtitle = EG[first_cat][2]
     L = ["---", f"title: {hubtitle}", "type: 连接枢纽", f"domain: {first_cat}",
-         f"generated_by: 连接层自动补链({DATE})", f"created: {DATE}T22:00",
+         f"generated_by: 连接层自动补链", f"created: {HUB_ANCHOR}T22:00",
          "tags:", "  - 连接枢纽"] + [f"  - {c}" for c in cats] + ["---", "", f"# {hubtitle}", "",
-         f"> 本页为「{'/'.join(cats)}」领域连接枢纽（MOC），由知识飞轮连接层于 {DATE} 自动生成。",
+         f"> 本页为「{'/'.join(cats)}」领域连接枢纽（MOC），由知识飞轮连接层自动生成（日期见 link_lastrun.json）。",
          f"> 共挂载 {len(cards)} 张经验卡片 + {len(rules)} 条裁判规则，双向链接已自动建立。",
          "", "## 经验卡片"]
     for fn in cards: L.append(f"- [[{fn}]]")
@@ -371,7 +397,7 @@ for lib, hubfile in DOMAIN_LIBS.items():
     domain_linked += n   # 域库规则卡在枚举段已全部挂接 node_hub
 
 total_edges = sum(len(v) for v in neighbors.values()) // 2
-stat = {"date": DATE, "script": "link_cards_rules.py", "version": "3.2",
+stat = {"date": DATE, "script": "link_cards_rules.py", "version": "3.4",
         "processed": written, "hubs": len(EG),
         "members_per_cat": {c: len(members[c]) for c in EG},
         "rules_total": rule_total, "rules_linked": rule_linked,
@@ -385,7 +411,7 @@ if not DRY_RUN:
     with open(os.path.join(SCRIPTS, "link_neighbors.json"), "w", encoding="utf-8") as f:
         json.dump({k: sorted(v) for k, v in neighbors.items()}, f, ensure_ascii=False, indent=1)
 
-print("=== 连接层补链 v3.2 完成 ===")
+print("=== 连接层补链 v3.4 完成 ===")
 print(f"裁判规则覆盖: {rule_linked}/{rule_total}" + (f"  ⚠️游离目录: {uncovered}" if uncovered else "  ✅ 无游离目录"))
 print(f"域库规则卡覆盖: {domain_linked}/{domain_total}" + (f"  ⚠️缺失域库: {domain_uncovered}" if domain_uncovered else "  ✅ 全挂接"))
 print(f"处理笔记文件数: {written}（含幂等覆盖）")

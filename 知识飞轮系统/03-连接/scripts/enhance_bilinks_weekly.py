@@ -69,8 +69,8 @@ def find_related_by_tags(target_tags, target_name, all_notes):
             continue
         overlap = set(target_tags) & set(note['tags'])
         if len(overlap) >= 2:  # 至少2个tag重叠
-            related.append((note['name'], list(overlap)[:4]))
-    return related[:5]  # 最多5条
+            related.append((note['name'], sorted(overlap)[:4]))  # 2026-11-09：set 无序须稳定排序
+    return sorted(related, key=lambda x: x[0])[:5]  # 最多5条，按名称稳定取前5
 
 def add_related_links(filepath, related_notes):
     """在笔记末尾追加 related_links 段"""
