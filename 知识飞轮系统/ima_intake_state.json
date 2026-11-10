@@ -1,7 +1,7 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-11-02T09:44",
+  "updated": "2026-11-09T10:27",
   "ima_connector": "ima-mcp",
   "ima_status": "restored_2026-10-23_libids_migrated_channels_up",
   "note": "2026-10-06 真实模式运行（IMA上线+元典2840）：A1(HT 3)+B(LN3+PI1+HG2+CF3=9) 共12篇IMA摄入；D 5例三通道回源；3篇220030失败(R-PI-520/521,R-HG-105)。",
@@ -7097,7 +7097,7 @@
     }
   ],
   "totals": {
-    "ingested_total": 434,
+    "ingested_total": 855,
     "libraries": {
       "7312048136419112": 88,
       "7312042960642489": 91,
@@ -7641,10 +7641,10 @@
     }
   ],
   "checkpoint": {
-    "session_id": "run-1793583855942",
-    "stage": "FINAL",
-    "status": "in_progress",
-    "started_at": "2026-11-02T09:44",
+    "session_id": "run-1794191241297",
+    "stage": null,
+    "status": "done",
+    "started_at": "2026-11-09T10:27",
     "done": [
       "A0",
       "A1",
@@ -7654,7 +7654,8 @@
       "C",
       "D",
       "FINAL"
-    ]
+    ],
+    "finished_at": "2026-11-09T10:27"
   },
   "abandoned_windows": [
     {
