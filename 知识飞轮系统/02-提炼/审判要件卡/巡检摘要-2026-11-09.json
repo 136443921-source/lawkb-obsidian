@@ -1,0 +1,97 @@
+{
+  "automation": "存量裁判规则卡质量巡检（原审判要件卡每日补拆改造版）",
+  "round": "R43",
+  "date": "2026-11-09",
+  "mode": "质量巡检",
+  "candidate_note": "【候选·待人工确认】所有结论未经老强复核前不得作为定稿依据",
+  "target_lib": {
+    "path": "06-沉淀/裁判规则库",
+    "active_R_cards": 417,
+    "generic_lib": "06-沉淀/通用裁判规则库",
+    "generic_R_cards": 42,
+    "alt_path_exists": false,
+    "note": "坑83 双候选核验：02-提炼/06-沉淀 不存在，锚定 06-沉淀/裁判规则库"
+  },
+  "statute_backfill": {
+    "pending_frontmatter_true": 1,
+    "pending_cards": ["人伤法/R-PI-637.md"],
+    "backfilled_this_round": 0,
+    "deviation_blocked": 0,
+    "version_displacement_blocked": 0,
+    "note": "R42 挂账 3 张，本轮实查仅 1 张；R-CF-243/R-LD-107 上轮后外部摄入回填结项（坑87/93）",
+    "inline_statute_text_pending_occurrences": {
+      "total": 346,
+      "true": 1,
+      "false": 207,
+      "body_inline_non_defect": 138
+    }
+  },
+  "deadlinks": {
+    "script_version": "v1.8.0",
+    "flag": "--all 全库口径",
+    "base_names_total": 8876,
+    "cards_checked": 7374,
+    "hit_files": 2301,
+    "real_deadlinks": 162,
+    "todo_notes_softref": 5071,
+    "skipped_legal": 5,
+    "exit_code": 1,
+    "vs_R42": "真死链 162 持平 R42",
+    "repair_dryrun": {
+      "tool": "_fix_deadlinks_v2_20260912.py (门禁同款基名集口径)",
+      "gate_base_names": 7334,
+      "hit_files": 0,
+      "hit_links": 0,
+      "fixable": 0,
+      "idempotent": true,
+      "applied": false
+    }
+  },
+  "channel_status": {
+    "timestamp": "2026-11-09 09:30",
+    "local_statute_bank_FR_MAIN": "可用（仅工伤保险条例§14⑥ 可填）",
+    "yuandian_mcp": "形态② 会话connected但工具表未注册→不可调用",
+    "qcc_legal": "形态② 会话connected但工具表未注册→不可调用",
+    "pkulaw": "disabled（2026-10-22 起停用期，不阻塞）",
+    "official_source_fallback": "未触发（源缺口保留pending，不造条文）",
+    "method": "ToolSearch 精确限定名 + 关键词检索均未命中法条工具"
+  },
+  "metrics_watchdog": {
+    "timestamp": "2026-11-09 09:37",
+    "window_days": 3,
+    "card_consumption": "stale (最后 2026-10-13 14:58, 静默26天)",
+    "frontdesk_events": "ok (最后 2026-11-09 09:35, 静默0天, 近3天+16)",
+    "grill_events": "stale (最后 2026-10-13 14:44, 静默26天)",
+    "协同效果日志": "stale (最后 2026-10-13 14:50, 静默26天)",
+    "summary": "3 stale / 1 ok → 非全ok",
+    "consecutive_stale_rounds": 11
+  },
+  "connector_probe": {
+    "timestamp": "2026-11-09 09:37",
+    "installed": 10,
+    "session_connected": 4,
+    "connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "disabled": ["pkulaw", "gongyi-open-mcp", "kdocs", "qq-mail", "tencent-weiyun", "github"],
+    "not_listed": ["ima-mcp"],
+    "written_back": "驾驶舱_人工核验.json (bak-20261109-093729)"
+  },
+  "six_B_safety": {
+    "card_files_modified": 0,
+    "skill_md_backup": "/tmp/SKILL_备份_20261109-0940.md",
+    "skill_version_after": "1.74.0"
+  },
+  "R2_verdict": {
+    "fixable_items": 0,
+    "consecutive_zero_fix_count": 1,
+    "metrics_all_ok": false,
+    "close_condition_met": false,
+    "recommendation": "保留本自动化，维持「埋点看门狗+待回源清零」专项，不关闭、不新增"
+  },
+  "pending_human_actions": [
+    "R-PI-637 回源核填：恢复元典/qcc 工具注册后据本地法条银行逐字校正 工伤保险行政案件规定§6 + 人社部意见三§7",
+    "162 全库真死链（库外为主）→ P0-4 编号治理",
+    "3 项埋点 stale（26天，连续11轮）→ 查上游发射点，禁补假记录",
+    "138 处内联 statute_text_pending 字符串清零立项",
+    "死链口径纵向比较锁 _check_deadlinks.py 版本 + --all 全库口径"
+  ]
+}

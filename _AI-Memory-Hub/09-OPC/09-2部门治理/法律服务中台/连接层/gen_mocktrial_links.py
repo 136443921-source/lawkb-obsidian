@@ -11,6 +11,7 @@
   * frontmatter 完全不动（不剥离 related:、不新增 related_links:）。
   * 仅对 body 按稳定前缀切分后在末尾追加/更新自动段。
 - 统计：写 mocktrial_links_lastrun.json（机器可读）；打印 LINK_STAT 单行。
+- v1.1 (2026-11-09)：输出幂等化——标题去日期、枢纽页日期固定；运行日期仅记入 lastrun.json。
 - 用法：python gen_mocktrial_links.py [--dry-run | --apply]
        默认（无参）= dry-run。
 """
@@ -24,6 +25,7 @@ DRY = "--dry-run" in sys.argv or (not any(a in sys.argv for a in ("--apply", "--
 APPLY = "--apply" in sys.argv
 
 MARK = "## 关联（模拟法庭治理连接层自动补链"
+HUB_ANCHOR = "2026-09-30"   # 本圈层枢纽页首次生成日：created 固定值，禁止用当天日期
 HUB_NAME = "连接枢纽-模拟法庭治理"
 
 # 白名单：模拟法庭治理小圈层（文件名明确含"模拟法庭"的治理文档，精确圈定，不卷其它业务试点）
@@ -53,7 +55,7 @@ def split_body(raw):
     return raw.rstrip() + "\n"
 
 def build_auto_section(hub, others):
-    lines = [f"{MARK} · {DATE})"]
+    lines = [f"{MARK})"]                    # v1.1：去日期戳，标题恒定
     lines.append(f"- 领域枢纽：[[{hub}]]")
     lines.append("- 同域互链：")
     for i in range(0, len(others), 4):
@@ -73,10 +75,10 @@ def write_member(path, raw, hub, others):
 
 def build_hub_page(member_bases):
     L = ["---", f"title: {HUB_NAME}", "type: 连接枢纽（模拟法庭治理小圈层）",
-         f"generated_by: 模拟法庭治理连接层({DATE})", f"created: {DATE}T22:00",
+         f"generated_by: 模拟法庭治理连接层", f"created: {HUB_ANCHOR}T22:00",
          "tags:", "  - 连接枢纽", "  - 模拟法庭治理", "---", "",
          f"# {HUB_NAME}", "",
-         f"> 本页为「模拟法庭治理文档小圈层」专属连接枢纽（MOC），由轻量连接器于 {DATE} 自动生成。",
+         f"> 本页为「模拟法庭治理文档小圈层」专属连接枢纽（MOC），由轻量连接器自动生成（日期见 mocktrial_links_lastrun.json）。",
          f"> 共挂载 {len(member_bases)} 份模拟法庭治理文档，双向链接已自动建立。",
          "> 与法律领域连接层（link_cards_rules.py）完全独立，不污染其图谱。",
          "", "## 小圈层成员", ""]
@@ -94,7 +96,7 @@ def main():
 
     bases = [base_name(p) for p in full]
     mode = "DRY-RUN" if DRY else "APPLY"
-    print(f"=== 模拟法庭治理连接层 v1.0 [{mode}] ===")
+    print(f"=== 模拟法庭治理连接层 v1.1 [{mode}] ===")
     print(f"成员数: {len(bases)}")
 
     for p, b in zip(full, bases):

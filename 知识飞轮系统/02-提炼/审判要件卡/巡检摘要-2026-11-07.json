@@ -1,0 +1,83 @@
+{
+  "round": "R42",
+  "date": "2026-11-07",
+  "skill_version": "1.73.0",
+  "path_anchor": "06-沉淀/裁判规则库 (417 R-*.md) + 06-沉淀/通用裁判规则库 (42); 02-提炼/06-沉淀 不存在",
+  "pending_frontmatter_true": {
+    "count": 7,
+    "cards": [
+      "劳动人事/R-LD-107", "慈善/R-CF-243", "人伤法/R-PI-636", "人伤法/R-PI-649",
+      "人伤法/R-PI-650", "人伤法/R-PI-637", "合同风险/R-HT-369"
+    ],
+    "pending_after_fill": 3,
+    "remaining_pending": ["劳动人事/R-LD-107", "慈善/R-CF-243", "人伤法/R-PI-637"]
+  },
+  "backfill": {
+    "filled_cards": 4,
+    "filled_statute_texts": 8,
+    "named_reg_meta": 2,
+    "detail": {
+      "人伤法/R-PI-649": ["民法典1218", "民法典1222", "民法典1225"],
+      "人伤法/R-PI-650": ["民法典1217"],
+      "合同风险/R-HT-369": ["民法典621", "买卖合同解释(法释〔2020〕17号)第12-20条"],
+      "人伤法/R-PI-636": ["民法典1218", "民法典1222", "病历书写基本规范(元数据)", "医疗纠纷预防和处理条例(元数据)"]
+    },
+    "backup": "/tmp/存量卡巡检法条回填_20261107_*",
+    "channel": "FR-MAIN 本地法条银行 (RULE-057①)"
+  },
+  "deviation_intercepted": {
+    "count": 3,
+    "items": {
+      "慈善/R-CF-243": "redirect桩 (坑85) 禁回填",
+      "劳动人事/R-LD-107": "工伤保险行政案件规定 FR-MAIN未收录 (坑33源缺失)",
+      "人伤法/R-PI-637": "工伤保险行政案件规定+人社部意见三 FR-MAIN未收录 (坑33源缺失)"
+    },
+    "version_displacement_caught": 0
+  },
+  "deadlinks": {
+    "script": "_check_deadlinks.py --all (v1.7.x 分类口径)",
+    "files_scanned": 7372,
+    "files_hit": 2301,
+    "true_dead": 162,
+    "to_build": 5071,
+    "skipped": 2,
+    "fixer": "_fix_deadlinks_v2_20260912.py (门禁集7332)",
+    "fix_dryrun_hits": "0 文件/0 链接 (幂等, 未apply)",
+    "note": "口径与R41(7358/1792/138/3935)不一致，纵向比较锁版本+--all"
+  },
+  "metrics_watchdog": {
+    "exit_code": 0,
+    "judged_by": "content (坑90)",
+    "card_consumption": "stale (静默24天)",
+    "frontdesk_events": "ok (0天)",
+    "grill_events": "stale (静默24天)",
+    "协同效果日志": "stale (静默24天)",
+    "summary": "3 stale / 1 ok (非全ok)"
+  },
+  "connectors": {
+    "installed": 10,
+    "session_connected": 4,
+    "connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "disabled_list": ["gongyi-open-mcp", "kdocs", "qq-mail", "tencent-weiyun", "github"]
+  },
+  "six_b": {
+    "backup_dir": "/tmp/存量卡巡检法条回填_20261107_*",
+    "atomic_write": true,
+    "duplicate_edit": false
+  },
+  "r2": {
+    "closable": false,
+    "reason": "可修项>0 (核填8+条) 且 埋点非全ok",
+    "consecutive_zero_fix_count": 0
+  },
+  "new_pitfall": "坑92 (法条逐字抽取stop正则须用条/章+空白边界，否则咬中正文内嵌第X条引用致截断)",
+  "deliverables": [
+    "02-提炼/审判要件卡/存量卡质量巡检报告-2026-11-07.md",
+    "02-提炼/审判要件卡/巡检摘要-2026-11-07.json",
+    "04-LOG/2026-11-07.md (追加)",
+    "审判要件卡拆卡流水线 SKILL v1.73.0 (坑92+变更日志)"
+  ],
+  "note": "本报告为候选推理，标【候选·待人工确认】"
+}

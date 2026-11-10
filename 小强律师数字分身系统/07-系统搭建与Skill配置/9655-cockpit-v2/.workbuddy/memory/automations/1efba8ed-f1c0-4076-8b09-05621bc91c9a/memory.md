@@ -40,6 +40,12 @@ tags:
 - 判定：手册口径与实车一致，无漂移。未触发修订提醒。
 - 备注：连续第五次 aligned=true，手册 v1.5 口径稳定。
 
+## 2026-11-09 09:48（本周运行 · 周一 09:00 定时）
+- 运行 `drift_check_9655.py`（长期资产位目录，managed python 3.13.12）。
+- 比对结果：baseline_manual_version=v1.5，drift_count=0，health_count=0，aligned=true。
+- 判定：手册口径与实车一致，无漂移。未触发修订提醒。
+- 备注：连续第六次 aligned=true，手册 v1.5 口径稳定。
+
 ## 相关笔记
 - [[2026-09-28]] (共现关键词: 09, ##, drift)
 - [[2026-09-15-D3调度治理工具固化drift实战]] (共现关键词: 09, ##, drift)

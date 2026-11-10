@@ -1,5 +1,5 @@
 {
-  "plan_date": "2026-11-01",
+  "plan_date": "2026-11-09",
   "mode": "apply（已授权刷新包 manifest）",
   "target": 200,
   "selected_domains": [
@@ -47,34 +47,26 @@
     {
       "package": "rule_package_人伤法_v1.0",
       "domain": "人伤法",
-      "pending_count": 168
+      "pending_count": 167
     },
     {
       "package": "rule_package_医疗_v1.0",
       "domain": "医疗",
-      "pending_count": 108
-    },
-    {
-      "package": "rule_package_合同_v1.0",
-      "domain": "合同",
-      "pending_count": 101
+      "pending_count": 107
     }
   ],
   "package_refresh_candidates": [
     "人伤法",
-    "医疗",
-    "合同"
+    "医疗"
   ],
   "package_refresh": {
     "attempted": [
       "人伤法",
-      "医疗",
-      "合同"
+      "医疗"
     ],
     "ok": [
       "人伤法",
-      "医疗",
-      "合同"
+      "医疗"
     ],
     "failed": [],
     "mode": "apply"
