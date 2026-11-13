@@ -36,3 +36,7 @@ tags:
 ## 四、更新与订阅
 - 本包随源资产迭代；版本号与 `CHANGELOG.md` 同步。
 - 计费与订阅档位由运营部门负责人核定（见 `manifest.json › billing`）。
+
+## 相关笔记
+- [[README]] (共现关键词: assets, 本包, json)
+- [[link_cards_rules_域库扩展方案]] (共现关键词: 09, rules)

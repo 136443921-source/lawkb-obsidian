@@ -23,6 +23,7 @@ tags:
 - 脚本：`/Users/chenyouqiang/.workbuddy/skills/_common/scripts/ops_maturity.py` v1.0.0（托管 Python 3.13.12）
 
 ## 相关笔记
+- [[一定要尽早用这个AI工具workbuddy的100条实操攻略]] (共现关键词: 赔偿, workbuddy, 关键词)
 - [[R-HG-085-起诉条件审查的分歧与统一规则]] (共现关键词: 085, 赔偿, 侵权)
 - [[R-GS-085-管理人申请撤销仲裁与追收财产案件的当事人]] (共现关键词: 085, 共现)
 - [[2026-09-30]] (共现关键词: 2026, 工伤, workbuddy)

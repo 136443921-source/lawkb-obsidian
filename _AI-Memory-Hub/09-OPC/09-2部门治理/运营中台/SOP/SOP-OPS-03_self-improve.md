@@ -84,6 +84,7 @@ tags:
 | v1.0 | 2026-09-23 | 新 | 周日 self-improve SOP（链接式，引 automation-1782372885336 v2.4 + 治理复盘模板） | AI(小强) · OPC Wave B3 |
 
 ## 相关笔记
+- [[self.md-20261109]] (共现关键词: md, self)
 - [[数字员工花名册]] (共现关键词: ---, automation, 公司)
 - [[self.md-20261019]] (共现关键词: self, md, 公司)
 - [[备份日志]] (共现关键词: md, 共现, self)

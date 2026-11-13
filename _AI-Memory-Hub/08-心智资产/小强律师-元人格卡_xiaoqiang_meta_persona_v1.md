@@ -136,6 +136,8 @@ tags:
 *本卡与 `red_persona_v1.md` / `blue_persona_v1.md` / `judge_persona_v1.md` / `clerk_persona_v1.md` / `mp_persona_v1.md` / `qc_persona_v1.md` 五章同构；差异在于本卡为"元层"，不进入攻·防·裁·录·治·控任一席位，只做统辖与运维。*
 
 ## 相关笔记
+- [[memory]] (共现关键词: meta, 2026)
+- [[09104数字员工编制方案_v1.0]] (共现关键词: persona, 2026)
 - [[2026-09-29]] (共现关键词: 共现, 判据)
 - [[xiaoqiang_meta_state]] (共现关键词: xiaoqiang, ---, meta)
 - [[模拟法庭四方心智模型卡库挂载复盘与建议报告-2026-09-15]] (共现关键词: persona, ---, 心智)

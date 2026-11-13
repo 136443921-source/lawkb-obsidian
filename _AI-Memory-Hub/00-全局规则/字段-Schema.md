@@ -148,6 +148,7 @@ confidence: high
 ```
 
 ## 相关笔记
+- [[RULE-038-Schema规范]] (共现关键词: ---, Schema)
 - [[WF-125-3aa359d6-63f9-4cc2-99b5-7ca3fb6c1106]] (共现关键词: status, id)
 - [[WF-119-39495220-9a90-4ab2-b28c-6564a9b89783]] (共现关键词: status, id)
 - [[WF-111-4a43430b-0d85-4ae8-8fc1-241a063be37b]] (共现关键词: status, id, 仲裁)

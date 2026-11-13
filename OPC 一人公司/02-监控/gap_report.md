@@ -68,6 +68,7 @@ tags:
 *数据源：登记册 SSOT + 各规则包 manifest。本器只读不写，冲突以最新实测为准。*
 
 ## 相关笔记
+- [[R-PI-200_民法典1191条劳务派遣用人者责任]] (共现关键词: 200, 慈善, 证据)
 - [[backfill_plan]] (共现关键词: 公司, package, rule)
 - [[last_run_report]] (共现关键词: 合同, ---, 2026)
 - [[asset_maturity_report]] (共现关键词: ---, 域库, report)

@@ -199,6 +199,7 @@ related:
 > 关联资产：`QC-Controller-审判长心智-心智模型解剖与训练手册-v1.1.md`（完整方法论，业务目录）；`mock-trial-integration/mock-trial-center-enhanced.html`（双模席位落地）；`~/.workbuddy/skills/QC-Controller/`（技能本体）；`RULE-TRAINING-WRITEBACK`（回写三件套铁律）。
 
 ## 相关笔记
+- [[2026-11-13]] (共现关键词: 合同, 五维, md)
 - [[2026-10-22]] (共现关键词: 答辩, 合同)
 - [[2026-10-29]] (共现关键词: 答辩, 裁定)
 - [[RULE-017-D-阶段新口径：一律-`top_k=1`，每槽位允许-1-次备用检索（`yyft]] (共现关键词: 答辩, 合同, 基金会)

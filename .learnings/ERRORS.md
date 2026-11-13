@@ -1,3 +1,12 @@
+---
+tags:
+  - FileExistsError
+  - exist
+  - True
+  - mkdir
+  - ok
+---
+
 # 错误记录 (ERRORS)
 
 ## 2026-11-09 · 备份目录已存在时 mkdir(exist_ok=True) 仍抛 FileExistsError

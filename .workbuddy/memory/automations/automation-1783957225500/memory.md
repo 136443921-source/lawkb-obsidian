@@ -59,5 +59,6 @@ tags:
 - **产物**：`知识飞轮系统/05-调用/xiaoqiang_meta_persona_v1.md`（重定向指针）；中枢索引已登记。
 
 ## 相关笔记
+- [[小强律师-元人格卡_xiaoqiang_meta_persona_v1]] (共现关键词: meta, 2026)
 - [[小强律师元心智模型备忘录活文档-2026-09-17]] (共现关键词: 09, meta, 备忘录)
 - [[xiaoqiang_meta_persona_v1]] (共现关键词: md, meta)

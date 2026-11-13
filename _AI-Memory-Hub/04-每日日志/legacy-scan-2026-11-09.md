@@ -1,3 +1,17 @@
+---
+tags:
+  - 慈善法
+  - LawKB
+  - 合同法
+  - Users
+  - jsonl
+  - projects
+  - 刑事诉讼
+  - 劳动争议
+  - 公司法
+  - 侵权责任
+---
+
 # 遗留资产盘点报告 2026-11-09
 
 - 扫描源：`/Users/chenyouqiang/Documents/xiaoqianglawkb` (md 0) + `/Users/chenyouqiang/.workbuddy/projects` (jsonl 含)
@@ -219,3 +233,14 @@
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/21d6a97c-5753-4280-b2a4-360ff10e1e5f.jsonl` — ✅ 本周性能监控任务已全部完成。以下是执行摘要：  ## 📊 核心数据（基于 17,129 条执行记录 / 36 个技能）  / 指标 / 结果 / /------/------/ / 全局成功率 / **97.08%**（成功 16,62
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/a92c13c5-4378-407d-97a4-458baa6fb549.jsonl` — t 30, my side bore no payment obligation; the "冒名/主体不适格" procedural defense was raised but unaddressed by the court), a 
 - [rule] `<projects>/Users-chenyouqiang-WorkBuddy-Claw-小强律师数字分身3.0/8db383c4-f0ef-4217-a833-3430e2169b76.jsonl` — skill_execution.log`：**29 条**记录（上周仅 2 条）——显著改善 - `skill_performance.log`：**27 条**记录，但内存/CPU/成功率均为 0 ——仍需修复 - `skill_erro
+
+## 相关笔记
+- [[legacy-scan-2026-09-14]] (共现关键词: 赔偿, 09, workflow)
+- [[legacy-scan-2026-10-25]] (共现关键词: 违约, 赔偿, workflow)
+- [[2026-09-26]] (共现关键词: scan, 09, 2026)
+- [[legacy-scan-2026-11-01]] (共现关键词: 违约, 赔偿, 工伤)
+- [[legacy-scan-2026-09-27]] (共现关键词: 违约, 赔偿, 09)
+- [[DEC-2026-033-DEC-2026-033-·-同号冲突方案B落地（改rule_id不改名，34组]] (共现关键词: 违约, rule, 2026)
+- [[legacy-scan-2026-10-18]] (共现关键词: 违约, 赔偿, rule)
+- [[RULE-049---六-B-铁律前置备份：]] (共现关键词: 赔偿, rule, 2026)
+- [[人伤法域库折分-执行记录-20260923]] (共现关键词: 赔偿, rule, 工伤)

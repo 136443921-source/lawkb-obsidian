@@ -98,6 +98,8 @@ python3 lti-gate-client.py --ping
 - 2026-09-17 初建（G2）。解耦封装，airgap 默认开，零修改被封装 LTI 代码。
 
 ## 相关笔记
+- [[PREF-013-制品格式门禁与出前确认]] (共现关键词: docx, 2026)
+- [[gate-config]] (共现关键词: 上诉, gate, 关键词)
 - [[案件资产总账_6658_v1.0]] (共现关键词: 上诉, 答辩, docx)
 - [[文书区索引_MD]] (共现关键词: 上诉, docx, LTI)
 - [[lti_semantic_rules.json]] (共现关键词: 共现, lti)
