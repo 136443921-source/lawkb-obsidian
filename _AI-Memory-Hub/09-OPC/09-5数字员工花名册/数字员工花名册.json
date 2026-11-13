@@ -809,7 +809,7 @@
     },
     {
       "wf_id": "WF-002",
-      "title": "法条 LTI 五维 QC 门禁（R/L/C/T/P）",
+      "title": "法条 LTI 九维 QC 门禁（R/L/C/T/P/S/V/W/E）",
       "platform": "质控（法律服务中台）",
       "owner": "SEAT-09 QC 审判长双模",
       "status": "已确认·老强 2026-09-26"

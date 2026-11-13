@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-28 09:57:57",
+  "generated_at": "2026-11-11 13:04:29",
   "drift_status": "LOCKED",
   "items": [
     {
       "metric": "裁判规则库R卡",
       "path": "rule_library.rule_cards_R",
-      "prev": 79,
-      "curr": 84,
-      "delta": 5,
-      "pct": 6.3,
+      "prev": 464,
+      "curr": 464,
+      "delta": 0,
+      "pct": 0.0,
       "status": "OK"
     },
     {
       "metric": "子库数",
       "path": "rule_library.sub_libs",
-      "prev": 35,
-      "curr": 35,
+      "prev": 36,
+      "curr": 36,
       "delta": 0,
       "pct": 0.0,
       "status": "OK"
@@ -32,8 +32,8 @@
     {
       "metric": "案由路由卡R-AY",
       "path": "ay_routing_cards",
-      "prev": 347,
-      "curr": 347,
+      "prev": 379,
+      "curr": 379,
       "delta": 0,
       "pct": 0.0,
       "status": "OK"
@@ -41,8 +41,8 @@
     {
       "metric": "经验卡",
       "path": "experience_cards",
-      "prev": 483,
-      "curr": 483,
+      "prev": 497,
+      "curr": 497,
       "delta": 0,
       "pct": 0.0,
       "status": "OK"
@@ -50,8 +50,8 @@
     {
       "metric": "审判要件卡物理",
       "path": "trial_elements.physical_cards",
-      "prev": 83,
-      "curr": 83,
+      "prev": 114,
+      "curr": 114,
       "delta": 0,
       "pct": 0.0,
       "status": "OK"
@@ -68,10 +68,10 @@
     {
       "metric": "反面案例库行数",
       "path": "counter_case_lib.lines",
-      "prev": 279,
-      "curr": 279,
-      "delta": 0,
-      "pct": 0.0,
+      "prev": 0,
+      "curr": 298,
+      "delta": 298,
+      "pct": null,
       "status": "OK"
     },
     {
@@ -86,10 +86,10 @@
     {
       "metric": "六层.md总数",
       "path": "six_layers_total",
-      "prev": 5762,
-      "curr": 5767,
-      "delta": 5,
-      "pct": 0.1,
+      "prev": 7198,
+      "curr": 7198,
+      "delta": 0,
+      "pct": 0.0,
       "status": "OK"
     }
   ]

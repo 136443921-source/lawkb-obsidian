@@ -1,0 +1,56 @@
+{
+  "round": "R45",
+  "date": "2026-11-11",
+  "mode": "质量巡检（原审判要件卡每日补拆改造版）",
+  "path_anchor": "06-沉淀/裁判规则库 (464 R-*.md) + 通用裁判规则库 (42)",
+  "pending": {
+    "frontmatter_statute_text_pending_true": {"裁判规则库": 22, "通用裁判规则库": 0},
+    "classification": {"真待回源": 1, "占位旗误报": 21},
+    "real_pending_card": "R-PI-637",
+    "note": "与 R44 22 张完全持平、未漂移（坑93 当轮重查）；任务字面 grep 假零，健壮正则复核得 22（坑95）"
+  },
+  "statute_backfill": {
+    "filled": 0,
+    "deviation_blocked": 22,
+    "version_displacement_blocked": 0,
+    "detail": "R-PI-637 工伤§6+人社部意见三§7 源缺失(坑33)；21 占位旗无待填条文(坑94)"
+  },
+  "deadlinks": {
+    "script": "_check_deadlinks.py --all (v1.7.0 逐文件口径)",
+    "scanned_cards": 7499,
+    "files_with_deadlink": 1934,
+    "total_deadlink_links": 4586,
+    "note": "含待建软引用，本版未单独聚合真死链/待建；跳过25/解析失败1(库外)",
+    "repair": {"script": "_fix_deadlinks_v2_20260912.py", "basename_set": 7461, "dryrun_hits": 0, "applied": false, "idempotent": true}
+  },
+  "yaml_parse_fail": {"裁判规则库": 0, "全库_门禁FAIL": 1},
+  "metrics_watchdog": {
+    "exit_code": 0,
+    "content_verdict": "3 stale / 1 ok",
+    "stale": ["card_consumption", "grill_events", "协同效果日志"],
+    "ok": ["frontdesk_events"],
+    "stale_silence_days": 28,
+    "consecutive_rounds": 13
+  },
+  "connectors": {
+    "installed": 10,
+    "session_connected": 4,
+    "connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "disabled": ["pkulaw", "gongyi-open-mcp", "kdocs", "qq-mail", "tencent-weiyun", "github"],
+    "not_listed": ["ima-mcp"]
+  },
+  "r2": {
+    "repairable_this_round": 0,
+    "consecutive_zero_repair_count": 1,
+    "metrics_all_ok": false,
+    "close_condition_triggered": false,
+    "decision": "保留专项，不关闭、不新增自动化"
+  },
+  "skill_version": "1.76.0 (新增坑95 + 变更日志)",
+  "deliverables": [
+    "02-提炼/审判要件卡/存量卡质量巡检报告-2026-11-11.md",
+    "02-提炼/审判要件卡/巡检摘要-2026-11-11.json",
+    "04-LOG/2026-11-11.md (巡检段追加)",
+    "SKILL v1.76.0"
+  ]
+}

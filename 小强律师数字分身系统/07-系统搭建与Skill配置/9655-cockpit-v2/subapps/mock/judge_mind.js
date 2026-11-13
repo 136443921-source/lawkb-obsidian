@@ -3,7 +3,7 @@
  * ---------------------------------------------------------------------------
  * 定位：把"法官心智"从独立的裁判/审查面板，升级为「红蓝对抗推演」的
  *       **参与智能体**——对每一轮红蓝攻防做心证判定、对争点做双方对抗裁决、
- *       推演终局生成「拟裁判要旨（候选·待人工确认）」，并接入 LTI 五维 QC 门禁。
+ *       推演终局生成「拟裁判要旨（候选·待人工确认）」，并接入 LTI 九维 QC 门禁。
  *
  * 设计原则（继承 R2 安全铁律 + judge_reviewer_entity_design.md 红线）：
  *   ① AI 仅产出候选推理与阶段性心证，绝不下终局裁判结论；
@@ -312,7 +312,7 @@
   /* ============================ 整场推演裁决 ============================ */
   /**
    * 消费红蓝推演态势（assault3.rounds），把每轮当作一个争点对抗单元，
-   * 逐轮裁决后汇总拟裁判要旨，并接入 LTI 五维 QC 门禁（如有）。
+   * 逐轮裁决后汇总拟裁判要旨，并接入 LTI 九维 QC 门禁（如有）。
    * v2：自动接入 JUDGE_CARDS 矩阵（opts.cards 或浏览器 window.__JUDGE_CARDS_IMPORT__）。
    * @param {object} opts {rounds[], disputeFocus, sub, xz[], docText, cards}
    * @returns {object} {disputes, draft, tendencySummary, qc, tag}
@@ -344,7 +344,7 @@
 
     const draft = renderVerdictDraft({ disputes, focusList: Array.from(new Set(focusList)), sub, xz });
 
-    // —— 接入 LTI 五维 QC 门禁（若前端校验器可用）——
+    // —— 接入 LTI 九维 QC 门禁（若前端校验器可用）——
     let qc = null;
     try {
       if (typeof window !== 'undefined' && window.LTI_QC && typeof window.LTI_QC.runQC === 'function') {

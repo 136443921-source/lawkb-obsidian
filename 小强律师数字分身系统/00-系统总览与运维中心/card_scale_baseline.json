@@ -1,30 +1,30 @@
 {
-  "generated_at": "2026-09-28 09:57:57",
+  "generated_at": "2026-11-11 13:04:29",
   "source": "count_rules.py (自动统计，非人工记忆)",
   "rule_library": {
-    "sub_libs": 35,
-    "rule_cards_R": 84,
+    "sub_libs": 36,
+    "rule_cards_R": 464,
     "negative_note_coverage": 1
   },
-  "ay_routing_cards": 347,
-  "experience_cards": 483,
+  "ay_routing_cards": 379,
+  "experience_cards": 497,
   "trial_elements": {
-    "physical_cards": 83,
+    "physical_cards": 114,
     "judge_persona_declared": 215,
     "note": "physical=实体卡文件数；declared=审判长persona声明的『内联+矩阵』口径(215含3张裁量尺度卡)，二者不冲突"
   },
   "counter_case_lib": {
-    "lines": 279,
-    "location": "已迁飞轮canonical(02-提炼/案例摘要/反面案例库/)，skill镜像保留为运行时工作镜像"
+    "lines": 298,
+    "location": "canonical: 知识飞轮系统/02-提炼/案例摘要/反面案例库/反面案例库.md（2026-11-06 由原 skill 镜像迁移，脚本常量已同步）"
   },
   "cardfamily_index_pointers": 17,
   "six_layers_md": {
-    "01-采集": 302,
-    "02-提炼": 1547,
-    "03-连接": 1418,
-    "04-巩固": 98,
-    "05-调用": 171,
-    "06-沉淀": 2231
+    "01-采集": 364,
+    "02-提炼": 1946,
+    "03-连接": 1699,
+    "04-巩固": 139,
+    "05-调用": 252,
+    "06-沉淀": 2798
   },
-  "six_layers_total": 5767
+  "six_layers_total": 7198
 }

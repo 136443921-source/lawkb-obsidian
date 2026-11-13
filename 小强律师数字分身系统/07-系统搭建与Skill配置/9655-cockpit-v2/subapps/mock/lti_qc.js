@@ -1,16 +1,23 @@
 /* ============================================================================
- * lti_qc.js — LTI 五维 QC 前端校验器（R / L / C / T / P）
+ * lti_qc.js — LTI 九维交付门禁前端校验器（R/L/C/T/P/S/V/W/E）
  * ----------------------------------------------------------------------------
  * 定位：在「模拟法官」交付候选稿前，对生成的要件涵摄结果（sub）与可选文书
- *      （docText）做五维质量门禁校验，输出 REJECT 计数；REJECT=0 才准交付
- *      （遵循老强「LTI 五维 QC(R/L/C/T/P)·REJECT=0 才准交付」铁律）。
+ *      （docText）做九维质量门禁校验，输出 REJECT 计数；REJECT=0 才准交付。
+ *      口径回中枢 `RULE-060`；维度清单与 subapps/lti/lti_dimensions_v9.json
+ *      同源，维度／版本以中枢登记值为准，本模块不写死版本号。
  *
- * 五维：
+ * 基座五维：
  *   R 法条真实性  — 引用法条存在 × 可溯源北大法宝 × 无待回源标记
  *   L 法理逻辑    — 结论类型与要件状态自洽 × §F 数额门控被尊重 × 心证倾向不矛盾
  *   C 一致性      — C301 金额（585条30%参考·候选标注）/ C302 名称占位 / C304 案号
  *   T 溯源        — 建议证据可溯源 × 文书引用证据编号须落在卷宗登记 × 人工在环标记
  *   P 程序        — R2 红线（无 verdict/win_prob）× 禁绝对词 × 举证程序完备
+ *
+ * 扩展四维（对齐 subapps/lti/lti_qc9.py 设计纪律「宁漏勿误」）：
+ *   S 策略契合 / V 风险预判 —— manual 人工确认维，脚本只列检查项，
+ *      不自动判 REJECT，绝不假装 AI 能判定策略；
+ *   W 表达规范 / E 证据闭环 —— partial 维，仅对高置信硬错标 WARN。
+ *   🔴 新增四维不改变既有 R/L/C/T/P 的 REJECT 计数，保持向后兼容。
  *
  * 双形态：Node(module.exports) + 浏览器(window.LTI_QC)。纯函数，零 DOM 依赖。
  * 铁律：本模块不硬编码任何法条正文；只基于传入的 sub / docText / 卷宗登记 校验。
@@ -61,7 +68,10 @@
     return { ok: true, reason: '' };
   }
 
-  // —— 五维校验主入口 ——
+  // 维度清单与 subapps/lti/lti_dimensions_v9.json 同源；版本／维度以 `RULE-060` 登记值为准。
+  const DIM_CODES = ['R', 'L', 'C', 'T', 'P', 'S', 'V', 'W', 'E'];
+
+  // —— 九维校验主入口 ——
   // opts: { sub, docText, caseNo, evidence:[{id,name,source,...}], models:{} }
   //   sub: buildSubsumption 的返回（含 statuteKey/law/article/title/pkulawUrl/rows/
   //        conclusionType/chain/xinZheng/amountGate/tag）
@@ -241,9 +251,39 @@
         missTag.length ? missTag.length + ' 个结论块缺候选标注。' : '结论块标注完整。');
     }
 
+    /* ===================== S 策略契合（manual · 人工确认项） ===================== */
+    // 设计纪律（对齐 subapps/lti/lti_qc9.py）：S/V 为人工确认维，脚本不自动判 REJECT，
+    // 只列检查项供执业律师确认；「宁漏勿误」，绝不假装 AI 能判定策略。
+    add('S', 'S701', '服务本案核心争点与诉讼目标（人工确认项）', 'warn', 'pass',
+      '人工维：不由脚本判定，交付前须执业律师确认。');
+    add('S', 'S704', '引用对方/第三人陈述须过「落点自伤测试」（人工确认项）', 'warn', 'pass',
+      '人工维：被对方摘抄后能否反证我方不利，痛则禁用；不自动判 REJECT。');
+
+    /* ===================== V 风险预判（manual · 人工确认项） ===================== */
+    add('V', 'V801', '已识别驳回/不予准许风险点（人工确认项）', 'warn', 'pass',
+      '人工维：不由脚本判定。');
+    add('V', 'V802', '已预判对方反击位并写应对（人工确认项）', 'warn', 'pass',
+      '人工维：不由脚本判定。');
+
+    /* ===================== W 表达规范（partial · 只标高置信硬错） ===================== */
+    const flattery = /极佳|完美|无懈可击|铁定|板上钉钉|百分之百胜算/.test(fullText);
+    add('W', 'W901', '法言法语中性、无主观溢美词', 'warn', flattery ? 'fail' : 'pass',
+      flattery ? '出现主观溢美/绝对化表述，建议改写为中性法言法语。' : '未见主观溢美词。');
+    const redundant = /第[一二三四五六七八九十\d]+款\s*第[一二三四五六七八九十\d]+款/.test(fullText);
+    add('W', 'W902', '无「第X款第Y款」冗余款项表述', 'warn', redundant ? 'fail' : 'pass',
+      redundant ? '出现冗余款项表述，须精简。' : '未见冗余款项表述。');
+
+    /* ===================== E 证据闭环（partial · 只标高置信硬错） ===================== */
+    const subjectiveClaim = /已追认|真实意思为|授权真实|明确表示同意|自愿放弃/.test(fullText);
+    add('E', 'E1004', '主观状态类事实须建陈述时间轴并扫描矛盾陈述（人工确认项）', 'warn', 'pass',
+      subjectiveClaim ? '检测到主观状态类表述，须人工核对全案陈述时间轴；单点证据不得定论。'
+                      : '未检测到需特别核对的主观状态断言。');
+    add('E', 'E1001', '每项事实主张能指到具体证据（人工确认项）', 'warn', 'pass',
+      '人工维：证据册与文书主张逐条闭环由执业律师确认。');
+
     // —— 汇总 ——
     const dims = {};
-    ['R', 'L', 'C', 'T', 'P'].forEach(dim => {
+    DIM_CODES.forEach(dim => {
       const items = checks.filter(c => c.dim === dim);
       const fail = items.filter(c => c.status === 'fail');
       const rejectCount = fail.filter(c => c.severity === 'reject').length;
@@ -261,9 +301,10 @@
   }
 
   function buildReport(dims, reject, warnCount, grade) {
-    const names = { R: 'R 法条真实性', L: 'L 法理逻辑', C: 'C 一致性', T: 'T 溯源', P: 'P 程序' };
+    const names = { R: 'R 法条真实性', L: 'L 法理逻辑', C: 'C 一致性', T: 'T 溯源', P: 'P 程序',
+                    S: 'S 策略契合度', V: 'V 风险预判', W: 'W 表达规范', E: 'E 证据闭环' };
     let h = '<div class="qc-grade ' + grade.level + '">' + grade.text + '</div>';
-    ['R', 'L', 'C', 'T', 'P'].forEach(dim => {
+    DIM_CODES.forEach(dim => {
       const d = dims[dim];
       const badge = d.rejectCount ? ('⛔' + d.rejectCount) : (d.warnCount ? ('⚠️' + d.warnCount) : '✅');
       h += '<div class="qc-dim"><div class="qch">' + names[dim] + ' <span class="qc-badge">' + badge + '</span></div>';
@@ -282,6 +323,7 @@
     computeAmountEstimate,
     parseEvidenceRefs,
     validateCaseNo,
-    DIM_NAMES: { R: 'R 法条真实性', L: 'L 法理逻辑', C: 'C 一致性', T: 'T 溯源', P: 'P 程序' }
+    DIM_NAMES: { R: 'R 法条真实性', L: 'L 法理逻辑', C: 'C 一致性', T: 'T 溯源', P: 'P 程序',
+                 S: 'S 策略契合度', V: 'V 风险预判', W: 'W 表达规范', E: 'E 证据闭环' }
   };
 });

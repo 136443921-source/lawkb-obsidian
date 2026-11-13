@@ -3,15 +3,15 @@ id: RULE-060
 title: 中枢唯一事实源（SSOT）与单向派发铁律——小强律师数字分身系统版本/规则口径以中枢为准
 type: rule
 status: active
-version: v1.1
-updated: 2026-11-06
+version: v1.2
+updated: 2026-11-13
 created: 2026-11-06
 source_ai: human
 decided_by: 老强（2026-11-06 对话裁决）
 scope: global
 confidence: high
 ssot: true
-runtime_version: "4.11.1"
+runtime_version: "4.11.2"
 qc_spec_version: "4.9.3"
 aliases:
   - 中枢唯一事实源铁律
@@ -55,7 +55,7 @@ tags:
 
 | 字段 | 登记值 | 制品 | 载体（下游执行副本） | 维度/模块体系 |
 |---|---|---|---|---|
-| `runtime_version` | **v4.11.1** | LTI 文本监控器（skill / 代码运行时） | `SKILL.md` frontmatter `version`、`references/main.py` docstring 首行 | 六模块 R/L/C/T/P + charity + personalization，形式层校验，入口 `wrap_output()` |
+| `runtime_version` | **v4.11.2** | LTI 文本监控器（skill / 代码运行时） | `SKILL.md` frontmatter `version`、`references/main.py` docstring 首行 | 六模块 R/L/C/T/P + charity + personalization，形式层校验，入口 `wrap_output()` |
 | `qc_spec_version` | **v4.9.3** | LTI 九维文本质检维度规范（工作流） | `04-Workflows/WF-002-法条LTI五维QC门禁.md`、`lti_dimensions_v9.json`、`lti_qc9.py` | 九维 R/L/C/T/P/S/V/W/E，含人工确认维 L206/S704/E1004 |
 
 **判定依据（防再漂移）**：`lti_qc9.py:24` 明写「依赖：仅 Python 标准库」、`:42`「内嵌以保证脚本自包含可跑」——它**不 import `main.py`**；两侧规则码亦不同（skill 侧 R101-R116/C301-C308/PF-001/T504；spec 侧 L201-L206/S701-S704/R-fb001）。故二者是同一 SSOT 下的两条独立制品线，不是同一版本号的两个写法。
@@ -162,6 +162,8 @@ LTI 口径引用规则（以中枢 RULE-060 为唯一事实源）：
 |---|---|---|
 | v1.0 | 2026-11-06 | 老强裁决立卡；确立 SSOT + 单向派发；登记 runtime v4.11.1 / qc_spec v4.9.3；完成首次全口径派发 |
 | v1.1 | 2026-11-06 | 老强二次授权：L0 注入层 `MEMORY.md:28` 同步为双闸门口径（4943/5000 字符未超预算）；本轮 8 文件经 `backfill.py --files` 提交并推送 origin/main（`6fd7e7040`）；巡检脚本 v1.2 把 L0 纳入扫描面；§九「不动」段同步修订，**避免本卡自身成为新漂移源** |
+
+| v1.2 | 2026-11-13 | 老强选 C「先查再定」后裁定 **A′**：`runtime_version` 4.11.1 → **4.11.2**。实证：2026-11-11 T504-B 检索空白双证接线（老强授权 A · 中枢日志 11-11:13；WF-123:25/:80；LTI `SKILL.md:985-995` 代码与 170/170 回归；日志 11-11:17 版本对齐；11-12:42 已挂账「待核·另案」）→ 本次属**事后补登**，下游两文件值本已正确、**零改动**；🔴 11-11 下游先改未按 §三 中枢先行，属程序瑕疵，留痕**不追认流程合规**。QC spec 侧 4.9.3 不变。§八事故回放、§十 v1.0/v1.1 历史行、各日时点日志按 §六／WF-130 §七 保留原文不改 |
 
 ## 相关笔记
 - [[WF-060---嵌套链接修复报告-(共现关键词-2026,-链接,-断链)]] (共现关键词: WF, 060, ---)

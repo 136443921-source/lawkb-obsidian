@@ -348,7 +348,7 @@
 .evi .evrow .evdel{background:none;border:none;color:#f87171;cursor:pointer;font-size:14px}
 .evi .evrow .evid{font-weight:700;color:#67e8f9}
 
-/* ===== 🔬 LTI 五维 QC 抽屉 ===== */
+/* ===== 🔬 LTI 九维 QC 抽屉 ===== */
 .qc{position:fixed;top:0;right:0;height:100%;width:600px;max-width:98vw;background:linear-gradient(180deg,#171c24,#10141b);border-left:2px solid #f59e0b;z-index:44;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-16px 0 40px rgba(0,0,0,.5)}
 .qc.open{transform:none}
 .qc header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
@@ -498,7 +498,7 @@ h1 .updTag b{color:#d6ffe9;font-weight:700}
   <button class="btn sm" id="btnDoc">📝 文书草拟</button>
   <button class="btn sm" id="btnHost">🎙️ 主持话术</button>
   <button class="btn sm" id="btnEvidence">📂 卷宗证据</button>
-  <button class="btn sm" id="btnQC">🔬 LTI 五维 QC</button>
+  <button class="btn sm" id="btnQC">🔬 LTI 九维 QC</button>
   <button class="btn sm" id="btnConcur">🔀 多域竞合研判</button>
   <button class="btn sm" id="btnRec" data-page-node-id="recBtn">🎥 录屏演示</button>
   <button class="btn primary" id="btnConsole" data-page-node-id="GpsiVWEoImB1qztp5U6j8L">🎬 主控台</button>
@@ -686,7 +686,7 @@ h1 .updTag b{color:#d6ffe9;font-weight:700}
 <aside class="evi" id="evi">
   <header><h3>📂 卷宗证据 · 编号联动</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnEviClose">✕ 关闭</button></header>
   <div class="scroll">
-    <div class="r2">⚠️ 卷宗证据编号（证N）与要件涵摄「已证事实」真实联动：在要件涵摄面板填写已证事实时引用「证N」，本抽屉登记其卷宗出处（卷X-Pxx），链路自动贯通；并供给 LTI 五维 QC 的 T2 溯源校验。</div>
+    <div class="r2">⚠️ 卷宗证据编号（证N）与要件涵摄「已证事实」真实联动：在要件涵摄面板填写已证事实时引用「证N」，本抽屉登记其卷宗出处（卷X-Pxx），链路自动贯通；并供给 LTI 九维 QC 的 T2 溯源校验。</div>
     <div class="efield"><label>本案案号</label><input id="eviCaseNo" placeholder="如 2026黔0330民初6658号" /><span id="eviCaseNoNote" class="smuted"></span></div>
     <div class="evtbl">
       <div class="evrow evhead"><span>编号</span><span>证据名称</span><span>卷宗出处</span><span>类型</span><span>证明目的</span><span></span></div>
@@ -699,14 +699,14 @@ h1 .updTag b{color:#d6ffe9;font-weight:700}
 
 <div class="drawer-mask" id="qcMask"></div>
 <aside class="qc" id="qc">
-  <header><h3>🔬 LTI 五维 QC · 交付门禁（R/L/C/T/P）</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnQcClose">✕ 关闭</button></header>
+  <header><h3>🔬 LTI 九维 QC · 交付门禁（R/L/C/T/P/S/V/W/E）</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnQcClose">✕ 关闭</button></header>
   <div class="scroll">
-    <div class="r2">⚠️ 铁律：<b>REJECT=0 才准交付</b>。本校验器对「当前要件涵摄结果」+「可选文书草稿」做五维门禁；AI 仅给候选，最终由老强拍板。</div>
+    <div class="r2">⚠️ 铁律：<b>REJECT=0 才准交付</b>。本校验器对「当前要件涵摄结果」+「可选文书草稿」做九维门禁；AI 仅给候选，最终由老强拍板。</div>
     <div class="qcfields">
       <label>本案案号（联动卷宗证据）<input id="qcCaseNo" placeholder="如 2026黔0330民初6658号" /></label>
       <label>文书草稿（可选，粘贴待校验文书）</label>
       <textarea id="qcDoc" placeholder="粘贴本庭生成的判决书/代理词候选草稿，做 C301金额 / C302名称 / C304案号 / P1 verdict 深校…"></textarea>
-      <button class="btn sm primary" id="qcRun">▶ 运行五维 QC</button>
+      <button class="btn sm primary" id="qcRun">▶ 运行九维 QC</button>
     </div>
     <div id="qcOut"></div>
   </div>
@@ -1040,7 +1040,7 @@ const JUDGE_PERSONA = {
     "裁判主文精确：给付内容/期限/利息起算/诉讼费负担逐项明确",
     "说理温度：举证责任分配、真伪不明处理作可反驳论证"
   ],
-  redlines:["R2 只给草案不终局","LTI五维+六维法理门禁(REJECT=0)","本地源引证·缺失标statute_text_pending","脱敏·禁真实案号"]
+  redlines:["R2 只给草案不终局","LTI交付门禁(回RULE-060)+六维法理门禁(REJECT=0)","本地源引证·缺失标statute_text_pending","脱敏·禁真实案号"]
 };
 const WS_CARDS = {
   "判决书":{
@@ -2878,7 +2878,7 @@ init();
 })();
 </script>
 
-<!-- ============ 📂 卷宗证据联动 + 🔬 LTI 五维 QC ============ -->
+<!-- ============ 📂 卷宗证据联动 + 🔬 LTI 九维 QC ============ -->
 <script>
 (function(){
   const $ = id => document.getElementById(id);
@@ -2960,12 +2960,12 @@ init();
     saveEvi();
   }
 
-  // —— LTI 五维 QC 运行 ——
+  // —— LTI 九维 QC 运行 ——
   function runQCUI(){
     const out = $('qcOut');
     if(!out) return;
     if(typeof window.LTI_QC==='undefined'){ out.innerHTML='<div class="smuted">❌ LTI_QC 未加载（lti_qc.js 缺失）。</div>'; return; }
-    if(!window.lastSub){ out.innerHTML='<div class="r2">⚠️ 尚未生成要件涵摄结果。请先在「⚖️ 要件涵摄」面板生成推理链，再运行五维 QC。</div>'; return; }
+    if(!window.lastSub){ out.innerHTML='<div class="r2">⚠️ 尚未生成要件涵摄结果。请先在「⚖️ 要件涵摄」面板生成推理链，再运行九维 QC。</div>'; return; }
     const docText = ($('qcDoc')?$('qcDoc').value:'')||'';
     const res = window.LTI_QC.runQC({
       sub: window.lastSub,
@@ -2993,7 +2993,7 @@ init();
   $('eviCaseNo') && ($('eviCaseNo').oninput=e=>setCaseNo(e.target.value,'evi'));
   $('qcCaseNo') && ($('qcCaseNo').oninput=e=>setCaseNo(e.target.value,'qc'));
 
-  // LTI 五维 QC 抽屉
+  // LTI 九维 QC 抽屉
   $('btnQC') && ($('btnQC').onclick=()=>{ $('qc').classList.add('open'); $('qcMask').classList.add('open'); runQCUI(); });
   $('btnQcClose') && ($('btnQcClose').onclick=()=>{ $('qc').classList.remove('open'); $('qcMask').classList.remove('open'); });
   $('qcMask') && ($('qcMask').onclick=()=>{ $('qc').classList.remove('open'); $('qcMask').classList.remove('open'); });

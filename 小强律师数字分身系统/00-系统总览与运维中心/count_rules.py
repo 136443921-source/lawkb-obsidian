@@ -47,7 +47,7 @@ RULE_LIB = os.path.join(FLY, "06-沉淀", "裁判规则库")
 EXP_CARDS = os.path.join(FLY, "02-提炼", "经验卡片")
 HUB = os.path.join(LAWKB, "_AI-Memory-Hub")
 IDX07 = os.path.join(HUB, "07-卡族总索引", "_索引.md")
-BLUE_LIB = "/Users/chenyouqiang/.workbuddy/skills/蓝队出庭律师/反面案例库.md"
+BLUE_LIB = "/Users/chenyouqiang/Documents/LawKB/知识飞轮系统/02-提炼/案例摘要/反面案例库/反面案例库.md"  # 2026-11-11 修正：内容已于 2026-11-06 迁 canonical，原 skill 镜像路径已失效
 JUDGE_PERSONA = "/Users/chenyouqiang/.workbuddy/skills/ai-mock-court-judge/judge_persona_v1.md"
 OUT_DIR = os.path.dirname(os.path.abspath(__file__))  # 00-系统总览与运维中心
 BASELINE = os.path.join(OUT_DIR, "card_scale_baseline.json")
@@ -275,7 +275,7 @@ def main(quiet: bool = False) -> dict:
         },
         "counter_case_lib": {
             "lines": count_file_lines(BLUE_LIB),
-            "location": "已迁飞轮canonical(02-提炼/案例摘要/反面案例库/)，skill镜像保留为运行时工作镜像",
+            "location": "canonical: 知识飞轮系统/02-提炼/案例摘要/反面案例库/反面案例库.md（2026-11-06 由原 skill 镜像迁移，脚本常量已同步）",
         },
         "cardfamily_index_pointers": count_index_pointers(IDX07),
         "six_layers_md": six_layer,

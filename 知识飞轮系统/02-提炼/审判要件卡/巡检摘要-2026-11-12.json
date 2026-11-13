@@ -1,0 +1,92 @@
+{
+  "round": "R46",
+  "date": "2026-11-12",
+  "automation_id": "a5995ba3-d738-4233-8c93-410fd8f3bc39",
+  "skill_version_after": "1.77.0",
+  "path": {
+    "target_library": "06-沉淀/裁判规则库",
+    "r_card_count": 464,
+    "generic_library_count": 42,
+    "candidate_b_missing": true,
+    "anchored": "A"
+  },
+  "pending_backfill": {
+    "frontmatter_statute_text_pending_true": 22,
+    "generic": 0,
+    "genuine": 1,
+    "genuine_list": ["人伤法/R-PI-637.md"],
+    "placeholder_flag_false_positive": 21,
+    "false_zero_risk": false
+  },
+  "statute_backfill": {
+    "filled_count": 0,
+    "deviation_blocked": 22,
+    "deviation_detail": {
+      "R-PI-637_missing_source": ["工伤保险行政案件规定§6", "人社部意见三§7"],
+      "placeholder_no_text": 21
+    },
+    "version_drift_hallucination": 0
+  },
+  "deadlinks": {
+    "checker_version": "v1.7.0 --all 全库分类口径",
+    "targets_scanned": 7521,
+    "files_hit": 1965,
+    "real_deadlinks": 164,
+    "pending_notes": 4502,
+    "legacy_total": 4666,
+    "skipped": 29,
+    "parse_failed": 1,
+    "parse_failed_is_out_of_scope": true,
+    "parse_failed_file": "赣04.md",
+    "rule_library_yaml_parse_failed": 0
+  },
+  "deadlink_fix": {
+    "fixer": "_fix_deadlinks_v2_20260912.py (v2 门禁同款口径)",
+    "gate_basename_set": 7479,
+    "dry_run_hit_files": 0,
+    "dry_run_hit_links": 0,
+    "repairable": 0,
+    "idempotent": true,
+    "applied": false
+  },
+  "metrics_watchdog": {
+    "exit_code": 0,
+    "content_judgment": "3异常",
+    "card_consumption": "stale (静默29天)",
+    "frontdesk_events": "ok",
+    "grill_events": "stale (静默29天)",
+    "collab_effect_log": "stale (静默29天)",
+    "stale_count": 3,
+    "ok_count": 1,
+    "all_ok": false,
+    "consecutive_stale_rounds": 14,
+    "note": "连续14轮R33-R46未恢复；禁补假记录修绿"
+  },
+  "connectors": {
+    "installed": 10,
+    "session_connected": 4,
+    "session_connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "gongyi_open_mcp": "disabled",
+    "written_back": "驾驶舱_人工核验.json (bak-20261112-113423)"
+  },
+  "channels_truth": {
+    "local_statute_bank": "可用·离线权威·未触发",
+    "yuandian_qcc": "会话connected但ToolSearch not found(形态②·不可调用)",
+    "pkulaw": "disabled",
+    "rule_057_downgrade": false
+  },
+  "r2": {
+    "repairable_count": 0,
+    "consecutive_zero_rounds": 2,
+    "close_condition_met": false,
+    "keep_specialized": true
+  },
+  "deliverables": [
+    "02-提炼/审判要件卡/存量卡质量巡检报告-2026-11-12.md",
+    "02-提炼/审判要件卡/巡检摘要-2026-11-12.json",
+    "04-LOG/2026-11-12.md",
+    "SKILL v1.77.0 (坑96 + 变更日志)"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "round": "R47",
+  "date": "2026-11-13",
+  "skill_version": "1.78.0",
+  "path": {
+    "active": "06-沉淀/裁判规则库",
+    "missing": "02-提炼/06-沉淀",
+    "r_cards_recursive": 472,
+    "generic_r_cards": 42
+  },
+  "pending": {
+    "total": 22,
+    "real": 1,
+    "placeholder_flags": 21,
+    "false_zero_triggered": false
+  },
+  "statute_backfill": {
+    "filled": 0,
+    "deviation_blocked": 22,
+    "version_drift_hallucination": 0,
+    "detail": "R-PI-637 2 refs source-missing (工伤保险行政案件规定§6/人社部意见三§7); 21 placeholder flags no text to fill"
+  },
+  "deadlinks": {
+    "tool_version": "v1.7.0",
+    "all_scanned": 7527,
+    "hit_files": 1965,
+    "true_dead": 164,
+    "tobuild_softref": 4502,
+    "skipped": 31,
+    "parse_failed": 1,
+    "parse_failed_file": "赣04.md (库外)",
+    "repair_dryrun_hits": 0,
+    "fixable": 0,
+    "idempotent": true
+  },
+  "metrics_watchdog": {
+    "exit": 1,
+    "card_consumption": "dead(30d)",
+    "grill_events": "dead(30d)",
+    "synergy_log": "dead(30d)",
+    "frontdesk_events": "ok(0d)",
+    "all_ok": false
+  },
+  "connectors": {
+    "installed": 10,
+    "session_connected": 4,
+    "connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed"
+  },
+  "channels": {
+    "local_bank_cards": 162,
+    "yuandian_qcc": "form-2-not-registered",
+    "pkulaw": "disabled"
+  },
+  "r2": {
+    "consecutive_zero_fix": 3,
+    "metrics_all_ok": false,
+    "closure_triggered": false,
+    "note": "双联言条件：连续3轮零修复 AND 埋点全ok；计数器满3但埋点非全ok，未关闭"
+  },
+  "six_b": {
+    "writes": 0,
+    "backup_needed": false
+  },
+  "candidates_for_human": [
+    "21 placeholder flags: clear flag or keep pending",
+    "R-PI-637 2 refs need yuandian/qcc form-2 lifted or official source",
+    "164 true deadlinks -> hand to P0-4 numbering governance",
+    "3 dead metrics (30d) -> fix upstream emit points, no fake records"
+  ]
+}
