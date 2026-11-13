@@ -40,6 +40,8 @@ updated: 2026-09-25T20:41
 
 
 ## 相关笔记
+- [[LTI文本监控系统运维手册-v3]] (共现关键词: 合同, lti)
+- [[lti_dimensions_v9]] (共现关键词: lti, 2026)
 - [[RULE-052---macOS-launchctl-写操作全禁-LaunchAgents-靠登录自动加载-勿依赖-launchctl-load-start]] (共现关键词: 共现, lti)
 - [[工作流卡-连接层维护SOP]] (共现关键词: 合同, 共现, cards)
 - [[README]] (共现关键词: 2026, lti)

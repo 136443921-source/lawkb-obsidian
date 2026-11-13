@@ -39,5 +39,6 @@ updated: 2026-11-01T23:30
 
 
 ## 相关笔记
+- [[字段-Schema]] (共现关键词: ---, Schema)
 - [[RULE-038---T1-落-`法条银行_Schema规范_v1.0.md`（两型统一-fron]] (共现关键词: 038, 规范, Schema)
 - [[_Schema规范_v1.0]] (共现关键词: Schema, 规范)
