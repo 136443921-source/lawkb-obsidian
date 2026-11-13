@@ -342,6 +342,8 @@ markitdown / pptx-generator / minimax-xlsx / minimax-docx
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/zmrIPFHKnOj-rVWR6va_7Q)*
 
 ## 相关笔记
+- [[慈善组织年度支出管理费用募捐成本规定2026-量化红线解读-2026-08-21]] (共现关键词: 赔偿, 解读, 劳动)
+- [[PREF-013-制品格式门禁与出前确认]] (共现关键词: 合同, Word)
 - [[民商事律师庭审技巧100 问]] (共现关键词: 慈善, 关键词, 解读)
 - [[慈善最新政策解读及警示教育]] (共现关键词: 医疗, 解读, 公司)
 - [[2026-07-02]] (共现关键词: 提取, 医疗, 共现)

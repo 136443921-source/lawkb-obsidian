@@ -293,6 +293,9 @@ https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ
 *Source: [WeChat Article](https://mp.weixin.qq.com/s/_9AnnhnRtxrs2MTQL-Z9qQ)*
 
 ## 相关笔记
+- [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: 赔偿, workbuddy, 关键词)
+- [[PROJ-SYS-XIAOZHE-小哲AI学伴系统]] (共现关键词: AI, workbuddy, 共现)
+- [[2026-09-30]] (共现关键词: 劳动, workbuddy)
 - [[R-SH-050-惩罚性赔偿基数的三种计算模式]] (共现关键词: 合同, 模式)
 - [[README]] (共现关键词: 关键词, workbuddy, 医疗)
 - [[_活跃项目]] (共现关键词: 合同, 100)
