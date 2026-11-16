@@ -1,7 +1,7 @@
 {
   "schema": "ima_intake_state/v2.0",
   "created": "2026-08-04T10:55",
-  "updated": "2026-11-10T14:00",
+  "updated": "2026-11-16T12:55",
   "ima_connector": "ima-mcp",
   "ima_status": "restored_2026-10-23_libids_migrated_channels_up",
   "note": "2026-10-06 真实模式运行（IMA上线+元典2840）：A1(HT 3)+B(LN3+PI1+HG2+CF3=9) 共12篇IMA摄入；D 5例三通道回源；3篇220030失败(R-PI-520/521,R-HG-105)。",
@@ -4249,8 +4249,19 @@
           "create_time": 1794290377303,
           "ingested_at": "2026-11-10",
           "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_1c3157d85342a36851e7de3b353042627312048136419112",
+          "title": "工程类合同法律审核八个方面的17个审核要点",
+          "create_time": 0,
+          "ingested_at": "2026-11-16",
+          "rule_card": "R-HT-380",
+          "value": 8,
+          "window": "2026-11-11~2026-11-16",
+          "source": "A0.2漏窗回补"
         }
-      ]
+      ],
+      "ingested_count": 87
     },
     "ima_kb_4zHrbsPd": {
       "name": "律师AI助手",
@@ -5009,8 +5020,19 @@
           "create_time": 1794290377303,
           "ingested_at": "2026-11-10",
           "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c2353f902c022b4d69662e6f60fd72047312042960642489",
+          "title": "办案资料丨二十类常见纠纷的审理思路、庭审提纲",
+          "create_time": 0,
+          "ingested_at": "2026-11-16",
+          "rule_card": "R-LN-144",
+          "value": 8,
+          "window": "2026-11-11~2026-11-16",
+          "source": "A0.2漏窗回补"
         }
-      ]
+      ],
+      "ingested_count": 91
     },
     "ima_kb_veLMnIRY": {
       "name": "人伤法律实务助手",
@@ -5755,8 +5777,19 @@
           "create_time": 1794290377303,
           "ingested_at": "2026-11-10",
           "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_c4c314cb22e7a0ffc0ba12a127efe3ac7312035322822509",
+          "title": "公众普法丨工伤保险赔付项目与计算方式",
+          "create_time": 0,
+          "ingested_at": "2026-11-16",
+          "rule_card": "R-PI-676",
+          "value": 8,
+          "window": "2026-11-11~2026-11-16",
+          "source": "A0.2漏窗回补"
         }
-      ]
+      ],
+      "ingested_count": 90
     },
     "ima_kb_DJqCMlUq": {
       "name": "合规与政府监管AI助手",
@@ -6418,8 +6451,19 @@
           "create_time": 1794290377303,
           "ingested_at": "2026-11-10",
           "value": 8
+        },
+        {
+          "media_id": "wechatarticle_62fe55a7567bc291dfbbee29900b27c3_39197a8fce8a5d610561dcdc10750fdc7333014572917409",
+          "title": "采购管理-合同管理（续）",
+          "create_time": 0,
+          "ingested_at": "2026-11-16",
+          "rule_card": "R-HG-131",
+          "value": 8,
+          "window": "2026-11-11~2026-11-16",
+          "source": "A0.2漏窗回补"
         }
-      ]
+      ],
+      "ingested_count": 80
     },
     "ima_kb_I5SSrhkG": {
       "name": "慈善组织合规AI助手",
@@ -7119,24 +7163,35 @@
           "create_time": 1794290377303,
           "ingested_at": "2026-11-10",
           "value": 8
+        },
+        {
+          "media_id": "word_62fe55a7567bc291dfbbee29900b27c3_18c00e395f8d845c54e5b938b6cff1347311644304633438",
+          "title": "公益慈善类社会组织突出问题情形",
+          "create_time": 0,
+          "ingested_at": "2026-11-16",
+          "rule_card": "R-CF-252",
+          "value": 8,
+          "window": "2026-11-11~2026-11-16",
+          "source": "A0.2漏窗回补"
         }
-      ]
+      ],
+      "ingested_count": 85
     }
   },
   "pending_windows": [],
   "totals": {
-    "ingested_total": 860,
+    "ingested_total": 865,
     "libraries": {
       "7312048136419112": 88,
       "7312042960642489": 91,
       "7312035322822509": 91,
       "7333014572917409": 79,
       "7311644304633438": 83,
-      "ima_kb_wtCC3MaE": 86,
-      "ima_kb_4zHrbsPd": 90,
-      "ima_kb_veLMnIRY": 89,
-      "ima_kb_DJqCMlUq": 79,
-      "ima_kb_I5SSrhkG": 84
+      "ima_kb_wtCC3MaE": 87,
+      "ima_kb_4zHrbsPd": 91,
+      "ima_kb_veLMnIRY": 90,
+      "ima_kb_DJqCMlUq": 80,
+      "ima_kb_I5SSrhkG": 85
     }
   },
   "resolved_in_continuation": {
@@ -7775,8 +7830,8 @@
       "written_off_reason": "phantom: 运行态工具注入缺失（非真实通道故障）；ima-mcp 已于 2026-10-23/25 恢复；按 Task 5 不回填历史150篇，仅核销登记"
     }
   ],
-  "ingested_total": 434,
-  "last_run": "2026-11-10",
+  "ingested_total": 444,
+  "last_run": "2026-11-16",
   "ingested": [],
   "duplicate_media_id_review": {
     "_reviewed_at": "2026-10-16T10:42:05",
@@ -7830,6 +7885,14 @@
         "ingested_total": 429
       },
       "detail": "顶层 ingested_total/totals 433（直接写残留） ↔ 各库 ingested 列表 429 不一致；按 runner 不变量（totals 永远由 ingested 重算）统一为 429（len 口径；真唯一 428，含 1 B 类真重复）。"
+    },
+    {
+      "ts": "2026-11-16T12:55",
+      "type": "A0.2漏窗回补",
+      "window": "2026-11-11~2026-11-16",
+      "n": 6,
+      "detail": "三通道恢复后按A0.2每库≤1篇全局≤5篇回补；5库各1篇(HT380/LN144/PI676/HG131/CF252)。去重基底=状态439∪本地全库304=455。纠正:压缩前误判'贵州高院商品房指南'为未摄入,实为8月已入库(id在状态文件且本地3份文件),系判重代码取错层(s.values()为dict)致假阴性,已放弃该候选。",
+      "note": "例外:本轮n=6含压缩前已预留但作废的HT380候选更正,实际新摄入5篇"
     }
   ],
   "_integrity_fix_log": {
