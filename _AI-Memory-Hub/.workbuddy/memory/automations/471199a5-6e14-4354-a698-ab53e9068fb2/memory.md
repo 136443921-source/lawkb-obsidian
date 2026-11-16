@@ -9,6 +9,21 @@ tags:
 
 # 自动化执行记忆 · PROJ-006 QC-Controller·审判长双模训练备忘录 周一兜底刷新
 
+## 最近执行：2026-11-16T14:39（周一）
+
+**结论：无新训练 → 仅刷新 frontmatter `updated` 为 2026-11-16T14:39，保留原 maturity_score=78 / M3 合格 / fix_done=9 / fix_total=9，未改动🛤️训练日志、📊仪表盘、🎯路线图、_活跃项目.md 索引。**
+
+### 扫描范围与结果（实地复测，非凭记忆）
+- 来源③ `~/.workbuddy/skills/QC-Controller/`：`ls -laT` 实测全部文件 mtime 仍 **≤ Oct 23**（SKILL.md Oct 23 00:20:42 / compliance-rules.md Sep 22 23:11 / lti_qc.py Sep 22 23:04 / qc-verdict-template.md Sep 22 23:13 / qc_persona_v1.md Sep 22 23:23 / transcript-template.md Sep 14 23:35）。**无** compliance-rules.md 重写 / procType 改动 / qc_persona 改造 → 技能层无新训练。
+- 来源② 中枢 `04-每日日志/`：11 月新增日志（11-11~11-16）关键词命中仅 `2026-11-02.md` "双模板"（证据清单六步法子串误命中"双模"）+ `2026-11-13.md` 共现笔记行 `[[PROJ-006...]]`；09-22 那条为本备忘录既有取证记录。无 09-22 后实际双模训练。
+- 来源① 工作区 `/Users/chenyouqiang/WorkBuddy/` *.md（mtime > 11-09T14:34，Grep 内容复核）：全部命中均非双模技能训练——①`lti_gate_路径漂移核查报告_20261111.md` 属 lawtwin 单机密文版通用 `lti_gate.py`/`lti_qc9.py` 九维门禁路径漂移只读诊断（QC-Controller 用 `lti_qc.py` 五维，不同工具）；②《智能车机》书稿素材（第12章庭审工位取证说明、11-11 memory、内部标注存档）仅描述 QC 剥离历史/双模概念，属书稿写作；③训练信号词（解剖/调优/实战评分/成熟度78/fix_done/升满/多轮校准）在工作区仅命中书稿比喻"人体解剖图"与知识飞轮"解剖标本"，无 QC 双模实战记录。
+
+### 判定依据
+备忘录🛤️训练日志末条仍 2026-09-22（P1-2 →78/M3，共 3 条）；三来源自 2026-11-09T14:34 以来均无带明确日期+训练内容的新条目。触发步骤 4（无新训练分支）。回读验证：frontmatter updated=2026-11-16T14:39，maturity_score=78、M3、fix_done=9 未变，日志/仪表盘/路线图/索引未改。
+
+### 下次关注信号
+若后续出现以下任一，应追加🛤️训练日志并重算：P1-3 建 qc_maturity.py / P1-5 真笔录多轮校准升满 L2/L4 / P0-2/P0-3b 规则文件写入 / 中台 procType 或审判长席渲染变更 / compliance-rules.md 重写 / SKILL.md 心智内容实质改造（非 name 字段对齐）。
+
 ## 最近执行：2026-11-09T14:34（周一）
 
 **结论：无新训练 → 仅刷新 frontmatter `updated` 为 2026-11-09T14:34，保留原 maturity_score=78 / M3 合格 / fix_done=9 / fix_total=9，未改动🛤️训练日志、📊仪表盘、🎯路线图、_活跃项目.md 索引。**

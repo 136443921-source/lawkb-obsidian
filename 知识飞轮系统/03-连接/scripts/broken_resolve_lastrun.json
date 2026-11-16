@@ -1,14 +1,15 @@
 {
-  "created": 25,
-  "skipped": 13,
+  "created": 27,
+  "skipped": 14,
   "source_fixed_files": 0,
-  "targets_total": 38,
+  "targets_total": 41,
   "cluster": {
-    "通用": 27,
+    "通用": 30,
     "公司": 1,
-    "合同": 2,
-    "医疗": 5,
-    "慈善": 2,
-    "劳动": 1
+    "合同": 1,
+    "劳动": 3,
+    "医疗": 4,
+    "诉讼": 1,
+    "慈善": 1
   }
 }

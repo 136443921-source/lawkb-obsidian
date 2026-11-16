@@ -1,13 +1,13 @@
 {
- "date": "2026-11-09",
+ "date": "2026-11-15",
  "script": "link_cards_rules.py",
  "version": "3.4",
- "processed": 3118,
+ "processed": 3146,
  "hubs": 37,
  "members_per_cat": {
-  "慈法合规": 306,
-  "医疗纠纷": 610,
-  "合同文书": 413,
+  "慈法合规": 310,
+  "医疗纠纷": 627,
+  "合同文书": 417,
   "程序知识": 30,
   "法条解读": 134,
   "学习笔记": 12,
@@ -26,7 +26,7 @@
   "侵权责任": 14,
   "刑事": 66,
   "刑事程序": 0,
-  "劳动人事": 119,
+  "劳动人事": 122,
   "医疗事故罪": 1,
   "合规": 107,
   "合规监管": 18,
@@ -43,11 +43,11 @@
   "条号位移": 7,
   "类案检索": 15
  },
- "rules_total": 414,
- "rules_linked": 414,
+ "rules_total": 442,
+ "rules_linked": 442,
  "uncovered_rule_dirs": [],
  "domain_libs_total": 2259,
  "domain_libs_linked": 2259,
  "uncovered_domain_libs": [],
- "estimated_edges": 17346
+ "estimated_edges": 17530
 }

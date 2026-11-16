@@ -1,0 +1,84 @@
+{
+  "report": "存量裁判规则卡质量巡检报告-R48",
+  "date": "2026-11-14",
+  "automation_version": "v2.1",
+  "skill_version": "v1.79.0",
+  "round": "R48",
+  "path_dual_candidate": {
+    "pit": "坑83",
+    "candidate_A": "06-沉淀/裁判规则库",
+    "A_exists": true,
+    "A_count_R_md": 472,
+    "candidate_B": "02-提炼/06-沉淀",
+    "B_exists": false,
+    "generic": "06-沉淀/通用裁判规则库",
+    "generic_count": 42,
+    "anchored": "A"
+  },
+  "pending_statute": {
+    "strict_true": 0,
+    "robust_true": 0,
+    "generic_true": 0,
+    "inline_string_total": 428,
+    "drift_note": "坑93实证:R47挂账22(真1 R-PI-637 + 占位旗误报21)本轮全部结项,双扫一致=0非假零"
+  },
+  "statute_backfill": {
+    "filled_count": 0,
+    "deviation_blocked": 0,
+    "R_PI_637_status": "真回填确认:2026-11-13 元典yuandian-mcp(RULE-057②)逐字回填工伤行政案件规定§6+人社部意见三§7,statute_text_pending:false/source_verified:true"
+  },
+  "deadlinks": {
+    "script_version": "v1.7.0 分类口径 --all",
+    "full_scan_targets": 7530,
+    "hit_files": 2441,
+    "true_deadlinks": 175,
+    "pending_notes": 5530,
+    "skipped": 2,
+    "parse_failed": 1,
+    "parse_failed_detail": "库外·赣04.md(同R46/R47,门禁FAIL)",
+    "rule_lib_yaml_parse_failed": 0,
+    "fixer_v2_dry_run_hits": 0,
+    "fixer_v2_repairable": 0,
+    "fixer_idempotent": true,
+    "applied": false
+  },
+  "metrics_watchdog": {
+    "run_at": "2026-11-14 23:07",
+    "exit_code": 0,
+    "note": "坑90:退出码0但内容判3异常,读内容非退出码",
+    "card_consumption": "dead (静默32天, 最后2026-10-13 14:58)",
+    "frontdesk_events": "ok (静默0天, 最后2026-11-14 23:06)",
+    "grill_events": "dead (静默32天, 最后2026-10-13 14:44)",
+    "collab_effect_log": "dead (静默32天, 最后2026-10-13 14:50)",
+    "summary": "3 dead / 1 ok, 非全ok"
+  },
+  "connectors": {
+    "run_at": "2026-11-14 23:07",
+    "installed": 10,
+    "session_connected": 4,
+    "connected_list": ["agent-mail", "qcc-legal", "tencent-docs", "yuandian-mcp"],
+    "pkulaw": "disabled",
+    "ima_mcp": "not_listed",
+    "written_back": "驾驶舱_人工核验.json (bak-20261114-230739)"
+  },
+  "channels": {
+    "local_statute_bank_md_count": 162,
+    "yuandian_qcc": "connected但形态② ToolSearch not found(本轮回查确认),不可调用",
+    "pkulaw": "disabled(2026-10-22起停用期,不阻塞)",
+    "rule_057_compliance": "不降级网页源/不判死"
+  },
+  "R2_closing": {
+    "repairable_this_round": 0,
+    "consecutive_zero_repair_count": 4,
+    "metrics_all_ok": false,
+    "triggered": false,
+    "reason": "坑97双联言:连续零修复计数=4(≥3)但埋点非全ok(3 dead),第二联言不满足"
+  },
+  "pending_human_actions": [
+    "R-PI-637 案例侧待三通道交叉核验后翻source_verified案例侧(法条侧已真回填)",
+    "175真死链(全库,库外为主,非前缀可补全)→正式移交P0-4编号治理",
+    "3项埋点dead(32天,连续16轮)查上游发射点,禁补假记录",
+    "428处内联statute_text_pending字符串清零立项",
+    "死链口径纵向锁_check_deadlinks.py版本+--all全库口径"
+  ]
+}
