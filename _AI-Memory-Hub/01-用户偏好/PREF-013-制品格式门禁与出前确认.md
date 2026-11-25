@@ -50,7 +50,7 @@ tags:
 
 ## 相关笔记
 - [[文书区索引_MD]] (共现关键词: 合同, docx, 证据)
-- [[README]] (共现关键词: docx, 2026)
+- [[_AI-Memory-Hub/README]] (共现关键词: docx, 2026)
 - [[SOP-BUS-02_法律文书docx交付]] (共现关键词: ---, docx)
 - [[WF-001-法律文书docx双轨交付流水线]] (共现关键词: docx, 证据)
 - [[用WorkBuddy搞定PDF四件套解读转PPT转Excel转Word一个AI全包]] (共现关键词: 合同, Word)

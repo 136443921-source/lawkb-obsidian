@@ -72,7 +72,7 @@ tags:
 - [[220030回补报告-2026-09-10]] (共现关键词: 重试, ##)
 - [[_索引]] (共现关键词: py, backfill, 中枢)
 - [[DEC-2026-005-中枢提交规范化四层闭环思维轨迹]] (共现关键词: py, backfill, 中枢)
-- [[README]] (共现关键词: py, git, backfill)
+- [[_AI-Memory-Hub/README]] (共现关键词: py, git, backfill)
 - [[_AI-Memory-Hub/01-用户偏好/_索引]] (共现关键词: py, backfill, 中枢)
 - [[共享记忆协议-v1.0]] (共现关键词: backfill, 中枢)
 - [[DEC-006-蓝队训练记录落位与版本号冻结]] (共现关键词: 中枢, 006)

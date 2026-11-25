@@ -106,7 +106,7 @@ tags:
 - [[DEC-2026-033-DEC-2026-033-·-同号冲突方案B落地（改rule_id不改名，34组]] (共现关键词: 公司, 合同, rule)
 - [[RULE-049---六-B-铁律前置备份：]] (共现关键词: 慈善, 公司, 合同)
 - [[共享记忆协议-v1.0]] (共现关键词: 医疗, backfill)
-- [[README]] (共现关键词: 医疗, backfill)
+- [[_AI-Memory-Hub/README]] (共现关键词: 医疗, backfill)
 - [[gap_report]] (共现关键词: 公司, package, rule)
 - [[2026-10-20-resume-backfill]] (共现关键词: backfill, PI)
 - [[PREF-006-中枢git提交统一走backfill]] (共现关键词: 合同, backfill)

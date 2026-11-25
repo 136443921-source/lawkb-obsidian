@@ -175,5 +175,5 @@ tags:
 - [[小德慈善组织合规管理系统-轨道1改造方案-v2.0-2026-09-12]] (共现关键词: ---, v2.0)
 - [[初中生AI学伴系统搭建方法论-借鉴小强律师分身系统]] (共现关键词: 学伴, 系统, AI)
 - [[小哲AI 学伴智能体搭建方案]] (共现关键词: ##, AI, 小哲)
-- [[README]] (共现关键词: skills, workbuddy)
+- [[_AI-Memory-Hub/README]] (共现关键词: skills, workbuddy)
 - [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: ---, workbuddy)
