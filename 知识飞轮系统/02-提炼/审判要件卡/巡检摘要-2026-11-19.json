@@ -1,0 +1,74 @@
+{
+  "round": "R52",
+  "date": "2026-11-19",
+  "version": "v2.1",
+  "mode": "质量巡检（全书饱和·不拆新卡）",
+  "ruler": "铁律R2：全部结论为【候选·待人工确认】",
+  "path_anchor": {
+    "active": "06-沉淀/裁判规则库",
+    "r_card_count": 510,
+    "general_library_count": 42,
+    "delta_vs_R51": "+8"
+  },
+  "pending_backfill": {
+    "strict_frontmatter_true": 0,
+    "robust_frontmatter_true": 0,
+    "general_library": 0,
+    "note": "健壮扫8处命中均为模板/规范/备份文档说明文字，非R-*.md卡",
+    "filled_count": 0,
+    "deviation_blocked": 0
+  },
+  "channels": {
+    "check_time": "2026-11-19 09:29",
+    "local_statute_bank": "①离线权威可用162卡·未触发",
+    "yuandian_mcp": "②会话connected但ToolSearch not found(形态②不可调用)",
+    "qcc_legal": "③会话connected但ToolSearch not found(形态②不可调用)",
+    "pkulaw": "④disabled(停用期不阻塞)",
+    "rule": "RULE-057 不降级网页源·不判死"
+  },
+  "deadlinks": {
+    "tool": "_check_deadlinks.py v1.7.0 --all",
+    "basename_total": 9242,
+    "cards_checked": 7681,
+    "hit_files": 2096,
+    "true_deadlinks": 183,
+    "pending_notes": 4892,
+    "old_criteria_total": 5075,
+    "skipped": 6,
+    "parse_failed": 2,
+    "parse_failed_note": "均库外类案文档,门禁FAIL,非存量卡缺陷"
+  },
+  "deadlink_fix": {
+    "method": "v2门禁同款口径(base 7640)+自写精确脚本(排除报告示例串·坑103)",
+    "full_dryrun_hits": "13文件/42链接",
+    "real_cards_fixed": "11文件/38链接",
+    "report_samples_excluded": "2文件/4链接(坑102不改)",
+    "backup": "/tmp/存量卡巡检死链修复_20261119-20261119-092859",
+    "idempotency": "复扫真卡可修0/0(幂等✅)",
+    "residual_note": "12处裸ID均exact=True合法概念页(坑34命中即不动),非漏修"
+  },
+  "metrics_watchdog": {
+    "check_time": "2026-11-19 09:28:05",
+    "exit_code": 1,
+    "card_consumption": "dead·静默36天",
+    "grill_events": "dead·静默36天",
+    "collab_effect_log": "dead·静默36天",
+    "frontdesk_events": "ok·近3天20条",
+    "consecutive_non_ok_rounds": 20,
+    "note": "禁补假记录修绿·坑99三选一待拍板"
+  },
+  "connectors": {
+    "installed": 10,
+    "session_connected": 4,
+    "noted": "agent-mail/qcc-legal/tencent-docs/yuandian-mcp",
+    "writeback": "驾驶舱_人工核验.json.bak-20261119-092805"
+  },
+  "r2": {
+    "zero_fix_streak": 0,
+    "close_condition_met": false,
+    "reason": "本轮有38修复且埋点非全ok(坑97双联言均未满足)",
+    "decision": "保留埋点看门狗+待回源清零专项"
+  },
+  "six_b": "改前备份11文件cp -n·dry-run→apply→复扫幂等·原子写入·零重复Edit·04-LOG append·零邮件(L0[56])",
+  "skill_update": "v1.82.0→v1.83.0(坑103:修复器全库apply无排除能力·裸ID残留数口径)"
+}

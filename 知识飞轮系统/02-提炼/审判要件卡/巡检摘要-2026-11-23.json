@@ -1,0 +1,93 @@
+{
+  "round": "R53",
+  "date": "2026-11-23",
+  "mode": "质量巡检",
+  "all_candidate": true,
+  "anomaly": {
+    "scripts_missing": 7,
+    "script_dir_mtime": "2026-11-21 12:56",
+    "recovered_from": "/tmp/r53_tools_20261123 (10-28 Claw backup, read-only)",
+    "new_pit": "坑104"
+  },
+  "path": {
+    "anchor": "06-沉淀/裁判规则库",
+    "R_cards": 505,
+    "general": 41,
+    "alt_exists": false
+  },
+  "pending": {
+    "strict": 0,
+    "robust": 0,
+    "general": 0,
+    "grep_verify": 0,
+    "inline_strings": 306,
+    "backfilled": 0,
+    "blocked": 0
+  },
+  "channels": {
+    "local_statute_bank": {
+      "n": 159,
+      "status": "offline_ok"
+    },
+    "yuandian": "形态② not found",
+    "qcc": "形态② not found",
+    "pkulaw": "disabled",
+    "connector_probe": "异常·No connectors installed·不判死",
+    "verified_at": "2026-11-23 09:34-09:38"
+  },
+  "deadlinks": {
+    "script": "v1.8.0(claw backup)",
+    "basenames": 7174,
+    "to_check": 5631,
+    "hit_files": 4274,
+    "real": 12613,
+    "pending_notes": 8562,
+    "old_total": 21175,
+    "skip": 6,
+    "exit": 1,
+    "drift": true,
+    "comparable_with_R52": false
+  },
+  "fix": {
+    "v2": {
+      "basenames": 5696,
+      "files": 418,
+      "links": 708,
+      "verdict": "假阳性·不apply"
+    },
+    "v9": {
+      "files": 10,
+      "verdict": "共现段旧短名·不apply"
+    },
+    "applied": 0,
+    "files_written": 0
+  },
+  "watchdog": {
+    "script": "10-22 backup v(3 items)",
+    "checked_at": "2026-11-23 09:38:45",
+    "card_consumption": {
+      "status": "dead",
+      "silent_days": 40
+    },
+    "grill_events": {
+      "status": "dead",
+      "silent_days": 40
+    },
+    "frontdesk_events": {
+      "status": "ok",
+      "silent_days": 0
+    },
+    "协同效果日志": "missing(文件与监控项双消失)"
+  },
+  "R2": {
+    "fixable": 0,
+    "zero_fix_streak": 1,
+    "metrics_all_ok": false,
+    "close_triggered": false
+  },
+  "six_B": {
+    "backup": "/tmp/r53_backup_20261123-094117",
+    "files_written": 0,
+    "email": 0
+  }
+}
