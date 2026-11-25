@@ -128,7 +128,7 @@ tags:
 *存入：案件生命周期管理系统/gate-config.md*
 
 ## 相关笔记
-- [[README]] (共现关键词: 上诉, gate, 关键词)
+- [[案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/作战室/README]] (共现关键词: 上诉, gate, 关键词)
 - [[RULE-052---macOS-launchctl-写操作全禁-LaunchAgents-靠登录自动加载-勿依赖-launchctl-load-start]] (共现关键词: 合同, gate, 关键词)
 - [[WF-数字员工增员减员更新花名册]] (共现关键词: json, 关键词, 共现)
 - [[WF-037---修复（备份+翻转，未点UI未碰令牌）：备份-`mcp.json.bak-20]] (共现关键词: 诉讼, json, 关键词)

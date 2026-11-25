@@ -203,7 +203,7 @@ python3 /Users/chenyouqiang/Documents/LawKB/update_frontmatter.py
 - [[2026-09-13]] (共现关键词: 2026, LawKB)
 - [[2026-09-14]] (共现关键词: 2026, LawKB)
 - [[AGENTS]] (共现关键词: 慈善, LawKB, ---)
-- [[README]] (共现关键词: LawKB, ---)
+- [[_AI-Memory-Hub/README]] (共现关键词: LawKB, ---)
 - [[WF-016-frontmatter批量更新报告]] (共现关键词: frontmatter, ---)
 - [[WF-014-仲裁和诉讼的区别-不同视角下的民商事诉讼思维]] (共现关键词: 诉讼, 笔记, ---)
 - [[README-本夹归档说明]] (共现关键词: 2026, ---, 关键词)

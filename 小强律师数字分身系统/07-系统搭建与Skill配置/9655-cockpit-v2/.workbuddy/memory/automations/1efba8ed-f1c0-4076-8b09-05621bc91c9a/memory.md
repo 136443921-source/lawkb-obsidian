@@ -1,54 +1,12 @@
----
-tags:
-  - ##
-  - v1.5
-  - 9655
-  - drift
-  - 公司法
-  - count
----
+# 9655 手册口径漂移比对 · 执行记忆
 
-# 活文档守护自动化 · 执行记录
+## 2026-11-23 09:29 运行（首次记录）
 
-## 2026-09-29 09:08（首次运行）
-- 运行 `drift_check_9655.py`（长期资产位目录，managed python 3.13.12）。
-- 比对结果：baseline_manual_version=v1.5，drift_count=0，health_count=0，aligned=true。
-- 判定：手册口径与实车一致，无漂移。未触发修订提醒。
-- 备注：历史记录文件此前不存在，本次为首跑。
-
-## 2026-10-12 23:07（本周运行）
-- 运行 `drift_check_9655.py`（长期资产位目录，managed python 3.13.12）。
-- 比对结果：baseline_manual_version=v1.5，drift_count=0，health_count=0，aligned=true。
-- 判定：手册口径与实车一致，无漂移。未触发修订提醒。
-- 备注：注意用户模板 step3「全部为 0」文案写的是 v1.2，但实际基线版本为 v1.5，回报时以工具实测的 v1.5 为准。
-
-## 2026-10-19 08:50（本周运行 · 周一 09:00 定时）
-- 运行 `drift_check_9655.py`（长期资产位目录，managed python 3.13.12）。
-- 比对结果：baseline_manual_version=v1.5，drift_count=0，health_count=0，aligned=true。
-- 判定：手册口径与实车一致，无漂移。未触发修订提醒。
-- 备注：连续第三次 aligned=true，手册 v1.5 口径稳定。
-
-## 2026-10-26 09:06（本周运行 · 周一 09:00 定时）
-- 运行 `drift_check_9655.py`（长期资产位目录，managed python 3.13.12）。
-- 比对结果：baseline_manual_version=v1.5，drift_count=0，health_count=0，aligned=true。
-- 判定：手册口径与实车一致，无漂移。未触发修订提醒。
-- 备注：连续第四次 aligned=true，手册 v1.5 口径稳定。
-
-## 2026-11-02 09:39（本周运行 · 周一 09:00 定时）
-- 运行 `drift_check_9655.py`（长期资产位目录，managed python 3.13.12）。
-- 比对结果：baseline_manual_version=v1.5，drift_count=0，health_count=0，aligned=true。
-- 判定：手册口径与实车一致，无漂移。未触发修订提醒。
-- 备注：连续第五次 aligned=true，手册 v1.5 口径稳定。
-
-## 2026-11-09 09:48（本周运行 · 周一 09:00 定时）
-- 运行 `drift_check_9655.py`（长期资产位目录，managed python 3.13.12）。
-- 比对结果：baseline_manual_version=v1.5，drift_count=0，health_count=0，aligned=true。
-- 判定：手册口径与实车一致，无漂移。未触发修订提醒。
-- 备注：连续第六次 aligned=true，手册 v1.5 口径稳定。
-
-## 相关笔记
-- [[2026-09-28]] (共现关键词: 09, ##, drift)
-- [[2026-09-15-D3调度治理工具固化drift实战]] (共现关键词: 09, ##, drift)
-- [[2026-09-27]] (共现关键词: 9655, 公司, 2026)
-- [[一人公司全面接管单机版与9655驾驶舱监控方案_v1.5_建设任务表与审计报告]] (共现关键词: v1.5, 9655)
-- [[一人公司全面接管单机版与9655驾驶舱监控方案_v1.5]] (共现关键词: 2026, v1.5, 9655)
+- **结果：❌ 比对无法执行（工具链断供），非"无漂移"**
+- 指定路径 `9655-cockpit-v2/drift_check_9655.py` 不存在；全盘搜索唯一副本在废弃归档目录 `~/WorkBuddy/_归档/2026-09/2026-09-17-16-22-53/outputs/9655-cockpit-v2/`（prompt 明令严禁引用）
+- 实车目录（长期资产位）launchd 探针活着（7 个 JSON 今日 09:25 更新），但：
+  - 🔴 `scan_9655.py` 缺失 → `com.xiaoqiang.cockpit9655.scan` 每 300 秒报错（.9655_scan.err 持续堆积），scorecard 无法再生成
+  - 🔴 `rbac.js`、`drift_check_9655.py`、`scorecard_data.json` 均不在实车目录
+- `_AI-Memory-Hub` 镜像 scorecard_data.json 停更于 **2026-10-02 22:03**（19 屏，total 69.0 / C 合格）——已过期 52 天，不可作真源
+- **处置：未用旧数据强行比对（避免假阴性"对齐"结论）；未擅自迁移/修改任何文件（RULE-011）**；报告对话呈现，给 A/B/C 修复建议待老强确认
+- 待办：老强确认方案后补迁三件套（scan_9655.py / rbac.js / drift_check_9655.py）至长期资产位并重跑

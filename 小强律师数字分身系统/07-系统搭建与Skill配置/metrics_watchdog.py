@@ -34,7 +34,6 @@
 发射点，不是往 jsonl 里灌假记录。
 """
 import os
-import re
 import sys
 import json
 import datetime
@@ -67,52 +66,24 @@ TARGETS = [
         "upstream": "钩子拦截法律域技能时写",
         "fix_hint": "低频属正常（只有被拦截才写）；>30 天无记录才需查钩子是否仍挂",
     },
-    {
-        "key": "协同效果日志",
-        "path": os.path.join(HOME, "Documents", "LawKB", "知识飞轮系统",
-                             "05-调用", "协同效果日志.md"),
-        "label": "飞轮命中率统计源 · md 台账",
-        "emitter": "人工/技能在交付时按流水线第 8 步②追加一行",
-        "upstream": "法律文书docx交付流水线·第 8 步②（与双目录同步同批次）",
-        "fix_hint": "根因是「交付时忘了写」，不是文件损坏："
-                    "查流水线第 8 步是否被执行；协同效果月报（每月28日）全靠这份日志，"
-                    "漏记即月报命中率失真",
-    },
 ]
 
 
 def parse_ts(line):
-    """从一行里尽量捞出时间戳。
-
-    两种来源都要吃得下：
-      ① jsonl 埋点（card_consumption / frontdesk / grill）——按 JSON 键取
-      ② markdown 台账（协同效果日志 `- [2026-09-29 12:38] …`）——正则兜底
-    早期只认 JSON，导致 md 台账永远算不出时间戳（会拿 mtime 兜底，静默天数失真）。
-    """
+    """从一行 JSONL 里尽量捞出时间戳"""
     try:
         obj = json.loads(line)
     except Exception:
-        obj = None
-    if isinstance(obj, dict):
-        for k in ("ts", "timestamp", "time", "at", "recorded_at"):
-            v = obj.get(k)
-            if isinstance(v, str) and len(v) >= 10:
-                for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M", "%Y-%m-%d %H:%M:%S",
-                            "%Y-%m-%d %H:%M", "%Y-%m-%d"):
-                    try:
-                        return datetime.datetime.strptime(
-                            v[:len(datetime.datetime.now().strftime(fmt))], fmt)
-                    except Exception:
-                        continue
-    # ② markdown 行首时间戳：[YYYY-MM-DD HH:MM] / [YYYY-MM-DD]
-    m = re.search(r"\[(\d{4}-\d{2}-\d{2})(?:[ T](\d{2}:\d{2}))?\]", line)
-    if m:
-        base = m.group(1) + (" " + m.group(2) if m.group(2) else " 00:00")
-        fmt = "%Y-%m-%d %H:%M" if m.group(2) else "%Y-%m-%d %H:%M"
-        try:
-            return datetime.datetime.strptime(base, fmt)
-        except Exception:
-            return None
+        return None
+    for k in ("ts", "timestamp", "time", "at", "recorded_at"):
+        v = obj.get(k)
+        if isinstance(v, str) and len(v) >= 10:
+            for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M", "%Y-%m-%d %H:%M:%S",
+                        "%Y-%m-%d %H:%M", "%Y-%m-%d"):
+                try:
+                    return datetime.datetime.strptime(v[:len(datetime.datetime.now().strftime(fmt))], fmt)
+                except Exception:
+                    continue
     return None
 
 
@@ -135,12 +106,11 @@ def scan_one(t, days):
             line = line.strip()
             if not line:
                 continue
+            total += 1
             ts = parse_ts(line)
             if ts is None:
-                # 无时间戳的行（表头/frontmatter/注释）：不计为记录
-                # 早期版本在此处 total+=1，导致 md 台账的总数把标题也数进去
+                # 无时间戳的行（极少）：用文件 mtime 兜底，不计入 recent
                 continue
-            total += 1
             if last is None or ts > last:
                 last = ts
             if ts >= cutoff:
