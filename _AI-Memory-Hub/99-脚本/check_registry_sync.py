@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-check_registry_sync.py —— 清单挂载自检器  v1.0
+check_registry_sync.py —— 清单挂载自检器  v1.3（2026-11-22 按 WF-132 演进史重建）
 配套规则卡：WF-132-清单挂载自检（写文件时扫「新增了 X，该加 X 的清单没加」）
+
+版本说明：LawKB 原件于 11-21 iCloud 事故中从 99-脚本/ 删除，仅存 v1.0 会话备份
+（该备份实际已含 v1.1 双向找表/实体差集/锚点定位/ORPHAN 全集、v1.2 三条豁免，
+仅版本标注停留在 v1.0）。2026-11-22 补齐 v1.3「HEADING_DECL_PAT 标题括号计数、
+仅标题行采信」后重建为 v1.3。双验证：正例标题（11 项）错配→FAIL；反例正文
+「（1 项）（2 项）」并列列举→不误报；边界计数相符→不误报；真实全库 133 文件全清。
 
 背景（2026-11-02）：
     把 `execution-docs-generator` 挂进 CLM 时，同一轮文件里出现两处"漏挂"：
@@ -80,10 +86,11 @@ DECL_PATTERNS = [
     r"全部为\s*(\d+)\s*项",
 ]
 
-# 标题括号内的计数：如「…（全部纳入·11 项）」「…（4 项）及应对」
-# 🔴 只在**标题行**采信。正文里「（1 项）（2 项）」常是并列列举，
-#    当作声明会让 6 篇文书集体误报（2026-11-02 实测）。
-HEADING_DECL_PAT = r"[（(][^（()）\n]{0,24}?(\d+)\s*项[^（()）\n]{0,24}?[）)]"
+# v1.3：标题行括号内的计数声明，如「### 4.3 其余类似（全部纳入·11 项）」
+# 或「## 六项收尾（6 项）」。关键约束：**只在标题行采信**——正文里的
+# 「（1 项）（2 项）（3 项）」多为并列列举，放开到正文会导致 6 篇文书集体误报
+# （2026-11-02 实测，见 WF-132 §五 v1.3）。
+HEADING_DECL_PAT = re.compile(r"（([^）]*?(\d+)\s*项[^）]*?)）")
 
 # ORPHAN 检查的黑名单：技术通用词 / 目录名，不算"应登记实体"
 ENTITY_BLACKLIST = {
@@ -287,59 +294,68 @@ def check_count(path, text):
     lines = text.split("\n")
     tables = parse_tables(lines)
 
-    for pat, heading_only in [(p, False) for p in DECL_PATTERNS] + [(HEADING_DECL_PAT, True)]:
+    # 收集所有计数声明：(声明数, 在 text 中的位置)
+    # ① 原 DECL_PATTERNS 全文扫描
+    decls = []
+    for pat in DECL_PATTERNS:
         for m in re.finditer(pat, text):
-            declared = int(m.group(1))
-            lineno = text[:m.start()].count("\n")
-            raw = lines[lineno].strip()
-            is_heading = bool(re.match(r"^#{1,6}\s", raw))
+            decls.append((int(m.group(1)), m.start()))
+    # ② v1.3 标题括号计数 HEADING_DECL_PAT：**只在标题行采信**。
+    #    正文「（1 项）（2 项）」是并列列举，放开会集体误报（WF-132 §五 v1.3）。
+    for m in HEADING_DECL_PAT.finditer(text):
+        h_lineno = text[:m.start()].count("\n")
+        if re.match(r"^#{1,6}\s", lines[h_lineno].strip()):
+            decls.append((int(m.group(2)), m.start(2)))
 
-            # 括号计数只在标题行采信
-            if heading_only and not is_heading:
+    for declared, pos in decls:
+        lineno = text[:pos].count("\n")
+        raw = lines[lineno].strip()
+
+        # 豁免一：表格行内是数据
+        if raw.startswith("|"):
+            continue
+        # 豁免二：引述
+        if any(c in text[max(0, pos - 3):pos] for c in QUOTE_CHARS):
+            continue
+        # 豁免三：叙述性行
+        if any(w in raw for w in COUNT_EXEMPT):
+            continue
+
+        is_heading = bool(re.match(r"^#{1,6}\s", raw))
+
+        if is_heading:
+            cand = [t for t in tables if t["start"] > lineno]
+            if not cand:
                 continue
-            # 豁免一：表格行内是数据
-            if raw.startswith("|"):
+            tbl = min(cand, key=lambda t: t["start"])
+            if tbl["start"] - lineno > 15:
                 continue
-            # 豁免二：引述
-            if any(c in text[max(0, m.start() - 3):m.start()] for c in QUOTE_CHARS):
+        else:
+            cand = [t for t in tables if t["end"] < lineno]
+            if not cand:
                 continue
-            # 豁免三：叙述性行
-            if any(w in raw for w in COUNT_EXEMPT):
+            tbl = max(cand, key=lambda t: t["end"])
+            if lineno - tbl["end"] > 60:
                 continue
 
-            if is_heading:
-                cand = [t for t in tables if t["start"] > lineno]
-                if not cand:
-                    continue
-                tbl = min(cand, key=lambda t: t["start"])
-                if tbl["start"] - lineno > 15:
-                    continue
-            else:
-                cand = [t for t in tables if t["end"] < lineno]
-                if not cand:
-                    continue
-                tbl = max(cand, key=lambda t: t["end"])
-                if lineno - tbl["end"] > 60:
-                    continue
+        actual = len(tbl["rows"])
+        key = (lineno, declared, actual)
+        if key in seen:
+            continue
+        seen.add(key)
 
-            actual = len(tbl["rows"])
-            key = (lineno, declared, actual)
-            if key in seen:
-                continue
-            seen.add(key)
-
-            if actual != declared:
-                findings.append({
-                    "kind": "COUNT",
-                    "level": "FAIL",
-                    "path": path,
-                    "line": lineno + 1,
-                    "msg": f"声明 {declared} 项，表格实际 {actual} 行"
-                           f"（表在 {tbl['start'] + 1} 行，"
-                           f"{'标题内声明→向下找表' if is_heading else '正文声明→向上找表'}）",
-                    "declared": declared,
-                    "actual": actual,
-                })
+        if actual != declared:
+            findings.append({
+                "kind": "COUNT",
+                "level": "FAIL",
+                "path": path,
+                "line": lineno + 1,
+                "msg": f"声明 {declared} 项，表格实际 {actual} 行"
+                       f"（表在 {tbl['start'] + 1} 行，"
+                       f"{'标题内声明→向下找表' if is_heading else '正文声明→向上找表'}）",
+                "declared": declared,
+                "actual": actual,
+            })
     return findings
 
 

@@ -116,4 +116,4 @@ bash ../启动包/crypto-l1.sh encrypt . m2-index   # 在含 m2_index.db 的目�
 
 ## 相关笔记
 - [[9655驾驶舱屏台账]] (共现关键词: 诉讼, index)
-- [[README]] (共现关键词: index, README)
+- [[lawtwin/律师分身系统（单机密文版）/04-知识层L2/README]] (共现关键词: index, README)
