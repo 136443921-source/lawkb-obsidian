@@ -7,7 +7,7 @@ card_type: 裁判规则卡
 status: 已入库
 source: 法律资讯周报（2026年第37期）
 created: 2026-09-14
-updated: 2026-09-28T10:36
+updated: 2026-11-15T21:53
 priority: ⭐⭐⭐
 aliases:
   - R-DRFT-20260914-01
