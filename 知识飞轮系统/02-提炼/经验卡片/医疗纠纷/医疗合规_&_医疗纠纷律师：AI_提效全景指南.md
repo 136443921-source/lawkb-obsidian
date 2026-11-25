@@ -10,7 +10,7 @@ review_date: 2026-09-30
 importance: 4
 generated_by: 转写批1+2(2026-07-24)
 created: 2026-07-24T16:50
-updated: 2026-09-27T21:52
+updated: 2026-11-15T21:53
 tags:
   - 经验卡片
   - 医疗纠纷
