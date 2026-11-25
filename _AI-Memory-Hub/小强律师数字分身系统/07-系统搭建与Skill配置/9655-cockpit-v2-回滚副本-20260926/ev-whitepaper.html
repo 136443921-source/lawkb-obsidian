@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>把律师数字分身系统，当成一辆电车来造和驾驶 · EV 架构白皮书（对外标准版 v1.1）</title>
+<style>
+:root{
+  --bg:#070b11;
+  --bg2:#0c121b;
+  --card:#111a26;
+  --card2:#16202e;
+  --line:#1e2b3a;
+  --line2:#2a3b50;
+  --txt:#dfe7f0;
+  --txt2:#9fb0c4;
+  --txt3:#6b7f96;
+  --acc:#00e0a4;
+  --acc2:#38bdf8;
+  --warn:#ff8a4c;
+  --danger:#ff5d6c;
+  --purple:#a78bfa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.85;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 12% -8%, rgba(0,224,164,.10), transparent 60%),
+    radial-gradient(800px 500px at 88% 4%, rgba(56,189,248,.09), transparent 60%),
+    radial-gradient(700px 600px at 50% 100%, rgba(167,139,250,.06), transparent 60%);
+}
+.wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 24px;display:flex;gap:40px;align-items:flex-start}
+
+/* ── HERO ── */
+header.hero{position:relative;z-index:1;padding:72px 24px 56px;border-bottom:1px solid var(--line)}
+.hero-in{max-width:1120px;margin:0 auto}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(0,224,164,.35);background:rgba(0,224,164,.08);
+  color:var(--acc);padding:6px 14px;border-radius:999px;
+  font-size:12.5px;letter-spacing:.14em;font-weight:600;
+}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+h1.title{
+  font-size:clamp(34px,5.4vw,60px);line-height:1.18;font-weight:800;
+  margin:26px 0 14px;letter-spacing:-.01em;
+  background:linear-gradient(105deg,#fff 8%,#b9f5e4 45%,#7dd3fc 92%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.subtitle{font-size:clamp(15px,1.8vw,19px);color:var(--txt2);font-weight:500;letter-spacing:.02em}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:28px;font-size:13px;color:var(--txt3)}
+.meta-row b{color:var(--txt2);font-weight:600}
+.claim{
+  margin-top:34px;padding:22px 26px;border-radius:14px;
+  background:linear-gradient(100deg,rgba(0,224,164,.10),rgba(56,189,248,.06));
+  border:1px solid rgba(0,224,164,.24);border-left:4px solid var(--acc);
+  font-size:16.5px;line-height:1.8;color:#e8f4f0;
+}
+.claim .lb{display:block;font-size:11.5px;letter-spacing:.2em;color:var(--acc);font-weight:700;margin-bottom:8px}
+.claim b{color:#fff;font-weight:700}
+
+/* ── TOC ── */
+nav.toc{
+  position:sticky;top:24px;flex:0 0 218px;width:218px;
+  max-height:calc(100vh - 60px);overflow-y:auto;padding:20px 4px 20px 0;
+}
+nav.toc .th{font-size:11px;letter-spacing:.2em;color:var(--txt3);font-weight:700;padding:0 12px 12px}
+nav.toc a{
+  display:block;padding:7px 12px;color:var(--txt3);text-decoration:none;
+  font-size:13.2px;border-left:2px solid transparent;border-radius:0 6px 6px 0;
+  transition:.18s;line-height:1.5;
+}
+nav.toc a:hover{color:var(--txt);background:rgba(255,255,255,.03)}
+nav.toc a.on{color:var(--acc);border-left-color:var(--acc);background:rgba(0,224,164,.07);font-weight:600}
+nav.toc a.sub{padding-left:24px;font-size:12.4px}
+nav.toc::-webkit-scrollbar{width:4px}
+nav.toc::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px}
+
+/* ── MAIN ── */
+main{flex:1;min-width:0;padding:44px 0 100px}
+section{margin-bottom:64px;scroll-margin-top:30px}
+h2{
+  font-size:27px;font-weight:800;margin:0 0 8px;letter-spacing:-.005em;
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+h2 .num{
+  font-size:12px;letter-spacing:.16em;color:var(--acc);font-weight:700;
+  border:1px solid rgba(0,224,164,.3);background:rgba(0,224,164,.07);
+  padding:3px 9px;border-radius:6px;white-space:nowrap;
+}
+h3{font-size:19.5px;font-weight:700;margin:38px 0 12px;color:#eaf3ff;display:flex;align-items:center;gap:9px}
+h3::before{content:"";width:3px;height:17px;background:var(--acc2);border-radius:2px;flex:none}
+h4{font-size:16px;font-weight:700;margin:24px 0 8px;color:var(--acc)}
+p{margin:12px 0;color:var(--txt2)}
+p strong,li strong{color:#f0f6ff;font-weight:700}
+em{color:var(--acc2);font-style:normal}
+ul,ol{margin:12px 0 12px 22px;color:var(--txt2)}
+li{margin:7px 0}
+code{
+  background:rgba(56,189,248,.10);color:#7dd3fc;padding:2px 7px;border-radius:5px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;
+}
+
+/* ── 摘要卡 ── */
+.abstract{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px;margin:22px 0 8px}
+.abs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.abs .k{font-size:11px;letter-spacing:.18em;font-weight:700;margin-bottom:9px}
+.abs.a1 .k{color:var(--warn)} .abs.a2 .k{color:var(--acc2)}
+.abs.a3 .k{color:var(--acc)} .abs.a4 .k{color:var(--danger)}
+.abs p{font-size:14.2px;margin:0;line-height:1.75}
+
+/* ── 表格 ── */
+.tw{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:14.2px;min-width:520px}
+th{
+  background:rgba(255,255,255,.035);text-align:left;padding:13px 16px;
+  font-weight:700;color:#cfe0f0;font-size:13px;letter-spacing:.04em;
+  border-bottom:1px solid var(--line2);white-space:nowrap;
+}
+td{padding:13px 16px;border-bottom:1px solid rgba(30,43,58,.65);color:var(--txt2);vertical-align:top;line-height:1.7}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,.022)}
+td strong{color:#fff}
+
+/* ── 六模块卡片 ── */
+.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:24px 0}
+.mod{
+  background:linear-gradient(160deg,var(--card2),var(--card));
+  border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;overflow:hidden;
+  transition:.22s;
+}
+.mod::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));
+  opacity:.75;
+}
+.mod:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.mod .ic{font-size:24px;line-height:1}
+.mod .no{
+  position:absolute;top:16px;right:18px;font-size:44px;font-weight:800;
+  color:rgba(255,255,255,.045);line-height:1;
+}
+.mod h4{margin:12px 0 4px;font-size:17px;color:#fff}
+.mod .car{font-size:12.5px;color:var(--acc);font-weight:600;letter-spacing:.03em;margin-bottom:10px}
+.mod p{font-size:14px;margin:0;line-height:1.72}
+.mod ul{margin:10px 0 0 18px;font-size:13.5px}
+.mod li{margin:4px 0}
+
+/* ── 引文 ── */
+blockquote{
+  margin:22px 0;padding:16px 22px;border-left:3px solid var(--acc);
+  background:linear-gradient(90deg,rgba(0,224,164,.07),transparent);
+  border-radius:0 10px 10px 0;color:#d6ece6;font-size:15.2px;
+}
+blockquote .qh{display:block;font-size:11px;letter-spacing:.18em;color:var(--acc);font-weight:700;margin-bottom:7px}
+blockquote.qb{border-left-color:var(--warn);background:linear-gradient(90deg,rgba(255,138,76,.07),transparent)}
+blockquote.qb .qh{color:var(--warn)}
+
+/* ── 能量链路 ── */
+.flow{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;
+  margin:22px 0;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+}
+.flow .n{
+  padding:9px 15px;border-radius:9px;background:rgba(0,224,164,.09);
+  border:1px solid rgba(0,224,164,.28);font-size:13.5px;color:#cdf5e9;font-weight:600;
+}
+.flow .n small{display:block;font-size:11px;color:var(--txt3);font-weight:400;margin-top:2px}
+.flow .ar{color:var(--txt3);font-size:15px}
+
+/* ── 公理 ── */
+.axiom{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin:16px 0}
+.axiom .at{font-size:16.5px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.axiom .at span{
+  font-size:11px;letter-spacing:.14em;color:var(--acc);border:1px solid rgba(0,224,164,.3);
+  background:rgba(0,224,164,.07);padding:2px 8px;border-radius:5px;font-weight:700;flex:none;
+}
+.axiom p{margin:6px 0 0;font-size:14.6px}
+
+/* ── 协同流程 ── */
+.step{display:flex;gap:16px;margin:0;padding:16px 0;border-bottom:1px solid rgba(30,43,58,.7)}
+.step:last-child{border-bottom:none}
+.step .sn{
+  flex:none;width:30px;height:30px;border-radius:50%;
+  background:rgba(0,224,164,.12);border:1px solid rgba(0,224,164,.35);
+  color:var(--acc);font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.step .sc h5{font-size:15px;color:#fff;font-weight:700;margin-bottom:4px}
+.step .sc .sm{font-size:12px;color:var(--acc2);margin-bottom:6px;font-weight:600}
+.step .sc p{font-size:14px;margin:0}
+
+/* ── 边界 ── */
+.limit{
+  display:flex;gap:14px;align-items:flex-start;padding:14px 18px;margin:10px 0;
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--danger);border-radius:0 10px 10px 0;
+}
+.limit .x{color:var(--danger);font-weight:800;flex:none;font-size:15px}
+.limit .lt{font-weight:700;color:#fff;font-size:15px}
+.limit p{font-size:13.8px;margin:3px 0 0}
+
+/* ── 起步档位 ── */
+.tier{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin:14px 0}
+.tier .tt{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px}
+.tier .tw2{font-size:12.5px;color:var(--acc2);margin-bottom:10px;font-weight:600}
+.tier ol{margin:0 0 0 20px;font-size:14.2px}
+
+/* ── 代码块 ── */
+pre{
+  background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;overflow-x:auto;margin:16px 0;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
+  color:#8fd9c4;line-height:1.8;
+}
+
+/* ── 最终守则 ── */
+.final{
+  margin-top:56px;padding:34px 30px;border-radius:16px;text-align:center;
+  background:linear-gradient(150deg,rgba(0,224,164,.11),rgba(56,189,248,.07));
+  border:1px solid rgba(0,224,164,.28);
+}
+.final .big{font-size:clamp(19px,3vw,27px);font-weight:800;color:#fff;line-height:1.55;margin-bottom:10px}
+.final .big span{color:var(--acc)}
+.final p{font-size:14.5px;color:#b9d4cc;margin:0}
+
+footer{
+  position:relative;z-index:1;border-top:1px solid var(--line);
+  padding:32px 24px 60px;color:var(--txt3);font-size:13px;
+}
+footer .fi{max-width:1120px;margin:0 auto;line-height:2}
+footer b{color:var(--txt2)}
+
+@media(max-width:900px){
+  .wrap{flex-direction:column;gap:0}
+  nav.toc{position:static;width:100%;flex:none;max-height:none;border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:8px}
+  nav.toc .links{display:flex;flex-wrap:wrap;gap:6px}
+  nav.toc a{border-left:none;border-radius:7px;padding:6px 11px;background:rgba(255,255,255,.035)}
+  nav.toc a.on{border-left:none;background:rgba(0,224,164,.13)}
+  nav.toc a.sub{padding-left:11px}
+  header.hero{padding:44px 20px 40px}
+  main{padding:24px 0 70px}
+  h2{font-size:23px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <div class="badge"><span class="dot"></span>ARCHITECTURE WHITE PAPER · 对外标准版 v1.1</div>
+    <h1 class="title">把律师数字分身系统<br>当成一辆电车来造和驾驶</h1>
+    <div class="subtitle">律师数字分身系统（单机密文版 · 形态 A）· 六大总成 · 四条公理 · 造与驾驶 · 一条不可越界的 L3 边界</div>
+    <div class="meta-row">
+      <div><b>发布</b> 2026-09-18</div>
+      <div><b>作者</b> 小强律师 · 实习律师 · 贵州贵阳</div>
+      <div><b>性质</b> 个人可维护系统 · 非商业产品</div>
+      <div><b>形态</b> 单机密文版 · 本机加密 · 推理可插拔</div>
+    </div>
+    <div class="claim">
+      <span class="lb">一句话结论</span>
+      法律 AI 真正的瓶颈，从来不是模型不够聪明，而是律师的知识资产<b>没有能量闭环</b>——只进不出、召不回来、失控无拦截、人被甩在环外。我们用一套"造车 + 开车"的工程语言，重建了一个可<b>私有化部署</b>的律师个人知识系统：<b>六大总成、四条公理、一条不可越界的 L3 边界，以及把"造"和"开"分开讲的交付包。</b>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+<nav class="toc">
+  <div class="th">目录 · CONTENTS</div>
+  <div class="links" id="tocLinks">
+    <a href="#s0">摘要</a>
+    <a href="#s1">一 · 为什么是电车</a>
+    <a href="#s2">二 · 四条公理</a>
+    <a href="#s3">三 · 六大总成总览</a>
+    <a href="#smfg" class="sub">造车 · 私有化部署路径</a>
+    <a href="#s4" class="sub">模块一 三电系统</a>
+    <a href="#s5" class="sub">模块二 补能网络</a>
+    <a href="#s6" class="sub">模块三 智驾系统</a>
+    <a href="#s7" class="sub">模块四 座舱与影子模式</a>
+    <a href="#s8" class="sub">模块五 健康度自检</a>
+    <a href="#s9" class="sub">模块六 黑匣子与 OTA</a>
+    <a href="#s10">四 · 整车协同</a>
+    <a href="#s11">五 · 边界：不做什么</a>
+    <a href="#s12">六 · 可复制性</a>
+    <a href="#a1">附录 A · 故障码</a>
+    <a href="#a2">附录 B · 保养周期</a>
+    <a href="#a3">附录 C · 术语对照</a>
+    <a href="#a4">附录 D · 整车铭牌</a>
+  </div>
+</nav>
+<main>
+
+<!-- 摘要 -->
+<section id="s0">
+  <h2><span class="num">ABSTRACT</span>摘要</h2>
+  <div class="abstract">
+    <div class="abs a1">
+      <div class="k">问题 · PROBLEM</div>
+      <p>过去三年，法律科技几乎把全部注意力押在"模型多聪明"上。但一个一线律师的真实困境是：办过的案子沉淀不下来，写过的文书下次还得重写，检索到的法条不敢直接引用，AI 生成的东西看着漂亮却不敢署名送出。知识不是不够多，是<strong>不成系统</strong>——它是一堆零件，不是一台车。更麻烦的是：哪怕造出了一台好车，绝大多数人<strong>不知道怎么安全地开它</strong>。</p>
+    </div>
+    <div class="abs a2">
+      <div class="k">方法 · METHOD</div>
+      <p>放弃"图书馆"和"大脑"这两个惯用隐喻，改用<strong>智能电动车（EV）</strong>作为一级隐喻——因为它逼你回答四个问题：能量从哪来、存在哪、怎么放出去、失控了怎么办，以及最关键的：<strong>谁坐在方向盘后面</strong>。本版在六总成架构之上，把白皮书拆成两半：<strong>上半场讲"造"</strong>（私有化部署），<strong>下半场讲"驾驶"</strong>（日常运维与协同）。</p>
+    </div>
+    <div class="abs a3">
+      <div class="k">结果 · RESULT</div>
+      <p>一套由个人可维护、L3 级定位、且<strong>本机加密 + 推理可插拔</strong>的知识系统，六大总成全部落地并实测运转：知识资产 <strong>3,000+</strong> 篇文档、<strong>800+</strong> 条裁判规则卡片、质检门禁回归 <strong>131/131</strong> 全通过、资产断链率 <strong>0.111%</strong>、<strong>10</strong> 项自动化常驻。它不生产判决，它生产<strong>可交付的确定性</strong>。</p>
+    </div>
+    <div class="abs a4">
+      <div class="k">边界 · LIMIT</div>
+      <p>它是 <strong>L3，不是 L5</strong>；它是<strong>单机密文版</strong>，不是公有云。独立法律判断、庭审临场应变、对客户的最终担责、把数据送出本机——这四项<strong>明确声明不做、且结构上无法代劳</strong>。这不是谦虚，是设计。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 一 -->
+<section id="s1">
+  <h2><span class="num">CHAPTER 01</span>为什么是"电车"：三种隐喻的取舍</h2>
+  <p>选一个隐喻，就是选一套工程约束。<strong>你用什么比喻你的知识系统，决定了你会问什么问题、忽略什么风险。</strong></p>
+  <div class="tw"><table>
+    <thead><tr><th>隐喻</th><th>它解决的问题</th><th>它带来的盲区</th><th>典型失败形态</th></tr></thead>
+    <tbody>
+      <tr><td><strong>图书馆</strong></td><td>分类、编目、检索</td><td>只解决"存"，不解决"流"与"用"</td><td>电子垃圾场：收藏数千篇，办案时一篇想不起来</td></tr>
+      <tr><td><strong>大脑 / 智能体</strong></td><td>推理、涌现、拟人</td><td>黑箱、不可审计、出事无法定责</td><td>幻觉体：输出流畅自信，引用全是编的，且无法追责</td></tr>
+      <tr><td><strong>电车（本系统）</strong></td><td>能量闭环、可控、可保养、人在环上</td><td>需要持续运维，不会自己开</td><td>保养得当则复利，疏于养护则趴窝——<strong>可预期、可诊断</strong></td></tr>
+    </tbody>
+  </table></div>
+  <h3>关键判断：法律行业不能接受黑箱，也不能接受仓库</h3>
+  <ul>
+    <li><strong>黑箱的问题不在于它错</strong>，而在于错了你不知道错在哪、没法向法庭和客户解释。一份被 AI 编造案号污染过的代理词，代价不是重写，是<em>职业信誉</em>。</li>
+    <li><strong>仓库的问题在于知识没有势能</strong>。存了等于没存，因为从"存"到"用"之间缺一套能量转换装置。</li>
+  </ul>
+  <p>电车隐喻的强悍之处在于，它天然包含四件事：</p>
+  <ol>
+    <li><strong>能量必须闭环</strong>——充进去的电要能放出来，还得能回收（动能回收）。</li>
+    <li><strong>失控必须有硬拦截</strong>——BMS（电池管理系统）的存在不是为了提速，是为了防止热失控。它的权限高于续航。</li>
+    <li><strong>级别必须诚实</strong>——L3 就是 L3。宣称 L5 的系统，出事时责任边界是模糊的。</li>
+    <li><strong>可保养、可诊断</strong>——故障码、保养周期、铭牌参数，全部可量化可核验。</li>
+  </ol>
+  <blockquote>
+    <span class="qh">本节金句</span>
+    选隐喻不是文案工作，是架构决策。你用"大脑"形容它，就会去卷推理；你用"电车"形容它，就会去建 BMS、装黑匣子、写保养手册——<strong>而后者才是律师真正需要的东西</strong>。本版再加一条：<strong>你用"造车"形容它，就会去想它该停在谁的车库里、钥匙在谁手上。</strong>
+  </blockquote>
+</section>
+
+<!-- 二 -->
+<section id="s2">
+  <h2><span class="num">CHAPTER 02</span>四条公理</h2>
+  <p>整套系统由四条不可协商的公理约束。任何新模块、新自动化、新部署形态上线前，先过这四条。</p>
+  <div class="axiom">
+    <div class="at"><span>公理一</span>能量必须闭环</div>
+    <p>知识资产若只进不出，电池就会"鼓包"——体量增长，可用度下降。因此系统强制三条回流路径：每次红蓝对抗复核 → 沉淀为经验卡；每次质检拦截 → 登记为事故并反哺规则；每个案件结案 → 回填决策日志。判据很简单：<strong>月回流卡数 &gt; 0 即视为闭环正常，= 0 即视为系统停摆。</strong></p>
+  </div>
+  <div class="axiom">
+    <div class="at"><span>公理二</span>失控优先于续航</div>
+    <p>在所有性能冲突中，<strong>安全拦截一票否决</strong>。本系统的质检门禁（LTI）具备对交付物的一票否决权：REJECT 计数不为 0，即不准交付。宁可不交，不可错交。这条公理在商业上很反直觉——它直接牺牲交付速度——但在法律行业，它是唯一正确的排序。<em>律师卖的不是字数，是署名。</em></p>
+  </div>
+  <div class="axiom">
+    <div class="at"><span>公理三</span>L3 不是 L5</div>
+    <p>系统明确定位为 <strong>L3 执业助理级</strong>：辅助驾驶，方向盘后必须有人。它产出的是"经质检的草案 + 推演"，不是"结论"。拍板、出庭、对客户担责，永远归人类律师。这条公理不是免责声明，而是<strong>能力边界的诚实标注</strong>——一个不声明自己边界的系统，本质上是在转嫁风险给使用者。</p>
+  </div>
+  <div class="axiom">
+    <div class="at"><span>公理四</span>可扫描优先于可描述</div>
+    <p>系统里所有指标分两类，且<strong>严格区分标注</strong>：</p>
+    <div class="tw"><table>
+      <thead><tr><th>类型</th><th>获取方式</th><th>例子</th></tr></thead>
+      <tbody>
+        <tr><td><strong>实时扫描值</strong></td><td>脚本定时遍历真实文件系统统计，刷新即变</td><td>文档数、卡片数、规则库文件数、断链率</td></tr>
+        <tr><td><strong>人工核验值</strong></td><td>需人工实地核验后写入，脚本不得伪造</td><td>连接器连通性、质检回归结果、成熟度定级</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>铁律：能扫描绝不写死，扫不出就标注"人工核验"，绝不假装知道。</strong></p>
+    <p>这条公理带来一个反常识的界面设计：驾驶舱上同时显示<strong>铭牌值与实测值</strong>，两者不一致时<strong>不覆盖、不取舍，而是把口径差异摊开显示</strong>。因为口径差异本身就是最重要的一类信息——它告诉你系统哪里在自欺。</p>
+  </div>
+</section>
+
+<!-- 三 -->
+<section id="s3">
+  <h2><span class="num">CHAPTER 03</span>六大总成总览</h2>
+  <p>整车由六大总成构成，对应一条完整的能量链路：</p>
+  <div class="flow">
+    <div class="n">充能<small>充电桩</small></div><span class="ar">→</span>
+    <div class="n">存能<small>三电</small></div><span class="ar">→</span>
+    <div class="n">用能<small>召回 / 推演</small></div><span class="ar">→</span>
+    <div class="n">交互<small>座舱</small></div><span class="ar">→</span>
+    <div class="n">自检<small>健康度</small></div><span class="ar">→</span>
+    <div class="n">进化<small>黑匣子 + OTA</small></div>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>总成</th><th>车辆对应</th><th>系统实现</th><th>核心命题</th></tr></thead>
+    <tbody>
+      <tr><td>一</td><td>🔋 <strong>三电系统</strong></td><td>电池 / 电机 / 电控 / 动能回收</td><td>知识飞轮 + SR 召回引擎 + 质检门禁（G2 独立进程）+ 经验沉淀</td><td>能量的存、放、控、收</td></tr>
+      <tr><td>二</td><td>🔌 <strong>补能网络</strong></td><td>充电桩</td><td>权威法律数据源连接器集群（含离线快照降级）</td><td>能量从哪来、断了怎么办</td></tr>
+      <tr><td>三</td><td>🧠 <strong>智驾系统</strong></td><td>域控芯片 + 激光雷达</td><td>决策思维系统 + 跨案模式识别 + 推理层 M1（流式 / 计费 G4）</td><td>谁在判断、凭什么判断</td></tr>
+      <tr><td>四</td><td>🖥️ <strong>座舱与影子模式</strong></td><td>车机 + 数字孪生演练</td><td>人格配置 + 模拟法庭红蓝对抗 + 助理协同分域 + 跨机交接</td><td>人机界面与碰撞预演</td></tr>
+      <tr><td>五</td><td>📊 <strong>健康度自检</strong></td><td>仪表盘 + 故障码 + 保养表</td><td>指标体系 + DTC 故障码 + 9655 运维驾驶舱</td><td>怎么知道车还健康</td></tr>
+      <tr><td>六</td><td>📦 <strong>黑匣子与 OTA</strong></td><td>EDR 行车记录 + 远程升级</td><td>决策日志 + 自动化编排 + 私有化部署手册（溯源主区）</td><td>留痕定责与持续进化</td></tr>
+    </tbody>
+  </table></div>
+  <blockquote>
+    <span class="qh">设计说明</span>
+    六大总成不是六个软件模块，而是<strong>六个工程问题的答案</strong>。每一总成都自带"失效长什么样"的定义——这是电车隐喻区别于一般架构图的地方：<strong>架构图只画成功路径，电车手册必须写故障码。</strong>
+  </blockquote>
+</section>
+
+<!-- 造车 · 私有化部署路径 -->
+<section id="smfg">
+  <h2><span class="num">CHAPTER 03.5</span>造车 · 私有化部署路径（单机密文版）</h2>
+  <blockquote class="qb"><span class="qh">本章讲"造"</span>单机密文版的交付物是一台<strong>只停在你自己车库、钥匙只在你手里</strong>的车。下面四层底盘 + 五道工序，是把它从 0 造出来的工程步骤。</blockquote>
+  <h3>四层架构（造车的底盘）</h3>
+  <div class="tw"><table>
+    <thead><tr><th>层</th><th>内容</th><th>部署位置</th><th>能否出网</th></tr></thead>
+    <tbody>
+      <tr><td><strong>推理层 M1</strong></td><td>大模型 API / 本地 Ollama</td><td>客户自选（API 或本机 GPU）</td><td>可外联（可关闭，默认 airgap 友好）</td></tr>
+      <tr><td><strong>L0 内核层</strong></td><td>骨架、协议、门禁规则</td><td>本机</td><td>否</td></tr>
+      <tr><td><strong>L1 人格层</strong></td><td>律师画像实例、self.md</td><td>本机 + <strong>AES-256 加密</strong></td><td><strong>绝否</strong></td></tr>
+      <tr><td><strong>L2 数据层</strong></td><td>知识库、案卷、法规库、检索索引</td><td>本机 + <strong>加密归档</strong></td><td><strong>绝否</strong></td></tr>
+    </tbody>
+  </table></div>
+  <h3>造车的五道工序</h3>
+  <div class="step"><div class="sn">1</div><div class="sc"><h5>实例化空目录</h5><div class="sm">bootstrap --apply</div><p>生成 README + 方案 + 启动包（活文档格式，一步一操作）。</p></div></div>
+  <div class="step"><div class="sn">2</div><div class="sc"><h5>L1 / L2 加密封装</h5><div class="sm">密钥入钥匙串</div><p>把人格层与数据层打成加密归档，密钥存钥匙串，<strong>不在对话 / 日志打印明文</strong>。</p></div></div>
+  <div class="step"><div class="sn">3</div><div class="sc"><h5>门禁独立常驻（G2）</h5><div class="sm">守护进程 + 保活</div><p>独立守护进程 + 保活机制，门禁跨会话不死。</p></div></div>
+  <div class="step"><div class="sn">4</div><div class="sc"><h5>本地检索落地（G3）</h5><div class="sm">索引 + 密文闭环</div><p>建多源语料索引 → 加密归档（检索 + 密文闭环），断网也能检索。</p></div></div>
+  <div class="step"><div class="sn">5</div><div class="sc"><h5>推理可观测（G4）</h5><div class="sm">流式 + 计费</div><p>M1 流式输出 + 成本记账，出文前能看到"这脚电门花了多少"。</p></div></div>
+  <blockquote>
+    <span class="qh">出厂改装档案（溯源）</span>
+    每一次"造车"改动都记入《私有化部署手册（单机密文版 · 活文档）》的决策日志。相当于这辆车的<strong>改装履历</strong>——哪天加了什么、为什么加、动了哪些文件，翻一眼就溯源清楚。
+  </blockquote>
+</section>
+
+<!-- 模块一 -->
+<section id="s4">
+  <h2><span class="num">MODULE 01</span>🔋 三电系统：能量的存、放、控、收</h2>
+  <blockquote class="qb"><span class="qh">本模块命题</span>知识怎么存下来、怎么调出来、怎么保证它不出错、怎么越用越多。</blockquote>
+  <h3>1.1 动力电池包 = 知识飞轮</h3>
+  <p><strong>车上是什么</strong>：整车能量的唯一来源。容量决定续航，健康度决定寿命。<br>
+  <strong>系统里是什么</strong>：分层组织的法律知识资产库。当前实测基线：</p>
+  <div class="tw"><table>
+    <thead><tr><th>指标</th><th>实测值</th></tr></thead>
+    <tbody>
+      <tr><td>知识文档总量</td><td><strong>3,000+</strong> 篇（六层结构）</td></tr>
+      <tr><td>经验卡</td><td><strong>205</strong> 张</td></tr>
+      <tr><td>裁判规则库</td><td><strong>816</strong> 个文件 / <strong>785</strong> 张规范命名卡 / <strong>26</strong> 个子库</td></tr>
+      <tr><td>已归档案件</td><td><strong>15</strong> 宗</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>它解决的真问题</strong>：律师的知识库最大的敌人不是"没存"，而是<strong>存的都是不能直接用的原料</strong>。一篇裁判文书原文，和一条"可被引用的裁判规则"，是两种东西。飞轮的价值不在于装了多少，而在于<em>完成了从原料到规则的炼制</em>。</p>
+  <p><strong>单机密文版新增项</strong>：电池包（L2 数据层）<strong>在本机 AES-256 加密</strong>，密钥存 macOS 钥匙串，<strong>绝不离开律师电脑</strong>。私有化部署的本质不是"把模型搬到本地"，而是把 L1 人格层与 L2 数据层锁死在本机、把推理层做成可插拔。</p>
+  <p><strong>失效模式</strong>：容量虚胖。文档数增长而规则卡不增长 = 电池鼓包，需触发资产审计而非继续采集。</p>
+  <div class="limit">
+    <span class="x">✕</span>
+    <div><div class="lt">红线：严禁凭记忆灌入法条正文</div>
+    <p>实测数据显示，凭记忆引述法条的错引率约 <strong>22%</strong>，在特定部门法领域高达 <strong>75%</strong>。一条记错的法条混进知识库，会像坏电芯一样污染整包——而且极难反向定位。</p></div>
+  </div>
+  <h3>1.2 驱动电机 = 规则召回引擎</h3>
+  <p><strong>车上是什么</strong>：把电池里的电转成车轮的驱动力。<br>
+  <strong>系统里是什么</strong>：新案件进来时，从规则库中语义匹配相关规则卡并输出建议的召回层。单机密文版下，召回引擎为<strong>本地检索（G3）</strong>：向量索引 + 中文全文混合检索（RRF 融合），离线哈希嵌入（可插拔真 SBERT），<strong>断网也能检索</strong>。</p>
+  <p><strong>它解决的真问题</strong>：知识库"存了但想不起来"的本质，是<strong>从存储到调用之间没有马达</strong>。召回引擎就是这台马达——它把静态资产转成办案时的即时驱动力。</p>
+  <h3>1.3 电控 + BMS = 质检门禁（LTI，G2 独立进程化）</h3>
+  <p><strong>车上是什么</strong>：电池管理系统。防过充、过放、热失控。它的存在不是为了跑得快，是为了<em>不起火</em>。<br>
+  <strong>系统里是什么</strong>：文本质检监控器。五维校验（法条真实性 / 法理逻辑 / 一致性 / 可溯源 / 程序合规）+ 案例存在性核验。当前实测：<strong>回归测试 131/131 全通过，六维逻辑门禁生效</strong>。</p>
+  <p><strong>单机密文版新增项（G2）</strong>：门禁剥离为独立常驻守护进程（不依赖单一运行时），配保活机制。意义在于——哪怕推理层、座舱都停了，门禁这道 BMS 仍然在岗，<strong>REJECT ≠ 0 永远不许出门</strong>。</p>
+  <p><strong>设计决策</strong>：质检门禁<strong>常驻在交付路径上，不可跳过</strong>。系统甚至规定：被质检拦截<strong>不算故障，是安全机制生效</strong>——因此故障码体系里，质检拦截码<strong>永不点亮</strong>。</p>
+  <p><strong>降级哲学</strong>：当外部核验接口不可用时，系统不是停工等待，而是<strong>降级到替代核验路径 + 官方渠道交叉印证，同时明确标注降级状态</strong>。不中断流程，但绝不假装没降级。</p>
+  <h3>1.4 动能回收系统 = 经验沉淀（HIR）</h3>
+  <p><strong>车上是什么</strong>：把刹车时的动能回收进电池。刹车不再是纯损耗，而是充电。<br>
+  <strong>系统里是什么</strong>：把每一次对抗、拦截、事故，回流成新的经验卡与规则。当前实测：<strong>36 份沉淀调用记录</strong>。</p>
+  <p><strong>它解决的真问题</strong>：大多数知识系统会在两年后失去价值，因为它们只有"采集"没有"回收"。动能回收让<strong>犯错变成资产</strong>——被质检拦下一次，系统就多一条以后不再犯的规则。</p>
+  <blockquote><span class="qh">复利效应的来源</span>开得越多，电量越多；犯的错越多，下次越少犯错。</blockquote>
+</section>
+
+<!-- 模块二 -->
+<section id="s5">
+  <h2><span class="num">MODULE 02</span>🔌 补能网络：能量从哪来</h2>
+  <blockquote class="qb"><span class="qh">本模块命题</span>权威数据从哪进系统，断供时如何优雅降级。</blockquote>
+  <p><strong>车上是什么</strong>：充电桩。车再好，桩断了就是废铁。<br>
+  <strong>系统里是什么</strong>：外部权威法律数据源的连接器集群——法条核验、判例检索、机构业务数据、知识库摄入、报告投递。</p>
+  <p><strong>当前状态</strong>：6 个桩位全部实测连通（<strong>6/6 达标</strong>）。</p>
+  <p><strong>单机密文版关键设计 · 离线降级</strong>：单机密文版默认面向"数据不出本机"场景，因此补能网络内置<strong>本地法规库快照</strong>兜底——断网时返回 <code>待回源核填</code> 状态而非编造条文。<strong>宁可标 pending，也绝不让模型凭记忆编法条。</strong> 这是红线。</p>
+  <p><strong>它解决的真问题</strong>：律师最怕的不是"AI 说得不对"，是<strong>"AI 说得像对，但你没法验证"</strong>。补能网络的本质不是接入更多数据，而是<em>接入可被追责的权威源</em>。</p>
+  <p><strong>设计权衡：多源而非单源，且允许此消彼长。</strong> 系统同时接入多个权威源，并保持"法条源"与"案例源"的分离冗余。</p>
+  <div class="limit">
+    <span class="x">✕</span>
+    <div><div class="lt">关键设计：不代点原则</div>
+    <p>部分连接器的重连需要人工授权操作。系统<strong>明确不代为执行</strong>，只负责诊断与提示。这条看似"不够智能"的规则，实则是把控制权留在人手里：<strong>自动化可以做一切，除了替人类做授权决策。</strong></p></div>
+  </div>
+</section>
+
+<!-- 模块三 -->
+<section id="s6">
+  <h2><span class="num">MODULE 03</span>🧠 智驾系统：谁在判断</h2>
+  <blockquote class="qb"><span class="qh">本模块命题</span>系统靠什么形成判断，以及它如何越来越像它的主人。</blockquote>
+  <h3>3.1 智驾域控芯片 = 决策思维系统</h3>
+  <p><strong>车上是什么</strong>：融合感知、规划、决策的核心算力单元。<br>
+  <strong>系统里是什么</strong>：决策捕获 + 思维蒸馏 + 决策日志 + 核心权重文件（HOW-I-THINK）。</p>
+  <p><strong>它解决的真问题</strong>：绝大多数 AI 助手"不像你"，是因为它只学了你的<strong>输出</strong>，没学你的<strong>取舍</strong>。决策卡强制三行结构——<em>考虑了哪些选项 / 为什么排除其他 / 什么信号会推翻它</em>——记录的是推理过程而非结论。</p>
+  <blockquote><span class="qh">关键架构选择</span>存结论，系统只能模仿你的答案；<strong>存推理，系统才能模仿你的判断</strong>。</blockquote>
+  <h3>3.2 激光雷达 / 环境感知 = 跨案模式识别 + 推理层 M1（G4 流式 / 计费）</h3>
+  <p><strong>车上是什么</strong>：看见路况的眼睛，以及决定踩多深的电门。<br>
+  <strong>系统里是什么</strong>：识别跨案件相似模式、预警同类风险的模块；以及可插拔的推理适配层 M1——已交付<strong>流式输出与成本记账</strong>，让每一次推理可观测、可计量、可降级。</p>
+  <p><strong>它解决的真问题</strong>：律师的经验优势，很大程度体现在"这个案子我见过类似的"。模式识别模块把它变成<em>新案接入时的强制第一步</em>。而 M1 的流式和计费，则让"开车"有了油表——你随时知道这脚电门花了多少、该不该收。</p>
+  <p><strong>设计决策</strong>：固化进接案 SOP 第一环——新案接入、庭审准备、文书起草前主动调用。</p>
+</section>
+
+<!-- 模块四 -->
+<section id="s7">
+  <h2><span class="num">MODULE 04</span>🖥️ 座舱与影子模式：人机界面与碰撞预演</h2>
+  <blockquote class="qb"><span class="qh">本模块命题</span>人怎么跟系统相处，系统怎么在"真上路"前先撞一次，以及律师和助理怎么同车。</blockquote>
+  <h3>4.1 智能座舱 = 人格配置</h3>
+  <p><strong>车上是什么</strong>：方向盘、仪表、语音交互——定义"这辆车怎么跟你说话"。<br>
+  <strong>系统里是什么</strong>：分身的人格配置文件，定义"我是谁 / 什么风格 / 边界在哪"。单机密文版下，人格层（L1）同样<strong>本机加密</strong>，密钥存钥匙串。</p>
+  <p><strong>它解决的真问题</strong>：通用 AI 的输出风格是平均值，是"谁都不像的律师"。人格配置把执业者的<em>专业背景、复合视角、论证框架</em>固化进系统，让输出带上个人印记。</p>
+  <h3>4.2 影子模式 / 碰撞预演 = 模拟法庭</h3>
+  <p><strong>车上是什么</strong>：真上路前，先在数字孪生里跑一遍，看会不会撞。<br>
+  <strong>系统里是什么</strong>：红蓝对抗庭审推演——一支队伍构建论证，另一支队伍专职攻击它。</p>
+  <p><strong>设计精髓：攻击方不是评委，是敌人。</strong> 蓝队负责把论证建到最完整，红队负责用最残酷的方式找漏洞。这不是"复核"，是<strong>预驳回攻击</strong>——假定自己会被驳回，倒推哪里会先崩。</p>
+  <h3>4.3 同车协议 = 律师—助理协同（单机密文版新增）</h3>
+  <p><strong>车上是什么</strong>：一辆车，司机只有一个，但副驾可以帮看导航、帮加油、帮记录。<br>
+  <strong>系统里是什么</strong>：单机密文版本质 = 单所有者 + 单机 + L1/L2 本机加密 + 本地门禁；协同做成<strong>「律师独占加密内核 + 角色分域监督式覆盖层」</strong>——助理 / 实习只在律师授权、可审计的边界内贡献（数据共享 + 工作量追踪台账）。真多租户 / RBAC 不在本形态范围内，本形态不做。</p>
+  <p><strong>跨机交接（单机密文版新增）</strong>：助理在自己电脑跑完的文件，以<strong>角色密钥端到端加密</strong>打包，传输通道（USB / 微信 / 邮件 / 微云）无需保密；律师收到后解密进待审区 + 跑门禁 + 记台账。信任边界 =（加密交接文件）+（律师单机）。</p>
+</section>
+
+<!-- 模块五 -->
+<section id="s8">
+  <h2><span class="num">MODULE 05</span>📊 健康度自检：怎么知道车还健康</h2>
+  <blockquote class="qb"><span class="qh">本模块命题</span>系统现在还好吗，以及它坏的时候会怎么告诉你。</blockquote>
+  <h3>5.1 仪表的诚实边界</h3>
+  <p>系统公开区分两类指标，并且<strong>明确承认其中一类的局限</strong>：</p>
+  <blockquote><span class="qh">体量 ≠ 质量</span>健康度仪表盘显示的是"你有多少资产"，不是"这些资产有多好用"。质量要看召回命中率、质检回归通过率、思维文件填充度。<br><br><strong>这种自我限定的声明，是整套系统最值得被复制的设计之一。一个只报告好消息的仪表盘，比没有仪表盘更危险。</strong></blockquote>
+  <h3>5.2 故障码（DTC）体系</h3>
+  <p>借鉴汽车 OBD 标准，为每类失效定义唯一故障码。完整清单见<a href="#a1" style="color:var(--acc);text-decoration:none"><strong>附录 A</strong></a>。</p>
+  <p><strong>关键设计</strong>：故障码只定义"含义"，<strong>不写死"当前是否触发"</strong>。是否点亮由实时状态判定。手册新增但尚未映射的故障码，一律标注"未判定"，<em>不假装正常</em>。</p>
+  <h3>5.3 9655 运维驾驶舱（单机密文版新增）</h3>
+  <p>单机密文版配有一块<strong>实扫运维驾驶舱（9655）</strong>：门户聚合多屏——版本锁回填、架构健康度、安全合规度、门禁运行度、缺口闭环度。数据走实源：扫本地知识目录 + 解析版本锁 + 探门禁进程，<strong>不靠记忆、不编指标</strong>。</p>
+  <p><strong>它解决的真问题</strong>：律师没空每天手敲诊断命令。驾驶舱把"车还健不健康"变成一眼可见的仪表，并把"门禁是否在岗"这种最容易虚报的状态，做成<strong>真实探活</strong>而非残留文件判断。</p>
+  <h3>5.4 保养周期</h3>
+  <div class="tw"><table>
+    <thead><tr><th>周期</th><th>保养项</th></tr></thead>
+    <tbody>
+      <tr><td><strong>每日</strong></td><td>查收摄入报告；出文必过质检门禁；连接器健康守卫；看一眼 9655 驾驶舱</td></tr>
+      <tr><td><strong>每案</strong></td><td>入案先跨案识别 → 出文红蓝对抗 + 质检 + 门禁 → 结案经验回填 → 决策卡建档</td></tr>
+      <tr><td><strong>每周</strong></td><td>自检改进 + 链接刷新；周报复盘</td></tr>
+      <tr><td><strong>每月</strong></td><td>知识复利报告 + 案件蒸馏 + 规则对账 + 决策月报 + 连接器保活巡检</td></tr>
+      <tr><td><strong>每季/年</strong></td><td>资产断链审计（门禁 0.5%）；案件库双轨索引校准；外部接口可用性复盘</td></tr>
+    </tbody>
+  </table></div>
+  <p>完整版见<a href="#a2" style="color:var(--acc);text-decoration:none"><strong>附录 B</strong></a>。</p>
+</section>
+
+<!-- 模块六 -->
+<section id="s9">
+  <h2><span class="num">MODULE 06</span>📦 黑匣子与 OTA：留痕与进化</h2>
+  <blockquote class="qb"><span class="qh">本模块命题</span>出事怎么定责，以及系统怎么在不拆车的情况下变强。</blockquote>
+  <h3>6.1 黑匣子 / EDR = 决策日志</h3>
+  <p><strong>车上是什么</strong>：全程记录行车数据，事故后可回溯定责。<br>
+  <strong>系统里是什么</strong>：决策日志 + 系统运行日志。</p>
+  <p><strong>它解决的真问题</strong>：法律行业的每一次输出都可能被追溯。当客户或法庭问"这个结论是怎么来的"，你需要的不只是答案，是<em>推理链的存档</em>。黑匣子让系统的每个判断都可回放。</p>
+  <h3>6.2 车规纪律 = 行为规则文件（六-B 铁律）</h3>
+  <p><strong>车上是什么</strong>：车规级强制标准。<br>
+  <strong>系统里是什么</strong>：AI 行为规则文件，规定所有自动化必须"真跑 + 留痕"，<em>禁止摆设式自动化</em>。</p>
+  <p><strong>核心条款（六-B 铁律）</strong>：所有写入型自动化必须包含——<strong>先排查 / 确认非误报 / 再批量修改 / 含安全扫描 + 预演（dry-run）+ 备份</strong>。</p>
+  <p>这条铁律源自一次真实教训：自动化脚本在无人确认的情况下批量改写知识资产，代价是长时间的回滚。<strong>它后来被扩展到全部写入型自动化，无例外。</strong></p>
+  <h3>6.3 OTA 远程升级 = 自动化编排 + 私有化部署手册</h3>
+  <p>系统常驻 10 项自动化任务，覆盖每日摄入 / 每 4 小时仪表刷新 / 每周自检 / 每月复利报告 / 常驻安全校验。</p>
+  <p><strong>单机密文版新增 · 溯源主区</strong>：本形态的每一次部署决策、流程变更、版本升级、门禁调整、踩坑修复，统一归集进<strong>《私有化部署手册（单机密文版 · 活文档）》的决策日志</strong>——带「日期 / 摘要 / 依据 / 影响文件 / 操作人」五字段，刷新文首更新时间。这是单机密文版<strong>唯一的决策溯源主区</strong>，相当于车辆的"出厂改装档案"。</p>
+</section>
+
+<!-- 四 整车协同 -->
+<section id="s10">
+  <h2><span class="num">CHAPTER 04</span>整车协同：一个案子跑完全程</h2>
+  <p>六大模块分开看是架构图，串起来才是一台车。以下是一个案件从进门到结案的完整流转：</p>
+  <div class="step"><div class="sn">1</div><div class="sc"><h5>接案</h5><div class="sm">感知雷达 + 充电桩</div><p>跨案模式识别先扫历史相似案件；同步核验外部权威源连通性。</p></div></div>
+  <div class="step"><div class="sn">2</div><div class="sc"><h5>法律检索</h5><div class="sm">补能网络 + 电池</div><p>从权威源取回法条与判例原文（禁止凭记忆）；与本地规则库交叉比对。</p></div></div>
+  <div class="step"><div class="sn">3</div><div class="sc"><h5>文书起草</h5><div class="sm">座舱人格 + 电机召回</div><p>以执业者人格生成初稿；规则引擎召回相关裁判规则注入论证。</p></div></div>
+  <div class="step"><div class="sn">4</div><div class="sc"><h5>红蓝对抗</h5><div class="sm">影子模式</div><p>蓝队补全论证，红队预驳回攻击，多轮迭代。</p></div></div>
+  <div class="step"><div class="sn">5</div><div class="sc"><h5>质检放行</h5><div class="sm">电控 BMS（G2 守护）</div><p>五维校验 + 案例存在性核验；<strong>REJECT = 0 才准交付</strong>。</p></div></div>
+  <div class="step"><div class="sn">6</div><div class="sc"><h5>出庭准备</h5><div class="sm">影子模式 + 感知</div><p>模拟庭审预演，暴露庭上可能的突袭点。</p></div></div>
+  <div class="step"><div class="sn">7</div><div class="sc"><h5>结案回填</h5><div class="sm">动能回收 + 黑匣子</div><p>经验沉淀成卡；决策日志存档复盘模板。</p></div></div>
+  <div class="step"><div class="sn">8</div><div class="sc"><h5>周期进化</h5><div class="sm">OTA + 域控</div><p>月度蒸馏进核心权重文件；自动化持续刷新仪表。</p></div></div>
+  <div class="step"><div class="sn">9</div><div class="sc"><h5>协同 / 交接</h5><div class="sm">座舱同车协议</div><p>助理贡献经加密交接进待审区 + 门禁 + 台账；律师单机留痕。</p></div></div>
+  <blockquote><span class="qh">这段流程真正的价值</span>不在于"AI 代劳了多少"，而在于<strong>每一环都有拦截、有留痕、有回流</strong>。任何一环失效，都会被下一环或仪表捕获——<strong>这才是"车"与"一堆工具"的区别。</strong></blockquote>
+</section>
+
+<!-- 五 边界 -->
+<section id="s11">
+  <h2><span class="num">CHAPTER 05</span>边界：这辆车不做什么</h2>
+  <p><strong>一份不写边界的架构白皮书，本质上是广告。</strong></p>
+  <p>以下是本系统<strong>明确声明不做、且在结构上无法代劳</strong>的事项：</p>
+  <div class="limit"><span class="x">✕</span><div><div class="lt">独立法律判断</div><p>判断意味着价值权衡与后果承担，两者都需要主体资格。</p></div></div>
+  <div class="limit"><span class="x">✕</span><div><div class="lt">庭审临场应变</div><p>法庭是高压实时博弈，容错窗口以秒计，且错误不可逆。</p></div></div>
+  <div class="limit"><span class="x">✕</span><div><div class="lt">对客户最终担责</div><p>责任的对称性：签字的人必须是能负责的人。</p></div></div>
+  <div class="limit"><span class="x">✕</span><div><div class="lt">代替人工授权操作</div><p>授权行为具有法律意义，自动化不得代为行使。</p></div></div>
+  <div class="limit"><span class="x">✕</span><div><div class="lt">绕过质检门禁交付</div><p>速度永远不优先于署名信誉。</p></div></div>
+  <div class="limit"><span class="x">✕</span><div><div class="lt">把 L1 / L2 数据送出本机</div><p>单机密文版的核心承诺：人格层与数据层永不外传、绝不云同步。</p></div></div>
+  <blockquote><span class="qh">关于"天花板"的态度</span>这六项不是"当前做不到，以后努力"，而是<strong>设计上就不应该做到</strong>。把 L3 的系统宣传成 L5，受益的是营销，受损的是使用者与他的客户。<br><br><strong>反直觉的竞争力判断</strong>：在法律行业，<em>诚实声明边界，本身就是一种专业能力</em>。因为客户真正购买的，从来不是"AI 能做什么"，而是"有人清楚地知道 AI 不能做什么，并且为此建了闸门"。</blockquote>
+</section>
+
+<!-- 六 可复制性 -->
+<section id="s12">
+  <h2><span class="num">CHAPTER 06</span>可复制性：最小起步路径</h2>
+  <p>这套系统由一名实习律师个人搭建并维护，没有工程团队，没有专门预算。<strong>它的可复制性高于它的复杂度。</strong></p>
+  <h3>三档起步建议（单机密文版视角）</h3>
+  <div class="tier">
+    <div class="tt">档一 · 单车（私有部署）</div><div class="tw2">适用：独立执业律师</div>
+    <ol><li>先建质检门禁（哪怕只有几条规则）</li><li>建经验卡（每案一张）</li><li>接一个权威法源</li><li>把人格层与数据层本机加密</li></ol>
+  </div>
+  <div class="tier">
+    <div class="tt">档二 · 副驾（协同）</div><div class="tw2">适用：律师 + 助理 / 实习</div>
+    <ol><li>统一规则库编号规范</li><li>红蓝对抗制度化（出文必过）</li><li>结案强制回填</li><li>用跨机交接做助理贡献回流</li></ol>
+  </div>
+  <div class="tier">
+    <div class="tt">档三 · 车队（内网）</div><div class="tw2">适用：机构 / 大所</div>
+    <ol><li>决策日志与复盘模板</li><li>自动化保养编排</li><li>断链率与召回率纳入考核</li></ol>
+  </div>
+  <h3>三条踩过的坑</h3>
+  <ol>
+    <li><strong>不要先建库，先建闸门。</strong>没有质检的知识库，规模越大风险越高。我们最初的投入顺序是错的，返工代价很高。</li>
+    <li><strong>不要让采集快于炼制。</strong>采集是线性成本，炼制是能力壁垒。只采不炼，两年后你会得到一个 3,000 篇的电子垃圾场。</li>
+    <li><strong>不要让自动化脱离"真跑 + 留痕"。</strong>一个你不检查它是否真的执行了的自动化，比没有自动化更危险——<em>它会让你误以为事情已经做了</em>。</li>
+  </ol>
+  <h3>一句话运维口诀</h3>
+  <blockquote><span class="qh">KEEP IT RUNNING</span>三电保健康（飞轮充能 / 质检防冒烟 / 经验回收），充电桩别断（权威源优先重连），智驾勤标定（决策卡累积 + 月报），出门必过机检（REJECT = 0），<strong>方向盘后必须有人</strong>。</blockquote>
+</section>
+
+<!-- 附录 A -->
+<section id="a1">
+  <h2><span class="num">APPENDIX A</span>故障码速查（DTC）</h2>
+  <p>本表只定义故障码"含义"，<strong>不写死当前是否触发</strong>。是否点亮由实时状态判定；未被脚本映射的码标"未判定"，不假装正常。</p>
+  <div class="tw"><table>
+    <thead><tr><th>故障码</th><th>现象</th><th>根因</th><th>处置</th></tr></thead>
+    <tbody>
+      <tr><td><code>DTC-KB-001</code></td><td>知识摄入降级 / 多库不吃新料</td><td>知识库连接器断开</td><td>人工重新授权连接</td></tr>
+      <tr><td><code>DTC-CASE-002</code></td><td>类案语义检索降级</td><td>案例库连接器断开</td><td>重连；同时改指多源，避免单点硬依赖</td></tr>
+      <tr><td><code>DTC-HALL-403</code></td><td>外部案例核验接口不可用</td><td>接口不在当前开放集</td><td>降级到替代检索路径 + 官方渠道交叉印证，不中断流程</td></tr>
+      <tr><td><code>DTC-LTI-REJECT</code></td><td>出文被质检拦截</td><td>法条 / 案例未过机检</td><td><strong>正常安全机制，非故障</strong>；回填权威源后重跑，严禁绕过</td></tr>
+      <tr><td><code>DTC-CASE-001</code></td><td>检索漏案</td><td>案件库双轨索引错位</td><td>双向索引校准（不合并双轨）</td></tr>
+      <tr><td><code>DTC-DISTILL-003</code></td><td>分身不像本人</td><td>决策样本不足（&lt; 10）</td><td>持续累积决策卡；跑决策月报</td></tr>
+      <tr><td><code>DTC-GATE-DOWN</code></td><td>门禁守护进程未在岗</td><td>守护进程跨会话死亡</td><td>清死 sock → 按保活重启 → 发 ping 验证 PONG</td></tr>
+      <tr><td><code>DTC-HANDOFF-FAIL</code></td><td>跨机交接解密失败</td><td>角色密钥不一致 / 包损坏</td><td>核对加密参数；重新生成角色密钥</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 附录 B -->
+<section id="a2">
+  <h2><span class="num">APPENDIX B</span>保养周期表（完整版）</h2>
+  <div class="tw"><table>
+    <thead><tr><th>周期</th><th>保养项</th><th>责任方</th></tr></thead>
+    <tbody>
+      <tr><td><strong>每日</strong></td><td>查收摄入报告；出文必过质检门禁（REJECT = 0 才交付）；连接器健康守卫；看 9655 驾驶舱</td><td>自动化 + 律师确认</td></tr>
+      <tr><td><strong>每案</strong></td><td>① 入案先跨案识别 ② 出文红蓝对抗 + 质检 + 门禁 ③ 结案经验回填 ④ 决策卡建档 + 复盘模板预置</td><td>律师 + 系统</td></tr>
+      <tr><td><strong>每周</strong></td><td>自检改进 + 链接刷新；周报复盘</td><td>自动化</td></tr>
+      <tr><td><strong>每月</strong></td><td>知识复利报告 + 案件蒸馏 + 规则对账；决策月报；连接器保活巡检</td><td>自动化 + 律师</td></tr>
+      <tr><td><strong>每季/年</strong></td><td>资产断链审计（门禁 0.5%）；案件库双轨双向索引校准；外部接口可用性复盘</td><td>律师 + 系统</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 附录 C -->
+<section id="a3">
+  <h2><span class="num">APPENDIX C</span>术语对照表（车 × 系统 × 单机密文版新增）</h2>
+  <div class="tw"><table>
+    <thead><tr><th>车辆部件</th><th>系统实现</th><th>单机密文版新增</th></tr></thead>
+    <tbody>
+      <tr><td>动力电池包</td><td>知识飞轮（六层结构）</td><td>L2 本机 AES-256 加密归档</td></tr>
+      <tr><td>驱动电机</td><td>规则召回引擎</td><td>本地检索（离线可用）</td></tr>
+      <tr><td>电控 + BMS</td><td>文本质检监控器（LTI）</td><td>G2 独立守护进程 + 保活</td></tr>
+      <tr><td>动能回收</td><td>经验沉淀（HIR）</td><td>—</td></tr>
+      <tr><td>充电桩</td><td>权威数据源连接器</td><td>本地法规库快照离线降级</td></tr>
+      <tr><td>智驾域控</td><td>决策思维系统</td><td>—</td></tr>
+      <tr><td>激光雷达</td><td>跨案模式识别</td><td>推理层 M1 流式 / 计费（G4）</td></tr>
+      <tr><td>智能座舱</td><td>分身人格配置</td><td>L1 本机 AES-256 加密</td></tr>
+      <tr><td>影子模式</td><td>模拟法庭红蓝对抗</td><td>—</td></tr>
+      <tr><td>同车协议</td><td>助理协同 + 跨机交接</td><td>角色密钥端到端加密</td></tr>
+      <tr><td>仪表盘</td><td>健康度看板</td><td>9655 运维驾驶舱（实扫）</td></tr>
+      <tr><td>故障码 OBD</td><td>DTC 故障码体系</td><td>增 DTC-GATE-DOWN / DTC-HANDOFF-FAIL</td></tr>
+      <tr><td>黑匣子 EDR</td><td>决策日志</td><td>—</td></tr>
+      <tr><td>车规标准</td><td>AI 行为规则文件（六-B）</td><td>—</td></tr>
+      <tr><td>OTA 升级</td><td>自动化编排</td><td>私有化部署手册决策日志（溯源主区）</td></tr>
+      <tr><td><strong>驾驶员</strong></td><td><strong>执业律师本人</strong></td><td><strong>副驾 = 助理（授权 / 可审计边界内）</strong></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 附录 D -->
+<section id="a4">
+  <h2><span class="num">APPENDIX D</span>整车铭牌（实测参数）</h2>
+  <p>数据为系统实时扫描值与人工核验值的混合快照，采集于本白皮书发布时点。<strong>扫描值会随系统运行而变动，人工核验值需周期性复检。</strong></p>
+  <div class="tw"><table>
+    <thead><tr><th>项目</th><th>参数</th></tr></thead>
+    <tbody>
+      <tr><td>车型</td><td>律师数字分身系统 EV（单机密文版 · 形态 A）</td></tr>
+      <tr><td>自动驾驶级别</td><td><strong>L3 执业助理级</strong>（辅助驾驶，方向盘后必须有人）</td></tr>
+      <tr><td>部署形态</td><td>单机 / 本机加密 / 推理可插拔（默认 airgap 友好）</td></tr>
+      <tr><td>三电版本</td><td>电池：知识飞轮 3,000+ 文档 / 205 经验卡 / 816 规则文件 / 26 子库<br>电机：SR 召回引擎 + 本地检索（G3）<br>电控：质检门禁（G2 独立守护，回归 131/131 通过）</td></tr>
+      <tr><td>整车定级</td><td>放大器 + 保险丝 + 陪练 + 灵魂（四位一体）</td></tr>
+      <tr><td>护城河</td><td>质检闭环 + 红蓝对抗 + 经验复利 + 决策思维 + 本机加密</td></tr>
+      <tr><td>补能完整度</td><td>6/6 桩位连通（含本地快照离线降级）</td></tr>
+      <tr><td>资产断链率</td><td>0.111%（门禁 ≤ 0.5%）</td></tr>
+      <tr><td>运维驾驶舱</td><td>9655 单机实扫驾驶舱（版本锁 / 架构健康 / 安全合规 / 门禁运行 / 缺口闭环）</td></tr>
+      <tr><td>天花板（不可升级）</td><td>独立判断 / 庭审应变 / 客户担责 / 数据出本机</td></tr>
+    </tbody>
+  </table></div>
+  <div class="final">
+    <div class="big">再智能的车<br><span>方向盘后也必须有人</span></div>
+    <p>本系统产出的是"经质检的草案 + 推演"，拍板与出庭永远归执业律师本人；<br>L1 人格层与 L2 数据层，永远只停在你自己的车库里。</p>
+  </div>
+</section>
+
+</main>
+</div>
+<footer>
+  <div class="fi">
+    <b>关于本文</b>　本文所有量化指标均来自系统实时扫描或人工实地核验。对外发布版本已隐去客户名称、真实案号、当事人姓名、内部系统标识与任何密钥明文；统计量为脱敏后的实测值或架构基线值，未作修饰。<br>
+    <b>版本</b>　v1.1（2026-09-18，对外标准版）　　<b>作者</b>　小强律师 · 实习律师（已通过国家统一法律职业资格考试）· 贵州贵阳　　<b>系统定位</b>　个人可维护的 L3 级、单机密文版律师数字分身系统，非商业产品<br>
+    <span style="color:var(--txt3)">本白皮书描述的是一套工程方法论，含"造"与"驾驶"两端。文中所有设计决策均基于真实运维经验，包括那些走了弯路的——因为可复制的经验，必须包含失败。</span>
+  </div>
+</footer>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#tocLinks a'));
+  var secs  = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function upd(){
+    var y = window.scrollY + 140, idx = 0;
+    for (var i=0;i<secs.length;i++){ if (secs[i] && secs[i].offsetTop <= y) idx = i; }
+    links.forEach(function(a,i){ a.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+  window.addEventListener('resize', upd);
+  upd();
+})();
+</script>
+</body>
+</html>

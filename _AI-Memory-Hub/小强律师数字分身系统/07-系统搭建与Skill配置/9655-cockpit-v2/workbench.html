@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>小强总驾驶舱 · 九屏统一作战地图</title>
+<link rel="icon" href="data:," />
+<style>
+  :root{
+    --bg:#0b0d12; --bg2:#10141c; --panel:#151a24; --panel2:#1b2230;
+    --border:#2a313d; --border2:#363f4d;
+    --text:#e7eaf0; --muted:#9aa3b2; --dim:#aab3c5;
+    --gold:#d4af37; --gold2:#b8932c;
+    --red:#ef5350; --blue:#5b9bff; --purple:#a78bfa; --teal:#2dd4bf;
+    --orange:#f59e0b; --green:#34d399;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 620px at 15% -12%, #1a2030 0%, var(--bg) 58%);
+    color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+    font-size:14px; line-height:1.6; min-height:100vh;
+  }
+  .wrap{max-width:1340px;margin:0 auto;padding:22px 20px 60px}
+
+  header.top{
+    display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;
+    padding:18px 22px;border-radius:16px;
+    background:linear-gradient(135deg,#1b2230 0%,#141922 100%);
+    border:1px solid var(--border2);box-shadow:var(--shadow);
+  }
+  .crest{font-size:30px;line-height:1}
+  .top h1{margin:0;font-size:20px;letter-spacing:1.2px;font-weight:800}
+  .top .sub{color:var(--muted);font-size:12.5px;margin-top:4px}
+  .top .spacer{flex:1}
+  .topright{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .pill{padding:6px 13px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid var(--border2);color:var(--muted)}
+  .pill.gold{background:rgba(212,175,55,.15);color:var(--gold);border-color:var(--gold2)}
+  .pill.teal{background:rgba(45,212,191,.14);color:var(--teal);border-color:#1c7a70}
+  .stamp{color:var(--dim);font-size:11.5px;margin-top:6px}
+
+  .hero{
+    margin-top:18px;padding:22px;border-radius:16px;
+    background:linear-gradient(135deg,#171d29 0%,#12161f 100%);
+    border:1px solid var(--border2);box-shadow:var(--shadow);
+    display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:center;
+  }
+  .gaugeBox{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .gaugeTxt{font-size:13px;color:var(--muted);margin-top:2px;font-weight:700}
+  .gaugeSub{font-size:11.5px;color:var(--dim)}
+  .heroRight .hrow{
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--border);
+  }
+  .heroRight .hrow h2{margin:0;font-size:16.5px;letter-spacing:.5px}
+  .heroRight .hrow .why{color:var(--muted);font-size:12.5px;flex:1;min-width:240px}
+  .dims{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .dim{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:11px 13px}
+  .dim .dt{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .dim .dn{font-size:12.5px;font-weight:700;color:var(--text)}
+  .dim .dv{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}
+  .dim .dd{font-size:11px;color:var(--dim);margin-top:3px;line-height:1.45}
+  .bar{height:6px;border-radius:4px;background:#232a36;overflow:hidden;margin-top:8px}
+  .bar > i{display:block;height:100%;border-radius:4px}
+
+  .secTitle{margin:30px 0 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .secTitle h3{margin:0;font-size:15.5px;letter-spacing:.6px;font-weight:800}
+  .secTitle .line{flex:1;height:1px;background:var(--border);min-width:20px}
+  .secTitle .note{color:var(--dim);font-size:11.5px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:16px}
+  .card{
+    background:linear-gradient(160deg,var(--panel) 0%,#121722 100%);
+    border:1px solid var(--border);border-left:4px solid var(--k,var(--gold));
+    border-radius:14px;padding:16px 17px;box-shadow:0 6px 18px rgba(0,0,0,.28);
+    display:flex;flex-direction:column;gap:12px;transition:.16s;
+  }
+  .card:hover{transform:translateY(-2px);border-color:var(--border2);box-shadow:0 12px 28px rgba(0,0,0,.42)}
+  .cHead{display:flex;align-items:flex-start;gap:11px}
+  .cHead .ico{font-size:22px;line-height:1.1}
+  .cHead .nm{font-size:15px;font-weight:800;letter-spacing:.4px}
+  .cHead .role{font-size:11px;color:var(--dim);margin-top:2px}
+  .cHead .sc{
+    margin-left:auto;text-align:center;flex:none;padding:4px 10px;border-radius:10px;
+    background:rgba(255,255,255,.04);border:1px solid var(--border2);
+  }
+  .cHead .sc .n{font-size:20px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+  .cHead .sc .w{font-size:10px;color:var(--dim);display:block;margin-top:1px}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .kpi{background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:9px;padding:8px 9px;text-align:center}
+  .kpi .v{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+  .kpi .l{font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.35}
+
+  .dimrow{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+  .card.monitor{border-style:dashed;opacity:.94}
+  .card.monitor .dmini i{background:#4b5563 !important}
+  .dimrow .noscore{grid-column:1 / -1;display:flex;align-items:center;justify-content:center;height:44px;
+    border-radius:8px;border:1px dashed var(--line,#2a313d);color:var(--muted);font-size:11.5px;letter-spacing:.4px}
+  .dmini .t{
+    height:54px;border-radius:6px;background:#1e2531;position:relative;overflow:hidden;
+    display:flex;align-items:flex-end;border:1px solid var(--border);
+  }
+  .dmini .t i{display:block;width:100%;border-radius:5px 5px 0 0}
+  .dmini .t span{
+    position:absolute;top:4px;left:0;right:0;text-align:center;font-size:10.5px;font-weight:700;color:#fff;
+    text-shadow:0 1px 3px rgba(0,0,0,.95)
+  }
+  .dmini .k{font-size:9.5px;color:var(--dim);text-align:center;margin-top:4px;letter-spacing:-.2px}
+
+  .flags{display:flex;flex-direction:column;gap:5px;font-size:11.5px}
+  .flag{padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--muted);line-height:1.5}
+  .flag.warn{background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.42);color:#fbd38d}
+  .flag.risk{background:rgba(239,83,80,.10);border-color:rgba(239,83,80,.42);color:#f8b4b2}
+  .flag.ok{background:rgba(52,211,153,.10);border-color:rgba(52,211,153,.36);color:#8ee9c5}
+  .flag b{color:var(--text)}
+
+  .cFoot{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:4px}
+  .go{
+    display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+    padding:8px 15px;border-radius:9px;font-size:12.5px;font-weight:700;
+    border:1px solid var(--k,var(--gold));background:rgba(212,175,55,.12);color:var(--gold);transition:.15s;
+  }
+  .go:hover{background:var(--gold);color:#1a1408}
+  .meta{margin-left:auto;font-size:10.5px;color:var(--dim);text-align:right;line-height:1.5}
+
+  .tblWrap{overflow-x:auto;border:1px solid var(--border);border-radius:13px;background:var(--panel)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:960px}
+  th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--border)}
+  th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+  th{color:var(--muted);font-weight:700;background:#171d29;font-size:11.5px;white-space:nowrap}
+  tbody tr:hover{background:rgba(255,255,255,.035)}
+  td.tot{font-weight:800;color:var(--gold)}
+  tfoot td{font-weight:800;background:#171d29;border-top:2px solid var(--border2)}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+  .method{margin-top:26px;padding:20px 22px;border-radius:14px;background:var(--panel);border:1px solid var(--border)}
+  .method h4{margin:0 0 12px;font-size:14px;letter-spacing:.5px}
+  .method .mrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .mcell{border:1px solid var(--border);border-radius:10px;padding:11px 13px;background:rgba(255,255,255,.025)}
+  .mcell .mn{font-size:12.5px;font-weight:800;color:var(--gold);margin-bottom:4px}
+  .mcell .md{font-size:11.5px;color:var(--muted);line-height:1.6}
+  .mcell .mk{font-size:10.5px;color:var(--dim);margin-top:6px;border-top:1px dashed var(--border);padding-top:6px}
+
+  .warnbar{
+    margin-top:20px;padding:15px 18px;border-radius:12px;
+    background:rgba(239,83,80,.09);border:1px solid rgba(239,83,80,.4);color:#f8b4b2;font-size:12.5px;line-height:1.75;
+  }
+  .warnbar b{color:#ffd4d2}
+  footer{margin-top:24px;color:var(--dim);font-size:11.5px;line-height:1.8;text-align:center}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin:10px 0 0}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr}
+    .dims{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr}
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .dims{grid-template-columns:1fr}
+    .wrap{padding:14px 12px 40px}
+  }
+
+  .cnob{display:inline-block;margin-right:7px;padding:1px 7px;border-radius:6px;font-size:11px;font-weight:800;background:rgba(212,175,55,.14);color:#d4af37;border:1px solid #b8932c;letter-spacing:.5px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="crest">🏛️</div>
+    <div>
+      <h1>小强总驾驶舱 · 九屏统一作战地图</h1>
+      <div class="sub">九大看板关键指标聚合 · 六维评分体系 · 对标 Harvey Command Center</div>
+      <div class="stamp" id="stamp">—</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="topright">
+      <span class="pill gold">👤 席位：律所主任 owner</span>
+      <span class="pill">🖥️ 屏位 C0–C9</span>
+      <span class="pill teal">🔗 外发唯一出口：EV 白皮书</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="gaugeBox">
+      <svg id="gauge" width="210" height="210" viewBox="0 0 210 210" role="img" aria-label="总维度评分"></svg>
+      <div class="gaugeTxt" id="gaugeTxt">—</div>
+      <div class="gaugeSub">C1–C9 九屏战略加权 · 满分 100 · C0 云监控不计分</div>
+    </div>
+    <div class="heroRight">
+      <div class="hrow">
+        <h2>总维度评分（六维加权）</h2>
+        <span class="why" id="headline">—</span>
+      </div>
+      <div class="dims" id="dims"></div>
+      <div class="legend">
+        <span><i style="background:#34d399"></i>≥85 优秀</span>
+        <span><i style="background:#5b9bff"></i>75–84 良好</span>
+        <span><i style="background:#f59e0b"></i>60–74 观察</span>
+        <span><i style="background:#ef5350"></i>&lt;60 风险</span>
+        <span style="color:var(--dim)">※ 屏内六维等权合成屏级分，屏级分按战略权重合成总分</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="secTitle">
+    <h3>🖥️ 九大驾驶舱（C1–C9）+ C0 云监控 · 导航与评分</h3>
+    <div class="line"></div>
+    <div class="note">卡片可直接跳转各屏在线地址（新标签打开）· 分数为 2026-09-12 实源测算</div>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <div class="secTitle">
+    <h3>📊 九屏评分总表</h3>
+    <div class="line"></div>
+    <div class="note">按战略权重降序 · 六维明细横向对比</div>
+  </div>
+  <div class="tblWrap">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>#</th><th>驾驶舱</th><th>战略权重</th>
+          <th>数据新鲜度</th><th>覆盖完备度</th><th>运行健康度</th>
+          <th>产出有效性</th><th>安全合规度</th><th>自动化程度</th>
+          <th>屏级总分</th><th>加权贡献</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+
+  <div class="method">
+    <h4>⚙️ 评分方法论（可复用 · 可复算）</h4>
+    <div class="mrow">
+      <div class="mcell">
+        <div class="mn">① 数据新鲜度 Freshness</div>
+        <div class="md">以各屏数据源更新时间距基准日（2026-09-12）的衰减打分：当日更新满分，每滞后 1 天扣 4 分，滞后超 7 天封顶 60 分。</div>
+        <div class="mk">源：文件 mtime / 内嵌 generated_at / 手工核验时间戳</div>
+      </div>
+      <div class="mcell">
+        <div class="mn">② 覆盖完备度 Coverage</div>
+        <div class="md">该屏应纳管对象是否齐全——案件数、模块数、卡型数、子库数、席位配置等，按实际覆盖率折算。</div>
+        <div class="mk">源：case-state.json / LTI modules / LawKB 实扫</div>
+      </div>
+      <div class="mcell">
+        <div class="mn">③ 运行健康度 Health</div>
+        <div class="md">告警、降级项、失败项、门禁缺口。每条橙警扣 8 分、红警扣 15 分，存在降级运行再扣 5 分。</div>
+        <div class="mk">源：各屏 alerts / gates / focus / incidents</div>
+      </div>
+      <div class="mcell">
+        <div class="mn">④ 产出有效性 Output</div>
+        <div class="md">是否真产出可用结果——拦截次数、决策卡数、推演记录、命中回填率、归因命中，而非仅有界面。</div>
+        <div class="mk">源：REJECT 计数 / 决策卡 / hitFilled / 推演状态</div>
+      </div>
+      <div class="mcell">
+        <div class="mn">⑤ 安全合规度 Compliance</div>
+        <div class="md">脱敏状况、RBAC 可见性、法条真实性校验、LTI 门禁是否通过。含真实案号/当事人却无脱敏版本时重扣。</div>
+        <div class="mk">源：rbac.js sites 配置 / LTI C301–C304 规则</div>
+      </div>
+      <div class="mcell">
+        <div class="mn">⑥ 自动化程度 Automation</div>
+        <div class="md">是否已接入定时刷新 / 自动重发 automation 及其调度频率。每 6 小时覆盖式重发属高分档。</div>
+        <div class="mk">源：automation 注册表 / 各屏刷新脚本</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;font-size:12px;color:var(--muted);line-height:1.85;border-top:1px dashed var(--border);padding-top:12px">
+      <b style="color:var(--gold)">合成公式：</b>
+      屏级总分 =（新鲜度 + 覆盖度 + 健康度 + 产出度 + 合规度 + 自动化度）÷ 6（六维等权）；
+      六维加权分<sub>d</sub> = Σ（屏<sub>i</sub>第 d 维 × 屏<sub>i</sub>战略权重）；
+      <b style="color:var(--gold)">总维度评分</b> = Σ（屏级总分<sub>i</sub> × 战略权重<sub>i</sub>）= 六维加权分的再平均 —— 两条路径互为校验。
+    </div>
+  </div>
+
+  <div class="warnbar">
+    <b>⛔ 严禁外发（本页含真实业务数据）</b><br/>
+    本首页及九大看板含真实案号（6658 / 6660）、当事人姓名、内部 automation ID、外部接口额度余额等敏感信息，
+    <b>仅限老强本人访问</b>。对外分享、讲座演示、发朋友圈 —— 一律走
+    <b>EV 架构白皮书</b>（已脱敏），切勿直接转发本页或子看板链接。
+  </div>
+
+  <footer>
+    小强总驾驶舱 · 九屏统一作战地图 ｜ 数据源：LawKB 本地实扫 + 九屏内嵌数据 + case-state.json ｜ 生成于 2026-09-12<br/>
+    评分模型为内部治理工具，非对外承诺；数值随各屏刷新自动漂移，建议每周重算一次。
+  </footer>
+</div>
+
+<script>
+var BASE = "2026-09-12";
+
+var DIMS = [
+  {k:"fresh",      n:"数据新鲜度", d:"距基准日衰减"},
+  {k:"coverage",   n:"覆盖完备度", d:"应纳管对象覆盖"},
+  {k:"health",     n:"运行健康度", d:"告警 / 降级 / 缺口"},
+  {k:"output",     n:"产出有效性", d:"实际拦截与交付"},
+  {k:"compliance", n:"安全合规度", d:"脱敏 / 权限 / 法条真实"},
+  {k:"automation", n:"自动化程度", d:"定时刷新与自动重发"}
+];
+
+var SITES = [
+  {
+    key:"ev", cno:"C1", icon:"\uD83D\uDE97", name:"车机驾驶舱", color:"#a78bfa",
+    url:"https://cockpit-cheji.app.workbuddy.host/",
+    weight:0.112609, updated:"2026-09-12 10:28", src:"分身系统驾驶舱.html · 内嵌 DATA",
+    s:{fresh:95, coverage:95, health:92, output:95, compliance:80, automation:60},
+    kpis:[
+      {v:"L3",   l:"系统等级", c:"var(--purple)"},
+      {v:"5",    l:"支柱模块"},
+      {v:"24",   l:"决策卡在管"},
+      {v:"8/8", l:"命中回填率", c:"var(--green)"}
+    ],
+    detail:[
+      {t:"ok",   x:"<b>系统定位 L3 执业助理级</b>：「放大器 + 保险丝 + 陪练 + 灵魂」四位一体；历史快照 4 点已建趋势基线。"},
+      {t:"ok",   x:"<b>产出有效</b>：决策卡 24 张、调用 55 次、跨域调用 2 次、命中回填 8/8。"},
+      {t:"warn", x:"<b>DTC-HALL-403 橙警</b>：元典 hall_detect 因账号非 VIP 不可用，已降级用 rh_ft_search 交叉印证，属带伤运行。"},
+      {t:"warn", x:"<b>决策卡时间盒过期</b>：focus 存在 -5 天红条（雅菲案撤诉处置主线），须逐条核对推翻信号是否触发。"}
+    ]
+  },
+  {
+    key:"decision", cno:"C2", icon:"\uD83C\uDF33", name:"决策思维树", color:"#5b9bff",
+    url:"https://cockpit-juesi.app.workbuddy.host/",
+    weight:0.095362, updated:"2026-09-12", src:"决策日志扫描 + 沉淀图谱 graphStat",
+    s:{fresh:95, coverage:95, health:75, output:95, compliance:80, automation:90},
+    kpis:[
+      {v:"388", l:"沉淀图谱卡片"},
+      {v:"17", l:"覆盖专业域"},
+      {v:"1,734", l:"规则链接数", c:"var(--blue)"},
+      {v:"629", l:"唯一规则数"}
+    ],
+    detail:[
+      {t:"ok",   x:"<b>自动化最高分</b>：已接入统一 automation（ID 37cf3e11），FREQ=HOURLY;INTERVAL=6 覆盖式重发，最大滞后 6 小时。"},
+      {t:"ok",   x:"<b>规则调用热力清晰</b>：TOP 规则 R-CF-052 / R-CF-071 各 28 次、R-CF-069 / R-HT-087 各 26 次，可直接反哺卡库优先级。"},
+      {t:"warn", x:"<b>思维轨迹卡偏少</b>：仅 9 张，与 383 张决策卡不成比例，沉淀转化率偏低。"},
+      {t:"warn", x:"<b>决策卡验证率不足</b>：24 张在管决策卡多数仍为「待验证」，推进信号时间盒存在红条。"}
+    ]
+  },
+  {
+    key:"flywheel", cno:"C3", icon:"\uD83D\uDD04", name:"知识飞轮中台", color:"#2dd4bf",
+    url:"https://cockpit-feilun.app.workbuddy.host/",
+    weight:0.121739, updated:"2026-09-12", src:"9,646 篇 md 实扫 + KG 图谱快照",
+    s:{fresh:95, coverage:95, health:88, output:95, compliance:93, automation:85},
+    kpis:[
+      {v:"408", l:"经验卡片", c:"var(--green)"},
+      {v:"1,516", l:"裁判规则文件"},
+      {v:"33,840", l:"知识图谱链接", c:"var(--blue)"},
+      {v:"97.6%", l:"规则命名规范率", c:"var(--green)"}
+    ],
+    detail:[
+      {t:"ok",   x:"<b>复利曲线陡峭</b>：经验卡由 07-13 的 2 张增至 09-10 的 402 张，两个月完成从零到规模化的跃迁。"},
+      {t:"ok",   x:"<b>资产厚度</b>：六层 md 4,016 篇 / KG 3,454 节点 / 33,840 链接 / 27 个规则子库 / 20 条 automation。"},
+      {t:"warn", x:"<b>IMA 断连致摄入源收窄</b>：近 7 日采集 6 天但 0 例达标 intake，日摄入 v1.23 的实际供血已不足。"},
+      {t:"warn", x:"<b>108 个孤立节点</b>：KG 连接密度仅 0.567%，需 batch link 补连后再看真实集群。"}
+    ]
+  },
+  {
+    key:"clm", cno:"C4", icon:"\uD83D\uDCC1", name:"案件生命周期大屏", color:"#d4af37",
+    url:"https://f4a96437f1d348cf82ab0328d9e5acc2.app.workbuddy.link",
+    weight:0.152174, updated:"2026-09-06", src:"case-state.json × 2 案 · Single Source of Truth",
+    s:{fresh:76, coverage:84, health:62, output:52, compliance:55, automation:70},
+    kpis:[
+      {v:"2", l:"在管案件"},
+      {v:"8", l:"门禁节点总数", c:"var(--blue)"},
+      {v:"65", l:"雅菲案蓝方态势", c:"var(--green)"},
+      {v:"20", l:"吊顶案蓝方态势", c:"var(--orange)"}
+    ],
+    detail:[
+      {t:"ok",   x:"<b>双案推进清晰</b>：6658 已进入 ④庭审查庭（9/1 开庭毕、择期宣判）；6660 处于 ⑥程序执行撤诉窗口期，态势 65 分且趋势向上。"},
+      {t:"risk", x:"<b>合规扣分主因</b>：全量版含真实案号 + 当事人姓名，具 clm 权限角色（主任 / 律师 / 助理）可见全量；<b>脱敏只读子页「当事人只读（脱敏）」已部署于 C4 内部</b>，对外传播须走该子页或 send_client_brief 脱敏管线。"},
+      {t:"warn", x:"<b>6660 G6 风控门禁告警</b>：撤诉法条曾凭记忆写错（误用第 145 条），已实地核验为第 148 条第 1 款，须回写防再犯。"},
+      {t:"warn", x:"<b>数据陈旧</b>：6658 更新于 09-05、6660 于 09-06，滞后基准日约一周；多个 P0 期限项仍处 pending / urgent。"}
+    ]
+  },  {
+    key:"xiaode", cno:"C5", icon:"\uD83E\uDDED", name:"小德 · 合规管理中枢", color:"#22d3ee",
+    url:"./subapps/xiaode/index.html",
+    weight:0.101449, updated:"2026-09-14", src:"compliance-state.json · 慈法/合同/医院/非诉 四域实扫",
+    s:{fresh:92, coverage:52, health:58, output:52, compliance:78, automation:34},
+    kpis:[
+      {v:"8", l:"在管主体"},
+      {v:"2", l:"升级风险", c:"var(--orange)"},
+      {v:"34", l:"域知识卡"},
+      {v:"6", l:"合规闸门"}
+    ],
+    detail:[
+      {t:"ok", x:"<b>四域在管成体系</b>：慈法 6 / 合同 7 / 医院 14 / 非诉 7 共 34 张域知识卡，在管主体 8 个，G8 非诉合规门禁 pass。"},
+      {t:"ok", x:"<b>域门禁分层 + 中台连通</b>：D-医院、D-非诉文书门禁 normal（R4/R5 红线已转出）；5 个连接器中台全 connected（IMA / 元典 / 企查查 / 公益平台 / 智能体邮箱）。"},
+      {t:"risk", x:"<b>R2 触发 G8 硬挡</b>：审计业务约定书乙方主体信息缺失，死线 2026-09-20 未补正 → 本年度审计报告不予出具。"},
+      {t:"warn", x:"<b>三域门禁 warn + 自动化仅 34 分</b>：D-慈善 R2、D-运输 R6 航合表态稿逾期、D-社会组织 R8 众志救援新增；周巡检仍靠人工触发，未纳入定时 automation。"}
+    ]
+  },
+  {
+    key:"mock", cno:"C6", icon:"\u2696\uFE0F", name:"模拟法庭控制中台", color:"#818cf8",
+    url:"https://93a0d6458e084c0eb62529531a22b48c.app.workbuddy.link",
+    weight:0.087246, updated:"2026-09-10", src:"mock-trial-center + 席位绑定配置",
+    s:{fresh:92, coverage:65, health:70, output:15, compliance:60, automation:70},
+    kpis:[
+      {v:"1", l:"案卷已归档"},
+      {v:"1", l:"完整庭审剧本"},
+      {v:"8", l:"席位绑定配置"},
+      {v:"0", l:"已启动推演", c:"var(--red)"}
+    ],
+    detail:[
+      {t:"risk", x:"<b>产出最低 55 分</b>：两案 mockTrial.status 均为「未启动」，未产出任何庭审记录 / 判决书 / 裁决书。"},
+      {t:"warn", x:"<b>覆盖偏窄</b>：仅 6658 有完整剧本（第二次开庭）+ v160 庭审笔录；6660 无剧本，prepReportPath 为空。"},
+      {t:"warn", x:"<b>合规有敞口</b>：含真实案号与当事人姓名，对外演示须换脱敏剧本 —— 当前尚未准备。"},
+      {t:"warn", x:"<b>流程已通但未排班</b>：case_state_to_mocktrial.py 打通案源导入，但未纳入定时 automation。"}
+    ]
+  },
+  {
+    key:"contractlifecycle", cno:"C7", icon:"\uD83D\uDCD1", name:"合同生命周期中台", color:"#f59e0b",
+    url:"./subapps/contract-lifecycle/index.html",
+    weight:0.09, updated:"2026-09-14 13:25", src:"contract-state.json · 15 份已审合同 / 26 项合同资产实扫",
+    s:{fresh:78, coverage:62, health:69, output:65, compliance:80, automation:72},
+    kpis:[
+      {v:"15", l:"已审合同"},
+      {v:"26", l:"合同资产"},
+      {v:"6", l:"争议案", c:"var(--orange)"},
+      {v:"71", l:"健康指数", c:"var(--blue)"}
+    ],
+    detail:[
+      {t:"ok", x:"<b>CLM 范式平移</b>：拟稿→审查→用印→签署→履行→变更→归档七阶段，配 CG0–CG7 七门禁，与案件生命周期同构（方案 §三）"},
+      {t:"ok", x:"<b>合规前置 + 门禁化变更</b>：CG2 不过则 CG3 用印直接卡死；CG6 强制重走审查+审批，口头 / 微信改约不生效（方案 §四）"},
+      {t:"risk", x:"<b>R-CF 合同域实体卡 = 0</b>：CG2 合规门禁无卡可依，当前靠人工审查替代；CG6 王德明担保高风险敞口，须优先治理"},
+      {t:"warn", x:"<b>覆盖 62 / 自动化 72 双低</b>：首批仅接战情室 4 类 + 6 起争议案，全量合同资产未纳管；暂未接入定时刷新 automation"}
+    ]
+  },
+  {
+    key:"lti", cno:"C8", icon:"\uD83D\uDEE1\uFE0F", name:"AI 幻觉监控看板", color:"#f472b6",
+    url:"https://lti-hallucination-monitor.app.workbuddy.host/",
+    weight:0.152174, updated:"2026-09-12 11:17", src:"dashboard_data.json · 本机 72 份日志实扫",
+    s:{fresh:95, coverage:95, health:63, output:95, compliance:88, automation:75},
+    kpis:[
+      {v:"15,650", l:"LTI 累计调用"},
+      {v:"94.6%", l:"校验通过率", c:"var(--green)"},
+      {v:"2.5%", l:"实际阻断率", c:"var(--orange)"},
+      {v:"83", l:"模块健康均分", c:"var(--blue)"}
+    ],
+    detail:[
+      {t:"ok",   x:"<b>六维模块健康</b>：均值 83「良好」，6 模块中 3 健康 / 2 良好 / 1 预警，无风险模块；最弱模块 69 分。"},
+      {t:"ok",   x:"<b>真拦截已发生</b>：391 次 REJECT + 454 次 AUTOFIX，法条校验与金额/名称一致性模块出现 CRITICAL 命中。"},
+      {t:"warn", x:"<b>29 条规则零命中</b>：另有 29 条从未命中，须按「退役 / 补测试 / 降噪」三选一处置。"},
+      {t:"warn", x:"<b>7 起事故卡</b>：含 2026-09-04「LTI 门禁审计报告误报 BLOCK」，须确认已改判据而非加白名单。"}
+    ]
+  },
+  {
+    key:"governance", cno:"C11", icon:"\uD83D\uDEE1\uFE0F", name:"OPC治理中台", color:"#a3e635",
+    url:"./subapps/governance/index.html",
+    weight:0, updated:"2026-09-22", src:"OPC 治理中台屏（本地 subapp）",
+    s:{fresh:0, coverage:0, health:0, output:0, compliance:0, automation:0},
+    kpis:[],
+    detail:[]
+  },
+  {
+    key:"credits", cno:"C9", icon:"\uD83D\uDCB3", name:"积分监测看板", color:"#34d399",
+    url:"https://cockpit-jifen.app.workbuddy.host/",
+    weight:0.087246, updated:"2026-09-12 15:17", src:"workbuddy.db + 元典 get_user_balance",
+    s:{fresh:95, coverage:85, health:29, output:80, compliance:90, automation:90},
+    kpis:[
+      {v:"19,098", l:"WB 累计消耗"},
+      {v:"112.3%", l:"额度已用占比", c:"var(--red)"},
+      {v:"2", l:"元典余额（点）"},
+      {v:"2.73x",  l:"消耗加速比", c:"var(--orange)"}
+    ],
+    detail:[
+      {t:"risk", x:"<b>健康度全场最低 45 分</b>：WorkBuddy 已用 103.8%、剩余额度 -653 <b>已超额</b>；元典次数余额归零，仅剩 467 点按次额度。"},
+      {t:"risk", x:"<b>消耗加速</b>：近 7 日日均 480.96，为历史日均 176.42 的 2.73 倍，按此速率余额撑不过两周。"},
+      {t:"ok",   x:"<b>归因清晰</b>：TOP 消耗为吊顶案会话（1,090.78 / 16.3%）与每日摄入稳定性守卫（661.42 / 9.9%），可精准调参。"},
+      {t:"ok",   x:"<b>合规与自动化双高</b>：额度数据已入「严禁外发」清单；每 6 小时刷新 + 22:00 记录余额。"}
+    ]
+  },  {
+    key:"conflict", cno:"C10", icon:"\u2696\uFE0F", name:"知识冲突仲裁看板", color:"#ff8a65",
+    url:"./subapps/conflict-arbitration/index.html",
+    weight:0, scoring:false, updated:"2026-09-16 14:24", src:"冲突仲裁队列 · 实时同步进 9360",
+    s:null,
+    kpis:[
+      {v:"287", l:"候选冲突（最近同步）", c:"var(--orange)"},
+      {v:"283", l:"上下文相关 CR", c:"var(--blue)"},
+      {v:"1", l:"内容矛盾 CC", c:"var(--red)"},
+      {v:"0", l:"已处置", c:"var(--green)"}
+    ],
+    detail:[
+      {t:"ok", x:"<b>防知识打架闭环</b>：六类冲突（KE/FC/VC/CC/CR/MC）候选裁决 + 人工仲裁，实时同步 LawKB 最新扫描队列。"},
+      {t:"warn", x:"<b>CC 内容矛盾必人工复核</b>：当前 1 条 CC 硬冲突，AI 仅给候选建议，需人工拍板采纳/融合。"},
+      {t:"ok", x:"<b>有人管</b>：看板内可勾选生成处理命令，于 LawKB「冲突仲裁」目录执行；已处置项不再出现于待处理视图。"}
+    ]
+  },  {
+    key:"mind", cno:"M0", icon:"\uD83E\uDDE0", name:"系统心智模型总览", color:"#a78bfa",
+    url:"./subapps/mind-models/index.html",
+    weight:0, scoring:false, updated:"2026-09-16 15:56", src:"08-心智资产 v1.4.1 + scorecard 09-14 实拉",
+    s:null,
+    kpis:[
+      {v:"6", l:"persona 心智卡", c:"var(--purple)"},
+      {v:"38", l:"心智资产项", c:"var(--blue)"},
+      {v:"79", l:"系统能力 B", c:"var(--green)"},
+      {v:"77.2", l:"九屏维度 C", c:"var(--orange)"}
+    ],
+    detail:[
+      {t:"ok", x:"<b>全面复盘</b>：六方 persona 成熟度 + 九屏六维分 + 四方五维对比 + 心智资产统计，单一事实源实测汇总。"},
+      {t:"warn", x:"<b>QC 审判长最弱</b>：50/100·M2 起步（DRAFT）；书记员真实实战积累不足（25.6~37.6）。"},
+      {t:"ok", x:"<b>待办病灶全闭环</b>：B1-B4 已于 09-16 闭环；四 flag 屏（C4/C5/C6/C9）待治理。"}
+    ]
+  },  {
+    key:"cloud", cno:"C0", icon:"\u2601\uFE0F", name:"云服务监控（云监控看板）", color:"#38bdf8",
+    url:"https://xiaoqiang-cloud-service.app.workbuddy.host/",
+    weight:0, scoring:false, updated:"2026-09-12", src:"genie-baas 实拉快照 · 应用 wbapp_xlpdlt9VWXfVchAP5tRsji",
+    s:null,
+    kpis:[
+      {v:"4/4", l:"云能力已启用", c:"var(--green)"},
+      {v:"29", l:"可用模型"},
+      {v:"1", l:"接入应用"},
+      {v:"0 / 0", l:"数据表 / 端用户", c:"var(--orange)"}
+    ],
+    detail:[
+      {t:"ok", x:"<b>四项云能力全启用</b>：免密钥 LLM（30+ 模型）、云端数据库、云存储、端用户登录；后端 genie-baas · BaaS，已接入应用 1 个。"},
+      {t:"ok", x:"<b>模型目录厚实</b>：29 个可用模型，含 Hy4 preview（1M 上下文）、GLM-5.3（1M）、Kimi-K3（1M）、Deepseek-V4-Flash 等，按调用计费。"},
+      {t:"warn", x:"<b>「已开通未启用」</b>：云端数据库 0 张表、端用户 0 人，云能力闲置；免密钥 LLM 是当前唯一在跑的能力。"},
+      {t:"warn", x:"<b>静态快照</b>：数据为 2026-09-12 实拉，未接定时刷新；本屏定位为<strong>运维监控位，不纳入评分</strong>。"}
+    ]
+  }
+];
+
+/* ---------- 计分 ---------- */
+function screenScore(s){
+  var t = 0;
+  for (var i=0;i<DIMS.length;i++) t += s[DIMS[i].k];
+  return Math.round(t / DIMS.length * 10) / 10;
+}
+function cnoRank(c){ if(!c) return 98; if(String(c).toUpperCase()==='C0') return 99;
+  var n = parseInt(String(c).slice(1),10); return isNaN(n)?98:n; }
+SITES.forEach(function(x){
+  if (x.scoring === false){ x.score = null; x.contrib = 0; return; }
+  x.score = screenScore(x.s); x.contrib = Math.round(x.score * x.weight * 100) / 100;
+});
+/* 排序：按 C1→C9 升序，C0（监控位·不计分）压尾 */
+SITES.sort(function(a,b){ return cnoRank(a.cno) - cnoRank(b.cno); });
+
+var SCORED = SITES.filter(function(x){ return x.scoring !== false; });
+var TOTAL = Math.round(SCORED.reduce(function(a,x){ return a + x.score*x.weight; },0) * 10) / 10;
+var DIMTOT = {};
+DIMS.forEach(function(d){
+  DIMTOT[d.k] = Math.round(SCORED.reduce(function(a,x){ return a + x.s[d.k]*x.weight; },0) * 10) / 10;
+});
+
+function grade(v){
+  if (v >= 85) return {n:"优秀 A", c:"var(--green)"};
+  if (v >= 75) return {n:"良好 B", c:"var(--blue)"};
+  if (v >= 60) return {n:"观察 C", c:"var(--orange)"};
+  return {n:"风险 D", c:"var(--red)"};
+}
+
+/* ---------- 渲染：表盘 ---------- */
+(function(){
+  var g = grade(TOTAL), R = 84, C = 2*Math.PI*R, off = C * (1 - TOTAL/100);
+  document.getElementById('gauge').innerHTML =
+    '<circle cx="105" cy="105" r="' + R + '" fill="none" stroke="#232a36" stroke-width="16"/>' +
+    '<circle cx="105" cy="105" r="' + R + '" fill="none" stroke="' + g.c.replace('var(--','#').replace(')','') + '"' +
+      ' stroke-width="16" stroke-linecap="round" stroke-dasharray="' + C + '" stroke-dashoffset="' + off + '"' +
+      ' transform="rotate(-90 105 105)"/>' +
+    '<text x="105" y="100" text-anchor="middle" fill="#e7eaf0" font-size="44" font-weight="800">' + TOTAL + '</text>' +
+    '<text x="105" y="126" text-anchor="middle" fill="#9aa3b2" font-size="13">总维度评分</text>' +
+    '<text x="105" y="146" text-anchor="middle" fill="' + g.c.replace('var(--','#').replace(')','') + '" font-size="14" font-weight="700">' + g.n + '</text>';
+  document.getElementById('gaugeTxt').textContent = '总维度评分 ' + TOTAL + ' / 100';
+  document.getElementById('stamp').textContent =
+    '采集基准日 ' + BASE + ' ｜ ' + SCORED.length + ' 屏评分取自本地实源，无记忆占位 ｜ 战略权重合计 ' +
+    SCORED.reduce(function(a,x){ return a + x.weight; },0).toFixed(2) +
+    ' ｜ C0 云监控为运维监控位，不纳入评分';
+
+  var best = SCORED.slice().sort(function(a,b){ return b.score-a.score; })[0];
+  var worst = SCORED.slice().sort(function(a,b){ return a.score-b.score; })[0];
+  document.getElementById('headline').innerHTML =
+    '最强 <b style="color:var(--green)">' + best.name + ' ' + best.score + '</b>' +
+    ' ｜ 最弱 <b style="color:var(--red)">' + worst.name + ' ' + worst.score + '</b>' +
+    ' ｜ 短板集中在「健康度 ' + DIMTOT.health + '」与「自动化 ' + DIMTOT.automation + '」';
+})();
+
+/* ---------- 渲染：六维总览 ---------- */
+document.getElementById('dims').innerHTML = DIMS.map(function(d){
+  var v = DIMTOT[d.k], g = grade(v);
+  return '<div class="dim">' +
+    '<div class="dt"><span class="dn">' + d.n + '</span><span class="dv" style="color:' + g.c + '">' + v + '</span></div>' +
+    '<div class="dd">' + d.d + '</div>' +
+    '<div class="bar"><i style="width:' + v + '%;background:' + g.c + '"></i></div>' +
+  '</div>';
+}).join('');
+
+/* ---------- 渲染：屏卡 ---------- */
+document.getElementById('grid').innerHTML = SITES.map(function(x){
+  var scored = x.scoring !== false;
+  var g = scored ? grade(x.score) : {n:'—', c:'#6b7484'};
+  return '<article class="card' + (scored ? '' : ' monitor') + '" style="--k:' + x.color + '">' +
+    '<div class="cHead">' +
+      '<div class="ico">' + x.icon + '</div>' +
+      '<div><div class="nm"><span class="cnob">' + (x.cno||'-') + '</span>' + x.name + '</div>' +
+        '<div class="role">数据源：' + x.src + '</div></div>' +
+      '<div class="sc"><div class="n" style="color:' + g.c + '">' + (scored ? x.score : '—') + '</div>' +
+        '<span class="w">' + (scored ? '权重 ' + x.weight.toFixed(2) : '不纳入评分') + '</span></div>' +
+    '</div>' +
+
+    '<div class="kpis">' + x.kpis.map(function(k){
+      return '<div class="kpi"><div class="v" style="color:' + (k.c || 'var(--text)') + '">' + k.v + '</div>' +
+             '<div class="l">' + k.l + '</div></div>';
+    }).join('') + '</div>' +
+
+    '<div class="dimrow">' + (scored ? DIMS.map(function(d){
+      var v = x.s[d.k], gg = grade(v);
+      return '<div class="dmini"><div class="t">' +
+        '<i style="height:' + v + '%;background:' + gg.c + '"></i>' +
+        '<span>' + v + '</span></div>' +
+        '<div class="k">' + d.n.slice(0,2) + '</div></div>';
+    }).join('') : '<div class="noscore">运维监控位 · 六维不适用 · 不纳入评分</div>') + '</div>' +
+
+    '<div class="flags">' + x.detail.map(function(f){
+      return '<div class="flag ' + f.t + '">' + f.x + '</div>';
+    }).join('') + '</div>' +
+
+    '<div class="cFoot">' +
+      '<a class="go" href="' + x.url + '" target="_blank" rel="noopener">打开看板 ↗</a>' +
+      '<div class="meta">更新 ' + x.updated + '<br/>' + (scored ? '贡献总分 ' + x.contrib + ' 分' : '监控位 · 不计入总分') + '</div>' +
+    '</div>' +
+  '</article>';
+}).join('');
+
+/* ---------- 渲染：总表 ---------- */
+document.getElementById('tbl').tBodies[0].innerHTML = SITES.map(function(x,i){
+  var scored = x.scoring !== false;
+  var g = scored ? grade(x.score) : {n:'—', c:'#6b7484'};
+  return '<tr>' +
+    '<td>' + (i+1) + '</td>' +
+    '<td><span class="dot" style="background:' + x.color + '"></span><span class="cnob">' + (x.cno||'-') + '</span>' + x.icon + ' ' + x.name + '</td>' +
+    '<td>' + (scored ? x.weight.toFixed(2) : '不计分') + '</td>' +
+    (scored ? DIMS.map(function(d){
+      var v = x.s[d.k], gg = grade(v);
+      return '<td style="color:' + gg.c + ';font-weight:600">' + v + '</td>';
+    }).join('') : '<td colspan="' + DIMS.length + '" style="color:#6b7484">监控位 · 不纳入评分</td>') +
+    '<td class="tot" style="color:' + g.c + '">' + (scored ? x.score : '—') + '</td>' +
+    '<td>' + (scored ? x.contrib.toFixed(2) : '—') + '</td>' +
+  '</tr>';
+}).join('');
+
+document.querySelector('#tbl tfoot').innerHTML =
+  '<tr><td colspan="2">加权合计 / 六维加权均价（' + SCORED.length + ' 屏计分）</td><td>' +
+  SCORED.reduce(function(a,x){ return a + x.weight; },0).toFixed(2) + '</td>' +
+  DIMS.map(function(d){
+    var v = DIMTOT[d.k], gg = grade(v);
+    return '<td style="color:' + gg.c + '">' + v + '</td>';
+  }).join('') +
+  '<td class="tot">' + TOTAL + '</td><td>' +
+  SCORED.reduce(function(a,x){ return a + x.contrib; },0).toFixed(2) + '</td></tr>';
+</script>
+<div id="data-update-time" style="position:fixed;top:8px;right:12px;z-index:99999;background:rgba(10,12,18,.62);color:#9fe6c3;font:12px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;padding:4px 11px;border-radius:9px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none;letter-spacing:.3px;box-shadow:0 1px 6px rgba(0,0,0,.35);">📊 数据更新时间：2026-09-18 06:07（北京时间）</div>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var d=new Date(document.lastModified);
+    if(isNaN(d.getTime())) return;
+    var s=fmt(d);
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：'+s+'（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+s);}
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>

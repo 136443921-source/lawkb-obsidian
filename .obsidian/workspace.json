@@ -1,0 +1,293 @@
+{
+  "main": {
+    "id": "4daa6dc56512c8f0",
+    "type": "split",
+    "children": [
+      {
+        "id": "bfe97adf5da1a9e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "96e344220d4655df",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "三书三部曲/智能车机书稿/《智能车机》出版咨询报告.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "《智能车机》出版咨询报告"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8fb341db6ee86879",
+    "type": "split",
+    "children": [
+      {
+        "id": "922e82b7c9b1b75e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c751ed86603c94dc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "custom",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "b0144aff2834b6b8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "三书",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "2cecce09b16c1973",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          },
+          {
+            "id": "fc10e9bbcfa1fb7d",
+            "type": "leaf",
+            "state": {
+              "type": "notebook-navigator",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "notebook-navigator"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 360.68359375
+  },
+  "right": {
+    "id": "a61fd1730887b0a4",
+    "type": "split",
+    "children": [
+      {
+        "id": "e2be1537b858883f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f7470a8eddafa9c2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "知识飞轮系统/数字分身系统-能力评估报告-2026-09-01.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": true,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "65b7a0f2d89a290c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "_AI-Memory-Hub/09-OPC/09-2部门治理/业务中台/部门规章制度.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "1b7cf687d6cec659",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": true,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "ae85c95a1faa1260",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "dce0e3a40b9cd0e4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "三书三部曲/智能车机书稿/《智能车机》出版咨询报告.md",
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "f815fb9e49844718",
+            "type": "leaf",
+            "state": {
+              "type": "chinese-calendar-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "chinese-calendar-view"
+            }
+          },
+          {
+            "id": "6be27c02b1eef8eb",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "笔记助手/学习笔记/慈善人才领航计划-20261020-1023/慈善组织项目管理与合规实务.md"
+              },
+              "icon": "lucide-info",
+              "title": "笔记属性"
+            }
+          },
+          {
+            "id": "7e2b02a8671e1fcc",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "git-view"
+            }
+          },
+          {
+            "id": "5cb4102798cbf622",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "advanced-tables-toolbar"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 380.74609375
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "templates:插入模板": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "c751ed86603c94dc",
+  "lastOpenFiles": [
+    "三书三部曲/数字分身书稿/全书统稿报告.md",
+    "logs/git-sync.log",
+    "logs",
+    "三书三部曲/数字分身书稿/选题申报材料.md",
+    "三书三部曲/数字分身书稿/出版咨询报告.md",
+    "三书三部曲/数字分身书稿/书稿创作思路.md",
+    "三书三部曲/数字分身书稿/创作思路-v2.0.md",
+    "三书三部曲/数字分身书稿/创作思路-v3.0（定位重构·19.8万字）.md",
+    "三书三部曲/数字分身书稿/术语索引表.md",
+    "三书三部曲/数字分身书稿/统稿审计报告.md",
+    "三书三部曲/数字分身书稿/六篇篇前说明.md",
+    "三书三部曲/数字分身书稿/章节目录-v3.0.md",
+    "三书三部曲/数字分身书稿/后记.md",
+    "三书三部曲/数字分身书稿/第4章-单一事实源.md",
+    "知识飞轮系统/运维/人伤裁判规则元典回源盘点清单_2026-11-25.md",
+    "模拟法庭管理系统/模拟法庭系统搭建/模拟法庭/庭前检索报告_230号_20260806.md",
+    "三书三部曲/智能车机书稿/智能车机_第10章_装门禁_v1.0.md",
+    "三书三部曲/智能车机书稿/智能车机_第09章_造知识飞轮_v1.0.md",
+    "三书三部曲/智能车机书稿/智能车机_第07章_造记忆母舰_v1.0.md",
+    "案件生命周期管理系统/丁戊祥诉刘九零吊顶买卖合同纠纷案/作战室/04_文书区/文书区索引_MD.md",
+    "小德合规管理系统/06-运维备忘录/CMS周巡检摘要-2026-11-23.md",
+    "知识飞轮系统/02-提炼/待审-周报卡草稿/R-DRFT-20261123-11.md",
+    "小强律师数字分身系统/07-系统搭建与Skill配置/metrics_watchdog.py",
+    "知识飞轮系统/02-提炼/审判要件卡/_external_links_whitelist.json",
+    "知识飞轮系统/02-提炼/审判要件卡/_match_pending_20260912.py",
+    "知识飞轮系统/02-提炼/审判要件卡/_build_local_statute_index_20260912.py",
+    "知识飞轮系统/02-提炼/审判要件卡/_fix_deadlinks_v9_20260918.py",
+    "知识飞轮系统/02-提炼/审判要件卡/_fix_deadlinks_v2_20260912.py",
+    "知识飞轮系统/02-提炼/审判要件卡/_check_deadlinks.py",
+    "知识飞轮系统/03-连接/scripts/__pycache__/lawkb_drill.cpython-313.pyc",
+    "知识飞轮系统/02-提炼/审判要件卡/存量卡质量巡检报告-2026-11-23.md",
+    "知识飞轮系统/02-提炼/待审-周报卡草稿/R-DRFT-20261123-10.md",
+    "知识飞轮系统/02-提炼/待审-周报卡草稿/R-DRFT-20261123-09.md",
+    "知识飞轮系统/02-提炼/待审-周报卡草稿/R-DRFT-20261123-08.md",
+    "知识飞轮系统/02-提炼/待审-周报卡草稿/R-DRFT-20261123-07.md",
+    "知识飞轮系统/02-提炼/待审-周报卡草稿/R-DRFT-20261123-06.md",
+    "未命名.canvas",
+    "wechat_img_1789040482416_302.jpg",
+    "合同文书管理系统/合同文书管理系统_L0架构关系图.svg",
+    "未命名 1.canvas",
+    "wechat_img_1786078085757_425.jpg",
+    "wechat_img_1786078085869_254.jpg",
+    "wechat_img_1786078085988_464.jpg",
+    "wechat_img_1786068246818_717.jpg",
+    "wechat_img_1784883302686_132.jpg",
+    "wechat_img_1784883303121_620.jpg",
+    "wechat_img_1784883303291_690.jpg",
+    "wechat_img_1784883303473_357.jpg",
+    "未命名 2.canvas",
+    "未命名 3.canvas"
+  ]
+}

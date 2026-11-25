@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>积分监测看板 · C9 · 资源消耗指挥中心</title>
+<style>
+  :root{
+    --bg:#0b0d12; --panel:#151a24; --panel2:#1b2230;
+    --border:#2a313d; --border2:#363f4d;
+    --text:#e7eaf0; --muted:#9aa3b2; --dim:#aab3c5;
+    --gold:#d4af37; --gold2:#b8932c;
+    --blue:#5b9bff; --purple:#a78bfa; --teal:#2dd4bf; --orange:#f59e0b; --red:#ef5350; --green:#34d399;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+    background: radial-gradient(1100px 600px at 18% -10%, #1a2030 0%, var(--bg) 60%);
+    background-attachment: fixed;
+    color: var(--text); padding: 22px; font-size: 14px;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+
+  /* —— HERO 指挥台头 —— */
+  .hero { display:flex; align-items:center; gap:16px;
+    background: linear-gradient(180deg,#161c27,#11151d);
+    border:1px solid var(--border2); border-radius:16px;
+    padding:18px 20px; margin-bottom:18px; box-shadow:var(--shadow);
+    position:relative; overflow:hidden; }
+  .hero::after{content:"";position:absolute;right:-40px;top:-40px;width:170px;height:170px;
+    background:radial-gradient(circle,rgba(212,175,55,.18),transparent 70%);}
+  .hero-id{display:flex;align-items:center;justify-content:center;width:54px;height:54px;
+    border-radius:14px;background:linear-gradient(180deg,var(--gold),var(--gold2));
+    color:#1a1408;font-weight:800;font-size:19px;flex:none;box-shadow:0 6px 18px rgba(212,175,55,.3);}
+  .hero-main{flex:1}
+  .hero h1{font-size:21px;letter-spacing:.5px;margin:0 0 3px}
+  .hero .sub{color:var(--muted);font-size:12.5px}
+  .hero-meta{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .pill{font-size:11.5px;color:var(--muted);background:var(--panel2);border:1px solid var(--border2);
+    padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .pill-gold{color:var(--gold);border-color:var(--gold2);background:rgba(212,175,55,.1)}
+
+  /* —— KPI 卡片 —— */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(235px,1fr)); gap: 14px; margin-bottom: 14px; }
+  .card { position:relative; overflow:hidden; background: linear-gradient(180deg,#161c27,#11151d);
+          border:1px solid var(--border2); border-radius:14px; padding:16px 16px 15px; box-shadow:var(--shadow); }
+  .card::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--blue)}
+  .card.y::before{background:var(--orange)}
+  .card.p::before{background:var(--teal)}
+  .card.pk::before{background:var(--purple)}
+  .card.qc::before{background:var(--red)}
+  .card h2 { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; font-weight: 600; letter-spacing:.3px; }
+  .big { font-size: 30px; font-weight: 800; color: var(--blue); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .big.y { color: var(--orange); }
+  .big.p { color: var(--teal); }
+  .big.pk { color: var(--purple); }
+  .big.qc { color: var(--red); }
+  .big.plow { color: var(--red); }
+  .bar { height: 8px; background: #0e1219; border:1px solid var(--border); border-radius: 6px; overflow: hidden; margin-top: 10px; }
+  .bar > i { display: block; height: 100%; }
+  .hint { color: var(--dim); font-size: 11px; }
+  .kv { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.8; }
+  .kv b { color: var(--text); font-weight: 600; }
+
+  /* —— 警示横幅 —— */
+  .banner { padding: 11px 15px; border-radius: 12px; font-size: 13px; margin-bottom: 14px; font-weight: 600; }
+  .banner.ok { background: rgba(45,212,191,.12); color: var(--teal); border: 1px solid rgba(45,212,191,.4); }
+  .banner.warn { background: rgba(239,83,80,.12); color: #ff8a87; border: 1px solid rgba(239,83,80,.4); }
+
+  /* —— 面板 —— */
+  .panel { background: linear-gradient(180deg,#161c27,#11151d); border: 1px solid var(--border2);
+           border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow); margin-bottom: 14px; }
+  .panel h3 { font-size: 14px; margin-bottom: 12px; color: var(--text); font-weight: 700;
+              display:flex; align-items:center; gap:7px; }
+  .panel h3::before { content:""; width:4px; height:14px; border-radius:2px; background:var(--gold); }
+  .panel h3 .tag { font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:999px; margin-left:auto;
+    color:var(--teal); border:1px solid rgba(45,212,191,.4); background:rgba(45,212,191,.1); }
+  .panel h3 .tag.warn { color:#ff8a87; border-color:rgba(239,83,80,.4); background:rgba(239,83,80,.1); }
+
+  .charts { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .charts .panel { flex: 1; min-width: 340px; margin-bottom: 0; }
+
+  /* —— 图表 —— */
+  svg .grid { stroke: var(--border); stroke-width: 1; }
+  svg .ax { fill: var(--dim); font-size: 10px; }
+  svg .line { fill: none; stroke: var(--blue); stroke-width: 2.5; filter: drop-shadow(0 0 4px rgba(91,155,255,.5)); }
+  svg .area { fill: rgba(91,155,255,.1); }
+  svg .line.y { stroke: var(--orange); filter: drop-shadow(0 0 4px rgba(245,158,11,.5)); }
+  svg .area.y { fill: rgba(245,158,11,.1); }
+
+  /* —— 表格 —— */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .tbl th, .tbl td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--border); }
+  .tbl th:first-child, .tbl td:first-child { text-align: left; }
+  .tbl th { color: var(--dim); font-weight: 600; font-size: 11px; letter-spacing:.5px; }
+  .tbl tbody tr:hover { background: rgba(255,255,255,.03); }
+  .tbl tr.hot td { color: #ff6b68; font-weight: 700; }
+  .tbl tr.agent td { color: var(--orange); }
+  .tbl tr.chat td { color: var(--blue); }
+  .tbl.center th, .tbl.center td { text-align: center; }
+  .tbl.center th:first-child, .tbl.center td:first-child { text-align: center; }
+  .legend { font-size: 11px; color: var(--dim); margin-top: 8px; }
+
+  /* —— 横向条形（功能/引擎/用户分布） —— */
+  .bars { display:flex; flex-direction:column; gap:11px; margin-top:4px; }
+  .barrow { display:grid; grid-template-columns: 130px 1fr 64px; align-items:center; gap:10px; font-size:12px; }
+  .barrow .bl { color:var(--muted); text-align:right; }
+  .barrow .track { height:14px; background:#0e1219; border:1px solid var(--border); border-radius:7px; overflow:hidden; }
+  .barrow .track > i { display:block; height:100%; border-radius:7px; }
+  .barrow .bv { color:var(--text); font-weight:700; font-variant-numeric:tabular-nums; text-align:left; }
+  .c-blue{background:linear-gradient(90deg,#3b82f6,#5b9bff)} .c-orange{background:linear-gradient(90deg,#d97706,#f59e0b)}
+  .c-purple{background:linear-gradient(90deg,#7c3aed,#a78bfa)} .c-teal{background:linear-gradient(90deg,#0d9488,#2dd4bf)}
+  .c-red{background:linear-gradient(90deg,#b91c1c,#ef5350)} .c-green{background:linear-gradient(90deg,#059669,#34d399)}
+
+  /* —— 基准对标 —— */
+  .bench { display:flex; flex-direction:column; gap:13px; }
+  .benchrow { font-size:12.5px; }
+  .benchrow .lab { display:flex; justify-content:space-between; color:var(--muted); margin-bottom:5px; }
+  .benchrow .lab b { color:var(--text); }
+  .benchrow .scale { position:relative; height:18px; background:#0e1219; border:1px solid var(--border); border-radius:9px; }
+  .benchrow .scale .pct { position:absolute; top:0; bottom:0; border-radius:9px;
+    background:linear-gradient(90deg,rgba(91,155,255,.18),rgba(91,155,255,.35)); }
+  .benchrow .scale .med { position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--muted); }
+  .benchrow .scale .you { position:absolute; top:-5px; width:3px; height:28px; background:var(--gold); border-radius:2px; box-shadow:0 0 6px rgba(212,175,55,.7); }
+  .benchrow .scale .ylab { position:absolute; top:-20px; transform:translateX(-50%); font-size:10px; color:var(--gold); font-weight:700; white-space:nowrap; }
+
+  /* —— 推荐卡 —— */
+  .recs { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+  .rec { background:#0e1219; border:1px solid var(--border); border-left:3px solid var(--teal);
+    border-radius:10px; padding:13px 14px; }
+  .rec .rt { font-size:12.5px; font-weight:700; color:var(--teal); margin-bottom:6px; display:flex; gap:6px; align-items:center; }
+  .rec .rb { font-size:11.5px; color:var(--muted); line-height:1.7; }
+  .rec .rs { font-size:11px; color:var(--gold); margin-top:7px; font-weight:700; }
+  .rec.r2{border-left-color:var(--orange)} .rec.r2 .rt{color:var(--orange)}
+  .rec.r3{border-left-color:var(--purple)} .rec.r3 .rt{color:var(--purple)}
+  .rec.r4{border-left-color:var(--blue)} .rec.r4 .rt{color:var(--blue)}
+
+  /* —— 问答 —— */
+  .ask { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:12px; }
+  .ask input { flex:1; min-width:240px; background:#0e1219; border:1px solid var(--border2); color:var(--text);
+    border-radius:10px; padding:11px 13px; font-size:13px; outline:none; }
+  .ask input:focus { border-color:var(--gold); }
+  .ask button { background:linear-gradient(180deg,var(--gold),var(--gold2)); color:#1a1408; border:none;
+    border-radius:10px; padding:11px 18px; font-weight:800; font-size:13px; cursor:pointer; }
+  .chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .chip { font-size:11.5px; color:var(--muted); background:var(--panel2); border:1px solid var(--border2);
+    border-radius:999px; padding:5px 12px; cursor:pointer; }
+  .chip:hover { border-color:var(--gold); color:var(--text); }
+  .ans { background:#0e1219; border:1px solid var(--border); border-radius:10px; padding:13px 15px;
+    font-size:12.5px; color:var(--text); line-height:1.8; min-height:46px; }
+  .ans .q { color:var(--gold); font-weight:700; margin-bottom:5px; display:block; }
+
+  /* —— 新能力雷达 —— */
+  .radar { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
+  .rl { background:#0e1219; border:1px solid var(--border); border-radius:10px; padding:11px 13px; }
+  .rl .rh { font-size:12.5px; font-weight:700; color:var(--blue); margin-bottom:4px; }
+  .rl .rd { font-size:11px; color:var(--muted); line-height:1.6; }
+  .rl .rst { display:inline-block; margin-top:6px; font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;
+    color:var(--orange); border:1px solid rgba(245,158,11,.4); background:rgba(245,158,11,.1); }
+  .rl .rst.on { color:var(--green); border-color:rgba(52,211,153,.4); background:rgba(52,211,153,.1); }
+
+  /* —— 外发告警条 —— */
+  .footnote { margin-top: 6px; padding: 12px 16px; border-radius: 12px;
+    background: rgba(239,83,80,.08); border: 1px solid rgba(239,83,80,.3);
+    color: #ff8a87; font-size: 11.5px; line-height: 1.7; }
+  .footnote b { color: var(--gold); }
+
+  details { margin-top: 14px; border: 1px solid var(--border2); border-radius: 12px; background: var(--panel); }
+  details summary { padding: 10px 14px; font-size: 12px; color: var(--muted); cursor: pointer; }
+  details pre { font-size: 11px; background: #0a0d13; color: var(--muted);
+    padding: 12px 14px; border-radius: 0 0 12px 12px; overflow: auto; max-height: 280px; border-top: 1px solid var(--border); }
+
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:760px){ .grid2{grid-template-columns:1fr} .barrow{grid-template-columns:96px 1fr 56px} }
+  .sect-sub { font-size:11.5px; color:var(--dim); margin:-4px 0 12px; line-height:1.6; }
+</style><style>
+/* 数据更新时间：紧贴标题（2026-09-16 由右上 fixed 浮块改为标题内联） */
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+</style>
+</head>
+<body data-cno="D1"><div class="wrap">
+<header class="hero">
+  <div class="hero-id"><span>C9</span></div>
+  <div class="hero-main">
+    <h1>D1 积分监测中台<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-26 06:50（北京时间）</span></h1>
+    <div class="sub">小强总驾驶舱 · 对标 Harvey Command Center 范式（See · Understand · Act）</div>
+  </div>
+  <div class="hero-meta">
+    <span class="pill">数据快照 2026-09-12 15:17</span>
+    <span class="pill pill-gold">看板 v2.0(Harvey CC) 更新于 2026-09-14</span>
+    <span class="pill">WB × 元典 × 北大法宝 × 企查查</span>
+  </div>
+</header>
+
+<div class="cards">
+  <div class="card">
+    <h2>WorkBuddy 积分消耗（累计）</h2>
+    <div class="big">19098.43</div>
+    <div class="kv">累计消耗（90 个活跃日）<br>
+    近7日合计 <b>3036.38</b> · 日均 <b>433.77</b><br>
+    历史日均 <b>193.52</b> · 加速比 <b>2.24x</b><br>
+    今日 <b>1500.39</b> · token 2,088,637 · 会话 17</div>
+  </div>
+  <div class="card y">
+    <h2>元典余额</h2>
+    <div class="big y">2 点</div>
+    <div class="kv">积分点（point）<br>
+    次数余额 <b>0 次</b><br>
+    查询时间 2026-09-12T10:28:00+0800</div>
+  </div>
+  <div class="card p">
+    <h2>WB 剩余额度</h2>
+    <div class="big plow">-2095</div>
+    <div class="kv">套餐总量 <b>17,003</b><br>已用 <b>112.3%</b><span style='color:#dc2626;font-size:11px'>⚠️ 已用尽/超额，请关注续费</span></div>
+    <div class="bar"><i style="width:100%;background:#dc2626"></i></div>
+  </div>
+  <div class="card pk">
+    <h2>北大法宝额度</h2>
+    <div class="big pk">—</div>
+    <div class="kv">额度待填<br><span class='hint'>编辑 pkulaw_plan.json</span></div>
+  </div>
+  <div class="card qc">
+    <h2>企查查额度</h2>
+    <div class="big qc">—</div>
+    <div class="kv">额度待填<br><span class='hint'>编辑 qcc_plan.json</span></div>
+  </div>
+</div>
+
+<div class="banner warn">🔴 消耗加速：近7日日均 433.77 为历史日均 193.52 的 2.24 倍，处于同业 P90 高消耗区间，建议按下方智能推荐优化。</div>
+
+<!-- ===== A. 用量分析（See） ===== -->
+<div class="panel">
+  <h3>📊 用量分析 · Usage Analytics <span class="tag">SEE</span></h3>
+  <div class="sect-sub">按业务职能 / 引擎 / 用户类型三维拆解消耗来源——不止看总量，更看"钱花在哪"。</div>
+  <div class="charts">
+    <div>
+      <h3 style="font-size:13px;margin-bottom:10px">📈 近 30 日 WorkBuddy 积分消耗趋势</h3>
+      <svg viewBox="0 0 720 240" width="100%" height="auto">
+        <line x1="40" y1="40.0" x2="680" y2="40.0" class="grid"/><text x="4" y="44.0" class="ax">1500.0</text><line x1="40" y1="80.0" x2="680" y2="80.0" class="grid"/><text x="4" y="84.0" class="ax">1125.0</text><line x1="40" y1="120.0" x2="680" y2="120.0" class="grid"/><text x="4" y="124.0" class="ax">750.0</text><line x1="40" y1="160.0" x2="680" y2="160.0" class="grid"/><text x="4" y="164.0" class="ax">375.0</text><line x1="40" y1="200.0" x2="680" y2="200.0" class="grid"/><text x="4" y="204.0" class="ax">0.0</text>
+        <path d="M 40.0 163.2 L 62.1 190.4 L 84.1 187.9 L 106.2 138.6 L 128.3 184.9 L 150.3 191.7 L 172.4 189.5 L 194.5 187.0 L 216.6 191.8 L 238.6 178.7 L 260.7 180.3 L 282.8 170.6 L 304.8 121.8 L 326.9 155.1 L 349.0 190.8 L 371.0 200.0 L 393.1 192.1 L 415.2 44.8 L 437.2 183.5 L 459.3 194.5 L 481.4 162.5 L 503.4 133.2 L 525.5 77.8 L 547.6 115.1 L 569.7 186.6 L 591.7 185.2 L 613.8 195.7 L 635.9 173.7 L 657.9 179.9 L 680.0 40.0 L 680.0 200 L 40.0 200 Z" class="area"/>
+        <path d="M 40.0 163.2 L 62.1 190.4 L 84.1 187.9 L 106.2 138.6 L 128.3 184.9 L 150.3 191.7 L 172.4 189.5 L 194.5 187.0 L 216.6 191.8 L 238.6 178.7 L 260.7 180.3 L 282.8 170.6 L 304.8 121.8 L 326.9 155.1 L 349.0 190.8 L 371.0 200.0 L 393.1 192.1 L 415.2 44.8 L 437.2 183.5 L 459.3 194.5 L 481.4 162.5 L 503.4 133.2 L 525.5 77.8 L 547.6 115.1 L 569.7 186.6 L 591.7 185.2 L 613.8 195.7 L 635.9 173.7 L 657.9 179.9 L 680.0 40.0" class="line"/>
+        <text x="40.0" y="216" class="ax">08-14</text><text x="150.3" y="216" class="ax">08-19</text><text x="260.7" y="216" class="ax">08-24</text><text x="371.0" y="216" class="ax">08-29</text><text x="481.4" y="216" class="ax">09-03</text><text x="591.7" y="216" class="ax">09-08</text>
+      </svg>
+      <div class="legend">蓝线 = 每日积分消耗（WorkBuddy 内部计费点）；红字行 = 高于近7日日均 1.3 倍的"高热日"。</div>
+    </div>
+    <div>
+      <h3 style="font-size:13px;margin-bottom:10px">📊 元典余额近 30 日趋势</h3>
+      <svg viewBox="0 0 720 240" width="100%" height="auto">
+        <line x1="40" y1="40.0" x2="680" y2="40.0" class="grid"/><text x="4" y="44.0" class="ax">1870.0</text><line x1="40" y1="80.0" x2="680" y2="80.0" class="grid"/><text x="4" y="84.0" class="ax">1403.0</text><line x1="40" y1="120.0" x2="680" y2="120.0" class="grid"/><text x="4" y="124.0" class="ax">936.0</text><line x1="40" y1="160.0" x2="680" y2="160.0" class="grid"/><text x="4" y="164.0" class="ax">469.0</text><line x1="40" y1="200.0" x2="680" y2="200.0" class="grid"/><text x="4" y="204.0" class="ax">2.0</text>
+        <path d="M 503.4 40.0 L 525.5 73.83297644539616 L 547.6 73.83297644539616 L 569.7 107.75160599571734 L 591.7 107.75160599571734 L 613.8 160.17130620985012 L 635.9 160.17130620985012 L 680.0 200.0 L 680.0 200 L 503.4 200 Z" class="area y"/>
+        <path d="M 503.4 40.0 L 525.5 73.83297644539616 L 547.6 73.83297644539616 L 569.7 107.75160599571734 L 591.7 107.75160599571734 L 613.8 160.17130620985012 L 635.9 160.17130620985012 L 680.0 200.0" class="line y"/>
+        <text x="591.7" y="216" class="ax">09-08</text>
+      </svg>
+      <div class="legend">橙线 = 元典余额（point）；每日 22:00 自动记录。</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h3 style="font-size:13px;margin:4px 0 10px">🧩 按业务职能拆解（近15日 TOP15 子集，5247 积分）</h3>
+      <div class="bars">
+        <div class="barrow"><div class="bl">合同/文书审查</div><div class="track"><i class="c-blue" style="width:42.5%"></i></div><div class="bv">42.5%</div></div>
+        <div class="barrow"><div class="bl">知识摄入(自动化)</div><div class="track"><i class="c-orange" style="width:36.1%"></i></div><div class="bv">36.1%</div></div>
+        <div class="barrow"><div class="bl">法条/类案检索</div><div class="track"><i class="c-purple" style="width:15.6%"></i></div><div class="bv">15.6%</div></div>
+        <div class="barrow"><div class="bl">系统/基建</div><div class="track"><i class="c-teal" style="width:5.8%"></i></div><div class="bv">5.8%</div></div>
+      </div>
+      <div class="legend">合同/文书审查为第一大消耗源；知识摄入自动化占逾三分之一，是优化重点。</div>
+    </div>
+    <div>
+      <h3 style="font-size:13px;margin:4px 0 10px">⚙️ 按引擎(模型)分布（近30日）</h3>
+      <div class="bars">
+        <div class="barrow"><div class="bl">deepseek-v4-flash</div><div class="track"><i class="c-blue" style="width:40.0%"></i></div><div class="bv">40.0%</div></div>
+        <div class="barrow"><div class="bl">hy3</div><div class="track"><i class="c-orange" style="width:23.3%"></i></div><div class="bv">23.3%</div></div>
+        <div class="barrow"><div class="bl">hy3-x</div><div class="track"><i class="c-purple" style="width:14.9%"></i></div><div class="bv">14.9%</div></div>
+        <div class="barrow"><div class="bl">hy4-preview</div><div class="track"><i class="c-red" style="width:13.0%"></i></div><div class="bv">13.0%</div></div>
+        <div class="barrow"><div class="bl">balanced-model</div><div class="track"><i class="c-teal" style="width:5.5%"></i></div><div class="bv">5.5%</div></div>
+      </div>
+      <div class="legend">deepseek-v4-flash 为主力（40%）；hy4-preview 单次成本最高（约 136 积分/次）。</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:13px;margin:16px 0 10px">👥 按用户类型分布（近15日 TOP15）</h3>
+  <div class="bars" style="max-width:520px">
+    <div class="barrow"><div class="bl">交互会话(对话)</div><div class="track"><i class="c-blue" style="width:60.6%"></i></div><div class="bv">60.6% · 10 会话</div></div>
+    <div class="barrow"><div class="bl">后台自动化(智能体)</div><div class="track"><i class="c-orange" style="width:39.4%"></i></div><div class="bv">39.4% · 5 会话</div></div>
+  </div>
+  <div class="legend">自动化占比 39.4%，高于同业中位（P60），说明运营已高度自动化。</div>
+</div>
+
+<!-- ===== B. 基准对标（Understand） ===== -->
+<div class="panel">
+  <h3>🎯 基准对标 · Peer Benchmarking <span class="tag warn">UNDERSTAND</span></h3>
+  <div class="sect-sub">⚠️ 行业基准为 <b>示例值</b>（基于 Harvey Command Center 公开方法论构造），用于演示对标逻辑；接入真实同业匿名数据（如 1500+ 部署聚合）后自动校准。</div>
+  <div class="bench">
+    <div class="benchrow">
+      <div class="lab"><span>日均消耗 433.77 积分</span><b>同业 P75（前 25% 高消耗）</b></div>
+      <div class="scale"><div class="pct" style="width:75%"></div><div class="med" style="left:50%"></div><div class="you" style="left:75%"></div><div class="ylab" style="left:75%">你 P75</div></div>
+    </div>
+    <div class="benchrow">
+      <div class="lab"><span>自动化占比 39.4%</span><b>同业 P60</b></div>
+      <div class="scale"><div class="pct" style="width:60%"></div><div class="med" style="left:50%"></div><div class="you" style="left:60%"></div><div class="ylab" style="left:60%">你 P60</div></div>
+    </div>
+    <div class="benchrow">
+      <div class="lab"><span>单位成本（token/积分）健康度</span><b>同业 P50（中位，健康）</b></div>
+      <div class="scale"><div class="pct" style="width:50%"></div><div class="med" style="left:50%"></div><div class="you" style="left:50%"></div><div class="ylab" style="left:50%">你 P50</div></div>
+    </div>
+    <div class="benchrow">
+      <div class="lab"><span>套餐超额 112.3%</span><b>同业 P90（高度预警）</b></div>
+      <div class="scale"><div class="pct" style="width:90%;background:linear-gradient(90deg,rgba(239,83,80,.2),rgba(239,83,80,.45))"></div><div class="med" style="left:50%"></div><div class="you" style="left:90%"></div><div class="ylab" style="left:90%">你 P90</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== C. 智能推荐（Act） ===== -->
+<div class="panel">
+  <h3>💡 智能洞察与推荐 · Recommended Next Steps <span class="tag">ACT</span></h3>
+  <div class="sect-sub">由消耗结构自动推导的优化动作（数据驱动，非凭记忆）。施行后预计可显著压降超额。</div>
+  <div class="recs">
+    <div class="rec">
+      <div class="rt">① 合并重复自动化</div>
+      <div class="rb">「审判要件卡·每日密度审计补拆」近15日出现 2 次，合计 <b>901.48</b> 积分（占 TOP15 的 17.2%）。合并为单次批处理。</div>
+      <div class="rs">预计月省 ≈ 500 积分</div>
+    </div>
+    <div class="rec r2">
+      <div class="rt">② 模型回落</div>
+      <div class="rb">hy4-preview 单次成本 ≈136 积分（最高），非复杂任务回落 hy3（≈70 积分/次）。</div>
+      <div class="rs">单次省 ≈ 49%</div>
+    </div>
+    <div class="rec r3">
+      <div class="rt">③ 合同审查模板化</div>
+      <div class="rb">合同/文书审查占 42.5%，沉淀为文书范式卡后，同类审查单次成本下降。</div>
+      <div class="rs">单次降 ≈ 40%</div>
+    </div>
+    <div class="rec r4">
+      <div class="rt">④ 摄入错峰</div>
+      <div class="rb">知识摄入占 36.1%，错峰至夜间批处理窗口可享更低单价。</div>
+      <div class="rs">单价更优</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== D. 自然语言问答 ===== -->
+<div class="panel">
+  <h3>💬 智能问答 · Ask the Assistant <span class="tag">NL QUERY</span></h3>
+  <div class="sect-sub">用自然语言直接问你的消耗数据（本地规则应答，不上传）。</div>
+  <div class="ask">
+    <input id="askInput" placeholder="例如：本月哪类任务消耗最高？如何让消耗降低 15%？" />
+    <button onclick="askQA()">提问</button>
+  </div>
+  <div class="chips">
+    <span class="chip" onclick="setQ('本月哪类任务消耗最高？')">本月哪类任务消耗最高？</span>
+    <span class="chip" onclick="setQ('如何让消耗降低 15%？')">如何让消耗降低 15%？</span>
+    <span class="chip" onclick="setQ('我的消耗在同业什么水平？')">我的消耗在同业什么水平？</span>
+  </div>
+  <div class="ans" id="ansBox"><span class="q">提示</span>点击上方示例问题，或输入你自己的问题。</div>
+</div>
+
+<!-- ===== E. 新能力雷达 ===== -->
+<div class="panel">
+  <h3>🚀 新能力雷达 · Release Radar</h3>
+  <div class="sect-sub">对标 Harvey Command Center「智能推荐 + 新能力追踪」——哪些能力可启用以进一步优化。</div>
+  <div class="radar">
+    <div class="rl"><div class="rh">华宇元典 yuandian 实时核验</div><div class="rd">替代离线缓存，提升法条核验时效与准确性。</div><span class="rst">建议启用</span></div>
+    <div class="rl"><div class="rh">LTI v4.8.1 五维门禁</div><div class="rd">R/L/C/T/P 全量接入，拦截幻觉与不一致。</div><span class="rst on">已接入</span></div>
+    <div class="rl"><div class="rh">北大法宝 / 企查查 额度接入</div><div class="rd">补全外部库额度监控（当前待填）。</div><span class="rst">待配置</span></div>
+    <div class="rl"><div class="rh">积分治理自动化</div><div class="rd">pkulaw_plan.json 定时校准，替代人工盯盘。</div><span class="rst">建议启用</span></div>
+  </div>
+</div>
+
+<!-- ===== 明细 ===== -->
+<div class="panel">
+  <h3>📋 近 15 日明细</h3>
+  <table class="tbl"><thead><tr><th>日期</th><th>积分</th><th>token</th><th>会话</th></tr></thead>
+  <tbody><tr class=' hot'><td>2026-09-12</td><td>1500.39</td><td>2088637</td><td>17</td></tr><tr class=''><td>2026-09-11</td><td>188.15</td><td>1352418</td><td>11</td></tr><tr class=''><td>2026-09-10</td><td>246.54</td><td>1825602</td><td>17</td></tr><tr class=''><td>2026-09-09</td><td>40.01</td><td>1139741</td><td>11</td></tr><tr class=''><td>2026-09-08</td><td>139.23</td><td>1230104</td><td>15</td></tr><tr class=''><td>2026-09-07</td><td>125.79</td><td>973236</td><td>13</td></tr><tr class=' hot'><td>2026-09-06</td><td>796.27</td><td>1924815</td><td>20</td></tr><tr class=' hot'><td>2026-09-05</td><td>1145.94</td><td>629177</td><td>7</td></tr><tr class=' hot'><td>2026-09-04</td><td>626.29</td><td>935067</td><td>12</td></tr><tr class=''><td>2026-09-03</td><td>351.75</td><td>581060</td><td>6</td></tr><tr class=''><td>2026-09-02</td><td>51.17</td><td>631456</td><td>5</td></tr><tr class=''><td>2026-09-01</td><td>154.59</td><td>735887</td><td>10</td></tr><tr class=' hot'><td>2026-08-31</td><td>1455.53</td><td>850045</td><td>6</td></tr><tr class=''><td>2026-08-30</td><td>74.42</td><td>1583121</td><td>11</td></tr><tr class=''><td>2026-08-29</td><td>0.00</td><td>569525</td><td>7</td></tr></tbody></table>
+</div>
+
+<div class="panel">
+  <h3>🏆 近 15 日 TOP 消耗会话（前 15）</h3>
+  <table class="tbl center"><thead><tr><th>#</th><th>会话</th><th>类型</th><th>模型</th><th>积分</th><th>占比</th></tr></thead>
+  <tbody><tr class=' chat'><td>1</td><td>丁茂祥诉刘九零吊顶案</td><td>对话</td><td>hy3-x</td><td>1090.78</td><td>15.8%</td></tr><tr class=' agent'><td>2</td><td>审判要件卡·每日密度审计补拆</td><td>智能体</td><td>hy4-preview</td><td>807.49</td><td>11.7%</td></tr><tr class=' agent'><td>3</td><td>每日知识摄入（v1.19版·元典积分治理）</td><td>智能体</td><td>deepseek-v4-flash</td><td>525.62</td><td>7.6%</td></tr><tr class=' agent'><td>4</td><td>每日摄入稳定性监测守卫</td><td>智能体</td><td>deepseek-v4-flash</td><td>465.57</td><td>6.7%</td></tr><tr class=' chat'><td>5</td><td>类案检索降级故障根因排查</td><td>对话</td><td>balanced-model</td><td>415.36</td><td>6.0%</td></tr><tr class=' chat'><td>6</td><td>安装元典法律检索 skill</td><td>对话</td><td>deepseek-v4-flash</td><td>404.01</td><td>5.8%</td></tr><tr class=' chat'><td>7</td><td>焦联鹏诉刘九零窗帘案</td><td>对话</td><td>hy3</td><td>351.32</td><td>5.1%</td></tr><tr class=' chat'><td>8</td><td>补充无 FM 卡最小 frontmatter 实现闭环</td><td>对话</td><td>hy3</td><td>290.49</td><td>4.2%</td></tr><tr class=' chat'><td>9</td><td>优先拆建设工程合同——对吊顶案 6658 号直接有用。另外后记那条情报值得盯：</td><td>对话</td><td>hy4-preview</td><td>196.54</td><td>2.8%</td></tr><tr class=' agent'><td>10</td><td>每周复盘</td><td>智能体</td><td>hy3</td><td>175.48</td><td>2.5%</td></tr><tr class=' chat'><td>11</td><td>决策思维树系统搭建</td><td>对话</td><td>hy3</td><td>130.37</td><td>1.9%</td></tr><tr class=' chat'><td>12</td><td>证据规则卡</td><td>对话</td><td>hy3</td><td>106.84</td><td>1.5%</td></tr><tr class=' chat'><td>13</td><td>光伏投资项目合作协...</td><td>对话</td><td>hy3-x</td><td>105.47</td><td>1.5%</td></tr><tr class=' agent'><td>14</td><td>审判要件卡·每日密度审计补拆</td><td>智能体</td><td>hy4-preview</td><td>93.99</td><td>1.4%</td></tr><tr class=' chat'><td>15</td><td>赔偿计算卡族</td><td>对话</td><td>hy3</td><td>87.59</td><td>1.3%</td></tr></tbody></table>
+  <div class="legend">🟠 智能体 = 后台自动化 · 🔵 对话 = 交互会话；完整 30 天排名见 <b>积分消耗排名.csv</b></div>
+</div>
+
+<details><summary style="font-size:12px;color:#9aa3b2;cursor:pointer">原始数据（DATA）</summary>
+<pre style="font-size:11px;background:#0a0d13;padding:12px 14px;border-radius:0 0 12px 12px;overflow:auto;max-height:280px;color:#9aa3b2">{"generated_at":"2026-09-12 15:17","dashboard":"v2.0 Harvey Command Center 范式","wb":{"total_credit":19098.43,"plan_total":17003.38,"remaining":-2095.05,"usage_pct":112.3,"last7_credit":3036.38,"last7_avg":433.77,"hist_avg":193.52,"accel_ratio":2.24,"today_credit":1500.39,"today_token":2088637,"today_sess":17,"active_days":90,"warn":true,"benchmark":{"daily_pct":"P75","auto_pct":"P60","cost_pct":"P50","overuse_pct":"P90"}},"yuandian":{"balance":2,"count_balance":0,"checked_at":"2026-09-12T10:28:00+0800","ok":true},"function_split_pct":{"contract_review":42.5,"knowledge_ingest":36.1,"statute_search":15.6,"infra":5.8},"user_type_pct":{"chat":60.6,"agent":39.4},"model_top5":[{"m":"deepseek-v4-flash","credit":4207.63,"pct":40.0,"n":39},{"m":"hy3","credit":2443.83,"pct":23.3,"n":35},{"m":"hy3-x","credit":1567.02,"pct":14.9,"n":18},{"m":"hy4-preview","credit":1364.15,"pct":13.0,"n":10},{"m":"balanced-model","credit":576.32,"pct":5.5,"n":6}]}</pre>
+</details>
+
+<div class="footnote">⚠️ <b>内部数据 · 严禁外发</b>：本看板含 WorkBuddy 内部计费、元典余额与真实会话消耗排名，属驾驶舱高敏感数据。对外分享须经脱敏处理，仅限本人/授权协作者查看。</div>
+</div>
+
+<script>
+function setQ(q){ document.getElementById('askInput').value = q; askQA(); }
+function askQA(){
+  var q = (document.getElementById('askInput').value || '').trim();
+  var box = document.getElementById('ansBox');
+  if(!q){ box.innerHTML = '<span class="q">提示</span>请输入问题，或点击上方示例。'; return; }
+  var a = '';
+  if(q.indexOf('最高')>=0 || q.indexOf('哪类')>=0){
+    a = '合同/文书审查占 <b>42.5%</b>（约 2229 积分），为第一大消耗源；其次知识摄入自动化 36.1%、法条类案检索 15.6%、系统基建 5.8%。';
+  } else if(q.indexOf('降低')>=0 || q.indexOf('优化')>=0 || q.indexOf('省')>=0){
+    a = '① 合并重复的审判要件卡审计自动化（月省 ≈500 积分）② hy4-preview 回落 hy3（单次省 ≈49%）③ 合同审查沉淀范式卡（单次降 ≈40%）。三项合计可压降 15%+。';
+  } else if(q.indexOf('同业')>=0 || q.indexOf('水平')>=0 || q.indexOf('基准')>=0){
+    a = '日均 433.77 积分，处于行业 <b>P75 分位</b>（前 25% 高消耗）；自动化占比 39.4%（P60）；套餐已超额 112.3%（P90 高度预警）。';
+  } else {
+    a = '已收录你的提问。本看板内置规则应答覆盖：消耗结构、优化建议、同业对标三类。可点击上方示例快速体验。';
+  }
+  box.innerHTML = '<span class="q">问：'+q.replace(/</g,'&lt;')+'</span>'+a;
+}
+</script>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var d=new Date(document.lastModified);
+    if(isNaN(d.getTime())) return;
+    var s=fmt(d);
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：'+s+'（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+s);}
+  }catch(e){}
+})();
+</script>
+
+<script src="/subapp_score_override.js?v=20260919b"></script>
+</body></html>

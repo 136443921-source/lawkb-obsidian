@@ -804,7 +804,7 @@ pip install
 - [[BCD线迁移方案与dryrun报告-20260921]] (共现关键词: 关键词, 迁移, 共现)
 - [[法条一致性审计报告-迁移后复核-20260921]] (共现关键词: 关键词, 迁移, 共现)
 - [[03-克隆迁移SOP]] (共现关键词: 关键词, 迁移, 共现)
-- [[README]] (共现关键词: 关键词, workbuddy, 医疗)
+- [[_AI-Memory-Hub/README]] (共现关键词: 关键词, workbuddy, 医疗)
 - [[WF-085---脚本：`Userschenyouqiang.workbuddyskills_]] (共现关键词: Users, workbuddy)
 - [[知识库投喂汇总-2026-07-24]] (共现关键词: WorkBuddy, workbuddy)
 - [[红队L2批驳_蓝队D3体检稿_20260914]] (共现关键词: 路径, ###)

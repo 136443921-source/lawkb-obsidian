@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D6 权限调用中台 · 律所主任治理席位</title>
+<style>
+  :root{
+    --bg:#0a0e16; --bg2:#0f1521; --bg3:#151d2c; --bg4:#1b2536;
+    --border:#232f43; --border-hi:#34465f;
+    --text:#e7eef7; --dim:#94a3b8; --faint:#5b6b82;
+    --accent:#5b9dff; --accent2:#a78bfa; --teal:#2dd4bf;
+    --amber:#f5b042; --red:#f87171; --green:#4ade80;
+    --l1:#2dd4bf; --l2:#f5b042; --l3:#f87171;
+    --shadow:0 8px 28px rgba(0,0,0,.45);
+    --mono:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:
+      radial-gradient(1200px 600px at 80% -10%,rgba(91,157,255,.08),transparent 60%),
+      radial-gradient(900px 500px at 0% 100%,rgba(167,139,250,.07),transparent 55%),
+      var(--bg);
+    color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+  /* ===== Layout ===== */
+  .shell{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+  /* Sidebar */
+  .nav{position:sticky;top:0;height:100vh;background:linear-gradient(180deg,var(--bg2),var(--bg));
+    border-right:1px solid var(--border);padding:22px 16px;display:flex;flex-direction:column;gap:6px;overflow-y:auto}
+  .brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px;border-bottom:1px solid var(--border);margin-bottom:12px}
+  .brand .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:grid;place-items:center;font-weight:800;font-size:15px;color:#06101f;box-shadow:0 4px 14px rgba(91,157,255,.4)}
+  .brand .t1{font-size:14px;font-weight:700;letter-spacing:.3px}
+  .brand .t2{font-size:11px;color:var(--faint);margin-top:1px}
+  .nav a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:9px;color:var(--dim);
+    text-decoration:none;font-size:13.5px;font-weight:500;transition:.18s;border:1px solid transparent}
+  .nav a .ic{width:22px;text-align:center;font-size:15px}
+  .nav a:hover{background:var(--bg3);color:var(--text)}
+  .nav a.active{background:linear-gradient(90deg,rgba(91,157,255,.16),transparent);color:#fff;
+    border-color:var(--border-hi);box-shadow:inset 2px 0 0 var(--accent)}
+  .nav .grp{font-size:10.5px;letter-spacing:1.4px;color:var(--faint);text-transform:uppercase;margin:16px 12px 4px}
+  .nav .me{margin-top:auto;padding:12px;border-radius:11px;background:var(--bg3);border:1px solid var(--border);font-size:12px}
+  .nav .me .who{font-weight:700;color:#fff}
+  .nav .me .role{color:var(--teal);font-size:11px;margin-top:2px}
+  .nav .me .live{color:var(--faint);font-size:10.5px;margin-top:6px;display:flex;align-items:center;gap:6px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* Main */
+  .main{overflow-x:hidden}
+  .topbar{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);
+    background:linear-gradient(180deg,rgba(10,14,22,.92),rgba(10,14,22,.7));
+    border-bottom:1px solid var(--border);padding:14px 30px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .topbar h1{font-size:19px;font-weight:750;letter-spacing:.3px;display:flex;align-items:center;gap:11px}
+  .topbar h1 .tag{font-size:11px;font-weight:600;color:var(--accent);background:rgba(91,157,255,.12);
+    border:1px solid rgba(91,157,255,.3);padding:3px 9px;border-radius:20px}
+  .topbar .sub{font-size:12px;color:var(--dim);margin-top:3px}
+  .kpis{display:flex;gap:10px;flex-wrap:wrap}
+  .kpi{background:var(--bg3);border:1px solid var(--border);border-radius:11px;padding:9px 14px;min-width:84px;text-align:center}
+  .kpi .n{font-size:21px;font-weight:800;font-family:var(--mono);line-height:1}
+  .kpi .l{font-size:10.5px;color:var(--faint);margin-top:5px;letter-spacing:.4px}
+  .kpi.c .n{color:var(--accent)} .kpi.d .n{color:var(--accent2)} .kpi.l .n{color:var(--teal)} .kpi.r .n{color:var(--amber)}
+
+  .content{padding:30px;max-width:1240px;margin:0 auto}
+  section{margin-bottom:46px;scroll-margin-top:84px}
+  .sec-head{display:flex;align-items:baseline;gap:13px;margin-bottom:18px;flex-wrap:wrap}
+  .sec-head .no{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent);
+    background:rgba(91,157,255,.1);border:1px solid rgba(91,157,255,.28);padding:3px 9px;border-radius:7px}
+  .sec-head h2{font-size:21px;font-weight:750}
+  .sec-head .desc{font-size:13px;color:var(--dim);margin-left:auto;max-width:560px;text-align:right}
+
+  /* Overview cards */
+  .ov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .ov-card{background:linear-gradient(160deg,var(--bg3),var(--bg2));border:1px solid var(--border);
+    border-radius:15px;padding:20px;position:relative;overflow:hidden}
+  .ov-card::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;
+    background:radial-gradient(circle,var(--glow,rgba(91,157,255,.25)),transparent 70%)}
+  .ov-card .lab{font-size:12px;color:var(--dim);font-weight:600;letter-spacing:.5px}
+  .ov-card .big{font-size:30px;font-weight:800;font-family:var(--mono);margin:8px 0 4px}
+  .ov-card .meta{font-size:11.5px;color:var(--faint)}
+  .ov-card .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
+  .ov-card .chip{font-size:10.5px;padding:2px 8px;border-radius:20px;background:var(--bg4);border:1px solid var(--border);color:var(--dim)}
+
+  /* Governance stack G0-G5 */
+  .stack{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2)}
+  .glayer{display:grid;grid-template-columns:120px 1fr;gap:0;border-bottom:1px solid var(--border);position:relative;transition:.18s}
+  .glayer:last-child{border-bottom:none}
+  .glayer:hover{background:var(--bg3)}
+  .glayer .gx{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:18px 10px;
+    font-family:var(--mono);border-right:1px solid var(--border);background:rgba(255,255,255,.015)}
+  .glayer .gx .g{font-size:22px;font-weight:800}
+  .glayer .gx .nm{font-size:12px;margin-top:4px;color:var(--text);font-family:var(--sans);font-weight:600}
+  .glayer .gb{padding:16px 20px}
+  .glayer .gb .ttl{font-size:14px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:9px}
+  .glayer .gb .ttl .pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px}
+  .glayer .gb .meta{font-size:12.5px;color:var(--dim)}
+  .glayer .gb .emp{color:var(--text);font-weight:600}
+  .glayer .gb .staff{font-size:11.5px;color:var(--faint);margin-top:7px;border-top:1px dashed var(--border);padding-top:7px}
+  .glayer .gb .staff b{color:var(--teal);font-weight:600}
+
+  /* Domains D1-D7 */
+  .dom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px}
+  .dom{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px;position:relative;transition:.18s}
+  .dom:hover{border-color:var(--border-hi);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .dom .dh{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .dom .did{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-family:var(--mono);
+    font-weight:800;font-size:16px;color:#06101f;flex:none}
+  .dom .dnm{font-size:15px;font-weight:700}
+  .dom .dlk{font-size:11px;color:var(--faint);margin-top:2px}
+  .dom .dbody{font-size:12.8px;color:var(--dim);line-height:1.6}
+  .dom .dbody .hi{color:var(--text);font-weight:600}
+  .dom .dops{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+  .dom .op{font-size:10.8px;padding:3px 9px;border-radius:7px;background:var(--bg4);border:1px solid var(--border);color:var(--dim);cursor:default}
+  .dom .dstack{position:absolute;top:18px;right:16px;font-size:10px;font-family:var(--mono);color:var(--faint);
+    border:1px solid var(--border);border-radius:6px;padding:2px 7px}
+
+  /* Levels L1-L3 */
+  .lvl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+  .lvl{border-radius:16px;padding:22px;background:var(--bg2);border:1px solid var(--border);position:relative;overflow:hidden}
+  .lvl::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--lc)}
+  .lvl .lh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .lvl .ln{font-family:var(--mono);font-size:26px;font-weight:800;color:var(--lc)}
+  .lvl .lt{font-size:17px;font-weight:750}
+  .lvl .ls{font-size:11.5px;color:var(--faint);margin-bottom:14px}
+  .lvl .mode{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;
+    background:color-mix(in srgb,var(--lc) 14%,transparent);color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 35%,transparent);margin-bottom:14px}
+  .lvl ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:14px}
+  .lvl li{font-size:12.8px;color:var(--dim);display:flex;gap:9px;align-items:flex-start}
+  .lvl li .b{color:var(--lc);font-weight:700;flex:none;margin-top:1px}
+  .lvl .guard{font-size:11.5px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--dim)}
+  .lvl .guard b{color:var(--lc)}
+
+  /* Matrix */
+  .matrix-wrap{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2)}
+  .matrix-tools{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .matrix-tools .lbl{font-size:12px;color:var(--dim);font-weight:600}
+  .seg{display:flex;background:var(--bg4);border:1px solid var(--border);border-radius:9px;overflow:hidden}
+  .seg button{background:none;border:none;color:var(--dim);padding:7px 13px;font-size:12px;cursor:pointer;font-family:var(--sans);transition:.15s}
+  .seg button.on{background:var(--accent);color:#06101f;font-weight:700}
+  table.mat{width:100%;border-collapse:collapse;font-size:13px}
+  table.mat th,table.mat td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+  table.mat thead th{background:var(--bg3);font-size:12px;color:var(--dim);font-weight:700;letter-spacing:.4px;position:sticky;top:0}
+  table.mat tbody tr{transition:.15s}
+  table.mat tbody tr:hover{background:var(--bg3)}
+  table.mat td.rname{font-weight:700;color:var(--text);white-space:nowrap}
+  table.mat td.rname .rd{font-size:10.5px;color:var(--faint);font-weight:500;display:block;margin-top:2px}
+  .lv{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:12px;padding:5px 11px;border-radius:8px;font-family:var(--mono);cursor:default}
+  .lv .d{width:6px;height:6px;border-radius:50%}
+  .lv.l1{background:rgba(45,212,191,.12);color:var(--l1);border:1px solid rgba(45,212,191,.3)}
+  .lv.l2{background:rgba(245,176,66,.12);color:var(--l2);border:1px solid rgba(245,176,66,.3)}
+  .lv.l3{background:rgba(248,113,113,.12);color:var(--l3);border:1px solid rgba(248,113,113,.3)}
+  .lv .d.l1{background:var(--l1)} .lv .d.l2{background:var(--l2)} .lv .d.l3{background:var(--l3)}
+  .lv.none{background:var(--bg4);color:var(--faint);border:1px solid var(--border)}
+  .lv.none .d{background:var(--faint)}
+  tr.row-hl{background:rgba(91,157,255,.08)!important;box-shadow:inset 3px 0 0 var(--accent)}
+  td.col-hl{background:rgba(91,157,255,.06)}
+  .mat-note{font-size:11.5px;color:var(--faint);padding:12px 18px;border-top:1px solid var(--border);background:var(--bg3)}
+
+  /* Simulator */
+  .sim{background:linear-gradient(160deg,var(--bg3),var(--bg2));border:1px solid var(--border);border-radius:16px;padding:24px}
+  .sim-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+  .sim-field label{display:block;font-size:12px;color:var(--dim);font-weight:600;margin-bottom:7px}
+  .sim-field select{width:100%;background:var(--bg4);border:1px solid var(--border);color:var(--text);
+    padding:11px 13px;border-radius:10px;font-size:13px;font-family:var(--sans);cursor:pointer;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L2 4h8z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
+  .sim-field select:focus{outline:none;border-color:var(--accent)}
+  .sim-out{background:var(--bg);border:1px solid var(--border);border-radius:13px;padding:22px;min-height:180px}
+  .sim-out .verdict{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:18px;padding:8px 16px;border-radius:11px;margin-bottom:14px}
+  .sim-out .need{font-size:13px;margin-bottom:14px;padding:9px 13px;border-radius:9px;background:var(--bg3);border:1px solid var(--border)}
+  .sim-out .acts{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+  .sim-out .act{font-size:11.5px;padding:4px 10px;border-radius:8px;background:var(--bg4);border:1px solid var(--border);color:var(--dim)}
+  .sim-out .guardline{margin-top:14px;font-size:12px;color:var(--dim);border-top:1px dashed var(--border);padding-top:12px}
+  .sim-out .guardline b{color:var(--red)}
+
+  /* Guard zone */
+  .guard-zone{border:1px solid rgba(248,113,113,.35);border-radius:16px;background:linear-gradient(160deg,rgba(248,113,113,.06),var(--bg2));padding:24px}
+  .guard-zone .gzh{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .guard-zone .gzh .ico{width:44px;height:44px;border-radius:12px;background:rgba(248,113,113,.15);display:grid;place-items:center;font-size:22px;border:1px solid rgba(248,113,113,.35)}
+  .guard-zone .gzh h3{font-size:18px;font-weight:750;color:var(--red)}
+  .guard-zone .gzh .st{font-size:11px;color:var(--faint);margin-top:2px}
+  .gz-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:13px}
+  .gz{border:1px solid var(--border);border-radius:12px;padding:15px;background:var(--bg)}
+  .gz .gt{font-weight:700;font-size:13.5px;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+  .gz .gt .lk{font-size:10px;font-family:var(--mono);color:var(--red);background:rgba(248,113,113,.12);padding:2px 7px;border-radius:6px;border:1px solid rgba(248,113,113,.3)}
+  .gz .gd{font-size:12px;color:var(--dim)}
+  .gz .gw{font-size:11px;color:var(--amber);margin-top:8px}
+
+  .redline{margin-top:20px;font-size:12px;color:var(--faint);background:var(--bg3);border:1px dashed var(--border);border-radius:11px;padding:13px 16px;display:flex;gap:10px;align-items:flex-start}
+  .redline .ic{color:var(--red);font-size:15px;flex:none}
+
+  footer{text-align:center;color:var(--faint);font-size:11.5px;padding:30px;border-top:1px solid var(--border);margin-top:20px}
+  footer b{color:var(--dim)}
+
+  @media(max-width:920px){
+    .shell{grid-template-columns:1fr}
+    .nav{position:static;height:auto;flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--border)}
+    .nav .grp,.nav .me{display:none}
+    .nav a{white-space:nowrap}
+    .sec-head .desc{text-align:left;margin-left:0;max-width:100%}
+    .sim-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body data-cno="D6">
+<div class="shell">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="nav">
+    <div class="brand">
+      <div class="logo">D6</div>
+      <div>
+        <div class="t1">D6 权限调用中台</div>
+        <div class="t2">Governance Command</div>
+      </div>
+    </div>
+    <a href="#overview" class="active"><span class="ic">◈</span>概览 Overview</a>
+    <a href="#stack"><span class="ic">⬡</span>治理六层栈 G0–G5</a>
+    <a href="#domains"><span class="ic">▦</span>七域职责 D1–D7</a>
+    <a href="#levels"><span class="ic">⚖</span>三级权限 L1–L3</a>
+    <a href="#matrix"><span class="ic">▤</span>角色权限矩阵</a>
+    <a href="#sim"><span class="ic">⚡</span>权限调用模拟器</a>
+    <a href="#guard"><span class="ic">⛨</span>L3 禁区与护栏</a>
+    <div class="me">
+      <div class="who">LZ-001 · 陈友强</div>
+      <div class="role">● 律所主任 · 治理席位</div>
+      <div class="live"><span class="dot"></span> 授权引擎在线 · <span id="clock">--:--:--</span></div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <h1>D6 权限调用中台 <span class="tag">参照 Harvey Command Center</span></h1>
+        <div class="sub">律所主任治理席位 ·「管这台机器怎么转」的方法论权 + 领域管辖权 + 三级权限护栏</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi c"><div class="n">6</div><div class="l">治理层 G</div></div>
+        <div class="kpi d"><div class="n">7</div><div class="l">职责域 D</div></div>
+        <div class="kpi l"><div class="n">3</div><div class="l">权限级 L</div></div>
+        <div class="kpi r"><div class="n">5</div><div class="l">权限维</div></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- ===== OVERVIEW ===== -->
+      <section id="overview">
+        <div class="sec-head">
+          <span class="no">00</span><h2>概览 Overview</h2>
+          <div class="desc">主任的权限模型由三个正交维度构成：治理六层栈（方法论权）→ 七域职责（领域管辖权）→ 三级权限（执行护栏）。本屏向下可授予员工的细粒度权限落在「角色与权限矩阵」。</div>
+        </div>
+        <div class="ov-grid">
+          <div class="ov-card" style="--glow:rgba(91,157,255,.3)">
+            <div class="lab">治理六层栈 G0–G5</div>
+            <div class="big" style="color:var(--accent)">G0→G5</div>
+            <div class="meta">「管机器怎么转」的方法论权</div>
+            <div class="chips"><span class="chip">席位</span><span class="chip">全景</span><span class="chip">研判</span><span class="chip">调度</span><span class="chip">督导</span><span class="chip">问责</span></div>
+          </div>
+          <div class="ov-card" style="--glow:rgba(167,139,250,.3)">
+            <div class="lab">七域职责 D1–D7</div>
+            <div class="big" style="color:var(--accent2)">D1→D7</div>
+            <div class="meta">主任的领域管辖权</div>
+            <div class="chips"><span class="chip">战情研判</span><span class="chip">档案管理</span><span class="chip">系统运维</span><span class="chip">红蓝指导</span><span class="chip">子自动化</span><span class="chip">智能体审计</span><span class="chip">质控</span></div>
+          </div>
+          <div class="ov-card" style="--glow:rgba(45,212,191,.3)">
+            <div class="lab">三级权限 L1–L3</div>
+            <div class="big" style="color:var(--teal)">L1·L2·L3</div>
+            <div class="meta">只读 / 建议 / 禁区 三级护栏</div>
+            <div class="chips"><span class="chip">L1 自主</span><span class="chip">L2 须确认</span><span class="chip">L3 不授权</span></div>
+          </div>
+          <div class="ov-card" style="--glow:rgba(245,176,66,.3)">
+            <div class="lab">可授予员工的细粒度权限</div>
+            <div class="big" style="color:var(--amber)">5 维</div>
+            <div class="meta">本屏授权的权限矩阵维度</div>
+            <div class="chips"><span class="chip">驾驶舱访问</span><span class="chip">治理域</span><span class="chip">数据连接器</span><span class="chip">账号治理</span><span class="chip">系统操作</span></div>
+          </div>
+        </div>
+        <div class="redline" style="margin-top:16px">
+          <span class="ic">⚠</span>
+          <div><b style="color:var(--amber)">命名说明：</b>本看板命名为「D6 权限调用中台」，恰好对应七域中的 <b style="color:var(--accent2)">D6 智能体审计</b>——即主任通过本屏行使「智能体审计」管辖权的管控台，命名自洽，非冲突。</div>
+        </div>
+      </section>
+
+      <!-- ===== GOVERNANCE STACK ===== -->
+      <section id="stack">
+        <div class="sec-head">
+          <span class="no">01</span><h2>治理六层栈 G0–G5</h2>
+          <div class="desc">主任「管这台机器怎么转」的方法论权。自下而上 G0 席位 → G5 问责，层级越高，治理抽象度越高、可授权员工的边界越窄。</div>
+        </div>
+        <div class="stack" id="stackBox"></div>
+      </section>
+
+      <!-- ===== DOMAINS ===== -->
+      <section id="domains">
+        <div class="sec-head">
+          <span class="no">02</span><h2>七域职责 D1–D7</h2>
+          <div class="desc">主任的领域管辖权。每一域对应治理六层栈中的落点，且向下拆出「可授予员工的细粒度操作」。</div>
+        </div>
+        <div class="dom-grid" id="domBox"></div>
+      </section>
+
+      <!-- ===== LEVELS ===== -->
+      <section id="levels">
+        <div class="sec-head">
+          <span class="no">03</span><h2>三级权限分级 L1–L3</h2>
+          <div class="desc">所有动作按风险落入三级：L1 只读（自主）、L2 建议（须确认）、L3 禁区（护栏前不授权）。这是权限矩阵的底层标尺。</div>
+        </div>
+        <div class="lvl-grid" id="lvlBox"></div>
+      </section>
+
+      <!-- ===== MATRIX ===== -->
+      <section id="matrix">
+        <div class="sec-head">
+          <span class="no">04</span><h2>角色与权限矩阵</h2>
+          <div class="desc">本屏可授予员工的细粒度权限 = 角色 × 5 维权限目录。单元格标 L1/L2/L3（或「—」无授权）。点击角色行或列头可聚焦。</div>
+        </div>
+        <div class="matrix-wrap">
+          <div class="matrix-tools">
+            <span class="lbl">聚焦：</span>
+            <div class="seg" id="roleSeg"></div>
+            <span class="lbl" style="margin-left:8px">列：</span>
+            <div class="seg" id="colSeg"></div>
+            <button id="resetM" style="margin-left:auto;background:var(--bg4);border:1px solid var(--border);color:var(--dim);padding:7px 13px;border-radius:9px;cursor:pointer;font-size:12px">重置高亮</button>
+          </div>
+          <table class="mat" id="matTable">
+            <thead><tr id="matHead"></tr></thead>
+            <tbody id="matBody"></tbody>
+          </table>
+          <div class="mat-note">图例：<span class="lv l1"><span class="d l1"></span>L1</span> 只读·自主 &nbsp; <span class="lv l2"><span class="d l2"></span>L2</span> 建议·须确认 &nbsp; <span class="lv l3"><span class="d l3"></span>L3</span> 主任专权·禁区前不授权 &nbsp; <span class="lv none"><span class="d"></span>—</span> 本屏不授予。单元格颜色表示该角色在该维度的权限级别。</div>
+        </div>
+      </section>
+
+      <!-- ===== SIMULATOR ===== -->
+      <section id="sim">
+        <div class="sec-head">
+          <span class="no">05</span><h2>权限调用模拟器</h2>
+          <div class="desc">选「角色 + 权限维度」→ 实时判定该调用落在 L1/L2/L3 哪一级、是否需要确认、护栏状态。即「本屏授权引擎」的最小可用实现。</div>
+        </div>
+        <div class="sim">
+          <div class="sim-grid">
+            <div class="sim-field">
+              <label>① 调用角色</label>
+              <select id="simRole"></select>
+            </div>
+            <div class="sim-field">
+              <label>② 权限维度</label>
+              <select id="simDim"></select>
+            </div>
+            <div class="sim-field">
+              <label>③ 具体动作（可选）</label>
+              <select id="simAct"><option value="">— 看该维度全部可授动作 —</option></select>
+            </div>
+          </div>
+          <div class="sim-out" id="simOut"></div>
+        </div>
+      </section>
+
+      <!-- ===== GUARD ZONE ===== -->
+      <section id="guard">
+        <div class="sec-head">
+          <span class="no">06</span><h2>L3 禁区与护栏</h2>
+          <div class="desc">三类动作无论何角色（含主任）均属 L3 禁区：护栏（guardrail）未就位前不授权、不自动执行。这是权限模型的硬边界。</div>
+        </div>
+        <div class="guard-zone">
+          <div class="gzh">
+            <div class="ico">⛨</div>
+            <div>
+              <h3>L3 禁区 · 护栏前不授权</h3>
+              <div class="st">Guardrail-gated · 任何自动化/委托均不可绕过</div>
+            </div>
+          </div>
+          <div class="gz-list" id="gzBox"></div>
+        </div>
+        <div class="redline">
+          <span class="ic">🔒</span>
+          <div><b style="color:var(--amber)">红线（与 D5 同）：</b>本看板为纯前端演示，数据均为原型 mock，<b>未接生产</b>；真实账号、角色结论、技能文件绝不落前端、不外发。任何 L3 动作的实际执行必须由主任在护栏确认后于生产侧人工触发。</div>
+        </div>
+      </section>
+
+      <footer>
+        <b>D6 权限调用中台</b> · 律所主任治理席位方法论权控制台 &nbsp;|&nbsp; 参照 Harvey Command Center &nbsp;|&nbsp; 纯前端原型 · 非接生产数据<br>
+        治理六层栈 G0–G5 · 七域职责 D1–D7 · 三级权限 L1–L3 · 角色×5维权限矩阵
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= DATA MODEL ================= */
+const STACK = [
+  {g:"G0",nm:"席位",ttl:"席位 Seat",pill:"入口权",pillc:"#5b9dff",
+   meta:"主任拥有<b class='emp'>全部席位</b>的最高访问与配屏权——决定谁能以何种身份进入哪块屏。",
+   staff:"可授员工：仅授予「进入被授权屏」的入口，<b>不含</b>跨席位切换与配屏改写权。"},
+  {g:"G1",nm:"全景",ttl:"全景 Panorama",pill:"可见权",pillc:"#6aa0ff",
+   meta:"主任掌握<b class='emp'>全局运行全景</b>（九屏 C1–C9 + 中台 D1–D6）的一览与下钻权。",
+   staff:"可授员工：授予其职责相关屏的<b>只读全景</b>，禁授跨域汇总视图。"},
+  {g:"G2",nm:"研判",ttl:"研判 Deliberation",pill:"分析权",pillc:"#8a8dff",
+   meta:"主任对战情、风险、冲突做<b class='emp'>研判与裁定</b>——这是治理的智力核心。",
+   staff:"可授员工：可提交研判建议（L2），<b>裁定权</b>保留在主任。"},
+  {g:"G3",nm:"调度",ttl:"调度 Dispatch",pill:"编排权",pillc:"#a78bfa",
+   meta:"主任决定<b class='emp'>自动化/智能体/人力</b>的调度编排——何时跑、跑什么、派给谁。",
+   staff:"可授员工：可建议调度调整（L2），<b>自动改调度开关</b>属 L3 禁区。"},
+  {g:"G4",nm:"督导",ttl:"督导 Supervision",pill:"监护权",pillc:"#c08bf5",
+   meta:"主任对执行过程做<b class='emp'>督导与纠偏</b>，含红蓝复核门禁与质量闸门。",
+   staff:"可授员工：可提督导意见（L2），<b>改他人角色结论</b>属 L3 禁区。"},
+  {g:"G5",nm:"问责",ttl:"问责 Accountability",pill:"追责权",pillc:"#e07be0",
+   meta:"主任是<b class='emp'>最终问责主体</b>——对系统怎么转、转错谁负责，拥有追溯与定性权。",
+   staff:"可授员工：<b>不可</b>授予问责定性权，仅可查阅自身操作留痕。"},
+];
+
+const DOMAINS = [
+  {d:"D1",nm:"战情研判",lk:"G2 研判",color:"#5b9dff",
+   body:"对<b class='hi'>双平行案件、红蓝对抗、飞轮摄入</b>等全局战情做研判与优先级裁定。",
+   ops:["战情日报审阅","优先级裁定","风险定级"]},
+  {d:"D2",nm:"档案管理",lk:"G1 全景",color:"#6aa0ff",
+   body:"对<b class='hi'>案件卷宗、知识飞轮、中枢记忆</b>的归档结构与读写边界管辖。",
+   ops:["卷宗归档审核","飞轮卡入库","中枢冲突仲裁"]},
+  {d:"D3",nm:"系统运维",lk:"G3 调度",color:"#8a8dff",
+   body:"对<b class='hi'>驾驶舱服务、连接器、定时自动化</b>的运行状态与可用性管辖。",
+   ops:["服务健康巡检","连接器重授权","自动化启停"]},
+  {d:"D4",nm:"红蓝业务指导",lk:"G4 督导",color:"#a78bfa",
+   body:"对<b class='hi'>诉讼文书红蓝复核、模拟法庭对抗</b>的业务标准与质量门禁管辖。",
+   ops:["红蓝复核派发","门禁阈值设定","对抗推演审批"]},
+  {d:"D5",nm:"子自动化研判",lk:"G2/G3 研判·调度",color:"#b98bf5",
+   body:"对<b class='hi'>子自动化（摄入/回灌/监测）</b>的策略有效性做研判与调优管辖。",
+   ops:["摄入配额裁定","回灌策略审","稳定性门禁"]},
+  {d:"D6",nm:"智能体审计",lk:"G4/G5 督导·问责",color:"#cf8bf2",
+   body:"对本中台所辖<b class='hi'>智能体/技能/工作流</b>的合规、越权、幻觉做审计管辖。",
+   ops:["技能合规审计","越权扫描","本屏授权审计"]},
+  {d:"D7",nm:"系统质量控制",lk:"G5 问责",color:"#e07be0",
+   body:"对<b class='hi'>LTI 文本监控、六维法理门禁、交付 QC</b>等质量体系的达标管辖。",
+   ops:["QC 阈值裁定","LTI 规则审","交付放行"]},
+];
+
+const LEVELS = [
+  {l:"L1",nm:"只读 Read-only",sub:"盘点 · 体检 · 审计 · 报告",c:"var(--l1)",
+   mode:"自主执行",ml:"#2dd4bf",
+   acts:["全局运行盘点","驾驶舱体检扫描","智能体/技能合规审计（只读）","生成治理报告","操作留痕查阅"],
+   guard:"<b>护栏状态：开放。</b> L1 动作风险最低，主任与获授员工均可自主执行，无需二次确认。"},
+  {l:"L2",nm:"建议 Advise",sub:"恢复下线 · 调调度 · 发训练指令",c:"var(--l2)",
+   mode:"须确认后执行",ml:"#f5b042",
+   acts:["恢复下线服务/账号","调整自动化调度编排","向智能体/技能下发训练指令","提交研判建议与裁定草案","批量镜像权限基线"],
+   guard:"<b>护栏状态：确认门。</b> L2 动作须由主任在护栏确认后触发；员工仅可<b>建议</b>，不得自行落盘。"},
+  {l:"L3",nm:"禁区 Forbidden",sub:"自动改开关 · 改技能文件 · 改他人角色结论",c:"var(--l3)",
+   mode:"护栏前不授权",ml:"#f87171",
+   acts:["自动改系统/权限开关","改写技能文件（SKILL.md 等）","修改他人角色结论/裁定","问责定性","跨席位配屏改写"],
+   guard:"<b>护栏状态：闭锁。</b> L3 无论何角色均属禁区，<b>护栏（guardrail）未就位前不授权、不自动执行</b>。"},
+];
+
+const DIMENSIONS = [
+  {id:"cockpit",  nm:"驾驶舱访问"},
+  {id:"governance",nm:"治理域"},
+  {id:"connector",nm:"数据连接器"},
+  {id:"account",  nm:"账号治理"},
+  {id:"system",   nm:"系统操作"},
+];
+
+const ROLES = [
+  {id:"owner",  name:"律所主任", desc:"治理席位·全权", color:"#e07be0"},
+  {id:"partner",name:"合伙人",   desc:"业务域管辖",     color:"#5b9dff"},
+  {id:"senior", name:"高级律师", desc:"红蓝业务指导",   color:"#a78bfa"},
+  {id:"admin",  name:"行政主管", desc:"档案/账号治理",  color:"#2dd4bf"},
+  {id:"itops",  name:"IT运维",  desc:"系统运维/连接器", color:"#f5b042"},
+  {id:"trainee",name:"实习律师", desc:"只读盘点",       color:"#94a3b8"},
+];
+
+/* role -> dim -> {level, acts[]} */
+const MATRIX = {
+  owner:{
+    cockpit:{lv:"L3",acts:["C0–C9 全屏 + D1–D6 中台全访问","跨席位配屏改写"]},
+    governance:{lv:"L3",acts:["D1–D7 七域全管辖","仲裁/裁定/问责定性"]},
+    connector:{lv:"L3",acts:["ima/qq-mail/yuandian/qcc/gongyi/weiyun 全连接管理","连接器重授权与密钥轮换"]},
+    account:{lv:"L3",acts:["账号创建/停用/删除","角色分配与回收","批量镜像权限基线"]},
+    system:{lv:"L3",acts:["系统/权限开关","调度编排改写","下发训练指令","恢复下线"]},
+  },
+  partner:{
+    cockpit:{lv:"L2",acts:["业务相关屏 C2/C3/C4/C5/C7 + D2/D4"]},
+    governance:{lv:"L2",acts:["D1 战情研判 / D4 红蓝业务指导（业务域）"]},
+    connector:{lv:"L1",acts:["连接器状态只读"]},
+    account:{lv:"L1",acts:["账号与权限配置只读"]},
+    system:{lv:"L1",acts:["系统运行状态只读"]},
+  },
+  senior:{
+    cockpit:{lv:"L2",acts:["红蓝屏 C6 模拟法庭 / C8 LTI + D1 积分"]},
+    governance:{lv:"L2",acts:["D4 红蓝业务指导（标准与门禁建议）"]},
+    connector:{lv:"L1",acts:["连接器状态只读"]},
+    account:{lv:"L1",acts:["账号与权限配置只读"]},
+    system:{lv:"L1",acts:["系统运行状态只读"]},
+  },
+  admin:{
+    cockpit:{lv:"L2",acts:["档案屏 C4 案件档案 / 档案管理视图"]},
+    governance:{lv:"L2",acts:["D2 档案管理（归档审核/入库）"]},
+    connector:{lv:"L1",acts:["连接器状态只读"]},
+    account:{lv:"L2",acts:["账号创建/停用/角色分配","删除须确认（重分配未结事项）"]},
+    system:{lv:"L1",acts:["系统运行状态只读"]},
+  },
+  itops:{
+    cockpit:{lv:"L2",acts:["运维屏 C9 积分 / C3 飞轮运维 + D3 云监控"]},
+    governance:{lv:"L1",acts:["治理域只读体检"]},
+    connector:{lv:"L2",acts:["连接器启停/重授权","健康巡检与修复"]},
+    account:{lv:"L2",acts:["账号运维（重置/停用）","删除须确认"]},
+    system:{lv:"L2",acts:["调度调整/恢复下线","改开关属 L3 禁区"]},
+  },
+  trainee:{
+    cockpit:{lv:"L1",acts:["C4 案件只读 / 概览只读"]},
+    governance:{lv:"L1",acts:["治理域只读盘点"]},
+    connector:{lv:"none",acts:["本屏不授予连接器权限"]},
+    account:{lv:"none",acts:["本屏不授予账号治理权限"]},
+    system:{lv:"none",acts:["本屏不授予系统操作权限"]},
+  },
+};
+
+const GUARDZONE = [
+  {t:"自动改系统/权限开关",lk:"L3",
+   d:"任何自动切换系统开关、权限开关的动作——含定时自动化触发的开关变更。",
+   w:"须经主任在护栏确认，且变更前自动备份、可回滚。"},
+  {t:"改写技能文件",lk:"L3",
+   d:"对 SKILL.md、工作流定义、智能体提示词等技能文件的修改——无论人工或自动化。",
+   w:"须走技能安全审计流程，禁止自动化直接落盘。"},
+  {t:"修改他人角色结论",lk:"L3",
+   d:"对红蓝复核结论、研判裁定、他人已作出的角色结论的覆盖与改写。",
+   w:"问责定性权仅主任持有，且须留痕、可申诉。"},
+];
+
+/* ================= RENDER ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+// Stack
+$('#stackBox').innerHTML = STACK.map(s=>`
+  <div class="glayer">
+    <div class="gx"><div class="g" style="color:${s.pillc}">${s.g}</div><div class="nm">${s.nm}</div></div>
+    <div class="gb">
+      <div class="ttl">${s.ttl}<span class="pill" style="background:${s.pillc}22;color:${s.pillc};border:1px solid ${s.pillc}55">${s.pill}</span></div>
+      <div class="meta">${s.meta}</div>
+      <div class="staff">${s.staff}</div>
+    </div>
+  </div>`).join('');
+
+// Domains
+$('#domBox').innerHTML = DOMAINS.map(d=>`
+  <div class="dom">
+    <div class="dstack">${d.lk}</div>
+    <div class="dh">
+      <div class="did" style="background:linear-gradient(135deg,${d.color},${d.color}aa)">${d.d}</div>
+      <div><div class="dnm">${d.nm}</div><div class="dlk">领域管辖权</div></div>
+    </div>
+    <div class="dbody">${d.body}</div>
+    <div class="dops">${d.ops.map(o=>`<span class="op">${o}</span>`).join('')}</div>
+  </div>`).join('');
+
+// Levels
+$('#lvlBox').innerHTML = LEVELS.map(l=>`
+  <div class="lvl" style="--lc:${l.c}">
+    <div class="lh"><div class="ln">${l.l}</div><div class="lt">${l.nm}</div></div>
+    <div class="ls">${l.sub}</div>
+    <span class="mode">${l.mode}</span>
+    <ul>${l.acts.map(a=>`<li><span class="b">▹</span><span>${a}</span></li>`).join('')}</ul>
+    <div class="guard">${l.guard}</div>
+  </div>`).join('');
+
+// Matrix head
+$('#matHead').innerHTML = `<th>角色 / 权限维度</th>` + DIMENSIONS.map((d,i)=>
+  `<th data-col="${i}" class="colh">${d.nm}<br><span style="font-weight:400;color:var(--faint);font-size:10px">${d.id.toUpperCase()}</span></th>`).join('');
+
+// Matrix body
+$('#matBody').innerHTML = ROLES.map((r,ri)=>{
+  const cells = DIMENSIONS.map((d,di)=>{
+    const m = MATRIX[r.id][d.id];
+    const lv = m.lv;
+    if(lv==='none') return `<td data-ri="${ri}" data-di="${di}"><span class="lv none"><span class="d"></span>—</span></td>`;
+    return `<td data-ri="${ri}" data-di="${di}"><span class="lv ${lv.toLowerCase()}"><span class="d ${lv.toLowerCase()}"></span>${lv}</span></td>`;
+  }).join('');
+  return `<tr data-ri="${ri}">
+    <td class="rname" data-ri="${ri}">${r.name}<span class="rd">${r.desc}</span></td>
+    ${cells}
+  </tr>`;
+}).join('');
+
+// Matrix interactions: highlight row + col
+let hlRow=-1, hlCol=-1;
+function paintMatrix(){
+  $$('#matBody tr').forEach(tr=>{
+    const ri=+tr.dataset.ri;
+    tr.classList.toggle('row-hl', ri===hlRow);
+    $$('td',tr).forEach(td=>{
+      if(td.dataset.di!==undefined){ td.classList.toggle('col-hl', +td.dataset.di===hlCol); }
+    });
+  });
+}
+$('#matBody').addEventListener('click',e=>{
+  const td=e.target.closest('td'); if(!td) return;
+  if(td.dataset.ri!==undefined && td.classList.contains('rname')) hlRow=+td.dataset.ri;
+  else if(td.dataset.ri!==undefined) { hlRow=+td.dataset.ri; hlCol=+td.dataset.di; }
+  paintMatrix();
+});
+$$('#matHead .colh').forEach(th=>th.addEventListener('click',()=>{ hlCol=+th.dataset.col; paintMatrix(); }));
+$('#resetM').addEventListener('click',()=>{hlRow=-1;hlCol=-1;paintMatrix();});
+
+// Segmented controls (quick focus)
+$('#roleSeg').innerHTML = `<button data-r="all" class="on">全部</button>` + ROLES.map(r=>`<button data-r="${r.id}">${r.name}</button>`).join('');
+$('#colSeg').innerHTML = `<button data-c="all" class="on">全部</button>` + DIMENSIONS.map((d,i)=>`<button data-c="${i}">${d.nm}</button>`).join('');
+$('#roleSeg').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return;
+  $$('#roleSeg button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  if(b.dataset.r==='all'){hlRow=-1;} else {hlRow=ROLES.findIndex(r=>r.id===b.dataset.r);} paintMatrix();
+});
+$('#colSeg').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return;
+  $$('#colSeg button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  hlCol = b.dataset.c==='all'?-1:+b.dataset.c; paintMatrix();
+});
+
+// Guard zone
+$('#gzBox').innerHTML = GUARDZONE.map(g=>`
+  <div class="gz">
+    <div class="gt"><span class="lk">${g.lk}</span>${g.t}</div>
+    <div class="gd">${g.d}</div>
+    <div class="gw">⛨ 护栏：${g.w}</div>
+  </div>`).join('');
+
+/* ================= SIMULATOR ================= */
+const simRole=$('#simRole'), simDim=$('#simDim'), simAct=$('#simAct'), simOut=$('#simOut');
+simRole.innerHTML = ROLES.map(r=>`<option value="${r.id}">${r.name}（${r.desc}）</option>`).join('');
+simDim.innerHTML = DIMENSIONS.map(d=>`<option value="${d.id}">${d.nm}</option>`).join('');
+
+function refreshActs(){
+  const rid=simRole.value, did=simDim.value;
+  const m=MATRIX[rid][did];
+  const opts=`<option value="">— 看该维度全部可授动作 —</option>` +
+    m.acts.map((a,i)=>`<option value="${i}">${a}</option>`).join('');
+  simAct.innerHTML=opts;
+}
+function lvlMeta(lv){
+  return LEVELS.find(l=>l.l===lv);
+}
+function runSim(){
+  const rid=simRole.value, did=simDim.value, aidx=simAct.value;
+  const role=ROLES.find(r=>r.id===rid), dim=DIMENSIONS.find(d=>d.id===did);
+  const m=MATRIX[rid][did];
+  const lm=lvlMeta(m.lv);
+  let actsHtml = m.acts.map(a=>`<span class="act">${a}</span>`).join('');
+  let actFocus = aidx!=='' ? `<div style="margin-top:10px;font-size:12.5px;color:var(--text)">▸ 选定动作：<b>${m.acts[+aidx]}</b></div>` : '';
+  let needTxt, verdictBg;
+  if(m.lv==='L1'){ needTxt='<b style="color:var(--l1)">自主执行</b> · 无需二次确认，主任或获授员工可直接调用。'; }
+  else if(m.lv==='L2'){ needTxt='<b style="color:var(--l2)">须主任确认</b> · 员工仅可建议，由主任在护栏确认后触发。'; }
+  else if(m.lv==='L3'){ needTxt='<b style="color:var(--l3)">主任专权 · 接近禁区</b> · 须主任在护栏确认后执行，自动化不得自行落盘。'; }
+  else { needTxt='<b style="color:var(--faint)">本屏不授予</b> · 该角色在此维度无授权。'; }
+  const vc = m.lv==='L1'?'var(--l1)':m.lv==='L2'?'var(--l2)':m.lv==='L3'?'var(--l3)':'var(--faint)';
+  const vtxt = m.lv==='L1'?'L1 · 只读·自主':m.lv==='L2'?'L2 · 建议·须确认':m.lv==='L3'?'L3 · 主任专权':'— · 不授予';
+  const guardLine = m.lv==='L3'
+    ? `<div class="guardline">⛨ 护栏：该维度触及 <b>L3 禁区边界</b>——自动改开关/改技能文件/改他人结论均闭锁，<b>护栏未就位前不授权</b>。</div>`
+    : (m.lv==='L2'
+       ? `<div class="guardline">⛨ 护栏：L2 动作须经<b>确认门</b>，员工建议≠落盘，主任确认后方可执行。</div>`
+       : `<div class="guardline">⛨ 护栏：L1 开放，仅留操作留痕以供问责追溯。</div>`);
+  simOut.innerHTML = `
+    <div class="verdict" style="background:${vc}1f;color:${vc};border:1px solid ${vc}55">${vtxt}</div>
+    <div class="need">角色 <b style="color:var(--text)">${role.name}</b> 在维度 <b style="color:var(--text)">${dim.nm}</b> 的权限调用判定：${needTxt}</div>
+    <div style="font-size:12px;color:var(--dim);margin-bottom:7px">本维度可授动作（${m.lv==='none'?'无':m.acts.length}）：</div>
+    <div class="acts">${actsHtml||'<span class="act">—</span>'}</div>
+    ${actFocus}
+    ${guardLine}
+  `;
+}
+[simRole,simDim,simAct].forEach(el=>el.addEventListener('change',()=>{ if(el===simDim) refreshActs(); runSim(); }));
+refreshActs(); runSim();
+
+/* ================= NAV active + clock ================= */
+const navAs=$$('.nav a');
+const obs=new IntersectionObserver(es=>{
+  es.forEach(en=>{ if(en.isIntersecting){
+    const id=en.target.id;
+    navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id));
+  }});
+},{rootMargin:'-45% 0px -50% 0px'});
+$$('section').forEach(s=>obs.observe(s));
+
+function tick(){
+  const d=new Date();
+  const p=n=>String(n).padStart(2,'0');
+  $('#clock').textContent=`${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+}
+tick(); setInterval(tick,1000);
+</script>
+<script src="/subapp_score_override.js?v=20260919b"></script>
+<script>
+// D2 出网审计 · S1 范式 overlay（独立 d2_egress.json + no-store；不改 D6 视觉层）
+// 注：D3 云服务中台为外部链接占位（不纳入评分），出网审计姿态统一落 D6 调用审计屏。
+(function(){
+  var rel = (location.pathname.indexOf('/subapps/') >= 0) ? '../' : './';
+  function mount(nodeId, html){
+    var sels = ['.meta','.topbar','header','body'];
+    function put(a){var old=document.getElementById(nodeId);if(old)old.parentNode.removeChild(old);var el=document.createElement('div');el.id=nodeId;el.style.marginTop='6px';el.style.fontSize='12px';el.innerHTML=html;a.appendChild(el);}
+    for(var i=0;i<sels.length;i++){var a=document.querySelector(sels[i]);if(a){put(a);return;}}
+    var t=0;function retry(){for(var i=0;i<sels.length;i++){var a=document.querySelector(sels[i]);if(a){put(a);return;}}if(t++<8)setTimeout(retry,400);}retry();
+  }
+  fetch(rel+'d2_egress.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():Promise.reject();}).then(function(j){
+    var c = j.log_available ? '#9fe6c3' : '#f0c674';
+    var blk = j.blocked>0 ? ' · 拦截 <b style="color:#ff8a87">'+j.blocked+'</b>' : '';
+    mount('d2-egress','🔒 D2 出网审计（数据不出机）：审计 <b style="color:'+c+'">'+(j.log_available?'在线':'待累积')+'</b> · 累计 '+j.total_events+' 次调用'+blk+' · '+j.generated_at.slice(0,16));
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>

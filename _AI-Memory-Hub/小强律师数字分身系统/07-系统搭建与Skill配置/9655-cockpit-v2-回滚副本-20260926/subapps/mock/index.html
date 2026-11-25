@@ -1,0 +1,3087 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="c2C2TlFMY6QUF1zN6SiEf5">
+<head data-page-node-id="sHz43FPECj7RHP77MZPZjv">
+<meta charset="UTF-8" data-page-node-id="tt28ES7yjdsRFxKCTFKMFh" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="1jZW8kkGBAc2WIBaKrvEvP" />
+<title>模拟法庭控制中台 · Mock Trial Control Center</title>
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --bg:#0e1014; --bg2:#14181f; --panel:#171c24; --panel2:#1d242e;
+    --border:#2a313d; --border2:#363f4d;
+    --text:#e7eaf0; --muted:#9aa3b2; --dim:#aab3c5;
+    --gold:#d4af37; --gold2:#b8932c;
+    --red:#ef5350; --red2:#ff7a76; --redbg:rgba(239,83,80,.14);
+    --blue:#5b9bff; --blue2:#82b4ff; --bluebg:rgba(91,155,255,.14);
+    --green:#46c08a; --amber:#e0a23b;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --r:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:radial-gradient(1200px 700px at 50% -10%, #1a2030 0%, var(--bg) 60%);
+    color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+    font-size:14px; line-height:1.55;
+  }
+  header.topbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:12px 20px;background:linear-gradient(180deg,#1b2130,#141922);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:30}
+  .crest{font-size:22px}
+  .topbar h1{font-size:16px;margin:0;letter-spacing:1px;font-weight:700;white-space:nowrap}
+  .topbar .sub{color:var(--muted);font-size:12px;margin-top:2px;white-space:nowrap}
+  .meta-pills{display:flex;gap:8px;flex-wrap:wrap;margin-left:6px;min-width:0}
+  .pill{background:var(--panel2);border:1px solid var(--border);border-radius:999px;padding:4px 12px;font-size:12px;color:var(--muted);white-space:nowrap}
+  .pill b{color:var(--text);font-weight:600}
+  .spacer{flex:1}
+  .clock{font-variant-numeric:tabular-nums;font-size:20px;font-weight:700;color:var(--gold);letter-spacing:1px;min-width:84px;text-align:center;flex:0 0 auto}
+  .clock.paused{color:var(--dim);animation:clockBlink 1.2s ease-in-out infinite}
+  @keyframes clockBlink{0%,100%{opacity:1}50%{opacity:.45}}
+  .btn{background:var(--panel2);border:1px solid var(--border2);color:var(--text);border-radius:10px;padding:8px 14px;cursor:pointer;font-size:13px;transition:.15s;white-space:nowrap}
+  .btn:hover{border-color:var(--gold);color:var(--gold)}
+  .btn.primary{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#1a1408;border-color:var(--gold2);font-weight:700}
+  .btn.primary:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent}
+  .btn.danger:hover{border-color:var(--red);color:var(--red2)}
+  .btn.sm{padding:5px 10px;font-size:12px;border-radius:8px}
+  .btn.on{background:var(--gold);color:#1a1408;border-color:var(--gold)}
+
+  .perspbar{display:flex;align-items:center;gap:8px;padding:7px 20px;background:#10141b;border-bottom:1px solid var(--border);position:sticky;top:var(--topbar-h,60px);z-index:25;flex-wrap:wrap}
+  .perspbar .lbl{color:var(--muted);font-size:12px;font-weight:700}
+  .pchip{padding:4px 12px;border-radius:999px;border:1px solid var(--border2);background:#171c24;color:var(--muted);font-size:12px;cursor:pointer;transition:.15s}
+  .pchip:hover{border-color:var(--gold)}
+  .pchip.on{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#1a1408;border-color:var(--gold);font-weight:700}
+  .pchip.red.on{background:var(--red);color:#fff;border-color:var(--red)}
+  .pchip.blue.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .view-flag{margin-left:auto;color:var(--gold);font-size:12px;font-weight:700}
+  /* 法官心智·案由切换芯片 */
+  .jdom{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+  .jchip{padding:3px 11px;border-radius:999px;border:1px solid var(--border2);background:#171c24;color:var(--muted);font-size:12px;cursor:pointer;transition:.15s}
+  .jchip:hover{border-color:var(--gold)}
+  .jchip.on{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#1a1408;border-color:var(--gold);font-weight:700}
+  .speakbar{display:flex;align-items:center;gap:10px;padding:5px 20px;background:#0b0e13;border-bottom:1px solid var(--border);font-size:13px;min-height:32px}
+  .speakbar.red{background:linear-gradient(90deg,rgba(239,83,80,.16),#0b0e13)}
+  .speakbar.blue{background:linear-gradient(90deg,rgba(91,155,255,.16),#0b0e13)}
+  .speakbar.neutral{background:linear-gradient(90deg,rgba(212,175,55,.14),#0b0e13)}
+  .speakbar .dot{width:9px;height:9px;border-radius:50%;background:var(--muted);color:var(--muted);animation:speakPulse 1.6s infinite}
+  @keyframes speakPulse{0%{box-shadow:0 0 0 0 currentColor}100%{box-shadow:0 0 0 8px transparent}}
+  .speakbar .who{font-weight:700}
+  .speakbar .state{color:var(--muted);font-size:12px}
+  .speakbar .tag{margin-left:auto;color:var(--dim);font-size:11px}
+
+  .wrap{display:grid;grid-template-columns:330px 1fr 330px;gap:14px;padding:14px;align-items:start}
+  .col{display:flex;flex-direction:column;gap:14px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+  .card h2{margin:0;font-size:13px;letter-spacing:1px;color:var(--muted);font-weight:700;padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;text-transform:uppercase}
+  .card h2 .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+  .card .body{padding:14px}
+
+  svg.court{width:100%;max-width:380px;height:auto;display:block;margin:0 auto}
+  .seat rect{transition:.2s}
+  .seat .lbl{fill:var(--text);font-size:11px;font-weight:600;text-anchor:middle;dominant-baseline:middle}
+  .seat .role{fill:var(--muted);font-size:9px;text-anchor:middle;dominant-baseline:middle}
+  .seat.red rect{fill:var(--redbg);stroke:var(--red)}
+  .seat.blue rect{fill:var(--bluebg);stroke:var(--blue)}
+  .seat.neutral rect{fill:#20262f;stroke:var(--border2)}
+  .seat.active rect{stroke-width:3;filter:drop-shadow(0 0 10px currentColor);animation:seatPulse 1.5s ease-in-out infinite}
+  @keyframes seatPulse{0%,100%{stroke-width:3;filter:drop-shadow(0 0 6px currentColor)}50%{stroke-width:4.5;filter:drop-shadow(0 0 18px currentColor)}}
+  .seat.red.active{color:var(--red2)} .seat.blue.active{color:var(--blue2)} .seat.neutral.active{color:var(--gold)}
+.seat.qc rect{fill:#1c2230;stroke:var(--gold)}
+.seat.qc .lbl{fill:var(--gold)}
+.seat.qc.active{color:var(--gold)}
+  .seat.dim{opacity:.28}
+  .seat.view rect{stroke:var(--gold);stroke-width:3;stroke-dasharray:4 3}
+  .bench-top{fill:#241d10;stroke:var(--gold2)}
+  .obs-row rect{fill:#181d25;stroke:var(--border)}
+  .center-line{stroke:var(--gold2);stroke-dasharray:4 6;opacity:.4}
+  .obs-tag{fill:var(--gold);font-size:10px;text-anchor:middle;opacity:.8}
+
+  .transcript{height:46vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px}
+  .tr{border-left:3px solid var(--border2);padding:8px 12px;background:#141922;border-radius:0 10px 10px 0;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .tr.red{border-left-color:var(--red)} .tr.blue{border-left-color:var(--blue)}
+  .tr.stage{border-left-color:var(--gold);background:rgba(212,175,55,.08);text-align:center;font-weight:700;color:var(--gold)}
+  .tr.evidence{border-left-color:var(--green)}
+  .tr .who{font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+  .tr .who .tag{font-size:10px;padding:1px 7px;border-radius:6px;font-weight:700}
+  .tag.red{background:var(--redbg);color:var(--red2)} .tag.blue{background:var(--bluebg);color:var(--blue2)}
+  .tag.neutral{background:#222a35;color:var(--muted)} .tag.atk{background:rgba(224,162,59,.18);color:var(--amber)} .tag.def{background:rgba(70,192,138,.18);color:var(--green)}
+  .tr .time{margin-left:auto;color:var(--dim);font-size:11px;font-variant-numeric:tabular-nums}
+  .tr .txt{margin-top:4px;color:#dfe4ec;white-space:pre-wrap}
+
+  .adv-bar{position:relative;height:30px;border-radius:8px;overflow:hidden;display:flex;border:1px solid var(--border2)}
+  .adv-bar .r{background:linear-gradient(90deg,var(--red),#b23b38);flex:1}
+  .adv-bar .b{background:linear-gradient(90deg,#3f72c4,var(--blue));flex:1}
+  .adv-bar .mid{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff;opacity:.5}
+  .adv-knob{position:absolute;top:-3px;width:14px;height:36px;border-radius:4px;background:var(--gold);box-shadow:0 0 10px var(--gold);transform:translateX(-50%);transition:left .5s cubic-bezier(.2,.8,.2,1)}
+  .adv-legend{display:flex;justify-content:space-between;margin-top:8px;font-size:12px}
+  .adv-legend .red{color:var(--red2);font-weight:700} .adv-legend .blue{color:var(--blue2);font-weight:700}
+  .adv-score{text-align:center;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:1px;margin-top:6px}
+  .adv-score .vs{color:var(--dim);font-size:16px;margin:0 8px}
+  .adv-score .red.flash{animation:flashRed .6s ease}
+  .adv-score .blue.flash{animation:flashBlue .6s ease}
+  @keyframes flashRed{0%{text-shadow:0 0 0 transparent}30%{text-shadow:0 0 16px var(--red);color:#fff}100%{text-shadow:0 0 0 transparent}}
+  @keyframes flashBlue{0%{text-shadow:0 0 0 transparent}30%{text-shadow:0 0 16px var(--blue);color:#fff}100%{text-shadow:0 0 0 transparent}}
+  .roundlog{margin-top:10px;max-height:350px;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
+  .rl{display:flex;gap:8px;align-items:flex-start;font-size:12px;padding:5px 8px;border-radius:8px;background:#141922}
+  .rl .ic{font-weight:700} .rl.atk .ic{color:var(--amber)} .rl.def .ic{color:var(--green)}
+  .rl .t{color:var(--dim);font-size:11px;margin-left:auto;white-space:nowrap}
+
+  .evi-grid{display:grid;grid-template-columns:1fr;gap:10px}
+  .evi{border:1px solid var(--border2);border-left:4px solid var(--border2);border-radius:10px;padding:10px 11px;background:#141922;position:relative}
+  .evi .evi-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+  .evi .evi-id{font-weight:800;font-size:13px;letter-spacing:.5px}
+  .evi .evi-name{font-size:12px;line-height:1.5;color:var(--text)}
+  .evi .evi-pur{font-size:11.5px;line-height:1.55;margin-top:6px;padding-top:6px;border-top:1px dashed var(--border2);color:var(--muted)}
+  .evi .evi-pur .pk{display:inline-block;font-weight:800;color:var(--gold);margin-right:6px}
+  .evi .evi-by{font-size:11px;color:var(--dim);margin-top:5px}
+  .evi .st{font-size:10px;padding:2px 7px;border-radius:6px;font-weight:700;flex:none;position:static}
+  .st.s0{background:#222a35;color:var(--muted)} .st.s1{background:rgba(91,155,255,.18);color:var(--blue2)}
+  .st.s2{background:rgba(224,162,59,.18);color:var(--amber)} .st.s3{background:rgba(70,192,138,.18);color:var(--green)}
+  .st.s4{background:rgba(239,83,80,.18);color:var(--red2)}
+  .evi.red{border-left-color:var(--red)} .evi.blue{border-left-color:var(--blue)}
+  /* 质证状态配色：未质证/未采纳=红，已质证/已采纳=绿 */
+  .evi.unexam{border-left-color:var(--red);background:rgba(239,83,80,.06)}
+  .evi.unexam .evi-id{color:var(--red2)}
+  .evi.exam{border-left-color:var(--green);background:rgba(70,192,138,.07)}
+  .evi.exam .evi-id{color:var(--green)}
+  .blue-wall h2{color:var(--blue2)} .red-wall h2{color:var(--red2)}
+  .blue-wall h2 .dot{background:var(--blue)} .red-wall h2 .dot{background:var(--red)}
+  .adv-top{padding:14px 14px 0}
+  .adv-top .card{overflow:visible}
+  .adv-top-inner{display:flex;gap:20px;align-items:stretch}
+  .adv-left{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+  .adv-left h2{font-size:14px;margin:0 0 2px}
+  .adv-right{width:320px;flex:none;border-left:1px solid var(--border2);padding-left:20px;display:flex;flex-direction:column}
+  .adv-right h3{font-size:13px;margin:0 0 8px;color:var(--muted);font-weight:700}
+  .adv-right .roundlog{margin-top:0;max-height:350px}
+  .tr-tabs{display:flex;gap:6px;margin:0 0 10px}
+  .tr-tabs button{font-size:12px;padding:4px 12px;border-radius:6px;border:1px solid var(--border2);background:var(--bg2);color:var(--muted);cursor:pointer}
+  .tr-tabs button.on{background:var(--gold);color:#1b130a;border-color:var(--gold);font-weight:700}
+  .transcript-doc{height:46vh;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:4px 2px}
+  .td-item{border-bottom:1px dashed var(--border2);padding:7px 2px;font-size:13px;line-height:1.65}
+  .td-item .h{font-weight:700;color:var(--muted);margin-right:6px}
+  .td-item.red .h{color:var(--red2)} .td-item.blue .h{color:var(--blue2)}
+  .td-item .tm{float:right;color:var(--dim);font-size:11px;font-variant-numeric:tabular-nums}
+
+  .timeline{display:flex;gap:0;overflow-x:auto;padding-bottom:6px}
+  .tl-step{flex:1;min-width:96px;text-align:center;position:relative;padding-top:18px;cursor:pointer}
+  .tl-step::before{content:"";position:absolute;top:6px;left:50%;width:14px;height:14px;border-radius:50%;background:#222a35;border:2px solid var(--border2);transform:translateX(-50%);z-index:2}
+  .tl-step::after{content:"";position:absolute;top:12px;left:0;width:100%;height:2px;background:var(--border2);z-index:1}
+  .tl-step:first-child::after{left:50%} .tl-step:last-child::after{width:50%}
+  .tl-step.done::before{background:var(--gold);border-color:var(--gold)}
+  .tl-step.cur::before{background:var(--gold2);border-color:var(--gold);box-shadow:0 0 10px var(--gold)}
+  .tl-step .nm{font-size:12px;color:var(--muted)}
+  .tl-step.cur .nm,.tl-step.done .nm{color:var(--text);font-weight:700}
+
+  .verdict-box{background:rgba(212,175,55,.07);border:1px dashed var(--gold2);border-radius:10px;padding:12px;font-size:13px;white-space:pre-wrap;color:#efe6cf;min-height:60px}
+  .verdict-box.empty{color:var(--dim);font-style:italic}
+
+  .drawer-mask{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;display:none}
+  .drawer-mask.open{display:block}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:440px;max-width:94vw;background:var(--bg2);border-left:1px solid var(--border2);z-index:41;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-16px 0 40px rgba(0,0,0,.5)}
+  .drawer.open{transform:none}
+  .drawer header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+  .drawer header h3{margin:0;font-size:15px}
+  .drawer .scroll{overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:16px}
+  .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:600}
+  .field input,.field textarea,.field select{width:100%;background:#10141b;border:1px solid var(--border2);color:var(--text);border-radius:9px;padding:9px 11px;font-size:13px;font-family:inherit;resize:vertical}
+  .field textarea{min-height:64px}
+  .row{display:flex;gap:10px} .row>*{flex:1}
+  .seg{display:flex;gap:6px}
+  .seg button{flex:1;padding:8px;border-radius:9px;border:1px solid var(--border2);background:#10141b;color:var(--muted);cursor:pointer;font-size:12px;font-weight:600}
+  .seg button.on.red{background:var(--redbg);color:var(--red2);border-color:var(--red)}
+  .seg button.on.blue{background:var(--bluebg);color:var(--blue2);border-color:var(--blue)}
+  .seg button.on.neutral{background:#222a35;color:var(--text);border-color:var(--gold)}
+  .seg button.on.atk{background:rgba(224,162,59,.18);color:var(--amber);border-color:var(--amber)}
+  .seg button.on.def{background:rgba(70,192,138,.18);color:var(--green);border-color:var(--green)}
+  .hint{font-size:11px;color:var(--dim);margin-top:4px}
+  .divider{height:1px;background:var(--border);margin:2px 0}
+
+  .judge{position:fixed;top:0;left:0;height:100%;width:460px;max-width:95vw;background:linear-gradient(180deg,#171c24,#10141b);border-right:1px solid var(--gold2);z-index:41;transform:translateX(-100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:16px 0 40px rgba(0,0,0,.5)}
+  .judge.open{transform:none}
+  .judge header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+  .judge header h3{margin:0;font-size:15px;color:var(--gold)}
+  .judge .scroll{overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+  .minddrawer{position:fixed;top:0;right:0;height:100%;width:470px;max-width:95vw;background:linear-gradient(180deg,#171c24,#10141b);border-left:1px solid var(--gold2);z-index:42;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-16px 0 40px rgba(0,0,0,.5)}
+  .minddrawer.open{transform:none}
+  .minddrawer header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+  .minddrawer header h3{margin:0;font-size:15px;color:var(--gold)}
+  .minddrawer .scroll{overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+  .mp-card{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.02)}
+  .mp-h{font-size:13px;color:var(--gold);margin-bottom:6px}
+  .mp-kv{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .mp-kv b{color:var(--text)}
+  .mp-chip{display:inline-block;padding:2px 9px;border:1px solid var(--border2);border-radius:999px;font-size:11px;margin:3px 4px 0 0;color:var(--muted)}
+  .mp-chip.red{color:var(--red2);border-color:rgba(239,83,80,.5)}
+  .mp-bar{height:7px;border-radius:5px;background:rgba(255,255,255,.07);overflow:hidden;margin-top:9px}
+  .mp-bar i{display:block;height:100%;background:var(--gold)}
+  .mp-li{font-size:12px;line-height:1.75;color:var(--text)}
+  .mp-li b{color:var(--gold)}
+  .mp-sub{font-size:11px;color:var(--dim);margin-top:5px;line-height:1.6}
+  .mp-code{font-family:ui-monospace,Menlo,monospace;font-size:11px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;padding:6px 8px;margin-top:6px;color:var(--gold);word-break:break-all}
+
+  .judge .r2{background:rgba(212,175,55,.1);border:1px solid var(--gold2);border-radius:9px;padding:8px 10px;font-size:11px;color:var(--gold);text-align:center}
+  .jcard{border:1px solid var(--border2);border-radius:11px;padding:11px 12px;background:#141922}
+  .jcard .jh{display:flex;align-items:center;gap:8px;cursor:pointer}
+  .jcard .jid{font-size:10px;color:var(--dim);font-family:monospace}
+  .jcard .jnm{font-weight:700;font-size:13px;flex:1}
+  .jcard .fav{font-size:10px;padding:2px 8px;border-radius:6px;font-weight:700}
+  .fav.被告{background:var(--bluebg);color:var(--blue2)} .fav.原告{background:var(--redbg);color:var(--red2)} .fav.中立{background:#222a35;color:var(--muted)}
+  .jcard .jb{margin-top:8px;font-size:12px;display:none;flex-direction:column;gap:7px}
+  .jcard.open .jb{display:flex}
+  .jcard .jb .k{color:var(--gold);font-weight:700;font-size:11px;margin-bottom:2px}
+  .jcard .jb .v{color:#dfe4ec}
+  .jcard .pit{color:var(--red2);background:rgba(239,83,80,.08);border-radius:8px;padding:7px 9px;font-size:11px}
+  .jcard .law{color:var(--blue2);font-size:11px}
+  .jcount{font-size:11px;color:var(--muted)}
+
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--panel2);border:1px solid var(--gold);color:var(--gold);padding:10px 18px;border-radius:10px;z-index:60;opacity:0;transition:.25s;font-size:13px}
+  .toast.show{opacity:1;transform:translateX(-50%)}
+  .empty-note{color:var(--dim);font-size:12px;text-align:center;padding:14px 0}
+  /* ===== Path A：judge_reviewer 轻量推理（候选检索）===== */
+  .rv-box{border:1px solid var(--border2);border-radius:11px;padding:11px 12px;background:#10141b;display:flex;flex-direction:column;gap:7px}
+  .rv-box .rv-title{font-size:12px;font-weight:700;color:var(--gold)}
+  .rv-box .rv-grid{display:flex;gap:8px}
+  .rv-box .rv-grid label{flex:1;display:flex;flex-direction:column;gap:3px;font-size:11px;color:var(--muted)}
+  .rv-box select,.rv-box textarea{width:100%;background:var(--panel2);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;padding:6px 8px;font-family:inherit}
+  .rv-box textarea{min-height:42px;resize:vertical}
+  .rv-box .rv-lbl{font-size:11px;color:var(--muted)}
+  .rv-out{margin-top:4px;display:flex;flex-direction:column;gap:8px}
+  .rv-out .rv-head{font-size:11px;color:var(--muted);font-weight:700}
+  .rcard{border:1px solid var(--border2);border-radius:10px;padding:9px 10px;background:#141922}
+  .rcard.amount{border-color:var(--gold2);background:rgba(212,175,55,.06)}
+  .rcard .rh2{display:flex;align-items:center;gap:7px}
+  .rcard .rid{font-size:10px;color:var(--dim);font-family:monospace}
+  .rcard .rnm{font-weight:700;font-size:12.5px;flex:1}
+  .rcard .conf{font-size:10px;padding:2px 7px;border-radius:6px;font-weight:700}
+  .conf.高{background:rgba(70,192,138,.16);color:var(--green)}
+  .conf.中{background:rgba(224,162,59,.16);color:var(--amber)}
+  .conf.低{background:#222a35;color:var(--muted)}
+  .rcard .rtag{font-size:10px;color:var(--gold);margin-top:4px}
+  .rcard .rmeta{font-size:10px;color:var(--dim);margin-top:3px}
+  .rcard .rsn{font-size:11.5px;color:#dfe4ec;margin-top:5px;line-height:1.5}
+  .rcard .cw{color:var(--red2);background:rgba(239,83,80,.08);border-radius:7px;padding:5px 7px;font-size:11px;margin-top:5px}
+  .rcard .geo{color:var(--blue2);font-size:11px;margin-top:4px}
+  ::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:8px}
+  @media(max-width:1080px){.wrap{grid-template-columns:1fr}.transcript{height:38vh}.transcript-doc{height:38vh}.adv-top-inner{flex-direction:column}.adv-right{width:auto;border-left:none;border-top:1px solid var(--border2);padding-left:0;padding-top:10px}}
+  /* ===== 推演战情面板（MVP：流水线 / 三轮冲击 / 战情室）===== */
+  .wn{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media(max-width:1080px){.wn{grid-template-columns:1fr}.transcript{height:38vh}}
+  .pl-st{display:flex;flex-direction:column;gap:8px}
+  .pl{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;background:#141922;border:1px solid var(--border2)}
+  .pl .num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:#222a35;color:var(--muted);flex:none}
+  .pl.done .num{background:var(--gold);color:#1a1408}
+  .pl.cur .num{background:var(--gold2);color:#1a1408;box-shadow:0 0 8px var(--gold)}
+  .pl.fail .num{background:var(--red);color:#fff}
+  .pl .nm{flex:1;font-size:13px;font-weight:600}
+  .pl .ar{font-size:11px;color:var(--muted);margin-left:auto;padding-left:8px;text-align:right}
+  .pl .st{font-size:10px;padding:2px 8px;border-radius:6px;font-weight:700;flex:none}
+  .st.todo{background:#222a35;color:var(--muted)} .st.done{background:rgba(70,192,138,.18);color:var(--green)} .st.active{background:rgba(224,162,59,.18);color:var(--amber)} .st.fail{background:rgba(239,83,80,.18);color:var(--red2)}
+  .as-round{border:1px solid var(--border2);border-radius:10px;padding:10px;background:#141922;margin-bottom:10px}
+  .as-round:last-child{margin-bottom:0}
+  .as-round .rh{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;margin-bottom:8px}
+  .as-round .rh .badge{background:var(--gold);color:#1a1408;border-radius:6px;padding:1px 8px;font-size:11px}
+  .as-rows{display:flex;flex-direction:column;gap:6px}
+  .as-r{font-size:12px;padding:5px 8px;border-radius:7px;background:#10141b;line-height:1.45}
+  .as-r .k{font-weight:700;font-size:10px;display:inline-block;min-width:62px}
+  .as-r.atk .k{color:var(--amber)} .as-r.def .k{color:var(--green)} .as-r.hole .k{color:var(--red2)} .as-r.patch .k{color:var(--blue2)}
+  .wr-gate{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;background:#141922;border:1px solid var(--border2);margin-bottom:6px;font-size:12px}
+  .wr-gate .g{font-weight:600;flex:1}
+  .wr-gate .n{color:var(--dim);font-size:11px;margin-left:8px}
+  .wr-report{margin-top:8px;font-size:12px;white-space:pre-wrap;color:#dfe4ec;background:#10141b;border-radius:8px;padding:10px;min-height:48px}
+  body.rec header.topbar,body.rec .perspbar,body.rec .drawer,body.rec .drawer-mask,body.rec .judge,body.rec .judge-mask,body.rec .toast{display:none!important}
+  body.rec{overflow:hidden}
+  #recBar{position:fixed;top:0;left:0;right:0;z-index:70;display:none;align-items:center;gap:14px;padding:8px 18px;background:rgba(8,10,14,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+  body.rec #recBar{display:flex}
+  #recBar .rec-dot{width:11px;height:11px;border-radius:50%;background:var(--red);animation:recBlink 1s infinite}
+  @keyframes recBlink{0%,100%{opacity:1}50%{opacity:.25}}
+  #recBar .rec-prog{flex:1;height:5px;border-radius:3px;background:#222a35;overflow:hidden}
+  #recBar .rec-prog i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--red),var(--gold));transition:width .2s linear}
+  #recBar .rec-hint{color:var(--muted);font-size:11px;white-space:nowrap}
+
+/* ===== 数额预判模块（§F 裁量尺度卡·定量层） ===== */
+.amount{position:fixed;top:0;right:0;height:100%;width:480px;max-width:96vw;background:linear-gradient(180deg,#171c24,#10141b);border-left:1px solid var(--gold2);z-index:42;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-16px 0 40px rgba(0,0,0,.5)}
+.amount.open{transform:none}
+.amount header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+.amount header h3{margin:0;font-size:15px;color:var(--gold)}
+.amount .scroll{overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+.amount .r2{background:rgba(212,175,55,.1);border:1px solid var(--gold2);border-radius:9px;padding:8px 10px;font-size:11px;color:var(--gold);text-align:center}
+.amount .acount{font-size:11px;color:var(--muted)}
+.amount .acard{border:1px solid var(--border2);border-radius:11px;padding:11px 12px;background:#141922}
+.amount .ah{display:flex;align-items:center;gap:8px;cursor:pointer}
+.amount .aid{font-size:10px;color:var(--dim);font-family:monospace}
+.amount .anm{font-weight:700;font-size:13px;flex:1}
+.amount .hl{margin-top:6px;font-size:12px;color:#dfe4ec;background:rgba(80,160,255,.08);border-left:3px solid var(--blue2);padding:7px 9px;border-radius:7px}
+.amount .anch{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.amount .anch .a{font-size:12px;color:#dfe4ec;background:#10141b;border:1px solid var(--border2);border-radius:7px;padding:7px 9px}
+.amount .alaw{color:var(--blue2);font-size:11px;margin-top:6px}
+.amount .cw{color:var(--red2);background:rgba(239,83,80,.1);border:1px solid var(--red2);border-radius:8px;padding:8px 10px;font-size:11px;margin-top:8px}
+.amount .geo{color:var(--muted);font-size:10px;margin-top:5px}
+.doc{position:fixed;top:0;right:0;height:100%;width:540px;max-width:97vw;background:linear-gradient(180deg,#171c24,#10141b);border-left:2px solid var(--gold2);z-index:43;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-16px 0 40px rgba(0,0,0,.5)}
+.doc.open{transform:none}
+/* ===== 类案检索（LawKB 审判要件卡）抽屉 ===== */
+.casesearch{position:fixed;top:0;right:0;height:100%;width:540px;max-width:97vw;background:linear-gradient(180deg,#171c24,#10141b);border-left:2px solid #4c1d95;z-index:44;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-16px 0 40px rgba(0,0,0,.5)}
+.casesearch.open{transform:none}
+.casesearch header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+.casesearch header h3{margin:0;font-size:15px;color:#c4b5fd}
+.casesearch .scroll{overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.casesearch .searchbox{display:flex;gap:6px}
+.casesearch .searchbox input{flex:1;background:var(--panel2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:13px;padding:8px 10px}
+.casesearch .csdomain{display:flex;flex-wrap:wrap;gap:6px}
+.casesearch .csdomain .c{padding:4px 11px;border:1px solid var(--border2);border-radius:20px;font-size:11px;color:var(--muted);cursor:pointer;background:var(--panel2);user-select:none}
+.casesearch .csdomain .c.on{border-color:#8b5cf6;color:#c4b5fd;background:rgba(139,92,246,.12)}
+.casesearch .cscount{font-size:11px;color:var(--muted)}
+.casesearch .cscard{border:1px solid var(--border2);border-radius:11px;padding:10px 12px;background:#141922}
+
+/* ===== 📂 卷宗证据抽屉 ===== */
+.evi{position:fixed;top:0;right:0;height:100%;width:560px;max-width:97vw;background:linear-gradient(180deg,#171c24,#10141b);border-left:2px solid #0891b2;z-index:44;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-16px 0 40px rgba(0,0,0,.5)}
+.evi.open{transform:none}
+.evi header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+.evi header h3{margin:0;font-size:15px;color:#67e8f9}
+.evi .scroll{overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.evi .efield{display:flex;flex-direction:column;gap:4px}
+.evi .efield input{background:var(--panel2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:13px;padding:8px 10px}
+.evi .evtbl{border:1px solid var(--border2);border-radius:11px;padding:8px;background:#141922;display:flex;flex-direction:column;gap:6px}
+.evi .evrow{display:grid;grid-template-columns:48px 1fr 1fr 90px 1fr 28px;gap:6px;align-items:center}
+.evi .evrow.evhead{font-size:11px;color:var(--muted);font-weight:600}
+.evi .evrow input,.evi .evrow select{background:var(--panel2);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-size:12px;padding:6px 7px;width:100%}
+.evi .evrow .evdel{background:none;border:none;color:#f87171;cursor:pointer;font-size:14px}
+.evi .evrow .evid{font-weight:700;color:#67e8f9}
+
+/* ===== 🔬 LTI 五维 QC 抽屉 ===== */
+.qc{position:fixed;top:0;right:0;height:100%;width:600px;max-width:98vw;background:linear-gradient(180deg,#171c24,#10141b);border-left:2px solid #f59e0b;z-index:44;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-16px 0 40px rgba(0,0,0,.5)}
+.qc.open{transform:none}
+.qc header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+.qc header h3{margin:0;font-size:15px;color:#fcd34d}
+.qc .scroll{overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.qc .qcfields{display:flex;flex-direction:column;gap:8px}
+.qc .qcfields label{font-size:12px;color:var(--muted)}
+.qc .qcfields input,.qc .qcfields textarea{background:var(--panel2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:13px;padding:8px 10px}
+.qc .qcfields textarea{min-height:120px;resize:vertical;font-family:inherit}
+/* ===== 法官心智·推演参与智能体（红蓝对抗裁决） ===== */
+.jm-run{margin-left:auto}
+.jm-round{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;padding:8px 10px;border:1px dashed #8b5cf6;border-radius:8px;background:rgba(139,92,246,.08)}
+.jm-badge{color:#c4b5fd;font-weight:700;font-size:12px}
+.jm-ten{font-size:12px;font-weight:700;padding:1px 9px;border-radius:6px}
+.jm-ten.blue{background:rgba(59,130,246,.18);color:#93c5fd}
+.jm-ten.red{background:rgba(239,68,68,.18);color:#fca5a5}
+.jm-ten.pending{background:rgba(148,163,184,.18);color:#cbd5e1}
+.jm-ten.mixed{background:rgba(250,204,21,.18);color:#fde68a}
+.jm-sc{font-size:11.5px;color:#a78bfa}
+.jm-note{margin-top:5px;font-size:11.5px;color:#ddd6fe;line-height:1.5}
+.wr-judge{margin-top:12px;padding:12px;border:1px solid #8b5cf6;border-radius:10px;background:rgba(139,92,246,.06)}
+.wr-judge .wj-h{color:#c4b5fd;font-weight:700;font-size:13px;margin-bottom:8px}
+.wr-judge .wj-pre{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.55;color:#e6edf3;background:#0f141b;border:1px solid #2a3140;border-radius:8px;padding:10px;max-height:340px;overflow:auto;margin:0}
+.wr-judge .wj-qc{font-size:11.5px;color:#fbbf24;margin:8px 0}
+.wr-judge #btnJudgeTrialXz{margin-top:6px}
+/* —— 🔀 多域竞合研判抽屉 —— */
+.concur header h3{color:#67e8f9}
+.concur{border-left-color:#22d3ee}
+.md-chips{display:flex;flex-direction:column;gap:6px}
+.md-chip{display:flex;align-items:center;gap:8px;background:#1e293b;border:1px solid #22d3ee;border-radius:8px;padding:7px 9px}
+.md-chip .mcl{color:#a5f3fc;font-weight:700;font-size:13px;white-space:nowrap}
+.md-chip .msc{color:#0e7490;font-size:10px;background:#0c4a6e;padding:1px 6px;border-radius:8px;margin-left:4px}
+.md-chip .mck{color:#cbd5e1;font-size:11.5px;flex:1;line-height:1.5}
+.md-chip .mduse{background:#22d3ee;color:#042f2e;border:none;border-radius:6px;padding:4px 10px;font-size:11.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+.md-chip .mduse:hover{background:#06b6d4}
+.md-rel{width:100%;border-collapse:collapse;font-size:12px;margin-top:4px}
+.md-rel th,.md-rel td{border:1px solid var(--border2);padding:5px 8px;text-align:left;color:var(--text)}
+.md-rel th{background:var(--panel2);color:var(--muted);font-weight:600}
+.md-rel .mdt{font-weight:700;text-align:center;white-space:nowrap}
+.md-concurrence{color:#fca5a5}.md-prerequisite{color:#fcd34d}.md-connected{color:#93c5fd}
+.md-absorb{color:#a5b4fc}.md-independent{color:#86efac}.md-exclusive{color:#f0abfc}.md-self{color:#94a3b8}
+.md-rel .mdb{color:#94a3b8;font-size:11px;background:#0f172a}
+.md-rel .mdb td{padding:3px 8px;line-height:1.5}
+.md-rec{background:#0f172a;border:1px solid #22d3ee;border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.7;color:#cbd5e1;white-space:pre-wrap}
+.md-foot{font-size:11px;color:#67e8f9;margin-top:6px}
+.dfocus-hint{font-size:12px;color:#7dd3fc;background:rgba(34,211,238,.10);border:1px solid #0e7490;border-radius:8px;padding:6px 9px;margin-bottom:6px}
+.dfocus-hint b{color:#a5f3fc}
+.qc-grade{font-size:15px;font-weight:700;padding:10px 12px;border-radius:10px;text-align:center}
+.qc-grade.pass{background:rgba(34,197,94,.15);color:#86efac;border:1px solid #16a34a}
+.qc-grade.warn{background:rgba(234,179,8,.15);color:#fde047;border:1px solid #ca8a04}
+.qc-grade.reject{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid #dc2626}
+.qc-dim{border:1px solid var(--border2);border-radius:11px;padding:10px 12px;background:#141922}
+.qc-dim .qch{font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.qc-badge{font-size:11px;padding:1px 8px;border-radius:10px;background:var(--panel2);color:var(--muted)}
+.qc-item{font-size:12px;line-height:1.5;padding:2px 0;color:#cbd5e1}
+.qc-item.pass{color:#86efac}
+.qc-item.fail{color:#fca5a5}
+.qc-item .qcd{color:var(--muted);font-size:11px}
+/* 要件涵摄面板：证据编号 chip 联动 */
+.sfact-chip{display:inline-block;background:rgba(103,232,249,.15);color:#67e8f9;border:1px solid #0891b2;border-radius:6px;padding:0 5px;margin:0 2px;font-size:11px;cursor:help}
+
+.casesearch .cscard .ah{display:flex;align-items:center;gap:8px}
+.casesearch .cscard .cid{font-size:10px;color:var(--gold);font-family:monospace}
+.casesearch .cscard .cnm{font-weight:700;font-size:13px;flex:1;color:#e6edf3}
+.casesearch .cscard .cdom{font-size:10px;color:#7dd3fc}
+.casesearch .cscard .csum{font-size:12px;color:#dfe4ec;margin-top:5px;line-height:1.6;white-space:pre-wrap}
+.casesearch .cscard .cele{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.casesearch .cscard .cele .e{font-size:10px;background:rgba(80,160,255,.1);border:1px solid var(--blue2);border-radius:6px;padding:2px 7px;color:#cfe0f5}
+.casesearch .cscard .claw{font-size:11px;color:var(--muted);margin-top:5px}
+.casesearch .cscard .xzabtn{display:inline-block;margin-top:7px;padding:4px 12px;background:#8b5cf6;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600}
+.casesearch .cscard .xzabtn:hover{background:#7c3aed}
+.doc header{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+.doc header h3{margin:0;font-size:15px;color:var(--gold)}
+.doc .scroll{overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+.doc .r2{background:rgba(212,175,55,.1);border:1px solid var(--gold2);border-radius:9px;padding:8px 10px;font-size:11px;color:var(--gold);text-align:center}
+.doc .persona-box{border:1px solid var(--blue2);border-radius:11px;padding:11px 12px;background:rgba(80,160,255,.06);font-size:12px}
+.doc .persona-box h4{margin:0 0 4px;font-size:12px;color:var(--blue2)}
+.doc .persona-box .ph{color:var(--muted);font-size:11px;margin:4px 0 6px}
+.doc .persona-box .pr{margin:3px 0;padding-left:12px;position:relative;color:#cfd6e2;font-size:11px;line-height:1.5}
+.doc .persona-box .pr:before{content:"•";position:absolute;left:0;color:var(--blue2)}
+.doc .dfield{display:flex;flex-direction:column;gap:4px}
+.doc .dfield label{font-size:11px;color:var(--muted)}
+.doc .dgrid{display:flex;gap:8px}
+.doc .dgrid>*{flex:1}
+.doc select,.doc textarea,.doc input{width:100%;background:var(--panel2);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;padding:6px 8px;font-family:inherit}
+.doc textarea{min-height:46px;resize:vertical}
+.doc .doc-out{display:flex;flex-direction:column;gap:10px;margin-top:2px}
+.doc .dpaper{border:1px solid var(--border2);border-radius:11px;padding:16px;background:#0e1219;font-size:12.5px;line-height:1.75;color:#e6eaf2;white-space:pre-wrap;font-family:"Songti SC","SimSun",serif}
+.doc .dpaper .dh{text-align:center;font-weight:800;font-size:15px;color:var(--gold);margin-bottom:3px}
+.doc .dpaper .dc{text-align:center;font-size:12px;color:var(--muted);margin-bottom:12px}
+.doc .dpaper .sec{margin:6px 0}
+.doc .dcheck{border:1px solid var(--red2);border-radius:9px;padding:9px 11px;background:rgba(239,83,80,.08);font-size:11px;color:#f0b8b6}
+.doc .dcheck h5{margin:0 0 5px;font-size:11px;color:var(--red2)}
+.doc .dcheck .ci{margin:2px 0;padding-left:16px;position:relative;line-height:1.5}
+.doc .dcheck .ci:before{content:"⛔";position:absolute;left:0;font-size:10px}
+.doc .rd2{text-align:center;font-size:11px;color:var(--gold);border:1px dashed var(--gold2);border-radius:8px;padding:6px;background:rgba(212,175,55,.06)}
+.doc .row{display:flex;gap:8px}
+.doc .row .btn{flex:1}
+.doc .hstage{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 4px}
+.doc .hchip{padding:5px 11px;border:1px solid var(--border2);border-radius:20px;font-size:11px;color:var(--muted);cursor:pointer;background:var(--panel2);user-select:none}
+.doc .hchip.on{border-color:var(--gold2);color:var(--gold);background:rgba(212,175,55,.1)}
+.doc .hcard{border:1px solid var(--border2);border-radius:11px;padding:10px 12px;background:var(--panel2);font-size:12px}
+.doc .hcard .hid{font-size:11px;color:var(--gold);font-weight:700}
+.doc .hcard .hname{font-size:12.5px;color:var(--text);margin:1px 0 4px}
+.doc .hcard .hsec{color:var(--blue2);font-size:11px;margin:6px 0 2px;font-weight:700}
+.doc .hcard .hbody{color:#cfd6e2;font-size:12px;line-height:1.6;white-space:pre-wrap}
+.doc .hcard .hscript{margin:5px 0;padding:8px 10px;background:#0e1219;border:1px solid var(--blue2);border-left:3px solid var(--blue2);border-radius:7px;color:#cfe0f5;font-size:12px;line-height:1.65;white-space:pre-wrap;font-family:"Songti SC","SimSun",serif}
+.doc .hcard .hred{margin:4px 0 0;padding-left:16px;position:relative;color:#f0b8b6;font-size:11px;line-height:1.5}
+.doc .hcard .hred:before{content:"⛔";position:absolute;left:0;font-size:10px}
+.doc .hcard .hlaw{margin-top:6px;color:var(--muted);font-size:11px}
+.doc .hout{border:1px solid var(--border2);border-radius:11px;padding:14px;background:#0e1219;font-size:12.5px;line-height:1.75;color:#e6eaf2;white-space:pre-wrap;font-family:"Songti SC","SimSun",serif}
+</style>
+<!-- 类案检索语料：LawKB 审判要件卡离线索引（由 gen_trial_cards.js 生成，window.TRIAL_CARDS） -->
+<script src="trial_element_cards.js"></script>
+<script src="mind_panels_data.js"></script>
+<style>
+/* 数据更新时间：紧贴标题（2026-09-16 由右上 fixed 浮块改为标题内联） */
+h1 .updTag{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+margin-left:12px;padding:3px 10px;border-radius:8px;background:rgba(10,12,18,.62);
+color:#9fe6c3;font:600 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+letter-spacing:.3px;white-space:nowrap;vertical-align:middle;
+border:1px solid rgba(159,230,195,.22);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+h1 .updTag b{color:#d6ffe9;font-weight:700}
+</style>
+</head>
+<body data-page-node-id="dGhHNAqprgx1DTJ7VZOjuG" data-cno="C6">
+
+<header class="topbar" data-page-node-id="mpJfW6ddgAju3TMMU3sCoU">
+  <span class="crest" data-page-node-id="4W0BoKgg3WzXE0jsBXcbMI">⚖️</span>
+  <div data-page-node-id="O5ovLqG7Aua2tHqrWpD1Cg"><h1 data-page-node-id="Dm4QN3gaKgHUkGVdLbyz3e">C6 模拟庭审中台<span id="data-update-time" class="updTag">📊 数据更新时间：2026-09-26 06:50（北京时间）</span></h1><div class="sub" data-page-node-id="zwde1n2jmkNH8pdP8Ydn89">MOCK TRIAL CONTROL CENTER · 观察席视角</div></div>
+  <div class="meta-pills" id="metaPills" data-page-node-id="LXv14D5FUtukFxXq4Qe1lL"></div>
+  <div class="spacer" data-page-node-id="Wv8EJz50QrPCmdD2TUbOTN"></div>
+  <div class="clock" id="clock" data-page-node-id="aAyHruSwXJA3cLmO4ADatD">00:00</div>
+  <button class="btn sm" id="btnTimer" data-page-node-id="fAsXOzDFMIP6CXBw9CZua2">⏱ 开始</button>
+  <div class="seg sm" style="gap:4px" data-page-node-id="fTaMOj28uvWSTbU6hJ5pTi">
+    <button class="btn sm on" id="btnSpeed1" data-spd="1" data-page-node-id="wCBwt9CvZiUd8GG7WKJ26a">1x</button>
+    <button class="btn sm" id="btnSpeed2" data-spd="2" data-page-node-id="gxnSyqCmBZbZ9wWzrn7FId">2x</button>
+    <button class="btn sm" id="btnSpeed4" data-spd="4" data-page-node-id="P6HM3HKGHdBzY3flFP9lyj">4x</button>
+  </div>
+  <button class="btn primary sm" id="btnPlay" data-page-node-id="qzyrJQ0Mvf2tyE85aEihjg">▶ 自动演进</button>
+  <button class="btn sm" id="btnJudge" data-page-node-id="8PKB2qBOLGrHJDjIvwMdAP">🧠 法官心智</button>
+  <button class="btn sm" id="btnRedMind">🔴 红队心智</button>
+  <button class="btn sm" id="btnBlueMind">🔵 蓝队心智</button>
+  <button class="btn sm" id="btnClerkMind">📝 书记员心智</button>
+  <button class="btn sm" id="btnCaseSearch">🔎 类案检索</button>
+  <button class="btn sm" id="btnAmount">💰 数额预判</button>
+  <button class="btn sm" id="btnDoc">📝 文书草拟</button>
+  <button class="btn sm" id="btnHost">🎙️ 主持话术</button>
+  <button class="btn sm" id="btnEvidence">📂 卷宗证据</button>
+  <button class="btn sm" id="btnQC">🔬 LTI 五维 QC</button>
+  <button class="btn sm" id="btnConcur">🔀 多域竞合研判</button>
+  <button class="btn sm" id="btnRec" data-page-node-id="recBtn">🎥 录屏演示</button>
+  <button class="btn primary" id="btnConsole" data-page-node-id="GpsiVWEoImB1qztp5U6j8L">🎬 主控台</button>
+</header>
+
+<div class="speakbar" id="speakbar"></div>
+
+<div class="perspbar" id="perspbar" data-page-node-id="nBpDoTw4OwGEGepYSI1AfG">
+  <span class="lbl" data-page-node-id="mFBMRBGgTtHYX3riQPJrG2">👁 视角</span>
+  <span class="pchip on" data-view="observer" data-page-node-id="azB9a7UWMWBefay4TGXTDc">观察席</span>
+  <span class="view-flag" id="viewFlag" data-page-node-id="MCapAnlrqqvcjwFMUKFnQm">坐观察席，全局俯瞰</span>
+</div>
+
+<div class="adv-top">
+  <div class="card">
+    <div class="adv-top-inner">
+      <div class="adv-left">
+        <h2 data-page-node-id="advH"><span class="dot"></span>红蓝对抗态势 <span id="campTag" style="margin-left:auto;font-size:11px;color:var(--muted)" data-page-node-id="advCamp"></span></h2>
+        <div class="adv-bar" data-page-node-id="advBar"><div class="r"></div><div class="mid"></div><div class="b"></div><div class="adv-knob" id="advKnob" style="left:50%"></div></div>
+        <div class="adv-score" id="advScore" data-page-node-id="advScore"></div>
+        <div class="adv-legend"><span class="red" id="legRed"></span><span class="blue" id="legBlue"></span></div>
+      </div>
+      <div class="adv-right">
+        <h3>攻防回合（最近 30 条）</h3>
+        <div class="roundlog" id="roundlog"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" data-page-node-id="UBSTpUheurhlsc1AUnXgWT">
+  <div class="col" data-page-node-id="blueWallCol">
+    <div class="card red-wall" data-page-node-id="redWallCard"><h2 data-page-node-id="redWallH"><span class="dot"></span>红方·原告证据墙</h2>
+      <div class="body" data-page-node-id="redWallB"><div class="evi-grid" id="eviRed"></div></div></div>
+  </div>
+  <div class="col" data-page-node-id="centerCol">
+    <div class="card" data-page-node-id="courtCard"><h2 data-page-node-id="courtH"><span class="dot"></span>法庭席位布局 · 观察席视角</h2>
+      <div class="body" data-page-node-id="courtB"><svg class="court" viewBox="0 0 300 320" id="courtSvg" data-page-node-id="courtSvg"></svg></div></div>
+    <div class="card" data-page-node-id="trCard"><h2 data-page-node-id="trH"><span class="dot"></span>庭审笔录</h2>
+      <div class="tr-tabs" id="trTabs" data-page-node-id="trTabs"><button class="on" data-mode="live">实录（滚动）</button><button data-mode="doc">笔录（文档）</button></div>
+      <div class="body" data-page-node-id="trB"><div class="transcript" id="transcript" data-page-node-id="transcript"></div><div class="transcript-doc" id="transcriptDoc" style="display:none" data-page-node-id="transcriptDoc"></div></div></div>
+    <div class="card" data-page-node-id="tlCard"><h2 data-page-node-id="tlH"><span class="dot"></span>庭审流程时间线</h2>
+      <div class="body" data-page-node-id="tlB"><div class="timeline" id="timeline" data-page-node-id="timeline"></div></div></div>
+    <div class="card" data-page-node-id="verdictCard"><h2 data-page-node-id="verdictH"><span class="dot"></span>裁决结果区</h2>
+      <div class="body" data-page-node-id="verdictB"><div class="verdict-box empty" id="verdictBox" data-page-node-id="verdictBox">尚未进入「评议宣判」阶段</div></div></div>
+  </div>
+  <div class="col" data-page-node-id="blueWallCol">
+    <div class="card blue-wall" data-page-node-id="blueWallCard"><h2 data-page-node-id="blueWallH"><span class="dot"></span>蓝方·被告证据墙</h2>
+      <div class="body" data-page-node-id="blueWallB"><div class="evi-grid" id="eviBlue"></div></div></div>
+  </div>
+</div>
+
+<div class="wrap wn" id="warRoom" data-page-node-id="warRoomWrap">
+  <div class="card" data-page-node-id="cardPipeline"><h2 data-page-node-id="cardPipelineH"><span class="dot"></span>推演流水线 · 7 阶段</h2><div class="body" data-page-node-id="cardPipelineB"><div class="pl-st" id="pipeline"></div></div></div>
+  <div class="card" data-page-node-id="cardAssault"><h2 data-page-node-id="cardAssaultH"><span class="dot"></span>三轮冲击 · 红蓝迭代 <button class="btn sm jm-run" id="btnJudgeTrial" style="margin-left:auto">⚖️ 法官推演裁决</button></h2><div class="body" data-page-node-id="cardAssaultB"><div id="assault3"></div></div></div>
+  <div class="card" data-page-node-id="cardWar"><h2 data-page-node-id="cardWarH"><span class="dot"></span>战情室 · 质量闸门</h2><div class="body" data-page-node-id="cardWarB"><div id="warroom"></div></div></div>
+</div>
+
+<div class="drawer-mask" id="mask" data-page-node-id="Ds4x4nQdh3PLv2HxMtlpHT"></div>
+<aside class="drawer" id="drawer" data-page-node-id="rT4ZxN8o1GgtPCPCGdkhoW">
+  <header data-page-node-id="klTHHKzQJgxCqeJgGVSTTm"><h3 data-page-node-id="QdOxlHF1xVrEYF8Sbcp04k">🎬 主控台 · 庭长操作台</h3><div class="spacer" data-page-node-id="CJA9YFnboY6IsG6XkNYD0D"></div><button class="btn ghost sm" id="btnClose" data-page-node-id="LHsRBgGSccOwbgvSJrSrTk">✕ 关闭</button></header>
+  <div class="scroll" data-page-node-id="jzbvAx5g6FcMkwkoBQby0y">
+    <div class="field" data-page-node-id="h386GF08Az9k3itSARdHHH"><label data-page-node-id="EUy7Jg7SH68WoHmxUcSrEK">① 推进庭审阶段</label><select id="ctlStage" data-page-node-id="Hcg9r2iB3rQLIEEQCJyFNP"></select>
+      <div class="hint" data-page-node-id="5Dmv8jHyyU6ZgppTw9GXpW">切换阶段会在发言流插入一条「阶段提示」并点亮时间线。</div></div>
+    <div class="divider" data-page-node-id="Pcex94b4P2EWaVHncZB3MZ"></div>
+    <div class="field" data-page-node-id="KV1H2ti7jU017GaD4PV1Xl"><label data-page-node-id="ne0fqMGaFmDIz8jnFf2ISC">② 录入发言 / 攻防</label>
+      <div class="seg" id="ctlSpeaker" style="margin-bottom:8px" data-page-node-id="oBIB1HESGTXGmrmHti8kYE"></div>
+      <div class="seg" style="margin-bottom:8px" data-page-node-id="7HpCEYLLoIZgeJDRIUi930">
+        <button data-type="say" class="on" data-page-node-id="OR6anikQfuCRjBHBSaPoAD">💬 发言</button><button data-type="atk" data-page-node-id="TtLvIb6MR30Sp8XOudDnHw">⚔️ 进攻</button>
+        <button data-type="def" data-page-node-id="8mAHPY9kEmPQUb57ulEsoW">🛡️ 防守</button><button data-type="evi" data-page-node-id="89tlJMmRNloiEu0jo1kREh">📄 出示证据</button></div>
+      <textarea id="ctlText" placeholder="输入台词 / 攻防要点 / 证据说明…"></textarea>
+      <div class="row" style="margin-top:8px" data-page-node-id="JSstCFjV6PZ93GvipvtuOp"><button class="btn primary" id="btnSubmit" data-page-node-id="3WMipbEAgu7NbkW2nDuol1">提交到庭审流</button>
+        <button class="btn" id="btnAdv" data-page-node-id="04fbysUGDMKfKFlUnNTMM9">手动调优势 ±</button></div>
+      <div class="hint" data-page-node-id="By0fnmIcLG4GLf6jtYmLFN">点席位上的人也可快速指定当前发言方。进攻/防守会自动微调对抗优势分。</div></div>
+    <div class="divider" data-page-node-id="QLpiSAVrlMgPCw4x5xMtGp"></div>
+    <div class="field" data-page-node-id="IF7Xw6pCAoZFWDmwWpJkGo"><label data-page-node-id="nSq5VAnBhsLDRMRNe4GGCu">③ 证据登记</label>
+      <div class="row" data-page-node-id="XlIIWT9CCYxm4aY3a6142r"><input id="eviName" placeholder="证据名称，如《通话录音》" data-page-node-id="RbbaaUr4HbZJqzy8Hn14P4" /><select id="eviBy" data-page-node-id="3gKsINcQouFgpwUo8ITmIk"></select></div>
+      <div class="row" style="margin-top:8px" data-page-node-id="txOGbrXD0EpfZitafopjiX"><button class="btn" id="btnEviAdd" data-page-node-id="q7ug6AVfDiHafAj4jgUtCJ">＋ 加入证据墙</button>
+        <select id="eviStatus" data-page-node-id="MCp0RspKMV3oSvF2JkbPXQ"><option value="0" data-page-node-id="z34drIQV9IzhnzjaN2oSqW">未出示</option><option value="1" data-page-node-id="qTAAgZe6Dv2079EbsN3CGs">已出示</option><option value="2" data-page-node-id="29Mx0IVzMFkwvEIgDaAhs8">已质证</option><option value="3" data-page-node-id="ycRKqsE04CGV2z2HsWyoCf">已采纳</option><option value="4" data-page-node-id="2OzBMcz1aRfr21vByAnPEe">未采纳</option></select></div></div>
+    <div class="divider" data-page-node-id="nVNjKuMmffeYt45YwtlAdw"></div>
+    <div class="field" data-page-node-id="TCFI5KAYj72utG28s30rRO"><label data-page-node-id="FRiJFIMlhKeftvyPvXodP0">④ 裁决 / 评议结论</label>
+      <textarea id="verdictInput" placeholder="审判长宣读：…（含法条依据）"></textarea>
+      <div class="hint" data-page-node-id="6hCHVduOGtVfxcnn9EQtSX">切换到「评议宣判」阶段后，此内容会实时显示在裁决结果区。</div></div>
+    <div class="divider" data-page-node-id="AKZX9NTj3e1ms9hxSqpPBt"></div>
+    <div class="field" data-page-node-id="HH6DDErcrjOhFiVhne2dzj"><label data-page-node-id="UA2y8zpIZMLwiQfb8UQg5F">⑤ 案件信息（每案自定义 · 红蓝阵营）</label>
+      <div class="row" data-page-node-id="qXmsPQ9wh1pIaQFQSFng9t"><input id="mCase" placeholder="案号" data-page-node-id="sBDI1LHMwS7hjb2V4a5awm" /><input id="mCause" placeholder="案由" data-page-node-id="0mTjWdGSaL6aY4pz3XHXAO" /></div>
+      <div class="row" style="margin-top:8px" data-page-node-id="TFLqPDmrB6YZoiGQlJU2Aw"><input id="mRed" placeholder="红方标签" data-page-node-id="WHGa3CMxkxxW5SM3im4SoJ" /><input id="mBlue" placeholder="蓝方标签" data-page-node-id="LGQphZSBlNAcscraHofLk0" /></div>
+      <div class="hint" data-page-node-id="u1hEB5x0VvPZpvwu57aXRX">红蓝阵营在「发言方」按钮里按角色预设；此处仅改展示标签。</div></div>
+    <div class="divider" data-page-node-id="W2s3iaHwCyDG3KtCv8XUcR"></div>
+    <div class="field" data-page-node-id="7nrS0bMqMhr5TbbW59x0Dz"><label data-page-node-id="yFL5E5pVJl7g8yRUBwQSRZ">⑥ 演示脚本 / 剧本</label>
+      <div class="row" data-page-node-id="SZHXPez1EVoogOHsD8PQSP"><button class="btn" id="btnRetime" data-page-node-id="tDI3wffXaskcH4BZNTIQD9">⏱ 重整时间轴</button><button class="btn" id="btnExport" data-page-node-id="a1DOVLURO0tp5FkHgGZlXd">⬇ 导出剧本JSON</button></div>
+      <div class="row" style="margin-top:8px" data-page-node-id="jUv4nz5Kk4MBhOEdFULU5o"><button class="btn" id="btnImport" data-page-node-id="UKXGCl883YuNKnsfZtK4OP">⬆ 导入剧本JSON</button><button class="btn danger" id="btnReset" data-page-node-id="TIInvCh0XR5eKOcWD6SCJL">🗑 清空本场</button></div>
+      <div class="row" style="margin-top:8px"><button class="btn" id="btnDemo">📋 载入演示剧本</button></div>
+      <div class="hint" data-page-node-id="pXuDxl6YvOENcID6OlvdK3">「重整时间轴」把当前发言流按固定间隔重新计时，便于自动演进匀速播放/录视频。导出的 JSON 即复用的剧本。</div>
+      <input type="file" id="fileInput" accept="application/json" style="display:none" data-page-node-id="BgOoFv2y0cehTAQiaeUNC0" />
+      <div class="row" style="margin-top:8px"><button class="btn" id="btnImportSit">⬆ 导入推演态势</button><span class="hint" style="margin:0">载入 流水线/三轮冲击/战情室（不覆盖法庭剧本）</span></div>
+      <input type="file" id="sitInput" accept="application/json" style="display:none" /></div>
+    <div class="divider" data-page-node-id="procDiv"></div>
+    <div class="field" data-page-node-id="procField"><label data-page-node-id="procLbl">⑦ 程序类型（决定 QC 席位）</label>
+      <div class="seg" id="ctlProc" data-page-node-id="ctlProc">
+        <button data-pt="duiren" class="on" data-page-node-id="ptD">独任程序</button>
+        <button data-pt="putong" data-page-node-id="ptP">普通程序</button>
+      </div>
+      <div class="hint" data-page-node-id="procHint">独任：QC 坐观察席（法定无审判长，民诉法第132条）；普通：QC 上审判长席（审判长心智·质控），法官技能转为合议庭审判员。</div></div>
+  </div>
+</aside>
+
+<div class="drawer-mask" id="judgeMask" data-page-node-id="IDSjLD3xOWtD0vxkl4wLuD"></div>
+<aside class="judge" id="judge" data-page-node-id="WqpL8fNXlj2BuB2CiAsOtk">
+  <header data-page-node-id="JLZFmxMzo9rcpUDlxijVgD"><h3 data-page-node-id="NeHQnDGxqhvvRMxCS0qbWl">🧠 法官心智 · 正向裁判规则</h3><div class="spacer" data-page-node-id="8PBtmLrXiFeWUebhRANGq9"></div><button class="btn ghost sm" id="btnJudgeClose" data-page-node-id="t1kRi9lNPG9mYsGbR8fdUx">✕ 关闭</button></header>
+  <div class="scroll" data-page-node-id="1BziozdaLYQFg5np2VLTPh">
+    <div class="r2" data-page-node-id="szJnYPDw07hKos94Fc2cz8">⚠️ 铁律 R2：审判要件卡给的是<b data-page-node-id="sPCwSlGD6xXcqRnhS4Wuad">候选推理</b>，不是自动裁判。审判长须结合个案证据人工拍板。</div>
+    <div class="rv-box">
+      <div class="rv-title">🔍 路A 候选推理（judge_reviewer 实体 · 轻量函数）</div>
+      <div class="rv-grid">
+        <label>案由域<select id="rvDomain"></select></label>
+        <label>当前阶段<select id="rvStage"></select></label>
+      </div>
+      <label class="rv-lbl">事实关键词（逗号/空格/换行分隔）</label>
+      <textarea id="rvFacts" placeholder="如：合同相对性, 未开票, 管辖异议, 冒名, 授权意思表示"></textarea>
+      <label class="rv-lbl">金额/赔偿主张（每行一条）</label>
+      <textarea id="rvClaims" placeholder="违约金 120000&#10;精神损害抚慰金&#10;惩罚性赔偿"></textarea>
+      <button class="btn sm" id="btnJudgeReviewA" style="margin-top:2px">🔍 运行候选检索</button>
+      <div class="rv-out" id="judgeReviewOut"></div>
+    </div>
+    <div class="jcount" id="jcount" data-page-node-id="napDoBVDZgHA0XqOD2MqBT"></div>
+    <div class="jdom" id="judgeDom" data-page-node-id="KxJudgeDom"></div>
+    <div id="judgeCards" data-page-node-id="ZWWNcu9IuGmad5sTGFlT0D"></div>
+    <div class="divider" data-page-node-id="TE2ynE2o1J0ucSIyfJOgF2"></div>
+    <div class="field" data-page-node-id="GkQ8ytvcVuL53YZQa7CHqQ"><label data-page-node-id="UDueEQ1PUEAQogvt6X5ZBf">＋ 导入更多审判要件卡（JSON 数组）</label>
+      <textarea id="judgeImport" placeholder='支持两种 schema：①扁平 JUDGE_CARDS [{id,name,favor,support,points,pitfall,law,domain}]；②主控案由路由卡 [{rule_id,title,ruling:{support,reject},burden_of_proof,negative_note,geo_scope,review_step,elements[]}] —— 粘贴后者会自动经 card_adapter 适配为法官矩阵。'></textarea>
+      <button class="btn sm" id="btnJudgeImport" style="margin-top:8px" data-page-node-id="uNGZtWLKgccmYqMAHBE7O9">导入并合并</button>
+      <div class="hint" data-page-node-id="a1dxNlMMfSJPkb7YQBa01g">已随页面自动挂载 195 张（judge_mind_import_§A-§E.js）。下方文本框保留为「手动追加」入口，支持主控 schema 适配（Gap C 收口）；正常打开即全量可见，无需粘贴。</div></div>
+  </div>
+</aside>
+
+<div class="drawer-mask" id="mpMask"></div>
+<aside class="minddrawer" id="minddrawer">
+  <header><h3 id="mpTitle">🧠 角色心智</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnMpClose">✕ 关闭</button></header>
+  <div class="scroll" id="mpBody"></div>
+</aside>
+
+
+<div class="drawer-mask" id="amountMask"></div>
+<aside class="amount" id="amount">
+  <header><h3>💰 数额预判 · 定量层（§F 裁量尺度卡）</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnAmountClose">✕ 关闭</button></header>
+  <div class="scroll">
+    <div class="r2">⚠️ 铁律 R2：机器只给<b>候选锚点</b>（【候选·待人工确认】），不自动裁量。跨域倍数（食药/环境/知产）严禁套用合同 30% 口径。</div>
+    <div class="agb" id="amountGate">尚未运行要件涵摄，无法判定责任基础。请先在「⚖️ 要件涵摄」面板选择法条并生成推理链。</div>
+    <div class="amCompute locked" id="amCompute">
+      <div class="ach">🧮 数额预估·候选（仅「责任成立」时启用）</div>
+      <div class="arow"><label>约定违约金(元)</label><input id="amLiquid" type="number" min="0" placeholder="如 120000"></div>
+      <div class="arow"><label>实际损失(元)</label><input id="amLoss" type="number" min="0" placeholder="如 80000"></div>
+      <div class="arow"><label>已付/已判(元)</label><input id="amPaid" type="number" min="0" placeholder="0"></div>
+      <button class="btn sm" id="amCalc">⚖ 候选预估</button>
+      <div class="amOut" id="amOut"></div>
+    </div>
+    <div class="acount" id="acount"></div>
+    <div id="amountCards"></div>
+    <div class="divider"></div>
+    <div class="field"><label>＋ 导入裁量尺度卡（§F JSON 数组）</label>
+      <textarea id="amountImport" placeholder='[{"id":"R-HT-240","domain":"合同风险·裁量尺度卡","name":"…","headline":"…","anchors":[{"text":"…"}],"law":"…","geo_scope":"全国","r2":"…","cross_domain_warn":"…"}]'></textarea>
+      <button class="btn sm" id="btnAmountImport" style="margin-top:8px">导入并合并</button>
+      <div class="hint">已随页面自动挂载 3 张（amount_predict_import_§F.js）：违约金30% / 精神损害六因素 / 惩罚性赔偿倍数矩阵。下方文本框保留为「手动追加」入口。与法官心智（定性层）互补，构成「定性+定量」双预判。</div></div>
+  </div>
+</aside>
+
+<div class="drawer-mask" id="caseSearchMask"></div>
+<aside class="casesearch" id="caseSearch">
+  <header><h3>🔎 类案检索 · LawKB 审判要件卡</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnCaseSearchClose">✕ 关闭</button></header>
+  <div class="scroll">
+    <div class="r2">⚠️ 类案检索基于本地 LawKB 审判要件卡语料（离线索引），提供【候选·待人工确认】参考，非自动裁判；命中卡可一键「⚓ 锚定→要件涵摄」。</div>
+    <div class="searchbox">
+      <input id="csQuery" placeholder="关键词：违约 违约金 / 挂靠 / 精神损害 / 表见代理 / 举证倒置 …">
+      <button class="btn sm" id="csRun">检索</button>
+    </div>
+    <div class="csdomain" id="csDomains"></div>
+    <button class="btn sm ghost" id="csSeed">🔗 用当前涵摄法条联想</button>
+    <div class="cscount" id="csCount"></div>
+    <div id="csResults"></div>
+  </div>
+</aside>
+
+<div class="drawer-mask" id="eviMask"></div>
+<aside class="evi" id="evi">
+  <header><h3>📂 卷宗证据 · 编号联动</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnEviClose">✕ 关闭</button></header>
+  <div class="scroll">
+    <div class="r2">⚠️ 卷宗证据编号（证N）与要件涵摄「已证事实」真实联动：在要件涵摄面板填写已证事实时引用「证N」，本抽屉登记其卷宗出处（卷X-Pxx），链路自动贯通；并供给 LTI 五维 QC 的 T2 溯源校验。</div>
+    <div class="efield"><label>本案案号</label><input id="eviCaseNo" placeholder="如 2026黔0330民初6658号" /><span id="eviCaseNoNote" class="smuted"></span></div>
+    <div class="evtbl">
+      <div class="evrow evhead"><span>编号</span><span>证据名称</span><span>卷宗出处</span><span>类型</span><span>证明目的</span><span></span></div>
+      <div id="eviRows"></div>
+      <button class="btn sm" id="eviAdd">＋ 新增证据</button>
+    </div>
+    <div class="hint">编号自动序号（证1/证2…）；「卷宗出处」填写如「卷二P45」。要件涵摄面板的事实框将出现编号联想（datalist）。</div>
+  </div>
+</aside>
+
+<div class="drawer-mask" id="qcMask"></div>
+<aside class="qc" id="qc">
+  <header><h3>🔬 LTI 五维 QC · 交付门禁（R/L/C/T/P）</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnQcClose">✕ 关闭</button></header>
+  <div class="scroll">
+    <div class="r2">⚠️ 铁律：<b>REJECT=0 才准交付</b>。本校验器对「当前要件涵摄结果」+「可选文书草稿」做五维门禁；AI 仅给候选，最终由老强拍板。</div>
+    <div class="qcfields">
+      <label>本案案号（联动卷宗证据）<input id="qcCaseNo" placeholder="如 2026黔0330民初6658号" /></label>
+      <label>文书草稿（可选，粘贴待校验文书）</label>
+      <textarea id="qcDoc" placeholder="粘贴本庭生成的判决书/代理词候选草稿，做 C301金额 / C302名称 / C304案号 / P1 verdict 深校…"></textarea>
+      <button class="btn sm primary" id="qcRun">▶ 运行五维 QC</button>
+    </div>
+    <div id="qcOut"></div>
+  </div>
+</aside>
+
+<div class="drawer-mask" id="concurMask"></div>
+<aside class="qc concur" id="concur">
+  <header><h3>🔀 多域竞合深度研判 · 路B 重 agent（候选）</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnConcurClose">✕ 关闭</button></header>
+  <div class="scroll">
+    <div class="r2">⚠️ 给定争议描述，识别所涉法律域并研判域间竞合关系（责任竞合 / 先决 / 牵连 / 吸收 / 排斥）。全部为【候选·待人工确认】，机器不替你定诉请性质。</div>
+    <div class="qcfields">
+      <label>争议焦点 / 事实描述</label>
+      <textarea id="concurText" placeholder="如：吊顶采购合同质量不合格，对方起诉要求付货款并赔偿违约金，另主张侵权损害"></textarea>
+      <button class="btn sm primary" id="concurRun">▶ 深度研判</button>
+    </div>
+    <div id="concurOut"></div>
+  </div>
+</aside>
+
+<div class="drawer-mask" id="docMask"></div>
+<aside class="doc" id="doc">
+  <header><h3>📝 文书草拟 · Path B（persona + 文书范式卡）</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnDocClose">✕ 关闭</button></header>
+  <div class="scroll">
+    <div class="r2">⚠️ 铁律 R2：本文档为【草案·待人工确认】。AI 依 persona 行为准则 + 文书范式卡（R-LN-082~084）产出候选草案，绝不下终局裁判结论。</div>
+    <div class="dfocus-hint" id="docFocusHint">🎯 当前争点研判主路径：<b id="docFocusKey">—（运行「🔀 多域竞合研判」后同步）</b></div>
+    <div class="persona-box" id="personaBox"></div>
+    <div class="dfield"><label>文书类型（切换即换范式骨架 / 红线 / 错误示例）</label><select id="docType">
+      <option value="判决书">民事判决书（R-LN-082 · 实体终局）</option>
+      <option value="裁定书">民事裁定书（R-LN-083 · 程序事项）</option>
+      <option value="决定书">民事决定书（R-LN-084 · 回避/惩戒）</option>
+    </select></div>
+    <div class="dgrid">
+      <input id="docCase" placeholder="案号(占位) 如 (2026)黔03XX民初·1234号">
+      <input id="docCourt" placeholder="法院名 如 习水县人民法院">
+    </div>
+    <textarea id="docParties" placeholder="当事人（脱敏占位，如 原告：甲装饰材料经营部…）"></textarea>
+    <textarea id="docFacts" placeholder="【本院查明】事实要点：时间 / 主体 / 行为 / 后果 / 因果关系（仅填有证据支撑者）"></textarea>
+    <textarea id="docFocus" placeholder="【本院认为】争议焦点 + 说理要点（要件涵摄：大前提→小前提→结论）"></textarea>
+    <textarea id="docLaw" placeholder="法条依据（引本地权威源；缺失标 statute_text_pending）"></textarea>
+    <div class="row">
+      <button class="btn primary sm" id="btnDocDraft">📝 生成候选草案</button>
+      <button class="btn sm ghost" id="btnDocDemo">试草拟（脱敏示例）</button>
+      <button class="btn sm ghost" id="btnDocCopy">⧉ 复制</button>
+    </div>
+    <div class="doc-out" id="docDraft"></div>
+    <div class="divider"></div>
+    <div class="field"><label>＋ 导入文书范式卡（WS JSON 数组，合并进 WS_CARDS）</label>
+      <textarea id="docImport" placeholder='[{"type":"判决书","id":"R-LN-082","name":"民事判决书范式卡","sections":["首部","本院查明","本院认为","裁判主文","尾部"],"redlines":["禁倒置结构"],"errorExample":{"wrong":"…","why":"…","right":"…"},"mainText":"…"}]'></textarea>
+      <button class="btn sm" id="btnDocImport" style="margin-top:8px">导入并合并</button>
+      <div class="hint">数据来自 R-LN-082~084。切换文书类型即调用对应范式骨架、红线清单与错误示例。<b>注意</b>：法院无「裁决书」概念（属仲裁），模拟法院庭审请用判决/裁定/决定。</div></div>
+  </div>
+</aside>
+
+<div class="drawer-mask" id="hostMask"></div>
+<aside class="doc host" id="host">
+  <header><h3>🎙️ 主持话术 · Path B（庭审主持卡 R-PR-061~068）</h3><div class="spacer" style="flex:1"></div><button class="btn ghost sm" id="btnHostClose">✕ 关闭</button></header>
+  <div class="scroll">
+    <div class="r2">⚠️ 铁律 R2：本面板为【草案·待人工确认】。AI 依 persona 主持准则 + 庭审主持卡（R-PR-062~068）产出候选主持话术，终局指挥由人类审判长（老强）拍板。</div>
+    <div class="dfield"><label>庭审阶段（按阶段筛选对应主持卡，点选即切换）</label>
+      <div class="hstage" id="hostStage">
+        <span class="hchip on" data-stage="开庭">开庭</span>
+        <span class="hchip" data-stage="法庭调查">法庭调查</span>
+        <span class="hchip" data-stage="法庭辩论">法庭辩论</span>
+        <span class="hchip" data-stage="调解">调解</span>
+        <span class="hchip" data-stage="全程">全程</span>
+      </div>
+    </div>
+    <div class="dfield"><label>本案争议焦点（脱敏占位，用于话术定制）</label>
+      <textarea id="hostFocus" placeholder="如：① 合同是否实际履行；② 如未履行，责任归属何方"></textarea>
+    </div>
+    <div class="dfield"><label>当庭要素（供「🎲 即兴主持」实时生成话术 · 留空自动取角色）</label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <input id="hostPlaintiff" placeholder="原告称谓" />
+        <input id="hostDefendant" placeholder="被告称谓" />
+        <input id="hostLastEvent" placeholder="最近程序事件（如：被告质证否认授权）" />
+        <input id="hostRound" placeholder="轮次" style="max-width:90px" />
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn primary sm" id="btnHostScript">🎙️ 生成主持推进稿</button>
+      <button class="btn sm" id="btnHostLive">🎲 即兴主持</button>
+      <button class="btn sm ghost" id="btnHostDemo">试生成（脱敏示例）</button>
+      <button class="btn sm ghost" id="btnHostCopy">⧉ 复制</button>
+    </div>
+    <div class="dfield"><label>🧭 心证档案（跨轮 / 跨庭次记忆 · 自动持久化）</label>
+      <div id="xinZhengList" style="display:flex;flex-direction:column;gap:4px;max-height:150px;overflow:auto;font-size:12px;margin-bottom:6px"></div>
+      <div class="row" style="margin-top:2px">
+        <select id="xzTendency" style="background:#1e293b;border:1px solid #334155;color:#e6edf3;border-radius:6px;padding:5px">
+          <option>🟦 倾向原告</option>
+          <option>🟥 倾向被告</option>
+          <option>⚪ 存疑</option>
+        </select>
+        <input id="xzNote" placeholder="心证备注（如：主体资格存疑）" style="flex:1;background:#1e293b;border:1px solid #334155;color:#e6edf3;border-radius:6px;padding:5px" />
+        <button class="btn sm" id="btnXzRecord">记录本轮心证</button>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="row" style="justify-content:space-between;align-items:center">
+      <span class="hint" style="flex:1;margin-right:8px">庭次快照：把争点 + 心证进度导出 JSON，可跨庭次载入延续。</span>
+      <button class="btn sm ghost" id="btnTingSave">💾 存庭次快照</button>
+      <button class="btn sm ghost" id="btnTingLoad">📂 载入庭次快照</button>
+      <input id="fileTing" type="file" accept="application/json" style="display:none" />
+    </div>
+    <div class="doc-out" id="hostCards"></div>
+    <div class="hout" id="hostScript"></div>
+    <div class="divider"></div>
+    <div class="hint">本面板由 <b>庭审主持卡卡族（R-PR-061~068，2026-09-08 建，落 PR 域）</b> 驱动：每张卡含 定位 / 话术模板 / 红线 / 法条依据。AI 法官主持话术即依此产出，具 20 年民商审判质感。</div>
+  </div>
+</aside>
+
+<div id="recBar">
+  <span class="rec-dot"></span><span style="color:var(--red);font-weight:700;font-size:12px">REC</span>
+  <span id="recCase" style="color:var(--gold);font-size:12px;font-weight:700"></span>
+  <span id="recCount" style="color:var(--muted);font-size:12px;white-space:nowrap">进度 0 / 0</span>
+  <div class="rec-prog"><i id="recFill"></i></div>
+  <span class="rec-hint">空格 暂停/继续 · F 全屏 · R 重播 · Esc 退出</span>
+</div>
+<div class="toast" id="toast" data-page-node-id="prwHMuYgr03IvwTlRZjqpU"></div>
+
+<script>
+/* ============ 审判要件卡（法官心智）真实数据 ============ */
+/* 来源：~/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/建设工程/ 审判要件卡
+   R-JG-006/007/008/013/015/018/021/025；卡型定义：法官心智·judge_reviewer 四步推理链 */
+const JUDGE_CARDS = [
+  /* ===== 建设工程域（对口 6658 吊顶案被告立场）===== */
+  {id:"R-JG-006",domain:"建设工程",name:"建设工程合同与承揽合同的区分四要素",stages:["庭前准备","法庭调查"],favor:"被告",
+   support:"标的物属《建设工程分类标准》范围+主体具资质+受行政强监管+双方无任意解除权，四项综合指向建设工程合同，适用建设工程合同章及专属管辖；反之认定为承揽合同。",
+   points:"①看标的物 ②看主体（自然人原则不能作发包人） ③看监管 ④看解除权（承揽定作人可任意解除，建工双方均不可）。吊顶采购安装具「材料买卖+安装施工」双重属性，应穿透合同名称按四要素实质判断。",
+   law:"民法典第770条（承揽定义）、第787条（任意解除权）、第808条（建工无规定适用承揽）",
+   pitfall:"仅凭合同名称或金额大小即定性→管辖与法律适用双重错误。"},
+  {id:"R-JG-008",domain:"建设工程",name:"建设工程专属管辖适用范围与例外",stages:["庭前准备"],favor:"被告",
+   support:"装饰装修属专属管辖，买卖/承揽不属；管辖异议须在答辩期内提出。",
+   points:"定性为承揽/买卖→由被告住所地或合同履行地管辖，排除不动产专属管辖。",
+   law:"民诉法解释第28条第二款",
+   pitfall:"逾期提出管辖异议视为应诉答辩，异议权消灭。"},
+  {id:"R-JG-015",domain:"建设工程",name:"工程价款责任主体的审查（合同相对性）",stages:["法庭调查","举证质证","法庭辩论"],favor:"被告",
+   support:"合同有效时基于相对性原则，一般由合同相对方付款；突破须有明确法律依据（代建披露/合伙连带/实际施工人）。",
+   points:"被告第一实体防线：己方仅与合同载明相对方成立关系；原告非合同当事人须先证明权利合法移转（债权转让通知债务人）或获合法授权，否则不具备主张价款的主体资格。表述用「存疑」，不作刑事定性。",
+   law:"民法典第465条第二款（相对性：仅对当事人具有法律约束力）",
+   pitfall:"以「工程实际受益」为由突破相对性径判非合同方付款。"},
+  {id:"R-JG-021",domain:"建设工程",name:"未开具发票不予付款与先票后款抗辩",stages:["法庭辩论","评议宣判"],favor:"被告",
+   support:"合同明确约定先票后款/不开票可拒付的，视为对等义务依约处理；未约定的，未开票抗辩不予支持。",
+   points:"吊顶案最高频抗辩：绝大多数合同仅笼统要求「提供发票」，不构成付款前提，被告以未开票拒付不予支持；正确路径是反诉/另诉开票或请求「先票后款」附条件给付判决，而非驳回诉请。",
+   law:"民法典第465条",
+   pitfall:"合同未约定开票为前提仍驳回付款请求；或有约定却直接驳回而非采取先票后款。"},
+  {id:"R-JG-007",domain:"建设工程",name:"装饰装修合同的定性与法律适用二分",stages:["法庭调查"],favor:"被告",
+   support:"住宅吊顶缺资质不构成无效；使用权人可作发包人——堵死两条无效抗辩。",
+   points:"定性为承揽/买卖时，不得以承包人缺乏建筑业企业资质主张合同无效。",
+   law:"民法典第153条（无效情形法定）",
+   pitfall:"以缺乏资质一律主张合同无效。"},
+  {id:"R-JG-013",domain:"建设工程",name:"借用资质施工合同效力及发包人善意但书",stages:["举证质证","法庭辩论"],favor:"被告",
+   support:"发包人签约时不知情→不支持（与「授权意思表示自始未作出」教义路径同构）。",
+   points:"原告须证明授权意思表示真实作出；依民法典第143条，意思表示真实为要件，自始未作出则不成立。",
+   law:"民法典第143条（意思表示真实）、第153条",
+   pitfall:"以「实际履行」倒推授权成立，忽略意思表示要件。"},
+  {id:"R-JG-018",domain:"建设工程",name:"合同无效≠不用付钱（折价补偿）",stages:["评议宣判"],favor:"中立",
+   support:"合同无效但验收合格或已使用的，仍须参照合同折价补偿，被告常见误判为「无效即不付」。",
+   points:"质量分水岭：验收合格/已使用→折价补偿；未竣工→按过错分担。",
+   law:"民法典第793条（建工无效折价补偿）",
+   pitfall:"误以为合同无效即无需付款。"},
+  {id:"R-JG-025",domain:"建设工程",name:"工程质量责任主体与异议程序分野",stages:["举证质证","法庭辩论"],favor:"被告",
+   support:"已使用→只能反诉；未使用→可直接抗辩拒付。抗辩与反诉程序分野须厘清。",
+   points:"被告以质量拒付的，须区分是否已交付使用：已使用则质量异议须反诉，不得直接抗辩扣减。",
+   law:"建工解释（一）相关条文",
+   pitfall:"已使用仍直接抗辩拒付→程序失权。"},
+
+  /* ===== 执行异议之诉域（案外人执行异议之诉，源：贵州法院类案审判要件指南）===== */
+  {id:"R-PR-038",domain:"执行异议",name:"执行异议之诉的受理条件与前置程序",stages:["庭前准备"],favor:"原告",
+   support:"案外人提起执行异议之诉应同时符合四条件：①经执行异议审查前置程序（对执行法院已作出的异议裁定不服）；②自裁定送达之日起15日内提起；③异议针对执行标的且有具体诉请和事实理由；④诉请与原判决、裁定无关（不属执行依据错误）。",
+   points:"审查顺序：有无异议裁定(前置)→是否15日内→是否针对执行标的且诉请具体→诉请是否与原判决无关。申请执行人抗辩未经前置或超15日；主张标的权属已由原判决明确的，应走审判监督程序而非异议之诉。",
+   law:"民事诉讼法第238条（2023修正）",
+   pitfall:"把「执行依据错误」误作异议之诉受理（应走再审/第三人撤销之诉）；或忽略15日起诉期间为不变期间。"},
+  {id:"R-PR-039",domain:"执行异议",name:"执行异议之诉的三项裁判原则",stages:["法庭调查","举证质证"],favor:"中立",
+   support:"①实质审查原则：不因执行程序「外观权利判断规则」可能带来的错误而径驳，依法解决名实不符的标的权利争议；②权利甄别原则：按生存权>物权>特殊债权>普通债权甄别顺位；③利益平衡原则：维护申请执行人权益、避免异议之诉沦为拖延工具，同时充分救济案外人，生存利益优先于经营利益。",
+   points:"三原则统摄全案：先辨权利性质(物权/债权/优先权)，再定顺位，最后平衡。被执行人自认不能替代法院对案外人权利的实质认定。",
+   law:"民事诉讼法第238条（2023修正）",
+   pitfall:"沿用执行程序外观主义直接驳回案外人；或因被执行人自认即认定案外人权利成立。"},
+  {id:"R-PR-040",domain:"执行异议",name:"权利优先顺位规则与举证责任分配",stages:["举证质证","法庭辩论"],favor:"中立",
+   support:"案外人就执行标的享有足以排除强制执行的民事权益承担举证责任（转让/受让合同、履行、资金往来等基础法律关系证据）。未否定申请执行人优先权、而以顺位更优权益起诉的，按权利顺位定支持与否。顺位：被拆迁人安置权>商品房消费者生存权>建设工程价款优先受偿权>担保物权>一般买受人物权期待权>普通债权。",
+   points:"举证分配：案外人证「足以排除强制执行」；申请执行人证权利优先或标的已由原判决明确。注意被拆迁人安置权最高顺位、生存权优先于经营利益。",
+   law:"民事诉讼法解释第311条（案外人举证）、第312条（判决）；异议复议规定第27-28条",
+   pitfall:"把一般买受人物权期待权置于担保物权之上；或忽略被拆迁人安置权最高顺位。"},
+  {id:"R-PR-041",domain:"执行异议",name:"商品房消费者排除执行（生存权优先）",stages:["法庭辩论","评议宣判"],favor:"原告",
+   support:"商品房消费者请求排除建设工程价款优先受偿权、抵押权及一般金钱债权强制执行，按《审理执行异议之诉案件解释》第11条审查：查封前签合法有效书面买卖合同（认购/网签/事实买卖均可）、用于居住（家庭单位、含改善性住房、配套唯一车位）、已付超50%价款（一审法庭辩论终结前付清余款可适用批复）。可一并诉请办过户，合并审理。",
+   points:"合同认定从宽（事实买卖关系可认）；居住需要按家庭单位考察；价款节点以查封「送达」而非「作出」时间为界。",
+   law:"异议复议规定第29条（2020修正）；商品房消费者权利保护批复第2条",
+   pitfall:"把投资性商铺买受人纳入生存权保护；或以查封裁定「作出」时间而非「送达」时间作节点。"},
+  {id:"R-PR-042",domain:"执行异议",name:"一般不动产买受人排除执行四要件",stages:["举证质证","法庭辩论"],favor:"原告",
+   support:"一般不动产买受人请求排除普通金钱债权强制执行，按《审理执行异议之诉案件解释》第14条审查，同时满足：查封前签合法有效书面买卖合同、查封前合法占有、已付全款或按约付部分且余款交执行、非因自身原因未过户，予以支持。",
+   points:"四要件缺一不可；现金支付仅凭收款收据不能认定付款成立，须资金往来佐证；非自身原因未过户是关键的免责阀。",
+   law:"异议复议规定第28条（2020修正）",
+   pitfall:"把二手房买受人可对抗抵押权的规则与商品房消费者混淆；或现金支付仅凭收款收据即认付款成立。"},
+  {id:"R-PR-045",domain:"执行异议",name:"股权代持排除执行的四项条件",stages:["举证质证","法庭辩论"],favor:"被告",
+   support:"登记在被执行人名下的股权被强制执行，案外人以代持关系、实际出资请求排除执行的，一般不予支持；但同时符合四条件应予支持：①查封前签合法有效代持协议；②查封前已实际履行出资义务；③公司其他股东半数以上同意或其知道未异议（人合性）；④申请执行人明知实际出资、非因信赖登记股权交易形成债权。",
+   points:"商事外观主义下股权登记具对抗效力；代持协议 alone 不足，须四条件全备，尤重其他股东半数以上认可。",
+   law:"异议复议规定第25条（股权按登记公示判断）；公司法第32条（商事外观主义）",
+   pitfall:"仅凭代持协议即支持排除执行；或忽略「其他股东半数以上认可」这一人合性要件。"},
+
+  /* ===== 医疗损害域（医疗事故民事赔偿 + 医疗事故罪刑事；源：民法典侵权编/刑法335/医疗纠纷预防处理条例）===== */
+  {id:"R-PI-240",domain:"医疗损害",name:"医疗事故罪「严重不负责任」认定与鉴定意见证据地位",stages:["法庭调查","举证质证","法庭辩论"],favor:"被告",
+   support:"医疗事故罪(刑法335条)入罪门槛是「严重不负责任」——须达对基本诊疗规范的重大背离(擅离岗位、拒不施救、无资质操作、违反手术安全核查等核心制度)，不等于「有医疗过错」。医疗事故技术鉴定意见是入罪的必要条件而非充分条件，法院须独立作规范评价；条例第47条列举的病历不规范、告知瑕疵多属行政责任，不当然升格刑事。",
+   points:"辩护三杠杆：①切割鉴定与入罪(条例36条鉴定只解决四项事实问题)；②把违规行为压回行政责任(条例47条)；③攻刑法因果支配性(多因一果须证医方行为具决定性)。主体须为医务人员，界分非法行医罪(336条，刑差7年以上)。",
+   law:"刑法第335条（医疗事故罪）、第336条（非法行医罪）；医疗纠纷预防和处理条例第34/36/47条",
+   pitfall:"把民事原因力比例当刑事因果；以「执行医院安排/遵医嘱」求出罪(梁娟案要旨明定此路不通)；忽略认定书「必要条件」反向价值。"},
+  {id:"R026",domain:"医疗损害",name:"医疗损害过错责任与举证责任",stages:["法庭调查","举证质证","法庭辩论"],favor:"原告",
+   support:"医疗损害责任一般适用过错责任(民法典1218条)：患者就医疗机构/医务人员过错及因果关系承担举证责任。但隐匿/遗失/伪造病历、违反诊疗规范等法定情形适用过错推定(民法典1222条)，举证责任倒置至医疗机构。",
+   points:"过错推定情形是患者方突破口：违反法律/法规/规章/诊疗规范、隐匿或拒提供病历、遗失/伪造/篡改病历。一般诊疗偏差仍由患者举证过错与因果。",
+   law:"民法典第1218条（医疗损害过错责任）、第1222条（过错推定）",
+   pitfall:"患者方对全部过错与因果均举证(法定推定情形除外)；或医疗机构混淆一般过错与推定过错。"},
+  {id:"R027",domain:"医疗损害",name:"医疗产品及不合格血液致害无过错责任",stages:["法庭调查","举证质证"],favor:"原告",
+   support:"因药品、消毒产品、医疗器械缺陷，或输入不合格血液造成患者损害，适用无过错责任(民法典1223条)：患者可请求医疗机构赔偿，也可请求生产者/血液提供机构赔偿；医疗机构赔偿后有权向责任方追偿。",
+   points:"归责不要求医疗机构有过错；患者方只需证缺陷/不合格血液与损害的因果。医疗机构赔偿后追偿，不阻却对患者责任。",
+   law:"民法典第1223条（医疗产品/血液无过错责任）",
+   pitfall:"以医疗机构「无过错」抗辩免责；或忽略医疗机构赔偿后的追偿权导致双重赔付误解。"},
+  {id:"R028",domain:"医疗损害",name:"医疗漏诊按原因力担责、赔偿按生存期缩短折算",stages:["评议宣判"],favor:"中立",
+   support:"漏诊/误诊致损害，按医疗过错参与度和原因力比例确定赔偿(民法典1218条+人身损害赔偿1179条)；「漏诊≠误诊」，责任比例依对损害的原因力大小(如10%-60%)，非全有全无。生存期缩短情形，死亡赔偿金等按缩短年限折算。",
+   points:"因果力分层：多因一果时按原因力比例担责；患者自身疾病、病情凶险为减责因素。赔偿项目按原因力折算而非全额。",
+   law:"民法典第1218条（医疗损害责任）、第1179条（人身损害赔偿）",
+   pitfall:"漏诊即判全责(忽略原因力)；或把「病情加重」直接等同可赔偿损害而无等级化证据。"},
+  {id:"R029",domain:"医疗损害",name:"无书面沟通记录视为未履行告知义务",stages:["法庭调查","举证质证","法庭辩论"],favor:"原告",
+   support:"医务人员在诊疗活动中应向患者说明病情和医疗措施，实施手术/特殊检查/特殊治疗须说明风险、替代方案并取得明确同意(民法典1219条)。无书面沟通记录(或补录痕迹明显)的，视为未履行告知义务，推定过错。",
+   points:"告知义务是法定义务；知情同意须「明确同意」而非默示。病历无沟通记录或事后补录，患者方据此主张告知瑕疵成立。",
+   law:"民法典第1219条（知情同意/告知义务）",
+   pitfall:"以「口头已告知」抗辩(无书面痕迹不认)；或混淆一般告知与手术/特殊治疗的「明确同意」要求。"},
+  {id:"R030",domain:"医疗损害",name:"无病理依据径行根治性手术属严重医疗过错",stages:["法庭调查","举证质证","法庭辩论"],favor:"原告",
+   support:"实施手术等诊疗活动违反具体诊疗规范、无病理依据径行根治性手术，属民法典1222条过错推定情形(违反法律/法规/规章/诊疗规范)，推定医疗机构过错；同时违反告知义务(1219条)时过错叠加。",
+   points:"重大诊疗决策须有病理/影像依据；无依据即行根治术既触过错推定又涉告知瑕疵。患者方抓「规范违反」即锁定推定。",
+   law:"民法典第1222条（过错推定）、第1219条（告知义务）",
+   pitfall:"以「病情需要」概括抗辩(须具体规范依据)；或忽略无依据手术同时触发告知义务违反的双重过错。"}
+];
+
+/* ============ 数据模型 ============ */
+const STAGES = ["庭前准备","法庭调查","举证质证","法庭辩论","最后陈述","评议宣判"];
+const EVI_STATUS = ["未出示","已出示","已质证","已采纳","未采纳"];
+const DEMO = {
+  meta:{caseNo:"(2026)黔0330民初6658号",cause:"买卖合同纠纷·吊顶采购",court:"习水县人民法院（独任·小额诉讼）",domain:"建设工程",red:"原告·丁戊祥方（黄茂姣关联）",blue:"被告·刘九零/刘维方"},
+  roles:[
+    {id:"judge",name:"审判长 龙雅清",role:"审判席",side:"neutral",seat:"judge"},
+    {id:"clerk",name:"书记员",role:"记录",side:"neutral",seat:"clerk"},
+    {id:"plain",name:"原告 丁戊祥",role:"原告席",side:"red",seat:"plain"},
+    {id:"third",name:"第三人 黄茂姣",role:"第三人席",side:"red",seat:"plain2"},
+    {id:"def1",name:"被告一 刘九零",role:"被告席",side:"blue",seat:"def"},
+    {id:"def2",name:"被告二 刘维",role:"被告席",side:"blue",seat:"def2"},
+    {id:"wit",name:"证人",role:"证人席",side:"neutral",seat:"wit"}
+  ],
+  stageIdx:5, speaker:"judge", advantage:-8, view:"observer", procType:"duiren",
+  transcript:[
+    {t:0,k:"stage",stage:0,text:"▶ 进入【庭前准备】阶段"},
+    {t:5,role:"judge",type:"say",text:"核对到庭人员；宣布法庭纪律，庭审开始。"},
+    {t:30,k:"stage",stage:1,text:"▶ 进入【法庭调查】阶段"},
+    {t:35,role:"plain",type:"atk",text:"⚔️ 诉请：判令二被告支付吊顶货款2,855元及逾期利息（LPR，自2025-09-24起）；协议抬头『刘九零』、刘维签字。"},
+    {t:75,role:"def2",type:"def",text:"🛡️ 不成立买卖关系，告错主体：吊顶属黄茂姣承包范围，真实买受人为承包方；刘维仅选样签字，定金2,000元由黄茂姣支付。"},
+    {t:120,k:"stage",stage:2,text:"▶ 进入【举证质证】阶段"},
+    {t:125,role:"third",type:"evi",text:"🧾 证人（第三人）黄茂姣：吊顶是我承包范围，定金2,000元我付，尾款我跟原告结；刘九零把工程包给我。"},
+    {t:165,role:"def2",type:"def",text:"🛡️ 质证：原告证据1-3均仅证明『货送案涉房屋』，无一项直接证明二被告为买卖相对人；质证归位成功。"},
+    {t:210,role:"judge",type:"say",text:"原告，2,855元如何计算？请出示总价、已付、未付明细。"},
+    {t:240,role:"plain",type:"atk",text:"⚔️ 协议4,780元、定金黄茂姣付2,000元、剩2,780元、减零头算2,855元；无对账单。"},
+    {t:265,role:"def2",type:"atk",text:"⚔️ 发问原告：定金谁付？（黄茂姣）是否知晓整体承包？（知）2,855明细？（无）凭何认定刘维为共同买受人？（签字+兄弟）——原告无闭合反证。"},
+    {t:330,role:"judge",type:"say",text:"刘维签字是何意思？刘九零支付的110,000元付给谁？"},
+    {t:355,role:"def1",type:"def",text:"🛡️ 刘维受委托选样确认，未付定金、未承诺担责；110,000元付承包方黄茂姣。"},
+    {t:385,role:"judge",type:"say",text:"（当庭播放证据⑧⑨：2026-08-24 丁戊祥『我没有，我我我没有』否认授权；龙雅清询问录音 R8 指认发动者系黄茂姣）"},
+    {t:395,k:"stage",stage:3,text:"▶ 进入【法庭辩论】阶段"},
+    {t:400,role:"def2",type:"def",text:"🛡️ 辩论：合同相对性（《民法典》465②）+承揽定性（770/774），材料采购属承揽人义务，买受人为承包方；突破相对性无552/524依据；2,855元不闭合。请求驳回。"},
+    {t:450,role:"plain",type:"atk",text:"⚔️ 协议写刘九零名字、刘维签字、货装刘九零家，就该付。"},
+    {t:480,role:"def2",type:"def",text:"🛡️ 回应：权属人受益≠买受人；选样签字≠买受人确认/债务加入。"},
+    {t:500,role:"def2",type:"atk",text:"⚔️ 程序战主攻（焦点三·冒名诉讼）：《民诉法》122①——起诉系黄茂姣借用原告名义发动，丁戊祥授权意思表示自始未作出（《民法典》143）；证据⑨ R8『带人过来的那个人去起诉』直接坐实；起诉状错名『丁茂祥』、委托书空白无签字。"},
+    {t:540,role:"plain",type:"atk",text:"⚔️ 原告方可能主张：丁戊祥『想收钱肯定想起诉』即构成追认/授权。"},
+    {t:560,role:"def2",type:"def",text:"🛡️ 反驳：商业收款意愿≠诉讼程序授权；追认须以可追认的『无权代理授权表示』为前提，本案根本无丁戊祥任何授权表示，连效力待定之无权代理要件均不满足。"},
+    {t:590,role:"judge",type:"say",text:"（调解征询）双方分歧在付款主体定性，暂不强推，进入评议。"},
+    {t:610,k:"stage",stage:5,text:"▶ 进入【评议宣判】阶段"},
+    {t:615,role:"judge",type:"say",text:"（模拟宣判）裁定/判决：驳回原告对二被告全部诉讼请求；案件受理费25元由原告负担。"}
+  ],
+  evidence:[
+    {id:"E1",name:"黄茂姣装修报价单（整装178,000含吊顶4,000）",by:"def1",status:2,purpose:"证明吊顶工程属黄茂姣整装承包范围，二被告非买受人"},
+    {id:"E2",name:"收款收据×3（刘九零→黄茂姣110,000）",by:"def1",status:2,purpose:"证明货款由刘九零直接付给实际买受人黄茂姣，被告已履行付款义务"},
+    {id:"E5",name:"微信记录（尾款找黄茂姣结算/定金黄付）",by:"def2",status:2,purpose:"证明双方合意尾款向黄茂姣结算，买受人指向黄茂姣而非二被告"},
+    {id:"E6",name:"《产品订购协议》NO.1040218",by:"def2",status:2,purpose:"证明协议相对方为黄茂姣，二被告仅为代为选样，无付款债务"},
+    {id:"E7",name:"《整改通知》及送达回执",by:"def1",status:2,purpose:"证明被告已依约履行质量异议通知义务，程序合规"},
+    {id:"E⑧",name:"2026-08-24 刘维通话录音(3′13″)丁否认授权",by:"def2",status:2,purpose:"证明丁戊祥事后否认授权起诉，授权意思表示自始未作出（民法典143）"},
+    {id:"E⑨",name:"2026-08-24 龙雅清询问丁戊祥录音+整理稿（冒名诉讼坐实）",by:"def1",status:3,purpose:"证明起诉状『丁茂祥』与原告『丁戊祥』身份不一致，冒名诉讼要件坐实，应予驳回"},
+    {id:"原告证1-3",name:"协议/微信催款/现场照片（指向二被告买受人）",by:"plain",status:2,purpose:"原告主张二被告为买受人、应支付货款（与被告证据链相反）"}
+  ],
+  pipeline:{stages:[
+    {id:0,name:"承接定向",status:"done",artifact:"定向卡（蓝队·程序战优先）"},
+    {id:1,name:"庭前检索",status:"done",artifact:"法条+类案检索"},
+    {id:2,name:"庭前强化·三轮冲击",status:"done",artifact:"庭前强化稿（焦点三/二/一）"},
+    {id:3,name:"庭审模拟",status:"active",artifact:"本案实景推演中"},
+    {id:4,name:"质量闸门·战情室",status:"todo",artifact:""},
+    {id:5,name:"交付",status:"todo",artifact:""},
+    {id:6,name:"飞轮回写",status:"todo",artifact:""}
+  ]},
+  assault3:{rounds:[
+    {round:1,redAtk:["原告主张『想收钱肯定想起诉』即构成追认/授权","起诉状署名『丁茂祥』视为原告本人发动"],blueDef:["被告抗辩：商业收款意愿≠诉讼程序授权，授权意思表示自始未作出（《民法典》143）","起诉状错名『丁茂祥』≠『丁戊祥』，委托书空白无签字，无权代理要件不满足"],holes:["证据⑨ R8『带人过来的那个人去起诉』需当庭固定指认链条"],patch:["34号申请笔迹鉴定（丁茂祥/丁戊祥签名同一性）+责令原告说明两份委托书关系"]},
+    {round:2,redAtk:["对方主张有起诉意愿即追认"],blueDef:["追认须以可追认的『无权代理授权表示』为前提，本案根本无丁戊祥任何授权表示","错名+空白委托书，连效力待定之无权代理要件均不满足"],holes:["需区隔『商业意愿』与『程序授权』的教义边界"],patch:["35号证据⑨专项分析固化『商业意愿≠程序授权』论证"]},
+    {round:3,redAtk:["协议抬头刘九零+刘维签字=二被告买受人","货装刘九零家就该付"],blueDef:["黄茂姣实际买受人，吊顶属包工包料承包范围","刘维受托选样依919/161-175代理规则效果归委托人；无552债务加入/524代为履行"],holes:["2,855元金额未闭合（无对账单）"],patch:["E1-E7形成承包方买受人证据链；金额矛盾对照表即时展示"]}
+  ]},
+  warroom:{qcGates:[
+    {name:"LTI·法条真实性(R)",status:"pass",note:"民诉法122①/民法典143/465②/770/774 均核验"},
+    {name:"LTI·法理逻辑(L)",status:"pass",note:"冒名诉讼程序战主轴逻辑闭合"},
+    {name:"一致性·案号(304)",status:"pass",note:"(2026)黔0330民初6658号 一致"},
+    {name:"程序·门禁(P)",status:"warn",note:"笔迹鉴定/责令说明委托书待法院回应"}
+  ],report:"战情观察：蓝队（二被告）程序战主轴（冒名诉讼）由证据⑨ R8直接坐实，实体备位（合同相对性＋承揽定性）双锚点锁死；结构性敞口为『商业意愿≠程序授权』教义边界，已转入35号专项补强。建议真实开庭前完成笔迹鉴定申请落地。"},
+  verdict:"（模拟宣判）驳回原告丁戊祥对被告刘九零、刘维全部诉讼请求；案件受理费25元由原告负担。", startedAt:null
+};
+
+
+/* ============ 数额预判（§F 裁量尺度卡·定量层）真实数据 ============ */
+/* 来源：~/Documents/LawKB/知识飞轮系统/06-沉淀/裁判规则库/合同风险/ 裁量尺度卡
+   R-HT-240/241/242；与法官心智（定性层）互补，构成「定性+定量」双预判。
+   红线 R2 + 跨域倍数警示内嵌于卡片 cross_domain_warn 字段。 */
+const AMOUNT_CARDS = [];
+
+/* ============ Path B 文书草拟：persona 系统卡 + 文书范式卡 R-LN-082~084 ============ */
+/* 来源：judge_persona_v1.md + R-LN-082/083/084。蒸馏为 JS 对象供草案生成消费。 */
+const JUDGE_PERSONA = {
+  title:"模拟法庭 AI 法官人格（20年民商审判经验）v1",
+  host:[
+    "开庭即固定争点：一句话归纳争议焦点并征询双方",
+    "释明权适时行使：要件不明/法律观点变化时及时释明并记笔录",
+    "举证质证围绕争点指挥：无争议事实及时固定，无关证据当庭拦截",
+    "心证适度开示：关键心证在辩论终结前公开，给双方反驳机会",
+    "阶段小结：每阶段末归纳无争议事实与争点",
+    "调解优先但不久调不决",
+    "诉讼指挥克制：不代一方发问、不替当事人主张、不预断结果"
+  ],
+  writing:[
+    "结构铁律：本院查明→本院认为→裁判主文，三段不可逆缺",
+    "要件涵摄：大前提(法条)→小前提(事实)→结论，逐要件铺陈不跳跃",
+    "类案引注：引用本地审判要件指南/最高法案例（本地源引证）",
+    "自由心证边界：证据认证写理由，禁写『显然』『当然』",
+    "裁判主文精确：给付内容/期限/利息起算/诉讼费负担逐项明确",
+    "说理温度：举证责任分配、真伪不明处理作可反驳论证"
+  ],
+  redlines:["R2 只给草案不终局","LTI五维+六维法理门禁(REJECT=0)","本地源引证·缺失标statute_text_pending","脱敏·禁真实案号"]
+};
+const WS_CARDS = {
+  "判决书":{
+    id:"R-LN-082", name:"民事判决书范式卡",
+    sections:["首部","本院查明","本院认为","裁判主文","尾部"],
+    redlines:["禁倒置结构(主文在前)","禁『显然/当然』式心证","禁主文模糊(『酌情』须有依据)","禁漏诉讼费负担项","禁无证据事实入本院查明"],
+    errorExample:{wrong:"本院认为『被告显然违约，故驳回原告诉请。』",why:"无要件涵摄、无证据指向、结论与『违约』说理自相矛盾（既认违约又驳回）",right:"本院查明…(事实)→本院认为…(民法典第577条 违约责任构成)→被告构成违约→主文：被告于X日内支付…"},
+    mainText:"实体争议终局裁判。普通/简易/小额诉讼通用；小额须标注『小额诉讼』一审终审。"
+  },
+  "裁定书":{
+    id:"R-LN-083", name:"民事裁定书范式卡",
+    sections:["首部","本院查明/事实","本院认为","裁定主文","尾部"],
+    redlines:["禁以裁定处理实体终局(应『判驳』非『裁驳』，除非不符受理条件)","禁混淆裁驳(程序)vs判驳(实体)","禁对不可上诉裁定错误告知上诉权"],
+    errorExample:{wrong:"原告证据不足→裁定驳回起诉。",why:"证据不足属实体认定，应判决驳回诉讼请求；裁定驳回起诉仅适用于不符合受理条件(如原告不适格、重复起诉)",right:"管辖异议→裁定(民诉法2023第130条)；实体胜败→判决"},
+    mainText:"解决程序事项的文书：管辖异议、保全、中止诉讼、驳回起诉、准许/不准撤诉、移送管辖等。"
+  },
+  "决定书":{
+    id:"R-LN-084", name:"民事决定书范式卡",
+    sections:["首部","事实与理由","决定主文","尾部"],
+    redlines:["禁混淆决定与裁定适用边界","禁漏复议权告知(回避/罚款/拘留法定可复议)","禁以决定处理实体争议或本应以裁定处理的程序事项"],
+    errorExample:{wrong:"对当事人『妨害法庭秩序』直接出判决罚款。",why:"惩戒属决定事项，应以决定书并告知复议权",right:"回避申请→民诉法2023第47条决定；罚款/拘留→第118-119条决定书(可复议)"},
+    mainText:"解决特定程序事项的文书：回避、罚款、拘留、调查令、延期审理申请、拘传等。注意：法院无『裁决书』概念(属仲裁)。"
+  }
+};
+/* ============ Path B 主持话术：庭审主持卡卡族 R-PR-061~068（2026-09-08 建，落 PR 域）============
+   来源：R-PR-062~068 七张主持卡（对应 judge_persona_v1 庭审主持七准则）。蒸馏为 JS 对象供主持话术生成消费。 */
+const HOST_CARDS = {
+  "开庭即固定争点":{
+    id:"R-PR-062", name:"开庭即固定争点", stage:["开庭","全程"],
+    anchor:"开庭/法庭调查前一句话归纳争议焦点，当庭复述并征询双方，给审理锚定范围，防发散偏离。",
+    script:"经过庭前阅卷与证据交换，本庭归纳本案争议焦点为：第一，合同是否实际履行；第二，如未履行，责任归属何方。双方对焦点归纳有无异议？如有补充，请简明提出。",
+    caseScripts:{
+      "6658吊顶案":"经过庭前阅卷，本庭归纳本案争议焦点为：第一，原告诉讼主体资格及授权真实性——营业执照登记经营者为『丁戊祥』，而起诉状署名『丁茂祥』，二者是否同一主体、授权意思表示是否真实（民法典143）；第二，如主体适格，买卖合同的相对方及实际买受人为谁；第三，原告主张的欠款金额是否成立。双方对焦点归纳有无异议？",
+      "6660雅菲窗帘案":"本庭归纳本案争议焦点为：第一，案涉窗帘交易的缔约主体及实际买受人为谁——原告主张与被告成立买卖关系，被告抗辩真实买受人为黄茂姣；第二，货款是否已结清——原告亲笔签署《情况说明》载明定金及尾款由黄茂姣支付；第三，原告诉讼主体是否适格。双方有无异议？"
+    },
+    redlines:["开庭不归纳焦点径直进入调查","焦点过碎（十几个）或过粗（『本案争议较大』）","代一方归纳对其有利的焦点","不征询异议直接锁定"],
+    law:"民诉法2023 第136条(四)（明确争议焦点）/第140条（开庭核对当事人、宣布案由）"
+  },
+  "释明权适时行使":{
+    id:"R-PR-063", name:"释明权适时行使", stage:["法庭调查","法庭辩论","全程"],
+    anchor:"要件不明、法律关系性质可能变化时，及时释明并记入笔录，防突袭裁判，保障程序权利。",
+    script:"原告，你方以『解除合同』为诉请，但庭审查明双方未就解除协商一致、亦未出现法定解除事由；如坚持解除，需就解除事由进一步举证，否则可能承担败诉风险。是否申请延期举证或变更诉请？本庭将记录在案。",
+    caseScripts:{
+      "6658吊顶案":"原告，你方以营业执照『丁戊祥』主张权利，但起诉状署名『丁茂祥』、授权委托书落款日期与陈述存在矛盾；如主张本人起诉，需就主体同一性及授权真实进一步举证，否则可能承担主体不适格的法律后果。是否申请补正授权手续或说明二者同一性？本庭将记录在案。另，你方主张的法律关系性质如与本院认定不一致，本院将依法作为焦点审理并充分听取意见。",
+      "6660雅菲窗帘案":"原告，你方以『买卖合同』主张权利，但微信记录显示『窗帘谈好5000那我喊他下单』，缔约意思疑似指向黄茂姣；如坚持与被告成立买卖关系，需就合同订立合意进一步举证，否则法律关系性质可能与本院认定不一致。是否申请补充举证或变更诉请基础？本庭将记录在案。"
+    },
+    redlines:["该释明不释明、最后一刻突袭裁判","释明变『暗示结论』（『你这案必输，赶紧撤』）","释明仅对一方、不对等","释明不入笔录"],
+    law:"民诉法2023 第67条（谁主张谁举证）/第68条（及时提供证据·举证期限与逾期后果）/《民事诉讼证据若干规定》第53条（法律关系性质认定与主张不一致时作为焦点审理）"
+  },
+  "举证质证围绕争点指挥":{
+    id:"R-PR-064", name:"举证质证围绕争点指挥", stage:["法庭调查"],
+    anchor:"法庭调查阶段，对无争议事实及时固定，对无关证据当庭说明理由并拦截，确保举证质证围绕已固定争点。",
+    script:"被告提交的证据三，本庭注意到其欲证明『已付货款』，但本案焦点为『合同是否履行』而非『付款金额』，该证据与焦点关联较弱，是否仍有补充证明目的？若无，本庭将记录在案、暂不组织质证。",
+    caseScripts:{
+      "6658吊顶案":"被告提交刘维与原告通话录音、微信『尾款找黄茂姣·丁回要得』，本庭注意到其欲证明『实际买受人为黄茂姣、被告仅选货非买受』，与焦点二『合同相对性』直接相关，本庭将围绕该争点组织质证。至于与主体资格、相对性无关的付款细枝，请当事人自行澄清，本庭不展开。原告如对录音真实性有异议，请当庭提出鉴定申请。",
+      "6660雅菲窗帘案":"被告提交原告亲笔签署并主动交付保存的《情况说明》及签署照片，本庭注意到其欲证明『货款已由黄茂姣结清』，与焦点二『货款是否结清』直接相关，本庭将围绕该争点组织质证。请原告就《情况说明》真实性、签署背景发表三性意见；与货款结清无关的装饰细节，本庭暂不组织质证。"
+    },
+    redlines:["任由双方对无争议事实反复举证","证据与焦点无关却不拦截、全收全质","代一方说明证据目的","质证不要求三性意见"],
+    law:"民诉法2023 第68条（举证期限与逾期后果）/第71条（证据当庭出示、互相质证）/第141条(三)（出示书证物证）"
+  },
+  "心证适度开示":{
+    id:"R-PR-065", name:"心证适度开示", stage:["法庭辩论"],
+    anchor:"法庭辩论终结前，将关键心证（『本院倾向于认为……』）适度公开，给双方反驳机会，避免突袭裁判。",
+    script:"关于焦点一『合同是否实际履行』，根据现有证据，本庭目前倾向于认为原告已完成主要义务举证，但就付款节点仍有疑问。双方可围绕『付款条件是否成就』在辩论中重点回应。",
+    caseScripts:{
+      "6658吊顶案":"关于焦点一『原告主体资格』，根据庭审查明——营业执照经营者『丁戊祥』与起诉状『丁茂祥』姓名不一致、授权手续存在日期矛盾，本庭目前倾向于认为原告主体资格与授权真实性尚存疑，但就授权是否嗣后追认仍有待补充。关于焦点二『实际买受人』，本庭目前倾向于认为黄茂姣更接近真实买受人。双方可围绕上述倾向在辩论中重点回应。",
+      "6660雅菲窗帘案":"关于焦点一『合同相对性』，根据微信记录与《情况说明》，本庭目前倾向于认为缔约意思指向黄茂姣、货款已由其结清。关于焦点三『原告主体适格性』，本庭倾向认为需进一步澄清。双方可围绕上述倾向重点回应，但本庭强调——此系审理过程中的阶段性心证，非最终结论。"
+    },
+    redlines:["心证全封（『庭审结束再算』）","心证过度（『本院认定你方必败』）","开示时点过晚（判决后才知倾向）","把『倾向』当『结论』记入主文"],
+    law:"民诉法2023 第144条（辩论终结前征询最后意见，为心证开示提供程序节点）/第12条（辩论权）"
+  },
+  "阶段小结":{
+    id:"R-PR-066", name:"阶段小结", stage:["法庭调查","法庭辩论","全程"],
+    anchor:"每庭审阶段末（调查毕/辩论毕），归纳无争议事实与争点，承上启下，防遗漏防反复。",
+    script:"法庭调查阶段结束。本庭归纳：双方无争议事实为——一、……；二、……。仍有争议：一、合同履行与否；二、责任比例。下面进入法庭辩论，请围绕上述争点发表意见。",
+    caseScripts:{
+      "6658吊顶案":"法庭调查阶段结束。本庭归纳：双方无争议事实为——一、刘维当庭自认『房子包给黄茂姣、我只选货』；二、双方就交易标的物（吊顶材料）及曾发生交易无争议。仍有争议：一、原告主体资格及授权真实性；二、合同相对方及实际买受人是否为黄茂姣；三、欠款金额。下面进入法庭辩论，请围绕上述争点发表意见。",
+      "6660雅菲窗帘案":"法庭调查阶段结束。本庭归纳：双方无争议事实为——一、原告亲笔签署《情况说明》并主动交付被告保存，载明定金及尾款由黄茂姣支付；二、窗帘已交付安装。仍有争议：一、合同缔约主体是否为黄茂姣；二、原告主体是否适格。下面进入法庭辩论，请围绕上述争点发表意见。"
+    },
+    redlines:["阶段不小结、一镜到底","小结重复全部已说内容","小结替当事人下结论","小结与固定争点矛盾却不修正"],
+    law:"民诉法2023 第141条（法庭调查顺序）/第144条（法庭辩论顺序）"
+  },
+  "调解优先但不久调不决":{
+    id:"R-PR-067", name:"调解优先但不久调不决", stage:["调解","全程"],
+    anchor:"婚姻家庭/合同等宜调案件主动疏导，但期限届满或明显无望即转入裁判，不拖延。",
+    script:"本案系合同纠纷，标的明确、双方曾有合作基础，本庭建议先行调解，可节约时间成本并保留履行弹性。给予双方七日协商期；逾期未果，本庭将依法裁判，不再久调。",
+    caseScripts:{
+      "6658吊顶案":"本案系买卖合同纠纷，双方曾有交易基础，本庭建议先行调解，可就主体资格补正与付款金额一揽子协商。但原告主体资格存在硬伤、实际买受人指向黄茂姣，如七日内不能就主体同一性及付款方案达成一致，本庭将依法裁判，不再久调。",
+      "6660雅菲窗帘案":"据庭审查明，原告已申请撤诉，本院将依法处理撤诉程序；如撤诉未成，本案系窗帘买卖合同纠纷，本庭可在厘清主体与货款结清事实基础上建议调解。但如双方就相对性争议过大、无调可能，本庭将及时裁判，不拖延。"
+    },
+    redlines:["该调不调、径行判决","久调不决、反复给期","以判压调（『不调就重判』）","调解方案替当事人做主"],
+    law:"民诉法2023 第96条（调解自愿·事实清楚分清是非）/第145条（判决前可调解，调解不成及时判决）"
+  },
+  "诉讼指挥克制":{
+    id:"R-PR-068", name:"诉讼指挥克制", stage:["全程"],
+    anchor:"全程保持中立指挥者角色——不代一方发问、不替当事人主张、不预断结果。",
+    script:"关于这一点，请原告自行向证人发问。本庭不代为发问，请双方围绕焦点自行举证辩论。",
+    caseScripts:{
+      "6658吊顶案":"关于原告主体资格与授权问题，本庭不代任何一方发问或补强，请双方围绕焦点自行举证辩论。本庭对主体资格仅作『存疑』表述，是否构成其他性质认定，由当事人另行依法主张，本院不在庭审中预断。",
+      "6660雅菲窗帘案":"关于合同相对性与货款结清，本庭不代任何一方发问，请双方围绕焦点自行举证辩论。本院对主体适格性仅作程序层面审查与『存疑』表述，不作超出审理范围的定性。"
+    },
+    redlines:["代一方发问/补强（替其澄清）","替当事人主张（『原告应该主张 x』）","当庭预断（『这案原告肯定赢』）","情绪化打断/训斥过度"],
+    law:"民诉法2023 第12条（当事人有权进行辩论，克制即保障辩论权不代行）"
+  }
+};
+
+/* ============ 案例校准样本（6658/6660 真实推演争点）============ */
+const HOST_DEMOS = {
+  "6658吊顶案":{
+    stage:"开庭",
+    focus:"① 原告主体资格及授权真实性（营业执照『丁戊祥』与起诉状『丁茂祥』姓名不一致，授权意思表示是否真实，民法典143）；② 合同相对性——实际买受人是否为黄茂姣（承揽/选样定性）；③ 自认是否仅及金额不及主体。"
+  },
+  "6660雅菲窗帘案":{
+    stage:"开庭",
+    focus:"① 合同相对性——缔约主体是否为黄茂姣（承揽/买卖定性）；② 货款是否已结清（原告亲笔《情况说明》自认）；③ 原告主体是否适格、是否存在程序异议空间。"
+  }
+};
+
+function renderAmount(){
+  // —— §F 门控：依据要件涵摄结论解锁/锁定 ——
+  const gateEl = document.getElementById('amountGate');
+  const compEl = document.getElementById('amCompute');
+  const gate = (window.lastSub && window.lastSub.amountGate) ? window.lastSub.amountGate : null;
+  if (gate) {
+    let extra = '';
+    if (gate.enabled && gate.scales && gate.scales.length) {
+      extra = '<div class="agr">📐 数额维度参考：<br>• ' + gate.scales.map(s=>esc(s)).join('<br>• ') + '</div>';
+    }
+    gateEl.className = 'agb ' + (gate.enabled ? 'on' : 'off');
+    gateEl.innerHTML = (gate.enabled ? '✅ ' : '⛔ ') + esc(gate.reason) + extra;
+    compEl.className = 'amCompute ' + (gate.enabled ? 'unlocked' : 'locked');
+  } else {
+    gateEl.className = 'agb';
+    gateEl.innerHTML = '尚未运行要件涵摄，无法判定责任基础。请先在「⚖️ 要件涵摄」面板选择法条并生成推理链。';
+    compEl.className = 'amCompute locked';
+  }
+  const box=$("#amountCards");
+  if(!AMOUNT_CARDS.length){box.innerHTML='<div class="empty-note">裁量尺度卡（§F）未能自动挂载。请确认 amount_predict_import_§F.js 与本页面同目录，或下方粘贴后点「导入并合并」。</div>';$("#acount").textContent="候选锚点 0 张";return;}
+  $("#acount").textContent="候选锚点 "+AMOUNT_CARDS.length+" 张（机器只给候选，不自动裁量 · R2）";
+  box.innerHTML=AMOUNT_CARDS.map(c=>`
+    <div class="acard" data-id="${c.id}">
+      <div class="ah"><span class="aid">${c.id}</span><span class="anm">${esc(c.name)}</span></div>
+      ${c.headline?`<div class="hl">💡 ${esc(c.headline)}</div>`:""}
+      ${(c.anchors&&c.anchors.length)?`<div class="anch">${c.anchors.map(a=>`<div class="a">• ${esc(a.text||a.value||a.label||"")}</div>`).join("")}</div>`:""}
+      ${c.law?`<div class="alaw">⚖ 法条：${esc(c.law)}</div>`:""}
+      ${c.cross_domain_warn?`<div class="cw">⚠️ 跨域倍数红线：${esc(c.cross_domain_warn)}</div>`:""}
+      ${c.geo_scope?`<div class="geo">地域效力：${esc(c.geo_scope)}</div>`:""}
+    </div>`).join("");
+}
+
+/* ============ 类案检索（LawKB 审判要件卡离线索引 window.TRIAL_CARDS）============ */
+// 当前涵摄法条 → 关联类案关键词（用于「用当前涵摄法条联想」）
+const TRIAL_SEED = {
+  'civ_577':['违约'],
+  'civ_1165':['侵权'],
+  'civ_143':['意思表示'],
+  'civ_148':['欺诈'],
+  'civ_793':['建设工程'],
+  'civ_1182':['人身权益']
+};
+function searchTrialCards(q, domain){
+  const arr = (typeof window.TRIAL_CARDS !== 'undefined' && window.TRIAL_CARDS) ? window.TRIAL_CARDS : [];
+  if (!q || !q.trim()) return arr.slice(0, 30);
+  const kw = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  let res = arr.filter(c=>{
+    if (domain && domain !== '全部' && c.domain !== domain) return false;
+    const hay = ((c.title||'') + ' ' + (c.summary||'') + ' ' + (c.laws||[]).join(' ') + ' ' + (c.domain||'')).toLowerCase();
+    return kw.every(k => hay.indexOf(k) >= 0);
+  });
+  if (!res.length) { // 宽松：任一关键词命中
+    res = arr.filter(c=>{
+      if (domain && domain !== '全部' && c.domain !== domain) return false;
+      const hay = ((c.title||'') + ' ' + (c.summary||'') + ' ' + (c.laws||[]).join(' ') + ' ' + (c.domain||'')).toLowerCase();
+      return kw.some(k => hay.indexOf(k) >= 0);
+    });
+  }
+  return res.slice(0, 40);
+}
+function renderCsResults(list){
+  const box = document.getElementById('csResults');
+  const cnt = document.getElementById('csCount');
+  if (!box) return;
+  if (!list.length){ box.innerHTML = '<div class="empty-note">未命中审判要件卡。换个关键词试试（如「违约 违约金」「挂靠」「精神损害」「表见代理」）。</div>'; if(cnt) cnt.textContent='命中 0 张'; return; }
+  if(cnt) cnt.textContent = '命中 '+list.length+' 张（候选·待人工确认）';
+  box.innerHTML = list.map(c=>`
+    <div class="cscard" data-id="${esc(c.id)}">
+      <div class="csh"><span class="csid">${esc(c.id)}</span><span class="csdom">${esc(c.domain||'')}</span></div>
+      <div class="cstitle">${esc(c.title||'')}</div>
+      ${c.summary?`<div class="cssum">${esc((c.summary||'').replace(/\*\*/g,'').slice(0,160))}${(c.summary||'').length>160?'…':''}</div>`:''}
+      ${c.laws&&c.laws.length?`<div class="cslaw">⚖ ${esc(c.laws.slice(0,4).join('、'))}${c.laws.length>4?' 等':''}</div>`:''}
+      <div class="csact"><button class="csanchor" data-id="${esc(c.id)}">⚓ 锚定→要件涵摄</button></div>
+    </div>`).join("");
+  box.querySelectorAll('.csanchor').forEach(b=>{
+    b.onclick = ()=>{
+      const card = (window.TRIAL_CARDS||[]).find(x=>x.id===b.dataset.id);
+      if (card) anchorTrialToSub(card);
+    };
+  });
+}
+function renderCsDomains(){
+  const box = document.getElementById('csDomains');
+  if (!box || typeof window.TRIAL_CARDS === 'undefined') return;
+  const doms = ['全部', ...Array.from(new Set(window.TRIAL_CARDS.map(c=>c.domain).filter(Boolean)))];
+  box.innerHTML = doms.map(d=>`<button class="csdombtn" data-dom="${esc(d)}">${esc(d)}</button>`).join('');
+  box.querySelectorAll('.csdombtn').forEach(b=>{
+    b.onclick = ()=>{
+      box.querySelectorAll('.csdombtn').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      const q = (document.getElementById('csQuery').value||'').trim();
+      renderCsResults(searchTrialCards(q, b.dataset.dom));
+    };
+  });
+  // 默认选中「全部」
+  const first = box.querySelector('.csdombtn'); if (first) first.classList.add('on');
+}
+function anchorTrialToSub(card){
+  const sp = document.getElementById('sPanel');
+  const ctx = document.getElementById('sAnchorCtx');
+  if (sp) sp.classList.add('open');
+  if (ctx){
+    const laws = (card.laws&&card.laws.length)?('<br>关联法条线索：'+esc(card.laws.slice(0,5).join('、'))):'';
+    ctx.style.display = 'block';
+    ctx.innerHTML = '⚓ 类案锚定（候选·待人工确认）：<b>'+esc(card.title||card.id)+'</b><br>'+
+      '域：'+esc(card.domain||'')+' · 来源：'+esc(card.source||'')+
+      '<br>要点：'+esc((card.summary||'').replace(/\*\*/g,'').slice(0,200))+laws+
+      '<br><span style="color:#fca5a5;">请在上方「法条」下拉中人工选定匹配之要件模型，再生成涵摄推理链。</span>';
+  }
+  if (typeof toast === 'function') toast('⚓ 已锚定类案：'+ (card.title||card.id) +'（请在要件涵摄面板选配法条）');
+}
+
+/* ============ Path B 文书草拟（judge_persona + 文书范式卡 R-LN-082~084）============ */
+function renderPersona(){
+  const p=JUDGE_PERSONA;
+  $("#personaBox").innerHTML=`<h4>🧑‍⚖️ ${esc(p.title)}</h4>
+    <div class="ph">庭审主持 7 则 · 文书说理 6 则（仅作草案产出约束，R2 不下终局结论）</div>
+    <div class="pr">${p.host.map(x=>esc(x)).join('</div><div class="pr">')}</div>
+    <div style="height:6px"></div>
+    <div class="pr" style="color:var(--gold)">— 文书说理 —</div>
+    <div class="pr">${p.writing.map(x=>esc(x)).join('</div><div class="pr">')}</div>`;
+}
+function draftDoc(type, inp){
+  const card = WS_CARDS[type] || WS_CARDS["判决书"];
+  const court = inp.court||"（法院名称）";
+  const caseNo = inp.caseNo||"（案号占位 · 脱敏）";
+  const parties = inp.parties||"（原告/被告 · 脱敏占位）";
+  const facts = inp.facts||"（经质证采信的事实：时间/主体/行为/后果/因果 — 仅填有证据支撑者）";
+  const focus = inp.focus||"（争点归纳 → 法条大前提 → 事实小前提 → 逐项认定）";
+  const law = inp.law||"（statute_text_pending：待引本地权威源，如民法典第577条）";
+  const today="二〇二六年X月X日";
+  let head, body, tail;
+  if(type==="判决书"){
+    head=`${court}\n民事判决书\n${caseNo}\n\n${parties}`;
+    body=`【本院查明】（仅写有证据支撑的事实）
+${facts}
+
+【本院认为】（要件涵摄：大前提→小前提→结论；候选·待人工确认）
+争点：${focus}
+法条依据：${law}
+本院倾向于认为：……（依 persona『证据认证写理由、禁写显然/当然』逐项涵摄，争议事实真伪不明时由负举证责任一方承担不利后果）……
+
+【裁判主文】（逐项明确：给付内容/期限/利息起算/诉讼费负担）
+一、被告于本判决生效之日起十五日内向原告支付……；
+二、案件受理费……元，由……负担。
+（如不服本判决，可于判决书送达之日起十五日内上诉于……中级人民法院）`;
+    tail=`审判长 ……　审判员 ……　法官助理 ……　书记员 ……
+${today}`;
+  }else if(type==="裁定书"){
+    head=`${court}\n民事裁定书\n${caseNo}\n\n${parties}`;
+    body=`【本院查明】（触发该程序事项的事实，如管辖连接点/保全必要性）
+${facts}
+
+【本院认为】（程序法依据→结论；候选·待人工确认）
+${focus}
+法条依据：${law}
+本院倾向于认为：……（注意裁驳(程序)与判驳(实体)界限，实体胜败应走判决，不得以裁定处理实体终局）……
+
+【裁定主文】（准许/驳回/移送；可上诉事项及期限须明示）
+一、……；
+二、……（如可上诉，告知上诉权与期限；不可上诉者明示）`;
+    tail=`审判长 ……　审判员 ……
+${today}`;
+  }else{
+    head=`${court}\n决定书\n${caseNo}\n\n被决定人：${parties}`;
+    body=`【事实与理由】（触发事由，如回避申请/妨害诉讼行为）
+${facts}
+
+【决定主文】（准许/驳回、罚款/拘留金额与期限；候选·待人工确认）
+${focus}
+法条依据：${law}
+本院倾向于认为：……
+
+【复议权告知】（回避/罚款/拘留法定可复议一次）`;
+    tail=`${today}`;
+  }
+  const redlist = card.redlines.map(r=>`<div class="ci">${esc(r)}</div>`).join("");
+  const paper=`<div class="dpaper"><div class="dh">${esc(court)}</div><div class="dc">依据范式卡：${esc(card.id)}（${esc(card.name)}）</div><div class="sec">${esc(head)}</div><div class="sec">${esc(body)}</div><div class="sec">${esc(tail)}</div></div>`;
+  const check=`<div class="dcheck"><h5>⛔ 红线清单（来自 ${card.id}）— 草案自检</h5>${redlist}
+    <div class="ci" style="margin-top:6px;color:var(--gold)">错误示例·勿犯：${esc(card.errorExample.wrong)} → ${esc(card.errorExample.why)}</div></div>`;
+  const r2=`<div class="rd2">⚠️ R2【草案·待人工确认】本文书为 AI 依 persona + ${card.id} 产出的候选草案，最终裁判结论由人类审判长（老强）拍板。</div>`;
+  return paper+check+r2;
+}
+function renderDocDraft(){
+  const type=$("#docType").value;
+  const inp={caseNo:$("#docCase").value,court:$("#docCourt").value,parties:$("#docParties").value,facts:$("#docFacts").value,focus:$("#docFocus").value,law:$("#docLaw").value};
+  $("#docDraft").innerHTML=draftDoc(type,inp);
+}
+function loadDocDemo(){
+  $("#docType").value="判决书";
+  $("#docCase").value="（2026）黔03XX民初·1234号";
+  $("#docCourt").value="贵州省习水县人民法院";
+  $("#docParties").value="原告：甲装饰材料经营部（脱敏占位）。\n被告：乙建筑安装工程有限公司（脱敏占位）。\n案由：买卖合同纠纷（吊顶材料采购）。";
+  $("#docFacts").value="2025年X月，被告因工程需要向原告采购吊顶装饰材料，双方形成买卖合同关系。原告已按约交付货物并经被告验收（证据：送货单、验收单）。经双方对账，被告尚欠货款XX元未付（证据：对账单）。被告辩称货款已付清，但未提交任何付款凭证。";
+  $("#docFocus").value="①买卖合同关系是否成立；②欠付货款金额；③被告「已付清」抗辩是否成立。\n要件涵摄：民法典第626条(买受人支付价款义务)+第577条(违约责任)；被告主张已付清却未举证，真伪不明时举证责任在被告，应承担不利后果。";
+  $("#docLaw").value="民法典第577条（违约责任）、第626条（买受人支付价款）；statute_text_pending：待元典核填现行有效文本。";
+  renderDocDraft();
+  toast("已载入脱敏示例，生成草案");
+}
+
+/* ============ Path B 主持话术（庭审主持卡 R-PR-062~068 驱动）============ */
+function hostCardsForStage(stage){
+  return Object.values(HOST_CARDS).filter(c=>c.stage.includes(stage));
+}
+function renderHost(){
+  const stage=_hostStage||"开庭";
+  const cards=hostCardsForStage(stage);
+  $("#hostCards").innerHTML = cards.map(c=>`
+    <div class="hcard">
+      <div class="hid">${esc(c.id)}</div>
+      <div class="hname">${esc(c.name)}</div>
+      <div class="hsec">▸ 定位</div><div class="hbody">${esc(c.anchor)}</div>
+      <div class="hsec">▸ 主持话术（20年法官模板${_hostDemo&&c.caseScripts&&c.caseScripts[_hostDemo]?" · 案例校准":""}）</div>
+      <div class="hscript">${esc((_hostDemo&&c.caseScripts&&c.caseScripts[_hostDemo])?c.caseScripts[_hostDemo]:c.script)}</div>
+      <div class="hsec">▸ 红线</div>
+      ${c.redlines.map(r=>`<div class="hred">${esc(r)}</div>`).join("")}
+      <div class="hlaw">⚖ ${esc(c.law)}</div>
+    </div>`).join("");
+}
+function hostScript(stage, ctx){
+  const cards=hostCardsForStage(stage);
+  if(!cards.length) return "（该阶段暂无对应主持卡）";
+  let out=`【${stage}阶段 · AI 法官主持推进稿（草案·待人工确认 · R2）】\n`;
+  out+=`本院受理本案后，依庭审主持卡（R-PR-061~068）主持庭审，遵循铁律 R2：只给候选推进，终局由审判长裁定。\n\n`;
+  if(_hostDemo) out+=`【案例校准样本：${_hostDemo} · 话术已按真实争点定制】\n\n`;
+  cards.forEach(c=>{
+    const sc=(_hostDemo&&c.caseScripts&&c.caseScripts[_hostDemo])?c.caseScripts[_hostDemo]:c.script;
+    out+=`━ ${c.name}（${c.id}）━\n`;
+    out+=`定位：${c.anchor}\n`;
+    out+=`主持话术：${sc}\n`;
+    out+=`红线：${c.redlines.join("；")}\n\n`;
+  });
+  if(ctx&&ctx.trim()){
+    out+=`【本案焦点锚定】${ctx.trim()}\n（本庭将围绕上述焦点，依『固定争点→举证质证指挥→阶段小结→心证开示→调解优先』序列推进，保持诉讼指挥克制，不代当事人主张。）\n`;
+  }
+  return out;
+}
+function renderHostScript(){
+  const stage=_hostStage||"开庭";
+  const ctx=$("#hostFocus").value;
+  $("#hostScript").innerText=hostScript(stage,ctx);
+}
+function loadHostDemo(caseKey){
+  if(caseKey && HOST_DEMOS[caseKey]){
+    const d=HOST_DEMOS[caseKey];
+    $("#hostFocus").value=d.focus;
+    _hostStage=d.stage||"开庭";
+    _hostDemo=caseKey;
+  }else{
+    $("#hostFocus").value="① 合同是否实际履行；② 如未履行，责任归属何方。";
+    _hostStage="开庭";
+    _hostDemo=null;
+  }
+  $$("#hostStage .hchip").forEach(x=>x.classList.toggle("on",x.dataset.stage===_hostStage));
+  renderHost();renderHostScript();
+  toast(caseKey?"已载入案例样本："+caseKey+"，生成主持推进稿":"已载入脱敏示例，生成主持推进稿");
+  captureHostState();
+}
+
+/* ============ 即兴主持（当庭要素实时生成）+ 心证档案 + 庭次快照持久化 ============ */
+const XIN_TENDENCY = {"🟦 倾向原告":"倾向原告","🟥 倾向被告":"倾向被告","⚪ 存疑":"存疑"};
+const LIVE_HOST_TEMPLATES = {
+  "开庭即固定争点":"本庭现结合「{lastEvent}」之进展，归纳本案争议焦点为：{focus}。{plaintiff}、{defendant}双方对焦点归纳有无异议？如有补充，请简明提出。",
+  "释明权适时行使":"（结合「{lastEvent}」）{plaintiff}，就上述焦点中你方主张，如需补强举证或变更诉请基础，本庭记录在案；如与本院目前心证（{xinZheng}）不一致，本院将依法作为焦点审理并充分听取意见。",
+  "举证质证围绕争点指挥":"就刚进行的「{lastEvent}」，本庭围绕焦点「{focus}」组织质证；与焦点无关的细枝请当事人自行澄清，本庭不展开。{plaintiff}如对证据三性有异议，请当庭提出。",
+  "心证适度开示":"关于「{focus}」，本庭目前阶段性心证为：{xinZheng}。双方可围绕此倾向在辩论中重点回应——此系审理过程中的阶段性心证，非最终结论。",
+  "阶段小结":"第{round}轮{stage}阶段结束。本庭归纳：无争议事实已固定；仍有争议集中于「{focus}」。下面进入下一环节，请围绕上述争点发表意见。",
+  "调解优先但不久调不决":"本案系合同纠纷，本庭建议先行调解，可就「{focus}」一揽子协商；但如七日内不能达成一致，本庭将依法裁判，不再久调。",
+  "诉讼指挥克制":"关于「{focus}」，本庭不代任何一方发问或补强，请{plaintiff}、{defendant}双方围绕焦点自行举证辩论；本院仅作程序层面审查与『存疑』表述，不作超出审理范围的定性。"
+};
+function hostLiveCtx(stage){
+  const h=S.host||{}; const roles=S.roles||[];
+  const byName=re=>{const r=roles.find(x=>x.name&&re.test(x.name));return r?r.name:"";};
+  const plaintiff=h.plaintiff||byName(/原告/)||"原告方";
+  const defendant=h.defendant||byName(/被告/)||"被告方";
+  const caseLabel=h.demo||(S.meta&&S.meta.caseNo)||"本案";
+  const focus=h.focus||"（未填写争议焦点）";
+  const lastEvent=h.lastEvent||"（未记录最近程序事件）";
+  const round=h.round||1;
+  const xz=(S.xinZheng&&S.xinZheng.length)?S.xinZheng[S.xinZheng.length-1]:null;
+  const xinZheng=xz?((XIN_TENDENCY[xz.tendency]||xz.tendency)+"："+(xz.note||"")):"（尚未记录心证）";
+  return {caseLabel,plaintiff,defendant,focus,lastEvent,round,xinZheng,stage,anchor:""};
+}
+function fillLive(tpl,ctx){return tpl.replace(/\{(\w+)\}/g,(m,k)=>(ctx[k]!==undefined&&ctx[k]!==null)?ctx[k]:m);}
+function hostScriptLive(stage){
+  const cards=hostCardsForStage(stage);
+  if(!cards.length) return "（该阶段暂无对应主持卡）";
+  const ctx=hostLiveCtx(stage);
+  let out=`【${stage}阶段 · AI 法官即兴主持稿（当庭要素实时生成 · 草案·待人工确认 · R2）】\n`;
+  out+=`▸ 本案：${ctx.caseLabel}｜原告：${ctx.plaintiff}｜被告：${ctx.defendant}｜轮次：第${ctx.round}轮\n`;
+  out+=`▸ 争议焦点：${ctx.focus}\n▸ 最近程序事件：${ctx.lastEvent}\n▸ 当前心证进度：${ctx.xinZheng}\n\n`;
+  cards.forEach(c=>{
+    const tpl=LIVE_HOST_TEMPLATES[c.name];
+    const line=tpl?fillLive(tpl,ctx):c.script;
+    out+=`━ ${c.name}（${c.id}）━\n主持话术（即兴）：${line}\n红线：${c.redlines.join("；")}\n\n`;
+  });
+  out+=`（本稿由 AI 依 7 张庭审主持卡锚定 + 当庭要素实时生成，非固定模板；终局指挥由审判长拍板。）\n`;
+  return out;
+}
+function renderHostLive(){const stage=_hostStage||"开庭";$("#hostScript").innerText=hostScriptLive(stage);}
+function captureHostState(){
+  S.host=S.host||{stage:"开庭",demo:null,focus:"",round:1,lastEvent:"",plaintiff:"",defendant:""};
+  S.host.stage=_hostStage||"开庭"; S.host.demo=_hostDemo;
+  if($("#hostFocus"))S.host.focus=$("#hostFocus").value;
+  if($("#hostRound"))S.host.round=parseInt($("#hostRound").value)||1;
+  if($("#hostLastEvent"))S.host.lastEvent=$("#hostLastEvent").value;
+  if($("#hostPlaintiff"))S.host.plaintiff=$("#hostPlaintiff").value;
+  if($("#hostDefendant"))S.host.defendant=$("#hostDefendant").value;
+  save();
+}
+function applyHostState(){
+  const h=S.host||{};
+  if(h.stage)_hostStage=h.stage;
+  if(h.demo!==undefined&&h.demo!==null)_hostDemo=h.demo;
+  if($("#hostFocus")&&h.focus!==undefined)$("#hostFocus").value=h.focus;
+  if($("#hostRound")&&h.round)$("#hostRound").value=h.round;
+  if($("#hostLastEvent")&&h.lastEvent!==undefined)$("#hostLastEvent").value=h.lastEvent;
+  if($("#hostPlaintiff")&&h.plaintiff!==undefined)$("#hostPlaintiff").value=h.plaintiff;
+  if($("#hostDefendant")&&h.defendant!==undefined)$("#hostDefendant").value=h.defendant;
+  if($("#hostStage")&&_hostStage)$$("#hostStage .hchip").forEach(y=>y.classList.toggle("on",y.dataset.stage===_hostStage));
+}
+function recordXinZheng(){
+  const t=$("#xzTendency")?$("#xzTendency").value:""; const n=$("#xzNote")?$("#xzNote").value.trim():"";
+  S.xinZheng=S.xinZheng||[]; const round=(S.host&&S.host.round)||1;
+  S.xinZheng.push({round,tendency:t,focus:(S.host&&S.host.focus)||"",note:n,at:new Date().toISOString()});
+  save(); renderXinZheng(); toast("已记录第"+round+"轮心证");
+}
+function renderXinZheng(){
+  const list=S.xinZheng||[]; const box=$("#xinZhengList"); if(!box)return;
+  const tc={"🟦 倾向原告":"#3b82f6","🟥 倾向被告":"#ef4444","⚪ 存疑":"#94a3b8"};
+  box.innerHTML=list.length?list.slice().reverse().map(e=>{
+    const c=tc[e.tendency]||"#94a3b8";
+    return `<div style="border-left:3px solid ${c};padding:3px 8px;background:#0f172a;border-radius:4px"><span style="color:${c};font-weight:600">第${e.round}轮 ${e.tendency}</span> <span style="color:#cbd5e1">${esc(e.note||"")}</span></div>`;
+  }).join(""):'<div style="color:#94a3b8;font-size:12px">尚未记录心证。</div>';
+}
+function exportTingSnapshot(){
+  const snap={v:2,savedAt:new Date().toISOString(),caseNo:S.meta&&S.meta.caseNo,host:S.host,subsumption:S.subsumption,xinZheng:S.xinZheng,disputeFocus:S.disputeFocus};
+  const blob=new Blob([JSON.stringify(snap,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download="庭次快照_"+(S.meta&&S.meta.caseNo||"case")+"_"+Date.now()+".json"; a.click();
+  toast("庭次快照已导出");
+}
+function importTingSnapshot(file){
+  if(!file)return; const r=new FileReader();
+  r.onload=()=>{try{const d=JSON.parse(r.result);
+    if(d.host)S.host=d.host; if(d.subsumption)S.subsumption=d.subsumption;
+    if(Array.isArray(d.xinZheng))S.xinZheng=(S.xinZheng||[]).concat(d.xinZheng);
+    if(d.disputeFocus)S.disputeFocus=d.disputeFocus;
+    save(); applyHostState(); renderHost(); renderXinZheng();
+    window.dispatchEvent(new Event("subsumption:restore"));
+    toast("庭次快照已载入（争点+心证进度已延续）");
+  }catch(e){toast("载入失败：JSON 错误");}};
+  r.readAsText(file);
+}
+
+let S=null, playState={active:false,speed:1,head:-1,snap:null,timer:null,lastVirt:null,appended:0,paused:false};
+var _hostStage="开庭", _hostDemo=null; /* 主持话术面板：当前阶段 / 当前案例校准样本（R-PR-061~068 驱动）*/
+let judgeDomain=null; /* 法官心智案由过滤：null=跟随当前案件 meta.domain；"全部"=跨域 */
+const LS_KEY="mocktrial_state_v2";
+const BC=("BroadcastChannel" in window)?new BroadcastChannel("mocktrial_sync"):null;
+
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+const esc=x=>String(x).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+/* QC 双模席位：程序类型驱动的额外席位（不入 S.roles，避免污染发言方/证据归属，
+   仅作为法庭布局与判据归属的可点击节点；点击时由 roleById 回退到本表取名称 */
+const SEAT_ROLE_MAP={
+  qcobs:{id:"qcobs",name:"QC·观察席（QC-Controller·质量总闸）",role:"观察席·质控",side:"qc",seat:"qcobs"},
+  chief:{id:"chief",name:"审判长（QC-Controller·审判长心智·质控）",role:"审判长席·质控",side:"qc",seat:"chief"},
+  judge1:{id:"judge1",name:"审判员①（AI模拟法庭法官·合议庭）",role:"审判员席",side:"neutral",seat:"judge1"},
+  judge2:{id:"judge2",name:"审判员②（AI模拟法庭法官·合议庭）",role:"审判员席",side:"neutral",seat:"judge2"}
+};
+const roleById=id=>S.roles.find(r=>r.id===id)||SEAT_ROLE_MAP[id];
+const sideClass=s=>s==="red"?"red":s==="blue"?"blue":"neutral";
+const fmt=sec=>{sec=Math.max(0,Math.floor(sec));return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),1800);}
+function save(){localStorage.setItem(LS_KEY,JSON.stringify(S));if(BC)BC.postMessage({state:S});}
+function load(){try{const r=localStorage.getItem(LS_KEY);return r?JSON.parse(r):null;}catch(e){return null;}}
+
+/* ============ 顶栏高度自适应（topbar 可换行 → 动态同步 perspbar 吸顶偏移，防重叠） ============ */
+function syncTopbarHeight(){
+  const tb=document.querySelector("header.topbar");
+  const h=tb?tb.getBoundingClientRect().height:60;
+  document.documentElement.style.setProperty("--topbar-h",h+"px");
+}
+window.addEventListener("resize",syncTopbarHeight);
+window.addEventListener("load",syncTopbarHeight);
+if(window.ResizeObserver){try{new ResizeObserver(syncTopbarHeight).observe(document.querySelector("header.topbar"));}catch(e){}}
+
+/* ============ 渲染 ============ */
+function renderMeta(){
+  const m=S.meta;
+  $("#metaPills").innerHTML=`<span class="pill">案号 <b>${esc(m.caseNo||"—")}</b></span><span class="pill">案由 <b>${esc(m.cause||"—")}</b></span><span class="pill">审判庭 <b>${esc(m.court||"—")}</b></span><span class="pill">阶段 <b>${esc(STAGES[S.stageIdx])}</b></span>`;
+  $("#campTag").textContent=`${m.red||"红方"} ⚔ ${m.blue||"蓝方"}`;
+  $("#legRed").textContent="🔴 "+(m.red||"红方"); $("#legBlue").textContent=(m.blue||"蓝方")+" 🔵";
+  requestAnimationFrame(syncTopbarHeight);
+}
+function renderPersp(){
+  const bar=$("#perspbar");
+  let chips=`<span class="pchip ${S.view==="observer"?"on":""}" data-view="observer">观察席</span>`;
+  chips+=S.roles.filter(r=>r.id!=="clerk").map(r=>{
+    const side=r.side==="red"?"red":r.side==="blue"?"blue":"";
+    return `<span class="pchip ${side} ${S.view===r.id?"on":""}" data-view="${r.id}">${r.side==="red"?"🔴":r.side==="blue"?"🔵":"⚪"}${esc(r.name)}</span>`;
+  }).join("");
+  bar.querySelectorAll(".pchip").forEach(c=>c.remove());
+  bar.insertAdjacentHTML("beforeend",chips);
+  bar.querySelectorAll(".pchip").forEach(c=>c.onclick=()=>{S.view=c.dataset.view;renderPersp();updateCourtActive();save();});
+  $("#viewFlag").textContent = S.view==="observer"?"坐观察席，全局俯瞰":("你正以 "+(roleById(S.view)?.name||"")+" 视角观察");
+}
+function applyProcType(){/* 依程序类型调整 actors 称谓，使发言方/视角芯片与现实席位一致（独任=独任审判员；普通=合议庭审判员） */
+  const pt=S.procType||"duiren", j=S.roles.find(r=>r.id==="judge");
+  if(j){ if(pt==="duiren"){j.name="独任审判员 龙雅清";j.role="独任审判员席";} else {j.name="审判员 龙雅清（合议庭）";j.role="审判员席";} }
+}
+function buildCourt(){
+  applyProcType();
+  const pt=S.procType||"duiren";
+  const seats={clerk:{x:14,y:14,w:60,h:24,lbl:"书记员",role:"记录",side:"neutral"},
+    plain:{x:14,y:90,w:90,h:34,lbl:"原告席",role:"原告·丁戊祥方",side:"red"},plain2:{x:14,y:130,w:90,h:28,lbl:"原告代理人",role:"",side:"red"},
+    def:{x:196,y:90,w:90,h:34,lbl:"被告席",role:"被告·刘九零方",side:"blue"},def2:{x:196,y:130,w:90,h:28,lbl:"被告代理人",role:"",side:"blue"},
+    wit:{x:110,y:200,w:80,h:30,lbl:"证人席",role:"",side:"neutral"}};
+  if(pt==="duiren"){ // 独任程序：法定无审判长；法官技能=独任审判员；QC 坐观察席
+    seats.judge={x:110,y:14,w:80,h:30,lbl:"审（独任）",role:"独任审判员 · AI模拟法庭法官",side:"neutral"};
+    seats.qcobs={x:18,y:250,w:104,h:24,lbl:"QC·观察席",role:"QC-Controller · 质量总闸",side:"qc"};
+  } else { // 普通程序：合议庭；QC 上审判长席（审判长心智·质控）；法官技能=合议庭审判员
+    seats.chief={x:110,y:8,w:80,h:28,lbl:"审判长",role:"QC-Controller · 审判长心智·质控",side:"qc"};
+    seats.judge1={x:22,y:14,w:64,h:26,lbl:"审判员①",role:"AI模拟法庭法官 · 合议庭",side:"neutral"};
+    seats.judge2={x:214,y:14,w:64,h:26,lbl:"审判员②",role:"AI模拟法庭法官 · 合议庭",side:"neutral"};
+  }
+  let svg=`<rect class="bench-top" x="100" y="6" width="100" height="46" rx="6"/><line class="center-line" x1="150" y1="60" x2="150" y2="175"/>`;
+  for(let i=0;i<6;i++)svg+=`<rect class="obs-row" x="${20+i*44}" y="280" width="36" height="22" rx="4"/>`;
+  svg+=`<text class="obs-tag" x="150" y="276">— 观察席（你在这里）—</text>`;
+  for(const id in seats){
+    const s=seats[id],r=roleById(id),side=s.side||(r?r.side:"neutral");
+    const sub=(r&&r.name)||s.role||"";
+    svg+=`<g class="seat ${side}" data-seat="${id}"><rect x="${s.x}" y="${s.y}" width="${s.w}" height="${s.h}" rx="7"/><text class="lbl" x="${s.x+s.w/2}" y="${s.y+s.h/2-6}">${esc(s.lbl)}</text><text class="role" x="${s.x+s.w/2}" y="${s.y+s.h/2+8}">${esc(sub)}</text></g>`;
+  }
+  $("#courtSvg").innerHTML=svg;
+  $$("#courtSvg .seat").forEach(g=>g.onclick=()=>{const id=g.dataset.seat;
+    if(id==="qcobs"||id==="chief"){S.speaker=id;updateCourtActive();syncConsoleSpeaker();save();toast("已指定质控席："+(roleById(id)?.name||id)+"（QC 双模·判据归属）");return;}
+    S.speaker=id;updateCourtActive();syncConsoleSpeaker();save();toast("已指定发言方："+(roleById(id)?.name||id));});
+}
+/* 仅切换席位高亮 class，不重建 SVG —— 避免自动演进时高亮闪烁 */
+function updateCourtActive(){
+  $$("#courtSvg .seat").forEach(g=>{
+    const id=g.dataset.seat, r=roleById(id), side=r?r.side:"neutral";
+    const active=S.speaker===id?" active":"";
+    const dim=(S.view&&S.view!=="observer"&&S.view!==id)?" dim":"";
+    const view=(S.view===id)?" view":"";
+    g.setAttribute("class","seat "+side+active+dim+view);
+  });
+  renderSpeakerBar();
+}
+function renderSpeakerBar(){
+  const bar=$("#speakbar");
+  const r=roleById(S.speaker);
+  if(!r){bar.className="speakbar";bar.innerHTML='<span class="who">— 尚未指定发言方 —</span>';return;}
+  const side=r.side, icon=side==="red"?"🔴":side==="blue"?"🔵":"⚪";
+  const color=side==="red"?"var(--red2)":side==="blue"?"var(--blue2)":side==="neutral"?"var(--gold)":"var(--muted)";
+  if(playState.paused){
+    bar.className="speakbar "+(side==="red"?"red":side==="blue"?"blue":side==="neutral"?"neutral":"");
+    bar.innerHTML=`<span class="dot" style="background:var(--dim);color:var(--dim)"></span><span class="who">⏸ 已暂停</span><span class="state">· 当前：${icon} ${esc(r.name)}</span>`;
+    return;
+  }
+  bar.className="speakbar "+(side==="red"?"red":side==="blue"?"blue":side==="neutral"?"neutral":"");
+  bar.innerHTML=`<span class="dot" style="background:${color};color:${color}"></span><span class="who">${icon} ${esc(r.name)}</span><span class="state">正在发言</span><span class="tag">${esc(r.role||"")}</span>`;
+}
+function entryHTML(e){
+  if(e.k==="stage")return `<div class="tr stage">${esc(e.text)}</div>`;
+  const r=roleById(e.role),side=r?r.side:"neutral",time=(S.startedAt!=null||playState.active)?fmt(e.t):"";
+  const tag=e.type==="atk"?"<span class='tag atk'>进攻</span>":e.type==="def"?"<span class='tag def'>防守</span>":e.type==="evi"?"<span class='tag neutral'>证据</span>":`<span class="tag ${sideClass(side)}">${side==="red"?"红":side==="blue"?"蓝":"中立"}</span>`;
+  return `<div class="tr ${sideClass(side)} ${e.type==="evi"?"evidence":""}"><div class="who">${tag}${esc(r?r.name:e.role)}<span class="time">${time}</span></div><div class="txt">${esc(e.text)}</div></div>`;
+}
+function renderTranscript(){
+  const box=$("#transcript");
+  const list = playState.head>=0 ? S.transcript.slice(0,playState.head) : S.transcript;
+  if(!list.length){box.innerHTML='<div class="empty-note">庭审尚未开始，打开主控台录入发言。</div>';renderTranscriptDoc();return;}
+  box.innerHTML=list.map(entryHTML).join("");
+  box.scrollTop=box.scrollHeight;
+  renderTranscriptDoc();
+}
+function renderTranscriptDoc(){
+  const box=$("#transcriptDoc");
+  if(!box)return;
+  const list=S.transcript||[];
+  if(!list.length){box.innerHTML='<div class="empty-note">庭审尚未开始。</div>';return;}
+  box.innerHTML=list.map(e=>{
+    if(e.k==="stage")return `<div class="td-item"><span class="tm"></span><span class="h">【阶段】</span>${esc(e.text)}</div>`;
+    const r=roleById(e.role),side=r?r.side:"neutral";
+    const who=r?r.name:e.role;
+    const tag=e.type==="atk"?"⚔️ 进攻":e.type==="def"?"🛡️ 防守":e.type==="evi"?"📄 举证":"💬 发言";
+    return `<div class="td-item ${side}"><span class="tm">${fmt(e.t)}</span><span class="h">${tag} ${esc(who)}</span>${esc(e.text)}</div>`;
+  }).join("");
+}
+/* 自动演进时只追加新条目，避免整段重建导致淡入动画反复重播 */
+function appendTranscript(from,to){
+  const box=$("#transcript");
+  if(box.querySelector(".empty-note"))box.innerHTML="";
+  let html="";
+  for(let i=from;i<to;i++)html+=entryHTML(S.transcript[i]);
+  if(html)box.insertAdjacentHTML("beforeend",html);
+  box.scrollTop=box.scrollHeight;
+}
+let advAnimReq=null;
+function setAdvScore(toRed,toBlue){
+  const el=$("#advScore");
+  const fromRed=+(el.dataset.r||0), fromBlue=+(el.dataset.b||0);
+  el.dataset.r=toRed; el.dataset.b=toBlue;
+  if(advAnimReq)cancelAnimationFrame(advAnimReq);
+  const t0=performance.now(), dur=450;
+  const flash=toRed>fromRed?"red":toBlue>fromBlue?"blue":"";
+  const step=()=>{
+    const k=Math.min(1,(performance.now()-t0)/dur), e=1-Math.pow(1-k,3);
+    const cr=Math.round(fromRed+(toRed-fromRed)*e), cb=Math.round(fromBlue+(toBlue-fromBlue)*e);
+    el.innerHTML=`<span class="red">${cr}</span><span class="vs">:</span><span class="blue">${cb}</span>`;
+    if(k<1){advAnimReq=requestAnimationFrame(step);}
+    else if(flash){const s=el.querySelector("."+flash);if(s)s.classList.add("flash");}
+  };
+  step();
+}
+function renderAdvantage(){
+  const a=Math.max(-100,Math.min(100,S.advantage)),pct=50+a/2;
+  $("#advKnob").style.left=pct+"%";
+  const red=Math.max(0,a),blue=Math.max(0,-a);
+  setAdvScore(red,blue);
+  const rl=$("#roundlog"),items=S.transcript.filter(e=>e.type==="atk"||e.type==="def");
+  if(!items.length){rl.innerHTML='<div class="empty-note">暂无攻防记录</div>';return;}
+  rl.innerHTML=items.slice(-30).map(e=>{const r=roleById(e.role),ic=e.type==="atk"?"⚔️ 进攻":"🛡️ 防守",time=S.startedAt!=null?fmt(e.t):"";return `<div class="rl ${e.type}"><span class="ic">${ic}</span><span>${esc(r?r.name:e.role)}</span><span class="t">${time}</span></div>`;}).join("");
+  rl.scrollTop=rl.scrollHeight;
+}
+function renderEvidence(){
+  const blue=$("#eviBlue"), red=$("#eviRed");
+  const evi=S.evidence||[];
+  const wall=(el,side)=>{
+    const list=evi.filter(e=>{const r=roleById(e.by);const sd=r?r.side:"neutral";return sd===side||(sd==="neutral"&&side==="blue");});
+    if(!list.length){el.innerHTML='<div class="empty-note">暂无本方证据</div>';return;}
+    el.innerHTML=list.map(e=>{
+      const r=roleById(e.by), sd=r?r.side:"neutral";
+      const exam = e.status>=2 && e.status<=3; // 已质证/已采纳=绿；未出示/已出示/未采纳=红
+      return `<div class="evi ${sideClass(sd)} ${exam?"exam":"unexam"}">
+        <div class="evi-h"><span class="evi-id">证据 ${esc(e.id)}</span><span class="st s${e.status}">${EVI_STATUS[e.status]}</span></div>
+        <div class="evi-name">${esc(e.name)}</div>
+        <div class="evi-pur"><span class="pk">证明目的</span>${esc(e.purpose||"—")}</div>
+        <div class="evi-by">提交：${esc(r?r.name:"—")}</div>
+      </div>`;
+    }).join("");
+  };
+  wall(blue,"blue"); wall(red,"red");
+}
+function renderTimeline(){
+  const tl=$("#timeline");
+  tl.innerHTML=STAGES.map((s,i)=>`<div class="tl-step ${i===S.stageIdx?"cur":i<S.stageIdx?"done":""}" data-i="${i}"><div class="nm">${s}</div></div>`).join("");
+  $$("#timeline .tl-step").forEach(d=>d.onclick=()=>setStage(+d.dataset.i));
+}
+function renderVerdict(){
+  const box=$("#verdictBox");
+  if(S.stageIdx===5&&S.verdict){box.className="verdict-box";box.textContent=S.verdict;}
+  else if(S.stageIdx===5){box.className="verdict-box empty";box.textContent="已进入评议宣判阶段，请在主控台填写裁决结论。";}
+  else{box.className="verdict-box empty";box.textContent="尚未进入「评议宣判」阶段";}
+}
+function renderJudge(){
+  const cur=STAGES[S.stageIdx];
+  /* 案由过滤：judgeDomain 优先，否则跟随当前案件 meta.domain，再否则全部 */
+  const domFilter = judgeDomain || (S.meta&&S.meta.domain) || "全部";
+  const doms=[...new Set(JUDGE_CARDS.map(c=>c.domain))];
+  const chips=['<span class="jchip '+(domFilter==="全部"?"on":"")+'" data-d="全部">全部</span>']
+    .concat(doms.map(d=>`<span class="jchip ${d===domFilter?"on":""}" data-d="${esc(d)}">${esc(d)}</span>`));
+  $("#judgeDom").innerHTML=chips.join("");
+  $("#judgeDom").querySelectorAll(".jchip").forEach(c=>c.onclick=()=>{judgeDomain=c.dataset.d;renderJudge();});
+  syncRvDomain();
+  const pool=JUDGE_CARDS.filter(c=> domFilter==="全部" || c.domain===domFilter);
+  const cards=pool.filter(c=>c.stages.includes(cur));
+  $("#jcount").textContent=`当前阶段【${cur}】· 案由【${domFilter}】· 命中 ${cards.length} 张（本域 ${pool.length} 张）`;
+  if(!cards.length){$("#judgeCards").innerHTML=`<div class="empty-note">本阶段【${domFilter}】暂无对口审判要件卡，切换阶段、案由芯片或导入卡片。</div>`;return;}
+  $("#judgeCards").innerHTML=cards.map(c=>`
+    <div class="jcard" data-id="${c.id}"><div class="jh"><span class="jid">${c.id}</span><span class="jnm">${esc(c.name)}</span><span class="fav ${c.favor}">利${c.favor}</span></div>
+    <div class="jb"><div><div class="k">① 正向裁判规则（该怎么判）</div><div class="v">${esc(c.support)}</div></div>
+    <div><div class="k">② 审查要点</div><div class="v">${esc(c.points)}</div></div>
+    <div><div class="k">③ 法条依据</div><div class="law">${esc(c.law)}</div></div>
+    <div class="pit">⚠️ 翻车提示：${esc(c.pitfall)}</div></div></div>`).join("");
+  $$("#judgeCards .jcard").forEach(c=>c.querySelector(".jh").onclick=()=>c.classList.toggle("open"));
+}
+
+/* ===== Path A：judge_reviewer 轻量推理函数（候选检索，非自动裁量 · R2）===== */
+const CLAIM_MAP=[
+  {kw:["违约金","违约"],type:"违约金"},
+  {kw:["精神损害","抚慰金","精神抚慰"],type:"精神损害"},
+  {kw:["惩罚性","三倍","十倍","退一赔","赔偿倍数"],type:"惩罚性赔偿"},
+  {kw:["抚养费"],type:"抚养费"}
+];
+function detectClaimType(text){
+  for(const m of CLAIM_MAP){ if(m.kw.some(k=>text.includes(k))) return m.type; }
+  return null;
+}
+function pickSnippetA(c, facts){
+  const hay=[c.points,c.law,c.pitfall,c.support].join(" ");
+  if(facts&&facts.length){
+    for(const f of facts){ if(f && hay.includes(f)) return f+" → "+(c.points||c.support||"").slice(0,76); }
+  }
+  return (c.points||c.support||"").slice(0,90);
+}
+function judgeReviewA(query){
+  const pool=(query.domainHint && query.domainHint!=="全部")
+    ? JUDGE_CARDS.filter(c=>c.domain===query.domainHint) : JUDGE_CARDS;
+  const out=[];
+  for(const c of pool){
+    let score=0;
+    const stageHit=c.stages && c.stages.includes(query.stage);
+    if(stageHit) score+=2;
+    const body=[c.support,c.points,c.law,c.pitfall].join(" ");
+    const title=c.name||"";
+    if(query.facts) for(const f of query.facts){
+      if(f && title.includes(f)) score+=2;        // 卡名命中加权（标题级要件匹配优先）
+      else if(f && body.includes(f)) score+=1;     // 正文命中
+    }
+    out.push({cardId:c.id,domain:c.domain,name:c.name,stageHit,score,kind:"judge",snippet:pickSnippetA(c,query.facts)});
+  }
+  if(query.claims){
+    for(const cl of query.claims){
+      const t=detectClaimType(cl); if(!t) continue;
+      const a=AMOUNT_CARDS.find(x=>x.headline && x.headline.includes(t));
+      if(a) out.push({cardId:a.id,domain:"裁量尺度",name:a.name||a.headline,stageHit:true,score:3,kind:"amount",
+        snippet:(a.anchors&&a.anchors[0]&&(a.anchors[0].text||a.anchors[0].value||a.anchors[0].label||""))||a.headline||"",
+        cross:a.cross_domain_warn, geo:a.geo_scope});
+    }
+  }
+  return out.sort((x,y)=>y.score-x.score).slice(0,8)
+    .map(c=>({...c, confidence: c.score>=4?"高":c.score>=2?"中":"低", tag:"【候选·待人工确认】"}));
+}
+/* ===== 两张皮·其一：法官心智候选 → 争点锚 → 要件涵摄法条映射 ===== */
+const STATUTE_ANCHORS = [
+  {key:'civ_148', label:'民法典第148条 欺诈', kws:['欺诈','受欺诈','虚假意思','骗','误导']},
+  {key:'civ_143', label:'民法典第143条 意思表示真实', kws:['意思表示','真实意思','授权','冒名','主体资格','诉讼主体','姓名不一致','姓名不符']},
+  {key:'civ_577', label:'民法典第577条 违约责任', kws:['违约','不履行','合同相对性','未付款','逾期付款']},
+  {key:'civ_1165', label:'民法典第1165条 过错侵权', kws:['侵权','过错','损害后果','因果关系','人身损害']},
+  {key:'civ_153', label:'民法典第153条 违反强制性规定', kws:['强制性规定','公序良俗','无效']},
+  {key:'civ_465', label:'民法典第465条 合同效力', kws:['合同效力','合同成立','合同相对']}
+];
+function detectAnchor(res, facts, claims){
+  let avail = [];
+  try { avail = (window.SUBSUMPTION ? window.SUBSUMPTION.listStatutes().map(o=>o.key) : []); } catch(e){}
+  const corpus = [];
+  (res||[]).forEach(c=> corpus.push((c.name||'')+' '+(c.snippet||'')));
+  (facts||[]).forEach(f=> corpus.push(f));
+  (claims||[]).forEach(c=> corpus.push(c));
+  const text = corpus.join(' ');
+  for (const a of STATUTE_ANCHORS) {
+    if (avail.length && !avail.includes(a.key)) continue;
+    const hit = a.kws.find(k=> text.includes(k));
+    if (hit) return {key:a.key, label:a.label, via:hit};
+  }
+  return null;
+}
+
+function renderJudgeReviewA(){
+  const dom=($("#rvDomain").value)||"全部";
+  const stage=STAGES[+$("#rvStage").value]||STAGES[S.stageIdx];
+  const facts=$("#rvFacts").value.split(/[\n,，、\s]+/).map(s=>s.trim()).filter(Boolean);
+  const claims=$("#rvClaims").value.split(/[\n，,]+/).map(s=>s.trim()).filter(Boolean);
+  const res=judgeReviewA({domainHint:dom,stage,facts,claims});
+  const box=$("#judgeReviewOut");
+  if(!res.length){box.innerHTML='<div class="empty-note">无命中候选。调整关键词或放宽案由/阶段。</div>';return;}
+  box.innerHTML=`<div class="rv-head">🔍 路A 候选推理（${res.length} 条 · 按相关度排序 · R2 仅候选）</div>`+
+    res.map(c=>`
+    <div class="rcard ${c.kind}">
+      <div class="rh2"><span class="rid">${c.cardId}</span><span class="rnm">${esc(c.name)}</span><span class="conf ${c.confidence}">置信${c.confidence}</span></div>
+      <div class="rtag">${esc(c.tag)}</div>
+      <div class="rmeta">域：${esc(c.domain)} · 阶段命中：${c.stageHit?"是":"否"} · 分：${c.score}</div>
+      <div class="rsn">📌 ${esc(c.snippet)}</div>
+      ${c.cross?`<div class="cw">⚠️ 跨域倍数红线：${esc(c.cross)}</div>`:""}
+      ${c.geo?`<div class="geo">地域效力：${esc(c.geo)}</div>`:""}
+    </div>`).join("");
+  // —— 两张皮·争点锚 + 涵摄结论回写 ——
+  const anchor = detectAnchor(res, facts, claims);
+  if (anchor) {
+    box.insertAdjacentHTML('beforeend',
+      '<div class="xzanchor">🎯 <b>争点锚定</b>：建议核验【'+ esc(anchor.label) +'】<br>'+
+      '<span class="xzvia">命中关键词：「'+ esc(anchor.via) +'」</span><br>'+
+      '<button class="xzabtn" onclick="window.XZ && window.XZ.anchorTo(\''+ anchor.key +'\')">⚓ 锚定→要件涵摄</button></div>');
+  }
+  if (window.XZ && window.XZ.writebackHTML) box.insertAdjacentHTML('beforeend', window.XZ.writebackHTML);
+}
+function syncRvDomain(){
+  const cur=$("#rvDomain").value;
+  const opts=['全部',...[...new Set(JUDGE_CARDS.map(c=>c.domain))]];
+  $("#rvDomain").innerHTML=opts.map(d=>`<option value="${esc(d)}">${esc(d)}</option>`).join("");
+  if(cur && opts.includes(cur)) $("#rvDomain").value=cur;
+}
+/* ============ 推演战情面板（MVP：流水线 / 三轮冲击 / 战情室） ============ */
+function renderPipeline(){
+  const st=(S.pipeline&&S.pipeline.stages)||[];
+  const el=$("#pipeline");
+  if(!st.length){el.innerHTML='<div class="empty-note">暂无推演流水线数据。让推演顾问按 7 阶段指挥，或「导入推演态势 JSON」。</div>';return;}
+  const L={todo:"待启动",done:"已完成",active:"进行中",fail:"未通过"};
+  el.innerHTML=st.map(s=>{const stt=s.status||"todo";return `<div class="pl ${stt}"><span class="num">${s.id!=null?s.id:"·"}</span><span class="nm">${esc(s.name||"")}</span>${s.artifact?`<span class="ar">${esc(s.artifact)}</span>`:""}<span class="st ${stt}">${L[stt]||stt}</span></div>`;}).join("");
+}
+function renderAssault3(){
+  const rs=(S.assault3&&S.assault3.rounds)||[];
+  const el=$("#assault3");
+  if(!rs.length){el.innerHTML='<div class="empty-note">暂无三轮冲击数据。推演顾问跑阶段2（庭前强化）后载入，或「导入推演态势 JSON」。</div>';return;}
+  const row=(k,cls,x)=>`<div class="as-r ${cls}"><span class="k">${k}</span>${esc(x)}</div>`;
+  el.innerHTML=rs.map(r=>{
+    // —— 法官心智·推演参与智能体：对本轮红蓝攻防做心证裁决（候选·待人工确认）——
+    let jmHtml='';
+    try{
+      if(window.JUDGE_MIND){
+        const jd=window.JUDGE_MIND.assessDispute(r.focus||('第 '+(r.round!=null?r.round:'?')+' 轮对抗'), r.blueDef||[], r.redAtk||[], {burden:r.burden, cards:JUDGE_CARDS});
+        const badge = jd.tendency==='blue'?'🟥 倾向蓝队':jd.tendency==='red'?'🟦 倾向红队':jd.tendency==='pending'?'⚪ 待证':'🟨 各有胜负';
+        jmHtml=`<div class="jm-round"><span class="jm-badge">⚖️ 法官心证·候选</span><span class="jm-ten ${jd.tendency}">${badge}</span>`
+          +`<span class="jm-sc">蓝采信 ${jd.blueStrong} · 红采信 ${jd.redStrong}</span></div>`
+          +`<div class="jm-note">${esc(jd.note)}</div>`
+          + (jd.cardRationale?`<div class="jm-card">${esc(jd.cardRationale)}</div>`:'');
+      }
+    }catch(e){ jmHtml=''; }
+    return `<div class="as-round"><div class="rh"><span class="badge">第 ${r.round!=null?r.round:"?"} 轮</span> 红队攻击 → 蓝队防守</div><div class="as-rows">${(r.redAtk||[]).map(x=>row("红队攻击","atk",x)).join("")}${(r.blueDef||[]).map(x=>row("蓝队防守","def",x)).join("")}${(r.holes||[]).map(x=>row("暴露漏洞","hole",x)).join("")}${(r.patch||[]).map(x=>row("补强动作","patch",x)).join("")}${jmHtml}</div></div>`;
+  }).join("");
+}
+function renderWarroom(){
+  const w=S.warroom||{};
+  const gates=w.qcGates||[];
+  const L={pass:"通过",warn:"警示",fail:"未过",todo:"待检"};
+  let html="";
+  if(gates.length){
+    html+=gates.map(g=>{const stt=g.status||"todo";return `<div class="wr-gate"><span class="st ${stt}">${L[stt]||stt}</span><span class="g">${esc(g.name||"")}</span>${g.note?`<span class="n">${esc(g.note)}</span>`:""}</div>`;}).join("");
+  }else{
+    html+='<div class="empty-note">暂无 QC 闸门数据（阶段4 质量闸门产出）</div>';
+  }
+  html+=`<div class="wr-report">${w.report?esc(w.report):"战情报告待生成（阶段4 质量闸门产出）"}</div>`;
+  // —— 法官心智·推演裁决（参与智能体）输出 ——
+  if(S.judgeTrial){
+    html+=`<div class="wr-judge"><div class="wj-h">⚖️ 法官心智·拟裁判要旨（候选·待人工确认）</div><pre class="wj-pre">${esc(S.judgeTrial.draft||"")}</pre>`;
+    if(S.judgeTrial.qc){
+      const qc=S.judgeTrial.qc;
+      const qcTxt=`LTI QC 门禁：reject=${qc.reject!=null?qc.reject:'?'} · 评级=${qc.grade||'?'}${qc.reject>0?' · ⚠️ 需补强溯源/候选标注':''}`;
+      html+=`<div class="wj-qc">${esc(qcTxt)}</div>`;
+    }
+    html+=`<button class="btn sm" id="btnJudgeTrialXz">📌 记入心证档案</button></div>`;
+  }
+  $("#warroom").innerHTML=html;
+  const xzBtn=$("#btnJudgeTrialXz");
+  if(xzBtn) xzBtn.onclick=writeJudgeTrialToXinZheng;
+}
+/* ============ 法官心智·推演裁决（参与智能体） ============ */
+function runJudgeTrial(){
+  const rounds=(S.assault3&&S.assault3.rounds)||[];
+  if(!rounds.length){toast("无三轮冲击数据，请先载入推演态势");return;}
+  const res=window.JUDGE_MIND.runTrialJudge({
+    rounds,
+    disputeFocus:(S.disputeFocus||(S.meta&&S.meta.cause)||""),
+    sub:S.subsumption,
+    xz:S.xinZheng||[],
+    cards:JUDGE_CARDS
+  });
+  S.judgeTrial={draft:res.draft, tendencySummary:res.tendencySummary, qc:res.qc};
+  renderWarroom(); save(); toast("⚖️ 法官推演裁决已生成（候选·待人工确认）");
+}
+function writeJudgeTrialToXinZheng(){
+  if(!S.judgeTrial){toast("请先运行「⚖️ 法官推演裁决」");return;}
+  const round=(S.host&&S.host.round)||1;
+  S.xinZheng=S.xinZheng||[];
+  const map={blue:"🟥 倾向被告",red:"🟦 倾向原告",pending:"⚪ 存疑",mixed:"⚪ 存疑"};
+  S.judgeTrial.tendencySummary.forEach(t=>{
+    S.xinZheng.push({round, tendency:map[t.tendency]||"⚪ 存疑", focus:t.focus||"", note:"法官心智推演裁决："+(t.tendencyLabel||""), at:new Date().toISOString()});
+  });
+  save(); renderXinZheng(); toast("已记入心证档案（"+S.judgeTrial.tendencySummary.length+" 条争点）");
+}
+function importSituation(file){
+  const fr=new FileReader();
+  fr.onload=()=>{try{
+    const d=JSON.parse(fr.result);
+    if(d.pipeline)S.pipeline=d.pipeline;
+    if(d.assault3)S.assault3=d.assault3;
+    if(d.warroom)S.warroom=d.warroom;
+    renderAll();save();toast("推演态势已载入（流水线/三轮冲击/战情室）");
+  }catch(e){toast("推演态势 JSON 解析失败");}};
+  fr.readAsText(file);
+}
+function renderAll(){renderMeta();renderPersp();buildCourt();updateCourtActive();renderTranscript();renderAdvantage();renderEvidence();renderTimeline();renderVerdict();renderJudge();renderPipeline();renderAssault3();renderWarroom();}
+
+/* ============ 控制台同步 ============ */
+function buildConsoleOptions(){
+  $("#ctlSpeaker").innerHTML=S.roles.map(r=>`<button data-id="${r.id}" class="${r.side}">${r.side==="red"?"🔴":r.side==="blue"?"🔵":"⚪"}${esc(r.name)}</button>`).join("");
+  $$("#ctlSpeaker button").forEach(b=>b.onclick=()=>{S.speaker=b.dataset.id;syncConsoleSpeaker();updateCourtActive();});
+  $("#eviBy").innerHTML=S.roles.map(r=>`<option value="${r.id}">${esc(r.name)}</option>`).join("");
+  $("#ctlStage").innerHTML=STAGES.map((s,i)=>`<option value="${i}">${s}</option>`).join("");
+  $("#ctlStage").value=S.stageIdx;
+  $("#mCase").value=S.meta.caseNo||"";$("#mCause").value=S.meta.cause||"";$("#mRed").value=S.meta.red||"";$("#mBlue").value=S.meta.blue||"";
+  $("#verdictInput").value=S.verdict||"";
+  syncConsoleSpeaker();
+}
+function syncConsoleSpeaker(){$$("#ctlSpeaker button").forEach(b=>b.classList.toggle("on",b.dataset.id===S.speaker));}
+
+/* ============ 操作 ============ */
+let curType="say";
+function setStage(i){
+  S.stageIdx=i;
+  S.transcript.push({t:elapsed(),k:"stage",stage:i,text:"▶ 进入【"+STAGES[i]+"】阶段"});
+  if(i===5&&S.verdict)renderVerdict();
+  renderAll();save();toast("阶段 → "+STAGES[i]);
+}
+function elapsed(){return S.startedAt!=null?(Date.now()-S.startedAt)/1000:0;}
+function submitEntry(){
+  const txt=$("#ctlText").value.trim(); if(!txt){toast("请先输入内容");return;}
+  const role=S.speaker,r=roleById(role);
+  S.transcript.push({t:elapsed(),role,type:curType,text:txt});
+  if(curType==="atk")S.advantage=Math.min(100,S.advantage+(r&&r.side==="red"?4:r&&r.side==="blue"?-4:0));
+  if(curType==="def")S.advantage=Math.max(-100,S.advantage+(r&&r.side==="blue"?4:r&&r.side==="red"?-4:0));
+  $("#ctlText").value=""; renderTranscript();renderAdvantage();updateCourtActive();save();
+  toast("已提交"+(curType==="atk"?"进攻":curType==="def"?"防守":curType==="evi"?"证据":""));
+}
+function addEvidence(){
+  const nm=$("#eviName").value.trim(); if(!nm){toast("请填证据名称");return;}
+  S.evidence.push({id:"E"+(S.evidence.length+1),name:nm,by:$("#eviBy").value,status:+$("#eviStatus").value});
+  $("#eviName").value=""; renderEvidence();save();toast("证据已加入：E"+(S.evidence.length));
+}
+function exportJSON(){const b=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="mocktrial_"+(S.meta.caseNo||"case")+".json";a.click();toast("剧本已导出");}
+function importJSON(file){const fr=new FileReader();fr.onload=()=>{try{const d=JSON.parse(fr.result);S=normalize(d);renderAll();buildConsoleOptions();save();toast("剧本已载入");}catch(e){toast("JSON 解析失败");}};fr.readAsText(file);}
+function normalize(d){d.stageIdx=d.stageIdx??1;d.advantage=d.advantage??0;d.transcript=d.transcript||[];d.evidence=d.evidence||[];d.view=d.view||"observer";d.procType=d.procType||"duiren";d.roles=d.roles&&d.roles.length?d.roles:DEMO.roles;d.meta=d.meta||DEMO.meta;d.verdict=d.verdict||"";d.startedAt=d.startedAt||null;d.pipeline=d.pipeline||{stages:[]};d.assault3=d.assault3||{rounds:[]};d.warroom=d.warroom||{qcGates:[],report:""};
+  /* —— 状态持久化扩展（即兴主持 / 心证档案 / 要件涵摄 跨轮跨庭次记忆） —— */
+  d.host=d.host||{stage:"开庭",demo:null,focus:"",round:1,lastEvent:"",plaintiff:"",defendant:""};
+  d.subsumption=d.subsumption||null;
+  d.xinZheng=d.xinZheng||[];
+  d.disputeFocus=d.disputeFocus||"";
+  d.judgeTrial=d.judgeTrial||null;
+  return d;}
+function retime(gapSay=4,gapStage=2){
+  let cur=0; S.transcript.forEach(e=>{e.t=cur;cur+=(e.k==="stage"?gapStage:gapSay);});
+  playState.head=-1; renderTranscript(); save(); toast("时间轴已重整（发言间隔"+gapSay+"s）");
+}
+
+/* ============ 自动演进（演示/录视频） ============ */
+function applyEntry(e){
+  if(e.k==="stage"){if(e.stage!=null)S.stageIdx=e.stage;}
+  else{S.speaker=e.role;
+    const r=roleById(e.role);
+    if(e.type==="atk")S.advantage=Math.min(100,S.advantage+(r&&r.side==="red"?4:r&&r.side==="blue"?-4:0));
+    if(e.type==="def")S.advantage=Math.max(-100,S.advantage+(r&&r.side==="blue"?4:r&&r.side==="red"?-4:0));
+  }
+}
+function playStart(){
+  if(!S.transcript.length){toast("发言流为空，先录入或载入剧本");return;}
+  if(playState.active){playPause();return;}
+  if(playState.head>=S.transcript.length)playState.head=0;
+  playState.snap={stageIdx:S.stageIdx,advantage:S.advantage,speaker:S.speaker};
+  playState.head=0; playState.appended=0; playState.active=true; playState.paused=false; playState.start=performance.now();
+  $("#transcript").innerHTML="";
+  $("#btnPlay").textContent="⏸ 暂停"; $("#btnPlay").classList.add("on");
+  $("#clock").classList.remove("paused");
+  renderAdvantage(); updateCourtActive();
+  playTick();
+}
+function playPause(){
+  playState.active=false; clearTimeout(playState.timer);
+  $("#btnPlay").textContent="▶ 继续演进"; $("#btnPlay").classList.remove("on");
+  $("#clock").classList.add("paused");
+  playState.paused=true; renderSpeakerBar(); updateRecBar();
+  toast("已暂停（进度"+playState.head+"/"+S.transcript.length+"）");
+}
+function playReset(){
+  playState.active=false; clearTimeout(playState.timer); playState.head=-1;
+  if(playState.snap){S.stageIdx=playState.snap.stageIdx;S.advantage=playState.snap.advantage;S.speaker=playState.snap.speaker;}
+  $("#btnPlay").textContent="▶ 自动演进"; $("#btnPlay").classList.remove("on");
+  $("#clock").classList.remove("paused"); playState.paused=false;
+  renderAll(); save(); updateRecBar(); toast("已复位到演示起点");
+}
+function playTick(){
+  if(!playState.active)return;
+  const virt=(performance.now()-playState.start)*playState.speed/1000;
+  let changed=false, atkDef=false, stageChanged=false;
+  while(playState.head<S.transcript.length && (S.transcript[playState.head].t||0)<=virt){
+    const e=S.transcript[playState.head];
+    if(e.k==="stage")stageChanged=true;
+    if(e.type==="atk"||e.type==="def")atkDef=true;
+    applyEntry(e); playState.head++; changed=true;
+  }
+  renderClock(); updateRecBar();
+  if(changed){
+    appendTranscript(playState.appended, playState.head); playState.appended=playState.head;
+    updateCourtActive();
+    if(stageChanged){renderTimeline();renderJudge();renderMeta();renderVerdict();}
+    if(atkDef)renderAdvantage();
+  }
+  if(playState.head>=S.transcript.length){playState.active=false;playState.paused=false;$("#btnPlay").textContent="▶ 重新演进";$("#btnPlay").classList.remove("on");$("#clock").classList.remove("paused");renderSpeakerBar();toast("演示播放完毕");return;}
+  playState.timer=setTimeout(playTick,120);
+}
+function setSpeed(s){playState.speed=s;$$(".seg.sm button").forEach(b=>b.classList.toggle("on",+b.dataset.spd===s));if(playState.active)playState.start=performance.now();toast("速率 "+s+"x");}
+
+/* ============ 录屏演示模式（一镜到底） ============ */
+function updateRecBar(){
+  if(!document.body.classList.contains('rec'))return;
+  const total=S.transcript.length||1;
+  const cur=Math.max(0,Math.min(total,playState.head<0?0:playState.head));
+  $("#recFill").style.width=(cur/total*100)+"%";
+  $("#recCount").textContent=`进度 ${cur} / ${total}`;
+}
+function enterRec(){
+  if(!S.transcript.length){toast("发言流为空，先载入或录入剧本");return;}
+  document.body.classList.add('rec');
+  $("#recCase").textContent=(S.meta.caseNo||"")+" · "+(S.meta.cause||"");
+  if(playState.active)playPause();
+  playState.head=0;playState.appended=0;playState.active=false;playState.paused=false;
+  renderAll();
+  playStart();
+  updateRecBar();
+  toast("录屏演示模式：空格暂停/继续 · F 全屏 · R 重播 · Esc 退出");
+}
+function exitRec(){
+  if(playState.active)playPause();
+  document.body.classList.remove('rec');
+  if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+}
+function toggleRec(){if(document.body.classList.contains('rec'))exitRec();else enterRec();}
+function recRestart(){
+  if(playState.active)playPause();
+  playState.head=0;playState.appended=0;playState.active=false;playState.paused=false;
+  renderAll();playStart();updateRecBar();
+}
+
+/* ============ 计时器 ============ */
+/* 真实计时驱动：点「开始」后按真实秒数 elapsed() 逐条揭示 S.transcript，让庭审实录实时跟进 */
+function timerReveal(){
+  if(S.startedAt==null||playState.active||!S.transcript.length)return;
+  const t=elapsed();
+  let head=playState.head<0?0:playState.head, changed=false, stageChanged=false, atkDef=false;
+  while(head<S.transcript.length && (S.transcript[head].t||0)<=t){
+    const e=S.transcript[head];
+    if(e.k==="stage")stageChanged=true;
+    if(e.type==="atk"||e.type==="def")atkDef=true;
+    applyEntry(e); head++; changed=true;
+  }
+  if(changed){
+    if(playState.head<0){$("#transcript").innerHTML="";playState.head=0;}
+    appendTranscript(playState.head,head);
+    playState.head=head;
+    updateCourtActive();
+    if(atkDef)renderAdvantage();
+    if(stageChanged){renderTimeline();renderJudge();renderMeta();}
+    renderSpeakerBar();
+  }
+}
+function renderClock(){
+  if(playState.active){
+    const virt=(performance.now()-playState.start)*playState.speed/1000;
+    playState.lastVirt=virt;
+    $("#clock").textContent=fmt(virt);
+  } else if(playState.lastVirt!=null && S.startedAt==null){
+    $("#clock").textContent=fmt(playState.lastVirt);
+  } else {
+    $("#clock").textContent=S.startedAt!=null?fmt(elapsed()):"00:00";
+  }
+}
+function toggleTimer(){
+  if(S.startedAt==null){
+    S.startedAt=Date.now();
+    if(S.transcript.length){$("#transcript").innerHTML="";playState.head=0;playState.appended=0;}
+    $("#btnTimer").textContent="⏸ 暂停";toast("实时推演开始");
+  }else{
+    S.startedAt=null;playState.head=-1;playState.lastVirt=null;
+    $("#btnTimer").textContent="⏱ 开始";toast("计时复位");renderTranscript();
+  }
+  $("#clock").classList.remove("paused");save();renderClock();timerReveal();
+}
+
+/* ============ 事件 ============ */
+function bind(){
+  setInterval(()=>{renderClock();timerReveal();},250); // 时钟心跳 + 真实计时驱动庭审实录实时跟进：置于最前注册，确保后续任何绑定异常都不影响
+  $("#btnConsole").onclick=()=>{$("#drawer").classList.add("open");$("#mask").classList.add("open");};
+  $("#btnClose").onclick=()=>{$("#drawer").classList.remove("open");$("#mask").classList.remove("open");};
+  $("#mask").onclick=()=>{$("#drawer").classList.remove("open");$("#mask").classList.remove("open");};
+  $("#btnJudge").onclick=()=>{$("#judge").classList.add("open");$("#judgeMask").classList.add("open");renderJudge();};
+  $("#btnJudgeClose").onclick=()=>{$("#judge").classList.remove("open");$("#judgeMask").classList.remove("open");};
+  $("#judgeMask").onclick=()=>{$("#judge").classList.remove("open");$("#judgeMask").classList.remove("open");};
+  const MP=(window.MIND_PANELS||{roles:[]});
+  function mpFind(k){return (MP.roles||[]).find(x=>x.key===k)||null;}
+  function mpPct(s){const m=String(s||"").match(/(\d+)\s*\//);return m?Math.max(0,Math.min(100,+m[1])):0;}
+  function mpEsc(s){return String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+  function renderMind(k){
+    const r=mpFind(k); const box=$("#mpBody"); if(!r){box.innerHTML='<div class="mp-card">未找到该席位心智数据（请确认 mind_panels_data.js 已加载）</div>';return;}
+    $("#mpTitle").textContent=r.emoji+" "+r.seat+"心智 · "+r.name;
+    const st=r.status==="ACTIVE"?'<b style="color:var(--green)">ACTIVE</b>':'<b style="color:var(--amber)">'+mpEsc(r.status)+'</b>';
+    let h="";
+    h+='<div class="mp-card"><div class="mp-h">'+r.emoji+" "+mpEsc(r.seat)+" · "+mpEsc(r.name)+'</div>'
+      +'<div class="mp-kv"><span>技能 '+mpEsc(r.skill)+'</span><span>心智卡 '+st+(r.criteria?" ("+mpEsc(r.criteria)+")":"")+'</span>'
+      +'<span>成熟度 <b>'+mpEsc(r.maturity)+"</b> "+mpEsc(r.grade)+'</span>'+(r.activated?'<span>激活 '+mpEsc(r.activated)+'</span>':'')+'</div>'
+      +'<div class="mp-bar"><i style="width:'+mpPct(r.maturity)+'%"></i></div></div>';
+    if(r.kpi) h+='<div class="mp-card"><div class="mp-h">核心 KPI</div><div class="mp-li">'+mpEsc(r.kpi)+'</div></div>';
+    if(r.profileSpec){
+      h+='<div class="mp-card"><div class="mp-h">产物头部规范</div><div class="mp-code">'+mpEsc(r.profileSpec)+'</div>'
+        +'<div class="mp-act"><button class="btn sm" id="btnMpCopy">📋 复制 profile</button></div>'
+        +'<div class="mp-sub">战报 / 三件套产物头部必带，漏带＝未达心智卡激活判据</div></div>';
+    }
+    if(r.redLines&&r.redLines.length){
+      h+='<div class="mp-card"><div class="mp-h">红线（禁区）</div>';
+      r.redLines.forEach(x=>{h+='<span class="mp-chip red">'+mpEsc(x)+'</span>';});
+      h+='</div>';
+    }
+    h+='<div class="mp-card"><div class="mp-h">训练态</div><div class="mp-li">'
+      +(r.trace?"<b>轨迹</b>："+mpEsc(r.trace):"")+(r.latest?"<br><b>最新</b>："+mpEsc(r.latest):"")
+      +(r.battles?"<br><b>实战</b>："+mpEsc(r.battles):"")+(r.short?"<br><b>短板</b>："+mpEsc(r.short):"")
+      +'</div>'+(r.script?'<div class="mp-sub">成熟度脚本：'+mpEsc(r.script)+'</div>':'')+'</div>';
+    if(r.ammo){
+      const a=r.ammo;
+      h+='<div class="mp-card"><div class="mp-h">弹药族 · '+mpEsc(a.name)+'（'+mpEsc(a.built)+'）</div><div class="mp-li">';
+      (a.cards||[]).forEach(c=>{h+="<br><b>"+mpEsc(c.id)+"</b> "+mpEsc(c.name)+(c.desc?"<br><span style=\"color:var(--muted)\">"+mpEsc(c.desc)+"</span>":"");});
+      h+='</div>'+(a.existing&&a.existing.length?'<div class="mp-sub"><b>既有同族卡</b>：'+a.existing.map(c=>mpEsc(c.id)).join(" · ")+'</div>':'')
+        +'<div class="mp-sub">'+mpEsc(a.note)+'</div></div>';
+    }
+    if(r.battleLog&&r.battleLog.length){
+      r.battleLog.forEach(b=>{
+        h+='<div class="mp-card"><div class="mp-h">实战记录 · '+mpEsc(b.date)+'</div><div class="mp-li">'
+          +"<b>"+mpEsc(b.场次)+"</b><br>案源："+mpEsc(b.案源)+"<br>红队档位："+mpEsc(b.红队档位)+" ｜ 蓝队档位："+mpEsc(b.蓝队档位);
+        if(b.S级破绽&&b.S级破绽.length){
+          h+='<br><b style="color:var(--red2)">S 级破绽</b>：';
+          b.S级破绽.forEach((s,i)=>{h+="<br>"+(i+1)+". "+mpEsc(s);});
+        }
+        h+='</div><div class="mp-sub">⚠️ 含真实案号与当事人姓名，对外演示/公开须脱敏</div></div>';
+      });
+    }
+    h+='<div class="mp-sub" style="text-align:center">数据源：席位绑定配置 v'+mpEsc(MP.configVersion)+' · 生成 '+mpEsc(MP.generated)+'</div>';
+    box.innerHTML=h;
+    const cb=$("#btnMpCopy"); if(cb) cb.onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(r.profileSpec||"");cb.textContent="✅ 已复制";setTimeout(()=>cb.textContent="📋 复制 profile",1400);};
+  }
+  function openMind(k){renderMind(k);$("#minddrawer").classList.add("open");$("#mpMask").classList.add("open");}
+  function closeMind(){$("#minddrawer").classList.remove("open");$("#mpMask").classList.remove("open");}
+  $("#btnRedMind").onclick=()=>openMind("red");
+  $("#btnBlueMind").onclick=()=>openMind("blue");
+  $("#btnClerkMind").onclick=()=>openMind("clerk");
+  $("#btnMpClose").onclick=closeMind;
+  $("#mpMask").onclick=closeMind;
+  $("#btnTimer").onclick=toggleTimer;
+  $("#btnPlay").onclick=playStart;
+  $("#btnSpeed1").onclick=()=>setSpeed(1); $("#btnSpeed2").onclick=()=>setSpeed(2); $("#btnSpeed4").onclick=()=>setSpeed(4);
+  $("#ctlStage").onchange=e=>setStage(+e.target.value);
+  $$(".seg button[data-type]").forEach(b=>b.onclick=()=>{$$(".seg button[data-type]").forEach(x=>x.classList.remove("on"));b.classList.add("on");curType=b.dataset.type;});
+  $("#btnSubmit").onclick=submitEntry;
+  $("#btnAdv").onclick=()=>{const v=prompt("调整对抗优势分（红-蓝，-100~100）：",S.advantage);if(v!=null){S.advantage=Math.max(-100,Math.min(100,+v));renderAdvantage();save();}};
+  $("#btnEviAdd").onclick=addEvidence;
+  $("#verdictInput").oninput=e=>{S.verdict=e.target.value;if(S.stageIdx===5)renderVerdict();save();};
+  $("#btnRetime").onclick=()=>{retime(4,2);toast("已重整，点『自动演进』匀速播放");};
+  $("#btnExport").onclick=exportJSON;
+  $("#btnImport").onclick=()=>$("#fileInput").click();
+  $("#fileInput").onchange=e=>{if(e.target.files[0])importJSON(e.target.files[0]);};
+  $("#btnImportSit").onclick=()=>$("#sitInput").click();
+  $("#sitInput").onchange=e=>{if(e.target.files[0])importSituation(e.target.files[0]);e.target.value="";};
+  $("#btnReset").onclick=()=>{if(confirm("确认清空本场？")){S=normalize(JSON.parse(JSON.stringify(DEMO)));S.transcript=[];S.evidence=[];S.advantage=0;S.stageIdx=0;S.startedAt=null;renderAll();buildConsoleOptions();save();toast("已清空");}};
+  $("#btnDemo").onclick=()=>{S=normalize(JSON.parse(JSON.stringify(DEMO)));renderAll();buildConsoleOptions();save();toast("演示剧本已载入");};
+  $$("#ctlProc button").forEach(b=>b.onclick=()=>{
+    S.procType=b.dataset.pt;
+    $$("#ctlProc button").forEach(x=>x.classList.toggle("on",x===b));
+    applyProcType(); buildCourt(); updateCourtActive(); save();
+    toast(S.procType==="duiren"?"已切独任程序：QC 坐观察席（法定无审判长）":"已切普通程序：QC 上审判长席（法官技能转合议庭审判员）");
+  });
+  $$("#trTabs button").forEach(b=>b.onclick=()=>{$$("#trTabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");const doc=b.dataset.mode==="doc";$("#transcript").style.display=doc?"none":"flex";$("#transcriptDoc").style.display=doc?"flex":"none";});
+  $("#btnJudgeImport").onclick=()=>{try{const arr=JSON.parse($("#judgeImport").value);if(Array.isArray(arr)){const adapted=(window.CARD_ADAPTER&&window.CARD_ADAPTER.adaptCaseRouteCards)?window.CARD_ADAPTER.adaptCaseRouteCards(arr):arr;JUDGE_CARDS.push.apply(JUDGE_CARDS,adapted);renderJudge();syncRvDomain();toast("已合并 "+adapted.length+" 张卡（含主控 schema 适配）");}else toast("需为 JSON 数组");}catch(e){toast("导入失败：JSON 格式错误");}};
+  $("#rvStage").innerHTML=STAGES.map((s,i)=>`<option value="${i}">${s}</option>`).join("");
+  $("#rvStage").value=S.stageIdx;
+  syncRvDomain();
+  $("#btnJudgeReviewA").onclick=renderJudgeReviewA;
+  $("#btnAmount").onclick=()=>{$("#amount").classList.add("open");$("#amountMask").classList.add("open");renderAmount();};
+  $("#btnAmountClose").onclick=()=>{$("#amount").classList.remove("open");$("#amountMask").classList.remove("open");};
+  $("#amountMask").onclick=()=>{$("#amount").classList.remove("open");$("#amountMask").classList.remove("open");};
+  $("#btnAmountImport").onclick=()=>{try{const arr=JSON.parse($("#amountImport").value);if(Array.isArray(arr)){AMOUNT_CARDS.push(...arr);renderAmount();toast("已合并 "+arr.length+" 张裁量尺度卡");}else toast("需为 JSON 数组");}catch(e){toast("导入失败：JSON 格式错误");}};
+  /* §F 数额候选测算（仅在责任成立·gate 解锁后可用） */
+  $("#amCalc").onclick=()=>{
+    const liquid=parseFloat($("#amLiquid").value)||0;
+    const loss=parseFloat($("#amLoss").value)||0;
+    const paid=parseFloat($("#amPaid").value)||0;
+    if(!loss && !liquid){ toast("请至少填写约定违约金或实际损失"); return; }
+    const est = (window.LTI_QC ? window.LTI_QC.computeAmountEstimate(liquid,loss,paid)
+      : { cap:loss*1.3, capRounded:Math.round(loss*1.3), overCap:(liquid>0&&loss>0&&liquid>loss*1.3), due:Math.max(loss-paid,0) });
+    let html='<div class="amres">';
+    html+='<div class="al">约定违约金：¥'+liquid.toLocaleString()+' ｜ 实际损失：¥'+loss.toLocaleString()+' ｜ 已付/已判：¥'+paid.toLocaleString()+'</div>';
+    if(liquid>0 && loss>0){
+      if(est.overCap) html+='<div class="al">⚠️ 违约金（¥'+liquid.toLocaleString()+'）超过损失 30% 参考上限（¥'+est.capRounded.toLocaleString()+'），依民法典第585条可能需<b>请求酌减</b>（候选·待人工确认）。</div>';
+      else html+='<div class="al">✅ 违约金（¥'+liquid.toLocaleString()+'）未超损失 30% 参考上限（¥'+est.capRounded.toLocaleString()+'），原则上应予支持（候选·待人工确认）。</div>';
+    } else if(liquid>0 && loss===0){
+      html+='<div class="al">⚠️ 已填约定违约金但无实际损失数据，酌减审查缺乏锚点，请补全损失举证（候选·待人工确认）。</div>';
+    }
+    html+='<div class="al">候选应付净额：¥'+est.due.toLocaleString()+'（损失 − 已付/已判；未计违约金调减与利息，仅供预判）。</div>';
+    html+='<div class="amr2">⚠️ R2：以上为机器候选测算，最终数额由审判长（老强）结合举证、第585条调整规则与利息裁定。</div>';
+    html+='</div>';
+    $("#amOut").innerHTML=html;
+  };
+  /* 类案检索（LawKB 审判要件卡离线索引） */
+  $("#btnCaseSearch").onclick=()=>{
+    $("#caseSearch").classList.add("open");$("#caseSearchMask").classList.add("open");
+    if (typeof window.TRIAL_CARDS === 'undefined'){ document.getElementById('csResults').innerHTML='<div class="smuted">⚠️ 索引未加载（trial_element_cards.js 缺失）。请先运行 gen_trial_cards.js 生成索引。</div>'; return; }
+    renderCsDomains();
+    renderCsResults(searchTrialCards('', '全部'));
+  };
+  $("#btnCaseSearchClose").onclick=()=>{$("#caseSearch").classList.remove("open");$("#caseSearchMask").classList.remove("open");};
+  $("#caseSearchMask").onclick=()=>{$("#caseSearch").classList.remove("open");$("#caseSearchMask").classList.remove("open");};
+  $("#csRun").onclick=()=>{
+    const q=($("#csQuery").value||'').trim();
+    const domEl=document.querySelector('#csDomains .csdombtn.on');
+    renderCsResults(searchTrialCards(q, domEl?domEl.dataset.dom:'全部'));
+  };
+  $("#csQuery").addEventListener('keydown',e=>{ if(e.key==='Enter'){ const q=e.target.value.trim(); const domEl=document.querySelector('#csDomains .csdombtn.on'); renderCsResults(searchTrialCards(q, domEl?domEl.dataset.dom:'全部')); } });
+  $("#csSeed").onclick=()=>{
+    const k = (window.lastSub && window.lastSub.statuteKey) || null;
+    const kws = (k && TRIAL_SEED[k]) ? TRIAL_SEED[k].join(' ') : '';
+    if (!kws){ toast('尚未运行要件涵摄，无法联想'); return; }
+    $("#csQuery").value = kws;
+    renderCsResults(searchTrialCards(kws, '全部'));
+    if (!$("#caseSearch").classList.contains("open")){ $("#caseSearch").classList.add("open");$("#caseSearchMask").classList.add("open"); renderCsDomains(); }
+    toast('已用当前法条「'+k+'」联想类案');
+  };
+  $("#btnDoc").onclick=()=>{$("#doc").classList.add("open");$("#docMask").classList.add("open");renderPersona();};
+  $("#btnDocClose").onclick=()=>{$("#doc").classList.remove("open");$("#docMask").classList.remove("open");};
+  $("#docMask").onclick=()=>{$("#doc").classList.remove("open");$("#docMask").classList.remove("open");};
+  $("#docType").onchange=renderDocDraft;
+  $("#btnDocDraft").onclick=renderDocDraft;
+  $("#btnDocDemo").onclick=loadDocDemo;
+  $("#btnDocCopy").onclick=()=>{const t=$("#docDraft").innerText;if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast("草案已复制")).catch(()=>toast("复制失败"));else toast("当前环境不支持复制");};
+  $("#btnDocImport").onclick=()=>{try{const arr=JSON.parse($("#docImport").value);if(Array.isArray(arr)){arr.forEach(c=>{if(c.type&&c.id)WS_CARDS[c.type]=Object.assign(WS_CARDS[c.type]||{},c);});const sel=$("#docType");sel.innerHTML=Object.keys(WS_CARDS).map(k=>`<option value="${k}">${WS_CARDS[k].name}（${k}）</option>`).join("");renderDocDraft();toast("已合并 "+arr.length+" 张范式卡");}else toast("需为 JSON 数组");}catch(e){toast("导入失败：JSON 格式错误");}};
+  /* 主持话术面板（庭审主持卡 R-PR-061~068） */
+  $("#btnHost").onclick=()=>{_hostStage=_hostStage||"开庭";applyHostState();$("#host").classList.add("open");$("#hostMask").classList.add("open");renderHost();renderXinZheng();};
+  $("#btnHostClose").onclick=()=>{$("#host").classList.remove("open");$("#hostMask").classList.remove("open");};
+  $("#hostMask").onclick=()=>{$("#host").classList.remove("open");$("#hostMask").classList.remove("open");};
+  $$("#hostStage .hchip").forEach(x=>x.onclick=()=>{_hostStage=x.dataset.stage;$$("#hostStage .hchip").forEach(y=>y.classList.toggle("on",y===x));renderHost();captureHostState();});
+  $("#btnHostScript").onclick=renderHostScript;
+  $("#btnHostDemo").onclick=loadHostDemo;
+  $("#btnHostDemo6658").onclick=()=>loadHostDemo("6658吊顶案");
+  $("#btnHostDemo6660").onclick=()=>loadHostDemo("6660雅菲窗帘案");
+  $("#btnHostCopy").onclick=()=>{const t=$("#hostScript").innerText;if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast("主持稿已复制")).catch(()=>toast("复制失败"));else toast("当前环境不支持复制");};
+  /* 即兴主持 / 心证档案 / 庭次快照 */
+  $("#btnHostLive").onclick=renderHostLive;
+  $("#btnXzRecord").onclick=recordXinZheng;
+  $("#btnTingSave").onclick=exportTingSnapshot;
+  $("#btnTingLoad").onclick=()=>$("#fileTing").click();
+  $("#fileTing").onchange=e=>{if(e.target.files&&e.target.files[0])importTingSnapshot(e.target.files[0]);};
+  $("#hostFocus").oninput=captureHostState;
+  $("#hostLastEvent").oninput=captureHostState;
+  $("#hostRound").oninput=captureHostState;
+  $("#hostPlaintiff").oninput=captureHostState;
+  $("#hostDefendant").oninput=captureHostState;
+
+  [["#mCase","caseNo"],["#mCause","cause"],["#mRed","red"],["#mBlue","blue"]].forEach(([sel,key])=>{$(sel).oninput=e=>{S.meta[key]=e.target.value;renderMeta();save();};});
+  if(BC)BC.onmessage=e=>{if(e.data&&e.data.state){S=e.data.state;renderAll();buildConsoleOptions();renderClock();}};
+  $("#btnRec").onclick=toggleRec;
+  document.addEventListener("keydown",e=>{
+    if(!document.body.classList.contains("rec"))return;
+    if(e.code==="Space"){e.preventDefault();if(playState.active)playPause();else playStart();}
+    else if(e.key==="f"||e.key==="F"){if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else document.documentElement.requestFullscreen().catch(()=>{});}
+    else if(e.key==="r"||e.key==="R"){recRestart();}
+    else if(e.key==="Escape"){exitRec();}
+  });
+}
+function init(){S=load()||normalize(JSON.parse(JSON.stringify(DEMO)));renderAll();buildConsoleOptions();bind();$$("#ctlProc button").forEach(x=>x.classList.toggle("on",(x.dataset.pt||"duiren")===(S.procType||"duiren")));renderClock();$("#btnTimer").textContent=S.startedAt!=null?"⏸ 暂停":"⏱ 开始";}
+init();
+</script>
+<!-- ============ 📡 实时核条 widget（yuandian_bridge 客户端） ============ -->
+<style>
+#vWidget{position:fixed;right:18px;bottom:18px;z-index:9999;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+#vToggle{background:linear-gradient(135deg,#2563eb,#1e40af);color:#fff;border:none;border-radius:24px;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,.45);}
+#vPanel{display:none;position:absolute;right:0;bottom:54px;width:420px;max-height:70vh;overflow:auto;background:#0f172a;color:#e6edf3;border:1px solid #334155;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.5);padding:14px;}
+#vPanel.open{display:block;}
+#vPanel h4{margin:0 0 8px;font-size:14px;color:#93c5fd;display:flex;justify-content:space-between;align-items:center;}
+#vPanel .vclose{background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;}
+#vRow{display:flex;gap:6px;margin-bottom:8px;}
+#vInput{flex:1;background:#1e293b;border:1px solid #334155;color:#e6edf3;border-radius:8px;padding:8px 10px;font-size:13px;}
+#vGo{background:#2563eb;color:#fff;border:none;border-radius:8px;padding:0 14px;font-size:13px;cursor:pointer;}
+#vChips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+#vChips button{background:#1e293b;border:1px solid #334155;color:#cbd5e1;border-radius:14px;padding:4px 9px;font-size:11px;cursor:pointer;}
+#vChips button:hover{border-color:#60a5fa;color:#fff;}
+#vRes{font-size:13px;line-height:1.6;}
+.vbadge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-bottom:6px;}
+.vb-cache{background:#14321f;color:#86efac;}
+.vb-live{background:#14532d;color:#bbf7d0;}
+.vb-miss{background:#3f1d1d;color:#fca5a5;}
+.vmeta{color:#94a3b8;font-size:11px;margin:4px 0;}
+.vtext{background:#1e293b;border-left:3px solid #2563eb;padding:8px 10px;border-radius:6px;white-space:pre-wrap;margin:6px 0;color:#e2e8f0;}
+.vsrc{color:#64748b;font-size:11px;word-break:break-all;}
+.vhint{color:#fbbf24;font-size:12px;}
+.vwarn{color:#fca5a5;font-size:12px;}
+.vmuted{color:#94a3b8;font-size:12px;}
+</style>
+<div id="vWidget">
+  <div id="vPanel">
+    <h4>📡 实时核条 <span class="vclose" id="vClose">×</span></h4>
+    <div id="vRow">
+      <input id="vInput" placeholder="输入法条，如：民诉法2023第67条 / 民法典第577条" />
+      <button id="vGo">核条</button>
+    </div>
+    <div id="vChips"></div>
+    <div id="vRes"><div class="vmuted">点击上方主持卡法条 chip，或输入引用后点「核条」。<br>本地权威缓存（北大法宝逐条核填）兜底；桥接注入 PKULAW_BEARER 后自动走北大法宝实时核验。</div></div>
+  </div>
+  <button id="vToggle">📡 实时核条</button>
+</div>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const HOST_LAW_CHIPS = [
+    {l:'民诉法12·辩论权', q:'民诉法2023第12条'},
+    {l:'民诉法67·举证', q:'民诉法2023第67条'},
+    {l:'民诉法68·举证期', q:'民诉法2023第68条'},
+    {l:'民诉法71·质证', q:'民诉法2023第71条'},
+    {l:'民诉法96·调解', q:'民诉法2023第96条'},
+    {l:'民诉法136·争点', q:'民诉法2023第136条'},
+    {l:'民诉法140·开庭', q:'民诉法2023第140条'},
+    {l:'民诉法141·调查', q:'民诉法2023第141条'},
+    {l:'民诉法144·辩论', q:'民诉法2023第144条'},
+    {l:'民诉法145·判前调', q:'民诉法2023第145条'},
+    {l:'证据规定53·释明', q:'证据规定第53条 释明 焦点审理'},
+    {l:'民法典143·真意', q:'民法典第143条 意思表示真实'},
+    {l:'民法典577·违约', q:'民法典第577条 违约责任'},
+    {l:'民法典1165·过错侵权', q:'民法典第1165条 过错侵权 过错推定'},
+    {l:'民法典148·欺诈撤销', q:'民法典第148条 欺诈 可撤销'}
+  ];
+  const BRIDGE = 'http://localhost:8787/api/verify';
+  function renderVerify(d){
+    const box = $('vRes');
+    if(!d){ box.innerHTML='<div class="vwarn">❌ 未收到核验结果</div>'; return; }
+    const cls = (d.source==='yuandian-live'||d.source==='pkulaw-live') ? 'vb-live' : (d.source==='miss' ? 'vb-miss' : 'vb-cache');
+    let html = '<span class="vbadge '+cls+'">'+ (d.badge||'') +'</span>';
+    if(d.law) html += '<div class="vmeta">'+ esc(d.law) + (d.article?(' '+esc(d.article)):'') + (d.title?(' · '+esc(d.title)):'') + (d.effective?(' · '+esc(d.effective)):'') + '</div>';
+    if(d.text) html += '<div class="vtext">'+ esc(d.text) +'</div>';
+    if(d.sourceRef) html += '<div class="vsrc">来源：'+ esc(d.sourceRef) + (d.key?(' · key='+esc(d.key)):'') +'</div>';
+    if(d.pkulawUrl) html += '<div class="vsrc">北大法宝：<a href="'+ esc(d.pkulawUrl) +'" target="_blank" rel="noopener" style="color:#60a5fa;">'+ esc(d.pkulawDocNo||'查看原文') +'</a></div>';
+    if(d.pkulawNote) html += '<div class="vsrc" style="color:#94a3b8;">※ '+ esc(d.pkulawNote) +'</div>';
+    if(d.hint) html += '<div class="vhint">⚠ '+ esc(d.hint) +'</div>';
+    if(!d.text && d.source!=='miss') html += '<div class="vwarn">⚠ 命中但无正文，请检查缓存条目</div>';
+    if(d.source==='miss') html += '<div class="vmuted">未命中本地缓存。'+ (d.liveAvailable?'实时核验也未返回结果。':'设置 PKULAW_BEARER 启用北大法宝实时，或在 statute_cache.json 增补。') +'</div>';
+    box.innerHTML = html;
+  }
+  function esc(s){ return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+  async function hostVerify(q){
+    const box = $('vRes');
+    $('vInput').value = q || '';
+    box.innerHTML = '<div class="vmuted">核验中…</div>';
+    try{
+      const r = await fetch(BRIDGE, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query: q||$('vInput').value})});
+      const d = await r.json();
+      renderVerify(d);
+    }catch(e){
+      box.innerHTML = '<div class="vwarn">❌ 桥接服务未启动或不可达。<br>请在 mock-trial-integration 目录运行：<br>node yuandian_bridge.js</div>';
+    }
+  }
+  // 渲染 chips
+  const chipWrap = $('vChips');
+  HOST_LAW_CHIPS.forEach(c=>{
+    const b = document.createElement('button');
+    b.textContent = c.l; b.title = c.q;
+    b.onclick = ()=>hostVerify(c.q);
+    chipWrap.appendChild(b);
+  });
+  $('vToggle').onclick = ()=> $('vPanel').classList.toggle('open');
+  $('vClose').onclick = ()=> $('vPanel').classList.remove('open');
+  $('vGo').onclick = ()=> hostVerify($('vInput').value.trim());
+  $('vInput').addEventListener('keydown', e=>{ if(e.key==='Enter') hostVerify($('vInput').value.trim()); });
+})();
+</script>
+<script src="dynamic_models.js"></script>
+<script src="subsumption_engine.js"></script>
+<script src="lti_qc.js"></script>
+<script src="multidomain_analyzer.js"></script>
+<script src="judge_mind.js"></script>
+<script src="card_adapter.js"></script>
+<!-- ============ 🧠 审判要件卡 / 裁量尺度卡 自动挂载（A 方案·零风险） ============ -->
+<!-- 打开即全量并入 JUDGE_CARDS(195) / AMOUNT_CARDS(3)，免手动粘贴。源 JSON：judge_mind_import_§A-§E.json / amount_predict_import_§F.json -->
+<script src="judge_mind_import_§A-§E.js"></script>
+<script src="amount_predict_import_§F.js"></script>
+<script>
+  (function(){
+    try{
+      if(window.__JUDGE_CARDS_IMPORT__ && Array.isArray(window.__JUDGE_CARDS_IMPORT__)){
+        JUDGE_CARDS.push.apply(JUDGE_CARDS, window.__JUDGE_CARDS_IMPORT__);
+      }
+      if(window.__AMOUNT_CARDS_IMPORT__ && Array.isArray(window.__AMOUNT_CARDS_IMPORT__)){
+        AMOUNT_CARDS.push.apply(AMOUNT_CARDS, window.__AMOUNT_CARDS_IMPORT__);
+      }
+      if(typeof syncRvDomain==='function') syncRvDomain();
+      if(typeof renderJudge==='function') renderJudge();
+      if(typeof renderAmount==='function') renderAmount();
+    }catch(e){ if(window.console) console.error('审判要件卡自动挂载失败：', e); }
+  })();
+</script>
+<!-- ============ ⚖️ 要件涵摄 widget（Path A 真涵摄 · 命门升级） ============ -->
+<style>
+#sWidget{position:fixed;left:18px;bottom:18px;z-index:9998;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+#sToggle{background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;border:none;border-radius:24px;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(124,58,237,.45);}
+#sPanel{display:none;position:absolute;left:0;bottom:54px;width:460px;max-height:74vh;overflow:auto;background:#0f172a;color:#e6edf3;border:1px solid #4c1d95;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.5);padding:14px;}
+#sPanel.open{display:block;}
+#sPanel h4{margin:0 0 8px;font-size:14px;color:#c4b5fd;display:flex;justify-content:space-between;align-items:center;}
+#sPanel .sclose{background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;}
+#sSel{width:100%;background:#1e293b;border:1px solid #4c1d95;color:#e6edf3;border-radius:8px;padding:8px;font-size:13px;margin-bottom:8px;}
+.selem{border:1px solid #334155;border-radius:8px;padding:8px;margin-bottom:7px;background:#1e293b;}
+.selem .et{font-size:12.5px;color:#e2e8f0;margin-bottom:4px;}
+.selem .erow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.selem select{background:#0f172a;border:1px solid #4c1d95;color:#e6edf3;border-radius:6px;padding:3px 6px;font-size:12px;}
+.selem .efact{flex:1;min-width:120px;background:#0f172a;border:1px solid #334155;color:#e6edf3;border-radius:6px;padding:4px 6px;font-size:11.5px;}
+.selem .ehint{font-size:11px;color:#a5b4fc;margin-top:3px;line-height:1.5;white-space:pre-wrap;}
+.selem .eburden{font-size:10.5px;color:#94a3b8;}
+.sfocus{margin-bottom:8px;border:1px dashed #6366f1;border-radius:8px;padding:7px 8px;background:rgba(99,102,241,.08);}
+.sfocus-h{font-size:11.5px;color:#a5b4fc;margin-bottom:5px;font-weight:600;}
+.sfocus-row{display:flex;gap:6px;align-items:center;}
+.sfocus-row input{flex:1;min-width:0;background:#0f172a;border:1px solid #4c1d95;color:#e6edf3;border-radius:6px;padding:5px 7px;font-size:12px;}
+.sfocus-row .sm{font-size:11px;padding:5px 9px;white-space:nowrap;}
+.sfocus-cands{margin-top:6px;display:flex;flex-direction:column;gap:4px;}
+.fchip{display:flex;align-items:center;gap:6px;background:#1e293b;border:1px solid #6366f1;border-radius:6px;padding:4px 7px;font-size:11.5px;}
+.fchip .fk{color:#c4b5fd;font-weight:700;}
+.fchip .fl{color:#cbd5e1;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.fchip .fs{color:#94a3b8;font-size:10px;}
+.fchip .fuse{background:#6366f1;color:#fff;border:none;border-radius:5px;padding:2px 9px;font-size:11px;cursor:pointer;}
+.fchip .fuse:hover{background:#4f46e5;}
+#sBtns{display:flex;gap:6px;margin:8px 0;}
+#sBtns button{background:#7c3aed;color:#fff;border:none;border-radius:8px;padding:7px 11px;font-size:12px;cursor:pointer;}
+#sBtns button.ghost{background:#334155;}
+#sAnchorCtx{margin:4px 0 8px;padding:8px 10px;border:1px dashed #8b5cf6;border-radius:8px;background:rgba(139,92,246,.07);font-size:11.5px;color:#ddd6fe;line-height:1.6;}
+#sAnchorCtx b{color:#fff;}
+#sRes{font-size:12.5px;line-height:1.65;white-space:pre-wrap;}
+#sRes .stag{display:inline-block;background:#3f1d1d;color:#fca5a5;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-bottom:6px;}
+#sRes .sprem{color:#86efac;}
+#sRes .ssub{color:#e2e8f0;}
+#sRes .schain{color:#cbd5e1;}
+#sRes .sconc{color:#fcd34d;font-weight:600;margin-top:4px;}
+#sRes .slink{color:#60a5fa;font-size:11px;word-break:break-all;}
+#sRes .smuted{color:#94a3b8;font-size:12px;}
+#sRes .sgap{margin-top:8px;padding:8px 10px;border-left:3px solid #f59e0b;background:rgba(245,158,11,.08);border-radius:4px;}
+#sRes .sgap .gh{color:#fbbf24;font-weight:700;font-size:12px;margin-bottom:4px;}
+#sRes .sgap .gi{color:#fde68a;font-size:12px;line-height:1.6;}
+#sRes .sgap .gi b{color:#fff;}
+#sRes .sxin{margin-top:10px;padding:9px 10px;border-left:3px solid #a78bfa;background:rgba(167,139,250,.09);border-radius:4px;}
+#sRes .sxin .xh{color:#c4b5fd;font-weight:700;font-size:12px;margin-bottom:5px;}
+#sRes .sxin .xb{color:#ddd6fe;font-size:12px;line-height:1.65;}
+#sRes .sadm{margin-top:8px;padding:9px 10px;border-left:3px solid #2dd4bf;background:rgba(45,212,191,.07);border-radius:4px;}
+#sRes .sadm .xh{color:#5eead4;font-weight:700;font-size:12px;margin-bottom:5px;}
+#sRes .sadm .ai{color:#99f6e4;font-size:12px;line-height:1.65;}
+#sRes .sadm .ai b{color:#fff;}
+#sWidget .sdeadbox{margin-top:8px;font-size:12px;color:#cbd5e1;display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+#sWidget .sdeadbox input[type=date]{background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:4px;padding:2px 4px;font-size:11px;}
+#sRes .evlist{margin-top:10px;padding:8px 10px;border-left:3px solid #38bdf8;background:rgba(56,189,248,.07);border-radius:4px;}
+#sRes .evlist .evh{color:#7dd3fc;font-weight:700;font-size:12px;margin-bottom:6px;}
+#sRes .evlist table{border-collapse:collapse;width:100%;font-size:11px;}
+#sRes .evlist th,#sRes .evlist td{border:1px solid #334155;padding:4px 6px;vertical-align:top;text-align:left;color:#e2e8f0;}
+#sRes .evlist th{background:#0f172a;color:#7dd3fc;font-weight:600;}
+#sRes .evlist td b{color:#fff;}
+
+/* ===== 两张皮打通：争点锚 + 涵摄结论回写（法官心智面板） ===== */
+#judgeReviewOut .xzanchor{margin-top:10px;padding:9px 11px;border:1px solid #8b5cf6;border-radius:8px;background:rgba(139,92,246,.10);font-size:12.5px;color:#c4b5fd;line-height:1.6;}
+#judgeReviewOut .xzanchor .xzvia{color:#a78bfa;}
+#judgeReviewOut .xzabtn{display:inline-block;margin-top:6px;padding:4px 12px;background:#8b5cf6;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;}
+#judgeReviewOut .xzabtn:hover{background:#7c3aed;}
+#judgeReviewOut .xzwb{margin-top:10px;padding:10px 12px;border:1px dashed #8b5cf6;border-radius:8px;background:rgba(139,92,246,.06);font-size:12.5px;color:#ddd6fe;}
+#judgeReviewOut .xzwb .wbh{color:#a78bfa;font-weight:700;margin-bottom:5px;}
+#judgeReviewOut .xzwb .wbl,#judgeReviewOut .xzwb .wbc,#judgeReviewOut .xzwb .wbx,#judgeReviewOut .xzwb .wbg{margin:3px 0;line-height:1.6;}
+#judgeReviewOut .xzwb b{color:#fff;}
+#sRes .evlist .evstd{margin-top:6px;color:#bae6fd;font-size:11px;line-height:1.5;}
+#sRes .evlist .dl{font-weight:700;}
+#sRes .evlist .dl.urgent{color:#fca5a5;}
+#sRes .evlist .dl.warn{color:#fcd34d;}
+#sRes .evlist .dl.ok{color:#86efac;}
+/* ===== §F 数额预判门控横幅（与要件成立联动） ===== */
+#sRes .samount{margin-top:10px;padding:9px 11px;border-radius:8px;border:1px solid;font-size:12px;line-height:1.6;}
+#sRes .samount.on{border-color:#34d399;background:rgba(52,211,153,.09);color:#a7f3d0;}
+#sRes .samount.off{border-color:#f87171;background:rgba(248,113,113,.08);color:#fecaca;}
+#sRes .samount .gh{font-weight:700;margin-bottom:4px;}
+#sRes .samount .gb{color:#e2e8f0;}
+#sRes .samount .xabtn{display:inline-block;margin-top:7px;padding:4px 12px;background:#34d399;color:#06281d;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;}
+#sRes .samount .xabtn:hover{background:#10b981;}
+/* ===== §F 抽屉内门禁 + 数额候选测算 ===== */
+.amount .agb{margin:0 0 10px;padding:9px 11px;border-radius:8px;font-size:12px;line-height:1.6;border:1px solid;}
+.amount .agb.on{border-color:#34d399;background:rgba(52,211,153,.09);color:#a7f3d0;}
+.amount .agb.off{border-color:#f87171;background:rgba(248,113,113,.08);color:#fecaca;}
+.amount .agb .agr{display:block;margin-top:4px;color:#e2e8f0;}
+.amount .amCompute{border:1px solid var(--border2);border-radius:11px;padding:11px 12px;background:#141922;margin-bottom:12px;}
+.amount .amCompute.locked{opacity:.5;pointer-events:none;filter:grayscale(.6);}
+.amount .amCompute .ach{font-weight:700;font-size:12.5px;color:var(--gold);margin-bottom:7px;}
+.amount .amCompute .arow{display:flex;align-items:center;gap:8px;margin:5px 0;}
+.amount .amCompute .arow label{font-size:11px;color:var(--muted);width:104px;flex:none;}
+.amount .amCompute .arow input{flex:1;background:var(--panel2);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-size:12px;padding:5px 8px;}
+.amount .amCompute #amCalc{margin-top:8px;}
+.amount .amOut{margin-top:8px;}
+.amount .amOut .amres{font-size:12px;color:#dfe4ec;background:rgba(80,160,255,.08);border-left:3px solid var(--blue2);border-radius:7px;padding:8px 10px;}
+.amount .amOut .al{margin:3px 0;line-height:1.6;}
+.amount .amOut .amr2{margin-top:6px;color:var(--red2);font-size:11px;}
+/* ===== 类案检索（LawKB 审判要件卡）===== */
+.casesearch .searchbox{display:flex;gap:8px;margin:6px 0 10px;}
+.casesearch .searchbox input{flex:1;background:var(--panel2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:13px;padding:8px 10px;}
+.casesearch .csdomain{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+.casesearch .csdombtn{background:#1e293b;border:1px solid #4c1d95;color:#c4b5fd;border-radius:14px;padding:3px 11px;font-size:11.5px;cursor:pointer;}
+.casesearch .csdombtn.on{background:#7c3aed;color:#fff;}
+.casesearch .cscount{font-size:12px;color:#94a3b8;margin-bottom:6px;}
+.casesearch .cscard{border:1px solid #334155;border-radius:9px;padding:9px 11px;margin-bottom:8px;background:#141922;}
+.casesearch .csh{display:flex;gap:8px;align-items:center;margin-bottom:3px;}
+.casesearch .csid{font-size:11px;color:#a78bfa;font-weight:700;}
+.casesearch .csdom{font-size:10.5px;color:#94a3b8;background:#1e293b;border-radius:8px;padding:1px 7px;}
+.casesearch .cstitle{font-size:13px;color:#e2e8f0;font-weight:600;line-height:1.5;margin-bottom:4px;}
+.casesearch .cssum{font-size:11.5px;color:#b8c2d0;line-height:1.6;margin-bottom:4px;}
+.casesearch .cslaw{font-size:11px;color:#7dd3fc;margin-bottom:6px;}
+.casesearch .csanchor{background:#8b5cf6;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;}
+.casesearch .csanchor:hover{background:#7c3aed;}
+.casesearch .empty-note{font-size:12px;color:#94a3b8;line-height:1.6;padding:10px;background:rgba(148,163,184,.07);border-radius:8px;}
+#csResults{max-height:none;}
+</style>
+<div id="sWidget">
+  <div id="sPanel">
+    <h4>⚖️ 要件涵摄 <span class="sclose" id="sClose">×</span></h4>
+    <div class="sfocus">
+      <div class="sfocus-h">🎯 争议焦点 → 自动选要件（候选·待人工确认）</div>
+      <div class="sfocus-row">
+        <input id="sFocus" placeholder="描述争议焦点，如：合同违约 不付违约金 / 医疗损害 过错侵权 / 合同效力 冒名" />
+        <button id="sFocusGo" class="ghost sm">研判并选要件</button>
+      </div>
+      <div id="sFocusCands" class="sfocus-cands"></div>
+    </div>
+    <select id="sSel"></select>
+    <div id="sAnchorCtx" class="sanchor" style="display:none"></div>
+    <div id="sElems"></div>
+    <datalist id="eviList"></datalist>
+    <div id="sBtns">
+      <button id="sRun">⚖️ 生成推理链</button>
+      <button id="sPreset" class="ghost">载入 6658 预设</button>
+      <button id="sCopy" class="ghost">复制</button>
+    </div>
+    <div class="sdeadbox">
+      <label>举证期限截止日：<input type="date" id="sDeadline" /></label>
+      <span id="sDeadlineNote" class="smuted"></span>
+    </div>
+    <div id="sRes"><div class="smuted">选择法条 → 逐要件勾选涵摄状态（满足/不满足/存疑/未认定）→ 生成推理链。<br>本引擎把「检索相似卡」升级为「要件拆解→逐要件涵摄→推理链」，全部为【候选·待人工确认】。</div></div>
+  </div>
+  <button id="sToggle">⚖️ 要件涵摄</button>
+</div>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  if(!window.SUBSUMPTION){ $('sRes').innerHTML='<div class="smuted">❌ 引擎未加载（subsumption_engine.js 缺失或路径错误）</div>'; }
+  const SUB = window.SUBSUMPTION;
+  const ST = SUB ? SUB.STATUS : {SAT:'满足',NOT:'不满足',DOUBT:'存疑',UND:'未认定'};
+  let curKey = null, curFacts = {}, curDeadline = '';
+
+  function esc(s){ return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+  function fillSelect(){
+    const sel = $('sSel');
+    sel.innerHTML = SUB.listStatutes().map(o=>`<option value="${o.key}">${esc(o.label)}</option>`).join('');
+  }
+
+  function renderElems(key){
+    curKey = key; curFacts = {};
+    const m = SUB.getModel(key);
+    const box = $('sElems');
+    if(!m){ box.innerHTML=''; return; }
+    box.innerHTML = m.elements.map(el=>`
+      <div class="selem" data-id="${el.id}">
+        <div class="et">${esc(el.text)}</div>
+        <div class="erow">
+          <select data-st="${el.id}">
+            <option value="未认定">未认定</option>
+            <option value="满足">满足</option>
+            <option value="不满足">不满足</option>
+            <option value="存疑">存疑</option>
+          </select>
+          <input class="efact" data-fact="${el.id}" list="eviList" placeholder="已证事实（可填，引用「证N」联动卷宗）" />
+        </div>
+        <div class="ehint">${esc(el.hint||'')}</div>
+        <div class="eburden">举证责任：${esc(el.burden||'—')}</div>
+      </div>`).join('');
+    box.querySelectorAll('select[data-st]').forEach(s=>{
+      s.onchange = ()=>{ /* 状态即时收集，生成时读取 */ };
+    });
+    box.querySelectorAll('input[data-fact]').forEach(i=>{
+      i.oninput = ()=>{ curFacts[i.getAttribute('data-fact')] = i.value.trim(); };
+    });
+  }
+
+  function readFindings(){
+    const f = {};
+    $('sElems').querySelectorAll('select[data-st]').forEach(s=>{ f[s.getAttribute('data-st')] = s.value; });
+    return f;
+  }
+
+  function renderChain(d){
+    if(d.error){ $('sRes').innerHTML = '<div class="smuted">❌ '+esc(d.error)+'</div>'; return; }
+    let html = '<span class="stag">'+ esc(d.tag) +'</span>';
+    if(d.pkulawUrl) html += '<div class="slink">北大法宝：<a href="'+ esc(d.pkulawUrl) +'" target="_blank" rel="noopener" style="color:#60a5fa;">'+ esc(d.law+' '+d.article) +'</a></div>';
+    html += '<div class="sprem">'+ esc(d.chain[0]) +'</div>';
+    d.rows.forEach((r,idx)=>{
+      const mark = ({'满足':'✓','不满足':'✗','存疑':'?','未认定':'·'})[r.status];
+      html += '<div class="ssub">【小前提·涵摄】要件('+ r.id +') '+ esc(r.text) +'： ['+ mark +' '+ esc(r.status) +']'+
+        (r.fact?' — 已证事实：'+(window.renderFactWithChips?window.renderFactWithChips(r.fact):esc(r.fact)):'') + (r.status==='未认定'?('（'+esc(r.burden)+'待证）'):'') +'</div>';
+    });
+    d.chain.slice(1).forEach(line=>{
+      const cls = line.startsWith('【结论')?'sconc':(line.startsWith('【涵摄')?'schain':'ssub');
+      html += '<div class="'+cls+'">'+ esc(line) +'</div>';
+    });
+    if (d.gaps && d.gaps.length) {
+      html += '<div class="sgap"><div class="gh">⚠️ 证据缺口·自主识别（待人工确认）</div>';
+      d.gaps.forEach((g,i)=>{
+        html += '<div class="gi">'+ (i+1) +'. 要件(<b>'+ esc(g.id) +'</b>) '+ esc(g.text) +
+          ' · [<b>'+ esc(g.status) +'</b>] · 举证方：<b>'+ esc(g.burden) +'</b>' +
+          (g.optional?'（可选）':'') + ' → '+ esc(g.suggestion) +'</div>';
+      });
+      html += '</div>';
+      // —— 证据清单联动（依缺口自动生成·待人工确认）——
+      const dl = computeDeadline();
+      let rows = d.gaps.map((g,i)=>{
+        const evs = (g.suggestedEvidence||[]).map(e=>esc(e)).join('、');
+        return '<tr><td>'+ (i+1) +'. 要件(<b>'+ esc(g.id) +'</b>) '+ esc(g.text) + (g.optional?'（可选）':'') +'</td>'+
+          '<td><b>'+ esc(g.burden) +'</b></td>'+
+          '<td>'+ evs +'</td>'+
+          '<td class="dl '+ dl.cls +'">'+ dl.text +'</td></tr>';
+      }).join('');
+      const caseNoTag = (window.CASE_NO ? ' · 案号 '+esc(window.CASE_NO) : '');
+      html += '<div class="evlist"><div class="evh">📋 证据清单（依缺口自动生成·候选·待人工确认）'+ caseNoTag +'</div>'+
+        '<table><thead><tr><th>待证要件</th><th>举证方</th><th>建议证据类型</th><th>举证期限</th></tr></thead><tbody>'+ rows +'</tbody></table>'+
+        '<div class="evstd">证明标准：'+ esc(d.gaps[0].proofStandard || '') +'。举证期限届满后提交证据可能承担逾期不利后果（《民诉法2023》第68条）。</div></div>';
+    } else {
+      const caseNoTag2 = (window.CASE_NO ? ' · 案号 '+esc(window.CASE_NO) : '');
+      html += '<div class="evlist"><div class="evh">📋 证据清单'+ caseNoTag2 +'</div><div class="evstd">当前无证据缺口（各要件均已满足或已有已证事实），无需补证。</div></div>';
+    }
+    // —— 心证层渲染（judge_reviewer 心智·候选·待人工确认·纯离线）——
+    if (d.xinZheng && d.xinZheng.lean && d.xinZheng.lean.text) {
+      html += '<div class="sxin"><div class="xh">🧠 心证·候选·待人工确认（'+ esc(d.xinZheng.lean.type) +'）</div>'+
+        '<div class="xb">'+ esc(d.xinZheng.lean.text) +'</div></div>';
+    }
+    if (d.xinZheng && d.xinZheng.admission && d.xinZheng.admission.length) {
+      html += '<div class="sadm"><div class="xh">⚖️ 证据采信说理·候选·待人工确认</div>';
+      d.xinZheng.admission.forEach((a,i)=>{
+        html += '<div class="ai">'+ (i+1) +'. 要件(<b>'+ esc(a.id) +'</b>)「'+ esc(a.text) +'」['+ esc(a.status) +'] → 【<b>'+ esc(a.verdict) +'</b>】 '+ esc(a.reason) +'</div>';
+      });
+      html += '</div>';
+    }
+    // —— §F 数额预判门控（仅责任成立解锁·候选·待人工确认）——
+    if (d.amountGate) {
+      const ag = d.amountGate;
+      html += '<div class="samount ' + (ag.enabled ? 'on' : 'off') + '">';
+      html += '<div class="gh">💰 §F 数额预判门控 · 候选·待人工确认</div>';
+      html += '<div class="gb">' + esc(ag.reason) + '</div>';
+      if (ag.enabled) {
+        html += '<button class="xabtn" id="sAmountOpen">💰 进入数额预估（§F 定量层）</button>';
+      } else {
+        html += '<div class="gb" style="margin-top:6px;color:#fca5a5;">⛔ 责任基础未确立，数额预估锁定。请先使「' + esc(ag.label || '') + '」要件涵摄结论为"成立"。</div>';
+      }
+      html += '</div>';
+    }
+    $('sRes').innerHTML = html;
+    const saBtn = $('sAmountOpen');
+    if (saBtn) saBtn.onclick = ()=>{
+      const a = $('amount'); const am = $('amountMask');
+      if (a) a.classList.add('open'); if (am) am.classList.add('open');
+      if (typeof renderAmount === 'function') renderAmount();
+    };
+    updateDeadlineNote();
+  }
+
+  function computeDeadline() {
+    if (!curDeadline) return { text: '未设截止日 · 建议于开庭前完成举证', cls: 'ok' };
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const end = new Date(curDeadline + 'T00:00:00');
+    if (isNaN(end.getTime())) return { text: '日期无效', cls: 'warn' };
+    const diff = Math.round((end - today) / 86400000);
+    if (diff < 0) return { text: '已逾期 ' + (-diff) + ' 日', cls: 'urgent' };
+    if (diff <= 7) return { text: '距届满 ' + diff + ' 日（紧急）', cls: 'urgent' };
+    if (diff <= 15) return { text: '距届满 ' + diff + ' 日（注意）', cls: 'warn' };
+    return { text: '距届满 ' + diff + ' 日', cls: 'ok' };
+  }
+  function updateDeadlineNote() {
+    const el = $('sDeadlineNote');
+    if (!el) return;
+    if (!curDeadline) { el.className = 'smuted'; el.textContent = '（选填，用于证据清单倒计时）'; return; }
+    const dl = computeDeadline();
+    el.className = 'dl ' + dl.cls;
+    el.textContent = dl.text;
+  }
+
+  function persistSubsumption(d){
+    if(typeof S === 'undefined' || !S) return;
+    S.subsumption = {
+      key: curKey,
+      findings: readFindings(),
+      facts: Object.assign({}, curFacts),
+      conclusionType: d.conclusionType,
+      conclusionText: d.conclusionText,
+      deadline: curDeadline,
+      at: new Date().toISOString()
+    };
+    if(typeof save === 'function') save();
+  }
+
+  function restoreSubsumption(){
+    if(typeof S === 'undefined' || !S || !S.subsumption) return;
+    const st = S.subsumption;
+    if(!st.key) return;
+    curKey = st.key;
+    curDeadline = st.deadline || '';
+    if($('sDeadline')) $('sDeadline').value = curDeadline;
+    if($('sSel')) $('sSel').value = st.key;
+    renderElems(st.key);
+    const fnd = st.findings || {}, fct = st.facts || {};
+    Object.keys(fnd).forEach(id=>{ const sel=$('sElems').querySelector('select[data-st="'+id+'"]'); if(sel) sel.value = fnd[id]; });
+    Object.keys(fct).forEach(id=>{ const inp=$('sElems').querySelector('input[data-fact="'+id+'"]'); if(inp){ inp.value = fct[id]; curFacts[id] = fct[id]; } });
+    const d = SUB.buildSubsumption(st.key, fnd, { facts: fct });
+    window.lastSub = d;
+    renderChain(d);
+    if (window.XZ) window.XZ.setWriteback(d);
+  }
+
+  // —— 两张皮·其二：涵摄结论回写法官心智候选面板 ——
+  window.XZ = {
+    writebackHTML: '',
+    setWriteback(d){
+      this.writebackHTML = buildWritebackHTML(d);
+      const box = document.getElementById('judgeReviewOut');
+      if (box) this.renderWritebackInto(box);
+    },
+    renderWritebackInto(box){
+      if (!this.writebackHTML) return;
+      const old = box.querySelector('.xzwb');
+      if (old) old.remove();
+      box.insertAdjacentHTML('beforeend', this.writebackHTML);
+    },
+    anchorTo(key){
+      if (!$('sSel')) return;
+      $('sSel').value = key;
+      renderElems(key);
+      $('sPanel').classList.add('open');
+      const title = (SUB.getModel(key)||{}).title || key;
+      if (typeof toast === 'function') toast('🎯 已锚定要件涵摄：' + title);
+    }
+  };
+  function buildWritebackHTML(d){
+    if (!d || d.error) return '';
+    const concl = (SUB && SUB.conclusionTypeLabel) ? SUB.conclusionTypeLabel(d.conclusionType) : d.conclusionType;
+    const xz = d.xinZheng && d.xinZheng.lean ? d.xinZheng.lean.text : '';
+    const gN = d.gaps ? d.gaps.length : 0;
+    return '<div class="xzwb">'+
+      '<div class="wbh">⬅️ 要件涵摄回写（候选·待人工确认）</div>'+
+      '<div class="wbl">法条：<b>'+ esc(d.law+' '+d.article) +'</b> · '+ esc(d.title||'') +'</div>'+
+      '<div class="wbc">结论：<b>'+ esc(concl) +'</b> — '+ esc(d.conclusionText||'') +'</div>'+
+      (xz?'<div class="wbx">心证：'+ esc(xz) +'</div>':'')+
+      '<div class="wbg">证据缺口：'+ gN +' 项 · 详见「⚖️ 要件涵摄」面板</div>'+
+      '</div>';
+  }
+
+  function run(){
+    if(!curKey) return;
+    const f = readFindings();
+    const d = SUB.buildSubsumption(curKey, f, { facts: curFacts });
+    window.lastSub = d;
+    renderChain(d);
+    persistSubsumption(d);
+    if (window.XZ) window.XZ.setWriteback(d);
+  }
+
+  function loadPreset(){
+    const p = SUB.preset_6658();
+    curKey = 'civ_143';
+    $('sSel').value = 'civ_143';
+    renderElems('civ_143');
+    const fnd = {}, fct = {};
+    p.rows.forEach(r=>{ fnd[r.id] = r.status; if (r.fact) fct[r.id] = r.fact; });
+    curFacts = fct;
+    const d = SUB.buildSubsumption('civ_143', fnd, { facts: fct });
+    window.lastSub = d;
+    // 回填 UI
+    d.rows.forEach(r=>{
+      const sel = $('sElems').querySelector('select[data-st="'+r.id+'"]');
+      const inp = $('sElems').querySelector('input[data-fact="'+r.id+'"]');
+      if(sel) sel.value = r.status;
+      if(inp && r.fact){ inp.value = r.fact; }
+    });
+    renderChain(d);
+    persistSubsumption(d);
+    if (window.XZ) window.XZ.setWriteback(d);
+  }
+
+  $('sSel').onchange = e => renderElems(e.target.value);
+  $('sRun').onclick = run;
+  $('sPreset').onclick = loadPreset;
+  $('sCopy').onclick = ()=>{ const t=$('sRes').innerText; if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast&&toast('推理链已复制')).catch(()=>{}); };
+  $('sToggle').onclick = ()=> $('sPanel').classList.toggle('open');
+  $('sClose').onclick = ()=> $('sPanel').classList.remove('open');
+  $('sDeadline').onchange = e => {
+    curDeadline = e.target.value || '';
+    if (typeof S !== 'undefined' && S && S.subsumption) { S.subsumption.deadline = curDeadline; if (typeof save === 'function') save(); }
+    if (curKey) run();
+  };
+
+  // —— ③ 争议焦点 → 自动选要件（候选·待人工确认）——
+  function renderFocusCands(res) {
+    const box = $('sFocusCands'); if (!box) return;
+    if (!res || !res.candidates.length) {
+      box.innerHTML = '<div class="smuted">未解析到候选法条，请补充关键词（如 违约 / 侵权 / 效力 / 相对性）。</div>';
+      return;
+    }
+    box.innerHTML = res.candidates.map(c =>
+      '<div class="fchip" data-key="' + esc(c.key) + '">' +
+        '<span class="fk">' + esc(c.key) + '</span>' +
+        '<span class="fl" title="' + esc(c.label) + '">' + esc(c.label) + '</span>' +
+        '<span class="fs">命中 ' + c.score + '</span>' +
+        '<button class="fuse" data-key="' + esc(c.key) + '">采用</button>' +
+      '</div>').join('');
+    box.querySelectorAll('.fuse').forEach(b => {
+      b.onclick = () => {
+        const key = b.getAttribute('data-key');
+        curKey = key; $('sSel').value = key; renderElems(key);
+        if (typeof S !== 'undefined' && S) { S.disputeFocus = ($('sFocus').value || ''); if (typeof save === 'function') save(); }
+        if (typeof toast === 'function') toast('🎯 已据争议焦点选要件：' + ((SUB.getModel(key) || {}).title || key));
+        run();
+      };
+    });
+  }
+  if ($('sFocusGo')) $('sFocusGo').onclick = () => {
+    const v = $('sFocus').value.trim();
+    if (!v) { if (typeof toast === 'function') toast('请先输入争议焦点'); return; }
+    const res = SUB.resolveDisputeFocus(v);
+    renderFocusCands(res);
+    if (typeof S !== 'undefined' && S) { S.disputeFocus = v; if (typeof save === 'function') save(); }
+  };
+  // 载入时回填已保存的争议焦点
+  if (typeof S !== 'undefined' && S && S.disputeFocus && $('sFocus')) $('sFocus').value = S.disputeFocus;
+
+  fillSelect();
+  renderElems(SUB.listStatutes()[0].key);
+  window.addEventListener('subsumption:restore', restoreSubsumption);
+  restoreSubsumption();
+})();
+</script>
+
+<!-- ============ 📂 卷宗证据联动 + 🔬 LTI 五维 QC ============ -->
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const LS_KEY = 'lti_evi_reg_v1';
+  const EVI_TYPES = ['书证','物证','证人证言','视听资料','鉴定意见','电子数据','当事人陈述','勘验笔录'];
+
+  // —— 全局共享状态（供要件涵摄面板 sPanel 读写）——
+  window.CASE_NO = '';
+  window.EVIDENCE_REG = [];
+
+  function esc(s){ return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+  function loadEvi(){
+    try{
+      const raw = localStorage.getItem(LS_KEY);
+      if(raw){ const o=JSON.parse(raw); window.CASE_NO = o.caseNo||''; window.EVIDENCE_REG = Array.isArray(o.evidence)?o.evidence:[]; }
+    }catch(e){ window.EVIDENCE_REG = []; window.CASE_NO=''; }
+  }
+  function saveEvi(){
+    try{ localStorage.setItem(LS_KEY, JSON.stringify({ caseNo: window.CASE_NO, evidence: window.EVIDENCE_REG })); }catch(e){}
+  }
+
+  // 证据编号 chip 渲染（要件涵摄事实框引用「证N」时联动卷宗出处）
+  window.renderFactWithChips = function(fact){
+    if(!fact) return '';
+    let h = esc(fact);
+    h = h.replace(/证\s*(\d+)/g, (m, n)=>{
+      const id = '证'+n;
+      const e = window.EVIDENCE_REG.find(x=>x.id===id);
+      const tip = e ? ('卷宗出处：'+(e.source||'未填')+' ｜ 名称：'+(e.name||'未填')) : '（卷宗证据未登记）';
+      return '<span class="sfact-chip" title="'+esc(tip)+'">'+esc(id)+'</span>';
+    });
+    return h;
+  };
+
+  function refreshEviDatalist(){
+    const dl = $('eviList');
+    if(!dl) return;
+    dl.innerHTML = window.EVIDENCE_REG.map(e=>`<option value="${esc(e.id)}">${esc(e.name||e.id)} · ${esc(e.source||'')}</option>`).join('');
+  }
+
+  function renderEviRows(){
+    const box = $('eviRows');
+    if(!box) return;
+    if(!window.EVIDENCE_REG.length){ box.innerHTML='<div class="smuted" style="font-size:12px;color:#94a3b8">暂无证据登记。点「＋ 新增证据」开始，编号自动为 证1/证2…</div>'; return; }
+    box.innerHTML = window.EVIDENCE_REG.map((e,i)=>`
+      <div class="evrow" data-i="${i}">
+        <span class="evid">${esc(e.id)}</span>
+        <input data-f="name" value="${esc(e.name)}" placeholder="如《通话录音》" />
+        <input data-f="source" value="${esc(e.source)}" placeholder="如 卷二P45" />
+        <select data-f="type">${EVI_TYPES.map(t=>`<option ${t===e.type?'selected':''}>${t}</option>`).join('')}</select>
+        <input data-f="purpose" value="${esc(e.purpose)}" placeholder="证明目的" />
+        <button class="evdel" data-del="${i}" title="删除">✕</button>
+      </div>`).join('');
+    box.querySelectorAll('input[data-f]').forEach(inp=>{
+      inp.oninput = ()=>{ const i=+inp.closest('.evrow').getAttribute('data-i'); const f=inp.getAttribute('data-f'); window.EVIDENCE_REG[i][f]=inp.value; saveEvi(); if(f==='name'||f==='source') refreshEviDatalist(); };
+    });
+    box.querySelectorAll('select[data-f]').forEach(sel=>{
+      sel.onchange = ()=>{ const i=+sel.closest('.evrow').getAttribute('data-i'); window.EVIDENCE_REG[i].type=sel.value; saveEvi(); };
+    });
+    box.querySelectorAll('[data-del]').forEach(b=>{
+      b.onclick = ()=>{ const i=+b.getAttribute('data-del'); window.EVIDENCE_REG.splice(i,1); renumberEvi(); renderEviRows(); refreshEviDatalist(); saveEvi(); };
+    });
+  }
+  function renumberEvi(){ window.EVIDENCE_REG.forEach((e,i)=>{ e.id='证'+(i+1); }); }
+  function addEvi(){
+    window.EVIDENCE_REG.push({ id:'证'+(window.EVIDENCE_REG.length+1), name:'', source:'', type:EVI_TYPES[0], purpose:'' });
+    renderEviRows(); refreshEviDatalist(); saveEvi();
+  }
+  function setCaseNo(v, from){
+    window.CASE_NO = (v||'').trim();
+    const note = $('eviCaseNoNote');
+    if(note){
+      if(!window.CASE_NO){ note.className='smuted'; note.textContent='（选填，用于证据清单/举证期限横幅 + QC C304）'; }
+      else { const ok = window.LTI_QC ? window.LTI_QC.validateCaseNo(window.CASE_NO).ok : /^\d{4}.*?[民刑行]初\d+号$/.test(window.CASE_NO); note.className='smuted'; note.style.color = ok?'#86efac':'#fca5a5'; note.textContent = ok?'✅ 案号格式合规':'⚠️ 案号格式异常（应为形如 2026黔0330民初6658号）'; }
+    }
+    if(from!=='evi' && $('eviCaseNo')) $('eviCaseNo').value = window.CASE_NO;
+    if(from!=='qc' && $('qcCaseNo')) $('qcCaseNo').value = window.CASE_NO;
+    saveEvi();
+  }
+
+  // —— LTI 五维 QC 运行 ——
+  function runQCUI(){
+    const out = $('qcOut');
+    if(!out) return;
+    if(typeof window.LTI_QC==='undefined'){ out.innerHTML='<div class="smuted">❌ LTI_QC 未加载（lti_qc.js 缺失）。</div>'; return; }
+    if(!window.lastSub){ out.innerHTML='<div class="r2">⚠️ 尚未生成要件涵摄结果。请先在「⚖️ 要件涵摄」面板生成推理链，再运行五维 QC。</div>'; return; }
+    const docText = ($('qcDoc')?$('qcDoc').value:'')||'';
+    const res = window.LTI_QC.runQC({
+      sub: window.lastSub,
+      docText: docText,
+      caseNo: window.CASE_NO,
+      evidence: window.EVIDENCE_REG,
+      models: (window.SUBSUMPTION && window.SUBSUMPTION.ELEMENT_MODELS) ? window.SUBSUMPTION.ELEMENT_MODELS : null
+    });
+    out.innerHTML = res.report;
+  }
+
+  // —— 初始化 + 绑定 ——
+  loadEvi();
+  $('eviCaseNo') && ($('eviCaseNo').value = window.CASE_NO);
+  $('qcCaseNo') && ($('qcCaseNo').value = window.CASE_NO);
+  renderEviRows();
+  refreshEviDatalist();
+  if($('eviCaseNoNote')) setCaseNo(window.CASE_NO, 'init');
+
+  // 卷宗证据抽屉
+  $('btnEvidence') && ($('btnEvidence').onclick=()=>{ $('evi').classList.add('open'); $('eviMask').classList.add('open'); renderEviRows(); });
+  $('btnEviClose') && ($('btnEviClose').onclick=()=>{ $('evi').classList.remove('open'); $('eviMask').classList.remove('open'); });
+  $('eviMask') && ($('eviMask').onclick=()=>{ $('evi').classList.remove('open'); $('eviMask').classList.remove('open'); });
+  $('eviAdd') && ($('eviAdd').onclick=addEvi);
+  $('eviCaseNo') && ($('eviCaseNo').oninput=e=>setCaseNo(e.target.value,'evi'));
+  $('qcCaseNo') && ($('qcCaseNo').oninput=e=>setCaseNo(e.target.value,'qc'));
+
+  // LTI 五维 QC 抽屉
+  $('btnQC') && ($('btnQC').onclick=()=>{ $('qc').classList.add('open'); $('qcMask').classList.add('open'); runQCUI(); });
+  $('btnQcClose') && ($('btnQcClose').onclick=()=>{ $('qc').classList.remove('open'); $('qcMask').classList.remove('open'); });
+  $('qcMask') && ($('qcMask').onclick=()=>{ $('qc').classList.remove('open'); $('qcMask').classList.remove('open'); });
+  $('qcRun') && ($('qcRun').onclick=runQCUI);
+})();
+</script>
+
+<!-- ============ 🔀 多域竞合深度研判 drawer（路B 重 agent） ============ -->
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const esc = x => String(x).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+  function openConcur() { const c = $('concur'); if (c) c.classList.add('open'); const m = $('concurMask'); if (m) m.classList.add('open'); }
+  function closeConcur() { const c = $('concur'); if (c) c.classList.remove('open'); const m = $('concurMask'); if (m) m.classList.remove('open'); }
+
+  if ($('btnConcur')) $('btnConcur').onclick = openConcur;
+  if ($('btnConcurClose')) $('btnConcurClose').onclick = closeConcur;
+  if ($('concurMask')) $('concurMask').onclick = closeConcur;
+
+  if ($('concurRun')) $('concurRun').onclick = () => {
+    const txt = ($('concurText').value || '').trim();
+    if (!txt) { if (typeof toast === 'function') toast('请先输入争议焦点/事实描述'); return; }
+    if (!window.MDA) { if (typeof toast === 'function') toast('多域竞合模块未加载'); return; }
+    const r = window.MDA.analyzeConcurrence(txt);
+    window.__mdaPrimary = r.primary ? r.primary.statuteKeys[0] : null;
+    // 同步主路径提示到 Path B 文书草拟面板
+    const fk = $('docFocusKey');
+    if (fk) fk.textContent = r.primary ? (r.primary.label + '（' + r.primary.statuteKeys.join('、') + '）') : '—';
+    renderConcur(r);
+  };
+
+  function renderConcur(r) {
+    const out = $('concurOut'); if (!out) return;
+    if (!r.domains || !r.domains.length) {
+      out.innerHTML = '<div class="r2">未识别到明确法律域，请补充事实关键词（如 合同 / 违约 / 侵权 / 效力 / 相对性）。</div>';
+      return;
+    }
+    let html = '';
+    // 候选域 chips
+    html += '<div class="gh">📊 候选法律域（按匹配度）</div><div class="md-chips">';
+    r.domains.forEach(d => {
+      const keys = (d.statuteKeys || []).join('、');
+      html += '<div class="md-chip"><div class="mcl">' + esc(d.label) + ' <span class="msc">' + d.score + '</span></div>' +
+        '<div class="mck">法条：' + esc(keys) + (d.hits && d.hits.length ? ' · 命中：' + esc(d.hits.join('、')) : '') + '</div>' +
+        (d.statuteKeys && d.statuteKeys.length ? '<button class="mduse" data-key="' + esc(d.statuteKeys[0]) + '">→ 要件涵摄</button>' : '') + '</div>';
+    });
+    html += '</div>';
+    // 关系表
+    if (r.relations && r.relations.length) {
+      html += '<div class="gh">🔗 域间竞合关系</div><table class="md-rel"><thead><tr><th>域 A</th><th>关系</th><th>域 B</th></tr></thead><tbody>';
+      r.relations.forEach(x => {
+        html += '<tr><td>' + esc(x.a) + '</td><td class="mdt md-' + esc(x.type) + '">' + esc(x.typeLabel) + '</td><td>' + esc(x.b) + '</td></tr>';
+        if (x.basis) html += '<tr class="mdb"><td colspan="3">📜 ' + esc(x.basis) + '</td></tr>';
+        if (x.note) html += '<tr class="mdb"><td colspan="3">💡 ' + esc(x.note) + '</td></tr>';
+      });
+      html += '</tbody></table>';
+    }
+    // 建议
+    html += '<div class="gh">🧭 研判建议（候选·待人工确认）</div><div class="md-rec">' + esc(r.recommendation) + '</div>';
+    out.innerHTML = html;
+    out.querySelectorAll('.mduse').forEach(b => {
+      b.onclick = () => {
+        const key = b.getAttribute('data-key');
+        if (window.XZ && window.XZ.anchorTo) window.XZ.anchorTo(key);
+        else if ($('sSel')) { $('sSel').value = key; $('sSel').dispatchEvent(new Event('change')); }
+        closeConcur();
+      };
+    });
+  }
+})();
+</script>
+<script>
+/* sync-time-injected · 真实刷新时间：用服务端文件修改时间覆盖写死的占位时间 */
+(function(){
+  function fmt(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  try{
+    var d=new Date(document.lastModified);
+    if(isNaN(d.getTime())) return;
+    var s=fmt(d);
+    var el=document.getElementById('data-update-time');
+    if(el){el.textContent='📊 数据更新时间：'+s+'（北京时间）';return;}
+    var sub=document.getElementById('sub');
+    if(sub){sub.textContent=sub.textContent.replace(/数据更新时间：[^（｜]*/,'数据更新时间：'+s);}
+  }catch(e){}
+})();
+</script>
+
+<script src="/subapp_score_override.js?v=20260919b"></script>
+</body>
+</html>
