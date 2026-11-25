@@ -6,7 +6,7 @@ tags:
   - 概念页
   - 概念-慈善
 generated_by: 断链消解器resolve_broken_links v1.2
-updated: 2026-11-01T23:19
+updated: 2026-11-15T21:53
 ---
 
 # R-HG-077-慈善合规数值红线速查-LTI映射桥

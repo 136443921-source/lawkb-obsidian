@@ -5,7 +5,7 @@ created: 2026-08-17
 tags:
   - 概念-合同
 generated_by: 断链消解器resolve_broken_links v1.0
-updated: 2026-09-25T20:41
+updated: 2026-11-15T21:53
 ---
 
 # 5个AI合同审查提示词律师法务必备

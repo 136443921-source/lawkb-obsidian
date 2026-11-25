@@ -5,7 +5,7 @@ created: 2026-09-06
 tags:
   - 概念-通用
 generated_by: 断链消解器resolve_broken_links v1.2
-updated: 2026-10-02T22:11
+updated: 2026-11-15T21:53
 ---
 
 # 02_HOW-I-THINK

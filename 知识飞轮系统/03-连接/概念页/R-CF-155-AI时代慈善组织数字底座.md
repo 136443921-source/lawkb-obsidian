@@ -6,7 +6,7 @@ tags:
   - 概念页
   - 概念-慈善
 generated_by: 断链消解器resolve_broken_links v1.2
-updated: 2026-09-28T11:49
+updated: 2026-11-15T21:53
 ---
 
 # R-CF-155-AI时代慈善组织数字底座

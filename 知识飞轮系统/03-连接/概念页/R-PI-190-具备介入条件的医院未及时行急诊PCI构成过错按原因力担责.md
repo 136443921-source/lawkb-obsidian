@@ -5,7 +5,7 @@ created: 2026-09-06
 tags:
   - 概念-医疗
 generated_by: 断链消解器resolve_broken_links v1.2
-updated: 2026-09-25T20:41
+updated: 2026-11-15T21:53
 ---
 
 # R-PI-190-具备介入条件的医院未及时行急诊PCI构成过错按原因力担责
